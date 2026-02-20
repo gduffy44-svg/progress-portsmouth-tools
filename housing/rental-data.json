@@ -1,0 +1,17 @@
+{
+  "lastUpdated": "2026-02-01",
+  "source": "Zillow / CoStar",
+  "market": "Portsmouth, NH",
+  "metrics": {
+    "medianRent1BR": 2150,
+    "medianRent2BR": 2800,
+    "vacancyRate": 1.2,
+    "yearOverYearChange": 4.3
+  },
+  "historicalRents": [
+    { "month": "2024-01", "1BR": 1950, "2BR": 2550 },
+    { "month": "2024-06", "1BR": 2050, "2BR": 2680 },
+    { "month": "2025-01", "1BR": 2100, "2BR": 2750 },
+    { "month": "2026-01", "1BR": 2150, "2BR": 2800 }
+  ]
+}
