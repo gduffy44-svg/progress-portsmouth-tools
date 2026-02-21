@@ -287,63 +287,49 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 .workload-about{border-top:1px solid var(--border);padding-top:10px}
 .about-toggle{background:none;border:none;font-size:0.78rem;color:var(--slate);cursor:pointer;padding:0;font-family:inherit}
 .about-toggle:hover{color:var(--navy)}
+
+.header-top { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; gap: 16px; flex-wrap: wrap; }
+.header-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; justify-content: flex-end; }
+.header-toolbar #searchInput { width: 200px; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; font-size: 0.8rem; background: rgba(255,255,255,0.12); color: var(--white); outline: none; }
+.header-toolbar #searchInput::placeholder { color: rgba(255,255,255,0.5); }
+.header-toolbar .status-filter-btn { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; color: rgba(255,255,255,0.65); transition: var(--transition); white-space: nowrap; }
+.header-toolbar .status-filter-btn:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+.header-toolbar .status-filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
+.header-toolbar .view-toggle { display: flex; gap: 4px; }
+.header-toolbar .view-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; cursor: pointer; color: rgba(255,255,255,0.7); white-space: nowrap; }
+.header-toolbar .view-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
+.toolbar { display: none; }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-top">
-    <div>
-      <div class="header-brand">
-        <h1>Portsmouth <span>Housing Action Plan</span></h1>
-        <span class="header-badge">Action Explorer</span>
-      </div>
-      <div class="header-sub">Comprehensive action items for stakeholder review and prioritization</div>
+    <div class="header-brand">
+      <h1>Portsmouth <span>Housing Action Plan</span></h1>
+      <span class="header-badge">Action Explorer</span>
     </div>
-    <div class="header-stats">
-      <div class="stat-pill"><strong>130+</strong> Action Items</div>
-      <div class="stat-pill"><strong>13</strong> Categories</div>
-      <div class="stat-pill"><strong>14</strong> Sources</div>
-      <div class="stat-pill new-pill"><strong>23</strong> New Items</div>
-      <div class="stat-pill status-pill"><strong>28</strong> Already Active</div>
+    <div class="header-toolbar">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search action items..." />
+      </div>
+      <div class="status-filter" id="statusFilter">
+        <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
+        <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">&#10003; Complete</button>
+        <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">&#9680; In Progress</button>
+        <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">&#9675; Early Stage</button>
+        <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">&#8212; Not Started</button>
+      </div>
+      <div class="view-toggle">
+        <button class="view-btn" onclick="openGlossary()">&#128218; Glossary</button>
+        <button class="view-btn active" id="cardsBtn" onclick="setView('cards')">&#9783; Cards</button>
+        <button class="view-btn" id="tableBtn" onclick="setView('table')">&#9776; Table</button>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="toolbar">
-  <div class="toolbar-inner">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search action items, descriptions, sources…" />
-    </div>
-    <div class="status-filter" id="statusFilter">
-      <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
-      <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">✓ Complete</button>
-      <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">◐ In Progress</button>
-      <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">○ Early Stage</button>
-      <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">— Not Started</button>
-    </div>
-    <div class="toolbar-btns">
-      <button class="glossary-btn" onclick="toggleGlossary()">📖 Glossary</button>
-      <div class="view-toggle">
-        <button class="view-btn active" data-view="cards" onclick="setView('cards')"><span class="icon">&#9638;</span> Cards</button>
-        <button class="view-btn" data-view="table" onclick="setView('table')"><span class="icon">&#9776;</span> Table</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="glossary-overlay" id="glossaryOverlay" onclick="if(event.target===this)toggleGlossary()">
-  <div class="glossary-panel">
-    <div class="glossary-header">
-      <h3>📖 Glossary of Terms</h3>
-      <button class="glossary-close" onclick="toggleGlossary()">×</button>
-    </div>
-    <div class="glossary-body">
-      <input type="text" class="glossary-search" id="glossarySearch" placeholder="Filter terms…" oninput="filterGlossary()" />
-      <div id="glossaryEntries"></div>
-    </div>
-  </div>
-</div>
 
 <div class="main-layout">
   <aside class="sidebar" id="sidebar"></aside>
@@ -431,7 +417,7 @@ function renderSidebar() {
   h += `<div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${DATA.length || 0}</span></div>`;
   CAT_ORDER.forEach(cat => {
     const icon = CAT_ICONS[cat]||'📌';
-    h += `<div class="cat-nav-item ${activeCategory===cat?'active':''}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${icon}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${CAT_COUNTS[cat]||0}</span></div>`;
+    h += `<div class="cat-nav-item ${activeCategory===cat?'active':''}" title="${cat}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${icon}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${CAT_COUNTS[cat]||0}</span></div>`;
   });
   sb.innerHTML = h;
 }
