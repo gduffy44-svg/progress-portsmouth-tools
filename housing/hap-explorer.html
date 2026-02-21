@@ -299,6 +299,11 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 .header-toolbar .view-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; cursor: pointer; color: rgba(255,255,255,0.7); white-space: nowrap; }
 .header-toolbar .view-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
 .toolbar { display: none; }
+
+.yield-pill { display: inline-block; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.04em; white-space: nowrap; }
+.yield-legend { font-size: 0.75rem; color: var(--slate); padding: 6px 0 10px 0; }
+.yield-legend-icon { color: var(--gold); }
+.yield-col { color: var(--gold); font-size: 1rem; text-align: center; }
 </style>
 </head>
 <body>
@@ -509,6 +514,11 @@ function renderContent() {
     h += '</div></div>';
     h += '</div>';
   }
+  // Yield legend if any items have yield data
+  const hasYield = filtered.some(item => EVALUATIONS[slugify(item.action)] && EVALUATIONS[slugify(item.action)].yieldType);
+  if (hasYield) {
+    h += '<div class="yield-legend">&#9670; Gold diamond = housing yield estimate available &mdash; expand card for details</div>';
+  }
   if (!filtered.length) {
     h += `<div class="no-results"><div class="icon">🔍</div><div>No action items match your filters.</div></div>`;
     content.innerHTML = h; return;
@@ -537,7 +547,7 @@ function renderContent() {
         const bl = (item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress portsmouth')||item.sources.toLowerCase().includes('reviewer'))) ? 'New' : 'RKG 2022';
         badge = `<span class="new-badge badge-new">${bl}</span>`;
       }
-      h += `<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span><span class="card-title">${item.action}</span>${badge}<span class="card-arrow">&#9660;</span></div><div class="card-body">`;
+      h += `<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span><span class="card-title">${item.action}</span>${badge}${EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType ? '<span class="yield-pill">&#9670; Yield Est.</span>' : ''}<span class="card-arrow">&#9660;</span></div><div class="card-body">`;
       if(hs && item.status_detail) h += `<div class="status-detail-box sd-${s}"><div class="sd-label">${STATUS_DETAIL_LABELS[s]}</div><div class="sd-text">${item.status_detail}</div></div>`;
       h += pcHtml(item);
       if(item.description) h += `<div class="card-field"><div class="card-field-label">Description</div><div class="card-field-value">${item.description}</div></div>`;
@@ -597,7 +607,7 @@ function renderContent() {
   h += `</div>`;
 
   // Table view
-  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
+  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px" onclick="sortTable('yield')" style="cursor:pointer" title="Sort by yield estimate">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
   let tn=0;
   catList.forEach(cat => {
     const icon = CAT_ICONS[cat]||'📌';
