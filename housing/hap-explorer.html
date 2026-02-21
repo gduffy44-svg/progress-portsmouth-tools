@@ -315,12 +315,22 @@ let DATA = [];
 let GLOSSARY = {};
 
 async function loadData() {
-  const [actionsRes, glossaryRes] = await Promise.all([
-    fetch('hap-actions.json'),
-    fetch('hap-glossary.json')
-  ]);
-  DATA = await actionsRes.json();
-  GLOSSARY = await glossaryRes.json();
+  try {
+    const [actionsRes, glossaryRes] = await Promise.all([
+      fetch('hap-actions.json'),
+      fetch('hap-glossary.json')
+    ]);
+    if (!actionsRes.ok) throw new Error('hap-actions.json returned ' + actionsRes.status);
+    if (!glossaryRes.ok) throw new Error('hap-glossary.json returned ' + glossaryRes.status);
+    const actions = await actionsRes.json();
+    const glossary = await glossaryRes.json();
+    DATA = Array.isArray(actions) ? actions : [];
+    GLOSSARY = (glossary && typeof glossary === 'object') ? glossary : {};
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    DATA = [];
+    GLOSSARY = {};
+  }
 }
 const CAT_ORDER = ["Zoning & Land Use", "Permitting & Process", "Incentives & Financial Tools", "Housing Trust Fund & Funding", "Public Land & Property", "Partnerships & Capacity", "Preservation & Anti-Displacement", "Special Populations", "Education & Outreach", "Infrastructure & Services", "Production Targets & Data", "Climate & Sustainability", "Governance & Accountability"];
 const CAT_COUNTS = {"Zoning & Land Use": 33, "Permitting & Process": 11, "Incentives & Financial Tools": 20, "Housing Trust Fund & Funding": 3, "Public Land & Property": 6, "Partnerships & Capacity": 9, "Preservation & Anti-Displacement": 11, "Special Populations": 6, "Education & Outreach": 10, "Infrastructure & Services": 5, "Production Targets & Data": 11, "Climate & Sustainability": 3, "Governance & Accountability": 3};
@@ -365,7 +375,7 @@ function toggleGlossary() {
 function renderSidebar() {
   const sb = document.getElementById('sidebar');
   let h = '<div class="sidebar-title">Categories</div>';
-  h += `<div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${DATA.length}</span></div>`;
+  h += `<div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${DATA.length || 0}</span></div>`;
   CAT_ORDER.forEach(cat => {
     const icon = CAT_ICONS[cat]||'📌';
     h += `<div class="cat-nav-item ${activeCategory===cat?'active':''}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${icon}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${CAT_COUNTS[cat]||0}</span></div>`;
