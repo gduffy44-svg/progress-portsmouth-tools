@@ -216,9 +216,16 @@ body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: var(
 .data-table tr:hover td { background: var(--cream); }
 .data-table tr.new-row td { background: var(--new-bg); }
 .data-table tr.new-row:hover td { background: #fff0c8; }
+
+
+
+
 body .data-table tr.status-complete-row td { background: #e8f5e9; color: #111111; }
 body .data-table tr.status-progress-row td { background: #e3f2fd; color: #111111; }
 body .data-table tr.status-early-row td { background: #f3e5f5; color: #111111; }
+body .data-table tr.status-complete-row:hover td { background: #d4edda; color: #111111; }
+body .data-table tr.status-progress-row:hover td { background: #cce5ff; color: #111111; }
+body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111111; }
 .data-table tr.cat-row td { background: #d4e1f0; font-weight: 700; font-size: 0.9rem; color: var(--navy); padding: 12px 14px; }
 .data-table .pc-inline { font-size: 0.8rem; margin-top: 6px; }
 .data-table .pc-inline span { font-weight: 600; }
@@ -248,19 +255,25 @@ body .data-table tr.status-early-row td { background: #f3e5f5; color: #111111; }
   .card-body { display: block !important; }
 }
 
-/* Status row color overrides */
-html body .data-table tr.status-complete-row td { background: #e8f5e9; color: #111111; }
-html body .data-table tr.status-progress-row td { background: #e3f2fd; color: #111111; }
-html body .data-table tr.status-early-row td { background: #f3e5f5; color: #111111; }
-html body .data-table tr:hover td { background: #f5f5f0; color: #111111; }
-
-/* Force all table cells to have explicit background and color */
-.data-table tbody tr td { background: #ffffff; color: #1a1a1a; }
-.data-table tbody tr:hover td { background: #f5f5f0; color: #1a1a1a; }
-.data-table tbody tr.status-complete-row td { background: #e8f5e9; color: #1a1a1a; }
-.data-table tbody tr.status-progress-row td { background: #e3f2fd; color: #1a1a1a; }
-.data-table tbody tr.status-early-row td { background: #f3e5f5; color: #1a1a1a; }
-.data-table tbody tr.new-row td { background: #fff8e6; color: #1a1a1a; }
+/* Evaluation layer */
+.eval-panel { margin-top: 16px; padding-top: 16px; border-top: 2px dashed var(--border); }
+.eval-panel-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate); margin-bottom: 12px; }
+.eval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.eval-field { background: var(--cream); border-radius: 6px; padding: 8px 10px; }
+.eval-field-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); margin-bottom: 3px; }
+.eval-field-value { font-size: 0.82rem; color: var(--navy); font-weight: 500; }
+.eval-field-value.empty { color: #aaa; font-style: italic; font-weight: 400; }
+.eval-yield { background: #f0f7ff; border: 1px solid #c8dff5; border-radius: 6px; padding: 10px 12px; margin-bottom: 10px; }
+.eval-yield-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #1565c0; margin-bottom: 4px; }
+.eval-yield-value { font-size: 0.9rem; color: var(--navy); font-weight: 600; }
+.eval-yield-meta { font-size: 0.75rem; color: var(--slate); margin-top: 4px; }
+.eval-notes { font-size: 0.8rem; color: var(--slate); font-style: italic; margin-top: 6px; }
+.eval-status-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+.eval-status-not-reviewed { background: #f0f0f0; color: #888; }
+.eval-status-in-review { background: #fff3cd; color: #856404; }
+.eval-status-consensus { background: #d4edda; color: #155724; }
+.disposition-deferred { opacity: 0.5; }
+.disposition-removed { opacity: 0.35; text-decoration: line-through; }
 </style>
 </head>
 <body>
@@ -328,11 +341,18 @@ html body .data-table tr:hover td { background: #f5f5f0; color: #111111; }
 let DATA = [];
 let GLOSSARY = {};
 
+function slugify(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 60);
+}
+
+let EVALUATIONS = {};
+
 async function loadData() {
   try {
-    const [actionsRes, glossaryRes] = await Promise.all([
+    const [actionsRes, glossaryRes, evalsRes] = await Promise.all([
       fetch('hap-actions.json'),
-      fetch('hap-glossary.json')
+      fetch('hap-glossary.json'),
+      fetch('hap-evaluations.json')
     ]);
     if (!actionsRes.ok) throw new Error('hap-actions.json returned ' + actionsRes.status);
     if (!glossaryRes.ok) throw new Error('hap-glossary.json returned ' + glossaryRes.status);
@@ -340,6 +360,12 @@ async function loadData() {
     const glossary = await glossaryRes.json();
     DATA = Array.isArray(actions) ? actions : [];
     GLOSSARY = (glossary && typeof glossary === 'object') ? glossary : {};
+    if (evalsRes.ok) {
+      const evals = await evalsRes.json();
+      if (Array.isArray(evals)) {
+        evals.forEach(e => { EVALUATIONS[e.id] = e; });
+      }
+    }
   } catch(e) {
     console.error('Failed to load data:', e);
     DATA = [];
@@ -534,6 +560,42 @@ function renderContent() {
             h += `<span class="card-tag ${hi?'rkg':'source'}">${src}</span>`;
           }
         });
+        h += `</div>`;
+      }
+      // Evaluation panel
+      const slug = slugify(item.action);
+      const ev = EVALUATIONS[slug];
+      if (ev) {
+        const evStatus = ev.evaluationStatus || 'not-reviewed';
+        const evStatusLabel = {'not-reviewed': 'Not Reviewed', 'in-review': 'In Review', 'consensus': 'Consensus'}[evStatus] || evStatus;
+        h += `<div class="eval-panel">`;
+        h += `<div class="eval-panel-title">Stakeholder Evaluation <span class="eval-status-badge eval-status-${evStatus}">${evStatusLabel}</span></div>`;
+        // Yield block
+        if (ev.yieldType) {
+          h += `<div class="eval-yield">`;
+          h += `<div class="eval-yield-label">Potential Housing Yield</div>`;
+          h += `<div class="eval-yield-value">${ev.yieldType}${ev.yieldEstimate ? ' — ' + ev.yieldEstimate : ''}</div>`;
+          if (ev.yieldTimeframe || ev.yieldConfidence) {
+            h += `<div class="eval-yield-meta">${[ev.yieldTimeframe, ev.yieldConfidence ? ev.yieldConfidence + ' confidence' : ''].filter(Boolean).join(' · ')}</div>`;
+          }
+          if (ev.yieldNotes) h += `<div class="eval-notes">${ev.yieldNotes}</div>`;
+          h += `</div>`;
+        }
+        // Evaluation fields grid
+        h += `<div class="eval-grid">`;
+        const evFields = [
+          ['Priority', ev.priority],
+          ['Timeline', ev.timeline],
+          ['Sensitivity', ev.sensitivity],
+          ['Responsible Party', ev.responsibleParty],
+          ['Disposition', ev.disposition],
+        ];
+        evFields.forEach(([label, val]) => {
+          const empty = !val;
+          h += `<div class="eval-field"><div class="eval-field-label">${label}</div><div class="eval-field-value ${empty ? 'empty' : ''}">${val || 'Not set'}</div></div>`;
+        });
+        h += `</div>`;
+        if (ev.keyConcern) h += `<div class="eval-notes"><strong>Key concern:</strong> ${ev.keyConcern}</div>`;
         h += `</div>`;
       }
       h += `</div></div>`;
