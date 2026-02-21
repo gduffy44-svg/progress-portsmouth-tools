@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portsmouth HAP Explorer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --navy-deep: #0f1a2e;
+  --navy: #1a2332;
+  --navy-mid: #2d3e52;
+  --navy-light: #3d5068;
+  --slate: #64748b;
+  --slate-light: #94a3b8;
+  --gold: #f4a261;
+  --gold-dim: #d4883a;
+  --gold-glow: rgba(244, 162, 97, 0.15);
+  --coral: #e76f51;
+  --coral-dim: #c45a3e;
+  --teal: #4ecdc4;
+  --teal-dim: #3aada5;
+  --cream: #faf8f5;
+  --cream-warm: #f5f0e8;
+  --white: #ffffff;
+  --border: rgba(26, 35, 50, 0.08);
+  --border-hover: rgba(26, 35, 50, 0.15);
+  --shadow-sm: 0 1px 3px rgba(15, 26, 46, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 26, 46, 0.08);
+  --shadow-lg: 0 8px 32px rgba(15, 26, 46, 0.12);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 0.2s ease;
+  --new-bg: #fff8e1;
+  --new-border: #f4a261;
+  --status-complete: #2e7d32;
+  --status-complete-bg: #e8f5e9;
+  --status-progress: #1565c0;
+  --status-progress-bg: #e3f2fd;
+  --status-early: #7b1fa2;
+  --status-early-bg: #f3e5f5;
+  --pro-green: #2e7d32;
+  --pro-bg: #f1f8f1;
+  --pro-border: #c8e6c9;
+  --con-red: #c62828;
+  --con-bg: #fef5f4;
+  --con-border: #ffcdd2;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.site-header { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 40%, var(--navy-mid) 100%); color: var(--white); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(15, 26, 46, 0.3); }
+.header-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 32px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.header-brand { display: flex; align-items: baseline; gap: 12px; }
+.header-brand h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; letter-spacing: -0.01em; }
+.header-brand h1 span { color: var(--gold); }
+.header-badge { background: var(--gold); color: var(--navy-deep); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 20px; }
+.header-sub { font-size: 0.85rem; color: var(--slate-light); margin-top: 4px; }
+.header-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.85); white-space: nowrap; }
+.stat-pill strong { color: var(--gold); }
+.stat-pill.new-pill { background: rgba(244, 162, 97, 0.15); border-color: rgba(244, 162, 97, 0.3); }
+.stat-pill.status-pill { background: rgba(76, 175, 80, 0.15); border-color: rgba(76, 175, 80, 0.3); }
+.stat-pill.status-pill strong { color: #81c784; }
+
+.toolbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 32px; position: sticky; top: 80px; z-index: 90; box-shadow: var(--shadow-sm); }
+.toolbar-inner { display: flex; align-items: center; gap: 16px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; }
+.search-box { flex: 1; min-width: 200px; }
+.search-box input { width: 100%; padding: 10px 16px; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 0.9rem; background: var(--cream); color: var(--navy); outline: none; transition: var(--transition); }
+.search-box input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); }
+.status-filter { display: flex; gap: 6px; flex-wrap: wrap; }
+.status-filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--white); font-family: inherit; font-size: 0.78rem; font-weight: 600; color: var(--slate); cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.status-filter-btn:hover { background: var(--cream); }
+.status-filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.status-filter-btn.active-complete { background: var(--status-complete); color: var(--white); border-color: var(--status-complete); }
+.status-filter-btn.active-progress { background: var(--status-progress); color: var(--white); border-color: var(--status-progress); }
+.status-filter-btn.active-early { background: var(--status-early); color: var(--white); border-color: var(--status-early); }
+
+.toolbar-btns { display: flex; gap: 8px; align-items: center; }
+
+.glossary-btn { padding: 8px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; background: var(--navy); font-family: inherit; font-size: 0.82rem; font-weight: 600; color: var(--white); cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.glossary-btn:hover { background: var(--navy-mid); }
+
+.view-toggle { display: flex; background: var(--navy); border-radius: 28px; overflow: hidden; border: none; padding: 4px; gap: 2px; }
+.view-btn { padding: 10px 22px; border: none; background: transparent; font-family: inherit; font-size: 0.88rem; font-weight: 600; color: var(--slate-light); cursor: pointer; transition: var(--transition); border-radius: 24px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.view-btn:hover { color: var(--white); }
+.view-btn.active { background: var(--gold); color: var(--navy-deep); }
+.view-btn .icon { font-size: 1rem; line-height: 1; }
+
+/* Glossary overlay */
+.glossary-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,26,46,0.6); z-index: 200; justify-content: center; align-items: flex-start; padding-top: 100px; }
+.glossary-overlay.open { display: flex; }
+.glossary-panel { background: var(--white); border-radius: var(--radius-lg); width: 90%; max-width: 700px; max-height: 70vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+.glossary-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); border-radius: var(--radius-lg) var(--radius-lg) 0 0; z-index: 1; }
+.glossary-header h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.2rem; }
+.glossary-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--slate); padding: 4px 8px; }
+.glossary-close:hover { color: var(--navy); }
+.glossary-body { padding: 16px 24px; }
+.glossary-entry { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.glossary-entry:last-child { border-bottom: none; }
+.glossary-term { font-weight: 700; color: var(--navy); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+.glossary-def { font-size: 0.88rem; color: var(--slate); margin-top: 2px; line-height: 1.5; }
+.glossary-search { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 0.85rem; margin-bottom: 8px; }
+
+.main-layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 160px); }
+.sidebar { width: 260px; min-width: 260px; background: var(--white); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 140px; height: calc(100vh - 140px); overflow-y: auto; }
+.sidebar-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); padding: 0 20px 12px; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; cursor: pointer; transition: var(--transition); border-left: 3px solid transparent; font-size: 0.88rem; }
+.cat-nav-item:hover { background: var(--cream); }
+.cat-nav-item.active { background: var(--gold-glow); border-left-color: var(--gold); font-weight: 600; }
+.cat-nav-icon { font-size: 1.1rem; flex-shrink: 0; }
+.cat-nav-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cat-nav-count { background: var(--cream); padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; color: var(--slate); flex-shrink: 0; }
+.cat-nav-item.active .cat-nav-count { background: var(--gold); color: var(--navy-deep); }
+
+.content { flex: 1; padding: 24px 32px; overflow-x: auto; }
+
+.revision-banner { background: var(--cream-warm); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.6; color: var(--navy); }
+.revision-banner strong { color: var(--navy); }
+.revision-banner .rev-date { font-weight: 700; color: var(--gold-dim); }
+.revision-banner .ai-note { margin-top: 8px; font-size: 0.8rem; color: var(--slate); font-style: italic; }
+.revision-banner .rev-content { max-height: 2.8em; overflow: hidden; transition: max-height 0.35s ease; }
+.revision-banner .rev-content.expanded { max-height: 600px; }
+.revision-banner .rev-toggle { display: inline-block; margin-top: 6px; font-size: 0.8rem; font-weight: 600; color: var(--gold-dim); cursor: pointer; border: none; background: none; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
+
+.intro-panel { background: linear-gradient(135deg, var(--navy-deep), var(--navy-mid)); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 28px; }
+.intro-panel h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 12px; }
+.intro-panel h2 span { color: var(--gold); }
+.intro-panel p { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; max-width: 800px; }
+.intro-panel p + p { margin-top: 12px; }
+.intro-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.intro-detail.expanded { max-height: 500px; }
+.intro-detail p { margin-top: 12px; }
+.intro-panel .rev-toggle { color: var(--navy-deep); background: var(--gold); border: none; padding: 10px 24px; border-radius: 24px; font-family: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; margin-top: 20px; letter-spacing: 0.02em; box-shadow: 0 2px 8px rgba(244,162,97,0.3); }
+.intro-panel .rev-toggle:hover { background: #e8892e; box-shadow: 0 4px 16px rgba(244,162,97,0.4); transform: translateY(-1px); }
+.intro-stats { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+.intro-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 16px 24px; text-align: center; min-width: 100px; }
+.intro-stat .num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.8rem; color: var(--gold); }
+.intro-stat .num.green { color: #81c784; }
+.intro-stat .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.status-legend { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+.status-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.status-dot.complete { background: var(--status-complete); }
+.status-dot.in-progress { background: var(--status-progress); }
+.status-dot.early-stage { background: var(--status-early); }
+.status-dot.not-started { background: var(--slate); }
+
+.cat-header { display: flex; align-items: center; gap: 12px; margin: 32px 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--navy); }
+.cat-header:first-of-type { margin-top: 0; }
+.cat-header-icon { font-size: 1.4rem; }
+.cat-header-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--navy); }
+.cat-header-count { font-size: 0.8rem; color: var(--slate); background: var(--cream-warm); padding: 3px 10px; border-radius: 12px; }
+
+.action-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; transition: var(--transition); cursor: pointer; }
+.action-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-md); }
+.action-card.new-item { border-left: 4px solid var(--gold); background: var(--new-bg); }
+.action-card.status-complete { border-left: 4px solid var(--status-complete); background: var(--status-complete-bg); }
+.action-card.status-in-progress { border-left: 4px solid var(--status-progress); background: var(--status-progress-bg); }
+.action-card.status-early-stage { border-left: 4px solid var(--status-early); background: var(--status-early-bg); }
+
+.card-head { display: flex; align-items: center; gap: 12px; padding: 14px 20px; }
+.card-num { background: var(--navy); color: var(--white); font-size: 0.72rem; font-weight: 700; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
+.action-card.new-item .card-num { background: var(--gold); color: var(--navy-deep); }
+.action-card.status-complete .card-num { background: var(--status-complete); }
+.action-card.status-in-progress .card-num { background: var(--status-progress); }
+.action-card.status-early-stage .card-num { background: var(--status-early); }
+.card-title { font-weight: 600; font-size: 0.95rem; color: var(--navy); flex: 1; }
+.new-badge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; }
+.new-badge.badge-new { background: var(--gold); color: var(--navy-deep); }
+.new-badge.badge-complete { background: var(--status-complete); color: var(--white); }
+.new-badge.badge-progress { background: var(--status-progress); color: var(--white); }
+.new-badge.badge-early { background: var(--status-early); color: var(--white); }
+.card-arrow { color: var(--slate-light); transition: var(--transition); flex-shrink: 0; }
+.action-card.open .card-arrow { transform: rotate(180deg); }
+.card-body { display: none; padding: 0 20px 20px; border-top: 1px solid var(--border); }
+.action-card.open .card-body { display: block; padding-top: 16px; }
+.card-field { margin-bottom: 12px; }
+.card-field-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate); margin-bottom: 3px; }
+.card-field-value { font-size: 0.88rem; color: var(--navy); line-height: 1.5; }
+
+.status-detail-box { background: rgba(0,0,0,0.04); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 12px; border-left: 3px solid var(--slate); }
+.status-detail-box.sd-complete { border-left-color: var(--status-complete); background: rgba(46,125,50,0.06); }
+.status-detail-box.sd-in-progress { border-left-color: var(--status-progress); background: rgba(21,101,192,0.06); }
+.status-detail-box.sd-early-stage { border-left-color: var(--status-early); background: rgba(123,31,162,0.06); }
+.status-detail-box .sd-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.status-detail-box.sd-complete .sd-label { color: var(--status-complete); }
+.status-detail-box.sd-in-progress .sd-label { color: var(--status-progress); }
+.status-detail-box.sd-early-stage .sd-label { color: var(--status-early); }
+.status-detail-box .sd-text { font-size: 0.85rem; color: var(--navy); line-height: 1.5; }
+
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.pros-col, .cons-col { border-radius: var(--radius); padding: 14px 16px; }
+.pros-col { background: var(--pro-bg); border: 1px solid var(--pro-border); }
+.cons-col { background: var(--con-bg); border: 1px solid var(--con-border); }
+.pc-header { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.pros-col .pc-header { color: var(--pro-green); }
+.cons-col .pc-header { color: var(--con-red); }
+.pc-header .pc-icon { font-size: 0.85rem; }
+.pc-list { list-style: none; padding: 0; margin: 0; }
+.pc-list li { font-size: 0.84rem; line-height: 1.45; color: var(--navy); padding: 4px 0 4px 18px; position: relative; }
+.pc-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; }
+.pros-col .pc-list li::before { background: var(--pro-green); opacity: 0.4; }
+.cons-col .pc-list li::before { background: var(--con-red); opacity: 0.3; }
+@media (max-width: 700px) { .pros-cons { grid-template-columns: 1fr; } }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.card-tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 12px; background: var(--cream); color: var(--slate); border: 1px solid var(--border); }
+.card-tag.source { background: #e8f4f8; color: #1a5276; border-color: #b8dce8; }
+.card-tag.rkg { background: #fff3cd; color: #856404; border-color: #ffeeba; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.data-table th { background: var(--navy); color: var(--white); padding: 10px 14px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; position: sticky; top: 140px; z-index: 10; }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.data-table tr:hover td { background: var(--cream); }
+.data-table tr.new-row td { background: var(--new-bg); }
+.data-table tr.new-row:hover td { background: #fff0c8; }
+.data-table tr.status-complete-row td { background: var(--status-complete-bg); }
+.data-table tr.status-progress-row td { background: var(--status-progress-bg); }
+.data-table tr.status-early-row td { background: var(--status-early-bg); }
+.data-table tr.cat-row td { background: #d4e1f0; font-weight: 700; font-size: 0.9rem; color: var(--navy); padding: 12px 14px; }
+.data-table .pc-inline { font-size: 0.8rem; margin-top: 6px; }
+.data-table .pc-inline span { font-weight: 600; }
+.data-table .pc-inline .pro-label { color: var(--pro-green); }
+.data-table .pc-inline .con-label { color: var(--con-red); }
+
+.no-results { text-align: center; padding: 60px 20px; color: var(--slate); }
+.no-results .icon { font-size: 2.5rem; margin-bottom: 12px; }
+.version-note { text-align: center; padding: 24px; font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--border); margin-top: 40px; }
+.version-note a { color: var(--gold-dim); }
+
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .content { padding: 16px; }
+  .header-top { padding: 16px; }
+  .toolbar { padding: 10px 16px; top: 70px; }
+  .data-table th { top: 110px; }
+  .status-filter { display: none; }
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--slate-light); border-radius: 3px; }
+@media print {
+  .site-header, .toolbar, .sidebar { display: none !important; }
+  .content { padding: 0 !important; }
+  .action-card { break-inside: avoid; }
+  .card-body { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div>
+      <div class="header-brand">
+        <h1>Portsmouth <span>Housing Action Plan</span></h1>
+        <span class="header-badge">Action Explorer</span>
+      </div>
+      <div class="header-sub">Comprehensive action items for stakeholder review and prioritization</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-pill"><strong>130+</strong> Action Items</div>
+      <div class="stat-pill"><strong>13</strong> Categories</div>
+      <div class="stat-pill"><strong>14</strong> Sources</div>
+      <div class="stat-pill new-pill"><strong>23</strong> New Items</div>
+      <div class="stat-pill status-pill"><strong>28</strong> Already Active</div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search action items, descriptions, sources…" />
+    </div>
+    <div class="status-filter" id="statusFilter">
+      <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
+      <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">✓ Complete</button>
+      <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">◐ In Progress</button>
+      <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">○ Early Stage</button>
+      <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">— Not Started</button>
+    </div>
+    <div class="toolbar-btns">
+      <button class="glossary-btn" onclick="toggleGlossary()">📖 Glossary</button>
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="cards" onclick="setView('cards')"><span class="icon">&#9638;</span> Cards</button>
+        <button class="view-btn" data-view="table" onclick="setView('table')"><span class="icon">&#9776;</span> Table</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="glossary-overlay" id="glossaryOverlay" onclick="if(event.target===this)toggleGlossary()">
+  <div class="glossary-panel">
+    <div class="glossary-header">
+      <h3>📖 Glossary of Terms</h3>
+      <button class="glossary-close" onclick="toggleGlossary()">×</button>
+    </div>
+    <div class="glossary-body">
+      <input type="text" class="glossary-search" id="glossarySearch" placeholder="Filter terms…" oninput="filterGlossary()" />
+      <div id="glossaryEntries"></div>
+    </div>
+  </div>
+</div>
+
+<div class="main-layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content" id="content"></main>
+</div>
+
+<script>
+let DATA = [];
+let GLOSSARY = {};
+
+async function loadData() {
+  const [actionsRes, glossaryRes] = await Promise.all([
+    fetch('hap-actions.json'),
+    fetch('hap-glossary.json')
+  ]);
+  DATA = await actionsRes.json();
+  GLOSSARY = await glossaryRes.json();
+}
+const CAT_ORDER = ["Zoning & Land Use", "Permitting & Process", "Incentives & Financial Tools", "Housing Trust Fund & Funding", "Public Land & Property", "Partnerships & Capacity", "Preservation & Anti-Displacement", "Special Populations", "Education & Outreach", "Infrastructure & Services", "Production Targets & Data", "Climate & Sustainability", "Governance & Accountability"];
+const CAT_COUNTS = {"Zoning & Land Use": 33, "Permitting & Process": 11, "Incentives & Financial Tools": 20, "Housing Trust Fund & Funding": 3, "Public Land & Property": 6, "Partnerships & Capacity": 9, "Preservation & Anti-Displacement": 11, "Special Populations": 6, "Education & Outreach": 10, "Infrastructure & Services": 5, "Production Targets & Data": 11, "Climate & Sustainability": 3, "Governance & Accountability": 3};
+const CAT_ICONS = {"Zoning & Land Use": "\ud83c\udfd7\ufe0f", "Permitting & Process": "\ud83d\udccb", "Incentives & Financial Tools": "\ud83d\udcb0", "Housing Trust Fund & Funding": "\ud83c\udfe6", "Public Land & Property": "\ud83c\udfdb\ufe0f", "Partnerships & Capacity": "\ud83e\udd1d", "Preservation & Anti-Displacement": "\ud83d\udee1\ufe0f", "Special Populations": "\ud83d\udc65", "Education & Outreach": "\ud83d\udce2", "Infrastructure & Services": "\ud83d\udd27", "Production Targets & Data": "\ud83d\udcca", "Climate & Sustainability": "\ud83c\udf31", "Governance & Accountability": "\u2696\ufe0f"};
+
+
+let activeCategory = 'all';
+let searchQuery = '';
+let currentView = 'cards';
+let statusFilter = 'all';
+
+const STATUS_LABELS = {'complete':'✓ Complete','in-progress':'◐ In Progress','early-stage':'○ Early Stage'};
+const STATUS_BADGE_CLASS = {'complete':'badge-complete','in-progress':'badge-progress','early-stage':'badge-early'};
+const STATUS_DETAIL_LABELS = {'complete':'Status: Complete / Substantially in Place','in-progress':'Status: Actively in Progress','early-stage':'Status: Early Stage / Partially Addressed'};
+
+async function init() {
+  await loadData();
+  renderSidebar();
+  renderContent();
+  renderGlossary();
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    searchQuery = e.target.value.toLowerCase();
+    renderContent();
+  });
+}
+
+function renderGlossary() {
+  const el = document.getElementById('glossaryEntries');
+  const sorted = Object.keys(GLOSSARY).sort();
+  el.innerHTML = sorted.map(k => `<div class="glossary-entry" data-term="${k.toLowerCase()}"><span class="glossary-term">${k}</span><div class="glossary-def">${GLOSSARY[k]}</div></div>`).join('');
+}
+function filterGlossary() {
+  const q = document.getElementById('glossarySearch').value.toLowerCase();
+  document.querySelectorAll('.glossary-entry').forEach(el => {
+    el.style.display = el.dataset.term.includes(q) || el.querySelector('.glossary-def').textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+function toggleGlossary() {
+  document.getElementById('glossaryOverlay').classList.toggle('open');
+}
+
+function renderSidebar() {
+  const sb = document.getElementById('sidebar');
+  let h = '<div class="sidebar-title">Categories</div>';
+  h += `<div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${DATA.length}</span></div>`;
+  CAT_ORDER.forEach(cat => {
+    const icon = CAT_ICONS[cat]||'📌';
+    h += `<div class="cat-nav-item ${activeCategory===cat?'active':''}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${icon}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${CAT_COUNTS[cat]||0}</span></div>`;
+  });
+  sb.innerHTML = h;
+}
+
+function getFiltered() {
+  return DATA.filter(item => {
+    if (activeCategory!=='all' && item.category!==activeCategory) return false;
+    if (statusFilter!=='all') {
+      const s = item.status||'';
+      if (statusFilter==='not-started' && s!=='') return false;
+      if (statusFilter!=='not-started' && s!==statusFilter) return false;
+    }
+    if (searchQuery) {
+      const hay = (item.action+' '+item.description+' '+item.sources+' '+(item.notes||'')+' '+(item.target||'')+' '+(item.metric||'')+' '+item.category+' '+(item.status_detail||'')+' '+(item.pros||[]).join(' ')+' '+(item.cons||[]).join(' ')).toLowerCase();
+      return hay.includes(searchQuery);
+    }
+    return true;
+  });
+}
+
+function setCategory(c) { activeCategory=c; renderSidebar(); renderContent(); }
+function setView(v) { currentView=v; document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===v)); renderContent(); }
+function setStatusFilter(f) {
+  statusFilter=f;
+  document.querySelectorAll('.status-filter-btn').forEach(b => {
+    b.classList.remove('active','active-complete','active-progress','active-early');
+    if(b.dataset.filter===f) {
+      if(f==='complete') b.classList.add('active-complete');
+      else if(f==='in-progress') b.classList.add('active-progress');
+      else if(f==='early-stage') b.classList.add('active-early');
+      else b.classList.add('active');
+    }
+  });
+  renderContent();
+}
+function toggleCard(el) { el.classList.toggle('open'); }
+
+function pcHtml(item) {
+  const p=item.pros||[], c=item.cons||[];
+  if(!p.length&&!c.length) return '';
+  let h='<div class="pros-cons"><div class="pros-col"><div class="pc-header"><span class="pc-icon">▲</span> Considerations For</div><ul class="pc-list">';
+  p.forEach(x=>{ h+=`<li>${x}</li>`; });
+  h+='</ul></div><div class="cons-col"><div class="pc-header"><span class="pc-icon">▼</span> Considerations Against</div><ul class="pc-list">';
+  c.forEach(x=>{ h+=`<li>${x}</li>`; });
+  h+='</ul></div></div>';
+  return h;
+}
+
+function renderContent() {
+  const content = document.getElementById('content');
+  const filtered = getFiltered();
+  let h = '';
+
+  // Revision banner always shown
+  h += `<div class="revision-banner">
+    <span class="rev-date">Version 2 — February 20, 2026</span><br>
+    <div class="rev-content" id="revContent">
+    <strong>Revision history:</strong> v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022. v1.1 (Feb 10) status audit adding 3 items to 122. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.3 (Feb 17) pros/cons analysis added for all items. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added.
+    <div class="ai-note">This module was developed with AI assistance. Claude by Anthropic served as the primary AI model for data structuring, analysis, pros/cons generation, and HTML development. Reviewer feedback was gathered from multiple sources including AI-assisted reviews. All content reflects Progress Portsmouth's research, policy positions, and editorial judgment — AI tools were used to accelerate production, not to substitute for local knowledge or advocacy strategy.</div>
+    </div>
+    <button class="rev-toggle" id="revToggle" onclick="const c=document.getElementById('revContent');const t=document.getElementById('revToggle');if(c.classList.contains('expanded')){c.classList.remove('expanded');t.textContent='Read more ▾';}else{c.classList.add('expanded');t.textContent='Read less ▴';}">Read more ▾</button>
+  </div>`;
+
+  if (activeCategory==='all' && !searchQuery && statusFilter==='all') {
+    h += `<div class="intro-panel">
+      <h2>Building Portsmouth's <span>Housing Future</span></h2>
+      <p>130+ potential action items from 14 sources for community discussion. Each includes <strong>considerations for and against</strong>. Use the 📖 <strong>Glossary</strong> button for definitions of planning terms.</p>
+      <div class="intro-stats">
+        <div class="intro-stat"><div class="num">130+</div><div class="label">Action Items</div></div>
+        <div class="intro-stat"><div class="num">13</div><div class="label">Categories</div></div>
+        <div class="intro-stat"><div class="num green">28</div><div class="label">Already Active</div></div>
+        <div class="intro-stat"><div class="num">103</div><div class="label">Not Yet Started</div></div>
+      </div>
+      <div class="status-legend">
+        <div class="status-legend-item"><span class="status-dot complete"></span> Complete (7)</div>
+        <div class="status-legend-item"><span class="status-dot in-progress"></span> In Progress (15)</div>
+        <div class="status-legend-item"><span class="status-dot early-stage"></span> Early Stage (6)</div>
+        <div class="status-legend-item"><span class="status-dot not-started"></span> Not Started (103)</div>
+      
+      <div style="margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+        <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45)">Zoning snapshot</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:5px 14px;font-size:0.8rem;color:rgba(255,255,255,0.75)"><strong style="color:#e76f51">85.8%</strong> of residential land is single-family only</div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:5px 14px;font-size:0.8rem;color:rgba(255,255,255,0.75)"><strong style="color:#f4a261">5.7×</strong> more tax revenue/acre in multifamily zones</div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:5px 14px;font-size:0.8rem;color:rgba(255,255,255,0.75)"><strong style="color:#4ecdc4">69.9%</strong> of SF parcels noncompliant with own zoning</div>
+        </div>
+        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35)">GIS parcel analysis, NH State data (Byron Matto, Jan 2026)</div>
+      </div>
+      <div class="intro-detail" id="introDetail">
+        <p><strong>Sources:</strong> Comparable city plans (Keene, South Portland, Burien), Housing Blue Ribbon Committee work plan, Planning Board member recommendations, Places to Live Dialogue, <strong>2022 RKG Housing Market Study</strong>, reviewer feedback, and advocate input. New items flagged in gold.</p>
+        <p><strong>Why a standalone HAP?</strong> Housing advocates are pushing for a plan separate from but referenced by the 2025 Master Plan — ensuring housing-specific actions, timelines, and accountability measures are not diluted within a broader comprehensive plan.</p>
+        <p><strong>Key context:</strong> Portsmouth's 1.86% vacancy rate is well below the 4–6% functional market threshold. RKG projects demand for 3,124 additional units, 52% from households at ≤80% AMI. Median 2BR rents have reached $2,900–$3,100/month. GIS parcel analysis (geographic information system — computerized mapping of property and land use data) shows 85.8% of residential land (2,276 acres) is zoned exclusively for single-family homes, with 69.9% of those parcels already out of compliance with current lot size requirements.</p>
+      </div>
+      <button class="rev-toggle" id="introToggle" onclick="const c=document.getElementById('introDetail');const t=document.getElementById('introToggle');if(c.classList.contains('expanded')){c.classList.remove('expanded');t.textContent='About this module ▾';}else{c.classList.add('expanded');t.textContent='Close ▴';}">About this module ▾</button>
+    </div>`;
+  }
+
+  if (!filtered.length) {
+    h += `<div class="no-results"><div class="icon">🔍</div><div>No action items match your filters.</div></div>`;
+    content.innerHTML = h; return;
+  }
+
+  const groups = {};
+  filtered.forEach(item => { if(!groups[item.category]) groups[item.category]=[]; groups[item.category].push(item); });
+  const catList = CAT_ORDER.filter(c => groups[c]);
+
+  let n=0;
+  h += `<div style="display:${currentView==='cards'?'block':'none'}">`;
+  catList.forEach(cat => {
+    const icon = CAT_ICONS[cat]||'📌';
+    const ci = groups[cat];
+    h += `<div class="cat-header"><span class="cat-header-icon">${icon}</span><span class="cat-header-name">${cat}</span><span class="cat-header-count">${ci.length} items</span></div>`;
+    ci.forEach(item => {
+      n++;
+      const s = item.status||'';
+      const hs = s!=='';
+      let cc = 'action-card';
+      if(hs) cc += ' status-'+s;
+      else if(item.is_new) cc += ' new-item';
+      let badge = '';
+      if(hs) badge = `<span class="new-badge ${STATUS_BADGE_CLASS[s]}">${STATUS_LABELS[s]}</span>`;
+      else if(item.is_new) {
+        const bl = (item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress portsmouth')||item.sources.toLowerCase().includes('reviewer'))) ? 'New' : 'RKG 2022';
+        badge = `<span class="new-badge badge-new">${bl}</span>`;
+      }
+      h += `<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span><span class="card-title">${item.action}</span>${badge}<span class="card-arrow">&#9660;</span></div><div class="card-body">`;
+      if(hs && item.status_detail) h += `<div class="status-detail-box sd-${s}"><div class="sd-label">${STATUS_DETAIL_LABELS[s]}</div><div class="sd-text">${item.status_detail}</div></div>`;
+      h += pcHtml(item);
+      if(item.description) h += `<div class="card-field"><div class="card-field-label">Description</div><div class="card-field-value">${item.description}</div></div>`;
+      if(item.target) h += `<div class="card-field"><div class="card-field-label">Target</div><div class="card-field-value">${item.target}</div></div>`;
+      if(item.metric) h += `<div class="card-field"><div class="card-field-label">Monitoring Metric</div><div class="card-field-value">${item.metric}</div></div>`;
+      if(item.notes) h += `<div class="card-field"><div class="card-field-label">Notes</div><div class="card-field-value">${item.notes}</div></div>`;
+      if(item.sources) {
+        h += `<div class="card-tags">`;
+        item.sources.split(';').forEach(src => {
+          src = src.trim();
+          if(src) {
+            const hi = src.toLowerCase().includes('rkg')||src.toLowerCase().includes('advocate')||src.toLowerCase().includes('progress')||src.toLowerCase().includes('chellman')||src.toLowerCase().includes('reviewer');
+            h += `<span class="card-tag ${hi?'rkg':'source'}">${src}</span>`;
+          }
+        });
+        h += `</div>`;
+      }
+      h += `</div></div>`;
+    });
+  });
+  h += `</div>`;
+
+  // Table view
+  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
+  let tn=0;
+  catList.forEach(cat => {
+    const icon = CAT_ICONS[cat]||'📌';
+    const ci = groups[cat];
+    h += `<tr class="cat-row"><td colspan="6">${icon} ${cat} (${ci.length})</td></tr>`;
+    ci.forEach(item => {
+      tn++;
+      const s=item.status||'';
+      const hs=s!=='';
+      let rc='';
+      if(hs) rc='status-'+s+'-row';
+      else if(item.is_new) rc='new-row';
+      let sc='—';
+      if(hs) sc=`<span class="new-badge ${STATUS_BADGE_CLASS[s]}" style="display:inline-block">${STATUS_LABELS[s]}</span>`;
+      let ne='';
+      if(!hs&&item.is_new) {
+        const bl=(item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress')||item.sources.toLowerCase().includes('reviewer')))?'New':'RKG';
+        ne=` <span class="new-badge badge-new" style="display:inline-block;vertical-align:middle;margin-left:4px">${bl}</span>`;
+      }
+      const p=item.pros||[], c=item.cons||[];
+      let pc='';
+      if(p.length||c.length) {
+        pc='<div class="pc-inline">';
+        if(p.length) pc+=`<span class="pro-label">▲ For:</span> ${p[0]}<br>`;
+        if(c.length) pc+=`<span class="con-label">▼ Against:</span> ${c[0]}`;
+        pc+='</div>';
+      }
+      h += `<tr class="${rc}"><td>${tn}</td><td><strong>${item.action}</strong>${ne}</td><td>${item.description.substring(0,200)}${item.description.length>200?'…':''}</td><td>${sc}</td><td>${pc}</td><td style="font-size:0.78rem">${item.sources}</td></tr>`;
+    });
+  });
+  h += `</tbody></table></div>`;
+
+  h += `<div class="version-note">
+    📌 Version 2 — February 20, 2026 — Includes reviewer feedback integration, Byron Matto GIS zoning analysis, governance items, legal corrections, glossary<br>
+    Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)
+  </div>`;
+
+  content.innerHTML = h;
+}
+
+init();
+</script>
+</body>
+</html>
