@@ -274,6 +274,19 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 .eval-status-consensus { background: #d4edda; color: #155724; }
 .disposition-deferred { opacity: 0.5; }
 .disposition-removed { opacity: 0.35; text-decoration: line-through; }
+
+.workload-summary{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px}
+.workload-stats{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.workload-stat{display:flex;align-items:baseline;gap:5px}
+.ws-num{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;color:var(--navy)}
+.ws-num.ws-active{color:var(--coral)}
+.ws-label{font-size:0.72rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.05em}
+.workload-divider{color:#ccc;margin:0 2px}
+.workload-status{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8rem;color:var(--slate);margin-bottom:10px;border-top:1px solid var(--border);padding-top:10px}
+.ws-status-item{display:flex;align-items:center;gap:5px}
+.workload-about{border-top:1px solid var(--border);padding-top:10px}
+.about-toggle{background:none;border:none;font-size:0.78rem;color:var(--slate);cursor:pointer;padding:0;font-family:inherit}
+.about-toggle:hover{color:var(--navy)}
 </style>
 </head>
 <body>
@@ -483,39 +496,33 @@ function renderContent() {
   </div>`;
 
   if (activeCategory==='all' && !searchQuery && statusFilter==='all') {
-    h += `<div class="intro-panel">
-      <h2>Building Portsmouth's <span>Housing Future</span></h2>
-      <p>130+ potential action items from 14 sources for community discussion. Each includes <strong>considerations for and against</strong>. Use the 📖 <strong>Glossary</strong> button for definitions of planning terms.</p>
-      <div class="intro-stats">
-        <div class="intro-stat"><div class="num">130+</div><div class="label">Action Items</div></div>
-        <div class="intro-stat"><div class="num">13</div><div class="label">Categories</div></div>
-        <div class="intro-stat"><div class="num green">28</div><div class="label">Already Active</div></div>
-        <div class="intro-stat"><div class="num">103</div><div class="label">Not Yet Started</div></div>
-      </div>
-      <div class="status-legend">
-        <div class="status-legend-item"><span class="status-dot complete"></span> Complete (7)</div>
-        <div class="status-legend-item"><span class="status-dot in-progress"></span> In Progress (15)</div>
-        <div class="status-legend-item"><span class="status-dot early-stage"></span> Early Stage (6)</div>
-        <div class="status-legend-item"><span class="status-dot not-started"></span> Not Started (103)</div>
-      
-      <div style="margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
-        <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45)">Zoning snapshot</div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:5px 14px;font-size:0.8rem;color:rgba(255,255,255,0.75)"><strong style="color:#e76f51">85.8%</strong> of residential land is single-family only</div>
-          <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:5px 14px;font-size:0.8rem;color:rgba(255,255,255,0.75)"><strong style="color:#f4a261">5.7×</strong> more tax revenue/acre in multifamily zones</div>
-          <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:5px 14px;font-size:0.8rem;color:rgba(255,255,255,0.75)"><strong style="color:#4ecdc4">69.9%</strong> of SF parcels noncompliant with own zoning</div>
-        </div>
-        <div style="font-size:0.7rem;color:rgba(255,255,255,0.35)">GIS parcel analysis, NH State data (Byron Matto, Jan 2026)</div>
-      </div>
-      <div class="intro-detail" id="introDetail">
-        <p><strong>Sources:</strong> Comparable city plans (Keene, South Portland, Burien), Housing Blue Ribbon Committee work plan, Planning Board member recommendations, Places to Live Dialogue, <strong>2022 RKG Housing Market Study</strong>, reviewer feedback, and advocate input. New items flagged in gold.</p>
-        <p><strong>Why a standalone HAP?</strong> Housing advocates are pushing for a plan separate from but referenced by the 2025 Master Plan — ensuring housing-specific actions, timelines, and accountability measures are not diluted within a broader comprehensive plan.</p>
-        <p><strong>Key context:</strong> Portsmouth's 1.86% vacancy rate is well below the 4–6% functional market threshold. RKG projects demand for 3,124 additional units, 52% from households at ≤80% AMI. Median 2BR rents have reached $2,900–$3,100/month. GIS parcel analysis (geographic information system — computerized mapping of property and land use data) shows 85.8% of residential land (2,276 acres) is zoned exclusively for single-family homes, with 69.9% of those parcels already out of compliance with current lot size requirements.</p>
-      </div>
-      <button class="rev-toggle" id="introToggle" onclick="const c=document.getElementById('introDetail');const t=document.getElementById('introToggle');if(c.classList.contains('expanded')){c.classList.remove('expanded');t.textContent='About this module ▾';}else{c.classList.add('expanded');t.textContent='Close ▴';}">About this module ▾</button>
-    </div>`;
+    var alreadyActive = DATA.filter(function(d){return d.status&&d.status!=='not-started'&&d.status!=='';}).length;
+    var notYet = DATA.length - alreadyActive;
+    var sc = {};
+    DATA.forEach(function(item){ sc[item.status] = (sc[item.status]||0)+1; });
+    h += '<div class="workload-summary">';
+    h += '<div class="workload-stats">';
+    h += '<div class="workload-stat"><span class="ws-num">' + DATA.length + '</span><span class="ws-label">Action Items</span></div>';
+    h += '<div class="workload-divider">&#183;</div>';
+    h += '<div class="workload-stat"><span class="ws-num">13</span><span class="ws-label">Categories</span></div>';
+    h += '<div class="workload-divider">&#183;</div>';
+    h += '<div class="workload-stat"><span class="ws-num ws-active">' + alreadyActive + '</span><span class="ws-label">Already Active</span></div>';
+    h += '<div class="workload-divider">&#183;</div>';
+    h += '<div class="workload-stat"><span class="ws-num">' + notYet + '</span><span class="ws-label">Not Yet Started</span></div>';
+    h += '</div>';
+    h += '<div class="workload-status">';
+    h += '<span class="ws-status-item"><span class="status-dot complete"></span> Complete (' + (sc['complete']||0) + ')</span>';
+    h += '<span class="ws-status-item"><span class="status-dot in-progress"></span> In Progress (' + (sc['in-progress']||0) + ')</span>';
+    h += '<span class="ws-status-item"><span class="status-dot early-stage"></span> Early Stage (' + (sc['early-stage']||0) + ')</span>';
+    h += '<span class="ws-status-item"><span class="status-dot not-started"></span> Not Started (' + notYet + ')</span>';
+    h += '</div>';
+    h += '<div class="workload-about"><button class="about-toggle" onclick="var d=document.getElementById(\'aboutDetail\');if(d.style.display===\'none\'){d.style.display=\'block\';this.textContent=\'About this module \u25b4\';}else{d.style.display=\'none\';this.textContent=\'About this module \u25be\';}">About this module &#9662;</button>';
+    h += '<div id="aboutDetail" style="display:none;margin-top:12px;font-size:0.82rem;color:var(--slate);line-height:1.6;">';
+    h += '<p><strong>Sources:</strong> Comparable city plans (Keene, South Portland, Burien), Housing Blue Ribbon Committee work plan, Planning Board recommendations, Places to Live Dialogue, 2022 RKG Housing Market Study, reviewer feedback, and advocate input.</p>';
+    h += '<p><strong>Key context:</strong> Portsmouth vacancy rate 1.86%, below the 4-6% functional threshold. RKG projects demand for 3,124 additional units, 52% at 80% AMI or below. GIS analysis shows 85.8% of residential land zoned exclusively single-family, 69.9% of parcels out of compliance.</p>';
+    h += '</div></div>';
+    h += '</div>';
   }
-
   if (!filtered.length) {
     h += `<div class="no-results"><div class="icon">🔍</div><div>No action items match your filters.</div></div>`;
     content.innerHTML = h; return;
