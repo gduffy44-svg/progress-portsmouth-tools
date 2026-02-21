@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAP Admin — Progress Portsmouth</title>
+<style>
+  :root {
+    --navy: #1e3a5f;
+    --gold: #c9972b;
+    --coral: #d45f3c;
+    --light: #f5f5f0;
+    --border: #ddd;
+    --text: #222;
+    --muted: #666;
+    --green: #2e7d32;
+    --red: #c62828;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, serif; background: var(--light); color: var(--text); font-size: 14px; }
+  #auth-screen {
+    position: fixed; inset: 0; background: var(--navy);
+    display: flex; align-items: center; justify-content: center; z-index: 1000;
+  }
+  .auth-box { background: white; padding: 2.5rem; border-radius: 8px; text-align: center; width: 340px; }
+  .auth-box h1 { font-size: 1.3rem; color: var(--navy); margin-bottom: 0.25rem; }
+  .auth-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .auth-box input { width: 100%; padding: 0.6rem 0.8rem; border: 2px solid var(--border); border-radius: 4px; font-size: 1rem; margin-bottom: 0.75rem; }
+  .auth-box input:focus { outline: none; border-color: var(--navy); }
+  .auth-box button { width: 100%; padding: 0.65rem; background: var(--navy); color: white; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; }
+  .auth-error { color: var(--red); font-size: 0.85rem; margin-top: 0.5rem; display: none; }
+  #app { display: none; }
+  header { background: var(--navy); color: white; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 1.1rem; font-weight: normal; }
+  header span { color: var(--gold); font-weight: bold; }
+  .header-right { display: flex; gap: 0.75rem; align-items: center; }
+  .btn { padding: 0.4rem 1rem; border-radius: 4px; border: none; cursor: pointer; font-size: 0.85rem; font-family: Georgia, serif; }
+  .btn-gold { background: var(--gold); color: white; font-weight: bold; }
+  .btn-outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); }
+  .save-status { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+  #controls { background: white; border-bottom: 1px solid var(--border); padding: 0.75rem 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  #controls label { font-size: 0.8rem; color: var(--muted); margin-right: 0.25rem; }
+  #controls select, #controls input { padding: 0.35rem 0.6rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.85rem; font-family: Georgia, serif; }
+  .count-badge { margin-left: auto; font-size: 0.8rem; color: var(--muted); }
+  #item-list { padding: 1rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .item-card { background: white; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.75rem; overflow: hidden; }
+  .item-card.dirty { border-left: 3px solid var(--gold); }
+  .item-header { padding: 0.7rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; user-select: none; }
+  .item-header:hover { background: #fafafa; }
+  .item-num { color: var(--muted); font-size: 0.8rem; width: 24px; flex-shrink: 0; }
+  .item-action { flex: 1; font-size: 0.9rem; }
+  .item-cat { font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
+  .item-badges { display: flex; gap: 0.4rem; flex-shrink: 0; }
+  .badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 10px; white-space: nowrap; }
+  .badge-disposition-in-scope { background: #e8f5e9; color: var(--green); }
+  .badge-disposition-deferred { background: #fff8e1; color: #e65100; }
+  .badge-disposition-removed { background: #ffebee; color: var(--red); }
+  .badge-disposition-unreviewed { background: #f5f5f5; color: var(--muted); }
+  .badge-priority-high { background: #ffebee; color: var(--red); }
+  .badge-priority-medium { background: #fff8e1; color: #e65100; }
+  .badge-priority-low { background: #e8f5e9; color: var(--green); }
+  .chevron { color: var(--muted); font-size: 0.7rem; transition: transform 0.15s; flex-shrink: 0; }
+  .chevron.open { transform: rotate(90deg); }
+  .dirty-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .item-body { border-top: 1px solid var(--border); padding: 1rem 1rem 1.25rem; display: none; }
+  .item-body.open { display: block; }
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem 1rem; margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
+  .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 0.4rem 0.6rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.85rem; font-family: Georgia, serif; background: white; }
+  .form-group select:focus, .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--navy); }
+  .form-group textarea { resize: vertical; min-height: 60px; }
+  .form-group.span-2 { grid-column: span 2; }
+  .form-group.span-3 { grid-column: span 3; }
+  .last-updated { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; text-align: right; }
+  #export-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 200; }
+  #export-modal.open { display: flex; }
+  .modal-box { background: white; border-radius: 8px; padding: 2rem; width: 420px; max-width: 95vw; }
+  .modal-box h2 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .modal-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem; line-height: 1.5; }
+  .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+  .btn-navy { background: var(--navy); color: white; padding: 0.5rem 1.25rem; }
+  #dirty-count { font-weight: bold; color: var(--gold); }
+</style>
+</head>
+<body>
+<div id="auth-screen">
+  <div class="auth-box">
+    <h1>HAP Admin</h1>
+    <p>Progress Portsmouth — Housing Action Plan</p>
+    <input type="password" id="passphrase" placeholder="Enter passphrase" />
+    <button onclick="checkAuth()">Enter</button>
+    <div class="auth-error" id="auth-error">Incorrect passphrase</div>
+  </div>
+</div>
+<div id="app">
+  <header>
+    <h1><span>HAP</span> Admin — Housing Action Plan</h1>
+    <div class="header-right">
+      <span class="save-status" id="save-status"></span>
+      <button class="btn btn-outline" onclick="openExport()">Export JSON</button>
+    </div>
+  </header>
+  <div id="controls">
+    <div><label>Category</label><select id="cat-filter" onchange="renderList()"><option value="all">All Categories</option></select></div>
+    <div><label>Disposition</label><select id="disp-filter" onchange="renderList()"><option value="all">All</option><option value="unreviewed">Unreviewed</option><option value="in-scope">In-scope</option><option value="deferred">Deferred</option><option value="removed">Removed</option></select></div>
+    <div><label>Priority</label><select id="pri-filter" onchange="renderList()"><option value="all">All</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
+    <div><label>Search</label><input type="text" id="search" placeholder="keyword..." oninput="renderList()" style="width:160px"></div>
+    <div><label>Show</label><select id="dirty-filter" onchange="renderList()"><option value="all">All items</option><option value="dirty">Edited only</option></select></div>
+    <div class="count-badge" id="count-badge"></div>
+  </div>
+  <div id="item-list"></div>
+</div>
+<div id="export-modal">
+  <div class="modal-box">
+    <h2>Export hap-evaluations.json</h2>
+    <p>This will download the updated JSON file. Replace <code>housing/hap-evaluations.json</code> in your project, then commit and push to deploy.</p>
+    <p><span id="dirty-count">0</span> items have been edited in this session.</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" style="color:#333;border-color:#ccc" onclick="closeExport()">Cancel</button>
+      <button class="btn btn-navy btn-gold" onclick="doExport()">Download JSON</button>
+    </div>
+  </div>
+</div>
+<script>
+const PASSPHRASE = 'action';
+const ACTIONS_URL = 'hap-actions.json';
+const EVALS_URL = 'hap-evaluations.json';
+let ACTIONS = [];
+let EVALS = {};
+let DIRTY = new Set();
+let OPEN_CARDS = new Set();
+document.getElementById('passphrase').addEventListener('keydown', e => { if(e.key==='Enter') checkAuth(); });
+function checkAuth() {
+  if(document.getElementById('passphrase').value === PASSPHRASE) {
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadData();
+  } else {
+    document.getElementById('auth-error').style.display = 'block';
+  }
+}
+async function loadData() {
+  try {
+    const [actRes, evalRes] = await Promise.all([fetch(ACTIONS_URL), fetch(EVALS_URL)]);
+    ACTIONS = await actRes.json();
+    const evalArr = await evalRes.json();
+    evalArr.forEach(e => { EVALS[e.id] = e; });
+    populateFilters();
+    renderList();
+    setStatus('Loaded ' + ACTIONS.length + ' items');
+  } catch(err) { setStatus('Error: ' + err.message); }
+}
+function populateFilters() {
+  const cats = [...new Set(ACTIONS.map(a => a.category))].sort();
+  const sel = document.getElementById('cat-filter');
+  cats.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
+}
+function getFiltered() {
+  const cat = document.getElementById('cat-filter').value;
+  const disp = document.getElementById('disp-filter').value;
+  const pri = document.getElementById('pri-filter').value;
+  const q = document.getElementById('search').value.toLowerCase();
+  const dirty = document.getElementById('dirty-filter').value;
+  return ACTIONS.filter(a => {
+    const ev = EVALS[slugify(a.action)] || {};
+    if(cat!=='all' && a.category!==cat) return false;
+    if(disp!=='all' && (ev.disposition||'unreviewed')!==disp) return false;
+    if(pri!=='all' && (ev.priority||'')!==pri) return false;
+    if(dirty==='dirty' && !DIRTY.has(slugify(a.action))) return false;
+    if(q && !(a.action+' '+a.category).toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+function renderList() {
+  const items = getFiltered();
+  document.getElementById('count-badge').textContent = items.length + ' items';
+  const container = document.getElementById('item-list');
+  container.innerHTML = '';
+  items.forEach((a, idx) => {
+    const id = slugify(a.action);
+    const ev = EVALS[id] || {};
+    const disp = ev.disposition || 'unreviewed';
+    const pri = ev.priority || '';
+    const isDirty = DIRTY.has(id);
+    const isOpen = OPEN_CARDS.has(id);
+    const card = document.createElement('div');
+    card.className = 'item-card' + (isDirty?' dirty':'');
+    card.id = 'card-' + id;
+    card.innerHTML = `
+      <div class="item-header" onclick="toggleCard('${id}')">
+        <span class="item-num">${idx+1}</span>
+        ${isDirty?'<span class="dirty-dot"></span>':`<span style="width:7px;flex-shrink:0"></span>`}
+        <span class="item-action">${a.action}</span>
+        <span class="item-cat">${a.category}</span>
+        <span class="item-badges">
+          <span class="badge badge-disposition-${disp}">${disp}</span>
+          ${pri?`<span class="badge badge-priority-${pri}">${pri}</span>`:''}
+        </span>
+        <span class="chevron ${isOpen?'open':''}">▶</span>
+      </div>
+      <div class="item-body ${isOpen?'open':''}" id="body-${id}">${buildForm(id,ev)}</div>`;
+    container.appendChild(card);
+  });
+}
+function buildForm(id, ev) {
+  return `<div class="form-grid">
+    <div class="form-group"><label>Disposition</label><select onchange="markDirty('${id}','disposition',this.value)">${opt(['unreviewed','in-scope','deferred','removed'],ev.disposition||'unreviewed')}</select></div>
+    <div class="form-group"><label>Priority</label><select onchange="markDirty('${id}','priority',this.value)">${opt(['','high','medium','low'],ev.priority||'')}</select></div>
+    <div class="form-group"><label>Timeline</label><select onchange="markDirty('${id}','timeline',this.value)">${opt(['','immediate','short (1-3yr)','medium (3-5yr)','long (5yr+)'],ev.timeline||'')}</select></div>
+    <div class="form-group"><label>Eval Status</label><select onchange="markDirty('${id}','evaluationStatus',this.value)">${opt(['','not-started','in-progress','consensus','deferred'],ev.evaluationStatus||'')}</select></div>
+    <div class="form-group"><label>Sensitivity</label><select onchange="markDirty('${id}','sensitivity',this.value)">${opt(['','low','moderate','high'],ev.sensitivity||'')}</select></div>
+    <div class="form-group"><label>Responsible Party</label><input type="text" value="${ev.responsibleParty||''}" onchange="markDirty('${id}','responsibleParty',this.value)"/></div>
+    <div class="form-group"><label>Yield Type</label><select onchange="markDirty('${id}','yieldType',this.value)">${opt(['','Multifamily','ADU','Mixed-use','Ownership','Policy/Process','Unclear'],ev.yieldType||'')}</select></div>
+    <div class="form-group"><label>Yield Estimate</label><input type="text" value="${ev.yieldEstimate||''}" placeholder="e.g. 50-150 units" onchange="markDirty('${id}','yieldEstimate',this.value)"/></div>
+    <div class="form-group"><label>Yield Confidence</label><select onchange="markDirty('${id}','yieldConfidence',this.value)">${opt(['','low','medium','high'],ev.yieldConfidence||'')}</select></div>
+    <div class="form-group"><label>Yield Timeframe</label><select onchange="markDirty('${id}','yieldTimeframe',this.value)">${opt(['','near (1-3yr)','mid (3-7yr)','long (7yr+)'],ev.yieldTimeframe||'')}</select></div>
+    <div class="form-group span-2"><label>Disposition Note</label><input type="text" value="${(ev.dispositionNote||'').replace(/"/g,'&quot;')}" onchange="markDirty('${id}','dispositionNote',this.value)"/></div>
+    <div class="form-group span-3"><label>Key Concern</label><textarea onchange="markDirty('${id}','keyConcern',this.value)">${ev.keyConcern||''}</textarea></div>
+    <div class="form-group span-3"><label>Yield Notes</label><textarea onchange="markDirty('${id}','yieldNotes',this.value)">${ev.yieldNotes||''}</textarea></div>
+  </div>
+  <div class="last-updated">Last updated: ${ev.lastUpdated||'—'}</div>`;
+}
+function opt(arr, current) {
+  return arr.map(v => `<option value="${v}" ${v===current?'selected':''}>${v||'— not set —'}</option>`).join('');
+}
+function toggleCard(id) {
+  if(OPEN_CARDS.has(id)) OPEN_CARDS.delete(id); else OPEN_CARDS.add(id);
+  const body = document.getElementById('body-'+id);
+  body.classList.toggle('open');
+  body.previousElementSibling.querySelector('.chevron').classList.toggle('open');
+}
+function markDirty(id, field, value) {
+  if(!EVALS[id]) EVALS[id] = {id:id};
+  EVALS[id][field] = value;
+  EVALS[id].lastUpdated = new Date().toISOString().slice(0,10);
+  DIRTY.add(id);
+  const card = document.getElementById('card-'+id);
+  if(card) card.classList.add('dirty');
+  setStatus(DIRTY.size + ' unsaved change' + (DIRTY.size!==1?'s':''));
+}
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+}
+function setStatus(msg) { document.getElementById('save-status').textContent = msg; }
+function openExport() { document.getElementById('dirty-count').textContent=DIRTY.size; document.getElementById('export-modal').classList.add('open'); }
+function closeExport() { document.getElementById('export-modal').classList.remove('open'); }
+function doExport() {
+  const out = Object.values(EVALS).sort((a,b)=>a.id<b.id?-1:1);
+  const blob = new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='hap-evaluations.json'; a.click();
+  closeExport();
+  setStatus('Exported — replace housing/hap-evaluations.json and commit');
+  DIRTY.clear();
+}
+</script>
+</body>
+</html>
