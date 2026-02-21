@@ -607,12 +607,12 @@ function renderContent() {
   h += `</div>`;
 
   // Table view
-  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px" onclick="sortTable('yield')" style="cursor:pointer" title="Sort by yield estimate">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
+  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px;cursor:pointer;text-align:center;color:var(--gold)" onclick="sortTable('yield')" title="Sort: yield items first">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
   let tn=0;
   catList.forEach(cat => {
     const icon = CAT_ICONS[cat]||'📌';
     const ci = groups[cat];
-    h += `<tr class="cat-row"><td colspan="6">${icon} ${cat} (${ci.length})</td></tr>`;
+    h += `<tr class="cat-row"><td colspan="7">${icon} ${cat} (${ci.length})</td></tr>`;
     ci.forEach(item => {
       tn++;
       const s=item.status||'';
@@ -635,7 +635,7 @@ function renderContent() {
         if(c.length) pc+=`<span class="con-label">▼ Against:</span> ${c[0]}`;
         pc+='</div>';
       }
-      h += `<tr class="${rc}"><td>${tn}</td><td><strong>${item.action}</strong>${ne}</td><td>${item.description.substring(0,200)}${item.description.length>200?'…':''}</td><td>${sc}</td><td>${pc}</td><td style="font-size:0.78rem">${item.sources}</td></tr>`;
+      h += `<tr class="${rc}"><td style="text-align:center;color:var(--gold)">${EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType ? '&#9670;' : ''}</td><td>${tn}</td><td><strong>${item.action}</strong>${ne}</td><td>${item.description.substring(0,200)}${item.description.length>200?'…':''}</td><td>${sc}</td><td>${pc}</td><td style="font-size:0.78rem">${item.sources}</td></tr>`;
     });
   });
   h += `</tbody></table></div>`;
