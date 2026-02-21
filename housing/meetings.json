@@ -1,0 +1,67 @@
+{
+  "lastUpdated": "2026-02-19",
+  "verifiedAgainst": "Portsmouth City Calendar",
+  "contextNote": "City Council voted unanimously to create a Housing Action Plan by July 2026 and hire a Housing Navigator. Watch for public input opportunities at upcoming meetings.",
+  "meetings": [
+    {
+      "id": "m001",
+      "date": "2026-02-19",
+      "time": "5:00 PM",
+      "title": "Sister Cities Committee Meeting",
+      "body": "other",
+      "location": "City Hall Conference Room A",
+      "status": "today",
+      "agendaPosted": true,
+      "housingRelevance": "low",
+      "note": "",
+      "links": [
+        { "label": "Agenda & Zoom Registration", "url": "https://www.portsmouthnh.gov/city/events/sister-cities-committee-meeting-12" }
+      ]
+    },
+    {
+      "id": "m002",
+      "date": "2026-02-19",
+      "time": "7:00 PM",
+      "title": "Planning Board",
+      "body": "planning",
+      "location": "Council Chambers",
+      "status": "today",
+      "agendaPosted": true,
+      "housingRelevance": "high",
+      "note": "On the agenda: Site review applications including 65 Onyx Lane and 1980 Woodbury Ave. Full meeting packet available.",
+      "links": [
+        { "label": "Agenda", "url": "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/2-19-2026+Meeting/2-19-2026_pb_ag.pdf" },
+        { "label": "Meeting Packet", "url": "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/2-19-2026+Meeting/pb_packet_02192026.pdf" },
+        { "label": "Watch Live", "url": "https://www.youtube.com/CityofPortsmouth" }
+      ]
+    },
+    {
+      "id": "m003",
+      "date": "2026-02-26",
+      "time": "6:30 PM",
+      "title": "Sustainability Committee",
+      "body": "other",
+      "location": "Conference Room A, Municipal Building",
+      "status": "upcoming",
+      "agendaPosted": false,
+      "housingRelevance": "medium",
+      "note": "",
+      "links": [
+        { "label": "Check for Agenda", "url": "https://www.portsmouthnh.gov/planportsmouth/events/sustainability-committee-23" }
+      ]
+    },
+    {
+      "id": "m004",
+      "date": "2026-03-02",
+      "time": "7:00 PM",
+      "title": "City Council Meeting",
+      "body": "council",
+      "location": "Council Chambers",
+      "status": "upcoming",
+      "agendaPosted": false,
+      "housingRelevance": "high",
+      "note": "",
+      "links": []
+    }
+  ]
+}

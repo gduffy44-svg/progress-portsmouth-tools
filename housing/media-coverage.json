@@ -1,0 +1,38 @@
+{
+  "lastUpdated": "2026-02-19",
+  "scanPeriod": { "start": "2026-02-05", "end": "2026-02-19" },
+  "market": "Portsmouth, NH — 03801 and Seacoast region",
+  "outlets": ["nhpr", "nhbr", "wmur", "seacoast", "patch", "nhhfa"],
+  "stories": [
+    {
+      "id": "s001",
+      "date": "2026-02-17",
+      "outlet": "seacoast",
+      "title": "Portsmouth council votes to address 'housing crisis' with action plan",
+      "url": "https://www.seacoastonline.com",
+      "summary": "",
+      "tags": ["action", "local"],
+      "relevance": "direct"
+    },
+    {
+      "id": "s002",
+      "date": "2026-02-18",
+      "outlet": "nhpr",
+      "title": "Cinde Warmington launches second bid for New Hampshire governor",
+      "url": "https://www.nhpr.org/nh-news/2026-02-18/cinde-warmington-running-new-hampshire-governor-2026",
+      "summary": "",
+      "tags": ["external"],
+      "relevance": "context"
+    },
+    {
+      "id": "s003",
+      "date": "2026-02-11",
+      "outlet": "nhpr",
+      "title": "Seacoast home prices smash records as the median price tops $1 million",
+      "url": "https://www.nhpr.org/nh-news/2026-02-11/nh-seacoast-housing-market-home-prices-smash-records",
+      "summary": "Median sales price of Seacoast single-family homes exceeded $1 million in January 2026 for the first time — $1,087,500, up 25.5% from January 2025. Presents the data as a market record, not as a displacement or affordability crisis indicator.",
+      "tags": ["volume", "local"],
+      "relevance": "direct"
+    }
+  ]
+}
