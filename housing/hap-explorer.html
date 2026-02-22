@@ -342,6 +342,36 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 .conf-high { background: #e8f5e9; color: #2e7d32; }
 .conf-medium { background: #e3f2fd; color: #1565c0; }
 .conf-speculative { background: #f3f3f3; color: #757575; }
+
+  .fiscal-wrap { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem; }
+  .fiscal-header { background: var(--navy-deep,#0d1f35); color: white; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+  .fiscal-header h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .fiscal-caveat { font-size: 0.76rem; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.5; }
+  .fiscal-toggle { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; align-items: center; }
+  .fiscal-toggle span { font-size: 0.82rem; color: var(--slate,#6b7a8d); margin-right: 0.25rem; }
+  .fiscal-toggle button { padding: 0.35rem 1rem; border-radius: 20px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 0.83rem; font-family: inherit; }
+  .fiscal-toggle button.active { background: var(--gold,#c9972b); color: white; border-color: var(--gold,#c9972b); font-weight: 600; }
+  .fiscal-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .fiscal-stat { background: white; border: 1px solid #e0e0d8; border-radius: 8px; padding: 1rem 1.25rem; }
+  .fiscal-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate,#6b7a8d); margin-bottom: 0.3rem; }
+  .fiscal-stat-value { font-size: 1.6rem; font-weight: 700; color: var(--navy,#1e3a5f); }
+  .fiscal-stat-sub { font-size: 0.73rem; color: var(--slate,#6b7a8d); margin-top: 0.15rem; }
+  .fiscal-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e0e0d8; font-size: 0.84rem; margin-bottom: 1rem; }
+  .fiscal-table th { background: var(--navy,#1e3a5f); color: white; padding: 0.6rem 0.9rem; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .fiscal-table th.r { text-align: right; }
+  .fiscal-table td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #f0f0ea; vertical-align: top; }
+  .fiscal-table td.r { text-align: right; font-variant-numeric: tabular-nums; }
+  .fiscal-table tr:last-child td { border-bottom: none; }
+  .fiscal-table tr:hover td { background: #fafaf7; }
+  .fiscal-cat-row td { background: #f5f5ee; font-weight: 600; font-size: 0.78rem; color: var(--slate,#6b7a8d); padding: 0.4rem 0.9rem; }
+  .fiscal-type-badge { display: inline-block; font-size: 0.67rem; padding: 0.1rem 0.45rem; border-radius: 10px; background: #e8eef5; color: var(--navy,#1e3a5f); margin-left: 0.3rem; }
+  .fiscal-assumptions { background: white; border: 1px solid #e0e0d8; border-radius: 8px; padding: 1.25rem; margin-top: 0.5rem; font-size: 0.81rem; color: var(--slate,#6b7a8d); }
+  .fiscal-assumptions h3 { font-size: 0.83rem; color: var(--navy,#1e3a5f); margin-bottom: 0.75rem; font-weight: 600; }
+  .fiscal-assumptions table { width: 100%; border-collapse: collapse; }
+  .fiscal-assumptions td { padding: 0.25rem 0.5rem; border-bottom: 1px solid #f0f0ea; }
+  .fiscal-assumptions tr:last-child td { border-bottom: none; }
+  .fiscal-assumptions td:last-child { text-align: right; font-weight: 600; color: var(--navy,#1e3a5f); }
+  .fiscal-zero { color: #bbb; font-style: italic; }
 </style>
 </head>
 <body>
@@ -368,6 +398,7 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
         <button class="view-btn active" id="cardsBtn" onclick="setView('cards')">&#9783; Cards</button>
         <button class="view-btn" id="tableBtn" onclick="setView('table')">&#9776; Table</button>
         <button class="view-btn" id="yieldBtn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
+        <button class="view-btn" id="fiscalBtn" data-view="fiscal" onclick="setView('fiscal')">&#36; Fiscal</button>
         
       </div>
     </div>
@@ -488,7 +519,7 @@ function getFiltered() {
 }
 
 function setCategory(c) { activeCategory=c; renderSidebar(); renderContent(); }
-function setView(v) { currentView=v; document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===v)); renderContent(); }
+function setView(v) { currentView=v; document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===v)); if(v==='fiscal'){renderFiscal();return;} renderContent(); }
 function setStatusFilter(f) {
   statusFilter=f;
   document.querySelectorAll('.status-filter-btn').forEach(b => {
@@ -740,6 +771,93 @@ function renderContent() {
 }
 
 init();
+
+// ---- FISCAL IMPACT ----
+var fiscalScenario = 'median';
+var ASSESSED_VALUES = { 'ADU': 380000, 'Multifamily': 320000, 'Mixed-use': 350000, 'Ownership': 400000, 'Policy/Process': 0, 'Unclear': 300000 };
+var TAX_RATE = 11.18;
+
+function parseYieldRange(str) {
+  if (!str) return null;
+  var nums = (str.match(/\d[\d,]*/g)||[]).map(function(n){return parseInt(n.replace(/,/g,''),10);});
+  if (!nums.length) return null;
+  if (nums.length >= 2) { var lo=Math.min(nums[0],nums[1]),hi=Math.max(nums[0],nums[1]); return {low:lo,median:Math.round((lo+hi)/2),high:hi}; }
+  return {low:Math.round(nums[0]*0.6),median:nums[0],high:Math.round(nums[0]*1.4)};
+}
+
+function calcRevenue(units, type) {
+  var av = ASSESSED_VALUES[type] !== undefined ? ASSESSED_VALUES[type] : 300000;
+  return Math.round(units * av * TAX_RATE / 1000);
+}
+
+function fmtMoney(n) {
+  if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+  if (n >= 1000) return '$' + Math.round(n/1000) + 'K';
+  return '$' + n;
+}
+
+function setFiscalScenario(s) { fiscalScenario = s; renderFiscal(); }
+
+function renderFiscal() {
+  var content = document.getElementById('content');
+  var totalUnits = 0, totalRevenue = 0, rowNum = 0;
+  var byType = {};
+
+  ACTIONS.forEach(function(action) {
+    var ev = EVALUATIONS[slugify(action.action)];
+    if (!ev || !ev.yieldType) return;
+    if (ev.disposition === 'removed') return;
+    var range = parseYieldRange(ev.yieldEstimate);
+    if (!range) return;
+    var units = range[fiscalScenario];
+    var revenue = calcRevenue(units, ev.yieldType);
+    totalUnits += units;
+    totalRevenue += revenue;
+    if (!byType[ev.yieldType]) byType[ev.yieldType] = {units:0, revenue:0, items:[]};
+    byType[ev.yieldType].units += units;
+    byType[ev.yieldType].revenue += revenue;
+    byType[ev.yieldType].items.push({action:action, ev:ev, units:units, revenue:revenue});
+  });
+
+  var h = '<div class="fiscal-wrap">';
+  h += '<div class="fiscal-header"><h2>&#36; Fiscal Impact — Estimated Annual Property Tax Revenue</h2>';
+  h += '<div class="fiscal-caveat">Illustrative estimates only. Based on full buildout at assumed assessed values using Portsmouth's FY2026 tax rate of $11.18 per $1,000. Actual revenue phases in over time and depends on final assessed values, exemptions, and market conditions. Not a substitute for a formal fiscal analysis.</div></div>';
+
+  h += '<div class="fiscal-toggle"><span>Scenario:</span>';
+  ['low','median','high'].forEach(function(s) {
+    h += '<button class="'+(fiscalScenario===s?'active':'')+'" onclick="setFiscalScenario(''+s+'')">'+s.charAt(0).toUpperCase()+s.slice(1)+' yield</button>';
+  });
+  h += '</div>';
+
+  h += '<div class="fiscal-summary">';
+  h += '<div class="fiscal-stat"><div class="fiscal-stat-label">Est. New Units</div><div class="fiscal-stat-value">'+totalUnits.toLocaleString()+'</div><div class="fiscal-stat-sub">'+fiscalScenario+' scenario</div></div>';
+  h += '<div class="fiscal-stat"><div class="fiscal-stat-label">Est. Annual Tax Revenue</div><div class="fiscal-stat-value">'+fmtMoney(totalRevenue)+'</div><div class="fiscal-stat-sub">at full buildout</div></div>';
+  h += '<div class="fiscal-stat"><div class="fiscal-stat-label">FY2026 Tax Rate</div><div class="fiscal-stat-value">$11.18</div><div class="fiscal-stat-sub">per $1,000 assessed value</div></div>';
+  h += '</div>';
+
+  h += '<table class="fiscal-table"><thead><tr><th>#</th><th>Action Item</th><th>Yield Type</th><th class="r">Units</th><th class="r">Est. Annual Revenue</th></tr></thead><tbody>';
+  Object.keys(byType).sort().forEach(function(type) {
+    var g = byType[type];
+    h += '<tr class="fiscal-cat-row"><td colspan="5">'+type+' &mdash; '+g.items.length+' items &middot; '+g.units.toLocaleString()+' units &middot; '+fmtMoney(g.revenue)+'/yr</td></tr>';
+    g.items.forEach(function(item) {
+      rowNum++;
+      h += '<tr><td>'+rowNum+'</td><td>'+item.action.action+'</td>';
+      h += '<td><span class="fiscal-type-badge">'+item.ev.yieldType+'</span></td>';
+      h += '<td class="r">'+item.units.toLocaleString()+'</td>';
+      h += '<td class="r">'+(item.revenue > 0 ? fmtMoney(item.revenue) : '<span class="fiscal-zero">indirect enabler</span>')+'</td></tr>';
+    });
+  });
+  h += '</tbody></table>';
+
+  h += '<div class="fiscal-assumptions"><h3>Assessed value assumptions (per unit)</h3><table>';
+  Object.keys(ASSESSED_VALUES).forEach(function(t) {
+    h += '<tr><td>'+t+'</td><td>'+(ASSESSED_VALUES[t]>0?'$'+ASSESSED_VALUES[t].toLocaleString():'N/A — policy items')+'</td></tr>';
+  });
+  h += '</table></div></div>';
+
+  content.innerHTML = h;
+}
+
 </script>
 </body>
 </html>
