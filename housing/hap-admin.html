@@ -18,6 +18,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Georgia, serif; background: var(--light); color: var(--text); font-size: 14px; }
+
   #auth-screen {
     position: fixed; inset: 0; background: var(--navy);
     display: flex; align-items: center; justify-content: center; z-index: 1000;
@@ -29,6 +30,7 @@
   .auth-box input:focus { outline: none; border-color: var(--navy); }
   .auth-box button { width: 100%; padding: 0.65rem; background: var(--navy); color: white; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; }
   .auth-error { color: var(--red); font-size: 0.85rem; margin-top: 0.5rem; display: none; }
+
   #app { display: none; }
   header { background: var(--navy); color: white; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
   header h1 { font-size: 1.1rem; font-weight: normal; }
@@ -37,14 +39,23 @@
   .btn { padding: 0.4rem 1rem; border-radius: 4px; border: none; cursor: pointer; font-size: 0.85rem; font-family: Georgia, serif; }
   .btn-gold { background: var(--gold); color: white; font-weight: bold; }
   .btn-outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); }
+  .btn-outline:hover { border-color: white; }
+  .btn-coral { background: var(--coral); color: white; }
   .save-status { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
   #controls { background: white; border-bottom: 1px solid var(--border); padding: 0.75rem 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   #controls label { font-size: 0.8rem; color: var(--muted); margin-right: 0.25rem; }
   #controls select, #controls input { padding: 0.35rem 0.6rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.85rem; font-family: Georgia, serif; }
   .count-badge { margin-left: auto; font-size: 0.8rem; color: var(--muted); }
+  .add-btn { margin-left: 0.5rem; padding: 0.35rem 0.9rem; background: var(--navy); color: white; border: none; border-radius: 4px; font-size: 0.85rem; cursor: pointer; font-family: Georgia, serif; }
+
   #item-list { padding: 1rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-  .item-card { background: white; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.75rem; overflow: hidden; }
+
+  .item-card { background: white; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.75rem; overflow: hidden; transition: opacity 0.2s; }
   .item-card.dirty { border-left: 3px solid var(--gold); }
+  .item-card.is-new { border-left: 3px solid var(--coral); }
+  .item-card.removed { opacity: 0.45; border-left: 3px solid #bbb; }
+
   .item-header { padding: 0.7rem 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; user-select: none; }
   .item-header:hover { background: #fafafa; }
   .item-num { color: var(--muted); font-size: 0.8rem; width: 24px; flex-shrink: 0; }
@@ -54,16 +65,27 @@
   .badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 10px; white-space: nowrap; }
   .badge-disposition-in-scope { background: #e8f5e9; color: var(--green); }
   .badge-disposition-deferred { background: #fff8e1; color: #e65100; }
-  .badge-disposition-removed { background: #ffebee; color: var(--red); }
+  .badge-disposition-removed { background: #f0f0f0; color: #999; }
   .badge-disposition-unreviewed { background: #f5f5f5; color: var(--muted); }
   .badge-priority-high { background: #ffebee; color: var(--red); }
   .badge-priority-medium { background: #fff8e1; color: #e65100; }
   .badge-priority-low { background: #e8f5e9; color: var(--green); }
+  .badge-new { background: #fff0ec; color: var(--coral); }
   .chevron { color: var(--muted); font-size: 0.7rem; transition: transform 0.15s; flex-shrink: 0; }
   .chevron.open { transform: rotate(90deg); }
   .dirty-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-  .item-body { border-top: 1px solid var(--border); padding: 1rem 1rem 1.25rem; display: none; }
+  .new-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); flex-shrink: 0; }
+
+  .item-body { border-top: 1px solid var(--border); display: none; }
   .item-body.open { display: block; }
+
+  /* TABS */
+  .tab-bar { display: flex; border-bottom: 1px solid var(--border); background: #fafafa; }
+  .tab-btn { padding: 0.6rem 1.25rem; border: none; background: none; cursor: pointer; font-size: 0.85rem; font-family: Georgia, serif; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--navy); font-weight: bold; }
+  .tab-panel { display: none; padding: 1rem 1rem 1.25rem; }
+  .tab-panel.active { display: block; }
+
   .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem 1rem; margin-bottom: 1rem; }
   .form-group label { display: block; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
   .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 0.4rem 0.6rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.85rem; font-family: Georgia, serif; background: white; }
@@ -71,18 +93,34 @@
   .form-group textarea { resize: vertical; min-height: 60px; }
   .form-group.span-2 { grid-column: span 2; }
   .form-group.span-3 { grid-column: span 3; }
+  .form-group.span-full { grid-column: 1 / -1; }
+
   .last-updated { font-size: 0.75rem; color: var(--muted); margin-top: 0.5rem; text-align: right; }
-  #export-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 200; }
-  #export-modal.open { display: flex; }
-  .modal-box { background: white; border-radius: 8px; padding: 2rem; width: 420px; max-width: 95vw; }
+  .slug-warning { font-size: 0.75rem; color: var(--coral); margin-top: 0.25rem; display: none; }
+
+  .card-footer { padding: 0.6rem 1rem; border-top: 1px solid var(--border); background: #fafafa; display: flex; justify-content: flex-end; gap: 0.5rem; }
+  .btn-sm { padding: 0.3rem 0.75rem; font-size: 0.8rem; border-radius: 4px; border: none; cursor: pointer; font-family: Georgia, serif; }
+  .btn-sm-danger { background: #fff0f0; color: var(--red); border: 1px solid #fcc; }
+  .btn-sm-restore { background: #f0f8f0; color: var(--green); border: 1px solid #c3dfc3; }
+
+  /* MODALS */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 200; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: white; border-radius: 8px; padding: 2rem; width: 480px; max-width: 95vw; }
   .modal-box h2 { color: var(--navy); margin-bottom: 0.5rem; font-size: 1.1rem; }
-  .modal-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.25rem; line-height: 1.5; }
-  .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
-  .btn-navy { background: var(--navy); color: white; padding: 0.5rem 1.25rem; }
-  #dirty-count { font-weight: bold; color: var(--gold); }
+  .modal-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.5; }
+  .modal-box .form-group { margin-bottom: 0.75rem; }
+  .modal-box .form-group label { display: block; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; margin-bottom: 0.3rem; }
+  .modal-box .form-group input, .modal-box .form-group select, .modal-box .form-group textarea { width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.9rem; font-family: Georgia, serif; }
+  .modal-box .form-group textarea { min-height: 80px; resize: vertical; }
+  .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.25rem; }
+  .btn-modal-cancel { background: #f0f0f0; color: #444; padding: 0.5rem 1.25rem; border-radius: 4px; border: none; cursor: pointer; font-family: Georgia, serif; }
+  .btn-modal-confirm { background: var(--navy); color: white; padding: 0.5rem 1.25rem; border-radius: 4px; border: none; cursor: pointer; font-family: Georgia, serif; }
+  .btn-modal-danger { background: var(--red); color: white; padding: 0.5rem 1.25rem; border-radius: 4px; border: none; cursor: pointer; font-family: Georgia, serif; }
 </style>
 </head>
 <body>
+
 <div id="auth-screen">
   <div class="auth-box">
     <h1>HAP Admin</h1>
@@ -92,6 +130,7 @@
     <div class="auth-error" id="auth-error">Incorrect passphrase</div>
   </div>
 </div>
+
 <div id="app">
   <header>
     <h1><span>HAP</span> Admin — Housing Action Plan</h1>
@@ -100,35 +139,119 @@
       <button class="btn btn-outline" onclick="openExport()">Export JSON</button>
     </div>
   </header>
+
   <div id="controls">
-    <div><label>Category</label><select id="cat-filter" onchange="renderList()"><option value="all">All Categories</option></select></div>
-    <div><label>Disposition</label><select id="disp-filter" onchange="renderList()"><option value="all">All</option><option value="unreviewed">Unreviewed</option><option value="in-scope">In-scope</option><option value="deferred">Deferred</option><option value="removed">Removed</option></select></div>
-    <div><label>Priority</label><select id="pri-filter" onchange="renderList()"><option value="all">All</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div>
-    <div><label>Search</label><input type="text" id="search" placeholder="keyword..." oninput="renderList()" style="width:160px"></div>
-    <div><label>Show</label><select id="dirty-filter" onchange="renderList()"><option value="all">All items</option><option value="dirty">Edited only</option></select></div>
+    <div>
+      <label>Category</label>
+      <select id="cat-filter" onchange="renderList()"><option value="all">All Categories</option></select>
+    </div>
+    <div>
+      <label>Disposition</label>
+      <select id="disp-filter" onchange="renderList()">
+        <option value="all">All</option>
+        <option value="unreviewed">Unreviewed</option>
+        <option value="in-scope">In-scope</option>
+        <option value="deferred">Deferred</option>
+        <option value="removed">Removed</option>
+      </select>
+    </div>
+    <div>
+      <label>Priority</label>
+      <select id="pri-filter" onchange="renderList()">
+        <option value="all">All</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+    </div>
+    <div>
+      <label>Search</label>
+      <input type="text" id="search" placeholder="keyword..." oninput="renderList()" style="width:160px">
+    </div>
+    <div>
+      <label>Show</label>
+      <select id="dirty-filter" onchange="renderList()">
+        <option value="all">All items</option>
+        <option value="dirty">Edited only</option>
+      </select>
+    </div>
+    <button class="add-btn" onclick="openAddModal()">+ New Item</button>
     <div class="count-badge" id="count-badge"></div>
   </div>
+
   <div id="item-list"></div>
 </div>
-<div id="export-modal">
+
+<!-- EXPORT MODAL -->
+<div class="modal-overlay" id="export-modal">
   <div class="modal-box">
-    <h2>Export hap-evaluations.json</h2>
-    <p>This will download the updated JSON file. Replace <code>housing/hap-evaluations.json</code> in your project, then commit and push to deploy.</p>
-    <p><span id="dirty-count">0</span> items have been edited in this session.</p>
+    <h2>Export JSON Files</h2>
+    <p>This exports two files. Replace both in your project, then commit and push.</p>
+    <p style="background:#f5f5f0;padding:0.75rem;border-radius:4px;font-family:monospace;font-size:0.8rem;color:#444">
+      housing/hap-actions.json<br>housing/hap-evaluations.json
+    </p>
+    <p style="margin-top:1rem"><span id="dirty-count" style="font-weight:bold;color:var(--gold)">0</span> items edited this session.</p>
     <div class="modal-actions">
-      <button class="btn btn-outline" style="color:#333;border-color:#ccc" onclick="closeExport()">Cancel</button>
-      <button class="btn btn-navy btn-gold" onclick="doExport()">Download JSON</button>
+      <button class="btn-modal-cancel" onclick="closeModal('export-modal')">Cancel</button>
+      <button class="btn-modal-confirm" onclick="doExport()">Download Both Files</button>
     </div>
   </div>
 </div>
+
+<!-- ADD ITEM MODAL -->
+<div class="modal-overlay" id="add-modal">
+  <div class="modal-box">
+    <h2>Add New Action Item</h2>
+    <p>This creates a new entry in hap-actions.json. Fill in what you know now — other fields can be completed later.</p>
+    <div class="form-group">
+      <label>Action Item *</label>
+      <input type="text" id="new-action" placeholder="Short descriptive title" />
+    </div>
+    <div class="form-group">
+      <label>Category *</label>
+      <select id="new-category"><option value="">— select —</option></select>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="new-description" placeholder="Brief description of this action item"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Notes</label>
+      <input type="text" id="new-notes" placeholder="Optional notes" />
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeModal('add-modal')">Cancel</button>
+      <button class="btn-modal-confirm" onclick="doAddItem()">Add Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- RENAME WARNING MODAL -->
+<div class="modal-overlay" id="rename-modal">
+  <div class="modal-box">
+    <h2>Rename Action Item?</h2>
+    <p>Changing the action text will update the item's ID. The evaluation record will be migrated automatically.</p>
+    <p id="rename-preview" style="font-style:italic;color:#444;font-size:0.9rem"></p>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="cancelRename()">Cancel</button>
+      <button class="btn-modal-confirm" onclick="confirmRename()">Confirm Rename</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const PASSPHRASE = 'action';
 const ACTIONS_URL = 'hap-actions.json';
 const EVALS_URL = 'hap-evaluations.json';
+
 let ACTIONS = [];
 let EVALS = {};
 let DIRTY = new Set();
 let OPEN_CARDS = new Set();
+let ACTIVE_TABS = {};
+let PENDING_RENAME = null;
+
+// AUTH
 document.getElementById('passphrase').addEventListener('keydown', e => { if(e.key==='Enter') checkAuth(); });
 function checkAuth() {
   if(document.getElementById('passphrase').value === PASSPHRASE) {
@@ -139,6 +262,8 @@ function checkAuth() {
     document.getElementById('auth-error').style.display = 'block';
   }
 }
+
+// DATA LOAD
 async function loadData() {
   try {
     const [actRes, evalRes] = await Promise.all([fetch(ACTIONS_URL), fetch(EVALS_URL)]);
@@ -148,13 +273,26 @@ async function loadData() {
     populateFilters();
     renderList();
     setStatus('Loaded ' + ACTIONS.length + ' items');
-  } catch(err) { setStatus('Error: ' + err.message); }
+  } catch(err) { setStatus('Error loading data: ' + err.message); }
 }
+
 function populateFilters() {
   const cats = [...new Set(ACTIONS.map(a => a.category))].sort();
   const sel = document.getElementById('cat-filter');
-  cats.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
+  const newSel = document.getElementById('new-category');
+  cats.forEach(c => {
+    [sel, newSel].forEach(el => {
+      const o = document.createElement('option'); o.value=c; o.textContent=c; el.appendChild(o);
+    });
+  });
 }
+
+// SLUGIFY
+function slugify(str) {
+  return (str||'').toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+}
+
+// FILTERS
 function getFiltered() {
   const cat = document.getElementById('cat-filter').value;
   const disp = document.getElementById('disp-filter').value;
@@ -164,13 +302,16 @@ function getFiltered() {
   return ACTIONS.filter(a => {
     const ev = EVALS[slugify(a.action)] || {};
     if(cat!=='all' && a.category!==cat) return false;
-    if(disp!=='all' && (ev.disposition||'unreviewed')!==disp) return false;
+    const d = ev.disposition || 'unreviewed';
+    if(disp!=='all' && d!==disp) return false;
     if(pri!=='all' && (ev.priority||'')!==pri) return false;
     if(dirty==='dirty' && !DIRTY.has(slugify(a.action))) return false;
-    if(q && !(a.action+' '+a.category).toLowerCase().includes(q)) return false;
+    if(q && !(a.action+' '+a.category+' '+(a.description||'')).toLowerCase().includes(q)) return false;
     return true;
   });
 }
+
+// RENDER
 function renderList() {
   const items = getFiltered();
   document.getElementById('count-badge').textContent = items.length + ' items';
@@ -182,76 +323,276 @@ function renderList() {
     const disp = ev.disposition || 'unreviewed';
     const pri = ev.priority || '';
     const isDirty = DIRTY.has(id);
+    const isNew = a._isNew;
+    const isRemoved = disp === 'removed';
     const isOpen = OPEN_CARDS.has(id);
+    const activeTab = ACTIVE_TABS[id] || 'eval';
+
     const card = document.createElement('div');
-    card.className = 'item-card' + (isDirty?' dirty':'');
+    let cardClass = 'item-card';
+    if(isNew) cardClass += ' is-new';
+    else if(isDirty) cardClass += ' dirty';
+    if(isRemoved) cardClass += ' removed';
+    card.className = cardClass;
     card.id = 'card-' + id;
+
     card.innerHTML = `
       <div class="item-header" onclick="toggleCard('${id}')">
         <span class="item-num">${idx+1}</span>
-        ${isDirty?'<span class="dirty-dot"></span>':`<span style="width:7px;flex-shrink:0"></span>`}
+        ${isNew ? '<span class="new-dot" title="New item"></span>' : isDirty ? '<span class="dirty-dot" title="Edited"></span>' : '<span style="width:7px;flex-shrink:0"></span>'}
         <span class="item-action">${a.action}</span>
         <span class="item-cat">${a.category}</span>
         <span class="item-badges">
           <span class="badge badge-disposition-${disp}">${disp}</span>
-          ${pri?`<span class="badge badge-priority-${pri}">${pri}</span>`:''}
+          ${pri ? `<span class="badge badge-priority-${pri}">${pri}</span>` : ''}
+          ${isNew ? '<span class="badge badge-new">new</span>' : ''}
         </span>
-        <span class="chevron ${isOpen?'open':''}">▶</span>
+        <span class="chevron ${isOpen?'open':''}">&#9658;</span>
       </div>
-      <div class="item-body ${isOpen?'open':''}" id="body-${id}">${buildForm(id,ev)}</div>`;
+      <div class="item-body ${isOpen?'open':''}" id="body-${id}">
+        <div class="tab-bar">
+          <button class="tab-btn ${activeTab==='eval'?'active':''}" onclick="switchTab(event,'${id}','eval')">Evaluation</button>
+          <button class="tab-btn ${activeTab==='action'?'active':''}" onclick="switchTab(event,'${id}','action')">Action Item</button>
+        </div>
+        <div class="tab-panel ${activeTab==='eval'?'active':''}" id="tab-eval-${id}">
+          ${buildEvalForm(id, ev)}
+        </div>
+        <div class="tab-panel ${activeTab==='action'?'active':''}" id="tab-action-${id}">
+          ${buildActionForm(id, a)}
+        </div>
+        <div class="card-footer">
+          ${isRemoved
+            ? `<button class="btn-sm btn-sm-restore" onclick="restoreItem('${id}')">&#8593; Restore Item</button>`
+            : `<button class="btn-sm btn-sm-danger" onclick="markRemoved('${id}')">Mark as Removed</button>`
+          }
+        </div>
+      </div>
+    `;
     container.appendChild(card);
   });
 }
-function buildForm(id, ev) {
+
+function switchTab(e, id, tab) {
+  e.stopPropagation();
+  ACTIVE_TABS[id] = tab;
+  const body = document.getElementById('body-'+id);
+  body.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  body.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('tab-'+tab+'-'+id).classList.add('active');
+}
+
+function buildEvalForm(id, ev) {
   return `<div class="form-grid">
     <div class="form-group"><label>Disposition</label><select onchange="markDirty('${id}','disposition',this.value)">${opt(['unreviewed','in-scope','deferred','removed'],ev.disposition||'unreviewed')}</select></div>
     <div class="form-group"><label>Priority</label><select onchange="markDirty('${id}','priority',this.value)">${opt(['','high','medium','low'],ev.priority||'')}</select></div>
     <div class="form-group"><label>Timeline</label><select onchange="markDirty('${id}','timeline',this.value)">${opt(['','immediate','short (1-3yr)','medium (3-5yr)','long (5yr+)'],ev.timeline||'')}</select></div>
     <div class="form-group"><label>Eval Status</label><select onchange="markDirty('${id}','evaluationStatus',this.value)">${opt(['','not-started','in-progress','consensus','deferred'],ev.evaluationStatus||'')}</select></div>
     <div class="form-group"><label>Sensitivity</label><select onchange="markDirty('${id}','sensitivity',this.value)">${opt(['','low','moderate','high'],ev.sensitivity||'')}</select></div>
-    <div class="form-group"><label>Responsible Party</label><input type="text" value="${ev.responsibleParty||''}" onchange="markDirty('${id}','responsibleParty',this.value)"/></div>
+    <div class="form-group"><label>Responsible Party</label><input type="text" value="${esc(ev.responsibleParty)}" onchange="markDirty('${id}','responsibleParty',this.value)"/></div>
     <div class="form-group"><label>Yield Type</label><select onchange="markDirty('${id}','yieldType',this.value)">${opt(['','Multifamily','ADU','Mixed-use','Ownership','Policy/Process','Unclear'],ev.yieldType||'')}</select></div>
-    <div class="form-group"><label>Yield Estimate</label><input type="text" value="${ev.yieldEstimate||''}" placeholder="e.g. 50-150 units" onchange="markDirty('${id}','yieldEstimate',this.value)"/></div>
+    <div class="form-group"><label>Yield Estimate</label><input type="text" value="${esc(ev.yieldEstimate)}" placeholder="e.g. 50-150 units" onchange="markDirty('${id}','yieldEstimate',this.value)"/></div>
     <div class="form-group"><label>Yield Confidence</label><select onchange="markDirty('${id}','yieldConfidence',this.value)">${opt(['','low','medium','high'],ev.yieldConfidence||'')}</select></div>
     <div class="form-group"><label>Yield Timeframe</label><select onchange="markDirty('${id}','yieldTimeframe',this.value)">${opt(['','near (1-3yr)','mid (3-7yr)','long (7yr+)'],ev.yieldTimeframe||'')}</select></div>
-    <div class="form-group span-2"><label>Disposition Note</label><input type="text" value="${(ev.dispositionNote||'').replace(/"/g,'&quot;')}" onchange="markDirty('${id}','dispositionNote',this.value)"/></div>
-    <div class="form-group span-3"><label>Key Concern</label><textarea onchange="markDirty('${id}','keyConcern',this.value)">${ev.keyConcern||''}</textarea></div>
-    <div class="form-group span-3"><label>Yield Notes</label><textarea onchange="markDirty('${id}','yieldNotes',this.value)">${ev.yieldNotes||''}</textarea></div>
+    <div class="form-group span-2"><label>Disposition Note</label><input type="text" value="${esc(ev.dispositionNote)}" onchange="markDirty('${id}','dispositionNote',this.value)"/></div>
+    <div class="form-group span-full"><label>Key Concern</label><textarea onchange="markDirty('${id}','keyConcern',this.value)">${ev.keyConcern||''}</textarea></div>
+    <div class="form-group span-full"><label>Yield Notes</label><textarea onchange="markDirty('${id}','yieldNotes',this.value)">${ev.yieldNotes||''}</textarea></div>
   </div>
   <div class="last-updated">Last updated: ${ev.lastUpdated||'—'}</div>`;
 }
+
+function buildActionForm(id, a) {
+  return `<div class="form-grid">
+    <div class="form-group span-full">
+      <label>Action Text</label>
+      <input type="text" id="action-text-${id}" value="${esc(a.action)}" onchange="handleActionRename('${id}', this.value)"/>
+      <div class="slug-warning" id="slug-warn-${id}">ID will change — evaluation data will be migrated automatically.</div>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select onchange="markActionDirty('${id}','category',this.value)">${optCats(a.category)}</select>
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <select onchange="markActionDirty('${id}','status',this.value)">${opt(['','active','complete','on-hold'],a.status||'')}</select>
+    </div>
+    <div class="form-group">
+      <label>Target</label>
+      <input type="text" value="${esc(a.target)}" onchange="markActionDirty('${id}','target',this.value)"/>
+    </div>
+    <div class="form-group">
+      <label>Metric</label>
+      <input type="text" value="${esc(a.metric)}" onchange="markActionDirty('${id}','metric',this.value)"/>
+    </div>
+    <div class="form-group span-full"><label>Description</label><textarea onchange="markActionDirty('${id}','description',this.value)">${a.description||''}</textarea></div>
+    <div class="form-group span-full"><label>Notes</label><textarea onchange="markActionDirty('${id}','notes',this.value)">${a.notes||''}</textarea></div>
+    <div class="form-group span-full"><label>Sources</label><textarea onchange="markActionDirty('${id}','sources',this.value)">${a.sources||''}</textarea></div>
+    <div class="form-group span-full"><label>Pros</label><textarea onchange="markActionDirty('${id}','pros',this.value)">${a.pros||''}</textarea></div>
+    <div class="form-group span-full"><label>Cons</label><textarea onchange="markActionDirty('${id}','cons',this.value)">${a.cons||''}</textarea></div>
+  </div>`;
+}
+
+function optCats(current) {
+  const cats = [...new Set(ACTIONS.map(a => a.category))].sort();
+  return cats.map(c => `<option value="${c}" ${c===current?'selected':''}>${c}</option>`).join('');
+}
+
 function opt(arr, current) {
   return arr.map(v => `<option value="${v}" ${v===current?'selected':''}>${v||'— not set —'}</option>`).join('');
 }
+
+function esc(v) { return (v||'').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// INTERACTIONS
 function toggleCard(id) {
   if(OPEN_CARDS.has(id)) OPEN_CARDS.delete(id); else OPEN_CARDS.add(id);
   const body = document.getElementById('body-'+id);
+  const chevron = body.previousElementSibling.querySelector('.chevron');
   body.classList.toggle('open');
-  body.previousElementSibling.querySelector('.chevron').classList.toggle('open');
+  chevron.classList.toggle('open');
 }
+
 function markDirty(id, field, value) {
   if(!EVALS[id]) EVALS[id] = {id:id};
   EVALS[id][field] = value;
   EVALS[id].lastUpdated = new Date().toISOString().slice(0,10);
   DIRTY.add(id);
   const card = document.getElementById('card-'+id);
-  if(card) card.classList.add('dirty');
-  setStatus(DIRTY.size + ' unsaved change' + (DIRTY.size!==1?'s':''));
+  if(card && !card.classList.contains('is-new')) card.classList.add('dirty');
+  if(field === 'disposition') refreshCardRemoved(id, value);
+  setStatus(DIRTY.size + ' unsaved change'+(DIRTY.size!==1?'s':''));
 }
-function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+
+function markActionDirty(id, field, value) {
+  const idx = ACTIONS.findIndex(a => slugify(a.action) === id);
+  if(idx < 0) return;
+  ACTIONS[idx][field] = value;
+  DIRTY.add(id);
+  const card = document.getElementById('card-'+id);
+  if(card && !card.classList.contains('is-new')) card.classList.add('dirty');
+  setStatus(DIRTY.size + ' unsaved change'+(DIRTY.size!==1?'s':''));
 }
-function setStatus(msg) { document.getElementById('save-status').textContent = msg; }
-function openExport() { document.getElementById('dirty-count').textContent=DIRTY.size; document.getElementById('export-modal').classList.add('open'); }
-function closeExport() { document.getElementById('export-modal').classList.remove('open'); }
+
+function refreshCardRemoved(id, disp) {
+  const card = document.getElementById('card-'+id);
+  if(!card) return;
+  if(disp === 'removed') card.classList.add('removed');
+  else card.classList.remove('removed');
+}
+
+// RENAME
+function handleActionRename(oldId, newText) {
+  const newId = slugify(newText);
+  if(newId === oldId) {
+    document.getElementById('slug-warn-'+oldId).style.display = 'none';
+    return;
+  }
+  document.getElementById('slug-warn-'+oldId).style.display = 'block';
+  PENDING_RENAME = { oldId, newId, newText };
+  document.getElementById('rename-preview').textContent =
+    '"' + (ACTIONS.find(a=>slugify(a.action)===oldId)||{}).action + '" → "' + newText + '"';
+  document.getElementById('rename-modal').classList.add('open');
+}
+
+function confirmRename() {
+  if(!PENDING_RENAME) return;
+  const {oldId, newId, newText} = PENDING_RENAME;
+  const idx = ACTIONS.findIndex(a => slugify(a.action) === oldId);
+  if(idx >= 0) ACTIONS[idx].action = newText;
+  if(EVALS[oldId]) {
+    EVALS[newId] = {...EVALS[oldId], id: newId};
+    delete EVALS[oldId];
+  }
+  DIRTY.delete(oldId);
+  DIRTY.add(newId);
+  if(OPEN_CARDS.has(oldId)) { OPEN_CARDS.delete(oldId); OPEN_CARDS.add(newId); }
+  PENDING_RENAME = null;
+  closeModal('rename-modal');
+  renderList();
+  setStatus(DIRTY.size + ' unsaved changes');
+}
+
+function cancelRename() {
+  if(PENDING_RENAME) {
+    const {oldId} = PENDING_RENAME;
+    const orig = (ACTIONS.find(a=>slugify(a.action)===oldId)||{}).action || '';
+    const el = document.getElementById('action-text-'+oldId);
+    if(el) el.value = orig;
+    document.getElementById('slug-warn-'+oldId).style.display = 'none';
+    PENDING_RENAME = null;
+  }
+  closeModal('rename-modal');
+}
+
+// REMOVE / RESTORE
+function markRemoved(id) {
+  markDirty(id, 'disposition', 'removed');
+  // Update the select in the open form if visible
+  const panel = document.getElementById('tab-eval-'+id);
+  if(panel) {
+    const sel = panel.querySelector('select');
+    if(sel) sel.value = 'removed';
+  }
+  renderList();
+}
+
+function restoreItem(id) {
+  markDirty(id, 'disposition', 'unreviewed');
+  renderList();
+}
+
+// ADD ITEM
+function openAddModal() { document.getElementById('add-modal').classList.add('open'); }
+
+function doAddItem() {
+  const action = document.getElementById('new-action').value.trim();
+  const category = document.getElementById('new-category').value;
+  const description = document.getElementById('new-description').value.trim();
+  const notes = document.getElementById('new-notes').value.trim();
+  if(!action || !category) { alert('Action text and category are required.'); return; }
+  const id = slugify(action);
+  if(ACTIONS.find(a => slugify(a.action) === id)) { alert('An item with a similar name already exists.'); return; }
+  const newItem = { action, category, description, notes, sources: '', target: '', metric: '', pros: '', cons: '', status: '', _isNew: true };
+  ACTIONS.push(newItem);
+  EVALS[id] = { id, disposition: 'unreviewed', lastUpdated: new Date().toISOString().slice(0,10) };
+  DIRTY.add(id);
+  OPEN_CARDS.add(id);
+  ACTIVE_TABS[id] = 'action';
+  document.getElementById('new-action').value = '';
+  document.getElementById('new-category').value = '';
+  document.getElementById('new-description').value = '';
+  document.getElementById('new-notes').value = '';
+  closeModal('add-modal');
+  renderList();
+  setTimeout(() => { document.getElementById('card-'+id)?.scrollIntoView({behavior:'smooth',block:'start'}); }, 100);
+  setStatus(DIRTY.size + ' unsaved changes');
+}
+
+// MODALS
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+// EXPORT
+function openExport() {
+  document.getElementById('dirty-count').textContent = DIRTY.size;
+  document.getElementById('export-modal').classList.add('open');
+}
+
 function doExport() {
-  const out = Object.values(EVALS).sort((a,b)=>a.id<b.id?-1:1);
-  const blob = new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
-  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='hap-evaluations.json'; a.click();
-  closeExport();
-  setStatus('Exported — replace housing/hap-evaluations.json and commit');
+  const cleanActions = ACTIONS.map(a => { const c={...a}; delete c._isNew; return c; });
+  const evals = Object.values(EVALS).sort((a,b) => a.id < b.id ? -1 : 1);
+  downloadJSON(cleanActions, 'hap-actions.json');
+  setTimeout(() => downloadJSON(evals, 'hap-evaluations.json'), 400);
+  closeModal('export-modal');
+  setStatus('Exported both files — commit and push to deploy');
   DIRTY.clear();
 }
+
+function downloadJSON(data, filename) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
+}
+
+function setStatus(msg) { document.getElementById('save-status').textContent = msg; }
 </script>
 </body>
 </html>

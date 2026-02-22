@@ -275,106 +275,83 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 .disposition-deferred { opacity: 0.5; }
 .disposition-removed { opacity: 0.35; text-decoration: line-through; }
 
-.workload-summary{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px}
-.workload-stats{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.workload-stat{display:flex;align-items:baseline;gap:5px}
-.ws-num{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;color:var(--navy)}
-.ws-num.ws-active{color:var(--coral)}
-.ws-label{font-size:0.72rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.05em}
-.workload-divider{color:#ccc;margin:0 2px}
-.workload-status{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8rem;color:var(--slate);margin-bottom:10px;border-top:1px solid var(--border);padding-top:10px}
-.ws-status-item{display:flex;align-items:center;gap:5px}
-.workload-about{border-top:1px solid var(--border);padding-top:10px}
-.about-toggle{background:none;border:none;font-size:0.78rem;color:var(--slate);cursor:pointer;padding:0;font-family:inherit}
-.about-toggle:hover{color:var(--navy)}
+/* Table row explicit backgrounds - override all inheritance */
+.data-table tbody tr td { background: #ffffff; color: #1a1a1a; }
+.data-table tbody tr:hover td { background: #f5f5f0; color: #1a1a1a; }
+.data-table tbody tr.status-complete-row td { background: #e8f5e9; color: #1a1a1a; }
+.data-table tbody tr.status-progress-row td { background: #e3f2fd; color: #1a1a1a; }
+.data-table tbody tr.status-early-row td { background: #f3e5f5; color: #1a1a1a; }
+.data-table tbody tr.new-row td { background: #fff8e6; color: #1a1a1a; }
 
-.header-top { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; gap: 16px; flex-wrap: wrap; }
-.header-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; justify-content: flex-end; }
-.header-toolbar #searchInput { width: 200px; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; font-size: 0.8rem; background: rgba(255,255,255,0.12); color: var(--white); outline: none; }
-.header-toolbar #searchInput::placeholder { color: rgba(255,255,255,0.5); }
-.header-toolbar .status-filter-btn { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; color: rgba(255,255,255,0.65); transition: var(--transition); white-space: nowrap; }
-.header-toolbar .status-filter-btn:hover { background: rgba(255,255,255,0.1); color: var(--white); }
-.header-toolbar .status-filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
-.header-toolbar .view-toggle { display: flex; gap: 4px; }
-.header-toolbar .view-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; cursor: pointer; color: rgba(255,255,255,0.7); white-space: nowrap; }
-.header-toolbar .view-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
-.toolbar { display: none; }
-
-.yield-pill { display: inline-block; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.04em; white-space: nowrap; }
-.yield-legend { font-size: 0.75rem; color: var(--slate); padding: 6px 0 10px 0; }
-.yield-legend-icon { color: var(--gold); }
-.yield-col { color: var(--gold); font-size: 1rem; text-align: center; }
-
-.yield-view { padding: 4px 0; }
-.yield-view-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px; }
-.yield-view-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
-.yield-view-meta { font-size: 0.85rem; color: var(--slate); margin-bottom: 8px; }
-.yield-caveat { font-size: 0.78rem; color: var(--slate); font-style: italic; }
-.yield-view-note { font-size: 0.75rem; color: var(--slate); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; font-style: italic; }
-.yield-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-.yield-table thead th { background: var(--navy); color: var(--white); padding: 10px 12px; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.yield-table tbody tr { border-bottom: 1px solid var(--border); }
-.yield-table tbody tr:hover { background: #f8f7f4; }
-.yield-table tbody td { padding: 12px; vertical-align: top; color: var(--navy); }
-.yield-concern { font-size: 0.76rem; color: var(--coral); margin-top: 4px; font-style: italic; }
-.yield-notes-row { font-size: 0.74rem; color: var(--slate); margin-top: 4px; line-height: 1.5; }
-.yield-type-badge { background: rgba(201,168,76,0.15); color: #8a6f1a; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
-.conf-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
-.conf-high { background: #e8f5e9; color: #2e7d32; }
-.conf-medium { background: #e3f2fd; color: #1565c0; }
-.conf-speculative { background: #f3f3f3; color: #757575; }
-
-.yield-view { padding: 4px 0; }
-.yield-view-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px; }
-.yield-view-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
-.yield-view-meta { font-size: 0.85rem; color: var(--slate); margin-bottom: 8px; }
-.yield-caveat { font-size: 0.78rem; color: var(--slate); font-style: italic; }
-.yield-view-note { font-size: 0.75rem; color: var(--slate); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; font-style: italic; }
-.yield-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
-.yield-table thead th { background: var(--navy); color: var(--white); padding: 10px 12px; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.yield-table tbody tr { border-bottom: 1px solid var(--border); }
-.yield-table tbody tr:hover { background: #f8f7f4; }
-.yield-table tbody td { padding: 12px; vertical-align: top; color: var(--navy); }
-.yield-concern { font-size: 0.76rem; color: var(--coral); margin-top: 4px; font-style: italic; }
-.yield-notes-row { font-size: 0.74rem; color: var(--slate); margin-top: 4px; line-height: 1.5; }
-.yield-type-badge { background: rgba(201,168,76,0.15); color: #8a6f1a; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
-.conf-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
-.conf-high { background: #e8f5e9; color: #2e7d32; }
-.conf-medium { background: #e3f2fd; color: #1565c0; }
-.conf-speculative { background: #f3f3f3; color: #757575; }
+.workload-summary { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; }
+.workload-stats { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.workload-stat { display: flex; align-items: baseline; gap: 5px; }
+.ws-num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.4rem; color: var(--navy); font-weight: 400; }
+.ws-num.ws-active { color: var(--coral); }
+.ws-label { font-size: 0.75rem; color: var(--slate); text-transform: uppercase; letter-spacing: 0.05em; }
+.workload-divider { color: var(--border); font-size: 1.2rem; margin: 0 4px; }
+.workload-status { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.8rem; color: var(--slate); margin-bottom: 10px; }
+.ws-status-item { display: flex; align-items: center; gap: 5px; }
+.workload-about { border-top: 1px solid var(--border); padding-top: 10px; }
+.about-toggle { background: none; border: none; font-size: 0.78rem; color: var(--slate); cursor: pointer; padding: 0; font-family: inherit; }
+.about-toggle:hover { color: var(--navy); }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-top">
-    <div class="header-brand">
-      <h1>Portsmouth <span>Housing Action Plan</span></h1>
-      <span class="header-badge">Action Explorer</span>
+    <div>
+      <div class="header-brand">
+        <h1>Portsmouth <span>Housing Action Plan</span></h1>
+        <span class="header-badge">Action Explorer</span>
+      </div>
+      <div class="header-sub">Comprehensive action items for stakeholder review and prioritization</div>
     </div>
-    <div class="header-toolbar">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search action items..." />
-      </div>
-      <div class="status-filter" id="statusFilter">
-        <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
-        <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">&#10003; Complete</button>
-        <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">&#9680; In Progress</button>
-        <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">&#9675; Early Stage</button>
-        <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">&#8212; Not Started</button>
-      </div>
-      <div class="view-toggle">
-        <button class="view-btn" onclick="openGlossary()">&#128218; Glossary</button>
-        <button class="view-btn active" id="cardsBtn" onclick="setView('cards')">&#9783; Cards</button>
-        <button class="view-btn" id="tableBtn" onclick="setView('table')">&#9776; Table</button>
-        <button class="view-btn" id="yieldBtn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
-        <button class="view-btn" id="yieldBtn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
-      </div>
+    <div class="header-stats">
+      <div class="stat-pill"><strong>130+</strong> Action Items</div>
+      <div class="stat-pill"><strong>13</strong> Categories</div>
+      <div class="stat-pill"><strong>14</strong> Sources</div>
+      <div class="stat-pill new-pill"><strong>23</strong> New Items</div>
+      <div class="stat-pill status-pill"><strong>28</strong> Already Active</div>
     </div>
   </div>
 </header>
 
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search action items, descriptions, sources…" />
+    </div>
+    <div class="status-filter" id="statusFilter">
+      <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
+      <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">✓ Complete</button>
+      <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">◐ In Progress</button>
+      <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">○ Early Stage</button>
+      <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">— Not Started</button>
+    </div>
+    <div class="toolbar-btns">
+      <button class="glossary-btn" onclick="toggleGlossary()">📖 Glossary</button>
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="cards" onclick="setView('cards')"><span class="icon">&#9638;</span> Cards</button>
+        <button class="view-btn" data-view="table" onclick="setView('table')"><span class="icon">&#9776;</span> Table</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="glossary-overlay" id="glossaryOverlay" onclick="if(event.target===this)toggleGlossary()">
+  <div class="glossary-panel">
+    <div class="glossary-header">
+      <h3>📖 Glossary of Terms</h3>
+      <button class="glossary-close" onclick="toggleGlossary()">×</button>
+    </div>
+    <div class="glossary-body">
+      <input type="text" class="glossary-search" id="glossarySearch" placeholder="Filter terms…" oninput="filterGlossary()" />
+      <div id="glossaryEntries"></div>
+    </div>
+  </div>
+</div>
 
 <div class="main-layout">
   <aside class="sidebar" id="sidebar"></aside>
@@ -467,10 +444,6 @@ function renderSidebar() {
   sb.innerHTML = h;
 }
 
-var yieldSortActive = false;
-function sortYield() { yieldSortActive = !yieldSortActive; renderContent(); }
-
-
 function getFiltered() {
   return DATA.filter(item => {
     if (activeCategory!=='all' && item.category!==activeCategory) return false;
@@ -484,7 +457,7 @@ function getFiltered() {
       return hay.includes(searchQuery);
     }
     return true;
-  }).sort(function(a,b){ if(!yieldSortActive) return 0; var aY=EVALUATIONS[slugify(a.action)]&&EVALUATIONS[slugify(a.action)].yieldType?1:0; var bY=EVALUATIONS[slugify(b.action)]&&EVALUATIONS[slugify(b.action)].yieldType?1:0; return bY-aY; });
+  });
 }
 
 function setCategory(c) { activeCategory=c; renderSidebar(); renderContent(); }
@@ -522,7 +495,7 @@ function renderContent() {
 
   // Revision banner always shown
   h += `<div class="revision-banner">
-    <span class="rev-date">Version 2 — February 21, 2026</span><br>
+    <span class="rev-date">Version 2 — February 20, 2026</span><br>
     <div class="rev-content" id="revContent">
     <strong>Revision history:</strong> v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022. v1.1 (Feb 10) status audit adding 3 items to 122. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.3 (Feb 17) pros/cons analysis added for all items. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added.
     <div class="ai-note">This module was developed with AI assistance. Claude by Anthropic served as the primary AI model for data structuring, analysis, pros/cons generation, and HTML development. Reviewer feedback was gathered from multiple sources including AI-assisted reviews. All content reflects Progress Portsmouth's research, policy positions, and editorial judgment — AI tools were used to accelerate production, not to substitute for local knowledge or advocacy strategy.</div>
@@ -531,38 +504,40 @@ function renderContent() {
   </div>`;
 
   if (activeCategory==='all' && !searchQuery && statusFilter==='all') {
-    var alreadyActive = DATA.filter(function(d){return d.status&&d.status!=='not-started'&&d.status!=='';}).length;
-    var notYet = DATA.length - alreadyActive;
-    var sc = {};
-    DATA.forEach(function(item){ sc[item.status] = (sc[item.status]||0)+1; });
-    h += '<div class="workload-summary">';
-    h += '<div class="workload-stats">';
-    h += '<div class="workload-stat"><span class="ws-num">' + DATA.length + '</span><span class="ws-label">Action Items</span></div>';
-    h += '<div class="workload-divider">&#183;</div>';
-    h += '<div class="workload-stat"><span class="ws-num">13</span><span class="ws-label">Categories</span></div>';
-    h += '<div class="workload-divider">&#183;</div>';
-    h += '<div class="workload-stat"><span class="ws-num ws-active">' + alreadyActive + '</span><span class="ws-label">Already Active</span></div>';
-    h += '<div class="workload-divider">&#183;</div>';
-    h += '<div class="workload-stat"><span class="ws-num">' + notYet + '</span><span class="ws-label">Not Yet Started</span></div>';
-    h += '</div>';
-    h += '<div class="workload-status">';
-    h += '<span class="ws-status-item"><span class="status-dot complete"></span> Complete (' + (sc['complete']||0) + ')</span>';
-    h += '<span class="ws-status-item"><span class="status-dot in-progress"></span> In Progress (' + (sc['in-progress']||0) + ')</span>';
-    h += '<span class="ws-status-item"><span class="status-dot early-stage"></span> Early Stage (' + (sc['early-stage']||0) + ')</span>';
-    h += '<span class="ws-status-item"><span class="status-dot not-started"></span> Not Started (' + notYet + ')</span>';
-    h += '</div>';
-    h += '<div class="workload-about"><button class="about-toggle" onclick="var d=document.getElementById(\'aboutDetail\');if(d.style.display===\'none\'){d.style.display=\'block\';this.textContent=\'About this module \u25b4\';}else{d.style.display=\'none\';this.textContent=\'About this module \u25be\';}">About this module &#9662;</button>';
-    h += '<div id="aboutDetail" style="display:none;margin-top:12px;font-size:0.82rem;color:var(--slate);line-height:1.6;">';
-    h += '<p><strong>Sources:</strong> Comparable city plans (Keene, South Portland, Burien), Housing Blue Ribbon Committee work plan, Planning Board recommendations, Places to Live Dialogue, 2022 RKG Housing Market Study, reviewer feedback, and advocate input.</p>';
-    h += '<p><strong>Key context:</strong> Portsmouth vacancy rate 1.86%, below the 4-6% functional threshold. RKG projects demand for 3,124 additional units, 52% at 80% AMI or below. GIS analysis shows 85.8% of residential land zoned exclusively single-family, 69.9% of parcels out of compliance.</p>';
-    h += '</div></div>';
-    h += '</div>';
+    const statusCounts = {};
+    DATA.forEach(item => { statusCounts[item.status] = (statusCounts[item.status]||0)+1; });
+    const complete = statusCounts['complete']||0;
+    const inProgress = statusCounts['in-progress']||0;
+    const early = statusCounts['early-stage']||0;
+    const notStarted = statusCounts['not-started']||statusCounts['']||DATA.filter(d=>!d.status||d.status==='not-started').length;
+    const alreadyActive = DATA.filter(d=>d.status&&d.status!=='not-started'&&d.status!=='').length;
+    const notYet = DATA.length - alreadyActive;
+    h += `<div class="workload-summary">
+      <div class="workload-stats">
+        <div class="workload-stat"><span class="ws-num">${DATA.length}</span><span class="ws-label">Action Items</span></div>
+        <div class="workload-divider">·</div>
+        <div class="workload-stat"><span class="ws-num">13</span><span class="ws-label">Categories</span></div>
+        <div class="workload-divider">·</div>
+        <div class="workload-stat"><span class="ws-num ws-active">${alreadyActive}</span><span class="ws-label">Already Active</span></div>
+        <div class="workload-divider">·</div>
+        <div class="workload-stat"><span class="ws-num">${notYet}</span><span class="ws-label">Not Yet Started</span></div>
+      </div>
+      <div class="workload-status">
+        <span class="ws-status-item"><span class="status-dot complete"></span> Complete (${complete})</span>
+        <span class="ws-status-item"><span class="status-dot in-progress"></span> In Progress (${inProgress})</span>
+        <span class="ws-status-item"><span class="status-dot early-stage"></span> Early Stage (${early})</span>
+        <span class="ws-status-item"><span class="status-dot not-started"></span> Not Started (${notYet})</span>
+      </div>
+      <div class="workload-about">
+        <button class="about-toggle" onclick="const d=document.getElementById('aboutDetail');const b=this;if(d.style.display==='none'){d.style.display='block';b.textContent='About this module ▴';}else{d.style.display='none';b.textContent='About this module ▾';}">About this module ▾</button>
+        <div id="aboutDetail" style="display:none;margin-top:12px;font-size:0.82rem;color:var(--slate);line-height:1.6;">
+          <p><strong>Sources:</strong> Comparable city plans (Keene, South Portland, Burien), Housing Blue Ribbon Committee work plan, Planning Board recommendations, Places to Live Dialogue, 2022 RKG Housing Market Study, reviewer feedback, and advocate input.</p>
+          <p><strong>Key context:</strong> Portsmouth's 1.86% vacancy rate is below the 4–6% functional market threshold. RKG projects demand for 3,124 additional units, 52% at ≤80% AMI. GIS analysis shows 85.8% of residential land is zoned exclusively for single-family homes, with 69.9% of parcels already out of compliance.</p>
+        </div>
+      </div>
+    </div>`;
   }
-  // Yield legend if any items have yield data
-  const hasYield = filtered.some(item => EVALUATIONS[slugify(item.action)] && EVALUATIONS[slugify(item.action)].yieldType);
-  if (hasYield) {
-    h += '<div class="yield-legend">&#9670; Gold diamond = housing yield estimate available &mdash; expand card for details</div>';
-  }
+
   if (!filtered.length) {
     h += `<div class="no-results"><div class="icon">🔍</div><div>No action items match your filters.</div></div>`;
     content.innerHTML = h; return;
@@ -591,7 +566,7 @@ function renderContent() {
         const bl = (item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress portsmouth')||item.sources.toLowerCase().includes('reviewer'))) ? 'New' : 'RKG 2022';
         badge = `<span class="new-badge badge-new">${bl}</span>`;
       }
-      h += `<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span><span class="card-title">${item.action}</span>${badge}${EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType ? '<span class="yield-pill">&#9670;</span>' : ''}<span class="card-arrow">&#9660;</span></div><div class="card-body">`;
+      h += `<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span><span class="card-title">${item.action}</span>${badge}<span class="card-arrow">&#9660;</span></div><div class="card-body">`;
       if(hs && item.status_detail) h += `<div class="status-detail-box sd-${s}"><div class="sd-label">${STATUS_DETAIL_LABELS[s]}</div><div class="sd-text">${item.status_detail}</div></div>`;
       h += pcHtml(item);
       if(item.description) h += `<div class="card-field"><div class="card-field-label">Description</div><div class="card-field-value">${item.description}</div></div>`;
@@ -651,12 +626,12 @@ function renderContent() {
   h += `</div>`;
 
   // Table view
-  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px;cursor:pointer;text-align:center;color:var(--gold)" onclick="sortTable('yield')" title="Sort: yield items first">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
+  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
   let tn=0;
   catList.forEach(cat => {
     const icon = CAT_ICONS[cat]||'📌';
     const ci = groups[cat];
-    h += `<tr class="cat-row"><td colspan="7">${icon} ${cat} (${ci.length})</td></tr>`;
+    h += `<tr class="cat-row"><td colspan="6">${icon} ${cat} (${ci.length})</td></tr>`;
     ci.forEach(item => {
       tn++;
       const s=item.status||'';
@@ -679,60 +654,13 @@ function renderContent() {
         if(c.length) pc+=`<span class="con-label">▼ Against:</span> ${c[0]}`;
         pc+='</div>';
       }
-      h += `<tr class="${rc}"><td style="text-align:center;color:var(--gold)">${EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType ? '&#9670;' : ''}</td><td>${tn}</td><td><strong>${item.action}</strong>${ne}</td><td>${item.description.substring(0,200)}${item.description.length>200?'…':''}</td><td>${sc}</td><td>${pc}</td><td style="font-size:0.78rem">${item.sources}</td></tr>`;
+      h += `<tr class="${rc}"><td>${tn}</td><td><strong>${item.action}</strong>${ne}</td><td>${item.description.substring(0,200)}${item.description.length>200?'…':''}</td><td>${sc}</td><td>${pc}</td><td style="font-size:0.78rem">${item.sources}</td></tr>`;
     });
   });
   h += `</tbody></table></div>`;
 
-  // Yield view
-  const yieldItems = filtered.filter(function(item) {
-    var ev = EVALUATIONS[slugify(item.action)];
-    return ev && ev.yieldType;
-  });
-  if (currentView === 'yield') {
-    var yLow = 0, yHigh = 0, yCount = yieldItems.length;
-    yieldItems.forEach(function(item) {
-      var ev = EVALUATIONS[slugify(item.action)];
-      var nums = (ev.yieldEstimate||'').match(/\d+/g);
-      if (nums && nums.length >= 2) { yLow += parseInt(nums[0]); yHigh += parseInt(nums[1]); }
-    });
-    h += '<div class="yield-view">';
-    h += '<div class="yield-view-header">';
-    h += '<div class="yield-view-title">&#9670; Housing Yield Estimates</div>';
-    h += '<div class="yield-view-meta">' + yCount + ' of ' + filtered.length + ' items evaluated';
-    if (yCount > 0) h += ' &nbsp;·&nbsp; Estimated potential: <strong>' + yLow + '&ndash;' + yHigh + ' units</strong> <span class="yield-caveat">(varying timeframes &mdash; not directly additive)</span>';
-    h += '</div>';
-    h += '<div class="yield-view-note">Based on Byron Matto GIS parcel analysis (Jan 2026) and RKG Housing Market Study (2022). High/medium confidence items use parcel-level data; speculative items are enabling actions without direct unit counts.</div>';
-    h += '</div>';
-    if (yieldItems.length === 0) {
-      h += '<div class="no-results"><div class="icon">&#9670;</div><div>No yield estimates in current filter.</div></div>';
-    } else {
-      h += '<table class="yield-table"><thead><tr>';
-      h += '<th>Action Item</th><th style="width:110px">Yield Type</th><th style="width:160px">Estimate</th><th style="width:100px">Timeframe</th><th style="width:100px">Confidence</th><th style="width:140px">Responsible Party</th>';
-      h += '</tr></thead><tbody>';
-      yieldItems.forEach(function(item) {
-        var ev = EVALUATIONS[slugify(item.action)];
-        var conf = ev.yieldConfidence || '';
-        var confClass = conf === 'high' ? 'conf-high' : conf === 'medium' ? 'conf-medium' : 'conf-speculative';
-        h += '<tr>';
-        h += '<td><strong>' + item.action + '</strong>';
-        if (ev.keyConcern) h += '<div class="yield-concern">&#9888; ' + ev.keyConcern + '</div>';
-        if (ev.yieldNotes) h += '<div class="yield-notes-row">' + ev.yieldNotes + '</div>';
-        h += '</td>';
-        h += '<td><span class="yield-type-badge">' + (ev.yieldType||'') + '</span></td>';
-        h += '<td><strong>' + (ev.yieldEstimate||'&mdash;') + '</strong></td>';
-        h += '<td>' + (ev.yieldTimeframe||'&mdash;') + '</td>';
-        h += '<td><span class="conf-badge ' + confClass + '">' + (conf||'&mdash;') + '</span></td>';
-        h += '<td>' + (ev.responsibleParty||'&mdash;') + '</td>';
-        h += '</tr>';
-      });
-      h += '</tbody></table>';
-    }
-    h += '</div>';
-  }
-
   h += `<div class="version-note">
-    📌 Version 2 — February 21, 2026 — Includes reviewer feedback integration, Byron Matto GIS zoning analysis, governance items, legal corrections, glossary<br>
+    📌 Version 2 — February 20, 2026 — Includes reviewer feedback integration, Byron Matto GIS zoning analysis, governance items, legal corrections, glossary<br>
     Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)
   </div>`;
 
