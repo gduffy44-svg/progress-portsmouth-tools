@@ -803,7 +803,7 @@ function renderFiscal() {
   var totalUnits = 0, totalRevenue = 0, rowNum = 0;
   var byType = {};
 
-  ACTIONS.forEach(function(action) {
+  DATA.forEach(function(action) {
     var ev = EVALUATIONS[slugify(action.action)];
     if (!ev || !ev.yieldType) return;
     if (ev.disposition === 'removed') return;
