@@ -33,7 +33,7 @@
     "status": "in-progress",
     "status_detail": "Planning Board reviewing amendments for HB 577 (eff. 7/1/25) and SB 284 (eff. 9/13/25); staff markup prepared Nov 2025; includes detached ADUs by right, 950 sq ft max",
     "pros": [
-      "Incremental density that fits neighborhood scale \u2014 lowest-friction path to more housing",
+      "Incremental density that fits neighborhood scale — lowest-friction path to more housing",
       "Enables homeowners to generate income, helping them stay in place",
       "Uses existing infrastructure with minimal marginal cost to the city"
     ],
@@ -77,20 +77,20 @@
     "status": "in-progress",
     "status_detail": "Two tracks: (a) SB 284 state mandate caps parking at 1/unit; (b) Council directed (Sept 2025) replacing parking CUP with site plan waiver; staff drafting revisions",
     "pros": [
-      "Reduces development cost \u2014 structured parking adds $30K-$60K per space",
+      "Reduces development cost — structured parking adds $30K-$60K per space",
       "Frees land area for housing rather than surface lots",
       "Aligned with state mandate (SB 284) capping parking at 1 per unit"
     ],
     "cons": [
       "On-street parking pressure in established neighborhoods is a real concern",
       "Residents with cars still need somewhere to park regardless of requirements",
-      "Political sensitivity \u2014 parking is often the loudest issue at public hearings"
+      "Political sensitivity — parking is often the loudest issue at public hearings"
     ]
   },
   {
     "category": "Zoning & Land Use",
     "action": "Missing middle housing allowances",
-    "description": "Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. Form-based standards ensure neighborhood compatibility. GIS analysis shows Portsmouth dedicates 85.8% of residential land (2,276 acres across R, SRA, SRB zones) exclusively to single-family homes while only 14.2% (375 acres in GRA/GRB/GRC) permits the multifamily types most residents can afford \u2014 a 6:1 disparity. Allowing missing middle housing in these zones unlocks the city's largest untapped capacity.",
+    "description": "Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. Form-based standards ensure neighborhood compatibility. GIS analysis shows Portsmouth dedicates 85.8% of residential land (2,276 acres across R, SRA, SRB zones) exclusively to single-family homes while only 14.2% (375 acres in GRA/GRB/GRC) permits the multifamily types most residents can afford — a 6:1 disparity. Allowing missing middle housing in these zones unlocks the city's largest untapped capacity.",
     "target": "Ordinance adoption permitting 2-4 unit buildings in all residential zones",
     "metric": "Number of 2-4 unit permits issued; units produced by type",
     "sources": "HAP Narrative; South Portland 2A; Burien D1; 2016 Housing Committee; 2017 Listens; Byron Matto GIS analysis (Jan 2026)",
@@ -100,9 +100,9 @@
     "status_detail": "",
     "pros": [
       "Addresses the gap between single-family and large apartments that barely exists in Portsmouth",
-      "Historically consistent \u2014 many Portsmouth neighborhoods were originally built with duplexes and triplexes",
+      "Historically consistent — many Portsmouth neighborhoods were originally built with duplexes and triplexes",
       "Gentle density that can be designed to look like large single-family homes",
-      "GIS data confirms multifamily-allowed zones generate 5.71x more tax revenue per acre \u2014 missing middle housing directly improves fiscal sustainability"
+      "GIS data confirms multifamily-allowed zones generate 5.71x more tax revenue per acre — missing middle housing directly improves fiscal sustainability"
     ],
     "cons": [
       "Existing homeowners may oppose by-right allowances in SF zones",
@@ -122,7 +122,7 @@
     "status": "in-progress",
     "status_detail": "GNOD includes density bonus (5 stories/80 units with public realm improvements; 6 stories/120 units with workforce housing); citywide expansion under consideration via HOP 2.0",
     "pros": [
-      "Market-driven tool \u2014 developers voluntarily opt in when the bonus makes projects viable",
+      "Market-driven tool — developers voluntarily opt in when the bonus makes projects viable",
       "Produces affordable units without direct public expenditure",
       "GNOD provides working local precedent to build on"
     ],
@@ -157,7 +157,7 @@
   {
     "category": "Zoning & Land Use",
     "action": "Lot size and dimensional requirement updates",
-    "description": "Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones for infill development. GIS analysis provides zone-specific data: R Zone currently requires 5-acre minimums (proposed: 1 acre), SRA requires 1-acre minimums (proposed: 15,000 sf), SRB requires 15,000 sf (proposed: 7,500 sf). These reductions would bring the majority of currently nonconforming parcels into compliance \u2014 69.9% of single-family zone parcels violate current lot size or use requirements (R zone: 85.4%, SRB: 71.8%, SRA: 50.5%). The actual nonconformity rate likely exceeds 80% when setback and lot coverage violations are included.",
+    "description": "Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones for infill development. GIS analysis provides zone-specific data: R Zone currently requires 5-acre minimums (proposed: 1 acre), SRA requires 1-acre minimums (proposed: 15,000 sf), SRB requires 15,000 sf (proposed: 7,500 sf). These reductions would bring the majority of currently nonconforming parcels into compliance — 69.9% of single-family zone parcels violate current lot size or use requirements (R zone: 85.4%, SRB: 71.8%, SRA: 50.5%). The actual nonconformity rate likely exceeds 80% when setback and lot coverage violations are included.",
     "target": "",
     "metric": "Newly buildable parcels created by changes",
     "sources": "HAP Narrative; Keene 3B; Byron Matto GIS analysis (Jan 2026)",
@@ -166,8 +166,8 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Brings thousands of legally nonconforming parcels into compliance \u2014 ends a de facto freeze on rebuilding, expanding, or modifying homes in most residential neighborhoods",
-      "Enables lot splits that create new housing opportunities using existing infrastructure \u2014 roads, utilities, and services already in place",
+      "Brings thousands of legally nonconforming parcels into compliance — ends a de facto freeze on rebuilding, expanding, or modifying homes in most residential neighborhoods",
+      "Enables lot splits that create new housing opportunities using existing infrastructure — roads, utilities, and services already in place",
       "Reduces variance applications, saving homeowner cost and ZBA staff time while making housing evolution predictable rather than discretionary"
     ],
     "cons": [
@@ -188,7 +188,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Creates community-oriented housing with shared green space \u2014 appealing to seniors and small households",
+      "Creates community-oriented housing with shared green space — appealing to seniors and small households",
       "Lower per-unit costs than conventional construction",
       "Gentle density model that tends to generate less neighborhood opposition"
     ],
@@ -215,7 +215,7 @@
       "GNOD provides working local model with three compliance paths"
     ],
     "cons": [
-      "If set too high, can discourage development altogether \u2014 calibration is critical",
+      "If set too high, can discourage development altogether — calibration is critical",
       "NH has no state enabling statute, creating potential legal vulnerability",
       "Small project thresholds can disproportionately burden smaller developers"
     ]
@@ -230,9 +230,9 @@
     "notes": "",
     "is_new": false,
     "status": "complete",
-    "status_detail": "Form-based code adopted in multiple Portsmouth districts (CD4, CD5, Gateway). However, the implementation did not carry through the original Duany intent of deregulating uses \u2014 making the FBC overly restrictive in practice. Reform of existing FBC to deregulate use allowances is the remaining action.",
+    "status_detail": "Form-based code adopted in multiple Portsmouth districts (CD4, CD5, Gateway). However, the implementation did not carry through the original Duany intent of deregulating uses — making the FBC overly restrictive in practice. Reform of existing FBC to deregulate use allowances is the remaining action.",
     "pros": [
-      "FBC already adopted \u2014 reform is easier than starting from scratch",
+      "FBC already adopted — reform is easier than starting from scratch",
       "Deregulating uses while controlling form can enable housing diversity by right",
       "Reduces CUP and variance burden on both applicants and boards"
     ],
@@ -260,7 +260,7 @@
     ],
     "cons": [
       "Overlay complexity can confuse applicants and make the zoning code harder to navigate",
-      "Effectiveness depends on where overlays are mapped \u2014 wrong locations yield no projects",
+      "Effectiveness depends on where overlays are mapped — wrong locations yield no projects",
       "May concentrate affordable housing in specific areas rather than distributing citywide"
     ]
   },
@@ -304,7 +304,7 @@
     ],
     "cons": [
       "Parking and traffic impacts of commercial activity in residential areas",
-      "Code compliance complexity \u2014 units must meet both residential and commercial standards",
+      "Code compliance complexity — units must meet both residential and commercial standards",
       "Risk of units being used primarily as commercial space rather than housing"
     ]
   },
@@ -349,13 +349,13 @@
     "cons": [
       "PDA governance structure may not prioritize or permit residential use",
       "Environmental remediation concerns on former military base",
-      "Isolated from Portsmouth's walkable core \u2014 creates a separate enclave"
+      "Isolated from Portsmouth's walkable core — creates a separate enclave"
     ]
   },
   {
     "category": "Zoning & Land Use",
     "action": "Allow subdivision of existing larger houses",
-    "description": "Amend zoning to permit subdivision of larger single-family homes into multiple units with appropriate restrictions. GIS analysis highlights that allowing lot splits in single-family zones could be a significant financial benefit for existing property owners \u2014 particularly older homeowners identified in Portsmouth Listens sessions who want to downsize but cannot find options in the current market. Lot splits allow these homeowners to leverage a lifetime of property investment to facilitate their own downsizing while simultaneously increasing housing supply and city tax revenue.",
+    "description": "Amend zoning to permit subdivision of larger single-family homes into multiple units with appropriate restrictions. GIS analysis highlights that allowing lot splits in single-family zones could be a significant financial benefit for existing property owners — particularly older homeowners identified in Portsmouth Listens sessions who want to downsize but cannot find options in the current market. Lot splits allow these homeowners to leverage a lifetime of property investment to facilitate their own downsizing while simultaneously increasing housing supply and city tax revenue.",
     "target": "",
     "metric": "Subdivision permits; units created",
     "sources": "Bill Bowen; Keene 2A; Byron Matto GIS analysis (Jan 2026); 2017 Listens",
@@ -364,7 +364,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Many larger homes were historically multifamily \u2014 re-conversion restores original use",
+      "Many larger homes were historically multifamily — re-conversion restores original use",
       "Adds units without new construction or changes to building footprint",
       "Preserves neighborhood character while increasing housing supply"
     ],
@@ -393,7 +393,7 @@
     "cons": [
       "Enforcement and quality control are difficult in informal arrangements",
       "Landlord-tenant law complications for owner-occupied room rentals",
-      "Limited scale \u2014 helps individuals but doesn't significantly move supply numbers"
+      "Limited scale — helps individuals but doesn't significantly move supply numbers"
     ]
   },
   {
@@ -431,11 +431,11 @@
     "status_detail": "",
     "pros": [
       "Lower per-unit cost makes smaller units more affordable to both build and rent",
-      "Matches demographics \u2014 85% of projected demand is from 1-2 person households",
+      "Matches demographics — 85% of projected demand is from 1-2 person households",
       "Efficient use of land in high-cost locations"
     ],
     "cons": [
-      "Market viability is uncertain \u2014 further study needed to confirm developer interest",
+      "Market viability is uncertain — further study needed to confirm developer interest",
       "Very small units may not be livable long-term, leading to high turnover",
       "Risk of being perceived as substandard housing rather than intentional design"
     ]
@@ -443,21 +443,21 @@
   {
     "category": "Zoning & Land Use",
     "action": "Comprehensive zoning audit",
-    "description": "Full audit of zoning ordinance identifying provisions that constrain housing production. Prioritize amendments. GIS analysis of NH State data quantifies the compliance crisis: 69.9% of parcels in single-family zones violate current zoning requirements \u2014 1,783 parcels have lots smaller than minimum size requirements, 435 have incompatible land uses. Zone-specific violation rates: R zone 85.4%, SRB 71.8%, SRA 50.5%. This likely exceeds 80% when setback and lot coverage violations are included. The city is enforcing zoning that the majority of its own residential properties violate.",
+    "description": "Full audit of zoning ordinance identifying provisions that constrain housing production. Prioritize amendments. GIS analysis of NH State data quantifies the compliance crisis: 69.9% of parcels in single-family zones violate current zoning requirements — 1,783 parcels have lots smaller than minimum size requirements, 435 have incompatible land uses. Zone-specific violation rates: R zone 85.4%, SRB 71.8%, SRA 50.5%. This likely exceeds 80% when setback and lot coverage violations are included. The city is enforcing zoning that the majority of its own residential properties violate.",
     "target": "",
     "metric": "Audit completed; constraining provisions identified and amended",
     "sources": "HAP Narrative; Progress Tracker; Byron Matto GIS analysis (Jan 2026)",
     "notes": "",
     "is_new": false,
     "status": "in-progress",
-    "status_detail": "HOP 2.0 grant ($65,321, Nov 2024) engaged RKG Associates, but the July 2025 scope was narrow \u2014 evaluating whether existing density bonuses are working, not a comprehensive zoning audit. RKG proposed changes to improve the bonus structure, but those recommendations have not been reviewed or approved by the Planning Board or Council.",
+    "status_detail": "HOP 2.0 grant ($65,321, Nov 2024) engaged RKG Associates, but the July 2025 scope was narrow — evaluating whether existing density bonuses are working, not a comprehensive zoning audit. RKG proposed changes to improve the bonus structure, but those recommendations have not been reviewed or approved by the Planning Board or Council.",
     "pros": [
       "Identifies the full scope of zoning barriers to housing in one systematic review",
       "Creates a roadmap for prioritized amendments rather than piecemeal changes",
       "Provides evidence base that reduces political risk of individual reforms"
     ],
     "cons": [
-      "Comprehensive audits are time-intensive \u2014 risk of delaying action on known barriers",
+      "Comprehensive audits are time-intensive — risk of delaying action on known barriers",
       "HOP 2.0 / RKG scope was narrower than expected; ensuring breadth is challenging",
       "Audit findings may overwhelm limited staff capacity to implement changes"
     ]
@@ -487,7 +487,7 @@
   {
     "category": "Zoning & Land Use",
     "action": "TOD overlay near transit stops and corridors",
-    "description": "Explore transit-oriented development strategies for areas near transit stops and corridors. Portsmouth lacks a functional public transit system that would support traditional TODs where parking becomes unnecessary for daily life. The only viable traditional TOD location \u2014 the C&J Bus Terminal \u2014 is at Pease, where housing is not allowed. Some housing along Sherburne Road is within \u00bc mile of the bus terminal but redevelopment opportunity is limited. Reframe toward ensuring transit stops are co-located with areas of dense and affordable housing, and that future transit planning prioritizes housing-rich corridors.",
+    "description": "Explore transit-oriented development strategies for areas near transit stops and corridors. Portsmouth lacks a functional public transit system that would support traditional TODs where parking becomes unnecessary for daily life. The only viable traditional TOD location — the C&J Bus Terminal — is at Pease, where housing is not allowed. Some housing along Sherburne Road is within ¼ mile of the bus terminal but redevelopment opportunity is limited. Reframe toward ensuring transit stops are co-located with areas of dense and affordable housing, and that future transit planning prioritizes housing-rich corridors.",
     "target": "",
     "metric": "TOD overlay adopted; units permitted within overlay; transit ridership",
     "sources": "South Portland 1C; Keene 3B; Burien C2; HC Work Plan (PtL Goal 4)",
@@ -496,7 +496,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Good long-term principle \u2014 co-locating housing and transit reduces car dependence",
+      "Good long-term principle — co-locating housing and transit reduces car dependence",
       "Can guide future transit planning toward housing-rich corridors",
       "Positions Portsmouth for state or federal transit investment"
     ],
@@ -509,7 +509,7 @@
   {
     "category": "Zoning & Land Use",
     "action": "Short-term rental regulation",
-    "description": "Short-term rentals are already largely banned in Portsmouth. Any future policy review should proceed with caution \u2014 reopening the STR regulatory framework could risk overturning the existing ban. Monitor enforcement of current regulations and track any impact on long-term rental supply without initiating new regulatory action that could destabilize the current policy.",
+    "description": "Short-term rentals are already largely banned in Portsmouth. Any future policy review should proceed with caution — reopening the STR regulatory framework could risk overturning the existing ban. Monitor enforcement of current regulations and track any impact on long-term rental supply without initiating new regulatory action that could destabilize the current policy.",
     "target": "",
     "metric": "STR registrations; units returned to long-term market",
     "sources": "South Portland 2F; Burien D3; HC Work Plan",
@@ -518,7 +518,7 @@
     "status": "complete",
     "status_detail": "STRs already largely banned in Portsmouth. Colleague advises against reopening the topic.",
     "pros": [
-      "STR ban is already in place \u2014 no action needed to achieve the policy goal",
+      "STR ban is already in place — no action needed to achieve the policy goal",
       "Monitoring enforcement protects long-term rental supply without new regulation",
       "Avoids political risk of reopening the regulatory framework"
     ],
@@ -541,7 +541,7 @@
     "status_detail": "GNOD partially addresses for specific parcels; state mandate (eff. July 2026) will require multifamily by right in all commercial zones; implementation details still being legislated",
     "pros": [
       "O/R zones have infrastructure and are often underutilized for their current permitted uses",
-      "Pending state legislation may require multifamily in commercial zones \u2014 proactive adoption positions Portsmouth ahead of potential mandate rather than reacting to it",
+      "Pending state legislation may require multifamily in commercial zones — proactive adoption positions Portsmouth ahead of potential mandate rather than reacting to it",
       "Enables ground-up multifamily rather than just conversions"
     ],
     "cons": [
@@ -611,7 +611,7 @@
       "Reduces stigma associated with concentrated affordable housing"
     ],
     "cons": [
-      "Complex to administer \u2014 monitoring multiple AMI tiers across developments",
+      "Complex to administer — monitoring multiple AMI tiers across developments",
       "Development economics are harder to pencil with mixed-income requirements",
       "Market-rate buyers may resist mixed-income communities, affecting sales velocity"
     ]
@@ -628,7 +628,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Preserves historic buildings while adding housing \u2014 a double policy win",
+      "Preserves historic buildings while adding housing — a double policy win",
       "RSA 79-E provides existing tax incentive framework to leverage",
       "Often faster and less costly than new construction"
     ],
@@ -650,14 +650,14 @@
     "status": "early-stage",
     "status_detail": "Workforce housing provisions exist in GNOD but no standalone citywide workforce housing ordinance per RSA 674:58-61 framework",
     "pros": [
-      "RSA 674:58-61 provides clear state legal framework \u2014 reduces legal risk",
+      "RSA 674:58-61 provides clear state legal framework — reduces legal risk",
       "Establishes a citywide baseline rather than relying on project-by-project negotiation",
       "Creates affirmative obligation to provide reasonable opportunities for workforce housing"
     ],
     "cons": [
       "NH workforce housing statute is primarily a defense against exclusionary zoning, not a production tool",
       "May not produce units in practice without complementary incentives",
-      "GNOD already includes workforce provisions \u2014 citywide extension may face political resistance"
+      "GNOD already includes workforce provisions — citywide extension may face political resistance"
     ]
   },
   {
@@ -672,12 +672,12 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Addresses fastest-growing demographic \u2014 seniors 65+ are a large and growing share of Portsmouth",
+      "Addresses fastest-growing demographic — seniors 65+ are a large and growing share of Portsmouth",
       "Lower parking demand for senior housing makes it easier to build",
       "Encourages turnover of single-family homes to younger families"
     ],
     "cons": [
-      "Age-restricted housing reduces flexibility \u2014 units can't serve other populations",
+      "Age-restricted housing reduces flexibility — units can't serve other populations",
       "Risk of oversupply in age-restricted category while other needs go unmet",
       "Fair Housing Act limits on age restrictions require careful legal compliance"
     ]
@@ -694,7 +694,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Market strongly underproduces 2-3 bedroom units \u2014 incentives address a documented gap",
+      "Market strongly underproduces 2-3 bedroom units — incentives address a documented gap",
       "Retains and attracts families with children, supporting school enrollment and community vitality",
       "RKG data shows increasing family households despite limited supply"
     ],
@@ -707,27 +707,27 @@
   {
     "action": "Single-family zone reform strategy (R, SRA, SRB)",
     "category": "Zoning & Land Use",
-    "description": "Comprehensive reform of Portsmouth's three single-family-only zones, which together represent 2,276 acres \u2014 85.8% of all residential land. Only 375 acres (14.2%) currently allow the multifamily housing types most residents can afford. Zone-specific proposals based on GIS analysis of NH State data: R Zone (498 acres, currently 5-acre minimum): reduce to 1-acre minimums, allow two-family by right \u2014 potential increase from 41 parcels to 250+ housing units. SRA Zone (589 acres, currently 1-acre minimum): reduce to 15,000 sf minimums, allow two-family and small multifamily \u2014 potential 3x density increase while maintaining neighborhood character. SRB Zone (1,189 acres, currently 15,000 sf minimum): reduce to 7,500 sf minimums, allow two-family by right, multifamily by special exception \u2014 brings 1,672 undersized parcels into compliance and potentially doubles housing capacity. Additionally, allow ADUs in single-residence zones to use GRA dimensional rules, removing the variance requirement that currently blocks ADU construction on the majority of nonconforming lots.",
+    "description": "Comprehensive reform of Portsmouth's three single-family-only zones, which together represent 2,276 acres — 85.8% of all residential land. Only 375 acres (14.2%) currently allow the multifamily housing types most residents can afford. Zone-specific proposals based on GIS analysis of NH State data: R Zone (498 acres, currently 5-acre minimum): reduce to 1-acre minimums, allow two-family by right — potential increase from 41 parcels to 250+ housing units. SRA Zone (589 acres, currently 1-acre minimum): reduce to 15,000 sf minimums, allow two-family and small multifamily — potential 3x density increase while maintaining neighborhood character. SRB Zone (1,189 acres, currently 15,000 sf minimum): reduce to 7,500 sf minimums, allow two-family by right, multifamily by special exception — brings 1,672 undersized parcels into compliance and potentially doubles housing capacity. Additionally, allow ADUs in single-residence zones to use GRA dimensional rules, removing the variance requirement that currently blocks ADU construction on the majority of nonconforming lots.",
     "target": "Phase 1: Council workshop presentation of fiscal and compliance data (2026). Phase 2: Draft zone-specific amendments with public input. Phase 3: Planning Board review and Council adoption.",
     "metric": "Parcels brought into zoning compliance per zone; net new housing units permitted in reformed zones; tax revenue per acre trend; lot splits and two-family conversions per year.",
-    "notes": "This addresses the structural gap in the current Housing Committee approach, which has focused on developer incentives and city-owned property partnerships \u2014 valuable tools, but they operate within the 14.2% of residential land that already allows multifamily. The 85.8% locked in single-family-only zoning is the largest untapped opportunity for housing production and fiscal sustainability. An additional equity dimension: allowing gentle density through smaller lot sizes and additional units is a potential financial windfall for existing property owners. Portsmouth Listens sessions revealed significant numbers of older homeowners who cannot find ways to downsize given current market constraints. Lot splits and conversion rights would allow these homeowners to leverage existing property investment to facilitate their own downsizing \u2014 'like digging up $500K in the backyard' \u2014 while simultaneously increasing housing supply and city tax revenue. The exclusionary history of single-family-only zoning is also relevant: Portsmouth's 85.8% SF-only land allocation closely mirrors the Bay Area's 83% figure documented in UC Berkeley's Othering & Belonging Institute research on the discriminatory origins of single-family zoning.",
+    "notes": "This addresses the structural gap in the current Housing Committee approach, which has focused on developer incentives and city-owned property partnerships — valuable tools, but they operate within the 14.2% of residential land that already allows multifamily. The 85.8% locked in single-family-only zoning is the largest untapped opportunity for housing production and fiscal sustainability. An additional equity dimension: allowing gentle density through smaller lot sizes and additional units is a potential financial windfall for existing property owners. Portsmouth Listens sessions revealed significant numbers of older homeowners who cannot find ways to downsize given current market constraints. Lot splits and conversion rights would allow these homeowners to leverage existing property investment to facilitate their own downsizing — 'like digging up $500K in the backyard' — while simultaneously increasing housing supply and city tax revenue. The exclusionary history of single-family-only zoning is also relevant: Portsmouth's 85.8% SF-only land allocation closely mirrors the Bay Area's 83% figure documented in UC Berkeley's Othering & Belonging Institute research on the discriminatory origins of single-family zoning.",
     "sources": "Byron Matto GIS analysis (Jan 2026); NH State GIS database; 2017 Listens",
     "is_new": true,
     "status": "",
     "status_detail": "",
     "pros": [
-      "Addresses 85.8% of residential land that current policy ignores \u2014 by far the largest single opportunity for housing production in Portsmouth",
+      "Addresses 85.8% of residential land that current policy ignores — by far the largest single opportunity for housing production in Portsmouth",
       "Brings thousands of legally nonconforming parcels into compliance, ending a de facto freeze on housing evolution in most neighborhoods",
-      "Multifamily zones generate 5.71x more tax revenue per acre ($5.9M vs. $1.0M) \u2014 gentle density directly improves fiscal sustainability for schools, infrastructure, and services",
-      "Creates financial value for existing homeowners through lot splits and conversion rights \u2014 politically aligns reform with property owner self-interest rather than against it",
-      "Reduces per-household infrastructure costs (estimated $44,976 multifamily vs. $51,721 single-family per parcel) \u2014 new housing in reformed zones is cheaper to serve"
+      "Multifamily zones generate 5.71x more tax revenue per acre ($5.9M vs. $1.0M) — gentle density directly improves fiscal sustainability for schools, infrastructure, and services",
+      "Creates financial value for existing homeowners through lot splits and conversion rights — politically aligns reform with property owner self-interest rather than against it",
+      "Reduces per-household infrastructure costs (estimated $44,976 multifamily vs. $51,721 single-family per parcel) — new housing in reformed zones is cheaper to serve"
     ],
     "cons": [
-      "Single-family zone reform is the most politically volatile housing action \u2014 homeowner opposition will be intense and organized in specific neighborhoods",
+      "Single-family zone reform is the most politically volatile housing action — homeowner opposition will be intense and organized in specific neighborhoods",
       "Zone-specific proposals need significant refinement through public process to calibrate lot sizes, unit counts, and design standards to neighborhood context",
-      "Property value effects cut both ways \u2014 existing owners gain development potential but some may resist neighboring density changes",
+      "Property value effects cut both ways — existing owners gain development potential but some may resist neighboring density changes",
       "Implementation requires substantial Planning Board and staff capacity for ordinance drafting, public hearings, and design standard development",
-      "Risk of speculative land acquisition driving up prices before reforms produce actual housing \u2014 needs to be paired with land value capture strategy (#128)"
+      "Risk of speculative land acquisition driving up prices before reforms produce actual housing — needs to be paired with land value capture strategy (#128)"
     ]
   },
   {
@@ -747,7 +747,7 @@
       "Predictable timelines attract more developers to Portsmouth"
     ],
     "cons": [
-      "Faster review must not mean less thorough review \u2014 quality matters",
+      "Faster review must not mean less thorough review — quality matters",
       "Staff capacity may not support expedited timelines without process changes",
       "Prioritizing some projects may delay others, creating equity concerns"
     ]
@@ -764,7 +764,7 @@
     "status": "in-progress",
     "status_detail": "Many ADUs already permitted by right under HB 577 (eff. 7/1/25). Only detached units and those with complexities require administrative approval.",
     "pros": [
-      "Most ADUs are already by-right under HB 577 \u2014 this formalizes existing practice",
+      "Most ADUs are already by-right under HB 577 — this formalizes existing practice",
       "Eliminates board hearing costs and delays for straightforward applications",
       "Frees board time for complex projects that genuinely need deliberation"
     ],
@@ -879,7 +879,7 @@
       "With 60%+ nonconforming properties, the current variance volume is itself evidence of broken standards"
     ],
     "cons": [
-      "Variances exist for a reason \u2014 some projects genuinely need case-by-case review",
+      "Variances exist for a reason — some projects genuinely need case-by-case review",
       "By-right standards must be well-calibrated to avoid unintended development patterns",
       "Reducing variances may be perceived as weakening neighborhood protections"
     ]
@@ -902,7 +902,7 @@
     ],
     "cons": [
       "Lost fee revenue must be absorbed by the general fund or other development",
-      "Fee waivers benefit developers \u2014 no guarantee savings reach end users",
+      "Fee waivers benefit developers — no guarantee savings reach end users",
       "Determining eligibility thresholds (25%+ affordable) adds administrative complexity"
     ]
   },
@@ -931,7 +931,7 @@
   {
     "category": "Permitting & Process",
     "action": "Housing Navigator / dedicated coordinator",
-    "description": "Identify or hire a person on city staff whose job is to understand state laws, financing, developer perspectives, and zoning for housing. Single point of contact. Additional proposals from GIS analysis: defer property taxes for 10 years on ADUs renting at affordable rates, and allow ADUs in single-residence zones to use GRA dimensional rules \u2014 removing the variance requirement that currently blocks ADU construction on the majority of nonconforming single-family lots.",
+    "description": "Identify or hire a person on city staff whose job is to understand state laws, financing, developer perspectives, and zoning for housing. Single point of contact. Additional proposals from GIS analysis: defer property taxes for 10 years on ADUs renting at affordable rates, and allow ADUs in single-residence zones to use GRA dimensional rules — removing the variance requirement that currently blocks ADU construction on the majority of nonconforming single-family lots.",
     "target": "",
     "metric": "Position filled; projects assisted; time-to-permit reduction",
     "sources": "HAP Narrative; Bill Bowen; HC Work Plan; Byron Matto GIS analysis (Jan 2026)",
@@ -942,11 +942,11 @@
     "pros": [
       "Single point of contact dramatically simplifies the process for applicants and developers",
       "Person-to-person navigation is more effective than written guides or portals",
-      "HAP implementation needs a dedicated owner \u2014 without one, items languish"
+      "HAP implementation needs a dedicated owner — without one, items languish"
     ],
     "cons": [
-      "Ongoing salary cost \u2014 previous state-grant-funded position wasn't sustained after grant ended",
-      "Scope risk \u2014 role can be overwhelmed if it becomes the catch-all for housing issues",
+      "Ongoing salary cost — previous state-grant-funded position wasn't sustained after grant ended",
+      "Scope risk — role can be overwhelmed if it becomes the catch-all for housing issues",
       "Institutional knowledge is lost when navigator turns over"
     ]
   },
@@ -967,9 +967,9 @@
       "5-year exemption window creates urgency to build"
     ],
     "cons": [
-      "Tax revenue foregone during exemption period \u2014 fiscal impact on city budget",
+      "Tax revenue foregone during exemption period — fiscal impact on city budget",
       "May disproportionately benefit higher-income homeowners who can already afford construction",
-      "Exemption expires \u2014 no guarantee units remain affordable long-term"
+      "Exemption expires — no guarantee units remain affordable long-term"
     ]
   },
   {
@@ -979,7 +979,7 @@
     "target": "",
     "metric": "Fee waivers granted; affordable units produced with waivers",
     "sources": "HAP Narrative; Keene 3D",
-    "notes": "Colleague feedback: impact fee waivers should not be dropped entirely \u2014 they are a useful tool. Scope fee relief carefully to avoid being overly generous. Consider partial waivers or sliding scale based on affordability level.",
+    "notes": "Colleague feedback: impact fee waivers should not be dropped entirely — they are a useful tool. Scope fee relief carefully to avoid being overly generous. Consider partial waivers or sliding scale based on affordability level.",
     "is_new": false,
     "status": "",
     "status_detail": "",
@@ -990,7 +990,7 @@
     ],
     "cons": [
       "Lost revenue from waivers must be made up elsewhere in the budget",
-      "Scope must be carefully calibrated \u2014 overly generous waivers create fiscal risk",
+      "Scope must be carefully calibrated — overly generous waivers create fiscal risk",
       "Impact fees exist to cover real infrastructure costs that housing generates"
     ]
   },
@@ -1008,7 +1008,7 @@
     "pros": [
       "Time savings translate directly to lower carrying costs for workforce housing developers",
       "30-day guarantee creates accountability for the review process",
-      "Targets 80-120% AMI \u2014 the workforce segment most likely to be financially viable"
+      "Targets 80-120% AMI — the workforce segment most likely to be financially viable"
     ],
     "cons": [
       "Priority queue for some projects necessarily delays others",
@@ -1028,14 +1028,14 @@
     "status": "early-stage",
     "status_detail": "Referenced in Housing Committee discussions; Portsmouth has not yet adopted a 79-E Housing Opportunity Zone (Conway was first in NH, 2024)",
     "pros": [
-      "RSA 79-E is an existing, proven NH tool \u2014 no new legislation required",
+      "RSA 79-E is an existing, proven NH tool — no new legislation required",
       "Tax relief encourages rehabilitation of aging housing stock",
       "Conway's Housing Opportunity Zone (2024) provides NH precedent for expansion"
     ],
     "cons": [
       "Foregone tax revenue during relief period",
       "Benefits accrue to property owners who may not pass savings to tenants",
-      "Program awareness is low \u2014 underutilized even where currently available"
+      "Program awareness is low — underutilized even where currently available"
     ]
   },
   {
@@ -1051,7 +1051,7 @@
     "status_detail": "Housing Committee Financial Tools working group discussed TIFs; no specific proposal advanced",
     "pros": [
       "TIF captures increased tax revenue from new development to fund infrastructure",
-      "Self-financing mechanism \u2014 doesn't require general fund appropriation",
+      "Self-financing mechanism — doesn't require general fund appropriation",
       "Can make otherwise unfinanceable housing projects viable"
     ],
     "cons": [
@@ -1072,12 +1072,12 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Targets underutilized parcels \u2014 adds housing without sprawl",
+      "Targets underutilized parcels — adds housing without sprawl",
       "Small grants can be the tipping point for marginal projects",
       "Demonstrates city investment in neighborhood-scale housing production"
     ],
     "cons": [
-      "Limited budget impact \u2014 small grants fund small projects",
+      "Limited budget impact — small grants fund small projects",
       "Identifying genuinely underutilized parcels requires GIS analysis and outreach",
       "Grant administration costs may be disproportionate to housing produced"
     ]
@@ -1099,7 +1099,7 @@
       "Educating developers expands the pipeline of competitive applications"
     ],
     "cons": [
-      "LIHTC is highly competitive \u2014 not all applications succeed",
+      "LIHTC is highly competitive — not all applications succeed",
       "Tax credit projects have long compliance periods with complex ongoing requirements",
       "City has limited control over state/federal allocation decisions"
     ]
@@ -1118,7 +1118,7 @@
     "pros": [
       "Helps fixed-income seniors stay in their homes as property values rise",
       "Reduces displacement pressure on long-term residents",
-      "Deferred taxes are eventually collected \u2014 it's timing relief, not forgiveness"
+      "Deferred taxes are eventually collected — it's timing relief, not forgiveness"
     ],
     "cons": [
       "Deferred revenue creates cash flow gaps for the city",
@@ -1129,7 +1129,7 @@
   {
     "category": "Incentives & Financial Tools",
     "action": "MFTE / multifamily tax exemption exploration",
-    "description": "Research feasibility of multifamily property tax exemption program. New Hampshire does not currently have enabling legislation for municipal multifamily tax exemptions \u2014 state legislative authorization would be required before any local MFTE program could be adopted. This is a long-term advocacy item unless legislative sponsors are identified.",
+    "description": "Research feasibility of multifamily property tax exemption program. New Hampshire does not currently have enabling legislation for municipal multifamily tax exemptions — state legislative authorization would be required before any local MFTE program could be adopted. This is a long-term advocacy item unless legislative sponsors are identified.",
     "target": "",
     "metric": "Feasibility study completed; legislation pursued if viable",
     "sources": "Burien A1; South Portland",
@@ -1160,7 +1160,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Leverages private sector resources for a shared problem \u2014 housing affects recruitment",
+      "Leverages private sector resources for a shared problem — housing affects recruitment",
       "Models exist: hospital-provided housing, employer-assisted down payments",
       "Shifts some housing cost burden from public sector to benefiting employers"
     ],
@@ -1182,7 +1182,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Permanently removes land cost from housing \u2014 units stay affordable through resale",
+      "Permanently removes land cost from housing — units stay affordable through resale",
       "Community ownership model builds local control and stewardship",
       "Proven model in NH (Lakes Region CLT) and nationwide"
     ],
@@ -1210,7 +1210,7 @@
     ],
     "cons": [
       "Demand-side subsidies can push prices higher in a supply-constrained market",
-      "Benefits are per-household \u2014 limited impact on overall affordability",
+      "Benefits are per-household — limited impact on overall affordability",
       "Student debt burden (40% of RKG survey respondents) may make buyers ineligible anyway"
     ]
   },
@@ -1226,7 +1226,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Prevents homelessness \u2014 emergency assistance is far cheaper than shelter or rehousing",
+      "Prevents homelessness — emergency assistance is far cheaper than shelter or rehousing",
       "Security deposit assistance removes a major barrier to housing access",
       "Can be funded through Housing Trust Fund"
     ],
@@ -1248,12 +1248,12 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Preserves existing housing stock \u2014 often cheaper than new construction per unit",
+      "Preserves existing housing stock — often cheaper than new construction per unit",
       "Helps small landlords maintain properties without raising rents",
       "Addresses health and safety issues in aging buildings"
     ],
     "cons": [
-      "Loan repayment can be uncertain \u2014 risk of default by small property owners",
+      "Loan repayment can be uncertain — risk of default by small property owners",
       "Benefits individual properties rather than systemic improvement",
       "Program administration and property inspection costs"
     ]
@@ -1270,7 +1270,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Program already exists \u2014 requires marketing, not new program design",
+      "Program already exists — requires marketing, not new program design",
       "Employer-assisted housing programs attract and retain workers",
       "Low cost to city relative to potential impact"
     ],
@@ -1297,7 +1297,7 @@
       "Tourism sector benefits from workforce housing that serves hospitality employees"
     ],
     "cons": [
-      "Requires state legislative authorization \u2014 outside city control",
+      "Requires state legislative authorization — outside city control",
       "Hospitality industry will likely oppose",
       "Revenue depends on tourism volume, which fluctuates"
     ]
@@ -1315,11 +1315,11 @@
     "status_detail": "",
     "pros": [
       "Incentivizes universal design that benefits aging residents and people with disabilities",
-      "Density bonus is market-driven \u2014 developers opt in when it makes financial sense",
+      "Density bonus is market-driven — developers opt in when it makes financial sense",
       "Addresses a documented need in Portsmouth's aging housing stock"
     ],
     "cons": [
-      "Accessible units cost more to build \u2014 density bonus must offset the cost differential",
+      "Accessible units cost more to build — density bonus must offset the cost differential",
       "May not produce enough accessible units to meet actual demand",
       "Requires clear standards for what qualifies beyond ADA minimums"
     ]
@@ -1358,12 +1358,12 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "73% of owner-occupied housing is pre-1960 \u2014 retrofits address a massive existing need",
+      "73% of owner-occupied housing is pre-1960 — retrofits address a massive existing need",
       "Enables aging in place, reducing demand on assisted living and nursing facilities",
-      "Directly serves seniors and people with disabilities \u2014 populations with documented housing challenges"
+      "Directly serves seniors and people with disabilities — populations with documented housing challenges"
     ],
     "cons": [
-      "Retrofit costs are high \u2014 grants/loans may cover only a fraction of need",
+      "Retrofit costs are high — grants/loans may cover only a fraction of need",
       "Benefits individual homeowners rather than expanding overall supply",
       "Program scale needed to make meaningful impact requires significant funding"
     ]
@@ -1380,7 +1380,7 @@
     "status": "complete",
     "status_detail": "Below Market Rate Housing Trust Fund established by City Council (2025); governance crafted by Housing Committee, Legal, and Trustees",
     "pros": [
-      "Fund is already established with $500K seed \u2014 governance ensures effective deployment",
+      "Fund is already established with $500K seed — governance ensures effective deployment",
       "Clear criteria prevent ad hoc spending and build public confidence",
       "Committee oversight provides expertise and accountability"
     ],
@@ -1425,7 +1425,7 @@
     "status_detail": "",
     "pros": [
       "Gap financing is often the critical missing piece that makes affordable projects viable",
-      "Revolving loans recycle dollars \u2014 repayments fund future projects",
+      "Revolving loans recycle dollars — repayments fund future projects",
       "Leverages other funding sources at a high multiplier"
     ],
     "cons": [
@@ -1452,8 +1452,8 @@
     ],
     "cons": [
       "Not all publicly owned land is suitable or desirable for housing",
-      "Land disposition is politically sensitive \u2014 competing interests for public parcels",
-      "Inventory alone doesn't produce housing \u2014 it's a planning step, not an action"
+      "Land disposition is politically sensitive — competing interests for public parcels",
+      "Inventory alone doesn't produce housing — it's a planning step, not an action"
     ]
   },
   {
@@ -1474,7 +1474,7 @@
     ],
     "cons": [
       "City forgoes sale revenue if land is conveyed below market value for housing",
-      "RFP process takes time \u2014 from issuance to developer selection to construction",
+      "RFP process takes time — from issuance to developer selection to construction",
       "Limited inventory of suitable public parcels in a built-out city"
     ]
   },
@@ -1492,7 +1492,7 @@
     "pros": [
       "127 units of affordable housing is significant for a city of Portsmouth's size",
       "PHA as developer brings experience, mission alignment, and LIHTC track record",
-      "Phase I already permitted with 2026 LIHTC credits \u2014 momentum is real"
+      "Phase I already permitted with 2026 LIHTC credits — momentum is real"
     ],
     "cons": [
       "Phase II (37 units, school conversion) timing and design still unresolved",
@@ -1519,7 +1519,7 @@
     "cons": [
       "Suitable large-scale sites are increasingly scarce in Portsmouth",
       "Large affordable housing projects can face concentrated neighborhood opposition",
-      "PHA capacity is finite \u2014 multiple simultaneous projects may stretch resources"
+      "PHA capacity is finite — multiple simultaneous projects may stretch resources"
     ]
   },
   {
@@ -1605,7 +1605,7 @@
       "PHA and POAH involvement in Sherburne demonstrates existing capacity"
     ],
     "cons": [
-      "Nonprofit developer capacity is limited \u2014 few organizations serve NH seacoast",
+      "Nonprofit developer capacity is limited — few organizations serve NH seacoast",
       "Nonprofit projects typically take longer to develop than for-profit",
       "Reliance on nonprofits may reduce city's push for private-market housing reform"
     ]
@@ -1622,7 +1622,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Housing markets are regional \u2014 solutions require cross-municipal coordination",
+      "Housing markets are regional — solutions require cross-municipal coordination",
       "Shared advocacy increases political weight with state legislature",
       "Cost-sharing on research, data, and consulting reduces per-community burden"
     ],
@@ -1759,7 +1759,7 @@
       "39% adult exit rate to housing (per RKG) could improve with better coordination"
     ],
     "cons": [
-      "Rapid rehousing depends on available affordable units \u2014 a supply problem",
+      "Rapid rehousing depends on available affordable units — a supply problem",
       "Cross Roads House has its own capacity constraints",
       "Homelessness services require sustained funding beyond initial partnership formation"
     ]
@@ -1767,7 +1767,7 @@
   {
     "category": "Preservation & Anti-Displacement",
     "action": "NOAH tracking and preservation",
-    "description": "Track and preserve Naturally Occurring Affordable Housing (NOAH) properties. NOAHs are frequently lost through eminent domain or market-rate renovation. Identification and tracking is difficult without incentives for property owners to share rental information with the city. NOAHs need financial assistance to ensure renovations can be completed without raising rents, combined with legal protections \u2014 deed restrictions or covenants \u2014 to protect long-term affordability. Develop a NOAH registry, monitoring system, and preservation fund with acquisition and rehabilitation tools.",
+    "description": "Track and preserve Naturally Occurring Affordable Housing (NOAH) properties. NOAHs are frequently lost through eminent domain or market-rate renovation. Identification and tracking is difficult without incentives for property owners to share rental information with the city. NOAHs need financial assistance to ensure renovations can be completed without raising rents, combined with legal protections — deed restrictions or covenants — to protect long-term affordability. Develop a NOAH registry, monitoring system, and preservation fund with acquisition and rehabilitation tools.",
     "target": "",
     "metric": "NOAH properties tracked; preservation interventions; units preserved",
     "sources": "South Portland 1A; Keene 2A; Burien A3",
@@ -1781,7 +1781,7 @@
       "Deed restrictions ensure long-term affordability, not just current rents"
     ],
     "cons": [
-      "Tracking requires landlord participation \u2014 incentives are needed to get rental data",
+      "Tracking requires landlord participation — incentives are needed to get rental data",
       "Financial assistance for renovations is an ongoing cost commitment",
       "Property owners may resist deed restrictions as an encumbrance on their assets"
     ]
@@ -1805,7 +1805,7 @@
     "cons": [
       "Registration fees and requirements may be passed through to tenants as higher rents",
       "Enforcement requires dedicated code enforcement staff",
-      "Landlord opposition \u2014 may be seen as government overreach into private property"
+      "Landlord opposition — may be seen as government overreach into private property"
     ]
   },
   {
@@ -1842,7 +1842,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Preserves rental housing supply \u2014 condo conversions remove rent-accessible units",
+      "Preserves rental housing supply — condo conversions remove rent-accessible units",
       "Right of first refusal gives tenants an opportunity to purchase",
       "Notice requirements reduce surprise displacement"
     ],
@@ -1859,17 +1859,17 @@
     "target": "",
     "metric": "Inspections completed; violations remediated; units brought to code",
     "sources": "Keene 2A; 2017 Listens",
-    "notes": "NH Housing operates a lead abatement program that provides state funding for lead remediation of apartment buildings \u2014 an existing resource to leverage.",
+    "notes": "NH Housing operates a lead abatement program that provides state funding for lead remediation of apartment buildings — an existing resource to leverage.",
     "is_new": false,
     "status": "",
     "status_detail": "",
     "pros": [
-      "Directly improves health outcomes \u2014 lead exposure disproportionately harms children",
+      "Directly improves health outcomes — lead exposure disproportionately harms children",
       "NH Housing lead abatement program provides existing state funding to leverage",
       "Proactive enforcement prevents deterioration into uninhabitable conditions"
     ],
     "cons": [
-      "Remediation costs can be significant \u2014 may cause some landlords to exit the rental market",
+      "Remediation costs can be significant — may cause some landlords to exit the rental market",
       "Aggressive code enforcement may reduce affordable housing supply if landlords sell or convert",
       "Inspection capacity requires dedicated staff"
     ]
@@ -1891,7 +1891,7 @@
       "Demographic change data strengthens advocacy for preservation policies"
     ],
     "cons": [
-      "Monitoring alone doesn't prevent displacement \u2014 it identifies the problem",
+      "Monitoring alone doesn't prevent displacement — it identifies the problem",
       "Data collection across multiple sources is complex and time-consuming",
       "Defining and measuring \"displacement\" is methodologically challenging"
     ]
@@ -1915,7 +1915,7 @@
     "cons": [
       "Tenants rarely have the financial capacity to exercise purchase rights",
       "Right of first offer/refusal delays sales, potentially lowering property values",
-      "NH legal framework for such programs is untested \u2014 legal risk"
+      "NH legal framework for such programs is untested — legal risk"
     ]
   },
   {
@@ -1930,13 +1930,13 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Prevents foreclosure and displacement \u2014 far cheaper than rehousing",
+      "Prevents foreclosure and displacement — far cheaper than rehousing",
       "Stabilizes neighborhoods by keeping homes occupied and maintained",
       "Targets crisis moments where a small amount of assistance has outsized impact"
     ],
     "cons": [
       "Ongoing program funding required with no asset created",
-      "Eligibility determination is sensitive \u2014 risk of fraud or misuse",
+      "Eligibility determination is sensitive — risk of fraud or misuse",
       "May delay inevitable outcomes for financially distressed homeowners"
     ]
   },
@@ -1957,7 +1957,7 @@
       "Low-cost activity relative to other housing preservation strategies"
     ],
     "cons": [
-      "Monitoring without enforcement is ineffective \u2014 requires staff capacity",
+      "Monitoring without enforcement is ineffective — requires staff capacity",
       "Draws attention to STR policy that some want reopened",
       "Limited impact if STR violations are minimal under current ban"
     ]
@@ -2023,8 +2023,8 @@
       "Aging-in-place support reduces the most expensive care options"
     ],
     "cons": [
-      "Comprehensive strategy is planning-intensive \u2014 implementation may be slow",
-      "Market already provides some senior housing options \u2014 public role unclear for all segments",
+      "Comprehensive strategy is planning-intensive — implementation may be slow",
+      "Market already provides some senior housing options — public role unclear for all segments",
       "Assisted living and memory care are primarily private-sector products"
     ]
   },
@@ -2045,7 +2045,7 @@
       "Addresses root causes of housing instability, not just symptoms"
     ],
     "cons": [
-      "Supportive housing is expensive to operate \u2014 requires sustained social service funding",
+      "Supportive housing is expensive to operate — requires sustained social service funding",
       "Siting can face significant neighborhood opposition (NIMBYism)",
       "Ongoing service provision requires partnerships with social service agencies"
     ]
@@ -2062,13 +2062,13 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Moderate-income affordable options are virtually nonexistent \u2014 clear market gap",
+      "Moderate-income affordable options are virtually nonexistent — clear market gap",
       "Frees up family housing when seniors move to appropriate settings",
       "Addresses a growing need as Portsmouth's population ages"
     ],
     "cons": [
-      "Affordable assisted living is extremely difficult to finance \u2014 operating costs are high",
-      "Primarily a private-market product \u2014 city role is limited to incentives and zoning",
+      "Affordable assisted living is extremely difficult to finance — operating costs are high",
+      "Primarily a private-market product — city role is limited to incentives and zoning",
       "Regulatory complexity in healthcare-adjacent housing"
     ]
   },
@@ -2084,7 +2084,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "People with disabilities face severe housing barriers \u2014 documented unmet need",
+      "People with disabilities face severe housing barriers — documented unmet need",
       "Universal design benefits all residents as they age, not just people with current disabilities",
       "Aligns with Fair Housing Act obligations"
     ],
@@ -2113,7 +2113,7 @@
     "cons": [
       "Veteran-specific programs may duplicate existing general housing assistance",
       "1,366 veterans is a relatively small target population for dedicated programs",
-      "VA program navigation is complex \u2014 requires specialized knowledge"
+      "VA program navigation is complex — requires specialized knowledge"
     ]
   },
   {
@@ -2128,7 +2128,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Addresses documented out-migration of 25-34 age cohort \u2014 critical for workforce",
+      "Addresses documented out-migration of 25-34 age cohort — critical for workforce",
       "Micro-units and shared housing models can serve this population affordably",
       "GBCC and UNH partnerships provide institutional anchors"
     ],
@@ -2216,13 +2216,13 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Employers are natural allies \u2014 housing affordability directly affects their workforce",
+      "Employers are natural allies — housing affordability directly affects their workforce",
       "Education is the prerequisite to employer participation in housing programs",
       "Low-cost activity with potential for high-impact partnerships"
     ],
     "cons": [
-      "Education alone doesn't produce employer action \u2014 follow-up is essential",
-      "Employer attention is limited \u2014 housing competes with many business priorities",
+      "Education alone doesn't produce employer action — follow-up is essential",
+      "Employer attention is limited — housing competes with many business priorities",
       "May raise expectations that employers will solve the problem"
     ]
   },
@@ -2260,12 +2260,12 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Fair housing compliance is a legal obligation \u2014 education reduces violations",
+      "Fair housing compliance is a legal obligation — education reduces violations",
       "Source-of-income discrimination limits voucher utilization in tight markets",
       "Educated landlords are less likely to engage in unintentional discrimination"
     ],
     "cons": [
-      "Education is necessary but not sufficient \u2014 enforcement matters more",
+      "Education is necessary but not sufficient — enforcement matters more",
       "NH legal framework for fair housing enforcement at the local level is limited",
       "Landlords may view fair housing training as burdensome or adversarial"
     ]
@@ -2287,9 +2287,9 @@
       "Plain-language materials expand participation beyond regular meeting attendees"
     ],
     "cons": [
-      "Meaningful engagement is resource-intensive \u2014 poorly done engagement is worse than none",
+      "Meaningful engagement is resource-intensive — poorly done engagement is worse than none",
       "Engaged voices are often not representative of most-affected populations",
-      "Engagement fatigue \u2014 residents may disengage if they feel input isn't used"
+      "Engagement fatigue — residents may disengage if they feel input isn't used"
     ]
   },
   {
@@ -2309,7 +2309,7 @@
       "Broad participation model reaches beyond typical public hearing attendees"
     ],
     "cons": [
-      "Dialogue outcomes are advisory \u2014 implementation depends on Council action",
+      "Dialogue outcomes are advisory — implementation depends on Council action",
       "Continuing the same format may not reach new voices",
       "Staff time to organize and facilitate is significant"
     ]
@@ -2354,7 +2354,7 @@
     ],
     "cons": [
       "Infrastructure investment requires significant capital expenditure from city budget",
-      "Benefits accrue to future development \u2014 timing of return on investment is uncertain",
+      "Benefits accrue to future development — timing of return on investment is uncertain",
       "Prioritizing housing areas may delay infrastructure needs elsewhere"
     ]
   },
@@ -2375,7 +2375,7 @@
       "Developer parking contributions create a funding mechanism"
     ],
     "cons": [
-      "Structured parking is very expensive to build \u2014 $30K-$60K per space",
+      "Structured parking is very expensive to build — $30K-$60K per space",
       "Downtown parking is politically contentious with residents and businesses",
       "Municipal parking facilities require ongoing operational management"
     ]
@@ -2387,7 +2387,7 @@
     "target": "",
     "metric": "Bike lane miles; transit ridership; mode share changes",
     "sources": "RKG 2022 (survey: transit concerns); HC Work Plan; South Portland 1C; Byron Matto GIS analysis (Jan 2026)",
-    "notes": " GIS analysis provides supporting fiscal data: multifamily-allowed zones generate $5.9M/acre in tax revenue vs. $1.0M/acre for single-family zones \u2014 a 5.71x differential. This revenue density data directly supports the cost-of-services vs. tax-revenue argument: gentle density near schools generates more than enough tax revenue to cover marginal service costs.",
+    "notes": " GIS analysis provides supporting fiscal data: multifamily-allowed zones generate $5.9M/acre in tax revenue vs. $1.0M/acre for single-family zones — a 5.71x differential. This revenue density data directly supports the cost-of-services vs. tax-revenue argument: gentle density near schools generates more than enough tax revenue to cover marginal service costs.",
     "is_new": false,
     "status": "",
     "status_detail": "",
@@ -2405,29 +2405,29 @@
   {
     "category": "Infrastructure & Services",
     "action": "School capacity assessment for housing areas",
-    "description": "Document and communicate existing school capacity that can support additional housing development. Portsmouth has tremendous existing capacity, particularly in the downtown area (Little Harbor attendance zone). Rather than commissioning new studies, the action is to formalize capacity documentation as an advocacy asset \u2014 demonstrating to skeptics that gentle density will not overwhelm schools.",
+    "description": "Document and communicate existing school capacity that can support additional housing development. Portsmouth has tremendous existing capacity, particularly in the downtown area (Little Harbor attendance zone). Rather than commissioning new studies, the action is to formalize capacity documentation as an advocacy asset — demonstrating to skeptics that gentle density will not overwhelm schools.",
     "target": "",
-    "metric": "School capacity assessment completed; housing plans aligned Additional metric: Cost of services vs. tax revenue per housing unit \u2014 document that net tax revenue generated by new housing units typically exceeds the marginal cost of educating additional students, particularly for smaller multifamily and ADU units that generate fewer school-age children per unit than single-family homes. Cross-reference fiscal impact analysis modules for Portsmouth-specific per-pupil cost data.",
+    "metric": "School capacity assessment completed; housing plans aligned Additional metric: Cost of services vs. tax revenue per housing unit — document that net tax revenue generated by new housing units typically exceeds the marginal cost of educating additional students, particularly for smaller multifamily and ADU units that generate fewer school-age children per unit than single-family homes. Cross-reference fiscal impact analysis modules for Portsmouth-specific per-pupil cost data.",
     "sources": "HC Work Plan (Corsetti); RKG 2022 (enrollment projections); Byron Matto GIS analysis (Jan 2026)",
-    "notes": "Colleague feedback: no additional study needed; capacity exists. Reframe toward documenting existing capacity as an advocacy tool. Political note: opponents of new housing rarely argue capacity \u2014 they argue cost. The advocacy asset framing should include per-pupil cost data alongside capacity data to preempt the \"housing raises school taxes\" objection. GIS analysis provides baseline infrastructure cost comparisons: single-family zones require 1.15x more linear infrastructure per parcel (roads, utilities), with estimated costs of $51,721/parcel vs. $44,976 for multifamily. The fiscal sustainability ratio (tax revenue relative to infrastructure burden) is 15.9 for single-family vs. 23.9 for multifamily \u2014 meaning multifamily zones are 50% more fiscally efficient to serve.",
+    "notes": "Colleague feedback: no additional study needed; capacity exists. Reframe toward documenting existing capacity as an advocacy tool. Political note: opponents of new housing rarely argue capacity — they argue cost. The advocacy asset framing should include per-pupil cost data alongside capacity data to preempt the \"housing raises school taxes\" objection. GIS analysis provides baseline infrastructure cost comparisons: single-family zones require 1.15x more linear infrastructure per parcel (roads, utilities), with estimated costs of $51,721/parcel vs. $44,976 for multifamily. The fiscal sustainability ratio (tax revenue relative to infrastructure burden) is 15.9 for single-family vs. 23.9 for multifamily — meaning multifamily zones are 50% more fiscally efficient to serve.",
     "is_new": false,
     "status": "",
     "status_detail": "",
     "pros": [
-      "Tremendous existing capacity, especially downtown (Little Harbor) \u2014 no new investment needed",
+      "Tremendous existing capacity, especially downtown (Little Harbor) — no new investment needed",
       "Documenting capacity counters the most common objection to new housing",
       "Reframing from 'study' to 'advocacy asset' keeps focus on action, not more analysis"
     ],
     "cons": [
       "Capacity documentation alone doesn't address school quality concerns",
-      "Enrollment projections are inherently uncertain \u2014 capacity claims may be challenged",
-      "School capacity varies by grade level and program \u2014 aggregate numbers can be misleading"
+      "Enrollment projections are inherently uncertain — capacity claims may be challenged",
+      "School capacity varies by grade level and program — aggregate numbers can be misleading"
     ]
   },
   {
     "category": "Infrastructure & Services",
     "action": "Infrastructure capacity analysis for growth",
-    "description": "Determine growth capacity for specific critical systems: sewer treatment plant capacity and collection system limits, water supply and distribution system redundancy, fire department response coverage and ISO rating thresholds, stormwater management capacity, and floodplain buildable acreage constraints. Map growth areas where infrastructure can support additional housing without major capital investment, and identify areas where capacity limits are binding constraints. Quantify specific thresholds rather than making general infrastructure claims \u2014 vagueness invites fear narratives from opponents.",
+    "description": "Determine growth capacity for specific critical systems: sewer treatment plant capacity and collection system limits, water supply and distribution system redundancy, fire department response coverage and ISO rating thresholds, stormwater management capacity, and floodplain buildable acreage constraints. Map growth areas where infrastructure can support additional housing without major capital investment, and identify areas where capacity limits are binding constraints. Quantify specific thresholds rather than making general infrastructure claims — vagueness invites fear narratives from opponents.",
     "target": "",
     "metric": "Capacity analysis completed; growth areas identified and mapped",
     "sources": "HC Work Plan (Corsetti; PtL Goal 4)",
@@ -2487,7 +2487,7 @@
     "cons": [
       "GIS maintenance requires ongoing staff time and data updates",
       "Parcel-level analysis may identify sites with political or neighborhood sensitivities",
-      "Inventory shows potential, not probability \u2014 landowners may not be interested in developing"
+      "Inventory shows potential, not probability — landowners may not be interested in developing"
     ]
   },
   {
@@ -2500,15 +2500,15 @@
     "notes": "",
     "is_new": false,
     "status": "early-stage",
-    "status_detail": "RKG 2022 study aging; HOP 2.0 audit partially updates picture; Master Plan (2025\u20132026) will include housing needs analysis but no standalone updated gap analysis commissioned",
+    "status_detail": "RKG 2022 study aging; HOP 2.0 audit partially updates picture; Master Plan (2025–2026) will include housing needs analysis but no standalone updated gap analysis commissioned",
     "pros": [
-      "RKG 2022 study is aging \u2014 market conditions have shifted significantly",
+      "RKG 2022 study is aging — market conditions have shifted significantly",
       "Updated data prevents advocacy from relying on outdated numbers",
       "Master Plan housing needs analysis may partially serve this function"
     ],
     "cons": [
       "Comprehensive gap analyses cost $100K+ and take months to complete",
-      "Risk of analysis paralysis \u2014 waiting for perfect data delays action on known needs",
+      "Risk of analysis paralysis — waiting for perfect data delays action on known needs",
       "Frequent updates may show marginal changes that don't justify the cost"
     ]
   },
@@ -2537,43 +2537,43 @@
   {
     "category": "Production Targets & Data",
     "action": "AMI-calibrated production targets",
-    "description": "Production targets calibrated by AMI band. RKG projects 52% of demand from households at \u226480% AMI, 85% from 1-2 person households. Total demand: 3,124 units (227 owner, 2,897 renter) by 2030.",
-    "target": "52% of new units affordable at \u226480% AMI",
+    "description": "Production targets calibrated by AMI band. RKG projects 52% of demand from households at ≤80% AMI, 85% from 1-2 person households. Total demand: 3,124 units (227 owner, 2,897 renter) by 2030.",
+    "target": "52% of new units affordable at ≤80% AMI",
     "metric": "Production by AMI band vs. targets; unit size distribution; owner vs. renter mix",
     "sources": "RKG 2022 (demand projections by AMI and household size)",
-    "notes": " The \u226450% AMI segment represents the most severe affordability gap in Portsmouth. While RKG documents 52% of demand at \u226480% AMI overall, the subset at \u226450% AMI faces the most acute shortage \u2014 these households cannot be served by market-rate production or moderate-income workforce housing incentives. Production at this level requires deep subsidy (LIHTC, project-based vouchers, public housing). The HAP should explicitly differentiate targets and strategies for \u226450% AMI, 50-80% AMI, and above-80% AMI segments to ensure the lowest-income households are not overlooked in favor of more financially feasible workforce housing.",
+    "notes": " The ≤50% AMI segment represents the most severe affordability gap in Portsmouth. While RKG documents 52% of demand at ≤80% AMI overall, the subset at ≤50% AMI faces the most acute shortage — these households cannot be served by market-rate production or moderate-income workforce housing incentives. Production at this level requires deep subsidy (LIHTC, project-based vouchers, public housing). The HAP should explicitly differentiate targets and strategies for ≤50% AMI, 50-80% AMI, and above-80% AMI segments to ensure the lowest-income households are not overlooked in favor of more financially feasible workforce housing.",
     "is_new": true,
     "status": "",
     "status_detail": "",
     "pros": [
       "AMI calibration ensures production targets match the income distribution of demand",
-      "RKG data (52% of demand at \u226480% AMI) provides the baseline for calibration",
+      "RKG data (52% of demand at ≤80% AMI) provides the baseline for calibration",
       "Prevents a scenario where 'housing production' means only luxury units"
     ],
     "cons": [
-      "Production at lower AMI levels requires subsidy \u2014 targets may exceed available funding",
-      "AMI bands are somewhat arbitrary \u2014 household circumstances vary within each band",
+      "Production at lower AMI levels requires subsidy — targets may exceed available funding",
+      "AMI bands are somewhat arbitrary — household circumstances vary within each band",
       "Market-rate development doesn't respond to AMI targets without incentives or requirements"
     ]
   },
   {
     "category": "Production Targets & Data",
     "action": "Vacancy rate monitoring and target",
-    "description": "Establish healthy vacancy target (4-6%) and monitor. RKG documents 1.86% combined vacancy \u2014 well below functional market threshold.",
+    "description": "Establish healthy vacancy target (4-6%) and monitor. RKG documents 1.86% combined vacancy — well below functional market threshold.",
     "target": "Achieve 4% combined vacancy rate",
     "metric": "Quarterly vacancy rate tracking; owner vs. renter vacancy; months of supply",
     "sources": "RKG 2022 (vacancy analysis)",
-    "notes": " Scale estimate: Portsmouth has approximately 12,000 housing units. Moving from 1.86% vacancy to a 4% target implies roughly 250+ net new vacant-and-available units. Accounting for absorption (new units that fill immediately) and the relationship between production and vacancy, achieving a functional 4-6% vacancy rate likely requires on the order of 800-1,200+ net new units over the planning horizon \u2014 a figure that should be modeled explicitly against production targets and absorption rate assumptions.",
+    "notes": " Scale estimate: Portsmouth has approximately 12,000 housing units. Moving from 1.86% vacancy to a 4% target implies roughly 250+ net new vacant-and-available units. Accounting for absorption (new units that fill immediately) and the relationship between production and vacancy, achieving a functional 4-6% vacancy rate likely requires on the order of 800-1,200+ net new units over the planning horizon — a figure that should be modeled explicitly against production targets and absorption rate assumptions.",
     "is_new": true,
     "status": "",
     "status_detail": "",
     "pros": [
-      "1.86% vacancy is well below the 4-6% functional market threshold \u2014 data makes this visible",
+      "1.86% vacancy is well below the 4-6% functional market threshold — data makes this visible",
       "Tracking vacancy over time shows whether policies are improving market function",
       "Clear target (4-6%) provides a benchmark for progress"
     ],
     "cons": [
-      "Municipal-level vacancy data is notoriously unreliable \u2014 collection methods matter",
+      "Municipal-level vacancy data is notoriously unreliable — collection methods matter",
       "Vacancy rate alone doesn't distinguish between affordable and luxury vacancies",
       "Achieving 4-6% vacancy requires significant net new production in a built-out city"
     ]
@@ -2612,7 +2612,7 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Energy efficiency reduces utility costs for occupants \u2014 an affordability benefit",
+      "Energy efficiency reduces utility costs for occupants — an affordability benefit",
       "Climate-conscious retrofits extend the useful life of aging housing stock",
       "Federal incentives (IRA, Weatherization Assistance) provide funding leverage"
     ],
@@ -2656,14 +2656,14 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Primary research fills a critical gap \u2014 existing data doesn't capture Portsmouth-specific conditions",
+      "Primary research fills a critical gap — existing data doesn't capture Portsmouth-specific conditions",
       "Directly engages the people most affected by housing challenges",
       "Findings strengthen advocacy by putting faces and stories behind statistics"
     ],
     "cons": [
       "Surveying vulnerable populations requires sensitivity, trust-building, and ethical protocols",
       "Sample sizes for specific subgroups may be too small for statistically robust findings",
-      "Research takes time \u2014 results may arrive after policy windows close"
+      "Research takes time — results may arrive after policy windows close"
     ]
   },
   {
@@ -2673,14 +2673,14 @@
     "target": "",
     "metric": "Employers surveyed; positions affected quantified; economic impact estimated; results published",
     "sources": "Advocate feedback (2026); Keene 1C (employer partnerships); Bill Bowen (Service Credit Union, Novocure, Lonza)",
-    "notes": "Complements employer roundtable (#52) \u2014 this is the data-gathering step that precedes partnership formation",
+    "notes": "Complements employer roundtable (#52) — this is the data-gathering step that precedes partnership formation",
     "is_new": true,
     "status": "",
     "status_detail": "",
     "pros": [
-      "Quantifies the economic cost of housing unaffordability \u2014 a powerful argument for action",
+      "Quantifies the economic cost of housing unaffordability — a powerful argument for action",
       "Employer data reframes housing as a business competitiveness issue",
-      "Precursor to employer roundtable (#71) \u2014 builds the evidence base first"
+      "Precursor to employer roundtable (#71) — builds the evidence base first"
     ],
     "cons": [
       "Survey response rates from businesses are typically low",
@@ -2713,7 +2713,7 @@
   {
     "category": "Education & Outreach",
     "action": "Land use board HAP orientation program",
-    "description": "Provide structured orientation for all land use board members \u2014 Planning Board, Zoning Board of Adjustment, Historic District Commission, Technical Advisory Committee, and Conservation Commission \u2014 on the Housing Action Plan's goals, priorities, and their role in implementation. Ensure new appointees receive HAP orientation as part of onboarding and existing members get periodic refreshers as the plan evolves.",
+    "description": "Provide structured orientation for all land use board members — Planning Board, Zoning Board of Adjustment, Historic District Commission, Technical Advisory Committee, and Conservation Commission — on the Housing Action Plan's goals, priorities, and their role in implementation. Ensure new appointees receive HAP orientation as part of onboarding and existing members get periodic refreshers as the plan evolves.",
     "target": "All land use board members oriented within 6 months of HAP adoption; annual refresher sessions",
     "metric": "Orientation sessions held; board member attendance; integration of HAP goals into board decision-making",
     "sources": "Progress Portsmouth (2026)",
@@ -2727,7 +2727,7 @@
       "New appointee onboarding ensures continuity as board membership changes"
     ],
     "cons": [
-      "Board members serve voluntarily \u2014 mandatory training may deter participation",
+      "Board members serve voluntarily — mandatory training may deter participation",
       "Orientation content must be carefully balanced to inform rather than prescribe outcomes",
       "Annual refreshers require ongoing coordination and content development"
     ]
@@ -2735,7 +2735,7 @@
   {
     "category": "Permitting & Process",
     "action": "Planning department capacity and workflow assessment",
-    "description": "Evaluate planning department workflows to identify process efficiencies \u2014 such as expanded administrative approvals, standardized review checklists, digital intake systems, and delegation of routine application processing \u2014 that would free professional planning staff to engage in proactive policy development, housing strategy implementation, and long-range planning rather than spending the majority of their time on application processing.",
+    "description": "Evaluate planning department workflows to identify process efficiencies — such as expanded administrative approvals, standardized review checklists, digital intake systems, and delegation of routine application processing — that would free professional planning staff to engage in proactive policy development, housing strategy implementation, and long-range planning rather than spending the majority of their time on application processing.",
     "target": "Assessment completed within first year of HAP adoption; efficiency measures implemented on rolling basis",
     "metric": "Ratio of staff time spent on application processing vs. proactive planning; average application processing time; number of HAP implementation tasks advanced per quarter",
     "sources": "Rick Chellman, Planning Board Chair; Progress Portsmouth (2026)",
@@ -2744,9 +2744,9 @@
     "status": "",
     "status_detail": "",
     "pros": [
-      "Unlocks staff capacity for HAP implementation without new headcount \u2014 budget-compatible",
+      "Unlocks staff capacity for HAP implementation without new headcount — budget-compatible",
       "Process reforms benefit all applicants, not just housing projects",
-      "Directly addresses the implementation bottleneck \u2014 without capacity, the HAP sits on a shelf"
+      "Directly addresses the implementation bottleneck — without capacity, the HAP sits on a shelf"
     ],
     "cons": [
       "Workflow assessment takes time that already-stretched staff may not have",
@@ -2757,16 +2757,16 @@
   {
     "action": "HAP formal adoption and governance framework",
     "category": "Governance & Accountability",
-    "description": "Establish a formal adoption mechanism for the Housing Action Plan as a binding policy document \u2014 not merely advisory. This includes: City Council resolution or ordinance formally adopting the HAP with specific commitments; designation of a lead department (Planning) and responsible staff positions for implementation; establishment of a HAP Implementation Committee with defined membership, meeting schedule, and reporting requirements; and integration of HAP priorities into the city's annual goal-setting and strategic planning processes. Without formal adoption, the HAP risks becoming another advisory document that sits on a shelf.",
+    "description": "Establish a formal adoption mechanism for the Housing Action Plan as a binding policy document — not merely advisory. This includes: City Council resolution or ordinance formally adopting the HAP with specific commitments; designation of a lead department (Planning) and responsible staff positions for implementation; establishment of a HAP Implementation Committee with defined membership, meeting schedule, and reporting requirements; and integration of HAP priorities into the city's annual goal-setting and strategic planning processes. Without formal adoption, the HAP risks becoming another advisory document that sits on a shelf.",
     "target": "Council adoption within 6 months of HAP completion. Implementation Committee established within 90 days of adoption.",
     "metric": "Formal adoption vote (yes/no); Implementation Committee formed and meeting (yes/no); HAP referenced in annual city goals (yes/no).",
-    "notes": "This is the single most important implementation item. Review 1 identified the absence of binding governance as the brainstorm's most significant structural gap. Without an adoption ordinance and named ownership, 124+ action items become an aspirational catalog rather than a governing framework. The adoption mechanism should specify whether the HAP is a standalone ordinance, a resolution, or an amendment to the Master Plan \u2014 each has different legal weight and amendment procedures.",
+    "notes": "This is the single most important implementation item. Review 1 identified the absence of binding governance as the brainstorm's most significant structural gap. Without an adoption ordinance and named ownership, 124+ action items become an aspirational catalog rather than a governing framework. The adoption mechanism should specify whether the HAP is a standalone ordinance, a resolution, or an amendment to the Master Plan — each has different legal weight and amendment procedures.",
     "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
     "is_new": true,
     "status": "",
     "status_detail": "",
     "pros": [
-      "Transforms the HAP from advisory to binding \u2014 creates legal and political accountability",
+      "Transforms the HAP from advisory to binding — creates legal and political accountability",
       "Named departmental ownership ensures someone is responsible for driving implementation",
       "Formal adoption gives the HAP standing in budget deliberations and land use decisions"
     ],
@@ -2782,7 +2782,7 @@
     "description": "Establish a quarterly implementation dashboard and annual progress report to City Council tracking HAP action item status, housing production against targets, and resource deployment. Dashboard should be public-facing and include: number of action items advanced per quarter, units permitted and completed by type and affordability level, budget allocated vs. spent on housing initiatives, and comparison to AMI-calibrated production targets. Annual report presented formally to Council with staff recommendations for priority adjustments.",
     "target": "Quarterly dashboard operational within 6 months of HAP adoption. First annual report within 12 months.",
     "metric": "Dashboard published quarterly (yes/no); annual report presented to Council (yes/no); percentage of HAP action items advanced per year.",
-    "notes": "Accountability reporting serves two functions: it creates internal pressure for staff to advance HAP items, and it provides advocates with a public record to hold elected officials accountable. The dashboard mockup should be developed before adoption to show Council what accountability looks like \u2014 this demonstrates the advocacy's seriousness about implementation, not just planning.",
+    "notes": "Accountability reporting serves two functions: it creates internal pressure for staff to advance HAP items, and it provides advocates with a public record to hold elected officials accountable. The dashboard mockup should be developed before adoption to show Council what accountability looks like — this demonstrates the advocacy's seriousness about implementation, not just planning.",
     "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
     "is_new": true,
     "status": "",
@@ -2793,7 +2793,7 @@
       "Quarterly cadence keeps housing on the Council agenda rather than being a once-a-year topic"
     ],
     "cons": [
-      "Reporting requires staff time to compile data \u2014 adds to already-stretched capacity",
+      "Reporting requires staff time to compile data — adds to already-stretched capacity",
       "Public dashboards showing slow progress could be used to criticize the city rather than motivate action",
       "Risk of measuring activity (items advanced) rather than impact (units produced, affordability achieved)"
     ]
@@ -2804,7 +2804,7 @@
     "description": "Require that the annual city budget process explicitly address HAP implementation funding. This includes: a dedicated HAP line item or program budget within the Planning Department or Community Development budget; a requirement that the City Manager's proposed budget identify which HAP actions are funded, partially funded, or unfunded in each fiscal year; and a mechanism for the HAP Implementation Committee to submit budget recommendations during the annual budget development process.",
     "target": "Budget alignment process integrated into FY2028 budget cycle (first full fiscal year after anticipated HAP adoption).",
     "metric": "HAP funding identified in annual budget (yes/no); percentage of HAP actions with dedicated funding; total annual HAP-related appropriation.",
-    "notes": "Plans without budgets are wishes. This item ensures the HAP competes for resources in the annual budget process rather than being treated as an unfunded mandate on existing staff. Even modest dedicated funding ($50K-$100K annually for staffing, consulting, or program administration) signals institutional commitment. Budget alignment also forces prioritization \u2014 Council must decide which HAP items to fund first, which is the sequencing mechanism that the brainstorm itself intentionally defers.",
+    "notes": "Plans without budgets are wishes. This item ensures the HAP competes for resources in the annual budget process rather than being treated as an unfunded mandate on existing staff. Even modest dedicated funding ($50K-$100K annually for staffing, consulting, or program administration) signals institutional commitment. Budget alignment also forces prioritization — Council must decide which HAP items to fund first, which is the sequencing mechanism that the brainstorm itself intentionally defers.",
     "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
     "is_new": true,
     "status": "",
@@ -2826,7 +2826,7 @@
     "description": "Develop a coordinated strategy to capture land value increases resulting from upzoning and public investment, and to prevent speculative land price escalation that undermines housing affordability. Tools to evaluate include: strategic land banking through a municipal acquisition fund for parcels in areas targeted for upzoning (acquire before rezoning drives prices up); enhanced use of TIF districts to capture incremental tax revenue from upzoned areas; inclusionary zoning in-lieu fees calibrated to land value increases; and monitoring of land transaction prices in areas where zoning changes are proposed or adopted.",
     "target": "Strategy framework developed within first year of HAP adoption. Land price monitoring initiated immediately upon adoption of any major upzoning.",
     "metric": "Land transaction price trends in upzoned areas vs. citywide baseline; number of parcels acquired for housing through land banking; TIF revenue captured and deployed for housing infrastructure.",
-    "notes": "This is a structural gap identified in reviewer feedback. Upzoning without land value capture mechanisms risks a scenario where land prices rise faster than housing gets built \u2014 the zoning reform enriches landowners without producing affordable units. Portsmouth's compact geography and high land values make this risk particularly acute. The strategy should be developed in coordination with the fiscal impact analysis and buildout capacity modeling.",
+    "notes": "This is a structural gap identified in reviewer feedback. Upzoning without land value capture mechanisms risks a scenario where land prices rise faster than housing gets built — the zoning reform enriches landowners without producing affordable units. Portsmouth's compact geography and high land values make this risk particularly acute. The strategy should be developed in coordination with the fiscal impact analysis and buildout capacity modeling.",
     "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
     "is_new": true,
     "status": "",
@@ -2845,10 +2845,10 @@
   {
     "action": "Development feasibility and pro forma analysis (2026 market conditions)",
     "category": "Production Targets & Data",
-    "description": "Commission or conduct updated development feasibility analysis reflecting 2026 market conditions \u2014 construction costs, interest rates, insurance premiums, and material costs have shifted materially since the 2022 RKG Housing Market Study. Analysis should include: pro forma modeling for representative housing types (ADU, duplex, small multifamily, large multifamily) under current cost and financing conditions; break-even rent and sale price estimates for each type; sensitivity analysis showing how feasibility changes under different incentive scenarios (tax relief, fee waivers, density bonuses); and identification of the affordability floor \u2014 the lowest rent or sale price achievable without deep subsidy under current conditions. Byron Matto's GIS analysis provides critical baseline data: current land allocation (85.8% SF-only vs. 14.2% MF-allowed), zone-specific lot size compliance rates, revenue density comparisons ($5.9M vs. $1.0M per acre), and infrastructure cost differentials. His zone-specific reform proposals (R zone to 1-acre, SRA to 15,000 sf, SRB to 7,500 sf minimums with graduated use allowances) provide concrete scenarios for modeling reformed capacity against the 3,124-unit RKG demand projection.",
+    "description": "Commission or conduct updated development feasibility analysis reflecting 2026 market conditions — construction costs, interest rates, insurance premiums, and material costs have shifted materially since the 2022 RKG Housing Market Study. Analysis should include: pro forma modeling for representative housing types (ADU, duplex, small multifamily, large multifamily) under current cost and financing conditions; break-even rent and sale price estimates for each type; sensitivity analysis showing how feasibility changes under different incentive scenarios (tax relief, fee waivers, density bonuses); and identification of the affordability floor — the lowest rent or sale price achievable without deep subsidy under current conditions. Byron Matto's GIS analysis provides critical baseline data: current land allocation (85.8% SF-only vs. 14.2% MF-allowed), zone-specific lot size compliance rates, revenue density comparisons ($5.9M vs. $1.0M per acre), and infrastructure cost differentials. His zone-specific reform proposals (R zone to 1-acre, SRA to 15,000 sf, SRB to 7,500 sf minimums with graduated use allowances) provide concrete scenarios for modeling reformed capacity against the 3,124-unit RKG demand projection.",
     "target": "Updated feasibility analysis completed within 6 months of HAP adoption. Refreshed every 2 years or when market conditions shift significantly.",
     "metric": "Break-even rent estimates by housing type; gap between break-even rents and target AMI affordability levels; number of incentive scenarios modeled.",
-    "notes": "Without current feasibility data, incentives may be miscalibrated \u2014 too small to change developer behavior, or too generous relative to actual need. This analysis is distinct from the housing gap analysis (#113), which measures demand. Feasibility analysis measures what can actually get built and at what price point under current conditions. The two together connect need to deliverability.",
+    "notes": "Without current feasibility data, incentives may be miscalibrated — too small to change developer behavior, or too generous relative to actual need. This analysis is distinct from the housing gap analysis (#113), which measures demand. Feasibility analysis measures what can actually get built and at what price point under current conditions. The two together connect need to deliverability.",
     "sources": "Reviewer feedback (2026); Progress Portsmouth (2026); Byron Matto GIS analysis (Jan 2026)",
     "is_new": true,
     "status": "",
@@ -2860,7 +2860,7 @@
     ],
     "cons": [
       "Pro forma analysis requires developer input and market data that may be proprietary or contested",
-      "Results become outdated quickly in volatile cost environments \u2014 requires regular updating",
+      "Results become outdated quickly in volatile cost environments — requires regular updating",
       "Analysis may show that some housing types are simply infeasible without deep subsidy, which could discourage action"
     ]
   },
@@ -2870,34 +2870,34 @@
     "description": "Model the theoretical and realistic housing production capacity under current zoning versus proposed zoning reforms. Analysis should show: current by-right theoretical capacity (how many units could be built today under existing zoning without variances); realistic capacity (adjusted for site constraints, owner willingness, market absorption, and development probability); reformed capacity (theoretical and realistic unit yields under proposed zoning changes from the HAP); and the gap between reformed capacity and the RKG demand projection of 3,124 units. Builds on Byron Matto's GIS parcel analysis for ADUs and conversions.",
     "target": "Initial buildout model completed within 6 months of HAP adoption. Updated as zoning reforms are adopted.",
     "metric": "Theoretical vs. realistic unit capacity under current zoning; theoretical vs. realistic capacity under reformed zoning; gap to 3,124-unit demand projection; estimated years to close gap at projected absorption rates.",
-    "notes": "This is the analytical bridge between zoning reform proposals and production targets. Without it, AMI-calibrated targets and vacancy rate goals float unanchored \u2014 there is no way to evaluate whether proposed reforms are sufficient to meet documented need. The model should be visual (maps showing where capacity exists) and should explicitly show the gap between what zoning allows and what the market is likely to deliver. GIS partnership with Byron Matto and potentially UNH (#76) is the natural vehicle.",
+    "notes": "This is the analytical bridge between zoning reform proposals and production targets. Without it, AMI-calibrated targets and vacancy rate goals float unanchored — there is no way to evaluate whether proposed reforms are sufficient to meet documented need. The model should be visual (maps showing where capacity exists) and should explicitly show the gap between what zoning allows and what the market is likely to deliver. GIS partnership with Byron Matto and potentially UNH (#76) is the natural vehicle.",
     "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
     "is_new": true,
     "status": "",
     "status_detail": "",
     "pros": [
-      "Connects zoning reform proposals directly to unit production estimates \u2014 makes the case for reform concrete",
+      "Connects zoning reform proposals directly to unit production estimates — makes the case for reform concrete",
       "Visual gap analysis (current capacity vs. demand) is a powerful advocacy tool for public and Council audiences",
       "Realistic capacity adjustments prevent overpromising what zoning changes alone can deliver"
     ],
     "cons": [
       "Modeling requires assumptions about owner willingness and market absorption that are inherently uncertain",
-      "Theoretical capacity numbers can be misleadingly large \u2014 critics may argue reforms aren't needed if current zoning already allows thousands of units",
+      "Theoretical capacity numbers can be misleadingly large — critics may argue reforms aren't needed if current zoning already allows thousands of units",
       "Parcel-level analysis may identify politically sensitive sites, creating opposition before reforms are even proposed"
     ]
   },
   {
     "category": "Production Targets & Data",
     "action": "Housing Utilization & Market Structure Monitoring",
-    "description": "",
+    "description": "Annual monitoring of housing utilization and ownership patterns — including non-primary residence share and ownership concentration trends — with policy review triggered if significant shifts affect effective housing supply.",
     "target": "",
     "metric": "",
-    "sources": "",
-    "notes": "",
+    "sources": "Chellman/Duffy per discussion of Vancouver \"syndrome\"",
+    "notes": "- Annual tracking of non-primary residence share\n- Monitoring ownership concentration trends\n- Reporting changes in market composition\n- Policy review triggered if thresholds exceeded",
     "is_new": true,
     "status": "not-started",
     "status_detail": "",
-    "pros": [],
-    "cons": []
+    "pros": "Provides early warning of shifts in housing utilization and ownership patterns that may reduce effective year-round supply.\n\n- Supports data-driven decision-making rather than reactive policy debates.\n- Improves transparency around market structure and long-term housing trends.\n- Helps distinguish between supply constraints and assetization dynamics.\n- Aligns with production targets by ensuring new units are functioning as intended in the year-round housing market.",
+    "cons": "- Data collection may be imperfect or require cross-department coordination.\n- Monitoring does not by itself increase housing supply.\n- Risk of misinterpretation if indicators are viewed without context.\n- Could generate political pressure for policy responses before trends are fully established.\n- Some ownership or utilization data may be difficult to access or verify."
   }
 ]
