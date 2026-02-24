@@ -468,10 +468,6 @@ async function init() {
   renderSidebar();
   renderContent();
   renderGlossary();
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    searchQuery = e.target.value.toLowerCase();
-    renderContent();
-  });
 }
 
 function renderGlossary() {
@@ -772,7 +768,16 @@ function renderContent() {
   content.innerHTML = h;
 }
 
-document.addEventListener("DOMContentLoaded", function() { init(); });
+document.addEventListener("DOMContentLoaded", function() {
+  init();
+  var si = document.getElementById('searchInput');
+  if (si) {
+    si.addEventListener('input', function(e) {
+      searchQuery = e.target.value.toLowerCase();
+      renderContent();
+    });
+  }
+});
 </script>
 </body>
 </html>
