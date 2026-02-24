@@ -104,7 +104,7 @@ body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: var(
 .glossary-search { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 0.85rem; margin-bottom: 8px; }
 
 .main-layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 160px); }
-.sidebar { width: 260px; min-width: 260px; background: var(--white); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 140px; height: calc(100vh - 140px); overflow-y: auto; }
+.sidebar { width: 260px; min-width: 260px; background: var(--white); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 96px; height: calc(100vh - 96px); overflow-y: auto; }
 .sidebar-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); padding: 0 20px 12px; }
 .cat-nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; cursor: pointer; transition: var(--transition); border-left: 3px solid transparent; font-size: 0.88rem; }
 .cat-nav-item:hover { background: var(--cream); }
@@ -211,7 +211,7 @@ body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: var(
 .card-tag.rkg { background: #fff3cd; color: #856404; border-color: #ffeeba; }
 
 .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-.data-table th { background: var(--navy); color: var(--white); padding: 10px 14px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; position: sticky; top: 140px; z-index: 10; }
+.data-table th { background: var(--navy); color: var(--white); padding: 10px 14px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; position: sticky; top: 96px; z-index: 10; }
 .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--navy); }
 .data-table tr:hover td { background: var(--cream); }
 .data-table tr.new-row td { background: var(--new-bg); }
@@ -240,10 +240,19 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 @media (max-width: 900px) {
   .sidebar { display: none; }
   .content { padding: 16px; }
-  .header-top { padding: 16px; }
-  .toolbar { padding: 10px 16px; top: 70px; }
-  .data-table th { top: 110px; }
-  .status-filter { display: none; }
+
+  /* Top row: stack brand above search */
+  .header-row-top { flex-wrap: wrap; padding: 12px 16px 10px; gap: 10px; }
+  .header-row-top #searchInput { width: 100%; }
+
+  /* Bottom row: scroll horizontally, no wrapping */
+  .header-row-bottom { padding: 8px 16px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; gap: 10px; }
+  .header-row-bottom::-webkit-scrollbar { display: none; }
+  .status-filter-group { flex-shrink: 0; }
+  .status-filter { display: flex; flex-wrap: nowrap; }
+  .view-controls { flex-shrink: 0; }
+
+  .data-table th { top: 96px; }
 }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -288,15 +297,29 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 .about-toggle{background:none;border:none;font-size:0.78rem;color:var(--slate);cursor:pointer;padding:0;font-family:inherit}
 .about-toggle:hover{color:var(--navy)}
 
-.header-top { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; gap: 16px; flex-wrap: wrap; }
-.header-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; flex: 1; justify-content: flex-end; }
-.header-toolbar #searchInput { width: 200px; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; font-size: 0.8rem; background: rgba(255,255,255,0.12); color: var(--white); outline: none; }
-.header-toolbar #searchInput::placeholder { color: rgba(255,255,255,0.5); }
-.header-toolbar .status-filter-btn { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; color: rgba(255,255,255,0.65); transition: var(--transition); white-space: nowrap; }
-.header-toolbar .status-filter-btn:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+/* ── Two-row header layout ── */
+.header-top { display: flex; flex-direction: column; padding: 0; }
+.header-row-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; gap: 16px; }
+.header-row-bottom { display: flex; align-items: center; justify-content: space-between; padding: 8px 28px 10px; border-top: 1px solid rgba(255,255,255,0.07); gap: 16px; }
+
+/* Search input */
+.header-row-top #searchInput { width: 220px; padding: 7px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.8rem; background: rgba(255,255,255,0.09); color: var(--white); outline: none; transition: var(--transition); flex-shrink: 0; }
+.header-row-top #searchInput::placeholder { color: rgba(255,255,255,0.4); }
+.header-row-top #searchInput:focus { border-color: var(--gold); background: rgba(255,255,255,0.13); }
+
+/* Status filters — left side of bottom row */
+.status-filter-group { display: flex; align-items: center; gap: 6px; }
+.filter-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); margin-right: 2px; }
+.header-toolbar .status-filter-btn { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 11px; font-size: 0.74rem; cursor: pointer; color: rgba(255,255,255,0.6); transition: var(--transition); white-space: nowrap; }
+.header-toolbar .status-filter-btn:hover { background: rgba(255,255,255,0.09); color: var(--white); }
 .header-toolbar .status-filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
+
+/* View controls — right side of bottom row */
+.view-controls { display: flex; align-items: center; gap: 6px; }
+.view-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 4px; }
 .header-toolbar .view-toggle { display: flex; gap: 4px; }
-.header-toolbar .view-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px 10px; font-size: 0.78rem; cursor: pointer; color: rgba(255,255,255,0.7); white-space: nowrap; }
+.header-toolbar .view-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 5px; padding: 4px 10px; font-size: 0.76rem; cursor: pointer; color: rgba(255,255,255,0.65); white-space: nowrap; transition: var(--transition); }
+.header-toolbar .view-btn:hover { background: rgba(255,255,255,0.13); color: var(--white); }
 .header-toolbar .view-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
 .toolbar { display: none; }
 
@@ -350,28 +373,35 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 
 <header class="site-header">
   <div class="header-top">
-    <div class="header-brand">
-      <h1>Portsmouth <span>Housing Action Plan</span></h1>
-      <span class="header-badge">Action Explorer</span>
+    <div class="header-row-top">
+      <div class="header-brand">
+        <h1>Portsmouth <span>Housing Action Plan</span></h1>
+        <span class="header-badge">Action Explorer</span>
         <span class="header-priority">Council Priority #1 — Housing</span>
-    </div>
-    <div class="header-toolbar">
-      <div class="search-box">
+      </div>
+      <div class="header-toolbar">
         <input type="text" id="searchInput" placeholder="Search action items..." />
       </div>
-      <div class="status-filter" id="statusFilter">
-        <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
-        <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">&#10003; Complete</button>
-        <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">&#9680; In Progress</button>
-        <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">&#9675; Early Stage</button>
-        <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">&#8212; Not Started</button>
+    </div>
+    <div class="header-row-bottom">
+      <div class="header-toolbar status-filter-group">
+        <span class="filter-label">Status</span>
+        <div class="status-filter" id="statusFilter">
+          <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
+          <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">&#10003; Complete</button>
+          <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">&#9680; In Progress</button>
+          <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">&#9675; Early Stage</button>
+          <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">&#8212; Not Started</button>
+        </div>
       </div>
-      <div class="view-toggle">
-        <button class="view-btn" onclick="openGlossary()">&#128218; Glossary</button>
-        <button class="view-btn active" id="cardsBtn" onclick="setView('cards')">&#9783; Cards</button>
-        <button class="view-btn" id="tableBtn" onclick="setView('table')">&#9776; Table</button>
-        <button class="view-btn" id="yieldBtn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
-        
+      <div class="view-controls">
+        <div class="view-divider"></div>
+        <div class="header-toolbar view-toggle">
+          <button class="view-btn" onclick="openGlossary()">&#128218; Glossary</button>
+          <button class="view-btn active" id="cardsBtn" onclick="setView('cards')">&#9783; Cards</button>
+          <button class="view-btn" id="tableBtn" onclick="setView('table')">&#9776; Table</button>
+          <button class="view-btn" id="yieldBtn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
+        </div>
       </div>
     </div>
   </div>
