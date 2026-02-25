@@ -2930,5 +2930,22 @@
       "Perceived as spot zoning by neighborhoods"
     ],
     "status": ""
+  },
+  {
+    "action": "Use of AI to accelerate legislative process",
+    "category": "Production Targets & Data",
+    "description": "AI can save substantial time in certain tasks. Example: proposing legislative language based on existing Zoning Ordinance and basic instructions for creating new zoning ordinance.",
+    "notes": "",
+    "sources": "Progress Portsmouth",
+    "target": "",
+    "metric": "",
+    "pros": [
+      "Accelerated process for creating new zoning regulations",
+      "Query-based feedback about zoning requests"
+    ],
+    "cons": [
+      "Legitimacy is not yet universal"
+    ],
+    "status": ""
   }
 ]
