@@ -1026,7 +1026,7 @@
     "notes": "",
     "is_new": false,
     "status": "early-stage",
-    "status_detail": "Referenced in Housing Committee discussions; Portsmouth has not yet adopted a 79-E Housing Opportunity Zone (Conway was first in NH, 2024)",
+    "status_detail": "City Council work session scheduled March 16, 2026, 6 p.m., City Hall. Session requested by Councilor Beth Moreau; NH Housing community engagement manager Sarah Wrightsman to participate. Portsmouth has not yet adopted a 79-E Housing Opportunity Zone (Conway was first in NH, 2024).",
     "pros": [
       "RSA 79-E is an existing, proven NH tool — no new legislation required",
       "Tax relief encourages rehabilitation of aging housing stock",
@@ -2928,23 +2928,6 @@
     "cons": [
       "Limited by available conservation land",
       "Perceived as spot zoning by neighborhoods"
-    ],
-    "status": ""
-  },
-  {
-    "action": "Use of AI to accelerate legislative process",
-    "category": "Production Targets & Data",
-    "description": "AI can save substantial time in certain tasks. Example: proposing legislative language based on existing Zoning Ordinance and basic instructions for creating new zoning ordinance.",
-    "notes": "",
-    "sources": "Progress Portsmouth",
-    "target": "",
-    "metric": "",
-    "pros": [
-      "Accelerated process for creating new zoning regulations",
-      "Query-based feedback about zoning requests"
-    ],
-    "cons": [
-      "Legitimacy is not yet universal"
     ],
     "status": ""
   }
