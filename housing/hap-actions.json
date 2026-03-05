@@ -2930,5 +2930,29 @@
       "Perceived as spot zoning by neighborhoods"
     ],
     "status": ""
+  },
+  {
+    "action": "Revise co-living (Section 10.815) standards to reduce barriers to viable projects",
+    "category": "Zoning & Land Use",
+    "description": "Portsmouth adopted co-living as a permitted use in May 2025 (Ordinance #06-2025), establishing Section 10.815 of the Zoning Ordinance. Current restrictions limit co-living to four zones (GB, G1, G2, CD4-L1) by Conditional Use Permit. Additional standards include a parking requirement of 1 space per 4 units absent proximity to a public garage, a prohibition on permanent cooking facilities, and an 80-resident per-building cap. The City should evaluate whether targeted amendments to zone eligibility, parking standards, unit standards, and building capacity would increase the likelihood of viable co-living projects while maintaining neighborhood compatibility.",
+    "notes": "Recommended actions:  1) Evaluate adding co-living as a CUP use in MRB, OR, and WB districts 2) Evaluate reducing the parking standard or allowing shared/unbundled parking agreements as a CUP condition in zones without public garage proximity 3) Evaluate permitting limited cooking facilities (kitchenette) in co-living units 4) Evaluate increasing the per-building resident cap to enable adaptive reuse of larger structures 5) Evaluate whether administrative approval is appropriate in G1/G2 in lieu of a full CUP",
+    "sources": "Progress Portsmouth",
+    "target": "",
+    "metric": "",
+    "pros": [
+      "Addresses a gap in housing options for residents for whom conventional rentals are financially out of reach",
+      "Co-living can achieve higher unit density per square foot than conventional multifamily",
+      "G1/G2 zones already permit co-living; parking standard revision could make that permission actionable",
+      "Kitchenette allowance may expand market viability without materially changing neighborhood character",
+      "A higher building cap could enable adaptive reuse of existing commercial and office structures"
+    ],
+    "cons": [
+      "Expanding to MRB may draw opposition given its proximity to residential neighborhoods",
+      "Further parking reductions may face scrutiny in the Route 1 corridor absent transit alternatives; Planning Board already holds modification discretion under 10.815.41",
+      "Kitchenette permission may complicate fire and building code compliance review",
+      "Reducing CUP requirements removes a community input mechanism",
+      "Operational cost of the onsite manager requirement (10.815.25) remains regardless of zoning changes and may affect project economics"
+    ],
+    "status": ""
   }
 ]
