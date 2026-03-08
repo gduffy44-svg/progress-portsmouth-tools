@@ -680,7 +680,7 @@ function renderContent() {
   h += `</div>`;
 
   // Table view
-  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px;cursor:pointer;text-align:center;color:var(--gold)" onclick="sortTable('yield')" title="Sort: yield items first">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
+  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px;cursor:pointer;text-align:center;color:var(--gold)" onclick="sortYield()" title="Sort: yield items first">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
   let tn=0;
   catList.forEach(cat => {
     const icon = CAT_ICONS[cat]||'📌';
