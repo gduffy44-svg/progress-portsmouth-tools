@@ -771,7 +771,789 @@ function renderContent() {
 document.addEventListener("DOMContentLoaded", function() {
   init();
   var si = document.getElementById('searchInput');
+  if (si) {<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portsmouth HAP Explorer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --navy-deep: #0f1a2e;
+  --navy: #1a2332;
+  --navy-mid: #2d3e52;
+  --navy-light: #3d5068;
+  --slate: #64748b;
+  --slate-light: #94a3b8;
+  --gold: #f4a261;
+  --gold-dim: #d4883a;
+  --gold-glow: rgba(244, 162, 97, 0.15);
+  --coral: #e76f51;
+  --coral-dim: #c45a3e;
+  --teal: #4ecdc4;
+  --teal-dim: #3aada5;
+  --cream: #faf8f5;
+  --cream-warm: #f5f0e8;
+  --white: #ffffff;
+  --border: rgba(26, 35, 50, 0.08);
+  --border-hover: rgba(26, 35, 50, 0.15);
+  --shadow-sm: 0 1px 3px rgba(15, 26, 46, 0.06);
+  --shadow-md: 0 4px 16px rgba(15, 26, 46, 0.08);
+  --shadow-lg: 0 8px 32px rgba(15, 26, 46, 0.12);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 0.2s ease;
+  --new-bg: #fff8e1;
+  --new-border: #f4a261;
+  --status-complete: #2e7d32;
+  --status-complete-bg: #e8f5e9;
+  --status-progress: #1565c0;
+  --status-progress-bg: #e3f2fd;
+  --status-early: #7b1fa2;
+  --status-early-bg: #f3e5f5;
+  --pro-green: #2e7d32;
+  --pro-bg: #f1f8f1;
+  --pro-border: #c8e6c9;
+  --con-red: #c62828;
+  --con-bg: #fef5f4;
+  --con-border: #ffcdd2;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+.site-header { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 40%, var(--navy-mid) 100%); color: var(--white); padding: 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(15, 26, 46, 0.3); }
+.header-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 32px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.header-brand { display: flex; align-items: baseline; gap: 12px; }
+.header-brand h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; letter-spacing: -0.01em; }
+.header-brand h1 span { color: var(--gold); }
+.header-badge { background: var(--gold); color: var(--navy-deep); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 20px; }
+.header-sub { font-size: 0.85rem; color: var(--slate-light); margin-top: 4px; }
+.header-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.stat-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.85); white-space: nowrap; }
+.stat-pill strong { color: var(--gold); }
+.stat-pill.new-pill { background: rgba(244, 162, 97, 0.15); border-color: rgba(244, 162, 97, 0.3); }
+.stat-pill.status-pill { background: rgba(76, 175, 80, 0.15); border-color: rgba(76, 175, 80, 0.3); }
+.stat-pill.status-pill strong { color: #81c784; }
+
+.toolbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 12px 32px; position: sticky; top: 0; z-index: 90; box-shadow: var(--shadow-sm); }
+.toolbar-inner { display: flex; align-items: center; gap: 16px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; }
+.search-box { flex: 1; min-width: 200px; }
+.search-box input { width: 100%; padding: 10px 16px; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 0.9rem; background: var(--cream); color: var(--navy); outline: none; transition: var(--transition); }
+.search-box input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); }
+.status-filter { display: flex; gap: 6px; flex-wrap: wrap; }
+.status-filter-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--white); font-family: inherit; font-size: 0.78rem; font-weight: 600; color: var(--slate); cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.status-filter-btn:hover { background: var(--cream); }
+.status-filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.status-filter-btn.active-complete { background: var(--status-complete); color: var(--white); border-color: var(--status-complete); }
+.status-filter-btn.active-progress { background: var(--status-progress); color: var(--white); border-color: var(--status-progress); }
+.status-filter-btn.active-early { background: var(--status-early); color: var(--white); border-color: var(--status-early); }
+
+.toolbar-btns { display: flex; gap: 8px; align-items: center; }
+
+.glossary-btn { padding: 8px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; background: var(--navy); font-family: inherit; font-size: 0.82rem; font-weight: 600; color: var(--white); cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.glossary-btn:hover { background: var(--navy-mid); }
+
+.view-toggle { display: flex; background: var(--navy); border-radius: 28px; overflow: hidden; border: none; padding: 4px; gap: 2px; }
+.view-btn { padding: 10px 22px; border: none; background: transparent; font-family: inherit; font-size: 0.88rem; font-weight: 600; color: var(--slate-light); cursor: pointer; transition: var(--transition); border-radius: 24px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.view-btn:hover { color: var(--white); }
+.view-btn.active { background: var(--gold); color: var(--navy-deep); }
+.view-btn .icon { font-size: 1rem; line-height: 1; }
+
+/* Glossary overlay */
+.glossary-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,26,46,0.6); z-index: 200; justify-content: center; align-items: flex-start; padding-top: 100px; }
+.glossary-overlay.open { display: flex; }
+.glossary-panel { background: var(--white); border-radius: var(--radius-lg); width: 90%; max-width: 700px; max-height: 70vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+.glossary-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); border-radius: var(--radius-lg) var(--radius-lg) 0 0; z-index: 1; }
+.glossary-header h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.2rem; }
+.glossary-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--slate); padding: 4px 8px; }
+.glossary-close:hover { color: var(--navy); }
+.glossary-body { padding: 16px 24px; }
+.glossary-entry { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.glossary-entry:last-child { border-bottom: none; }
+.glossary-term { font-weight: 700; color: var(--navy); font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; }
+.glossary-def { font-size: 0.88rem; color: var(--slate); margin-top: 2px; line-height: 1.5; }
+.glossary-search { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-family: inherit; font-size: 0.85rem; margin-bottom: 8px; }
+
+.main-layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 160px); }
+.sidebar { width: 260px; min-width: 260px; background: var(--white); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 96px; height: calc(100vh - 96px); overflow-y: auto; }
+.sidebar-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); padding: 0 20px 12px; }
+.cat-nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; cursor: pointer; transition: var(--transition); border-left: 3px solid transparent; font-size: 0.88rem; }
+.cat-nav-item:hover { background: var(--cream); }
+.cat-nav-item.active { background: var(--gold-glow); border-left-color: var(--gold); font-weight: 600; }
+.cat-nav-icon { font-size: 1.1rem; flex-shrink: 0; }
+.cat-nav-label { flex: 1; line-height: 1.35; }
+.cat-nav-count { background: var(--cream); padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; color: var(--slate); flex-shrink: 0; }
+.cat-nav-item.active .cat-nav-count { background: var(--gold); color: var(--navy-deep); }
+
+.content { flex: 1; padding: 24px 32px; overflow-x: auto; }
+
+.revision-banner { background: var(--cream-warm); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.6; color: var(--navy); }
+.revision-banner strong { color: var(--navy); }
+.revision-banner .rev-date { font-weight: 700; color: var(--gold-dim); }
+.revision-banner .ai-note { margin-top: 8px; font-size: 0.8rem; color: var(--slate); font-style: italic; }
+.revision-banner .rev-content { max-height: 2.8em; overflow: hidden; transition: max-height 0.35s ease; }
+.revision-banner .rev-content.expanded { max-height: 600px; }
+.revision-banner .rev-toggle { display: inline-block; margin-top: 6px; font-size: 0.8rem; font-weight: 600; color: var(--gold-dim); cursor: pointer; border: none; background: none; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
+
+.intro-panel { background: linear-gradient(135deg, var(--navy-deep), var(--navy-mid)); color: var(--white); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 28px; }
+.intro-panel h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 12px; }
+.intro-panel h2 span { color: var(--gold); }
+.intro-panel p { color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; max-width: 800px; }
+.intro-panel p + p { margin-top: 12px; }
+.intro-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.intro-detail.expanded { max-height: 500px; }
+.intro-detail p { margin-top: 12px; }
+.intro-panel .rev-toggle { color: var(--navy-deep); background: var(--gold); border: none; padding: 10px 24px; border-radius: 24px; font-family: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; margin-top: 20px; letter-spacing: 0.02em; box-shadow: 0 2px 8px rgba(244,162,97,0.3); }
+.intro-panel .rev-toggle:hover { background: #e8892e; box-shadow: 0 4px 16px rgba(244,162,97,0.4); transform: translateY(-1px); }
+.intro-stats { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+.intro-stat { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 16px 24px; text-align: center; min-width: 100px; }
+.intro-stat .num { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.8rem; color: var(--gold); }
+.intro-stat .num.green { color: #81c784; }
+.intro-stat .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.status-legend { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+.status-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.status-dot.complete { background: var(--status-complete); }
+.status-dot.in-progress { background: var(--status-progress); }
+.status-dot.early-stage { background: var(--status-early); }
+.status-dot.not-started { background: var(--slate); }
+
+.cat-header { display: flex; align-items: center; gap: 12px; margin: 32px 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--navy); }
+.cat-header:first-of-type { margin-top: 0; }
+.cat-header-icon { font-size: 1.4rem; }
+.cat-header-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--navy); }
+.cat-header-count { font-size: 0.8rem; color: var(--slate); background: var(--cream-warm); padding: 3px 10px; border-radius: 12px; }
+
+.action-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; transition: var(--transition); cursor: pointer; }
+.action-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-md); }
+.action-card.new-item { border-left: 4px solid var(--gold); background: var(--new-bg); }
+.action-card.status-complete { border-left: 4px solid var(--status-complete); background: var(--status-complete-bg); }
+.action-card.status-in-progress { border-left: 4px solid var(--status-progress); background: var(--status-progress-bg); }
+.action-card.status-early-stage { border-left: 4px solid var(--status-early); background: var(--status-early-bg); }
+
+.card-head { display: flex; align-items: center; gap: 12px; padding: 14px 20px; }
+.card-num { background: var(--navy); color: var(--white); font-size: 0.72rem; font-weight: 700; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
+.action-card.new-item .card-num { background: var(--gold); color: var(--navy-deep); }
+.action-card.status-complete .card-num { background: var(--status-complete); }
+.action-card.status-in-progress .card-num { background: var(--status-progress); }
+.action-card.status-early-stage .card-num { background: var(--status-early); }
+.card-title { font-weight: 600; font-size: 0.95rem; color: var(--navy); flex: 1; }
+.new-badge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; }
+.new-badge.badge-new { background: var(--gold); color: var(--navy-deep); }
+.new-badge.badge-complete { background: var(--status-complete); color: var(--white); }
+.new-badge.badge-progress { background: var(--status-progress); color: var(--white); }
+.new-badge.badge-early { background: var(--status-early); color: var(--white); }
+.card-arrow { color: var(--slate-light); transition: var(--transition); flex-shrink: 0; }
+.action-card.open .card-arrow { transform: rotate(180deg); }
+.card-body { display: none; padding: 0 20px 20px; border-top: 1px solid var(--border); }
+.action-card.open .card-body { display: block; padding-top: 16px; }
+.card-field { margin-bottom: 12px; }
+.card-field-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate); margin-bottom: 3px; }
+.card-field-value { font-size: 0.88rem; color: var(--navy); line-height: 1.5; }
+
+.status-detail-box { background: rgba(0,0,0,0.04); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 12px; border-left: 3px solid var(--slate); }
+.status-detail-box.sd-complete { border-left-color: var(--status-complete); background: rgba(46,125,50,0.06); }
+.status-detail-box.sd-in-progress { border-left-color: var(--status-progress); background: rgba(21,101,192,0.06); }
+.status-detail-box.sd-early-stage { border-left-color: var(--status-early); background: rgba(123,31,162,0.06); }
+.status-detail-box .sd-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.status-detail-box.sd-complete .sd-label { color: var(--status-complete); }
+.status-detail-box.sd-in-progress .sd-label { color: var(--status-progress); }
+.status-detail-box.sd-early-stage .sd-label { color: var(--status-early); }
+.status-detail-box .sd-text { font-size: 0.85rem; color: var(--navy); line-height: 1.5; }
+
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.pros-col, .cons-col { border-radius: var(--radius); padding: 14px 16px; }
+.pros-col { background: var(--pro-bg); border: 1px solid var(--pro-border); }
+.cons-col { background: var(--con-bg); border: 1px solid var(--con-border); }
+.pc-header { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.pros-col .pc-header { color: var(--pro-green); }
+.cons-col .pc-header { color: var(--con-red); }
+.pc-header .pc-icon { font-size: 0.85rem; }
+.pc-list { list-style: none; padding: 0; margin: 0; }
+.pc-list li { font-size: 0.84rem; line-height: 1.45; color: var(--navy); padding: 4px 0 4px 18px; position: relative; }
+.pc-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; }
+.pros-col .pc-list li::before { background: var(--pro-green); opacity: 0.4; }
+.cons-col .pc-list li::before { background: var(--con-red); opacity: 0.3; }
+@media (max-width: 700px) { .pros-cons { grid-template-columns: 1fr; } }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.card-tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 12px; background: var(--cream); color: var(--slate); border: 1px solid var(--border); }
+.card-tag.source { background: #e8f4f8; color: #1a5276; border-color: #b8dce8; }
+.card-tag.rkg { background: #fff3cd; color: #856404; border-color: #ffeeba; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.data-table th { background: var(--navy); color: var(--white); padding: 10px 14px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; position: sticky; top: 96px; z-index: 10; }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--navy); }
+.data-table tr:hover td { background: var(--cream); }
+.data-table tr.new-row td { background: var(--new-bg); }
+.data-table tr.new-row:hover td { background: #fff0c8; }
+
+
+
+
+body .data-table tr.status-complete-row td { background: #e8f5e9; color: #111111; }
+body .data-table tr.status-progress-row td { background: #e3f2fd; color: #111111; }
+body .data-table tr.status-early-row td { background: #f3e5f5; color: #111111; }
+body .data-table tr.status-complete-row:hover td { background: #d4edda; color: #111111; }
+body .data-table tr.status-progress-row:hover td { background: #cce5ff; color: #111111; }
+body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111111; }
+.data-table tr.cat-row td { background: #d4e1f0; font-weight: 700; font-size: 0.9rem; color: var(--navy); padding: 12px 14px; }
+.data-table .pc-inline { font-size: 0.8rem; margin-top: 6px; }
+.data-table .pc-inline span { font-weight: 600; }
+.data-table .pc-inline .pro-label { color: var(--pro-green); }
+.data-table .pc-inline .con-label { color: var(--con-red); }
+
+.no-results { text-align: center; padding: 60px 20px; color: var(--slate); }
+.no-results .icon { font-size: 2.5rem; margin-bottom: 12px; }
+.version-note { text-align: center; padding: 24px; font-size: 0.8rem; color: var(--slate); border-top: 1px solid var(--border); margin-top: 40px; }
+.version-note a { color: var(--gold-dim); }
+
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .content { padding: 16px; }
+
+  /* Top row: stack brand above search */
+  .header-row-top { flex-wrap: wrap; padding: 12px 16px 10px; gap: 10px; }
+  .header-row-top #searchInput { width: 100%; }
+
+  /* Bottom row: scroll horizontally, no wrapping */
+  .header-row-bottom { padding: 8px 16px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; gap: 10px; }
+  .header-row-bottom::-webkit-scrollbar { display: none; }
+  .status-filter-group { flex-shrink: 0; }
+  .status-filter { display: flex; flex-wrap: nowrap; }
+  .view-controls { flex-shrink: 0; }
+
+  .data-table th { top: 96px; }
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--slate-light); border-radius: 3px; }
+@media print {
+  .site-header, .toolbar, .sidebar { display: none !important; }
+  .content { padding: 0 !important; }
+  .action-card { break-inside: avoid; }
+  .card-body { display: block !important; }
+}
+
+/* Evaluation layer */
+.eval-panel { margin-top: 16px; padding-top: 16px; border-top: 2px dashed var(--border); }
+.eval-panel-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate); margin-bottom: 12px; }
+.eval-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.eval-field { background: var(--cream); border-radius: 6px; padding: 8px 10px; }
+.eval-field-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); margin-bottom: 3px; }
+.eval-field-value { font-size: 0.82rem; color: var(--navy); font-weight: 500; }
+.eval-field-value.empty { color: #aaa; font-style: italic; font-weight: 400; }
+.eval-yield { background: #f0f7ff; border: 1px solid #c8dff5; border-radius: 6px; padding: 10px 12px; margin-bottom: 10px; }
+.eval-yield-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #1565c0; margin-bottom: 4px; }
+.eval-yield-value { font-size: 0.9rem; color: var(--navy); font-weight: 600; }
+.eval-yield-meta { font-size: 0.75rem; color: var(--slate); margin-top: 4px; }
+.eval-notes { font-size: 0.8rem; color: var(--slate); font-style: italic; margin-top: 6px; }
+.eval-status-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+.eval-status-not-reviewed { background: #f0f0f0; color: #888; }
+.eval-status-in-review { background: #fff3cd; color: #856404; }
+.eval-status-consensus { background: #d4edda; color: #155724; }
+.disposition-deferred { opacity: 0.5; }
+.disposition-removed { opacity: 0.35; text-decoration: line-through; }
+
+.workload-summary{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px}
+.workload-stats{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.workload-stat{display:flex;align-items:baseline;gap:5px}
+.ws-num{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;color:var(--navy)}
+.ws-num.ws-active{color:var(--coral)}
+.ws-label{font-size:0.72rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.05em}
+.workload-divider{color:#ccc;margin:0 2px}
+.workload-status{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8rem;color:var(--slate);margin-bottom:10px;border-top:1px solid var(--border);padding-top:10px}
+.ws-status-item{display:flex;align-items:center;gap:5px}
+.workload-about{border-top:1px solid var(--border);padding-top:10px}
+.about-toggle{background:none;border:none;font-size:0.78rem;color:var(--slate);cursor:pointer;padding:0;font-family:inherit}
+.about-toggle:hover{color:var(--navy)}
+
+/* ── Two-row header layout ── */
+.header-top { display: flex; flex-direction: column; padding: 0; }
+.header-row-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; gap: 16px; }
+.header-row-bottom { display: flex; align-items: center; justify-content: space-between; padding: 8px 28px 10px; border-top: 1px solid rgba(255,255,255,0.07); gap: 16px; }
+
+/* Search input */
+.header-row-top #searchInput { width: 220px; padding: 7px 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; font-size: 0.8rem; background: rgba(255,255,255,0.09); color: var(--white); outline: none; transition: var(--transition); flex-shrink: 0; }
+.header-row-top #searchInput::placeholder { color: rgba(255,255,255,0.4); }
+.header-row-top #searchInput:focus { border-color: var(--gold); background: rgba(255,255,255,0.13); }
+
+/* Status filters — left side of bottom row */
+.status-filter-group { display: flex; align-items: center; gap: 6px; }
+.filter-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); margin-right: 2px; }
+.header-toolbar .status-filter-btn { background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 11px; font-size: 0.74rem; cursor: pointer; color: rgba(255,255,255,0.6); transition: var(--transition); white-space: nowrap; }
+.header-toolbar .status-filter-btn:hover { background: rgba(255,255,255,0.09); color: var(--white); }
+.header-toolbar .status-filter-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
+
+/* View controls — right side of bottom row */
+.view-controls { display: flex; align-items: center; gap: 6px; }
+.view-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 4px; }
+.header-toolbar .view-toggle { display: flex; gap: 4px; }
+.header-toolbar .view-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 5px; padding: 4px 10px; font-size: 0.76rem; cursor: pointer; color: rgba(255,255,255,0.65); white-space: nowrap; transition: var(--transition); }
+.header-toolbar .view-btn:hover { background: rgba(255,255,255,0.13); color: var(--white); }
+.header-toolbar .view-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 600; }
+.toolbar { display: none; }
+
+.yield-pill { display: inline-block; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.04em; white-space: nowrap; }
+.yield-legend { font-size: 0.75rem; color: var(--slate); padding: 6px 0 10px 0; }
+.yield-legend-icon { color: var(--gold); }
+.yield-col { color: var(--gold); font-size: 1rem; text-align: center; }
+
+.yield-view { padding: 4px 0; }
+.yield-view-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px; }
+.yield-view-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
+.yield-view-meta { font-size: 0.85rem; color: var(--slate); margin-bottom: 8px; }
+.yield-caveat { font-size: 0.78rem; color: var(--slate); font-style: italic; }
+.yield-view-note { font-size: 0.75rem; color: var(--slate); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; font-style: italic; }
+.yield-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.yield-table thead th { background: var(--navy); color: var(--white); padding: 10px 12px; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.yield-table tbody tr { border-bottom: 1px solid var(--border); }
+.yield-table tbody tr:hover { background: #f8f7f4; }
+.yield-table tbody td { padding: 12px; vertical-align: top; color: var(--navy); }
+.yield-concern { font-size: 0.76rem; color: var(--coral); margin-top: 4px; font-style: italic; }
+.yield-notes-row { font-size: 0.74rem; color: var(--slate); margin-top: 4px; line-height: 1.5; }
+.yield-type-badge { background: rgba(201,168,76,0.15); color: #8a6f1a; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.conf-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.conf-high { background: #e8f5e9; color: #2e7d32; }
+.conf-medium { background: #e3f2fd; color: #1565c0; }
+.conf-speculative { background: #f3f3f3; color: #757575; }
+
+.yield-view { padding: 4px 0; }
+.yield-view-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px; }
+.yield-view-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
+.yield-view-meta { font-size: 0.85rem; color: var(--slate); margin-bottom: 8px; }
+.yield-caveat { font-size: 0.78rem; color: var(--slate); font-style: italic; }
+.yield-view-note { font-size: 0.75rem; color: var(--slate); border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; font-style: italic; }
+.yield-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; background: var(--white); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.yield-table thead th { background: var(--navy); color: var(--white); padding: 10px 12px; text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.yield-table tbody tr { border-bottom: 1px solid var(--border); }
+.yield-table tbody tr:hover { background: #f8f7f4; }
+.yield-table tbody td { padding: 12px; vertical-align: top; color: var(--navy); }
+.yield-concern { font-size: 0.76rem; color: var(--coral); margin-top: 4px; font-style: italic; }
+.yield-notes-row { font-size: 0.74rem; color: var(--slate); margin-top: 4px; line-height: 1.5; }
+.yield-type-badge { background: rgba(201,168,76,0.15); color: #8a6f1a; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.conf-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.conf-high { background: #e8f5e9; color: #2e7d32; }
+.conf-medium { background: #e3f2fd; color: #1565c0; }
+.conf-speculative { background: #f3f3f3; color: #757575; }
+  .header-priority { font-size: 0.72rem; color: rgba(255,255,255,0.80); letter-spacing: 0.04em; align-self: center; margin-left: 0.25rem; }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-top">
+    <div class="header-row-top">
+      <div class="header-brand">
+        <h1>Portsmouth <span>Housing Action Plan</span></h1>
+        <span class="header-badge">Action Explorer</span>
+        <span class="header-priority">Council Priority #1 — Housing</span>
+      </div>
+      <div class="header-toolbar">
+        <input type="text" id="searchInput" placeholder="Search action items..." />
+      </div>
+    </div>
+    <div class="header-row-bottom">
+      <div class="header-toolbar status-filter-group">
+        <span class="filter-label">Status</span>
+        <div class="status-filter" id="statusFilter">
+          <button class="status-filter-btn active" data-filter="all" onclick="setStatusFilter('all')">All</button>
+          <button class="status-filter-btn" data-filter="complete" onclick="setStatusFilter('complete')">&#10003; Complete</button>
+          <button class="status-filter-btn" data-filter="in-progress" onclick="setStatusFilter('in-progress')">&#9680; In Progress</button>
+          <button class="status-filter-btn" data-filter="early-stage" onclick="setStatusFilter('early-stage')">&#9675; Early Stage</button>
+          <button class="status-filter-btn" data-filter="not-started" onclick="setStatusFilter('not-started')">&#8212; Not Started</button>
+        </div>
+      </div>
+      <div class="view-controls">
+        <div class="view-divider"></div>
+        <div class="header-toolbar view-toggle">
+          <button class="view-btn" onclick="openGlossary()">&#128218; Glossary</button>
+          <button class="view-btn active" id="cardsBtn" onclick="setView('cards')">&#9783; Cards</button>
+          <button class="view-btn" id="tableBtn" onclick="setView('table')">&#9776; Table</button>
+          <button class="view-btn" id="yieldBtn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="main-layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content" id="content"></main>
+</div>
+
+<script>
+let DATA = [];
+let GLOSSARY = {};
+
+function slugify(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 60);
+}
+
+let EVALUATIONS = {};
+
+async function loadData() {
+  try {
+    const [actionsRes, glossaryRes, evalsRes] = await Promise.all([
+      fetch('hap-actions.json'),
+      fetch('hap-glossary.json'),
+      fetch('hap-evaluations.json')
+    ]);
+    if (!actionsRes.ok) throw new Error('hap-actions.json returned ' + actionsRes.status);
+    if (!glossaryRes.ok) throw new Error('hap-glossary.json returned ' + glossaryRes.status);
+    const actions = await actionsRes.json();
+    const glossary = await glossaryRes.json();
+    DATA = Array.isArray(actions) ? actions : [];
+    GLOSSARY = (glossary && typeof glossary === 'object') ? glossary : {};
+    if (evalsRes.ok) {
+      const evals = await evalsRes.json();
+      if (Array.isArray(evals)) {
+        evals.forEach(e => { EVALUATIONS[e.id] = e; });
+      }
+    }
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    DATA = [];
+    GLOSSARY = {};
+  }
+}
+const CAT_ORDER = ["Zoning & Land Use", "Permitting & Process", "Incentives & Financial Tools", "Housing Trust Fund & Funding", "Public Land & Property", "Partnerships & Capacity", "Preservation & Anti-Displacement", "Special Populations", "Education & Outreach", "Infrastructure & Services", "Production Targets & Data", "Climate & Sustainability", "Governance & Accountability"];
+const CAT_COUNTS = {"Zoning & Land Use": 33, "Permitting & Process": 11, "Incentives & Financial Tools": 20, "Housing Trust Fund & Funding": 3, "Public Land & Property": 6, "Partnerships & Capacity": 9, "Preservation & Anti-Displacement": 11, "Special Populations": 6, "Education & Outreach": 10, "Infrastructure & Services": 5, "Production Targets & Data": 11, "Climate & Sustainability": 3, "Governance & Accountability": 3};
+const CAT_ICONS = {"Zoning & Land Use": "\ud83c\udfd7\ufe0f", "Permitting & Process": "\ud83d\udccb", "Incentives & Financial Tools": "\ud83d\udcb0", "Housing Trust Fund & Funding": "\ud83c\udfe6", "Public Land & Property": "\ud83c\udfdb\ufe0f", "Partnerships & Capacity": "\ud83e\udd1d", "Preservation & Anti-Displacement": "\ud83d\udee1\ufe0f", "Special Populations": "\ud83d\udc65", "Education & Outreach": "\ud83d\udce2", "Infrastructure & Services": "\ud83d\udd27", "Production Targets & Data": "\ud83d\udcca", "Climate & Sustainability": "\ud83c\udf31", "Governance & Accountability": "\u2696\ufe0f"};
+
+
+let activeCategory = 'all';
+let searchQuery = '';
+let currentView = 'cards';
+let statusFilter = 'all';
+
+const STATUS_LABELS = {'complete':'✓ Complete','in-progress':'◐ In Progress','early-stage':'○ Early Stage'};
+const STATUS_BADGE_CLASS = {'complete':'badge-complete','in-progress':'badge-progress','early-stage':'badge-early'};
+const STATUS_DETAIL_LABELS = {'complete':'Status: Complete / Substantially in Place','in-progress':'Status: Actively in Progress','early-stage':'Status: Early Stage / Partially Addressed'};
+
+async function init() {
+  await loadData();
+  renderSidebar();
+  renderContent();
+  renderGlossary();
+}
+
+function renderGlossary() {
+  const el = document.getElementById('glossaryEntries');
+  const sorted = Object.keys(GLOSSARY).sort();
+  el.innerHTML = sorted.map(k => `<div class="glossary-entry" data-term="${k.toLowerCase()}"><span class="glossary-term">${k}</span><div class="glossary-def">${GLOSSARY[k]}</div></div>`).join('');
+}
+function filterGlossary() {
+  const q = document.getElementById('glossarySearch').value.toLowerCase();
+  document.querySelectorAll('.glossary-entry').forEach(el => {
+    el.style.display = el.dataset.term.includes(q) || el.querySelector('.glossary-def').textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+function toggleGlossary() {
+  document.getElementById('glossaryOverlay').classList.toggle('open');
+}
+
+function renderSidebar() {
+  const sb = document.getElementById('sidebar');
+  let h = '<div class="sidebar-title">Categories</div>';
+  h += `<div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${DATA.length || 0}</span></div>`;
+  CAT_ORDER.forEach(cat => {
+    const icon = CAT_ICONS[cat]||'📌';
+    h += `<div class="cat-nav-item ${activeCategory===cat?'active':''}" title="${cat}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${icon}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${CAT_COUNTS[cat]||0}</span></div>`;
+  });
+  sb.innerHTML = h;
+}
+
+var yieldSortActive = false;
+function sortYield() { yieldSortActive = !yieldSortActive; renderContent(); }
+
+
+function getFiltered() {
+  return DATA.filter(item => {
+    if (activeCategory!=='all' && item.category!==activeCategory) return false;
+    if (statusFilter!=='all') {
+      const s = item.status||'';
+      if (statusFilter==='not-started' && s!=='') return false;
+      if (statusFilter!=='not-started' && s!==statusFilter) return false;
+    }
+    if (searchQuery) {
+      const hay = (item.action+' '+item.description+' '+item.sources+' '+(item.notes||'')+' '+(item.target||'')+' '+(item.metric||'')+' '+item.category+' '+(item.status_detail||'')+' '+(item.pros||[]).join(' ')+' '+(item.cons||[]).join(' ')).toLowerCase();
+      return hay.includes(searchQuery);
+    }
+    return true;
+  }).sort(function(a,b){ if(!yieldSortActive) return 0; var aY=EVALUATIONS[slugify(a.action)]&&EVALUATIONS[slugify(a.action)].yieldType?1:0; var bY=EVALUATIONS[slugify(b.action)]&&EVALUATIONS[slugify(b.action)].yieldType?1:0; return bY-aY; });
+}
+
+function setCategory(c) { activeCategory=c; renderSidebar(); renderContent(); }
+function setView(v) { currentView=v; document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===v)); renderContent(); }
+function setStatusFilter(f) {
+  statusFilter=f;
+  document.querySelectorAll('.status-filter-btn').forEach(b => {
+    b.classList.remove('active','active-complete','active-progress','active-early');
+    if(b.dataset.filter===f) {
+      if(f==='complete') b.classList.add('active-complete');
+      else if(f==='in-progress') b.classList.add('active-progress');
+      else if(f==='early-stage') b.classList.add('active-early');
+      else b.classList.add('active');
+    }
+  });
+  renderContent();
+}
+function toggleCard(el) { el.classList.toggle('open'); }
+
+function pcHtml(item) {
+  const p=item.pros||[], c=item.cons||[];
+  if(!p.length&&!c.length) return '';
+  let h='<div class="pros-cons"><div class="pros-col"><div class="pc-header"><span class="pc-icon">▲</span> Considerations For</div><ul class="pc-list">';
+  p.forEach(x=>{ h+=`<li>${x}</li>`; });
+  h+='</ul></div><div class="cons-col"><div class="pc-header"><span class="pc-icon">▼</span> Considerations Against</div><ul class="pc-list">';
+  c.forEach(x=>{ h+=`<li>${x}</li>`; });
+  h+='</ul></div></div>';
+  return h;
+}
+
+function renderContent() {
+  const content = document.getElementById('content');
+  const filtered = getFiltered();
+  let h = '';
+
+  // Revision banner always shown
+  h += `<div class="revision-banner">
+    <span class="rev-date">Version 2.1 — March 6, 2026</span><br>
+    <div class="rev-content" id="revContent">
+    <strong>Revision history:</strong> v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022. v1.1 (Feb 10) status audit adding 3 items to 122. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.3 (Feb 17) pros/cons analysis added for all items. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added. v2.1 (Mar 6) 2026 NH legislative session analysis: RSA 79-E item (index 46) updated to reflect HB1103 passing House Housing Committee 17-0 with amendment on March 3, expanding 79-E credits to wider property types; new item added (index 134, Zoning &amp; Land Use) tracking HB1079, HB1540, and HB1662 for conflicts with Portsmouth's February 17, 2026 ADU ordinance. Total items: 135.
+    <div class="ai-note">This module was developed with AI assistance. Claude by Anthropic served as the primary AI model for data structuring, analysis, pros/cons generation, and HTML development. Reviewer feedback was gathered from multiple sources including AI-assisted reviews. All content reflects Progress Portsmouth's research, policy positions, and editorial judgment — AI tools were used to accelerate production, not to substitute for local knowledge or advocacy strategy.</div>
+    </div>
+    <button class="rev-toggle" id="revToggle" onclick="const c=document.getElementById('revContent');const t=document.getElementById('revToggle');if(c.classList.contains('expanded')){c.classList.remove('expanded');t.textContent='Read more ▾';}else{c.classList.add('expanded');t.textContent='Read less ▴';}">Read more ▾</button>
+  </div>`;
+
+  if (activeCategory==='all' && !searchQuery && statusFilter==='all') {
+    var alreadyActive = DATA.filter(function(d){return d.status&&d.status!=='not-started'&&d.status!=='';}).length;
+    var notYet = DATA.length - alreadyActive;
+    var sc = {};
+    DATA.forEach(function(item){ sc[item.status] = (sc[item.status]||0)+1; });
+    h += '<div class="workload-summary">';
+    h += '<div class="workload-stats">';
+    h += '<div class="workload-stat"><span class="ws-num">' + DATA.length + '</span><span class="ws-label">Action Items</span></div>';
+    h += '<div class="workload-divider">&#183;</div>';
+    h += '<div class="workload-stat"><span class="ws-num">13</span><span class="ws-label">Categories</span></div>';
+    h += '<div class="workload-divider">&#183;</div>';
+    h += '<div class="workload-stat"><span class="ws-num ws-active">' + alreadyActive + '</span><span class="ws-label">Already Active</span></div>';
+    h += '<div class="workload-divider">&#183;</div>';
+    h += '<div class="workload-stat"><span class="ws-num">' + notYet + '</span><span class="ws-label">Not Yet Started</span></div>';
+    h += '</div>';
+    h += '<div class="workload-status">';
+    h += '<span class="ws-status-item"><span class="status-dot complete"></span> Complete (' + (sc['complete']||0) + ')</span>';
+    h += '<span class="ws-status-item"><span class="status-dot in-progress"></span> In Progress (' + (sc['in-progress']||0) + ')</span>';
+    h += '<span class="ws-status-item"><span class="status-dot early-stage"></span> Early Stage (' + (sc['early-stage']||0) + ')</span>';
+    h += '<span class="ws-status-item"><span class="status-dot not-started"></span> Not Started (' + notYet + ')</span>';
+    h += '</div>';
+    h += '<div class="workload-about"><button class="about-toggle" onclick="var d=document.getElementById(\'aboutDetail\');if(d.style.display===\'none\'){d.style.display=\'block\';this.textContent=\'About this module \u25b4\';}else{d.style.display=\'none\';this.textContent=\'About this module \u25be\';}">About this module &#9662;</button>';
+    h += '<div id="aboutDetail" style="display:none;margin-top:12px;font-size:0.82rem;color:var(--slate);line-height:1.6;">';
+    h += '<p><strong>Sources:</strong> Comparable city plans (Keene, South Portland, Burien), Housing Blue Ribbon Committee work plan, Planning Board recommendations, Places to Live Dialogue, 2022 RKG Housing Market Study, reviewer feedback, and advocate input.</p>';
+    h += '<p><strong>Key context:</strong> Portsmouth vacancy rate 1.86%, below the 4-6% functional threshold. RKG projects demand for 3,124 additional units, 52% at 80% AMI or below. GIS analysis shows 85.8% of residential land zoned exclusively single-family, 69.9% of parcels out of compliance.</p>';
+    h += '</div></div>';
+    h += '</div>';
+  }
+  // Yield legend if any items have yield data
+  const hasYield = filtered.some(item => EVALUATIONS[slugify(item.action)] && EVALUATIONS[slugify(item.action)].yieldType);
+  if (hasYield) {
+    h += '<div class="yield-legend">&#9670; Gold diamond = housing yield estimate available &mdash; expand card for details</div>';
+  }
+  if (!filtered.length) {
+    h += `<div class="no-results"><div class="icon">🔍</div><div>No action items match your filters.</div></div>`;
+    content.innerHTML = h; return;
+  }
+
+  const groups = {};
+  filtered.forEach(item => { if(!groups[item.category]) groups[item.category]=[]; groups[item.category].push(item); });
+  const catList = CAT_ORDER.filter(c => groups[c]);
+
+  let n=0;
+  h += `<div style="display:${currentView==='cards'?'block':'none'}">`;
+  catList.forEach(cat => {
+    const icon = CAT_ICONS[cat]||'📌';
+    const ci = groups[cat];
+    h += `<div class="cat-header"><span class="cat-header-icon">${icon}</span><span class="cat-header-name">${cat}</span><span class="cat-header-count">${ci.length} items</span></div>`;
+    ci.forEach(item => {
+      n++;
+      const s = item.status||'';
+      const hs = s!=='';
+      let cc = 'action-card';
+      if(hs) cc += ' status-'+s;
+      else if(item.is_new) cc += ' new-item';
+      let badge = '';
+      if(hs) badge = `<span class="new-badge ${STATUS_BADGE_CLASS[s]}">${STATUS_LABELS[s]}</span>`;
+      else if(item.is_new) {
+        const bl = (item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress portsmouth')||item.sources.toLowerCase().includes('reviewer'))) ? 'New' : 'RKG 2022';
+        badge = `<span class="new-badge badge-new">${bl}</span>`;
+      }
+      h += `<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span><span class="card-title">${item.action}</span>${badge}${EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType ? '<span class="yield-pill">&#9670;</span>' : ''}<span class="card-arrow">&#9660;</span></div><div class="card-body">`;
+      if(hs && item.status_detail) h += `<div class="status-detail-box sd-${s}"><div class="sd-label">${STATUS_DETAIL_LABELS[s]}</div><div class="sd-text">${item.status_detail}</div></div>`;
+      h += pcHtml(item);
+      if(item.description) h += `<div class="card-field"><div class="card-field-label">Description</div><div class="card-field-value">${item.description}</div></div>`;
+      if(item.target) h += `<div class="card-field"><div class="card-field-label">Target</div><div class="card-field-value">${item.target}</div></div>`;
+      if(item.metric) h += `<div class="card-field"><div class="card-field-label">Monitoring Metric</div><div class="card-field-value">${item.metric}</div></div>`;
+      if(item.notes) h += `<div class="card-field"><div class="card-field-label">Notes</div><div class="card-field-value">${item.notes}</div></div>`;
+      if(item.sources) {
+        h += `<div class="card-tags">`;
+        item.sources.split(';').forEach(src => {
+          src = src.trim();
+          if(src) {
+            const hi = src.toLowerCase().includes('rkg')||src.toLowerCase().includes('advocate')||src.toLowerCase().includes('progress')||src.toLowerCase().includes('chellman')||src.toLowerCase().includes('reviewer');
+            h += `<span class="card-tag ${hi?'rkg':'source'}">${src}</span>`;
+          }
+        });
+        h += `</div>`;
+      }
+      // Evaluation panel
+      const slug = slugify(item.action);
+      const ev = EVALUATIONS[slug];
+      if (ev) {
+        const evStatus = ev.evaluationStatus || 'not-reviewed';
+        const evStatusLabel = {'not-reviewed': 'Not Reviewed', 'in-review': 'In Review', 'consensus': 'Consensus'}[evStatus] || evStatus;
+        h += `<div class="eval-panel">`;
+        h += `<div class="eval-panel-title">Stakeholder Evaluation <span class="eval-status-badge eval-status-${evStatus}">${evStatusLabel}</span></div>`;
+        // Yield block
+        if (ev.yieldType) {
+          h += `<div class="eval-yield">`;
+          h += `<div class="eval-yield-label">Potential Housing Yield</div>`;
+          h += `<div class="eval-yield-value">${ev.yieldType}${ev.yieldEstimate ? ' — ' + ev.yieldEstimate : ''}</div>`;
+          if (ev.yieldTimeframe || ev.yieldConfidence) {
+            h += `<div class="eval-yield-meta">${[ev.yieldTimeframe, ev.yieldConfidence ? ev.yieldConfidence + ' confidence' : ''].filter(Boolean).join(' · ')}</div>`;
+          }
+          if (ev.yieldNotes) h += `<div class="eval-notes">${ev.yieldNotes}</div>`;
+          h += `</div>`;
+        }
+        // Evaluation fields grid
+        h += `<div class="eval-grid">`;
+        const evFields = [
+          ['Priority', ev.priority],
+          ['Timeline', ev.timeline],
+          ['Sensitivity', ev.sensitivity],
+          ['Responsible Party', ev.responsibleParty],
+          ['Disposition', ev.disposition],
+        ];
+        evFields.forEach(([label, val]) => {
+          const empty = !val;
+          h += `<div class="eval-field"><div class="eval-field-label">${label}</div><div class="eval-field-value ${empty ? 'empty' : ''}">${val || 'Not set'}</div></div>`;
+        });
+        h += `</div>`;
+        if (ev.keyConcern) h += `<div class="eval-notes"><strong>Key concern:</strong> ${ev.keyConcern}</div>`;
+        h += `</div>`;
+      }
+      h += `</div></div>`;
+    });
+  });
+  h += `</div>`;
+
+  // Table view
+  h += `<div style="display:${currentView==='table'?'block':'none'}"><table class="data-table"><thead><tr><th style="width:32px;cursor:pointer;text-align:center;color:var(--gold)" onclick="sortTable('yield')" title="Sort: yield items first">&#9670;</th><th style="width:36px">#</th><th style="width:180px">Action Item</th><th>Description</th><th style="width:90px">Status</th><th style="width:260px">Key Tradeoffs</th><th style="width:140px">Sources</th></tr></thead><tbody>`;
+  let tn=0;
+  catList.forEach(cat => {
+    const icon = CAT_ICONS[cat]||'📌';
+    const ci = groups[cat];
+    h += `<tr class="cat-row"><td colspan="7">${icon} ${cat} (${ci.length})</td></tr>`;
+    ci.forEach(item => {
+      tn++;
+      const s=item.status||'';
+      const hs=s!=='';
+      let rc='';
+      if(hs) rc='status-'+s+'-row';
+      else if(item.is_new) rc='new-row';
+      let sc='—';
+      if(hs) sc=`<span class="new-badge ${STATUS_BADGE_CLASS[s]}" style="display:inline-block">${STATUS_LABELS[s]}</span>`;
+      let ne='';
+      if(!hs&&item.is_new) {
+        const bl=(item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress')||item.sources.toLowerCase().includes('reviewer')))?'New':'RKG';
+        ne=` <span class="new-badge badge-new" style="display:inline-block;vertical-align:middle;margin-left:4px">${bl}</span>`;
+      }
+      const p=item.pros||[], c=item.cons||[];
+      let pc='';
+      if(p.length||c.length) {
+        pc='<div class="pc-inline">';
+        if(p.length) pc+=`<span class="pro-label">▲ For:</span> ${p[0]}<br>`;
+        if(c.length) pc+=`<span class="con-label">▼ Against:</span> ${c[0]}`;
+        pc+='</div>';
+      }
+      h += `<tr class="${rc}"><td style="text-align:center;color:var(--gold)">${EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType ? '&#9670;' : ''}</td><td>${tn}</td><td><strong>${item.action}</strong>${ne}</td><td>${item.description.substring(0,200)}${item.description.length>200?'…':''}</td><td>${sc}</td><td>${pc}</td><td style="font-size:0.78rem">${item.sources}</td></tr>`;
+    });
+  });
+  h += `</tbody></table></div>`;
+
+  // Yield view
+  const yieldItems = filtered.filter(function(item) {
+    var ev = EVALUATIONS[slugify(item.action)];
+    return ev && ev.yieldType;
+  });
+  if (currentView === 'yield') {
+    var yLow = 0, yHigh = 0, yCount = yieldItems.length;
+    yieldItems.forEach(function(item) {
+      var ev = EVALUATIONS[slugify(item.action)];
+      var nums = (ev.yieldEstimate||'').match(/\d+/g);
+      if (nums && nums.length >= 2) { yLow += parseInt(nums[0]); yHigh += parseInt(nums[1]); }
+    });
+    h += '<div class="yield-view">';
+    h += '<div class="yield-view-header">';
+    h += '<div class="yield-view-title">&#9670; Housing Yield Estimates</div>';
+    h += '<div class="yield-view-meta">' + yCount + ' of ' + filtered.length + ' items evaluated';
+    if (yCount > 0) h += ' &nbsp;·&nbsp; Estimated potential: <strong>' + yLow + '&ndash;' + yHigh + ' units</strong> <span class="yield-caveat">(varying timeframes &mdash; not directly additive)</span>';
+    h += '</div>';
+    h += '<div class="yield-view-note">Based on Byron Matto GIS parcel analysis (Jan 2026) and RKG Housing Market Study (2022). High/medium confidence items use parcel-level data; speculative items are enabling actions without direct unit counts.</div>';
+    h += '</div>';
+    if (yieldItems.length === 0) {
+      h += '<div class="no-results"><div class="icon">&#9670;</div><div>No yield estimates in current filter.</div></div>';
+    } else {
+      h += '<table class="yield-table"><thead><tr>';
+      h += '<th>Action Item</th><th style="width:110px">Yield Type</th><th style="width:160px">Estimate</th><th style="width:100px">Timeframe</th><th style="width:100px">Confidence</th><th style="width:140px">Responsible Party</th>';
+      h += '</tr></thead><tbody>';
+      yieldItems.forEach(function(item) {
+        var ev = EVALUATIONS[slugify(item.action)];
+        var conf = ev.yieldConfidence || '';
+        var confClass = conf === 'high' ? 'conf-high' : conf === 'medium' ? 'conf-medium' : 'conf-speculative';
+        h += '<tr>';
+        h += '<td><strong>' + item.action + '</strong>';
+        if (ev.keyConcern) h += '<div class="yield-concern">&#9888; ' + ev.keyConcern + '</div>';
+        if (ev.yieldNotes) h += '<div class="yield-notes-row">' + ev.yieldNotes + '</div>';
+        h += '</td>';
+        h += '<td><span class="yield-type-badge">' + (ev.yieldType||'') + '</span></td>';
+        h += '<td><strong>' + (ev.yieldEstimate||'&mdash;') + '</strong></td>';
+        h += '<td>' + (ev.yieldTimeframe||'&mdash;') + '</td>';
+        h += '<td><span class="conf-badge ' + confClass + '">' + (conf||'&mdash;') + '</span></td>';
+        h += '<td>' + (ev.responsibleParty||'&mdash;') + '</td>';
+        h += '</tr>';
+      });
+      h += '</tbody></table>';
+    }
+    h += '</div>';
+  }
+
+  h += `<div class="version-note">
+    📌 Version 2.1 — March 6, 2026 — 2026 NH legislative session updates: RSA 79-E item updated (HB1103 passed committee 17-0); new ADU legislative monitoring item added (HB1079, HB1540, HB1662). 135 items total.<br>
+    Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)
+  </div>`;
+
+  content.innerHTML = h;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  init();
+  var si = document.getElementById('searchInput');
   if (si) {
+    si.addEventListener('input', function(e) {
+      searchQuery = e.target.value.toLowerCase();
+      renderContent();
+    });
+  }
+});
+</script>
+</body>
+</html>
     si.addEventListener('input', function(e) {
       searchQuery = e.target.value.toLowerCase();
       renderContent();
