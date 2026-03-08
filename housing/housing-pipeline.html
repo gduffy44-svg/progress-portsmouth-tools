@@ -1327,23 +1327,77 @@ function renderAffordableTable() {
   if (filtered.length === 0) { tbody.innerHTML=''; empty.style.display=''; return; }
   empty.style.display = 'none';
 
-  tbody.innerHTML = filtered.map(p => {
-    const pct = p.total_units > 0 ? (p.units_affordable/p.total_units*100).toFixed(0)+'%' : '—';
+  const colSpan = 6;
+
+  tbody.innerHTML = filtered.map((p, i) => {
+    const pct       = p.total_units > 0 ? (p.units_affordable/p.total_units*100).toFixed(0)+'%' : '—';
     const typeLabel = p.type === 'affordable' ? 'All affordable' : 'Mixed-income';
-    const addr = showAddr(p);
-    return `<tr>
-      <td>
-        <span class="project-name">${p.name}</span>
-        <span style="font-size:.7rem;color:var(--slate);margin-left:.4rem;font-style:italic">${typeLabel}</span>
-        ${addr ? `<div class="project-address">${addr}</div>` : ''}
-      </td>
-      <td>${statusBadge(p.status)}</td>
-      <td class="hide-mobile"><span class="unit-count">${fmtUnits(p.total_units)}</span></td>
-      <td><span class="unit-count has-aff">${fmtUnits(p.units_affordable)}</span></td>
-      <td class="hide-mobile"><span class="unit-count">${pct}</span></td>
-      <td class="hide-mobile"><span class="year-badge">${p.occupancy_year || '—'}</span></td>
-    </tr>`;
+    const addr      = showAddr(p);
+
+    const affRows = [
+      ['Affordable units', p.units_affordable || '—'],
+      ['Market-rate units', p.units_market || '—'],
+      ['Total units', p.total_units || '—'],
+      ['% affordable', pct],
+    ];
+    const detailRows = [
+      ['Project type', typeLabel],
+      ['Status', p.status],
+      ['Est. move-in', p.occupancy_year || '—'],
+      ...(p.notes ? [['Notes', p.notes]] : []),
+    ];
+    const links = [];
+    if (p.city_url)  links.push(`<a href="${p.city_url}"  target="_blank" class="drawer-link">City project page ↗</a>`);
+    if (p.media_url) links.push(`<a href="${p.media_url}" target="_blank" class="drawer-link">News coverage ↗</a>`);
+    if (p.map_url)   links.push(`<a href="${p.map_url}"   target="_blank" class="drawer-link">Google Maps ↗</a>`);
+
+    const drawerHtml = `
+      <div class="drawer-inner">
+        <div>
+          <div class="drawer-section-label">Affordability breakdown</div>
+          ${affRows.map(([l,v]) => `<div class="drawer-row-item"><span class="drawer-row-label">${l}</span><span class="drawer-row-value">${v}</span></div>`).join('')}
+        </div>
+        <div>
+          <div class="drawer-section-label">Project details</div>
+          ${detailRows.map(([l,v]) => `<div class="drawer-row-item"><span class="drawer-row-label">${l}</span><span class="drawer-row-value">${v}</span></div>`).join('')}
+          ${addr ? `<div class="drawer-notes">${addr}</div>` : ''}
+        </div>
+        <div>
+          <div class="drawer-section-label">Links</div>
+          <div class="drawer-links">${links.length ? links.join('') : '<span style="font-size:.78rem;color:var(--slate)">None available</span>'}</div>
+        </div>
+      </div>`;
+
+    return `
+      <tr class="project-row" data-idx="${i}">
+        <td><span class="project-name">${p.name}</span><span class="expand-caret">▾</span></td>
+        <td>${statusBadge(p.status)}</td>
+        <td class="hide-mobile"><span class="unit-count">${fmtUnits(p.total_units)}</span></td>
+        <td><span class="unit-count has-aff">${fmtUnits(p.units_affordable)}</span></td>
+        <td class="hide-mobile"><span class="unit-count">${pct}</span></td>
+        <td class="hide-mobile"><span class="year-badge">${p.occupancy_year || '—'}</span></td>
+      </tr>
+      <tr class="drawer-row" data-idx="${i}">
+        <td class="drawer-cell" colspan="${colSpan}">${drawerHtml}</td>
+      </tr>`;
   }).join('');
+
+  // Wire row clicks
+  tbody.querySelectorAll('tr.project-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const idx    = row.dataset.idx;
+      const drawer = tbody.querySelector(`tr.drawer-row[data-idx="${idx}"]`);
+      const opening = !drawer.classList.contains('open');
+
+      tbody.querySelectorAll('tr.project-row.expanded').forEach(r => r.classList.remove('expanded'));
+      tbody.querySelectorAll('tr.drawer-row.open').forEach(r => r.classList.remove('open'));
+
+      if (opening) {
+        row.classList.add('expanded');
+        drawer.classList.add('open');
+      }
+    });
+  });
 }
 
 ['aff-search','aff-status-filter'].forEach(id => {
