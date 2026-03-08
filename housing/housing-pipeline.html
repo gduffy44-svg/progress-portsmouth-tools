@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portsmouth Housing Pipeline · Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --navy:   #2d3e52;
+    --gold:   #f4a261;
+    --gold-dark: #c8822a;
+    --coral:  #e07a5f;
+    --teal:   #3d7a6f;
+    --cream:  #f8f4ee;
+    --slate:  #5a6a7a;
+    --light:  #eef1f4;
+    --white:  #ffffff;
+    --status-construction: #3d7a6f;
+    --status-approved:     #c8822a;
+    --status-permitting:   #5b7fa6;
+    --status-concept:      #8a7db5;
+    --status-potential:    #8a96a0;
+    --status-occupied:     #2d3e52;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────────── */
+  .site-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 48px;
+  }
+  .site-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: .88rem;
+    color: var(--white);
+    white-space: nowrap;
+    line-height: 1.15;
+  }
+  .site-wordmark span {
+    color: var(--gold);
+    display: block;
+    font-size: .62rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .tab-nav {
+    display: flex;
+    gap: .2rem;
+    margin-left: auto;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.55);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .82rem;
+    font-weight: 600;
+    padding: .3rem .65rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .18s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--white); background: rgba(255,255,255,.1); }
+  .tab-btn.active {
+    color: var(--navy);
+    background: var(--gold);
+  }
+
+  /* ── LAYOUT ─────────────────────────────────── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── STAT CARDS ─────────────────────────────── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .75rem;
+    margin-bottom: .85rem;
+  }
+  @media (max-width: 700px) { .stat-grid { grid-template-columns: 1fr; } }
+
+  .stat-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    border-top: 3px solid var(--navy);
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .stat-card.gold-top { border-top-color: var(--gold); }
+  .stat-card.teal-top { border-top-color: var(--teal); }
+
+  .stat-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: .3rem;
+  }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: .15rem;
+  }
+  .stat-sub {
+    font-size: .78rem;
+    color: var(--slate);
+  }
+  .stat-sub strong { color: var(--navy); }
+
+
+  /* ── PROJECT TABLE ──────────────────────────── */
+  .table-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    padding: .5rem .75rem;
+    border: 1.5px solid var(--light);
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .9rem;
+    color: var(--navy);
+    background: var(--white);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-box:focus { border-color: var(--navy); }
+
+  .filter-select {
+    padding: .5rem .75rem;
+    border: 1.5px solid var(--light);
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: .85rem;
+    color: var(--navy);
+    background: var(--white);
+    outline: none;
+    cursor: pointer;
+  }
+  .filter-select:focus { border-color: var(--navy); }
+
+  .project-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    font-size: .86rem;
+  }
+  .project-table thead tr {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .project-table th {
+    padding: .55rem .85rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .project-table th:hover { background: rgba(255,255,255,.1); }
+  .sort-indicator { margin-left: .25rem; opacity: .5; font-size: .7rem; }
+  .sort-indicator.active { opacity: 1; color: var(--gold); }
+
+  .project-table tbody tr {
+    border-bottom: 1px solid var(--light);
+    transition: background .15s;
+  }
+  .project-table tbody tr:hover { background: #f5f1ec; }
+  .project-table tbody tr:last-child { border-bottom: none; }
+  .project-table td {
+    padding: .38rem .85rem;
+    vertical-align: middle;
+    line-height: 1.3;
+  }
+
+  .project-name { font-weight: 600; color: var(--navy); }
+  .project-address { font-size: .74rem; color: var(--slate); }
+  .project-links { display: inline-flex; gap: .3rem; margin-left: .35rem; vertical-align: middle; }
+  .project-links a {
+    font-size: .67rem;
+    color: var(--slate);
+    text-decoration: none;
+    padding: .1rem .28rem;
+    border-radius: 3px;
+    border: 1px solid #d0d8e0;
+    transition: all .12s;
+    white-space: nowrap;
+  }
+  .project-links a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+  .unit-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .88rem;
+    font-weight: 600;
+  }
+  .unit-count.has-aff { color: var(--gold-dark); }
+
+  .year-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    color: var(--slate);
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .75rem;
+    color: var(--slate);
+    text-decoration: none;
+    padding: .2rem .4rem;
+    border-radius: 3px;
+    transition: all .15s;
+    border: 1px solid transparent;
+  }
+  .link-btn:hover { color: var(--navy); border-color: var(--light); background: var(--light); }
+
+  /* ── STATUS BADGE ───────────────────────────── */
+  .status-badge {
+    display: inline-block;
+    padding: .15rem .45rem;
+    border-radius: 3px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-construction { background: #e8f4f1; color: var(--status-construction); }
+  .badge-approved     { background: #fdf0e0; color: var(--status-approved); }
+  .badge-permitting   { background: #e8eff6; color: var(--status-permitting); }
+  .badge-concept      { background: #efecf7; color: var(--status-concept); }
+  .badge-potential    { background: #edf0f2; color: var(--status-potential); }
+  .badge-occupied     { background: var(--navy); color: var(--white); }
+
+  /* ── SECTION HEADER ─────────────────────────── */
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: .25rem;
+  }
+  .section-header p {
+    font-size: .9rem;
+    color: var(--slate);
+    max-width: 600px;
+  }
+
+  /* ── AFFORDABLE TAB ─────────────────────────── */
+  .aff-callout {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .aff-callout-item { flex: 1; min-width: 150px; }
+  .aff-callout-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .aff-callout-label {
+    font-size: .8rem;
+    color: rgba(255,255,255,.7);
+    margin-top: .25rem;
+  }
+
+  /* ── MAP TAB ────────────────────────────────── */
+  .map-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .map-layout { grid-template-columns: 1fr; }
+  }
+  #pipeline-map {
+    height: 540px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    z-index: 1;
+  }
+  .map-sidebar {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .map-sidebar h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--light);
+  }
+  .map-legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    margin-bottom: .75rem;
+    font-size: .85rem;
+    color: var(--slate);
+  }
+  .map-pin-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .pin-affordable { background: var(--gold); border: 2px solid var(--gold-dark); }
+  .pin-market     { background: var(--navy); border: 2px solid #1a2536; }
+
+  .map-filter-group {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--light);
+  }
+  .map-filter-group h4 {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--slate);
+    margin-bottom: .6rem;
+  }
+  .map-filter-check {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .83rem;
+    color: var(--slate);
+    margin-bottom: .35rem;
+    cursor: pointer;
+  }
+  .map-filter-check input { cursor: pointer; accent-color: var(--navy); }
+
+  /* ── PIPELINE STATUS TAB ────────────────────── */
+  .stage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 700px) { .stage-grid { grid-template-columns: 1fr; } }
+
+  .stage-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .stage-header {
+    padding: .6rem 1rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .stage-name {
+    font-weight: 700;
+    font-size: .88rem;
+    color: var(--white);
+  }
+  .stage-unit-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .75rem;
+    color: rgba(255,255,255,.8);
+  }
+  .stage-projects { padding: .1rem 0; }
+  .stage-project-row {
+    padding: .38rem 1rem;
+    border-bottom: 1px solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .stage-project-row:last-child { border-bottom: none; }
+  .stage-project-name { font-size: .83rem; font-weight: 600; color: var(--navy); }
+  .stage-project-addr { font-size: .72rem; color: var(--slate); }
+  .stage-project-units {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .78rem;
+    color: var(--slate);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .stage-project-units .aff-highlight { color: var(--gold-dark); font-weight: 600; }
+
+  /* ── POPUP STYLE ────────────────────────────── */
+  .pp-popup h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: .5rem;
+  }
+  .pp-popup .popup-address {
+    font-size: .8rem;
+    color: var(--slate);
+    margin-bottom: .75rem;
+  }
+  .pp-popup table { font-size: .82rem; width: 100%; }
+  .pp-popup td { padding: .15rem 0; }
+  .pp-popup td:first-child { color: var(--slate); padding-right: .75rem; }
+  .pp-popup td:last-child { font-weight: 600; color: var(--navy); }
+  .pp-popup .popup-links { margin-top: .75rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+  .pp-popup .popup-link {
+    font-size: .75rem;
+    color: var(--navy);
+    text-decoration: none;
+    padding: .2rem .5rem;
+    border: 1px solid var(--light);
+    border-radius: 3px;
+    background: var(--cream);
+  }
+  .pp-popup .popup-link:hover { background: var(--navy); color: var(--white); }
+
+  /* ── FOOTER ─────────────────────────────────── */
+  .module-footer {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #ddd;
+    font-size: .78rem;
+    color: var(--slate);
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .footer-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .25rem;
+    font-size: .78rem;
+  }
+  .footer-disclaimer {
+    font-size: .74rem;
+    color: var(--slate);
+    line-height: 1.5;
+    padding: .5rem .75rem;
+    background: #f0ece6;
+    border-left: 3px solid #c8822a;
+    border-radius: 0 4px 4px 0;
+  }
+  .footer-disclaimer strong { color: var(--navy); }
+  .footer-disclaimer a { color: var(--navy); }
+  .footer-ai {
+    font-size: .7rem;
+    color: #999;
+    font-style: italic;
+  }
+
+  /* ── EMPTY STATE ────────────────────────────── */
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--slate);
+    font-size: .9rem;
+  }
+
+  /* ── CHARTS GRID ────────────────────────────── */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 700px) { .charts-grid { grid-template-columns: 1fr; } }
+
+  .chart-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .chart-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: .95rem;
+    color: var(--navy);
+    margin-bottom: .1rem;
+  }
+  .chart-subtitle {
+    font-size: .7rem;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    margin-bottom: .9rem;
+  }
+
+  /* horizontal bar rows (momentum + geography) */
+  .hbar-row { display: flex; align-items: center; gap: .5rem; margin-bottom: .38rem; }
+  .hbar-label { font-size: .76rem; color: var(--slate); width: 130px; flex-shrink: 0; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hbar-track { flex: 1; height: 13px; background: var(--light); border-radius: 3px; overflow: hidden; }
+  .hbar-fill  { height: 100%; border-radius: 3px; }
+  .hbar-value { font-family: 'JetBrains Mono', monospace; font-size: .73rem; color: var(--navy); font-weight: 600; width: 38px; text-align: right; flex-shrink: 0; }
+
+  /* affordability split bar */
+  .split-bar { display: flex; height: 32px; border-radius: 5px; overflow: hidden; margin-bottom: .9rem; }
+  .split-market { background: var(--navy); }
+  .split-affordable { background: var(--gold); }
+  .split-labels { display: flex; justify-content: space-between; align-items: flex-start; }
+  .split-label { display: flex; flex-direction: column; gap: .05rem; }
+  .split-aff-label { text-align: right; }
+  .split-pct { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--navy); line-height: 1; }
+  .split-pct.aff-color { color: var(--gold-dark); }
+  .split-desc { font-size: .74rem; color: var(--slate); }
+  .split-units { font-size: .68rem; color: var(--slate); font-family: 'JetBrains Mono', monospace; }
+
+  /* vertical timeline bars */
+  .vbar-group { display: flex; align-items: flex-end; gap: .4rem; height: 100px; }
+  .vbar-col { display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; }
+  .vbar-count { font-family: 'JetBrains Mono', monospace; font-size: .58rem; color: var(--slate); margin-bottom: .12rem; white-space: nowrap; }
+  .vbar-stack { width: 100%; display: flex; flex-direction: column; justify-content: flex-end; flex: 1; border-radius: 3px 3px 0 0; overflow: hidden; }
+  .vbar-seg { width: 100%; min-height: 1px; }
+  .vbar-aff { background: var(--gold); }
+  .vbar-mkt { background: var(--navy); }
+  .vbar-label { font-size: .68rem; color: var(--slate); margin-top: .28rem; text-align: center; }
+  .vbar-legend { display: flex; gap: 1rem; margin-top: .65rem; font-size: .72rem; color: var(--slate); align-items: center; }
+  .vbar-dot { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: .2rem; vertical-align: middle; }
+  .vbar-dot-mkt { background: var(--navy); }
+  .vbar-dot-aff { background: var(--gold); }
+
+  /* ── PAGE TITLE BLOCK ───────────────────────── */
+  .page-title-block {
+    padding: 1rem 0 1rem;
+    border-bottom: 2px solid var(--light);
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    align-items: end;
+  }
+  .page-title-left {}
+  .page-title-right {
+    padding-bottom: .15rem;
+  }
+  .page-title-eyebrow {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: .2rem;
+  }
+  h1.page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--navy);
+    line-height: 1.05;
+    margin-bottom: 0;
+  }
+  .page-title-sub {
+    font-size: .88rem;
+    color: var(--slate);
+    max-width: 100%;
+    line-height: 1.5;
+  }
+  .page-title-meta {
+    font-size: .72rem;
+    color: var(--slate);
+    margin-top: .5rem;
+    opacity: .8;
+  }
+
+  @media (max-width: 700px) {
+    .page-title-block {
+      grid-template-columns: 1fr;
+      padding: .75rem 0 .85rem;
+      gap: .35rem;
+    }
+    h1.page-title { font-size: 1.75rem; }
+    .page-title-sub { font-size: .85rem; }
+  }
+
+  .aff-definition {
+    font-size: .78rem;
+    color: var(--slate);
+    margin: .75rem 0 1.5rem;
+    padding: .6rem .85rem;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+  }
+  .aff-definition strong { color: var(--navy); }
+
+  /* ── EXPAND DRAWER ──────────────────────────── */
+  tr.project-row { cursor: pointer; }
+  tr.project-row:hover td { background: #f5f1ec; }
+  tr.project-row:hover .project-name { color: var(--gold-dark); }
+  tr.project-row.expanded td { background: #f0ece6; }
+  tr.project-row.expanded .project-name { color: var(--gold-dark); }
+
+  .expand-caret {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--light);
+    color: var(--slate);
+    font-size: .55rem;
+    line-height: 14px;
+    text-align: center;
+    margin-left: .4rem;
+    vertical-align: middle;
+    transition: transform .18s, background .18s;
+    flex-shrink: 0;
+  }
+  tr.project-row.expanded .expand-caret {
+    transform: rotate(180deg);
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  tr.drawer-row { display: none; }
+  tr.drawer-row.open { display: table-row; }
+  .drawer-cell {
+    padding: 0 !important;
+    border-bottom: 2px solid var(--gold) !important;
+  }
+  .drawer-inner {
+    padding: .7rem 1.25rem .85rem;
+    background: #f8f4ee;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .5rem 2rem;
+  }
+  @media (max-width: 700px) {
+    .drawer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  .drawer-section-label {
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: .3rem;
+  }
+  .drawer-row-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8rem;
+    padding: .1rem 0;
+    border-bottom: 1px solid #e4dfd8;
+  }
+  .drawer-row-item:last-child { border-bottom: none; }
+  .drawer-row-label { color: var(--slate); }
+  .drawer-row-value { font-weight: 600; color: var(--navy); }
+  .drawer-links { display: flex; flex-direction: column; gap: .3rem; }
+  .drawer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .78rem;
+    color: var(--navy);
+    text-decoration: none;
+    padding: .25rem .5rem;
+    border-radius: 4px;
+    border: 1px solid #d0ccc6;
+    background: var(--white);
+    transition: all .14s;
+    width: fit-content;
+  }
+  .drawer-link:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .drawer-notes {
+    font-size: .78rem;
+    color: var(--slate);
+    font-style: italic;
+    margin-top: .2rem;
+  }
+
+  /* ── RESPONSIVE TABLE ───────────────────────── */
+  @media (max-width: 700px) {
+    .hide-mobile { display: none; }
+    .tab-btn { font-size: .72rem; padding: .25rem .45rem; }
+    h1.page-title { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-wordmark">
+      Progress Portsmouth
+    </div>
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" data-tab="overview" role="tab">Overview</button>
+      <button class="tab-btn" data-tab="affordable" role="tab">Affordable</button>
+      <button class="tab-btn" data-tab="map" role="tab">Map</button>
+      <button class="tab-btn" data-tab="status" role="tab">By Status</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ══ TAB: OVERVIEW ══════════════════════════════ -->
+  <div class="tab-panel active" id="tab-overview" role="tabpanel">
+    <div class="page-title-block">
+      <div class="page-title-left">
+        <div class="page-title-eyebrow">Portsmouth · Housing Action Plan</div>
+        <h1 class="page-title">Housing Pipeline</h1>
+      </div>
+      <div class="page-title-right">
+        <p class="page-title-sub">All residential projects tracked by the Planning Department, from early concept through occupancy. Data updated periodically from city records.</p>
+      </div>
+    </div>
+
+    <div class="stat-grid" id="stat-grid"><!-- js --></div>
+    <p class="aff-definition">
+      <strong>"Affordable units"</strong> means permanently affordable housing — income-restricted by legal agreement and priced based on what households can pay, not what the market will bear.
+    </p>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Pipeline Momentum</div>
+        <div class="chart-subtitle">Units by stage</div>
+        <div id="chart-momentum"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Affordability Gap</div>
+        <div class="chart-subtitle">Market rate vs. permanently affordable</div>
+        <div id="chart-affordability"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Coming Online</div>
+        <div class="chart-subtitle">Estimated units by year</div>
+        <div id="chart-timeline"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Where in Portsmouth</div>
+        <div class="chart-subtitle">Units by area</div>
+        <div id="chart-geography"></div>
+      </div>
+    </div>
+
+    <div class="table-controls">
+      <input type="text" class="search-box" id="overview-search" placeholder="Search projects or addresses…">
+      <select class="filter-select" id="overview-status-filter">
+        <option value="">All statuses</option>
+        <option>Under construction</option>
+        <option>Approved</option>
+        <option>Permitting</option>
+        <option>Concept</option>
+        <option>Potential</option>
+        <option>Occupied</option>
+      </select>
+      <select class="filter-select" id="overview-type-filter">
+        <option value="">All types</option>
+        <option value="market">Market rate only</option>
+        <option value="mixed">Includes affordable</option>
+        <option value="affordable">All affordable</option>
+      </select>
+    </div>
+
+    <table class="project-table" id="overview-table">
+      <thead>
+        <tr>
+          <th data-sort="name">Project <span class="sort-indicator" data-col="name">↕</span></th>
+          <th data-sort="status">Status <span class="sort-indicator" data-col="status">↕</span></th>
+          <th data-sort="total_units" class="hide-mobile">Units <span class="sort-indicator" data-col="total_units">↕</span></th>
+          <th data-sort="units_affordable" class="hide-mobile">Affordable <span class="sort-indicator" data-col="units_affordable">↕</span></th>
+          <th data-sort="occupancy_year" class="hide-mobile">Est. Move-in <span class="sort-indicator" data-col="occupancy_year">↕</span></th>
+        </tr>
+      </thead>
+      <tbody id="overview-tbody"><!-- js --></tbody>
+    </table>
+    <div class="empty-state" id="overview-empty" style="display:none">No projects match your filters.</div>
+  </div>
+
+  <!-- ══ TAB: AFFORDABLE ════════════════════════════ -->
+  <div class="tab-panel" id="tab-affordable" role="tabpanel">
+    <div class="section-header" style="margin-top:.5rem">
+      <h2>Permanently Affordable Housing</h2>
+      <p>Projects with income-restricted units that remain affordable regardless of market conditions — priced based on what households can afford to pay, not what the market will bear. Includes both fully affordable developments and mixed-income projects with a share of affordable units.</p>
+    </div>
+
+    <div class="aff-callout" id="aff-callout"><!-- js --></div>
+
+    <div class="table-controls">
+      <input type="text" class="search-box" id="aff-search" placeholder="Search projects…">
+      <select class="filter-select" id="aff-status-filter">
+        <option value="">All statuses</option>
+        <option>Under construction</option>
+        <option>Approved</option>
+        <option>Permitting</option>
+        <option>Concept</option>
+        <option>Potential</option>
+        <option>Occupied</option>
+      </select>
+    </div>
+
+    <table class="project-table" id="aff-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Status</th>
+          <th class="hide-mobile">Total</th>
+          <th>Affordable</th>
+          <th class="hide-mobile">% Aff.</th>
+          <th class="hide-mobile">Move-in</th>
+        </tr>
+      </thead>
+      <tbody id="aff-tbody"><!-- js --></tbody>
+    </table>
+    <div class="empty-state" id="aff-empty" style="display:none">No projects match your filters.</div>
+  </div>
+
+  <!-- ══ TAB: MAP ════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-map" role="tabpanel">
+    <div class="section-header" style="margin-top:.5rem">
+      <h2>Development Locations</h2>
+      <p>Click any marker for project details. Gold markers include permanently affordable units.</p>
+    </div>
+    <div class="map-layout">
+      <div id="pipeline-map"></div>
+      <div class="map-sidebar">
+        <h3>Map Key</h3>
+        <div class="map-legend-item">
+          <div class="map-pin-icon pin-affordable"></div>
+          <div><strong>Includes affordable units</strong><br>Permanently affordable — not subject to market-rate pricing</div>
+        </div>
+        <div class="map-legend-item">
+          <div class="map-pin-icon pin-market"></div>
+          <div><strong>Market rate</strong><br>No deed restrictions</div>
+        </div>
+
+        <div class="map-filter-group">
+          <h4>Filter by status</h4>
+          <label class="map-filter-check"><input type="checkbox" class="map-status-filter" value="Under construction" checked> Under construction</label>
+          <label class="map-filter-check"><input type="checkbox" class="map-status-filter" value="Approved" checked> Approved</label>
+          <label class="map-filter-check"><input type="checkbox" class="map-status-filter" value="Permitting" checked> Permitting</label>
+          <label class="map-filter-check"><input type="checkbox" class="map-status-filter" value="Concept" checked> Concept</label>
+          <label class="map-filter-check"><input type="checkbox" class="map-status-filter" value="Potential" checked> Potential</label>
+          <label class="map-filter-check"><input type="checkbox" class="map-status-filter" value="Occupied" checked> Occupied</label>
+        </div>
+
+        <div class="map-filter-group">
+          <h4>Filter by type</h4>
+          <label class="map-filter-check"><input type="checkbox" id="map-filter-affordable" checked> Affordable / mixed-income</label>
+          <label class="map-filter-check"><input type="checkbox" id="map-filter-market" checked> Market rate only</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TAB: BY STATUS ═════════════════════════════ -->
+  <div class="tab-panel" id="tab-status" role="tabpanel">
+    <div class="section-header" style="margin-top:.5rem">
+      <h2>Pipeline by Stage</h2>
+      <p>Projects grouped by their current position in the development process, from active construction to early-stage concepts.</p>
+    </div>
+    <div class="stage-grid" id="stage-grid"><!-- js --></div>
+  </div>
+
+</main>
+
+<div class="container" style="padding-top:0">
+  <div class="module-footer">
+    <div class="footer-main">
+      <span>Source: Portsmouth Planning Department · Maintained by Progress Portsmouth</span>
+      <span id="last-updated-footer">Last updated: —</span>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Not an official City of Portsmouth document.</strong> This tracker is produced independently by Progress Portsmouth, a community advocacy organization. Data is compiled from public city records and may not reflect the most current project status. For official information, contact the <a href="https://www.cityofportsmouth.com/planning" target="_blank">Portsmouth Planning Department</a>.
+    </div>
+    <div class="footer-ai">
+      Data extraction and summarization assisted by Claude AI (Anthropic). All information reviewed and verified by Progress Portsmouth.
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const PIPELINE_DATA = {
+  "meta": {
+    "last_updated": "2026-03-08",
+    "source": "Portsmouth Planning Department",
+    "maintained_by": "Progress Portsmouth"
+  },
+  "projects": [
+    {"name":"Residences at Islington Creek","address":"105 Bartlett Street","lat":43.073646,"lng":-70.770016,"type":"market","status":"Under construction","occupancy_year":2027,"units_market":152,"units_affordable":0,"total_units":152,"notes":null,"city_url":"https://www.portsmouthnh.gov/planportsmouth/105-bartlett-street#zoning","media_url":"https://www.seacoastonline.com/story/news/local/2025/04/03/portsmouth-population-housing-boom/82638733007/","map_url":"https://maps.app.goo.gl/HcqVpaZTwbvoWtRJ9"},
+    {"name":"2 Russell Street","address":"2 Russell Street","lat":43.07891,"lng":-70.761267,"type":"market","status":"Under construction","occupancy_year":2027,"units_market":80,"units_affordable":0,"total_units":80,"notes":null,"city_url":"https://portsmouthnh.viewpointcloud.com/records/64775","media_url":"https://www.seacoastonline.com/story/news/local/2025/04/03/portsmouth-population-housing-boom/82638733007/","map_url":"https://maps.app.goo.gl/iAZqkjDRfwFiqkfg7"},
+    {"name":"53 Green Street","address":"53 Green Street","lat":43.080126,"lng":-70.761659,"type":"market","status":"Under construction","occupancy_year":2027,"units_market":45,"units_affordable":0,"total_units":45,"notes":null,"city_url":"https://maps.app.goo.gl/XuUhimSjzd9MDYqc7","media_url":null,"map_url":"https://maps.app.goo.gl/XuUhimSjzd9MDYqc7"},
+    {"name":"1400 Lafayette Road","address":"1400 Lafayette Road","lat":43.046365,"lng":-70.773345,"type":"market","status":"Under construction","occupancy_year":2026,"units_market":32,"units_affordable":0,"total_units":32,"notes":"Estimated","city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/nogcuTCoAhSm4RPc6"},
+    {"name":"Parson Woods","address":"83 Peverly Hill Road","lat":43.056863,"lng":-70.781995,"type":"market","status":"Under construction","occupancy_year":2025,"units_market":56,"units_affordable":0,"total_units":56,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/fBqT7rFiWqfatMJM6"},
+    {"name":"1-31 Raynes Ave","address":"1-31 Raynes Ave, 203 Maplewood Ave","lat":43.080466,"lng":-70.763591,"type":"market","status":"Approved","occupancy_year":2027,"units_market":32,"units_affordable":0,"total_units":32,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/NKJg5Tmp3U9QUFjH9"},
+    {"name":"Old Times Building","address":"266-278 State Street","lat":43.075966,"lng":-70.757224,"type":"market","status":"Permitting","occupancy_year":2027,"units_market":17,"units_affordable":0,"total_units":17,"notes":"Estimated","city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/sdK5fdoYjkN87zs69"},
+    {"name":"Steam Factory 361 Hanover","address":"361 Hanover Street","lat":43.075965,"lng":-70.763882,"type":"market","status":"Approved","occupancy_year":2028,"units_market":40,"units_affordable":0,"total_units":40,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/XLtsgxUCQ3BtdU8q8"},
+    {"name":"Brora","address":"0 Dunlin Way","lat":43.09411,"lng":-70.780708,"type":"market","status":"Permitting","occupancy_year":2027,"units_market":270,"units_affordable":0,"total_units":270,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/8m7SyC17kc2Y1pVz7"},
+    {"name":"Banfield and Peverly Hill Roads","address":"Corner of Banfield and Peverly Hill Roads","lat":43.048912,"lng":-70.778512,"type":"market","status":"Permitting","occupancy_year":2026,"units_market":5,"units_affordable":0,"total_units":5,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/EWsTvVLhPvbdBNVq7"},
+    {"name":"Prescott Post","address":"100 Durgin Lane","lat":43.088409,"lng":-70.797533,"type":"market","status":"Approved","occupancy_year":2026,"units_market":360,"units_affordable":0,"total_units":360,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/KRwaoisedwziggoD8"},
+    {"name":"Residences at Foundry Place","address":"89-99 Foundry Place","lat":43.076441,"lng":-70.763263,"type":"market","status":"Under construction","occupancy_year":2027,"units_market":55,"units_affordable":0,"total_units":55,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/jA2JWY4E94i8LynL6"},
+    {"name":"Congress Street Co-Living","address":"1 Congress Street","lat":43.077144,"lng":-70.758208,"type":"market","status":"Approved","occupancy_year":2028,"units_market":83,"units_affordable":0,"total_units":83,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/WvjdbCnBow4ifVsN6"},
+    {"name":"815 Lafayette Road (WHEB)","address":"815 Lafayette Road","lat":43.051828,"lng":-70.768766,"type":"market","status":"Under construction","occupancy_year":2026,"units_market":72,"units_affordable":0,"total_units":72,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/Qsz4pbtvBLfYeFB39"},
+    {"name":"Statey's","address":"238 Deer Street","lat":43.077422,"lng":-70.762362,"type":"market","status":"Under construction","occupancy_year":2025,"units_market":21,"units_affordable":0,"total_units":21,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/6yo49S9D9RTNMkF2A"},
+    {"name":"549 Route 1 Bypass","address":"549 Route 1 Bypass","lat":43.071272,"lng":-70.780831,"type":"market","status":"Concept","occupancy_year":2028,"units_market":48,"units_affordable":0,"total_units":48,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/6pnWYGdE7vRGx5PG6"},
+    {"name":"70 Maplewood","address":"Maplewood Ave / Deer St","lat":43.077962,"lng":-70.762374,"type":"market","status":"Under construction","occupancy_year":2025,"units_market":16,"units_affordable":0,"total_units":16,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/jjGJ8Phh3o8b8GEh7"},
+    {"name":"Sage Portsmouth","address":"80 Constitution Ave","lat":43.033914,"lng":-70.78397,"type":"mixed","status":"Under construction","occupancy_year":2025,"units_market":76,"units_affordable":19,"total_units":95,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/QF5JmLoyybaPrFFc8"},
+    {"name":"581 Lafayette Road","address":"581 Lafayette Road","lat":43.056832,"lng":-70.76902,"type":"mixed","status":"Approved","occupancy_year":2027,"units_market":57,"units_affordable":15,"total_units":72,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/TVMraZV6JNci1ExT8"},
+    {"name":"Service Credit Union Workforce Phase 2","address":"Route 1","lat":43.025203,"lng":-70.79152,"type":"mixed","status":"Potential","occupancy_year":2030,"units_market":0,"units_affordable":0,"total_units":0,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/Rxvzt9HE5ECpYn148"},
+    {"name":"Service Credit Union Workforce Phase 1","address":"Route 1","lat":43.025203,"lng":-70.79152,"type":"affordable","status":"Potential","occupancy_year":2028,"units_market":0,"units_affordable":0,"total_units":0,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/Rxvzt9HE5ECpYn148"},
+    {"name":"Lower City Lot","address":"Junkins Avenue","lat":43.077144,"lng":-70.758208,"type":"affordable","status":"Potential","occupancy_year":2029,"units_market":0,"units_affordable":0,"total_units":0,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/HSjeaUxm7BQXZ5UJ7"},
+    {"name":"Woodbury Ave Co-Op Infill","address":"1338 Woodbury Avenue","lat":43.0852471,"lng":-70.7881671,"type":"affordable","status":"Approved","occupancy_year":2025,"units_market":0,"units_affordable":5,"total_units":5,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/sWhVBj5maFRQuyJo9"},
+    {"name":"Christ Episcopal Church Workforce","address":"1035 Lafayette Road","lat":43.048402,"lng":-70.770688,"type":"affordable","status":"Permitting","occupancy_year":2027,"units_market":0,"units_affordable":44,"total_units":44,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/UzpEPMGPRfsbaFFi8"},
+    {"name":"Sherburne School Workforce Phase 1","address":"35 Sherburne Road","lat":43.060068,"lng":-70.799659,"type":"affordable","status":"Concept","occupancy_year":2028,"units_market":0,"units_affordable":90,"total_units":90,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/FyazKUwtF7n8pVfa8"},
+    {"name":"Sherburne School Workforce Phase 2","address":"35 Sherburne Road","lat":43.060068,"lng":-70.799659,"type":"affordable","status":"Concept","occupancy_year":2029,"units_market":0,"units_affordable":37,"total_units":37,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/FyazKUwtF7n8pVfa8"},
+    {"name":"Kennebunk Savings Bank","address":"134 Pleasant Street","lat":43.074877,"lng":-70.756938,"type":"market","status":"Potential","occupancy_year":2028,"units_market":0,"units_affordable":0,"total_units":0,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/dxxG15yVs4it6NHe8"},
+    {"name":"Green & Co Townhouses","address":"Lafayette Road","lat":43.055557,"lng":-70.766492,"type":"market","status":"Permitting","occupancy_year":2027,"units_market":16,"units_affordable":0,"total_units":16,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/Pbfpi54iXyEjjz7z7"},
+    {"name":"Labrie Apartments","address":"2059 Lafayette Road","lat":43.038363,"lng":-70.776226,"type":"market","status":"Under construction","occupancy_year":2026,"units_market":8,"units_affordable":0,"total_units":8,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/F27sSnwLqXY9yVSk9"},
+    {"name":"14 Market Square","address":"14 Market Square","lat":43.076992,"lng":-70.757558,"type":"market","status":"Potential","occupancy_year":2027,"units_market":8,"units_affordable":0,"total_units":8,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/q36T3MyCBzaNniUv9"},
+    {"name":"Bethel Assembly of God","address":"200 Chase Drive","lat":43.084936,"lng":-70.770783,"type":"market","status":"Under construction","occupancy_year":2026,"units_market":22,"units_affordable":0,"total_units":22,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/d3kTidqrg1U1aTEQ7"},
+    {"name":"Portsmouth Chevrolet","address":"549 Route 1 Bypass","lat":43.071336,"lng":-70.780710,"type":"market","status":"Permitting","occupancy_year":2027,"units_market":50,"units_affordable":0,"total_units":50,"notes":null,"city_url":null,"media_url":null,"map_url":"https://maps.app.goo.gl/FCh7nLXjtTcEg4mU6"}
+  ]
+};
+
+// ── HELPERS ───────────────────────────────────────────────────────────────
+const STATUS_ORDER = ['Under construction','Approved','Permitting','Concept','Potential','Occupied'];
+const STATUS_COLORS = {
+  'Under construction': '#3d7a6f',
+  'Approved':           '#c8822a',
+  'Permitting':         '#5b7fa6',
+  'Concept':            '#8a7db5',
+  'Potential':          '#8a96a0',
+  'Occupied':           '#2d3e52'
+};
+const STATUS_BADGE_CLASS = {
+  'Under construction': 'badge-construction',
+  'Approved':           'badge-approved',
+  'Permitting':         'badge-permitting',
+  'Concept':            'badge-concept',
+  'Potential':          'badge-potential',
+  'Occupied':           'badge-occupied'
+};
+
+function statusBadge(status) {
+  const cls = STATUS_BADGE_CLASS[status] || 'badge-potential';
+  return `<span class="status-badge ${cls}">${status}</span>`;
+}
+
+function fmtUnits(n) {
+  return n === 0 || n == null ? '<span style="color:#aaa">—</span>' : n.toLocaleString();
+}
+
+// ── ADDRESS DEDUP ─────────────────────────────────────────────────────────
+// Returns address only when it adds information not already in the name
+function showAddr(p) {
+  if (!p.address) return null;
+  const norm = s => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const n = norm(p.name), a = norm(p.address);
+  if (n === a || n.includes(a) || a.includes(n)) return null;
+  return p.address;
+}
+
+
+const projects = PIPELINE_DATA.projects;
+const totalUnits = projects.reduce((s,p) => s + p.total_units, 0);
+const totalAff   = projects.reduce((s,p) => s + p.units_affordable, 0);
+const affPct     = totalUnits > 0 ? (totalAff / totalUnits * 100).toFixed(1) : 0;
+
+// ── RENDER STAT CARDS ─────────────────────────────────────────────────────
+function renderStatCards() {
+  const underConstr = projects.filter(p => p.status === 'Under construction').reduce((s,p) => s+p.total_units,0);
+  document.getElementById('stat-grid').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-label">Total units in pipeline</div>
+      <div class="stat-number">${totalUnits.toLocaleString()}</div>
+      <div class="stat-sub">Across ${projects.length} tracked projects</div>
+    </div>
+    <div class="stat-card gold-top">
+      <div class="stat-label">Permanently affordable units</div>
+      <div class="stat-number">${totalAff.toLocaleString()}</div>
+      <div class="stat-sub"><strong>${affPct}%</strong> of all pipeline units</div>
+    </div>
+    <div class="stat-card teal-top">
+      <div class="stat-label">Under construction now</div>
+      <div class="stat-number">${underConstr.toLocaleString()}</div>
+      <div class="stat-sub">Units actively being built</div>
+    </div>
+  `;
+}
+
+// ── CHARTS ────────────────────────────────────────────────────────────────
+function renderCharts() {
+  renderMomentumChart();
+  renderAffordabilityChart();
+  renderTimelineChart();
+  renderGeographyChart();
+}
+
+function renderMomentumChart() {
+  const el = document.getElementById('chart-momentum');
+  const stageData = STATUS_ORDER.map(s => ({
+    stage: s,
+    units: projects.filter(p => p.status === s).reduce((sum,p) => sum + p.total_units, 0),
+    color: STATUS_COLORS[s]
+  })).filter(d => d.units > 0);
+  const maxU = Math.max(...stageData.map(d => d.units));
+  el.innerHTML = stageData.map(d => `
+    <div class="hbar-row">
+      <div class="hbar-label">${d.stage}</div>
+      <div class="hbar-track"><div class="hbar-fill" style="width:${(d.units/maxU*100).toFixed(1)}%;background:${d.color}"></div></div>
+      <div class="hbar-value">${d.units.toLocaleString()}</div>
+    </div>`).join('');
+}
+
+function renderAffordabilityChart() {
+  const el = document.getElementById('chart-affordability');
+  const mktUnits = totalUnits - totalAff;
+  const mktPct = (mktUnits / totalUnits * 100).toFixed(1);
+  const aPct   = (totalAff  / totalUnits * 100).toFixed(1);
+  el.innerHTML = `
+    <div class="split-bar">
+      <div class="split-market split-seg" style="width:${mktPct}%"></div>
+      <div class="split-affordable split-seg" style="width:${aPct}%"></div>
+    </div>
+    <div class="split-labels">
+      <div class="split-label">
+        <span class="split-pct">${mktPct}%</span>
+        <span class="split-desc">Market rate</span>
+        <span class="split-units">${mktUnits.toLocaleString()} units</span>
+      </div>
+      <div class="split-label split-aff-label">
+        <span class="split-pct aff-color">${aPct}%</span>
+        <span class="split-desc">Permanently affordable</span>
+        <span class="split-units">${totalAff.toLocaleString()} units</span>
+      </div>
+    </div>`;
+}
+
+function renderTimelineChart() {
+  const el = document.getElementById('chart-timeline');
+  const yearMap = {};
+  projects.forEach(p => {
+    if (!p.occupancy_year) return;
+    const y = p.occupancy_year;
+    if (!yearMap[y]) yearMap[y] = {market: 0, affordable: 0};
+    yearMap[y].market     += p.units_market;
+    yearMap[y].affordable += p.units_affordable;
+  });
+  const years  = Object.keys(yearMap).sort();
+  const maxTot = Math.max(...years.map(y => yearMap[y].market + yearMap[y].affordable));
+  el.innerHTML = `
+    <div class="vbar-group">
+      ${years.map(y => {
+        const d = yearMap[y];
+        const tot  = d.market + d.affordable;
+        const mktH = (d.market     / maxTot * 100).toFixed(1);
+        const affH = (d.affordable / maxTot * 100).toFixed(1);
+        return `<div class="vbar-col">
+          <div class="vbar-count">${tot || ''}</div>
+          <div class="vbar-stack">
+            <div class="vbar-seg vbar-aff" style="height:${affH}%"></div>
+            <div class="vbar-seg vbar-mkt" style="height:${mktH}%"></div>
+          </div>
+          <div class="vbar-label">${String(y).slice(2)}</div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="vbar-legend">
+      <span><span class="vbar-dot vbar-dot-mkt"></span>Market</span>
+      <span><span class="vbar-dot vbar-dot-aff"></span>Affordable</span>
+    </div>`;
+}
+
+function renderGeographyChart() {
+  const el = document.getElementById('chart-geography');
+  function getArea(p) {
+    const {lat, lng} = p;
+    if (lat > 43.082)  return 'North End';
+    if (lat < 43.062)  return 'South & Lafayette';
+    if (lng <= -70.775) return 'West & Route 1';
+    return 'Downtown';
+  }
+  const areaOrder = ['Downtown', 'North End', 'South & Lafayette', 'West & Route 1'];
+  const areaColors = {
+    'Downtown':         '#2d3e52',
+    'North End':        '#5b7fa6',
+    'South & Lafayette':'#3d7a6f',
+    'West & Route 1':   '#8a7db5'
+  };
+  const areas = {};
+  projects.forEach(p => {
+    if (!p.lat) return;
+    const a = getArea(p);
+    areas[a] = (areas[a] || 0) + p.total_units;
+  });
+  const maxU = Math.max(...Object.values(areas));
+  el.innerHTML = areaOrder.filter(a => areas[a]).map(a => `
+    <div class="hbar-row">
+      <div class="hbar-label">${a}</div>
+      <div class="hbar-track"><div class="hbar-fill" style="width:${(areas[a]/maxU*100).toFixed(1)}%;background:${areaColors[a]}"></div></div>
+      <div class="hbar-value">${areas[a]}</div>
+    </div>`).join('');
+}
+
+
+
+// ── OVERVIEW TABLE ────────────────────────────────────────────────────────
+let sortCol = 'status', sortDir = 1;
+
+function getFilteredProjects() {
+  const q = document.getElementById('overview-search').value.toLowerCase();
+  const statusF = document.getElementById('overview-status-filter').value;
+  const typeF   = document.getElementById('overview-type-filter').value;
+
+  return projects.filter(p => {
+    if (q && !p.name.toLowerCase().includes(q) && !p.address.toLowerCase().includes(q)) return false;
+    if (statusF && p.status !== statusF) return false;
+    if (typeF && p.type !== typeF) return false;
+    return true;
+  });
+}
+
+function renderOverviewTable() {
+  const filtered = getFilteredProjects();
+  filtered.sort((a,b) => {
+    let av = a[sortCol], bv = b[sortCol];
+    if (sortCol === 'status') { av = STATUS_ORDER.indexOf(av); bv = STATUS_ORDER.indexOf(bv); }
+    if (av == null) av = sortDir > 0 ? Infinity : -Infinity;
+    if (bv == null) bv = sortDir > 0 ? Infinity : -Infinity;
+    return (av < bv ? -1 : av > bv ? 1 : 0) * sortDir;
+  });
+
+  const tbody = document.getElementById('overview-tbody');
+  const empty = document.getElementById('overview-empty');
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = ''; empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  const colSpan = 5; // number of visible columns
+
+  tbody.innerHTML = filtered.map((p, i) => {
+    const hasAff   = p.units_affordable > 0;
+    const addr     = showAddr(p);
+    const affPctStr = p.total_units > 0
+      ? (p.units_affordable / p.total_units * 100).toFixed(0) + '%' : '—';
+    const typeLabel = p.type === 'affordable' ? 'All affordable'
+                    : p.type === 'mixed'      ? 'Mixed-income'
+                    : 'Market rate';
+
+    // Drawer sections
+    const unitRows = [
+      ['Total units', p.total_units || '—'],
+      ['Market rate', p.units_market || '—'],
+      ['Affordable',  p.units_affordable || '—'],
+      ['% affordable', hasAff ? affPctStr : '—'],
+    ];
+    const detailRows = [
+      ['Type', typeLabel],
+      ['Est. move-in', p.occupancy_year || '—'],
+      ...(p.notes ? [['Notes', p.notes]] : []),
+    ];
+    const links = [];
+    if (p.city_url)  links.push(`<a href="${p.city_url}"  target="_blank" class="drawer-link">City project page ↗</a>`);
+    if (p.media_url) links.push(`<a href="${p.media_url}" target="_blank" class="drawer-link">News coverage ↗</a>`);
+    if (p.map_url)   links.push(`<a href="${p.map_url}"   target="_blank" class="drawer-link">Google Maps ↗</a>`);
+
+    const drawerHtml = `
+      <div class="drawer-inner">
+        <div>
+          <div class="drawer-section-label">Units</div>
+          ${unitRows.map(([l,v]) => `<div class="drawer-row-item"><span class="drawer-row-label">${l}</span><span class="drawer-row-value">${v}</span></div>`).join('')}
+        </div>
+        <div>
+          <div class="drawer-section-label">Details</div>
+          ${detailRows.map(([l,v]) => `<div class="drawer-row-item"><span class="drawer-row-label">${l}</span><span class="drawer-row-value">${v}</span></div>`).join('')}
+          ${addr ? `<div class="drawer-notes">${addr}</div>` : ''}
+        </div>
+        <div>
+          <div class="drawer-section-label">Links</div>
+          <div class="drawer-links">${links.length ? links.join('') : '<span style="font-size:.78rem;color:var(--slate)">None available</span>'}</div>
+        </div>
+      </div>`;
+
+    return `
+      <tr class="project-row" data-idx="${i}">
+        <td><span class="project-name">${p.name}</span><span class="expand-caret">▾</span></td>
+        <td>${statusBadge(p.status)}</td>
+        <td class="hide-mobile"><span class="unit-count">${fmtUnits(p.total_units)}</span></td>
+        <td class="hide-mobile"><span class="unit-count ${hasAff ? 'has-aff' : ''}">${hasAff ? p.units_affordable : '—'}</span></td>
+        <td class="hide-mobile"><span class="year-badge">${p.occupancy_year || '—'}</span></td>
+      </tr>
+      <tr class="drawer-row" data-idx="${i}">
+        <td class="drawer-cell" colspan="${colSpan}">${drawerHtml}</td>
+      </tr>`;
+  }).join('');
+
+  // Wire row clicks — toggle expand
+  tbody.querySelectorAll('tr.project-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const idx     = row.dataset.idx;
+      const drawer  = tbody.querySelector(`tr.drawer-row[data-idx="${idx}"]`);
+      const opening = !drawer.classList.contains('open');
+
+      // Close all others
+      tbody.querySelectorAll('tr.project-row.expanded').forEach(r => r.classList.remove('expanded'));
+      tbody.querySelectorAll('tr.drawer-row.open').forEach(r => r.classList.remove('open'));
+
+      if (opening) {
+        row.classList.add('expanded');
+        drawer.classList.add('open');
+      }
+    });
+  });
+
+  // Update sort indicators
+  document.querySelectorAll('.sort-indicator').forEach(el => {
+    const col = el.dataset.col;
+    el.classList.toggle('active', col === sortCol);
+    el.textContent = col === sortCol ? (sortDir > 0 ? '↑' : '↓') : '↕';
+  });
+}
+
+// Sort on header click
+document.querySelectorAll('#overview-table th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.sort;
+    if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = 1; }
+    renderOverviewTable();
+  });
+});
+
+['overview-search','overview-status-filter','overview-type-filter'].forEach(id => {
+  document.getElementById(id).addEventListener('input', renderOverviewTable);
+});
+
+// ── AFFORDABLE TABLE ──────────────────────────────────────────────────────
+function renderAffordableTab() {
+  const affProjects = projects.filter(p => p.units_affordable > 0 || p.type === 'affordable' || p.type === 'mixed');
+  const totalAffUnits = affProjects.reduce((s,p) => s+p.units_affordable, 0);
+  const totalAffTotal = affProjects.reduce((s,p) => s+p.total_units, 0);
+
+  document.getElementById('aff-callout').innerHTML = `
+    <div class="aff-callout-item">
+      <div class="aff-callout-num">${totalAffUnits}</div>
+      <div class="aff-callout-label">Permanently affordable units tracked</div>
+    </div>
+    <div class="aff-callout-item">
+      <div class="aff-callout-num">${affProjects.length}</div>
+      <div class="aff-callout-label">Projects with affordable units</div>
+    </div>
+    <div class="aff-callout-item">
+      <div class="aff-callout-num">${totalUnits > 0 ? (totalAff/totalUnits*100).toFixed(1) : 0}%</div>
+      <div class="aff-callout-label">Of all pipeline units</div>
+    </div>
+  `;
+
+  renderAffordableTable();
+}
+
+function renderAffordableTable() {
+  const q = document.getElementById('aff-search').value.toLowerCase();
+  const statusF = document.getElementById('aff-status-filter').value;
+
+  const filtered = projects.filter(p => {
+    const relevant = p.units_affordable > 0 || p.type === 'affordable' || p.type === 'mixed';
+    if (!relevant) return false;
+    if (q && !p.name.toLowerCase().includes(q) && !p.address.toLowerCase().includes(q)) return false;
+    if (statusF && p.status !== statusF) return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('aff-tbody');
+  const empty = document.getElementById('aff-empty');
+  if (filtered.length === 0) { tbody.innerHTML=''; empty.style.display=''; return; }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = filtered.map(p => {
+    const pct = p.total_units > 0 ? (p.units_affordable/p.total_units*100).toFixed(0)+'%' : '—';
+    const typeLabel = p.type === 'affordable' ? 'All affordable' : 'Mixed-income';
+    const addr = showAddr(p);
+    return `<tr>
+      <td>
+        <span class="project-name">${p.name}</span>
+        <span style="font-size:.7rem;color:var(--slate);margin-left:.4rem;font-style:italic">${typeLabel}</span>
+        ${addr ? `<div class="project-address">${addr}</div>` : ''}
+      </td>
+      <td>${statusBadge(p.status)}</td>
+      <td class="hide-mobile"><span class="unit-count">${fmtUnits(p.total_units)}</span></td>
+      <td><span class="unit-count has-aff">${fmtUnits(p.units_affordable)}</span></td>
+      <td class="hide-mobile"><span class="unit-count">${pct}</span></td>
+      <td class="hide-mobile"><span class="year-badge">${p.occupancy_year || '—'}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+['aff-search','aff-status-filter'].forEach(id => {
+  document.getElementById(id).addEventListener('input', renderAffordableTable);
+});
+
+// ── MAP ───────────────────────────────────────────────────────────────────
+let mapInstance = null;
+let mapMarkers = [];
+
+let iconAffordable = null;
+let iconMarket     = null;
+
+function makeIcon(color, borderColor) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="30" viewBox="0 0 22 30">
+    <path d="M11 0C4.925 0 0 4.925 0 11c0 8.25 11 19 11 19S22 19.25 22 11C22 4.925 17.075 0 11 0z" fill="${color}" stroke="${borderColor}" stroke-width="1.5"/>
+    <circle cx="11" cy="11" r="4" fill="white" opacity="0.9"/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [22, 30],
+    iconAnchor: [11, 30],
+    popupAnchor: [0, -30]
+  });
+}
+
+function initMap() {
+  if (mapInstance) return;
+
+  mapInstance = L.map('pipeline-map').setView([43.065, -70.773], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 19
+  }).addTo(mapInstance);
+
+  // Icons created here so L is guaranteed to be defined
+  iconAffordable = makeIcon('#f4a261', '#c8822a');
+  iconMarket     = makeIcon('#2d3e52', '#1a2536');
+
+  renderMapMarkers();
+}
+
+function renderMapMarkers() {
+  if (!mapInstance) return;
+  mapMarkers.forEach(m => mapInstance.removeLayer(m));
+  mapMarkers = [];
+
+  const activeStatuses = Array.from(document.querySelectorAll('.map-status-filter:checked')).map(c => c.value);
+  const showAff = document.getElementById('map-filter-affordable').checked;
+  const showMkt = document.getElementById('map-filter-market').checked;
+
+  projects.forEach(p => {
+    if (!p.lat || !p.lng) return;
+    if (!activeStatuses.includes(p.status)) return;
+    const isAff = p.type === 'affordable' || p.type === 'mixed';
+    if (isAff && !showAff) return;
+    if (!isAff && !showMkt) return;
+
+    const icon = isAff ? iconAffordable : iconMarket;
+    const pct = p.total_units > 0 ? (p.units_affordable/p.total_units*100).toFixed(0)+'%' : '—';
+    const links = [];
+    if (p.city_url) links.push(`<a href="${p.city_url}" target="_blank" class="popup-link">City info ↗</a>`);
+    if (p.media_url) links.push(`<a href="${p.media_url}" target="_blank" class="popup-link">News ↗</a>`);
+    if (p.map_url)   links.push(`<a href="${p.map_url}" target="_blank" class="popup-link">Google Maps ↗</a>`);
+
+    const popup = `<div class="pp-popup">
+      <h3>${p.name}</h3>
+      <div class="popup-address">${p.address}</div>
+      <table>
+        <tr><td>Status</td><td>${p.status}</td></tr>
+        <tr><td>Total units</td><td>${p.total_units || '—'}</td></tr>
+        <tr><td>Affordable units</td><td>${p.units_affordable || '—'}</td></tr>
+        ${p.total_units > 0 ? `<tr><td>% affordable</td><td>${pct}</td></tr>` : ''}
+        <tr><td>Est. occupancy</td><td>${p.occupancy_year || '—'}</td></tr>
+      </table>
+      ${links.length ? `<div class="popup-links">${links.join('')}</div>` : ''}
+    </div>`;
+
+    const marker = L.marker([p.lat, p.lng], {icon}).bindPopup(popup, {maxWidth: 280});
+    marker.addTo(mapInstance);
+    mapMarkers.push(marker);
+  });
+}
+
+document.querySelectorAll('.map-status-filter, #map-filter-affordable, #map-filter-market').forEach(el => {
+  el.addEventListener('change', renderMapMarkers);
+});
+
+// ── PIPELINE STATUS TAB ───────────────────────────────────────────────────
+function renderStatusTab() {
+  const grid = document.getElementById('stage-grid');
+  grid.innerHTML = '';
+
+  STATUS_ORDER.forEach(stage => {
+    const stageProjects = projects.filter(p => p.status === stage);
+    if (stageProjects.length === 0) return;
+
+    const stageUnits = stageProjects.reduce((s,p) => s+p.total_units, 0);
+    const color = STATUS_COLORS[stage];
+
+    const rows = stageProjects.map(p => {
+      const affTag = p.units_affordable > 0
+        ? `<span class="aff-highlight">${p.units_affordable} aff</span> / ${p.total_units} total`
+        : `${p.total_units || '—'} units`;
+      const addr = showAddr(p);
+      return `<div class="stage-project-row">
+        <div>
+          <div class="stage-project-name">${p.name}</div>
+          ${addr ? `<div class="stage-project-addr">${addr}</div>` : ''}
+        </div>
+        <div class="stage-project-units">${affTag}</div>
+      </div>`;
+    }).join('');
+
+    grid.innerHTML += `<div class="stage-card">
+      <div class="stage-header" style="background:${color}">
+        <span class="stage-name">${stage}</span>
+        <span class="stage-unit-count">${stageProjects.length} project${stageProjects.length>1?'s':''} · ${stageUnits.toLocaleString()} units</span>
+      </div>
+      <div class="stage-projects">${rows}</div>
+    </div>`;
+  });
+}
+
+// ── TAB SWITCHING ─────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+tab).classList.add('active');
+
+    if (tab === 'map') {
+      // slight delay to ensure container is visible before Leaflet init
+      setTimeout(() => { initMap(); mapInstance && mapInstance.invalidateSize(); }, 50);
+    }
+  });
+});
+
+// ── FOOTER DATE ───────────────────────────────────────────────────────────
+const d = PIPELINE_DATA.meta.last_updated;
+document.getElementById('last-updated-footer').textContent =
+  'Last updated: ' + new Date(d+'T00:00:00').toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderStatCards();
+renderCharts();
+renderOverviewTable();
+renderAffordableTab();
+renderStatusTab();
+</script>
+</body>
+</html>
