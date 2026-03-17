@@ -472,7 +472,8 @@
 
 <script>
 // ── CONFIG ─────────────────────────────────────────────────────────
-const ADMIN_PASSWORD = 'ppradar2026';
+const ADMIN_PASSWORD   = 'ppradar2026';
+const ANTHROPIC_API_KEY = 'REDACTED_API_KEY'; // replace with your key from console.anthropic.com
 const STORAGE_PREFIX  = 'pp_radar_';
 const STALE_DAYS      = 45;
 const KEYS            = ['dev', 'zoning', 'market', 'council'];
@@ -752,7 +753,12 @@ async function callClaude(prompt) {
   for (let turn = 0; turn < 8; turn++) {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
