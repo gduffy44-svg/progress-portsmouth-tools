@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portsmouth Housing Radar — Progress Portsmouth</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #1a2332;
+    --navy: #2d3e52;
+    --navy-brand: #1a4a8a;
+    --gold: #c8822a;
+    --gold-light: #f4a261;
+    --coral: #e76f51;
+    --teal: #3a7d6e;
+    --cream: #f8f4ee;
+    --cream-dark: #ede8df;
+    --white: #ffffff;
+    --text: #1e2635;
+    --text-muted: #5c6880;
+    --border: #d6cfc4;
+    --card-bg: #ffffff;
+    --success: #2e7d5e;
+    --warning: #b45309;
+    --stale: #9a3412;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', Arial, sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+  /* HEADER */
+  .site-header { background: var(--navy-deep); border-bottom: 3px solid var(--gold); padding: 0 40px; }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; gap: 20px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 14px; cursor: pointer; user-select: none; }
+  .brand-icon { width: 44px; height: 44px; flex-shrink: 0; }
+  .brand-text .org { font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); display: block; line-height: 1; margin-bottom: 3px; }
+  .brand-text .tool { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--white); line-height: 1; display: block; }
+  .header-meta { text-align: right; }
+  .header-meta .location { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); display: block; margin-bottom: 4px; }
+  .header-meta .last-updated { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+  .header-meta .last-updated strong { color: var(--gold-light); }
+
+  /* INTRO STRIP */
+  .intro-strip { background: var(--navy); padding: 16px 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .intro-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .intro-strip p { font-size: 0.88rem; color: rgba(255,255,255,0.65); max-width: 680px; line-height: 1.5; }
+  .intro-strip p strong { color: rgba(255,255,255,0.9); }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(200,130,42,0.2); border: 1px solid rgba(200,130,42,0.4); color: var(--gold-light); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 4px; white-space: nowrap; }
+  .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); }
+
+  /* MAIN */
+  .main-content { max-width: 1100px; margin: 0 auto; padding: 40px 40px 60px; }
+
+  .section-heading { display: flex; align-items: baseline; gap: 14px; margin-bottom: 24px; }
+  .section-heading h2 { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--navy-deep); }
+  .section-heading .rule { flex: 1; height: 1px; background: var(--border); }
+  .section-heading .count { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); gap: 24px; margin-bottom: 48px; }
+
+  /* CARDS */
+  .radar-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+  .radar-card.is-stale { border-color: rgba(154,52,18,0.35); }
+  .radar-card.is-loading { opacity: 0.65; }
+
+  .card-header { padding: 16px 20px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+  .card-icon { width: 36px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+  .card-icon.dev    { background: rgba(26,74,138,0.1); }
+  .card-icon.zoning { background: rgba(58,125,110,0.1); }
+  .card-icon.market { background: rgba(200,130,42,0.12); }
+  .card-icon.council{ background: rgba(231,111,81,0.1); }
+  .card-header-text { flex: 1; }
+  .card-title { font-weight: 700; font-size: 0.95rem; color: var(--navy-deep); line-height: 1.2; }
+  .card-subtitle { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+  .card-status { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+  .card-status.published { background: rgba(46,125,94,0.12); color: var(--success); }
+  .card-status.stale     { background: rgba(154,52,18,0.1); color: var(--stale); }
+  .card-status.loading   { background: rgba(0,0,0,0.05); color: var(--text-muted); }
+  .card-status.empty     { background: rgba(0,0,0,0.05); color: var(--text-muted); }
+
+  .card-body { padding: 20px; flex: 1; }
+  .card-body .empty-state { text-align: center; padding: 24px 0; color: var(--text-muted); font-size: 0.88rem; font-style: italic; line-height: 1.6; }
+  .card-body .empty-state strong { display: block; font-style: normal; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; font-size: 0.92rem; }
+  .card-body .loading-state { text-align: center; padding: 28px 0; color: var(--text-muted); font-size: 0.85rem; }
+
+  .result-content { font-size: 0.88rem; line-height: 1.7; color: var(--text); }
+  .result-content p { margin-bottom: 10px; }
+  .result-content p:last-child { margin-bottom: 0; }
+
+  .card-footer { padding: 10px 20px; background: rgba(0,0,0,0.02); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .card-footer .scan-date { font-size: 0.72rem; color: var(--text-muted); }
+  .card-footer .scan-date.stale { color: var(--stale); font-weight: 700; }
+  .card-footer .source-link { font-size: 0.72rem; color: var(--navy-brand); text-decoration: none; font-weight: 600; }
+  .card-footer .source-link:hover { text-decoration: underline; }
+
+  /* EXPLAINER */
+  .explainer-panel { background: var(--navy-deep); border-radius: 6px; padding: 32px 36px; margin-bottom: 48px; }
+  .explainer-panel h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 10px; }
+  .explainer-panel p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 700px; }
+  .explainer-panel p + p { margin-top: 10px; }
+  .explainer-panel .learn-more { color: var(--gold-light); text-decoration: none; font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; margin-top: 14px; border-bottom: 1px solid rgba(244,162,97,0.3); padding-bottom: 1px; }
+  .explainer-panel .learn-more:hover { border-color: var(--gold-light); }
+
+  /* DATA SOURCE NOTICE on public view */
+  .data-source-bar { background: rgba(26,74,138,0.06); border: 1px solid rgba(26,74,138,0.12); border-radius: 4px; padding: 8px 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .data-source-bar .ds-text { font-size: 0.76rem; color: var(--text-muted); }
+  .data-source-bar .ds-text strong { color: var(--text); }
+  .data-source-bar .ds-status { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .data-source-bar .ds-status.ok { color: var(--success); }
+  .data-source-bar .ds-status.local { color: var(--warning); }
+  .data-source-bar .ds-status.loading { color: var(--text-muted); }
+
+  /* FOOTER */
+  .site-footer { background: var(--navy-deep); border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 40px; }
+  .site-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .site-footer .attribution { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-style: italic; }
+  .site-footer .attribution strong { color: rgba(255,255,255,0.65); font-style: normal; }
+  .site-footer .disclosure { font-size: 0.72rem; color: rgba(255,255,255,0.3); max-width: 440px; text-align: right; line-height: 1.4; }
+
+  /* ADMIN */
+  #admin-overlay { display: none; position: fixed; inset: 0; background: rgba(15,20,30,0.85); z-index: 1000; overflow-y: auto; padding: 40px 20px; }
+  .admin-panel { background: #f0ede8; max-width: 880px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
+  .admin-header { background: var(--navy-deep); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--gold); }
+  .admin-header h2 { font-family: 'DM Serif Display', serif; color: var(--white); font-size: 1.2rem; }
+  .admin-header .close-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); cursor: pointer; font-size: 1.1rem; width: 32px; height: 32px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .admin-header .close-btn:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+
+  #admin-login { padding: 48px 32px; text-align: center; }
+  #admin-login h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 8px; color: var(--navy-deep); }
+  #admin-login p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; }
+  #admin-login input[type="password"] { display: block; margin: 0 auto 12px; padding: 10px 16px; font-size: 1rem; font-family: inherit; border: 1px solid var(--border); border-radius: 4px; width: 260px; background: var(--white); }
+  #admin-login input[type="password"]:focus { outline: none; border-color: var(--navy-brand); }
+  .login-error { color: var(--coral); font-size: 0.82rem; margin-top: 8px; display: none; }
+
+  #admin-interface { display: none; }
+  .admin-body { padding: 24px 28px 28px; }
+
+  .admin-note  { background: rgba(200,130,42,0.1); border-left: 3px solid var(--gold); padding: 12px 16px; border-radius: 0 4px 4px 0; font-size: 0.83rem; color: var(--navy-deep); margin-bottom: 10px; line-height: 1.6; }
+  .admin-note strong { font-weight: 700; }
+  .security-notice { background: rgba(231,111,81,0.08); border-left: 3px solid var(--coral); padding: 10px 16px; border-radius: 0 4px 4px 0; font-size: 0.78rem; color: #7c2d12; margin-bottom: 10px; line-height: 1.5; }
+  .git-note { background: rgba(58,125,110,0.08); border-left: 3px solid var(--teal); padding: 11px 16px; border-radius: 0 4px 4px 0; font-size: 0.8rem; color: #1a3d33; margin-bottom: 20px; line-height: 1.6; font-family: inherit; }
+  .git-note strong { font-weight: 700; display: block; margin-bottom: 4px; }
+  .git-note code { font-family: 'Courier New', monospace; font-size: 0.78rem; background: rgba(0,0,0,0.08); padding: 1px 5px; border-radius: 3px; }
+
+  .admin-top-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .scan-all-status { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
+
+  .scan-panels { display: flex; flex-direction: column; gap: 18px; margin-bottom: 20px; }
+  .scan-panel { background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .scan-panel-header { padding: 13px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .panel-title { font-weight: 700; font-size: 0.9rem; color: var(--navy-deep); }
+  .panel-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .scan-panel-body { padding: 14px 18px; }
+  .scan-panel-body textarea { width: 100%; min-height: 100px; font-family: inherit; font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border); border-radius: 4px; padding: 9px 12px; resize: vertical; color: var(--text); background: #fafaf8; }
+  .scan-panel-body textarea:focus { outline: none; border-color: var(--navy-brand); }
+
+  .source-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+  .source-row label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.05em; }
+  .source-row input[type="url"] { flex: 1; padding: 6px 10px; font-family: inherit; font-size: 0.8rem; border: 1px solid var(--border); border-radius: 4px; background: #fafaf8; color: var(--text); }
+  .source-row input[type="url"]:focus { outline: none; border-color: var(--navy-brand); }
+
+  .scan-status { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; min-height: 18px; font-style: italic; }
+
+  /* BUTTONS */
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-family: inherit; font-size: 0.82rem; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-primary { background: var(--navy-brand); color: var(--white); }
+  .btn-primary:hover:not(:disabled) { background: #1a3d7a; }
+  .btn-gold { background: var(--gold); color: var(--white); }
+  .btn-gold:hover:not(:disabled) { background: #b5731f; }
+  .btn-success { background: var(--success); color: var(--white); }
+  .btn-success:hover:not(:disabled) { background: #266b52; }
+  .btn-teal { background: var(--teal); color: var(--white); padding: 10px 20px; }
+  .btn-teal:hover:not(:disabled) { background: #2e6459; }
+  .btn-sm { padding: 6px 12px; font-size: 0.76rem; }
+  .btn-outline { background: transparent; color: var(--navy-deep); border: 1px solid var(--border); }
+  .btn-outline:hover:not(:disabled) { background: var(--cream-dark); }
+
+  .pub-indicator { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--success); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .pub-indicator::before { content: '●'; font-size: 0.5rem; }
+
+  .admin-tools-row { display: flex; gap: 10px; padding: 16px 0 0; border-top: 1px solid var(--border); flex-wrap: wrap; }
+
+  /* SPINNER */
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; }
+  .spinner.dark { border-color: rgba(0,0,0,0.15); border-top-color: var(--navy-brand); }
+
+  .admin-hint { position: fixed; bottom: 20px; right: 20px; font-size: 0.7rem; color: rgba(0,0,0,0.1); cursor: default; user-select: none; z-index: 999; }
+
+  @media (max-width: 720px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .main-content { padding: 24px 20px 48px; }
+    .site-header, .intro-strip, .site-footer { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand" id="brand-trigger">
+      <svg class="brand-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="6" fill="#1a4a8a"/>
+        <path d="M22 8L8 20h4v16h8v-9h4v9h8V20h4L22 8z" fill="white"/>
+        <rect x="18" y="27" width="8" height="9" rx="1" fill="#c8822a"/>
+        <circle cx="33" cy="12" r="5" fill="#c8822a"/>
+        <text x="33" y="16" text-anchor="middle" font-size="7" font-weight="bold" fill="white" font-family="Arial">R</text>
+      </svg>
+      <div class="brand-text">
+        <span class="org">Progress Portsmouth</span>
+        <span class="tool">Housing Radar</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="location">📍 Portsmouth, New Hampshire</span>
+      <span class="last-updated">Last published: <strong id="global-last-updated">—</strong></span>
+    </div>
+  </div>
+</header>
+
+<div class="intro-strip">
+  <div class="intro-strip-inner">
+    <p><strong>On-demand intelligence for Portsmouth's housing landscape.</strong> Progress Portsmouth scans city filings, market data, and board actions — then reviews and publishes findings here. Data is curated, not automated.</p>
+    <span class="badge">PP Verified</span>
+  </div>
+</div>
+
+<main class="main-content">
+
+  <div class="explainer-panel">
+    <h3>What is Housing Radar?</h3>
+    <p>Progress Portsmouth monitors Portsmouth's housing landscape across four dimensions: development activity, zoning policy, market conditions, and government actions. We use AI-assisted research to scan public sources, then review and publish findings for residents, policymakers, and advocates.</p>
+    <p>This is not a live feed. Each category is scanned on a rolling basis and reviewed before publication. Results reflect conditions at the time of scanning. Findings older than 45 days are flagged for refresh.</p>
+    <a href="https://www.progressportsmouth.com" class="learn-more" target="_blank">Learn about Progress Portsmouth →</a>
+  </div>
+
+  <!-- Data source status bar -->
+  <div class="data-source-bar" id="data-source-bar">
+    <span class="ds-text"><strong>Data source:</strong> <span id="ds-source-label">Loading from server…</span></span>
+    <span class="ds-status loading" id="ds-status"><span class="spinner dark"></span></span>
+  </div>
+
+  <div class="section-heading">
+    <h2>Current Findings</h2>
+    <div class="rule"></div>
+    <span class="count" id="published-count">Loading…</span>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="radar-card is-loading" id="card-dev">
+      <div class="card-header">
+        <div class="card-icon dev">🏗️</div>
+        <div class="card-header-text">
+          <div class="card-title">Development Proposals & Permits</div>
+          <div class="card-subtitle">Applications, filings, planning board submissions</div>
+        </div>
+        <span class="card-status loading" id="status-dev">Loading…</span>
+      </div>
+      <div class="card-body" id="body-dev">
+        <div class="loading-state"><span class="spinner dark"></span></div>
+      </div>
+      <div class="card-footer">
+        <span class="scan-date" id="date-dev"></span>
+        <span id="source-link-dev"></span>
+      </div>
+    </div>
+
+    <div class="radar-card is-loading" id="card-zoning">
+      <div class="card-header">
+        <div class="card-icon zoning">📋</div>
+        <div class="card-header-text">
+          <div class="card-title">Zoning & Housing Action Plan</div>
+          <div class="card-subtitle">Ordinance changes, HAP implementation, text amendments</div>
+        </div>
+        <span class="card-status loading" id="status-zoning">Loading…</span>
+      </div>
+      <div class="card-body" id="body-zoning">
+        <div class="loading-state"><span class="spinner dark"></span></div>
+      </div>
+      <div class="card-footer">
+        <span class="scan-date" id="date-zoning"></span>
+        <span id="source-link-zoning"></span>
+      </div>
+    </div>
+
+    <div class="radar-card is-loading" id="card-market">
+      <div class="card-header">
+        <div class="card-icon market">📈</div>
+        <div class="card-header-text">
+          <div class="card-title">Housing Market Conditions</div>
+          <div class="card-subtitle">Prices, rents, inventory, and affordability indicators</div>
+        </div>
+        <span class="card-status loading" id="status-market">Loading…</span>
+      </div>
+      <div class="card-body" id="body-market">
+        <div class="loading-state"><span class="spinner dark"></span></div>
+      </div>
+      <div class="card-footer">
+        <span class="scan-date" id="date-market"></span>
+        <span id="source-link-market"></span>
+      </div>
+    </div>
+
+    <div class="radar-card is-loading" id="card-council">
+      <div class="card-header">
+        <div class="card-icon council">🏛️</div>
+        <div class="card-header-text">
+          <div class="card-title">City Council & Board Actions</div>
+          <div class="card-subtitle">Meeting outcomes, votes, agenda items</div>
+        </div>
+        <span class="card-status loading" id="status-council">Loading…</span>
+      </div>
+      <div class="card-body" id="body-council">
+        <div class="loading-state"><span class="spinner dark"></span></div>
+      </div>
+      <div class="card-footer">
+        <span class="scan-date" id="date-council"></span>
+        <span id="source-link-council"></span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p class="attribution"><strong>Progress Portsmouth</strong> — Independent civic housing advocacy, Portsmouth NH. <a href="https://www.progressportsmouth.com" style="color:rgba(255,255,255,0.35);text-decoration:none;">progressportsmouth.com</a></p>
+    <p class="disclosure">Created with AI assistance in research and information design. All findings reviewed and curated by Progress Portsmouth before publication. Data reflects conditions at time of scan.</p>
+  </div>
+</footer>
+
+<div class="admin-hint" id="admin-hint"></div>
+
+<!-- ADMIN OVERLAY -->
+<div id="admin-overlay">
+  <div class="admin-panel">
+    <div class="admin-header">
+      <h2>⚡ Housing Radar — PP Admin</h2>
+      <button class="close-btn" id="close-admin">✕</button>
+    </div>
+
+    <div id="admin-login">
+      <h3>Admin Access</h3>
+      <p>Progress Portsmouth team only.</p>
+      <input type="password" id="admin-password" placeholder="Password" autocomplete="off">
+      <button class="btn btn-primary" id="login-btn">Enter</button>
+      <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+    </div>
+
+    <div id="admin-interface">
+      <div class="admin-body">
+
+        <div class="admin-note">
+          <strong>Workflow:</strong> (1) Click <em>Scan All</em> or <em>Scan Now</em> per category. (2) Review and edit each result. Add a source URL if you have one. (3) Click <em>Publish</em> — this updates the public view in this browser and prompts an export. (4) Commit and push the exported JSON to make it live for everyone. See the git steps below.
+        </div>
+
+        <div class="git-note">
+          <strong>Publishing to the live site (do this after every session):</strong>
+          After exporting, copy the JSON file into your repo at <code>housing/housing-radar-data.json</code>, then run:<br><br>
+          <code>git add housing/housing-radar-data.json</code><br>
+          <code>git commit -m "chore: update Housing Radar data [date]"</code><br>
+          <code>git push</code><br><br>
+          Vercel deploys in ~30 seconds. Visitors will then load data from the server, not a browser cache.
+        </div>
+
+        <div class="security-notice">
+          ⚠️ <strong>Security note:</strong> The admin password is stored in the HTML source and visible to anyone who inspects the file. This is editorial access control only — do not treat it as secure authentication.
+        </div>
+
+        <div class="admin-top-row">
+          <button class="btn btn-teal" id="scan-all-btn" onclick="runScanAll()">⚡ Scan All Four Categories</button>
+          <button class="btn btn-outline btn-sm" id="reload-btn" onclick="reloadFromServer()" title="Re-fetch housing-radar-data.json from Vercel">↺ Reload from Server</button>
+          <span class="scan-all-status" id="scan-all-status"></span>
+        </div>
+
+        <div class="scan-panels">
+
+          <div class="scan-panel">
+            <div class="scan-panel-header">
+              <span class="panel-title">🏗️ Development Proposals & Permits</span>
+              <div class="panel-controls">
+                <span class="pub-indicator" id="pub-indicator-dev" style="display:none">Published</span>
+                <button class="btn btn-primary btn-sm scan-one-btn" onclick="runScan('dev')">Scan Now</button>
+                <button class="btn btn-success btn-sm" onclick="publishResult('dev')">Publish</button>
+                <button class="btn btn-outline btn-sm" onclick="clearResult('dev')">Clear</button>
+              </div>
+            </div>
+            <div class="scan-panel-body">
+              <textarea id="result-dev" placeholder="Scan results will appear here. You can also type or paste findings manually."></textarea>
+              <div class="source-row">
+                <label for="source-dev">Source URL</label>
+                <input type="url" id="source-dev" placeholder="https://portsmouthnh.gov/… (optional)">
+              </div>
+              <div class="scan-status" id="scan-status-dev"></div>
+            </div>
+          </div>
+
+          <div class="scan-panel">
+            <div class="scan-panel-header">
+              <span class="panel-title">📋 Zoning & Housing Action Plan</span>
+              <div class="panel-controls">
+                <span class="pub-indicator" id="pub-indicator-zoning" style="display:none">Published</span>
+                <button class="btn btn-primary btn-sm scan-one-btn" onclick="runScan('zoning')">Scan Now</button>
+                <button class="btn btn-success btn-sm" onclick="publishResult('zoning')">Publish</button>
+                <button class="btn btn-outline btn-sm" onclick="clearResult('zoning')">Clear</button>
+              </div>
+            </div>
+            <div class="scan-panel-body">
+              <textarea id="result-zoning" placeholder="Scan results will appear here. You can also type or paste findings manually."></textarea>
+              <div class="source-row">
+                <label for="source-zoning">Source URL</label>
+                <input type="url" id="source-zoning" placeholder="https://portsmouthnh.gov/… (optional)">
+              </div>
+              <div class="scan-status" id="scan-status-zoning"></div>
+            </div>
+          </div>
+
+          <div class="scan-panel">
+            <div class="scan-panel-header">
+              <span class="panel-title">📈 Housing Market Conditions</span>
+              <div class="panel-controls">
+                <span class="pub-indicator" id="pub-indicator-market" style="display:none">Published</span>
+                <button class="btn btn-primary btn-sm scan-one-btn" onclick="runScan('market')">Scan Now</button>
+                <button class="btn btn-success btn-sm" onclick="publishResult('market')">Publish</button>
+                <button class="btn btn-outline btn-sm" onclick="clearResult('market')">Clear</button>
+              </div>
+            </div>
+            <div class="scan-panel-body">
+              <textarea id="result-market" placeholder="Scan results will appear here. You can also type or paste findings manually."></textarea>
+              <div class="source-row">
+                <label for="source-market">Source URL</label>
+                <input type="url" id="source-market" placeholder="https://zillow.com/… (optional)">
+              </div>
+              <div class="scan-status" id="scan-status-market"></div>
+            </div>
+          </div>
+
+          <div class="scan-panel">
+            <div class="scan-panel-header">
+              <span class="panel-title">🏛️ City Council & Board Actions</span>
+              <div class="panel-controls">
+                <span class="pub-indicator" id="pub-indicator-council" style="display:none">Published</span>
+                <button class="btn btn-primary btn-sm scan-one-btn" onclick="runScan('council')">Scan Now</button>
+                <button class="btn btn-success btn-sm" onclick="publishResult('council')">Publish</button>
+                <button class="btn btn-outline btn-sm" onclick="clearResult('council')">Clear</button>
+              </div>
+            </div>
+            <div class="scan-panel-body">
+              <textarea id="result-council" placeholder="Scan results will appear here. You can also type or paste findings manually."></textarea>
+              <div class="source-row">
+                <label for="source-council">Source URL</label>
+                <input type="url" id="source-council" placeholder="https://portsmouthnh.gov/… (optional)">
+              </div>
+              <div class="scan-status" id="scan-status-council"></div>
+            </div>
+          </div>
+
+        </div><!-- .scan-panels -->
+
+        <div class="admin-tools-row">
+          <button class="btn btn-gold" onclick="exportData()">⬇ Export JSON (housing-radar-data.json)</button>
+          <button class="btn btn-outline" onclick="importData()">⬆ Import JSON</button>
+          <button class="btn btn-outline" style="margin-left:auto;color:#b91c1c;border-color:#b91c1c;" onclick="clearAllData()">Clear All Published Data</button>
+        </div>
+
+      </div>
+    </div><!-- #admin-interface -->
+  </div><!-- .admin-panel -->
+</div><!-- #admin-overlay -->
+
+<script>
+// ── CONFIG ─────────────────────────────────────────────────────────
+const ADMIN_PASSWORD = 'ppradar2026';
+const STORAGE_PREFIX  = 'pp_radar_';
+const STALE_DAYS      = 45;
+const KEYS            = ['dev', 'zoning', 'market', 'council'];
+
+// Relative path — works on Vercel because the HTML and JSON are in the same /housing/ folder.
+// Falls back gracefully in local/dev environments.
+const DATA_URL = './housing-radar-data.json';
+
+// ── PROMPTS — date injected at scan time ───────────────────────────
+function getPrompt(key) {
+  const today     = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  const cutoff    = new Date(); cutoff.setDate(cutoff.getDate() - 60);
+  const cutoffStr = cutoff.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+
+  const prompts = {
+    dev: `Today is ${today}. Search for development proposals, building permit applications, major construction projects, and planning board submissions in Portsmouth, New Hampshire filed or reported since ${cutoffStr}. Pay particular attention to: (1) any workforce housing or affordable housing proposals, especially involving POAH (Preservation of Affordable Housing) or Portsmouth Housing Authority; (2) development activity in Office Research (OR) zoning districts, particularly along Greenland Road, Pease, or other OR-zoned corridors; (3) significant downtown or waterfront development applications; (4) any proposals near or within overlay districts. Check portsmouthnh.gov planning board agendas, Seacoast Online, NH Business Review, and Portsmouth Herald. Return a concise factual summary of the 4–6 most significant items with dates and addresses where available. Plain paragraphs only — no markdown headers or bullet symbols. If nothing significant is found, say so plainly.`,
+
+    zoning: `Today is ${today}. Search for zoning policy developments in Portsmouth, New Hampshire since ${cutoffStr}. Specifically monitor: (1) Any action on the Gateway Neighborhood Overlay District (GNOD) — including proposals to expand it to Office Research (OR) zones citywide; (2) Downtown Overlay District changes, especially any fix to the ground-floor commercial requirement that would map it to specific street frontages rather than apply blanket restrictions; (3) Zoning Board of Adjustment (ZBA) — appointments, term expirations, criteria changes, or notable decisions; (4) ADU (accessory dwelling unit) ordinance implementation following the February 2026 vote; (5) Parking ordinance changes following the February 2026 revisions; (6) Any Housing Action Plan items advancing through the Planning Board or City Council. Check portsmouthnh.gov, Planning Board agendas and minutes, and local news. Plain paragraphs only — no markdown headers or bullet symbols. Be specific about what changed, what is pending, and when.`,
+
+    market: `Today is ${today}. Search for current housing market data for Portsmouth, New Hampshire. Report on: (1) Median home sale prices and year-over-year change; (2) Active listings count and days on market; (3) Median apartment rental rates by unit size (studio, 1BR, 2BR) and year-over-year change; (4) Rental vacancy rates if available; (5) Any data on housing affordability at 80% of Area Median Income (AMI) — what income is needed to afford median rent without cost burden; (6) Any new rental or for-sale housing that has come to market since ${cutoffStr}. Use Zillow, Redfin, Realtor.com, CoStar, NH Housing Finance Authority publications, and Portsmouth Herald real estate coverage. Plain paragraphs only — no markdown headers or bullet symbols. Cite source and approximate date for any specific figures. Flag if data is regional rather than Portsmouth-specific.`,
+
+    council: `Today is ${today}. Search for Portsmouth, New Hampshire City Council, Housing Committee, and Planning Board actions since ${cutoffStr}. Specifically watch for: (1) Any votes or discussion on RSA 79-E (Community Revitalization Tax Relief Incentive) adoption — the City Council held a work session on this in spring 2026; (2) Housing Committee meeting outcomes — agenda items, votes, and Housing Action Plan implementation decisions; (3) City Council votes on housing, zoning, or development matters; (4) Planning Board decisions on major projects or zoning amendments; (5) Zoning Board of Adjustment (ZBA) appointment decisions or notable rulings; (6) Any City Manager or staff reports on the Housing Navigator position. Check portsmouthnh.gov for official agendas, minutes, and meeting records. Plain paragraphs only — no markdown headers or bullet symbols. Include dates and vote outcomes.`
+  };
+
+  return prompts[key];
+}
+
+// ── ADMIN STATE ────────────────────────────────────────────────────
+let logoClickCount = 0, logoClickTimer = null, isLoggedIn = false;
+
+// ── INIT ───────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Attempt to load published data from the server JSON; fall back to localStorage
+  fetchAndRender();
+
+  document.getElementById('brand-trigger').addEventListener('click', () => {
+    logoClickCount++;
+    clearTimeout(logoClickTimer);
+    const hint = document.getElementById('admin-hint');
+    if (logoClickCount < 5) {
+      hint.textContent = `Admin: ${5 - logoClickCount} more click${5 - logoClickCount !== 1 ? 's' : ''}`;
+      logoClickTimer = setTimeout(() => { logoClickCount = 0; hint.textContent = ''; }, 3000);
+    } else {
+      logoClickCount = 0; hint.textContent = '';
+      openAdmin();
+    }
+  });
+
+  document.getElementById('close-admin').addEventListener('click', closeAdmin);
+  document.getElementById('admin-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('admin-overlay')) closeAdmin();
+  });
+  document.getElementById('login-btn').addEventListener('click', attemptLogin);
+  document.getElementById('admin-password').addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
+});
+
+// ── FETCH FROM SERVER ──────────────────────────────────────────────
+// Hierarchy: Vercel JSON → localStorage → empty state
+async function fetchAndRender() {
+  setDataSourceStatus('loading');
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now()); // cache-bust
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+
+    const hasData = KEYS.some(k => json[k]?.text);
+    if (hasData) {
+      // Server JSON is authoritative — write into localStorage as cache
+      KEYS.forEach(k => { if (json[k]?.text) storageSet('published_' + k, json[k]); });
+      renderAll();
+      setDataSourceStatus('server');
+    } else {
+      // Empty JSON on server — fall back to localStorage
+      fallbackToLocalStorage();
+    }
+  } catch (err) {
+    // Fetch failed (local dev, network error, file not yet committed) — use localStorage
+    console.info('Housing Radar: server JSON unavailable, using localStorage.', err.message);
+    fallbackToLocalStorage();
+  }
+}
+
+async function reloadFromServer() {
+  document.getElementById('scan-all-status').innerHTML = '<span class="spinner dark"></span> Reloading from server…';
+  await fetchAndRender();
+  document.getElementById('scan-all-status').textContent = 'Reloaded from server.';
+  setTimeout(() => { document.getElementById('scan-all-status').textContent = ''; }, 3000);
+}
+
+function fallbackToLocalStorage() {
+  const hasLocal = KEYS.some(k => storageGet('published_' + k));
+  renderAll();
+  setDataSourceStatus(hasLocal ? 'local' : 'empty');
+}
+
+function setDataSourceStatus(state) {
+  const bar    = document.getElementById('data-source-bar');
+  const label  = document.getElementById('ds-source-label');
+  const status = document.getElementById('ds-status');
+
+  if (state === 'loading') {
+    label.textContent  = 'Loading from server…';
+    status.className   = 'ds-status loading';
+    status.innerHTML   = '<span class="spinner dark"></span>';
+  } else if (state === 'server') {
+    label.textContent  = 'progress-portsmouth-tools.vercel.app (live)';
+    status.className   = 'ds-status ok';
+    status.textContent = '✓ Server';
+  } else if (state === 'local') {
+    label.textContent  = 'Browser cache (server unavailable or not yet pushed)';
+    status.className   = 'ds-status local';
+    status.textContent = '⚠ Local only';
+  } else {
+    label.textContent  = 'No published data found';
+    status.className   = 'ds-status local';
+    status.textContent = '—';
+  }
+}
+
+// ── RENDER ALL PUBLIC CARDS ────────────────────────────────────────
+function renderAll() {
+  let count = 0, latest = null;
+  KEYS.forEach(k => {
+    const d = storageGet('published_' + k);
+    if (d?.text) {
+      renderPublicCard(k, d);
+      count++;
+      if (!latest || new Date(d.publishedAt) > new Date(latest)) latest = d.publishedAt;
+    } else {
+      resetPublicCard(k);
+    }
+  });
+  document.getElementById('published-count').textContent =
+    `${count} of 4 ${count === 1 ? 'category' : 'categories'} published`;
+  document.getElementById('global-last-updated').textContent =
+    latest ? formatDate(latest) : 'No scans published yet';
+}
+
+function renderPublicCard(key, data) {
+  const stale = isStale(data.publishedAt);
+  const cardEl = document.getElementById('card-' + key);
+  cardEl.classList.remove('is-loading');
+  cardEl.classList.toggle('is-stale', stale);
+
+  const statusEl = document.getElementById('status-' + key);
+  statusEl.textContent = stale ? 'Needs refresh' : 'Published';
+  statusEl.className   = 'card-status ' + (stale ? 'stale' : 'published');
+
+  const paras = data.text.split('\n').filter(l => l.trim());
+  document.getElementById('body-' + key).innerHTML =
+    `<div class="result-content">${paras.map(p => `<p>${escapeHtml(p)}</p>`).join('')}</div>`;
+
+  const days = daysAgo(data.publishedAt);
+  const ago  = days === 0 ? 'today' : days === 1 ? '1 day ago' : `${days} days ago`;
+  const dateEl = document.getElementById('date-' + key);
+  dateEl.textContent = `Published ${formatDate(data.publishedAt)} (${ago})`;
+  dateEl.className   = 'scan-date' + (stale ? ' stale' : '');
+
+  document.getElementById('source-link-' + key).innerHTML =
+    data.sourceUrl
+      ? `<a class="source-link" href="${escapeHtml(data.sourceUrl)}" target="_blank" rel="noopener">Primary source →</a>`
+      : '';
+}
+
+function resetPublicCard(key) {
+  const cardEl = document.getElementById('card-' + key);
+  cardEl.classList.remove('is-loading', 'is-stale');
+  document.getElementById('status-' + key).textContent = 'Not yet scanned';
+  document.getElementById('status-' + key).className   = 'card-status empty';
+  document.getElementById('date-' + key).textContent   = '';
+  document.getElementById('source-link-' + key).innerHTML = '';
+  const labels = {
+    dev:    'Recent development applications, permit filings, and planning board submissions',
+    zoning: 'Zoning ordinance amendments, Housing Action Plan updates, and related policy changes',
+    market: 'Current Portsmouth housing prices, rental rates, vacancy trends, and affordability indicators',
+    council:'Recent City Council votes, Planning Board decisions, and Housing Committee actions'
+  };
+  document.getElementById('body-' + key).innerHTML =
+    `<div class="empty-state"><strong>No published findings yet</strong>${labels[key]} will appear here once Progress Portsmouth has reviewed a scan.</div>`;
+}
+
+// ── ADMIN ──────────────────────────────────────────────────────────
+function openAdmin() {
+  document.getElementById('admin-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  if (!isLoggedIn) setTimeout(() => document.getElementById('admin-password').focus(), 50);
+  else loadDraftsIntoAdmin();
+}
+function closeAdmin() {
+  document.getElementById('admin-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+function attemptLogin() {
+  if (document.getElementById('admin-password').value === ADMIN_PASSWORD) {
+    isLoggedIn = true;
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-interface').style.display = 'block';
+    loadDraftsIntoAdmin();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('admin-password').value = '';
+    document.getElementById('admin-password').focus();
+  }
+}
+
+function loadDraftsIntoAdmin() {
+  KEYS.forEach(k => {
+    const draft = storageGet('draft_' + k);
+    if (draft?.text) document.getElementById('result-' + k).value = draft.text;
+    const pub = storageGet('published_' + k);
+    document.getElementById('pub-indicator-' + k).style.display = pub ? 'inline-flex' : 'none';
+    if (pub?.sourceUrl) document.getElementById('source-' + k).value = pub.sourceUrl;
+  });
+}
+
+// ── STORAGE ────────────────────────────────────────────────────────
+function storageGet(k) {
+  try { const r = localStorage.getItem(STORAGE_PREFIX + k); return r ? JSON.parse(r) : null; }
+  catch { return null; }
+}
+function storageSet(k, v) {
+  try { localStorage.setItem(STORAGE_PREFIX + k, JSON.stringify(v)); return true; }
+  catch { return false; }
+}
+function storageDelete(k) { try { localStorage.removeItem(STORAGE_PREFIX + k); } catch {} }
+
+// ── SCAN ───────────────────────────────────────────────────────────
+function setAllScanButtons(disabled) {
+  document.querySelectorAll('.scan-one-btn').forEach(b => b.disabled = disabled);
+  document.getElementById('scan-all-btn').disabled  = disabled;
+  document.getElementById('reload-btn').disabled    = disabled;
+}
+
+async function runScan(key) {
+  const statusEl = document.getElementById('scan-status-' + key);
+  statusEl.innerHTML = '<span class="spinner dark"></span> Scanning — this may take 15–30 seconds…';
+  document.getElementById('result-' + key).value = '';
+  setAllScanButtons(true);
+  try {
+    const result = await callClaude(getPrompt(key));
+    document.getElementById('result-' + key).value = result;
+    storageSet('draft_' + key, { text: result, scannedAt: new Date().toISOString() });
+    statusEl.textContent = 'Scan complete. Review above, then click Publish when ready.';
+  } catch (err) {
+    statusEl.textContent = `Error: ${err.message}`;
+    console.error(err);
+  } finally { setAllScanButtons(false); }
+}
+
+async function runScanAll() {
+  const statusEl = document.getElementById('scan-all-status');
+  setAllScanButtons(true);
+  for (let i = 0; i < KEYS.length; i++) {
+    const key = KEYS[i];
+    statusEl.innerHTML = `<span class="spinner dark"></span> Scanning ${i + 1} of 4: ${key}…`;
+    document.getElementById('scan-status-' + key).innerHTML = '<span class="spinner dark"></span> In queue…';
+    try {
+      const result = await callClaude(getPrompt(key));
+      document.getElementById('result-' + key).value = result;
+      storageSet('draft_' + key, { text: result, scannedAt: new Date().toISOString() });
+      document.getElementById('scan-status-' + key).textContent = 'Scan complete. Review and publish when ready.';
+    } catch (err) {
+      document.getElementById('scan-status-' + key).textContent = `Error: ${err.message}`;
+    }
+    if (i < KEYS.length - 1) {
+      statusEl.textContent = 'Pausing 4s between scans…';
+      await new Promise(r => setTimeout(r, 4000));
+    }
+  }
+  statusEl.textContent = 'All scans complete. Review each category and publish when ready.';
+  setAllScanButtons(false);
+}
+
+// ── CLAUDE API ─────────────────────────────────────────────────────
+async function callClaude(prompt) {
+  let messages = [{ role: 'user', content: prompt }];
+  for (let turn = 0; turn < 8; turn++) {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        messages
+      })
+    });
+    if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error?.message || `API error ${res.status}`); }
+    const data = await res.json();
+    if (data.stop_reason === 'end_turn') {
+      return data.content.filter(b => b.type === 'text').map(b => b.text).join('\n').trim();
+    }
+    if (data.stop_reason === 'tool_use') {
+      messages.push({ role: 'assistant', content: data.content });
+      const results = data.content.filter(b => b.type === 'tool_use')
+        .map(b => ({ type: 'tool_result', tool_use_id: b.id, content: 'Search executed.' }));
+      if (results.length) messages.push({ role: 'user', content: results });
+    } else {
+      return data.content?.filter(b => b.type === 'text').map(b => b.text).join('\n').trim()
+        || 'No results. Try again or paste findings manually.';
+    }
+  }
+  throw new Error('Scan exceeded max turns. Try again in a moment.');
+}
+
+// ── PUBLISH ────────────────────────────────────────────────────────
+function publishResult(key) {
+  const text = document.getElementById('result-' + key).value.trim();
+  if (!text) { alert('Nothing to publish. Run a scan or enter findings first.'); return; }
+  const labels = { dev: 'Development Proposals & Permits', zoning: 'Zoning & Housing Action Plan', market: 'Housing Market Conditions', council: 'City Council & Board Actions' };
+  if (!confirm(`Publish findings for "${labels[key]}" to the public view?`)) return;
+
+  const sourceUrl = document.getElementById('source-' + key).value.trim();
+  const data = { text, publishedAt: new Date().toISOString(), sourceUrl: sourceUrl || null };
+  storageSet('published_' + key, data);
+  renderPublicCard(key, data);
+  renderAll();
+  document.getElementById('pub-indicator-' + key).style.display = 'inline-flex';
+  document.getElementById('scan-status-' + key).textContent = `Published ${formatDate(data.publishedAt)}.`;
+  setDataSourceStatus('local'); // remind that server JSON is now out of date
+
+  setTimeout(() => {
+    if (confirm('✅ Published to this browser.\n\nExport the JSON now and push it to the repo to make it live for everyone?')) {
+      exportData();
+    }
+  }, 300);
+}
+
+// ── CLEAR ──────────────────────────────────────────────────────────
+function clearResult(key) {
+  const labels = { dev: 'Development Proposals & Permits', zoning: 'Zoning & Housing Action Plan', market: 'Housing Market Conditions', council: 'City Council & Board Actions' };
+  if (!confirm(`Clear draft and unpublish "${labels[key]}"?`)) return;
+  document.getElementById('result-' + key).value = '';
+  document.getElementById('source-' + key).value = '';
+  document.getElementById('scan-status-' + key).textContent = '';
+  storageDelete('draft_' + key);
+  storageDelete('published_' + key);
+  document.getElementById('pub-indicator-' + key).style.display = 'none';
+  resetPublicCard(key);
+  renderAll();
+}
+
+// ── EXPORT / IMPORT ────────────────────────────────────────────────
+function exportData() {
+  const snap = {};
+  KEYS.forEach(k => { const d = storageGet('published_' + k); if (d) snap[k] = d; });
+  if (!Object.keys(snap).length) { alert('No published data to export.'); return; }
+  const blob = new Blob([JSON.stringify(snap, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'housing-radar-data.json'; // canonical filename matches the repo path
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = async e => {
+    try {
+      const data = JSON.parse(await e.target.files[0].text());
+      let count = 0;
+      KEYS.forEach(k => {
+        if (data[k]?.text) {
+          storageSet('published_' + k, data[k]);
+          document.getElementById('result-' + k).value = data[k].text;
+          if (data[k].sourceUrl) document.getElementById('source-' + k).value = data[k].sourceUrl;
+          count++;
+        }
+      });
+      renderAll();
+      loadDraftsIntoAdmin();
+      alert(`Imported ${count} published result${count !== 1 ? 's' : ''} successfully.`);
+    } catch (err) { alert('Import failed: ' + err.message); }
+  };
+  input.click();
+}
+
+function clearAllData() {
+  if (!confirm('Remove ALL published findings from the public view and localStorage?')) return;
+  KEYS.forEach(k => {
+    storageDelete('published_' + k); storageDelete('draft_' + k);
+    resetPublicCard(k);
+    document.getElementById('result-' + k).value = '';
+    document.getElementById('source-' + k).value = '';
+    document.getElementById('scan-status-' + k).textContent = '';
+    document.getElementById('pub-indicator-' + k).style.display = 'none';
+  });
+  renderAll();
+  alert('All data cleared from this browser. Push an empty housing-radar-data.json to clear the live site.');
+}
+
+// ── UTILS ──────────────────────────────────────────────────────────
+function isStale(iso) { return iso && (Date.now() - new Date(iso).getTime()) / 86400000 > STALE_DAYS; }
+function daysAgo(iso) { return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000); }
+function formatDate(iso) {
+  try { return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
+  catch { return iso; }
+}
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>
