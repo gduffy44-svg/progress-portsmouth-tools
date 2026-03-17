@@ -472,8 +472,7 @@
 
 <script>
 // ── CONFIG ─────────────────────────────────────────────────────────
-const ADMIN_PASSWORD   = 'ppradar2026';
-const ANTHROPIC_API_KEY = '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'; // replace with your key from console.anthropic.com
+const ADMIN_PASSWORD = 'ppradar2026';
 const STORAGE_PREFIX  = 'pp_radar_';
 const STALE_DAYS      = 45;
 const KEYS            = ['dev', 'zoning', 'market', 'council'];
@@ -751,14 +750,10 @@ async function runScanAll() {
 async function callClaude(prompt) {
   let messages = [{ role: 'user', content: prompt }];
   for (let turn = 0; turn < 8; turn++) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    // Call our Vercel proxy — key stays on the server, never in this file
+    const res = await fetch('/api/scan', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1000,
