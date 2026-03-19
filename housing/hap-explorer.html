@@ -411,8 +411,14 @@ body .data-table tr.status-early-row:hover td { background: #ead5f5; color: #111
 
 <div class="glossary-overlay" id="glossaryOverlay">
 <div class="glossary-panel">
-<div class="glossary-header"><h3>Glossary</h3><button class="glossary-close" onclick="toggleGlossary()"><div class="main-layout">#10005;</button></div>
-<div class="glossary-body"><input class="glossary-search" id="glossarySearch" type="text" placeholder="Search terms..." oninput="filterGlossary()"><div id="glossaryEntries"></div></div>
+<div class="glossary-header">
+  <h3>Glossary</h3>
+  <button class="glossary-close" onclick="toggleGlossary()">&#10005;</button>
+</div>
+<div class="glossary-body">
+  <input class="glossary-search" id="glossarySearch" type="text" placeholder="Search terms..." oninput="filterGlossary()">
+  <div id="glossaryEntries"></div>
+</div>
 </div>
 </div>
 <div class="main-layout">
