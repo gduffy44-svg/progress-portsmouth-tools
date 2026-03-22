@@ -10,8 +10,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "Gateway Neighborhood Overlay District (GNOD) adopted 2024 for Commerce Way/Portsmouth Blvd parcels; allows up to 6 stories/120 units with workforce housing provisions",
-    "pros": ["Aligns zoning designations with current land use patterns and market demand.","Can generate new tax revenue from underperforming commercial parcels.","Unlocks housing on parcels where current permitted uses have limited market demand."],
-    "cons": ["May face opposition from existing commercial property owners concerned about property values","Requires careful transition provisions for existing nonconforming businesses","Infrastructure in these areas may not be sized for residential use without upgrades"]
+    "pros": [
+      "Aligns zoning designations with current land use patterns and market demand.",
+      "Can generate new tax revenue from underperforming commercial parcels.",
+      "Unlocks housing on parcels where current permitted uses have limited market demand."
+    ],
+    "cons": [
+      "May face opposition from existing commercial property owners concerned about property values",
+      "Requires careful transition provisions for existing nonconforming businesses",
+      "Infrastructure in these areas may not be sized for residential use without upgrades"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -24,8 +32,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Planning Board reviewing amendments for HB 577 (eff. 7/1/25) and SB 284 (eff. 9/13/25); staff markup prepared Nov 2025; includes detached ADUs by right, 950 sq ft max",
-    "pros": ["Incremental density that is generally consistent with existing neighborhood scale.","Enables homeowners to generate income, helping them stay in place.","Uses existing infrastructure with minimal marginal cost to the city."],
-    "cons": ["Construction costs often exceed $150K, limiting who can actually build one","Neighborhood concerns about parking, character, and rental activity","Enforcement of owner-occupancy or affordability requirements is difficult"]
+    "pros": [
+      "Incremental density that is generally consistent with existing neighborhood scale.",
+      "Enables homeowners to generate income, helping them stay in place.",
+      "Uses existing infrastructure with minimal marginal cost to the city."
+    ],
+    "cons": [
+      "Construction costs often exceed $150K, limiting who can actually build one",
+      "Neighborhood concerns about parking, character, and rental activity",
+      "Enforcement of owner-occupancy or affordability requirements is difficult"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -38,8 +54,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Council directed Planning Board (Sept 2025) to review Section 10.812 on conversion of pre-1980 dwellings; staff preparing amendments with workforce housing bonus concept",
-    "pros": ["Repurposes underutilized commercial space without new construction","Aligns with post-COVID office vacancy trends","Can add housing in walkable, already-serviced locations"],
-    "cons": ["Building code upgrades (fire, egress, accessibility) can be expensive for converters","May reduce commercial tax base in some cases","Not all commercial buildings are structurally suitable for residential conversion"]
+    "pros": [
+      "Repurposes underutilized commercial space without new construction",
+      "Aligns with post-COVID office vacancy trends",
+      "Can add housing in walkable, already-serviced locations"
+    ],
+    "cons": [
+      "Building code upgrades (fire, egress, accessibility) can be expensive for converters",
+      "May reduce commercial tax base in some cases",
+      "Not all commercial buildings are structurally suitable for residential conversion"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -52,8 +76,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Two tracks: (a) SB 284 state mandate caps parking at 1/unit; (b) Council directed (Sept 2025) replacing parking CUP with site plan waiver; staff drafting revisions",
-    "pros": ["Reduces development cost \u2014 structured parking adds $30K-$60K per space","Frees land area for housing rather than surface lots","Aligned with state mandate (SB 284) capping parking at 1 per unit"],
-    "cons": ["On-street parking pressure in established neighborhoods is a real concern","Residents with cars still need somewhere to park regardless of requirements","Political sensitivity \u2014 parking is often the loudest issue at public hearings"]
+    "pros": [
+      "Reduces development cost \u2014 structured parking adds $30K-$60K per space",
+      "Frees land area for housing rather than surface lots",
+      "Aligned with state mandate (SB 284) capping parking at 1 per unit"
+    ],
+    "cons": [
+      "On-street parking pressure in established neighborhoods is a real concern",
+      "Residents with cars still need somewhere to park regardless of requirements",
+      "Political sensitivity \u2014 parking is often the loudest issue at public hearings"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -66,8 +98,17 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Addresses the gap between single-family and large apartments that barely exists in Portsmouth","Historically consistent \u2014 many Portsmouth neighborhoods were originally built with duplexes and triplexes","Gentle density that can be designed to look like large single-family homes","GIS analysis shows multifamily-allowed zones currently generate 5.71x more assessed value per acre than single-family zones, suggesting potential fiscal benefits from increased density."],
-    "cons": ["Existing homeowners may oppose by-right allowances in SF zones","Land costs in Portsmouth may still make missing middle units expensive","Design standards need to be clear enough to prevent poor-quality projects"]
+    "pros": [
+      "Addresses the gap between single-family and large apartments that barely exists in Portsmouth",
+      "Historically consistent \u2014 many Portsmouth neighborhoods were originally built with duplexes and triplexes",
+      "Gentle density that can be designed to look like large single-family homes",
+      "GIS analysis shows multifamily-allowed zones currently generate 5.71x more assessed value per acre than single-family zones, suggesting potential fiscal benefits from increased density."
+    ],
+    "cons": [
+      "Existing homeowners may oppose by-right allowances in SF zones",
+      "Land costs in Portsmouth may still make missing middle units expensive",
+      "Design standards need to be clear enough to prevent poor-quality projects"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -80,8 +121,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "GNOD includes density bonus (5 stories/80 units with public realm improvements; 6 stories/120 units with workforce housing); citywide expansion under consideration via HOP 2.0",
-    "pros": ["Market-driven tool \u2014 developers voluntarily opt in when the bonus makes projects viable","Produces affordable units without direct public expenditure","GNOD provides working local precedent to build on"],
-    "cons": ["If bonus isn't generous enough, developers won't use it (RKG found current structure underutilized)","Higher density may trigger neighborhood opposition even when voluntarily chosen","Requires ongoing monitoring to ensure affordable units remain affordable"]
+    "pros": [
+      "Market-driven tool \u2014 developers voluntarily opt in when the bonus makes projects viable",
+      "Produces affordable units without direct public expenditure",
+      "GNOD provides working local precedent to build on"
+    ],
+    "cons": [
+      "If bonus isn't generous enough, developers won't use it (RKG found current structure underutilized)",
+      "Higher density may trigger neighborhood opposition even when voluntarily chosen",
+      "Requires ongoing monitoring to ensure affordable units remain affordable"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -94,8 +143,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Even one additional story can significantly improve project economics","Targeted increases in appropriate locations don't affect residential neighborhoods","More height in fewer locations means less sprawl pressure on surrounding areas"],
-    "cons": ["Strong community attachment to Portsmouth's existing skyline and character","Shadow, view, and wind impacts on adjacent properties","Risk of setting precedent that leads to broader height increases over time"]
+    "pros": [
+      "Even one additional story can significantly improve project economics",
+      "Targeted increases in appropriate locations don't affect residential neighborhoods",
+      "More height in fewer locations means less sprawl pressure on surrounding areas"
+    ],
+    "cons": [
+      "Strong community attachment to Portsmouth's existing skyline and character",
+      "Shadow, view, and wind impacts on adjacent properties",
+      "Risk of setting precedent that leads to broader height increases over time"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -108,8 +165,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Brings thousands of legally nonconforming parcels into compliance, expanding options for homeowners seeking to modify or expand their properties.","Enables lot splits that create new housing opportunities using existing infrastructure \u2014 roads, utilities, and services already in place.","Reduces variance applications, saving homeowner cost and ZBA staff time while making housing evolution more predictable."],
-    "cons": ["Lot size reductions in established neighborhoods will face organized opposition from homeowners who value current density levels","Smaller lots may create stormwater, parking, and privacy concerns requiring updated design standards and performance requirements","Without accompanying infrastructure analysis, reduced lot sizes in areas with marginal sewer or water capacity could create service constraints"]
+    "pros": [
+      "Brings thousands of legally nonconforming parcels into compliance, expanding options for homeowners seeking to modify or expand their properties.",
+      "Enables lot splits that create new housing opportunities using existing infrastructure \u2014 roads, utilities, and services already in place.",
+      "Reduces variance applications, saving homeowner cost and ZBA staff time while making housing evolution more predictable."
+    ],
+    "cons": [
+      "Lot size reductions in established neighborhoods will face organized opposition from homeowners who value current density levels",
+      "Smaller lots may create stormwater, parking, and privacy concerns requiring updated design standards and performance requirements",
+      "Without accompanying infrastructure analysis, reduced lot sizes in areas with marginal sewer or water capacity could create service constraints"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -122,8 +187,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Creates community-oriented housing with shared green space \u2014 appealing to seniors and small households","Lower per-unit costs than conventional construction","Gentle density model that tends to generate less neighborhood opposition"],
-    "cons": ["Requires larger assembled parcels that are scarce in Portsmouth's built-out areas","Shared ownership and maintenance of common areas can create governance challenges","Limited developer experience with this model in New Hampshire"]
+    "pros": [
+      "Creates community-oriented housing with shared green space \u2014 appealing to seniors and small households",
+      "Lower per-unit costs than conventional construction",
+      "Gentle density model that tends to generate less neighborhood opposition"
+    ],
+    "cons": [
+      "Requires larger assembled parcels that are scarce in Portsmouth's built-out areas",
+      "Shared ownership and maintenance of common areas can create governance challenges",
+      "Limited developer experience with this model in New Hampshire"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -136,8 +209,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "RKG feasibility analysis completed Feb 2024; GNOD includes workforce housing requirement with 3 compliance paths (build, payment in lieu, land transfer); citywide IZ under discussion",
-    "pros": ["Produces affordable units as a condition of market-rate development","In-lieu fee option funds Housing Trust Fund for flexible deployment","GNOD provides working local model with three compliance paths"],
-    "cons": ["If set too high, can discourage development altogether \u2014 calibration is critical","NH has no state enabling statute, creating potential legal vulnerability","Small project thresholds can disproportionately burden smaller developers"]
+    "pros": [
+      "Produces affordable units as a condition of market-rate development",
+      "In-lieu fee option funds Housing Trust Fund for flexible deployment",
+      "GNOD provides working local model with three compliance paths"
+    ],
+    "cons": [
+      "If set too high, can discourage development altogether \u2014 calibration is critical",
+      "NH has no state enabling statute, creating potential legal vulnerability",
+      "Small project thresholds can disproportionately burden smaller developers"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -150,8 +231,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "Form-based code adopted in multiple Portsmouth districts (CD4, CD5, Gateway). However, the implementation did not carry through the original Duany intent of deregulating uses \u2014 making the FBC overly restrictive in practice. Reform of existing FBC to deregulate use allowances is the remaining action.",
-    "pros": ["FBC already adopted \u2014 reform is easier than starting from scratch","Deregulating uses while controlling form can enable housing diversity by right","Reduces CUP and variance burden on both applicants and boards"],
-    "cons": ["FBC reform requires technical expertise and significant staff time","Risk of unintended consequences from use deregulation in historic areas","Some stakeholders may resist changes to a system they invested in creating"]
+    "pros": [
+      "FBC already adopted \u2014 reform is easier than starting from scratch",
+      "Deregulating uses while controlling form can enable housing diversity by right",
+      "Reduces CUP and variance burden on both applicants and boards"
+    ],
+    "cons": [
+      "FBC reform requires technical expertise and significant staff time",
+      "Risk of unintended consequences from use deregulation in historic areas",
+      "Some stakeholders may resist changes to a system they invested in creating"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -164,8 +253,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Partially exists: GNOD includes workforce housing incentives; CD4, CD4W, and CD5 allow CUP for extra story in exchange for community space and workforce housing (effectively ~10% density bonus for affordable housing). Residential Density Incentive PUD option also provides a density bonus pathway.",
-    "pros": ["Provides targeted incentives without changing underlying zoning citywide","Multiple existing overlays (GNOD, CD4/CD5 bonuses) provide foundation to build on","Can be designed to stack with other incentives for maximum impact"],
-    "cons": ["Overlay complexity can confuse applicants and make the zoning code harder to navigate","Effectiveness depends on where overlays are mapped \u2014 wrong locations yield no projects","May concentrate affordable housing in specific areas rather than distributing citywide"]
+    "pros": [
+      "Provides targeted incentives without changing underlying zoning citywide",
+      "Multiple existing overlays (GNOD, CD4/CD5 bonuses) provide foundation to build on",
+      "Can be designed to stack with other incentives for maximum impact"
+    ],
+    "cons": [
+      "Overlay complexity can confuse applicants and make the zoning code harder to navigate",
+      "Effectiveness depends on where overlays are mapped \u2014 wrong locations yield no projects",
+      "May concentrate affordable housing in specific areas rather than distributing citywide"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -178,8 +275,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Cross-Mod and modular housing offer quality comparable to site-built at 10-30% lower cost","Factory construction is faster and less weather-dependent than site-built","Addresses the lowest price points in the housing market"],
-    "cons": ["Persistent stigma around manufactured housing despite quality improvements","Resale values historically lag site-built homes, affecting owner wealth-building","Zoning expansion may face significant neighborhood resistance"]
+    "pros": [
+      "Cross-Mod and modular housing offer quality comparable to site-built at 10-30% lower cost",
+      "Factory construction is faster and less weather-dependent than site-built",
+      "Addresses the lowest price points in the housing market"
+    ],
+    "cons": [
+      "Persistent stigma around manufactured housing despite quality improvements",
+      "Resale values historically lag site-built homes, affecting owner wealth-building",
+      "Zoning expansion may face significant neighborhood resistance"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -192,8 +297,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Reduces commuting and supports small business / creative economy","Historically consistent with Portsmouth's south end mixed-use character","Allowing non-resident employees makes units more economically viable"],
-    "cons": ["Parking and traffic impacts of commercial activity in residential areas","Code compliance complexity \u2014 units must meet both residential and commercial standards","Risk of units being used primarily as commercial space rather than housing"]
+    "pros": [
+      "Reduces commuting and supports small business / creative economy",
+      "Historically consistent with Portsmouth's south end mixed-use character",
+      "Allowing non-resident employees makes units more economically viable"
+    ],
+    "cons": [
+      "Parking and traffic impacts of commercial activity in residential areas",
+      "Code compliance complexity \u2014 units must meet both residential and commercial standards",
+      "Risk of units being used primarily as commercial space rather than housing"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -206,8 +319,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Potential for significant unit counts on larger parcels","Can be designed as complete neighborhoods with amenities from the start","Reduces development pressure on established neighborhoods"],
-    "cons": ["Greenfield development may conflict with conservation and open space goals","Requires substantial infrastructure investment (roads, utilities, schools)","Auto-dependent locations without transit access"]
+    "pros": [
+      "Potential for significant unit counts on larger parcels",
+      "Can be designed as complete neighborhoods with amenities from the start",
+      "Reduces development pressure on established neighborhoods"
+    ],
+    "cons": [
+      "Greenfield development may conflict with conservation and open space goals",
+      "Requires substantial infrastructure investment (roads, utilities, schools)",
+      "Auto-dependent locations without transit access"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -220,8 +341,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Large available land area with existing infrastructure","Could serve GBCC students, National Guard, and Pease workforce directly","Reduces commuting for thousands of Pease employees"],
-    "cons": ["PDA governance structure may not prioritize or permit residential use","Environmental remediation concerns on former military base","Isolated from Portsmouth's walkable core \u2014 creates a separate enclave"]
+    "pros": [
+      "Large available land area with existing infrastructure",
+      "Could serve GBCC students, National Guard, and Pease workforce directly",
+      "Reduces commuting for thousands of Pease employees"
+    ],
+    "cons": [
+      "PDA governance structure may not prioritize or permit residential use",
+      "Environmental remediation concerns on former military base",
+      "Isolated from Portsmouth's walkable core \u2014 creates a separate enclave"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -234,8 +363,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Many larger homes were historically multifamily \u2014 re-conversion restores original use","Adds units without new construction or changes to building footprint","Preserves neighborhood character while increasing housing supply"],
-    "cons": ["Parking demand increases with more units in existing structures","Building code upgrades (fire separation, egress) add cost","Loss of larger single-family homes that serve families with children"]
+    "pros": [
+      "Many larger homes were historically multifamily \u2014 re-conversion restores original use",
+      "Adds units without new construction or changes to building footprint",
+      "Preserves neighborhood character while increasing housing supply"
+    ],
+    "cons": [
+      "Parking demand increases with more units in existing structures",
+      "Building code upgrades (fire separation, egress) add cost",
+      "Loss of larger single-family homes that serve families with children"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -248,8 +385,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Uses existing housing stock with zero construction cost","Particularly beneficial for seniors who want to age in place with rental income or companionship","Similar intent to ADUs but far less costly to implement"],
-    "cons": ["Enforcement and quality control are difficult in informal arrangements","Landlord-tenant law complications for owner-occupied room rentals","Limited scale \u2014 helps individuals but doesn't significantly move supply numbers"]
+    "pros": [
+      "Uses existing housing stock with zero construction cost",
+      "Particularly beneficial for seniors who want to age in place with rental income or companionship",
+      "Similar intent to ADUs but far less costly to implement"
+    ],
+    "cons": [
+      "Enforcement and quality control are difficult in informal arrangements",
+      "Landlord-tenant law complications for owner-occupied room rentals",
+      "Limited scale \u2014 helps individuals but doesn't significantly move supply numbers"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -262,8 +407,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Addresses a documented need in Portsmouth's hospitality and tourism sectors","Can be implemented through CUP or by-right in existing districts without new zoning","Supports businesses struggling with seasonal labor shortages"],
-    "cons": ["Dormitory-style housing may face neighborhood opposition","Seasonal vacancy creates underutilized buildings for part of the year","Quality and safety standards for group housing need careful definition"]
+    "pros": [
+      "Addresses a documented need in Portsmouth's hospitality and tourism sectors",
+      "Can be implemented through CUP or by-right in existing districts without new zoning",
+      "Supports businesses struggling with seasonal labor shortages"
+    ],
+    "cons": [
+      "Dormitory-style housing may face neighborhood opposition",
+      "Seasonal vacancy creates underutilized buildings for part of the year",
+      "Quality and safety standards for group housing need careful definition"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -276,8 +429,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Lower per-unit cost makes smaller units more affordable to both build and rent","Matches demographics \u2014 85% of projected demand is from 1-2 person households","Efficient use of land in high-cost locations"],
-    "cons": ["Market viability is uncertain \u2014 further study needed to confirm developer interest","Very small units may not be livable long-term, leading to high turnover","Risk of being perceived as substandard housing rather than intentional design"]
+    "pros": [
+      "Lower per-unit cost makes smaller units more affordable to both build and rent",
+      "Matches demographics \u2014 85% of projected demand is from 1-2 person households",
+      "Efficient use of land in high-cost locations"
+    ],
+    "cons": [
+      "Market viability is uncertain \u2014 further study needed to confirm developer interest",
+      "Very small units may not be livable long-term, leading to high turnover",
+      "Risk of being perceived as substandard housing rather than intentional design"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -290,8 +451,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "HOP 2.0 grant ($65,321, Nov 2024) engaged RKG Associates, but the July 2025 scope was narrow \u2014 evaluating whether existing density bonuses are working, not a comprehensive zoning audit. RKG proposed changes to improve the bonus structure, but those recommendations have not been reviewed or approved by the Planning Board or Council.",
-    "pros": ["Identifies provisions in current zoning that limit housing production in a single systematic review.","Creates a roadmap for prioritized amendments rather than piecemeal changes.","Provides evidence base that reduces political risk of individual reforms."],
-    "cons": ["Comprehensive audits are time-intensive \u2014 risk of delaying action on known barriers","HOP 2.0 / RKG scope was narrower than expected; ensuring breadth is challenging","Audit findings may overwhelm limited staff capacity to implement changes"]
+    "pros": [
+      "Identifies provisions in current zoning that limit housing production in a single systematic review.",
+      "Creates a roadmap for prioritized amendments rather than piecemeal changes.",
+      "Provides evidence base that reduces political risk of individual reforms."
+    ],
+    "cons": [
+      "Comprehensive audits are time-intensive \u2014 risk of delaying action on known barriers",
+      "HOP 2.0 / RKG scope was narrower than expected; ensuring breadth is challenging",
+      "Audit findings may overwhelm limited staff capacity to implement changes"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -304,8 +473,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Makes housing diversity an explicit policy goal rather than an exception","Reduces variance and CUP burden for housing types that should be routine","Directly addresses the gap between FBC form standards and permitted uses"],
-    "cons": ["Broad use deregulation may allow incompatible uses if not carefully scoped","Political challenge of explicitly stating diverse housing as a zoning purpose","Requires coordination with ongoing FBC reform to avoid contradictory standards"]
+    "pros": [
+      "Makes housing diversity an explicit policy goal rather than an exception",
+      "Reduces variance and CUP burden for housing types that should be routine",
+      "Directly addresses the gap between FBC form standards and permitted uses"
+    ],
+    "cons": [
+      "Broad use deregulation may allow incompatible uses if not carefully scoped",
+      "Political challenge of explicitly stating diverse housing as a zoning purpose",
+      "Requires coordination with ongoing FBC reform to avoid contradictory standards"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -318,8 +495,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Good long-term principle \u2014 co-locating housing and transit reduces car dependence","Can guide future transit planning toward housing-rich corridors","Positions Portsmouth for state or federal transit investment"],
-    "cons": ["Portsmouth lacks the public transit infrastructure to support traditional TOD","Only viable location (C&J terminal) is at Pease where housing isn't allowed","Risk of adopting a planning framework that doesn't match local conditions"]
+    "pros": [
+      "Good long-term principle \u2014 co-locating housing and transit reduces car dependence",
+      "Can guide future transit planning toward housing-rich corridors",
+      "Positions Portsmouth for state or federal transit investment"
+    ],
+    "cons": [
+      "Portsmouth lacks the public transit infrastructure to support traditional TOD",
+      "Only viable location (C&J terminal) is at Pease where housing isn't allowed",
+      "Risk of adopting a planning framework that doesn't match local conditions"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -332,8 +517,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "STRs already largely banned in Portsmouth. Colleague advises against reopening the topic.",
-    "pros": ["Monitoring provides data to evaluate whether current enforcement is achieving intended goals without requiring new regulatory action.","Low-cost activity relative to other housing preservation strategies.","Data on enforcement actions supports continued policy defense."],
-    "cons": ["Current enforcement may have gaps that allow de facto STR activity","Some property owners argue STR bans reduce property rights","Lost tourism revenue compared to communities that allow regulated STRs"]
+    "pros": [
+      "Monitoring provides data to evaluate whether current enforcement is achieving intended goals without requiring new regulatory action.",
+      "Low-cost activity relative to other housing preservation strategies.",
+      "Data on enforcement actions supports continued policy defense."
+    ],
+    "cons": [
+      "Current enforcement may have gaps that allow de facto STR activity",
+      "Some property owners argue STR bans reduce property rights",
+      "Lost tourism revenue compared to communities that allow regulated STRs"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -346,8 +539,16 @@
     "is_new": false,
     "status": "early-stage",
     "status_detail": "GNOD partially addresses for specific parcels; state mandate (eff. July 2026) will require multifamily by right in all commercial zones; implementation details still being legislated",
-    "pros": ["O/R zones have infrastructure and are often underutilized for their current permitted uses.","Voluntary adoption would align Portsmouth with anticipated state requirements before the effective date.","Enables ground-up multifamily rather than just conversions."],
-    "cons": ["May accelerate loss of commercial/office space that the city still values","Traffic and infrastructure impacts of adding residential to commercial corridors","Ground-up residential in O/R zones may not produce affordable units without requirements"]
+    "pros": [
+      "O/R zones have infrastructure and are often underutilized for their current permitted uses.",
+      "Voluntary adoption would align Portsmouth with anticipated state requirements before the effective date.",
+      "Enables ground-up multifamily rather than just conversions."
+    ],
+    "cons": [
+      "May accelerate loss of commercial/office space that the city still values",
+      "Traffic and infrastructure impacts of adding residential to commercial corridors",
+      "Ground-up residential in O/R zones may not produce affordable units without requirements"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -360,8 +561,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Parking CUP replacement with site plan waiver is first step; RKG audit examining other CUP barriers",
-    "pros": ["Reduces time and cost for applicants and reduces workload for volunteer boards","Increases predictability for developers, encouraging more housing proposals","Parking CUP replacement with site plan waiver is a proven first step"],
-    "cons": ["CUPs provide boards with discretionary review that some neighbors value","By-right development reduces community input on individual projects","Standards must be clear enough to replace case-by-case judgment"]
+    "pros": [
+      "Reduces time and cost for applicants and reduces workload for volunteer boards",
+      "Increases predictability for developers, encouraging more housing proposals",
+      "Parking CUP replacement with site plan waiver is a proven first step"
+    ],
+    "cons": [
+      "CUPs provide boards with discretionary review that some neighbors value",
+      "By-right development reduces community input on individual projects",
+      "Standards must be clear enough to replace case-by-case judgment"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -374,8 +583,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Some industrial-zoned land (especially southwest quadrant) may be better suited to housing","Could unlock significant acreage for residential development","Reduces conflicts between residential and industrial neighbors"],
-    "cons": ["Environmental contamination on former industrial sites may require costly remediation","Preserving industrial land protects blue-collar jobs and economic diversity","Study adds to planning staff workload without immediate housing production"]
+    "pros": [
+      "Some industrial-zoned land (especially southwest quadrant) may be better suited to housing",
+      "Could unlock significant acreage for residential development",
+      "Reduces conflicts between residential and industrial neighbors"
+    ],
+    "cons": [
+      "Environmental contamination on former industrial sites may require costly remediation",
+      "Preserving industrial land protects blue-collar jobs and economic diversity",
+      "Study adds to planning staff workload without immediate housing production"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -388,8 +605,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Creates economically diverse communities rather than income-segregated developments","Projects serving multiple AMI bands can access more financing sources","Reduces stigma associated with concentrated affordable housing"],
-    "cons": ["Complex to administer \u2014 monitoring multiple AMI tiers across developments","Development economics are harder to pencil with mixed-income requirements","Market-rate buyers may resist mixed-income communities, affecting sales velocity"]
+    "pros": [
+      "Creates economically diverse communities rather than income-segregated developments",
+      "Projects serving multiple AMI bands can access more financing sources",
+      "Reduces stigma associated with concentrated affordable housing"
+    ],
+    "cons": [
+      "Complex to administer \u2014 monitoring multiple AMI tiers across developments",
+      "Development economics are harder to pencil with mixed-income requirements",
+      "Market-rate buyers may resist mixed-income communities, affecting sales velocity"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -402,8 +627,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Preserves historic buildings while adding housing \u2014 a double policy win","RSA 79-E provides existing tax incentive framework to leverage","Often faster and less costly than new construction"],
-    "cons": ["Historic buildings may have structural limitations that constrain unit counts","HDC review adds time and uncertainty for adaptive reuse projects","Building code compliance in older structures can be expensive and unpredictable"]
+    "pros": [
+      "Preserves historic buildings while adding housing \u2014 a double policy win",
+      "RSA 79-E provides existing tax incentive framework to leverage",
+      "Often faster and less costly than new construction"
+    ],
+    "cons": [
+      "Historic buildings may have structural limitations that constrain unit counts",
+      "HDC review adds time and uncertainty for adaptive reuse projects",
+      "Building code compliance in older structures can be expensive and unpredictable"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -416,8 +649,16 @@
     "is_new": false,
     "status": "early-stage",
     "status_detail": "Workforce housing provisions exist in GNOD but no standalone citywide workforce housing ordinance per RSA 674:58-61 framework",
-    "pros": ["RSA 674:58-61 provides clear state legal framework \u2014 reduces legal risk","Establishes a citywide baseline rather than relying on project-by-project negotiation","Creates affirmative obligation to provide reasonable opportunities for workforce housing"],
-    "cons": ["NH workforce housing statute is primarily a defense against exclusionary zoning, not a production tool","May not produce units in practice without complementary incentives","GNOD already includes workforce provisions \u2014 citywide extension may face political resistance"]
+    "pros": [
+      "RSA 674:58-61 provides clear state legal framework \u2014 reduces legal risk",
+      "Establishes a citywide baseline rather than relying on project-by-project negotiation",
+      "Creates affirmative obligation to provide reasonable opportunities for workforce housing"
+    ],
+    "cons": [
+      "NH workforce housing statute is primarily a defense against exclusionary zoning, not a production tool",
+      "May not produce units in practice without complementary incentives",
+      "GNOD already includes workforce provisions \u2014 citywide extension may face political resistance"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -430,8 +671,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Addresses fastest-growing demographic \u2014 seniors 65+ are a large and growing share of Portsmouth","Lower parking demand for senior housing makes it easier to build","Encourages turnover of single-family homes to younger families"],
-    "cons": ["Age-restricted housing reduces flexibility \u2014 units can't serve other populations","Risk of oversupply in age-restricted category while other needs go unmet","Fair Housing Act limits on age restrictions require careful legal compliance"]
+    "pros": [
+      "Addresses fastest-growing demographic \u2014 seniors 65+ are a large and growing share of Portsmouth",
+      "Lower parking demand for senior housing makes it easier to build",
+      "Encourages turnover of single-family homes to younger families"
+    ],
+    "cons": [
+      "Age-restricted housing reduces flexibility \u2014 units can't serve other populations",
+      "Risk of oversupply in age-restricted category while other needs go unmet",
+      "Fair Housing Act limits on age restrictions require careful legal compliance"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -444,8 +693,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Market strongly underproduces 2-3 bedroom units \u2014 incentives address a documented gap","Retains and attracts families with children, supporting school enrollment and community vitality","RKG data shows increasing family households despite limited supply"],
-    "cons": ["Larger units are more expensive to build, making affordability harder to achieve","Developers prefer studios and 1-bedrooms for higher per-square-foot returns","Incentives may need to be substantial to change developer behavior"]
+    "pros": [
+      "Market strongly underproduces 2-3 bedroom units \u2014 incentives address a documented gap",
+      "Retains and attracts families with children, supporting school enrollment and community vitality",
+      "RKG data shows increasing family households despite limited supply"
+    ],
+    "cons": [
+      "Larger units are more expensive to build, making affordability harder to achieve",
+      "Developers prefer studios and 1-bedrooms for higher per-square-foot returns",
+      "Incentives may need to be substantial to change developer behavior"
+    ]
   },
   {
     "action": "Single-family zone reform strategy (R, SRA, SRB)",
@@ -458,8 +715,20 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Addresses 85.8% of residential land, which is currently zoned exclusively for single-family development.","Brings thousands of legally nonconforming parcels into compliance, expanding options for homeowners seeking to modify or expand their properties.","Multifamily zones currently generate 5.71x more assessed value per acre ($5.9M vs. $1.0M) \u2014 increased density may improve fiscal sustainability for schools, infrastructure, and services.","May generate support from property owners who benefit financially from lot split rights and conversion options.","Reduces per-household infrastructure costs (estimated $44,976 multifamily vs. $51,721 single-family per parcel) \u2014 new housing in reformed zones may cost less to serve."],
-    "cons": ["Single-family zone reform is the most politically volatile housing action \u2014 homeowner opposition will be intense and organized in specific neighborhoods","Zone-specific proposals need significant refinement through public process to calibrate lot sizes, unit counts, and design standards to neighborhood context","Property value effects cut both ways \u2014 existing owners gain development potential but some may resist neighboring density changes","Implementation requires substantial Planning Board and staff capacity for ordinance drafting, public hearings, and design standard development","Risk of speculative land acquisition driving up prices before reforms produce actual housing \u2014 needs to be paired with land value capture strategy (#128)"]
+    "pros": [
+      "Addresses 85.8% of residential land, which is currently zoned exclusively for single-family development.",
+      "Brings thousands of legally nonconforming parcels into compliance, expanding options for homeowners seeking to modify or expand their properties.",
+      "Multifamily zones currently generate 5.71x more assessed value per acre ($5.9M vs. $1.0M) \u2014 increased density may improve fiscal sustainability for schools, infrastructure, and services.",
+      "May generate support from property owners who benefit financially from lot split rights and conversion options.",
+      "Reduces per-household infrastructure costs (estimated $44,976 multifamily vs. $51,721 single-family per parcel) \u2014 new housing in reformed zones may cost less to serve."
+    ],
+    "cons": [
+      "Single-family zone reform is the most politically volatile housing action \u2014 homeowner opposition will be intense and organized in specific neighborhoods",
+      "Zone-specific proposals need significant refinement through public process to calibrate lot sizes, unit counts, and design standards to neighborhood context",
+      "Property value effects cut both ways \u2014 existing owners gain development potential but some may resist neighboring density changes",
+      "Implementation requires substantial Planning Board and staff capacity for ordinance drafting, public hearings, and design standard development",
+      "Risk of speculative land acquisition driving up prices before reforms produce actual housing \u2014 needs to be paired with land value capture strategy (#128)"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -472,8 +741,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Faster approvals reduce carrying costs for developers, potentially lowering housing costs","Expedited track for affordable projects aligns review resources with city priorities","Predictable timelines attract more developers to Portsmouth"],
-    "cons": ["Faster review must not mean less thorough review \u2014 quality matters","Staff capacity may not support expedited timelines without process changes","Prioritizing some projects may delay others, creating equity concerns"]
+    "pros": [
+      "Faster approvals reduce carrying costs for developers, potentially lowering housing costs",
+      "Expedited track for affordable projects aligns review resources with city priorities",
+      "Predictable timelines attract more developers to Portsmouth"
+    ],
+    "cons": [
+      "Faster review must not mean less thorough review \u2014 quality matters",
+      "Staff capacity may not support expedited timelines without process changes",
+      "Prioritizing some projects may delay others, creating equity concerns"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -486,8 +763,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Many ADUs already permitted by right under HB 577 (eff. 7/1/25). Only detached units and those with complexities require administrative approval.",
-    "pros": ["Most ADUs are already by-right under HB 577 \u2014 this formalizes existing practice","Eliminates board hearing costs and delays for straightforward applications","Frees board time for complex projects that genuinely need deliberation"],
-    "cons": ["Removes neighbor notification and input for some projects","Administrative approval concentrates decision-making in one staff role","Complex cases still need clear criteria for when they escalate to board review"]
+    "pros": [
+      "Most ADUs are already by-right under HB 577 \u2014 this formalizes existing practice",
+      "Eliminates board hearing costs and delays for straightforward applications",
+      "Frees board time for complex projects that genuinely need deliberation"
+    ],
+    "cons": [
+      "Removes neighbor notification and input for some projects",
+      "Administrative approval concentrates decision-making in one staff role",
+      "Complex cases still need clear criteria for when they escalate to board review"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -500,8 +785,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Reduces in-person visits and paper processing for both applicants and staff","Status tracking reduces phone calls and inquiries about application progress","Improves data collection for housing production monitoring"],
-    "cons": ["Upfront software and implementation costs","Staff training and transition period during adoption","Digital access barriers for some applicants"]
+    "pros": [
+      "Reduces in-person visits and paper processing for both applicants and staff",
+      "Status tracking reduces phone calls and inquiries about application progress",
+      "Improves data collection for housing production monitoring"
+    ],
+    "cons": [
+      "Upfront software and implementation costs",
+      "Staff training and transition period during adoption",
+      "Digital access barriers for some applicants"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -514,8 +807,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Concurrent review can cut weeks or months from the approval timeline","Catches conflicts between departments early rather than at the end","Reduces applicant frustration from sequential, siloed feedback"],
-    "cons": ["Requires schedule coordination across departments with different workloads","May require new project management tools or staff roles","Some departments may resist losing control of their independent review timelines"]
+    "pros": [
+      "Concurrent review can cut weeks or months from the approval timeline",
+      "Catches conflicts between departments early rather than at the end",
+      "Reduces applicant frustration from sequential, siloed feedback"
+    ],
+    "cons": [
+      "Requires schedule coordination across departments with different workloads",
+      "May require new project management tools or staff roles",
+      "Some departments may resist losing control of their independent review timelines"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -528,8 +829,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Objective standards reduce subjectivity that leads to unpredictable board decisions","Clear checklists give applicants confidence about what will be approved","Reduces appeals and litigation from ambiguous review criteria"],
-    "cons": ["Overly prescriptive guidelines can stifle architectural creativity","Developing clear guidelines is time-intensive and may require consultant support","Board members may resist constraints on their discretionary judgment"]
+    "pros": [
+      "Objective standards reduce subjectivity that leads to unpredictable board decisions",
+      "Clear checklists give applicants confidence about what will be approved",
+      "Reduces appeals and litigation from ambiguous review criteria"
+    ],
+    "cons": [
+      "Overly prescriptive guidelines can stifle architectural creativity",
+      "Developing clear guidelines is time-intensive and may require consultant support",
+      "Board members may resist constraints on their discretionary judgment"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -542,8 +851,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Identifies deal-breakers before applicants invest in full design and engineering","Builds relationships between developers and staff, improving project outcomes","Reduces formal application revisions and resubmissions"],
-    "cons": ["Informal guidance may be interpreted as commitments by applicants","Adds staff workload before any fee revenue is collected","Selective access to pre-application meetings could create fairness concerns"]
+    "pros": [
+      "Identifies deal-breakers before applicants invest in full design and engineering",
+      "Builds relationships between developers and staff, improving project outcomes",
+      "Reduces formal application revisions and resubmissions"
+    ],
+    "cons": [
+      "Informal guidance may be interpreted as commitments by applicants",
+      "Adds staff workload before any fee revenue is collected",
+      "Selective access to pre-application meetings could create fairness concerns"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -556,8 +873,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Replacing variances with clear by-right standards improves predictability.","Reduces ZBA caseload and meeting length.","High nonconformity rates may indicate that current zoning standards are not calibrated to existing development patterns."],
-    "cons": ["Variances exist for a reason \u2014 some projects genuinely need case-by-case review","By-right standards must be well-calibrated to avoid unintended development patterns","Reducing variances may be perceived as weakening neighborhood protections"]
+    "pros": [
+      "Replacing variances with clear by-right standards improves predictability.",
+      "Reduces ZBA caseload and meeting length.",
+      "High nonconformity rates may indicate that current zoning standards are not calibrated to existing development patterns."
+    ],
+    "cons": [
+      "Variances exist for a reason \u2014 some projects genuinely need case-by-case review",
+      "By-right standards must be well-calibrated to avoid unintended development patterns",
+      "Reducing variances may be perceived as weakening neighborhood protections"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -570,8 +895,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Fee reductions directly lower development costs, potentially passed through to tenants","Targeted waivers for affordable projects make those projects more financially viable","Demonstrates city commitment to housing production through concrete action"],
-    "cons": ["Lost fee revenue must be absorbed by the general fund or other development","Fee waivers benefit developers \u2014 no guarantee savings reach end users","Determining eligibility thresholds (25%+ affordable) adds administrative complexity"]
+    "pros": [
+      "Fee reductions directly lower development costs, potentially passed through to tenants",
+      "Targeted waivers for affordable projects make those projects more financially viable",
+      "Demonstrates city commitment to housing production through concrete action"
+    ],
+    "cons": [
+      "Lost fee revenue must be absorbed by the general fund or other development",
+      "Fee waivers benefit developers \u2014 no guarantee savings reach end users",
+      "Determining eligibility thresholds (25%+ affordable) adds administrative complexity"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -584,8 +917,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Ensures all city staff understand how their work connects to housing goals","Improves consistency of guidance across departments","Low cost relative to impact on application processing"],
-    "cons": ["Training time competes with already-stretched staff capacity","Effectiveness depends on institutional follow-through, not just one-time sessions","May create tension if staff feel housing goals override other legitimate concerns"]
+    "pros": [
+      "Ensures all city staff understand how their work connects to housing goals",
+      "Improves consistency of guidance across departments",
+      "Low cost relative to impact on application processing"
+    ],
+    "cons": [
+      "Training time competes with already-stretched staff capacity",
+      "Effectiveness depends on institutional follow-through, not just one-time sessions",
+      "May create tension if staff feel housing goals override other legitimate concerns"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -598,8 +939,16 @@
     "is_new": false,
     "status": "early-stage",
     "status_detail": "Housing Navigator Howard Snyder served for one year under a state grant; position has not been replaced. HAP proposes using Housing Trust Fund to hire a dedicated navigator to drive plan implementation.",
-    "pros": ["Single point of contact dramatically simplifies the process for applicants and developers","Person-to-person navigation is more effective than written guides or portals","HAP implementation needs a dedicated owner \u2014 without one, items languish"],
-    "cons": ["Ongoing salary cost \u2014 previous state-grant-funded position wasn't sustained after grant ended","Scope risk \u2014 role can be overwhelmed if it becomes the catch-all for housing issues","Institutional knowledge is lost when navigator turns over"]
+    "pros": [
+      "Single point of contact dramatically simplifies the process for applicants and developers",
+      "Person-to-person navigation is more effective than written guides or portals",
+      "HAP implementation needs a dedicated owner \u2014 without one, items languish"
+    ],
+    "cons": [
+      "Ongoing salary cost \u2014 previous state-grant-funded position wasn't sustained after grant ended",
+      "Scope risk \u2014 role can be overwhelmed if it becomes the catch-all for housing issues",
+      "Institutional knowledge is lost when navigator turns over"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -612,8 +961,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Directly reduces the financial barrier to ADU construction for homeowners","Affordability requirements ensure public benefit in exchange for tax relief","5-year exemption window creates urgency to build"],
-    "cons": ["Tax revenue foregone during exemption period \u2014 fiscal impact on city budget","May disproportionately benefit higher-income homeowners who can already afford construction","Exemption expires \u2014 no guarantee units remain affordable long-term"]
+    "pros": [
+      "Directly reduces the financial barrier to ADU construction for homeowners",
+      "Affordability requirements ensure public benefit in exchange for tax relief",
+      "5-year exemption window creates urgency to build"
+    ],
+    "cons": [
+      "Tax revenue foregone during exemption period \u2014 fiscal impact on city budget",
+      "May disproportionately benefit higher-income homeowners who can already afford construction",
+      "Exemption expires \u2014 no guarantee units remain affordable long-term"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -626,8 +983,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Directly reduces development costs for affordable projects","Impact fee waivers are a proven tool used in many NH communities","Signals city prioritization of affordable housing"],
-    "cons": ["Lost revenue from waivers must be made up elsewhere in the budget","Scope must be carefully calibrated \u2014 overly generous waivers create fiscal risk","Impact fees exist to cover real infrastructure costs that housing generates"]
+    "pros": [
+      "Directly reduces development costs for affordable projects",
+      "Impact fee waivers are a proven tool used in many NH communities",
+      "Signals city prioritization of affordable housing"
+    ],
+    "cons": [
+      "Lost revenue from waivers must be made up elsewhere in the budget",
+      "Scope must be carefully calibrated \u2014 overly generous waivers create fiscal risk",
+      "Impact fees exist to cover real infrastructure costs that housing generates"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -640,8 +1005,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Time savings translate directly to lower carrying costs for workforce housing developers","30-day guarantee creates accountability for the review process","Targets 80-120% AMI \u2014 the workforce segment most likely to be financially viable"],
-    "cons": ["Priority queue for some projects necessarily delays others","Staff capacity may not support guaranteed timelines without additional resources","Quality of review must not be sacrificed for speed"]
+    "pros": [
+      "Time savings translate directly to lower carrying costs for workforce housing developers",
+      "30-day guarantee creates accountability for the review process",
+      "Targets 80-120% AMI \u2014 the workforce segment most likely to be financially viable"
+    ],
+    "cons": [
+      "Priority queue for some projects necessarily delays others",
+      "Staff capacity may not support guaranteed timelines without additional resources",
+      "Quality of review must not be sacrificed for speed"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -654,8 +1027,16 @@
     "is_new": false,
     "status": "early-stage",
     "status_detail": "City Council work session scheduled March 16, 2026, 6 p.m., City Hall. Session requested by Councilor Beth Moreau; NH Housing community engagement manager Sarah Wrightsman to participate. Portsmouth has not yet adopted a 79-E Housing Opportunity Zone (Conway was first in NH, 2024). State-level: HB1103 (2026 session) passed House Housing Committee 17-0 with amendment on March 3, 2026, expanding RSA 79-E credits to a wider variety of properties and structures. If enacted, this directly strengthens the case for Portsmouth to expand its 79-E program scope beyond downtown/village center properties.",
-    "pros": ["RSA 79-E is an existing, proven NH tool \u2014 no new legislation required","Tax relief encourages rehabilitation of aging housing stock","Conway's Housing Opportunity Zone (2024) provides NH precedent for expansion"],
-    "cons": ["Foregone tax revenue during relief period","Benefits accrue to property owners who may not pass savings to tenants","Program awareness is low \u2014 underutilized even where currently available"]
+    "pros": [
+      "RSA 79-E is an existing, proven NH tool \u2014 no new legislation required",
+      "Tax relief encourages rehabilitation of aging housing stock",
+      "Conway's Housing Opportunity Zone (2024) provides NH precedent for expansion"
+    ],
+    "cons": [
+      "Foregone tax revenue during relief period",
+      "Benefits accrue to property owners who may not pass savings to tenants",
+      "Program awareness is low \u2014 underutilized even where currently available"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -668,8 +1049,16 @@
     "is_new": false,
     "status": "early-stage",
     "status_detail": "Housing Committee Financial Tools working group discussed TIFs; no specific proposal advanced",
-    "pros": ["TIF captures increased tax revenue from new development to fund infrastructure","Self-financing mechanism \u2014 doesn't require general fund appropriation","Can make otherwise unfinanceable housing projects viable"],
-    "cons": ["Diverts incremental tax revenue away from the general fund for the TIF period","Complex to administer and requires long-term financial management","No specific TIF proposal has been advanced despite Housing Committee discussion"]
+    "pros": [
+      "TIF captures increased tax revenue from new development to fund infrastructure",
+      "Self-financing mechanism \u2014 doesn't require general fund appropriation",
+      "Can make otherwise unfinanceable housing projects viable"
+    ],
+    "cons": [
+      "Diverts incremental tax revenue away from the general fund for the TIF period",
+      "Complex to administer and requires long-term financial management",
+      "No specific TIF proposal has been advanced despite Housing Committee discussion"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -682,8 +1071,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Targets underutilized parcels \u2014 adds housing without sprawl","Small grants can be the tipping point for marginal projects","Demonstrates city investment in neighborhood-scale housing production"],
-    "cons": ["Limited budget impact \u2014 small grants fund small projects","Identifying genuinely underutilized parcels requires GIS analysis and outreach","Grant administration costs may be disproportionate to housing produced"]
+    "pros": [
+      "Targets underutilized parcels \u2014 adds housing without sprawl",
+      "Small grants can be the tipping point for marginal projects",
+      "Demonstrates city investment in neighborhood-scale housing production"
+    ],
+    "cons": [
+      "Limited budget impact \u2014 small grants fund small projects",
+      "Identifying genuinely underutilized parcels requires GIS analysis and outreach",
+      "Grant administration costs may be disproportionate to housing produced"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -696,8 +1093,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "PHA actively utilizing LIHTC (Sherburne 2026, Christ Church/Urban Forest CDFA credits); Ruth Griffin Place as successful precedent",
-    "pros": ["LIHTC and historic tax credits are the most powerful affordable housing production tools available","PHA has demonstrated track record (Sherburne, Ruth Griffin Place, Christ Church)","Educating developers expands the pipeline of competitive applications"],
-    "cons": ["LIHTC is highly competitive \u2014 not all applications succeed","Tax credit projects have long compliance periods with complex ongoing requirements","City has limited control over state/federal allocation decisions"]
+    "pros": [
+      "LIHTC and historic tax credits are the most powerful affordable housing production tools available",
+      "PHA has demonstrated track record (Sherburne, Ruth Griffin Place, Christ Church)",
+      "Educating developers expands the pipeline of competitive applications"
+    ],
+    "cons": [
+      "LIHTC is highly competitive \u2014 not all applications succeed",
+      "Tax credit projects have long compliance periods with complex ongoing requirements",
+      "City has limited control over state/federal allocation decisions"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -710,8 +1115,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Helps fixed-income seniors stay in their homes as property values rise","Reduces displacement pressure on long-term residents","Deferred taxes are eventually collected \u2014 it's timing relief, not forgiveness"],
-    "cons": ["Deferred revenue creates cash flow gaps for the city","Liens on properties can complicate estate settlement for heirs","Benefits individual homeowners but doesn't produce new housing supply"]
+    "pros": [
+      "Helps fixed-income seniors stay in their homes as property values rise",
+      "Reduces displacement pressure on long-term residents",
+      "Deferred taxes are eventually collected \u2014 it's timing relief, not forgiveness"
+    ],
+    "cons": [
+      "Deferred revenue creates cash flow gaps for the city",
+      "Liens on properties can complicate estate settlement for heirs",
+      "Benefits individual homeowners but doesn't produce new housing supply"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -724,8 +1137,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Tax exemptions can significantly improve project feasibility for multifamily developers","Widely used in other states (Washington, Oregon) with documented impact","Can be tied to affordability requirements for public benefit"],
-    "cons": ["NH may not have enabling legislation for municipal multifamily tax exemptions","Significant revenue impact if applied broadly","Research and feasibility study required before any implementation"]
+    "pros": [
+      "Tax exemptions can significantly improve project feasibility for multifamily developers",
+      "Widely used in other states (Washington, Oregon) with documented impact",
+      "Can be tied to affordability requirements for public benefit"
+    ],
+    "cons": [
+      "NH may not have enabling legislation for municipal multifamily tax exemptions",
+      "Significant revenue impact if applied broadly",
+      "Research and feasibility study required before any implementation"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -738,8 +1159,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Leverages private sector resources for a shared problem \u2014 housing affects recruitment","Models exist: hospital-provided housing, employer-assisted down payments","Shifts some housing cost burden from public sector to benefiting employers"],
-    "cons": ["Voluntary programs have historically low participation rates","Smaller employers may not have resources to contribute","May primarily benefit higher-wage employees rather than those most housing-burdened"]
+    "pros": [
+      "Leverages private sector resources for a shared problem \u2014 housing affects recruitment",
+      "Models exist: hospital-provided housing, employer-assisted down payments",
+      "Shifts some housing cost burden from public sector to benefiting employers"
+    ],
+    "cons": [
+      "Voluntary programs have historically low participation rates",
+      "Smaller employers may not have resources to contribute",
+      "May primarily benefit higher-wage employees rather than those most housing-burdened"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -752,8 +1181,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Permanently removes land cost from housing \u2014 units stay affordable through resale","Community ownership model builds local control and stewardship","Proven model in NH (Lakes Region CLT) and nationwide"],
-    "cons": ["Significant startup costs and organizational capacity needed","Homeowners build equity more slowly than in fee-simple ownership","Requires ongoing organizational infrastructure and governance"]
+    "pros": [
+      "Permanently removes land cost from housing \u2014 units stay affordable through resale",
+      "Community ownership model builds local control and stewardship",
+      "Proven model in NH (Lakes Region CLT) and nationwide"
+    ],
+    "cons": [
+      "Significant startup costs and organizational capacity needed",
+      "Homeowners build equity more slowly than in fee-simple ownership",
+      "Requires ongoing organizational infrastructure and governance"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -766,8 +1203,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Directly addresses affordability barrier for younger households being priced out","Financial literacy component builds long-term homeowner success","Expands access to wealth-building through homeownership"],
-    "cons": ["Demand-side subsidies can push prices higher in a supply-constrained market","Benefits are per-household \u2014 limited impact on overall affordability","Student debt burden (40% of RKG survey respondents) may make buyers ineligible anyway"]
+    "pros": [
+      "Directly addresses affordability barrier for younger households being priced out",
+      "Financial literacy component builds long-term homeowner success",
+      "Expands access to wealth-building through homeownership"
+    ],
+    "cons": [
+      "Demand-side subsidies can push prices higher in a supply-constrained market",
+      "Benefits are per-household \u2014 limited impact on overall affordability",
+      "Student debt burden (40% of RKG survey respondents) may make buyers ineligible anyway"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -780,8 +1225,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Prevents homelessness \u2014 emergency assistance is far cheaper than shelter or rehousing","Security deposit assistance removes a major barrier to housing access","Can be funded through Housing Trust Fund"],
-    "cons": ["Ongoing program costs with no asset created","Treats symptoms of unaffordability rather than root causes","Eligibility verification and administration require dedicated staff"]
+    "pros": [
+      "Prevents homelessness \u2014 emergency assistance is far cheaper than shelter or rehousing",
+      "Security deposit assistance removes a major barrier to housing access",
+      "Can be funded through Housing Trust Fund"
+    ],
+    "cons": [
+      "Ongoing program costs with no asset created",
+      "Treats symptoms of unaffordability rather than root causes",
+      "Eligibility verification and administration require dedicated staff"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -794,8 +1247,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Preserves existing housing stock \u2014 often cheaper than new construction per unit","Helps small landlords maintain properties without raising rents","Addresses health and safety issues in aging buildings"],
-    "cons": ["Loan repayment can be uncertain \u2014 risk of default by small property owners","Benefits individual properties rather than systemic improvement","Program administration and property inspection costs"]
+    "pros": [
+      "Preserves existing housing stock \u2014 often cheaper than new construction per unit",
+      "Helps small landlords maintain properties without raising rents",
+      "Addresses health and safety issues in aging buildings"
+    ],
+    "cons": [
+      "Loan repayment can be uncertain \u2014 risk of default by small property owners",
+      "Benefits individual properties rather than systemic improvement",
+      "Program administration and property inspection costs"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -808,8 +1269,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Program already exists \u2014 requires marketing, not new program design","Employer-assisted housing programs attract and retain workers","Low cost to city relative to potential impact"],
-    "cons": ["Awareness campaigns don't guarantee participation","Program may not be structured to serve lowest-income workers","Effectiveness depends on employer willingness to participate"]
+    "pros": [
+      "Program already exists \u2014 requires marketing, not new program design",
+      "Employer-assisted housing programs attract and retain workers",
+      "Low cost to city relative to potential impact"
+    ],
+    "cons": [
+      "Awareness campaigns don't guarantee participation",
+      "Program may not be structured to serve lowest-income workers",
+      "Effectiveness depends on employer willingness to participate"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -822,8 +1291,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Creates dedicated, sustainable revenue stream for housing fund","Tax falls on visitors rather than residents","Tourism sector benefits from workforce housing that serves hospitality employees"],
-    "cons": ["Requires state legislative authorization \u2014 outside city control","Hospitality industry will likely oppose","Revenue depends on tourism volume, which fluctuates"]
+    "pros": [
+      "Creates dedicated, sustainable revenue stream for housing fund",
+      "Tax falls on visitors rather than residents",
+      "Tourism sector benefits from workforce housing that serves hospitality employees"
+    ],
+    "cons": [
+      "Requires state legislative authorization \u2014 outside city control",
+      "Hospitality industry will likely oppose",
+      "Revenue depends on tourism volume, which fluctuates"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -836,8 +1313,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Incentivizes universal design that benefits aging residents and people with disabilities","Density bonus is market-driven \u2014 developers opt in when it makes financial sense","Addresses a documented need in Portsmouth's aging housing stock"],
-    "cons": ["Accessible units cost more to build \u2014 density bonus must offset the cost differential","May not produce enough accessible units to meet actual demand","Requires clear standards for what qualifies beyond ADA minimums"]
+    "pros": [
+      "Incentivizes universal design that benefits aging residents and people with disabilities",
+      "Density bonus is market-driven \u2014 developers opt in when it makes financial sense",
+      "Addresses a documented need in Portsmouth's aging housing stock"
+    ],
+    "cons": [
+      "Accessible units cost more to build \u2014 density bonus must offset the cost differential",
+      "May not produce enough accessible units to meet actual demand",
+      "Requires clear standards for what qualifies beyond ADA minimums"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -850,8 +1335,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Stacking historic and housing tax credits can make difficult projects viable","Preserves Portsmouth's architectural heritage while adding housing supply","Strong alignment with community values around historic character"],
-    "cons": ["HDC review process adds time and uncertainty for developers","Historic preservation standards can conflict with housing efficiency goals","Tax credit stacking is complex and requires specialized development expertise"]
+    "pros": [
+      "Stacking historic and housing tax credits can make difficult projects viable",
+      "Preserves Portsmouth's architectural heritage while adding housing supply",
+      "Strong alignment with community values around historic character"
+    ],
+    "cons": [
+      "HDC review process adds time and uncertainty for developers",
+      "Historic preservation standards can conflict with housing efficiency goals",
+      "Tax credit stacking is complex and requires specialized development expertise"
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
@@ -864,8 +1357,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["73% of owner-occupied housing is pre-1960 \u2014 retrofits address a massive existing need","Enables aging in place, reducing demand on assisted living and nursing facilities","Directly serves seniors and people with disabilities \u2014 populations with documented housing challenges"],
-    "cons": ["Retrofit costs are high \u2014 grants/loans may cover only a fraction of need","Benefits individual homeowners rather than expanding overall supply","Program scale needed to make meaningful impact requires significant funding"]
+    "pros": [
+      "73% of owner-occupied housing is pre-1960 \u2014 retrofits address a massive existing need",
+      "Enables aging in place, reducing demand on assisted living and nursing facilities",
+      "Directly serves seniors and people with disabilities \u2014 populations with documented housing challenges"
+    ],
+    "cons": [
+      "Retrofit costs are high \u2014 grants/loans may cover only a fraction of need",
+      "Benefits individual homeowners rather than expanding overall supply",
+      "Program scale needed to make meaningful impact requires significant funding"
+    ]
   },
   {
     "category": "Housing Trust Fund & Funding",
@@ -878,8 +1379,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "Below Market Rate Housing Trust Fund established by City Council (2025); governance crafted by Housing Committee, Legal, and Trustees",
-    "pros": ["Fund is already established with $500K seed \u2014 governance ensures effective deployment","Clear criteria prevent ad hoc spending and build public confidence","Committee oversight provides expertise and accountability"],
-    "cons": ["Governance structure adds administrative overhead to fund operations","Committee composition and selection process can become political","Overly rigid criteria may limit fund flexibility to respond to opportunities"]
+    "pros": [
+      "Fund is already established with $500K seed \u2014 governance ensures effective deployment",
+      "Clear criteria prevent ad hoc spending and build public confidence",
+      "Committee oversight provides expertise and accountability"
+    ],
+    "cons": [
+      "Governance structure adds administrative overhead to fund operations",
+      "Committee composition and selection process can become political",
+      "Overly rigid criteria may limit fund flexibility to respond to opportunities"
+    ]
   },
   {
     "category": "Housing Trust Fund & Funding",
@@ -892,8 +1401,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "Fund seeded with $250K city + $250K SoBow Square LLC; accepts donations and grants",
-    "pros": ["Diverse funding streams reduce dependence on any single source","In-lieu fees from inclusionary zoning create a market-driven revenue source","State grants and employer contributions can multiply city investment"],
-    "cons": ["Most funding sources are uncertain or competitive","Developer contributions may be resisted as an added cost of doing business","Fund balance may remain too small to finance meaningful projects without major sources"]
+    "pros": [
+      "Diverse funding streams reduce dependence on any single source",
+      "In-lieu fees from inclusionary zoning create a market-driven revenue source",
+      "State grants and employer contributions can multiply city investment"
+    ],
+    "cons": [
+      "Most funding sources are uncertain or competitive",
+      "Developer contributions may be resisted as an added cost of doing business",
+      "Fund balance may remain too small to finance meaningful projects without major sources"
+    ]
   },
   {
     "category": "Housing Trust Fund & Funding",
@@ -906,8 +1423,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Gap financing is often the critical missing piece that makes affordable projects viable","Revolving loans recycle dollars \u2014 repayments fund future projects","Leverages other funding sources at a high multiplier"],
-    "cons": ["Fund balance may be insufficient for meaningful gap financing at current levels","Loan underwriting requires financial expertise on staff or committee","Revolving loan repayment assumes projects generate enough revenue to repay"]
+    "pros": [
+      "Gap financing is often the critical missing piece that makes affordable projects viable",
+      "Revolving loans recycle dollars \u2014 repayments fund future projects",
+      "Leverages other funding sources at a high multiplier"
+    ],
+    "cons": [
+      "Fund balance may be insufficient for meaningful gap financing at current levels",
+      "Loan underwriting requires financial expertise on staff or committee",
+      "Revolving loan repayment assumes projects generate enough revenue to repay"
+    ]
   },
   {
     "category": "Public Land & Property",
@@ -920,8 +1445,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Comprehensive inventory is a one-time effort that informs multiple future decisions","Public land eliminates the largest cost component in housing development","Identifies opportunities that may not be apparent without systematic review"],
-    "cons": ["Not all publicly owned land is suitable or desirable for housing","Land disposition is politically sensitive \u2014 competing interests for public parcels","Inventory alone doesn't produce housing \u2014 it's a planning step, not an action"]
+    "pros": [
+      "Comprehensive inventory is a one-time effort that informs multiple future decisions",
+      "Public land eliminates the largest cost component in housing development",
+      "Identifies opportunities that may not be apparent without systematic review"
+    ],
+    "cons": [
+      "Not all publicly owned land is suitable or desirable for housing",
+      "Land disposition is politically sensitive \u2014 competing interests for public parcels",
+      "Inventory alone doesn't produce housing \u2014 it's a planning step, not an action"
+    ]
   },
   {
     "category": "Public Land & Property",
@@ -934,8 +1467,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "Sherburne RFP completed; Housing Committee discussed next sites including Gosling Meadows expansion; Master Plan expected to inform future identification",
-    "pros": ["RFP process ensures competitive selection of best development proposals","City can impose affordability and design requirements as conditions of land transfer","Sherburne RFP provides a successful local precedent"],
-    "cons": ["City forgoes sale revenue if land is conveyed below market value for housing","RFP process takes time \u2014 from issuance to developer selection to construction","Limited inventory of suitable public parcels in a built-out city"]
+    "pros": [
+      "RFP process ensures competitive selection of best development proposals",
+      "City can impose affordability and design requirements as conditions of land transfer",
+      "Sherburne RFP provides a successful local precedent"
+    ],
+    "cons": [
+      "City forgoes sale revenue if land is conveyed below market value for housing",
+      "RFP process takes time \u2014 from issuance to developer selection to construction",
+      "Limited inventory of suitable public parcels in a built-out city"
+    ]
   },
   {
     "category": "Public Land & Property",
@@ -948,8 +1489,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "PHA selected as developer (Dec 2024, 8-1 Council vote). Phase I (90 units in new building) permitted; awarded 2026 LIHTC credits. Phase II (37 units including school conversion) timing and design not yet established.",
-    "pros": ["127 units of affordable housing is significant for a city of Portsmouth's size","PHA as developer brings experience, mission alignment, and LIHTC track record","Phase I already permitted with 2026 LIHTC credits \u2014 momentum is real"],
-    "cons": ["Phase II (37 units, school conversion) timing and design still unresolved","Project concentrates affordable units in one location","City infrastructure improvements needed to support the development"]
+    "pros": [
+      "127 units of affordable housing is significant for a city of Portsmouth's size",
+      "PHA as developer brings experience, mission alignment, and LIHTC track record",
+      "Phase I already permitted with 2026 LIHTC credits \u2014 momentum is real"
+    ],
+    "cons": [
+      "Phase II (37 units, school conversion) timing and design still unresolved",
+      "Project concentrates affordable units in one location",
+      "City infrastructure improvements needed to support the development"
+    ]
   },
   {
     "category": "Public Land & Property",
@@ -962,8 +1511,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Pipeline planning ensures continuity of affordable housing production after Sherburne","PHA's track record reduces risk compared to unknown developers","Early site identification allows time for community engagement and planning"],
-    "cons": ["Suitable large-scale sites are increasingly scarce in Portsmouth","Large affordable housing projects can face concentrated neighborhood opposition","PHA capacity is finite \u2014 multiple simultaneous projects may stretch resources"]
+    "pros": [
+      "Pipeline planning ensures continuity of affordable housing production after Sherburne",
+      "PHA's track record reduces risk compared to unknown developers",
+      "Early site identification allows time for community engagement and planning"
+    ],
+    "cons": [
+      "Suitable large-scale sites are increasingly scarce in Portsmouth",
+      "Large affordable housing projects can face concentrated neighborhood opposition",
+      "PHA capacity is finite \u2014 multiple simultaneous projects may stretch resources"
+    ]
   },
   {
     "category": "Public Land & Property",
@@ -976,8 +1533,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Adaptive reuse of municipal buildings avoids demolition and new construction costs","Public ownership eliminates land acquisition cost","Demonstrates city leadership by using its own resources for housing"],
-    "cons": ["Few municipal buildings are actually being vacated or are suitable for housing","Conversion costs for institutional buildings can be high","Community attachment to existing municipal buildings may create opposition"]
+    "pros": [
+      "Adaptive reuse of municipal buildings avoids demolition and new construction costs",
+      "Public ownership eliminates land acquisition cost",
+      "Demonstrates city leadership by using its own resources for housing"
+    ],
+    "cons": [
+      "Few municipal buildings are actually being vacated or are suitable for housing",
+      "Conversion costs for institutional buildings can be high",
+      "Community attachment to existing municipal buildings may create opposition"
+    ]
   },
   {
     "category": "Public Land & Property",
@@ -990,8 +1555,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["School Board coordination ensures housing planning aligns with enrollment trends","Surplus school properties are often well-located in neighborhoods","Sherburne School provides a direct precedent for school-to-housing conversion"],
-    "cons": ["School Board and City Council are separate governing bodies with different priorities","Communities often have strong emotional attachment to school buildings","\"Surplus\" determination can be controversial when enrollment projections are uncertain"]
+    "pros": [
+      "School Board coordination ensures housing planning aligns with enrollment trends",
+      "Surplus school properties are often well-located in neighborhoods",
+      "Sherburne School provides a direct precedent for school-to-housing conversion"
+    ],
+    "cons": [
+      "School Board and City Council are separate governing bodies with different priorities",
+      "Communities often have strong emotional attachment to school buildings",
+      "\"Surplus\" determination can be controversial when enrollment projections are uncertain"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1004,8 +1577,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Builds coalition of stakeholders who can advocate for housing beyond government","Employers can contribute resources, land, and political support","Reframes housing as an economic competitiveness issue, not just a social concern"],
-    "cons": ["Employer engagement often stalls after initial meetings without concrete asks","Competitive dynamics between employers may limit candid information sharing","Risk of corporate interests dominating the housing agenda"]
+    "pros": [
+      "Builds coalition of stakeholders who can advocate for housing beyond government",
+      "Employers can contribute resources, land, and political support",
+      "Reframes housing as an economic competitiveness issue, not just a social concern"
+    ],
+    "cons": [
+      "Employer engagement often stalls after initial meetings without concrete asks",
+      "Competitive dynamics between employers may limit candid information sharing",
+      "Risk of corporate interests dominating the housing agenda"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1018,8 +1599,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "PHA is lead partner on Sherburne and Urban Forest/Christ Church projects; POAH was Sherburne finalist; Housing Committee discussing broader nonprofit engagement",
-    "pros": ["Mission-driven developers prioritize long-term affordability over profit","Nonprofits access funding sources unavailable to for-profit developers","PHA and POAH involvement in Sherburne demonstrates existing capacity"],
-    "cons": ["Nonprofit developer capacity is limited \u2014 few organizations serve NH seacoast","Nonprofit projects typically take longer to develop than for-profit","Reliance on nonprofits may reduce city's push for private-market housing reform"]
+    "pros": [
+      "Mission-driven developers prioritize long-term affordability over profit",
+      "Nonprofits access funding sources unavailable to for-profit developers",
+      "PHA and POAH involvement in Sherburne demonstrates existing capacity"
+    ],
+    "cons": [
+      "Nonprofit developer capacity is limited \u2014 few organizations serve NH seacoast",
+      "Nonprofit projects typically take longer to develop than for-profit",
+      "Reliance on nonprofits may reduce city's push for private-market housing reform"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1032,8 +1621,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Housing markets are regional \u2014 solutions require cross-municipal coordination","Shared advocacy increases political weight with state legislature","Cost-sharing on research, data, and consulting reduces per-community burden"],
-    "cons": ["Regional coalitions are slow to form and difficult to sustain","Different communities have different housing needs, incomes, and politics","Risk that Portsmouth's specific urgency gets diluted in regional framework"]
+    "pros": [
+      "Housing markets are regional \u2014 solutions require cross-municipal coordination",
+      "Shared advocacy increases political weight with state legislature",
+      "Cost-sharing on research, data, and consulting reduces per-community burden"
+    ],
+    "cons": [
+      "Regional coalitions are slow to form and difficult to sustain",
+      "Different communities have different housing needs, incomes, and politics",
+      "Risk that Portsmouth's specific urgency gets diluted in regional framework"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1046,8 +1643,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Developers know firsthand what barriers prevent housing production in Portsmouth","Listening sessions are low-cost and can yield immediately actionable insights","Demonstrates city openness to working with the development community"],
-    "cons": ["Developer feedback will naturally favor reducing regulations and requirements","Sessions may raise expectations that all identified barriers will be removed","Public perception risk if seen as city catering to developer interests"]
+    "pros": [
+      "Developers know firsthand what barriers prevent housing production in Portsmouth",
+      "Listening sessions are low-cost and can yield immediately actionable insights",
+      "Demonstrates city openness to working with the development community"
+    ],
+    "cons": [
+      "Developer feedback will naturally favor reducing regulations and requirements",
+      "Sessions may raise expectations that all identified barriers will be removed",
+      "Public perception risk if seen as city catering to developer interests"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1060,8 +1665,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "City actively tracked and responded to HB 577 and SB 284; Planning staff coordinating with NHMA on 2026 legislative session",
-    "pros": ["State-level changes (HB 577, SB 284) have been the most impactful housing reforms","Coordinated advocacy through NHMA multiplies Portsmouth's influence","Unlocking tools like pillow tax and inclusionary zoning requires state action"],
-    "cons": ["State legislative outcomes are uncertain and subject to partisan dynamics","Advocacy requires sustained effort over multiple legislative sessions","Some state mandates (like SB 284) create local implementation challenges"]
+    "pros": [
+      "State-level changes (HB 577, SB 284) have been the most impactful housing reforms",
+      "Coordinated advocacy through NHMA multiplies Portsmouth's influence",
+      "Unlocking tools like pillow tax and inclusionary zoning requires state action"
+    ],
+    "cons": [
+      "State legislative outcomes are uncertain and subject to partisan dynamics",
+      "Advocacy requires sustained effort over multiple legislative sessions",
+      "Some state mandates (like SB 284) create local implementation challenges"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1074,8 +1687,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Access to research capacity, data analysis, and student interns at low cost","Academic research adds credibility to housing advocacy data","RHNA localization (#122) is a natural UNH project"],
-    "cons": ["Academic timelines may not align with city policy windows","Student work requires supervision and quality control","Research findings may not always support preferred policy positions"]
+    "pros": [
+      "Access to research capacity, data analysis, and student interns at low cost",
+      "Academic research adds credibility to housing advocacy data",
+      "RHNA localization (#122) is a natural UNH project"
+    ],
+    "cons": [
+      "Academic timelines may not align with city policy windows",
+      "Student work requires supervision and quality control",
+      "Research findings may not always support preferred policy positions"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1088,8 +1709,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Attracts private philanthropic and corporate capital for housing","Tax-deductible contributions incentivize giving","Operates independently from city budget constraints"],
-    "cons": ["Significant organizational startup costs and ongoing governance requirements","Fundraising capacity in a city of Portsmouth's size is uncertain","Potential duplication with existing Housing Trust Fund"]
+    "pros": [
+      "Attracts private philanthropic and corporate capital for housing",
+      "Tax-deductible contributions incentivize giving",
+      "Operates independently from city budget constraints"
+    ],
+    "cons": [
+      "Significant organizational startup costs and ongoing governance requirements",
+      "Fundraising capacity in a city of Portsmouth's size is uncertain",
+      "Potential duplication with existing Housing Trust Fund"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1102,8 +1731,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Wraparound services improve housing stability and reduce returns to homelessness","RKG survey respondents specifically requested expanded PHA services","Onsite delivery reduces transportation barriers for residents"],
-    "cons": ["Ongoing operating costs for services beyond PHA's core housing mission","Staffing social services in a tight labor market is challenging","Service expansion requires coordination with existing community providers"]
+    "pros": [
+      "Wraparound services improve housing stability and reduce returns to homelessness",
+      "RKG survey respondents specifically requested expanded PHA services",
+      "Onsite delivery reduces transportation barriers for residents"
+    ],
+    "cons": [
+      "Ongoing operating costs for services beyond PHA's core housing mission",
+      "Staffing social services in a tight labor market is challenging",
+      "Service expansion requires coordination with existing community providers"
+    ]
   },
   {
     "category": "Partnerships & Capacity",
@@ -1116,8 +1753,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Formal partnership coordinates the continuum from shelter to permanent housing","Rapid rehousing is more cost-effective than extended shelter stays","39% adult exit rate to housing (per RKG) could improve with better coordination"],
-    "cons": ["Rapid rehousing depends on available affordable units \u2014 a supply problem","Cross Roads House has its own capacity constraints","Homelessness services require sustained funding beyond initial partnership formation"]
+    "pros": [
+      "Formal partnership coordinates the continuum from shelter to permanent housing",
+      "Rapid rehousing is more cost-effective than extended shelter stays",
+      "39% adult exit rate to housing (per RKG) could improve with better coordination"
+    ],
+    "cons": [
+      "Rapid rehousing depends on available affordable units \u2014 a supply problem",
+      "Cross Roads House has its own capacity constraints",
+      "Homelessness services require sustained funding beyond initial partnership formation"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1130,8 +1775,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Prevents loss of affordable housing that took decades to develop organically","Preservation is often cheaper per unit than new construction","Deed restrictions ensure long-term affordability, not just current rents"],
-    "cons": ["Tracking requires landlord participation \u2014 incentives are needed to get rental data","Financial assistance for renovations is an ongoing cost commitment","Property owners may resist deed restrictions as an encumbrance on their assets"]
+    "pros": [
+      "Prevents loss of affordable housing that took decades to develop organically",
+      "Preservation is often cheaper per unit than new construction",
+      "Deed restrictions ensure long-term affordability, not just current rents"
+    ],
+    "cons": [
+      "Tracking requires landlord participation \u2014 incentives are needed to get rental data",
+      "Financial assistance for renovations is an ongoing cost commitment",
+      "Property owners may resist deed restrictions as an encumbrance on their assets"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1144,8 +1797,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Creates a comprehensive picture of rental housing stock, conditions, and pricing","Registration data supports evidence-based policy decisions","Can identify health and safety issues in rental units"],
-    "cons": ["Registration fees and requirements may be passed through to tenants as higher rents","Enforcement requires dedicated code enforcement staff","Landlord opposition \u2014 may be seen as government overreach into private property"]
+    "pros": [
+      "Creates a comprehensive picture of rental housing stock, conditions, and pricing",
+      "Registration data supports evidence-based policy decisions",
+      "Can identify health and safety issues in rental units"
+    ],
+    "cons": [
+      "Registration fees and requirements may be passed through to tenants as higher rents",
+      "Enforcement requires dedicated code enforcement staff",
+      "Landlord opposition \u2014 may be seen as government overreach into private property"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1158,8 +1819,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Just-cause notice periods and relocation assistance reduce displacement hardship","Source of income protections expand access for voucher holders","Stabilizes communities by reducing involuntary moves"],
-    "cons": ["NH's landlord-tenant legal framework limits municipal authority significantly","Landlords may argue protections reduce willingness to rent","Enforcement capacity must exist or protections are merely symbolic"]
+    "pros": [
+      "Just-cause notice periods and relocation assistance reduce displacement hardship",
+      "Source of income protections expand access for voucher holders",
+      "Stabilizes communities by reducing involuntary moves"
+    ],
+    "cons": [
+      "NH's landlord-tenant legal framework limits municipal authority significantly",
+      "Landlords may argue protections reduce willingness to rent",
+      "Enforcement capacity must exist or protections are merely symbolic"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1172,8 +1841,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Preserves rental housing supply \u2014 condo conversions remove rent-accessible units","Right of first refusal gives tenants an opportunity to purchase","Notice requirements reduce surprise displacement"],
-    "cons": ["Restrictions may be challenged as limiting property owner rights under NH law","May discourage investment in rental properties if exit via condo conversion is limited","Scale of condo conversion activity in Portsmouth may not currently justify regulation"]
+    "pros": [
+      "Preserves rental housing supply \u2014 condo conversions remove rent-accessible units",
+      "Right of first refusal gives tenants an opportunity to purchase",
+      "Notice requirements reduce surprise displacement"
+    ],
+    "cons": [
+      "Restrictions may be challenged as limiting property owner rights under NH law",
+      "May discourage investment in rental properties if exit via condo conversion is limited",
+      "Scale of condo conversion activity in Portsmouth may not currently justify regulation"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1186,8 +1863,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Directly improves health outcomes \u2014 lead exposure disproportionately harms children","NH Housing lead abatement program provides existing state funding to leverage","Proactive enforcement prevents deterioration into uninhabitable conditions"],
-    "cons": ["Remediation costs can be significant \u2014 may cause some landlords to exit the rental market","Aggressive code enforcement may reduce affordable housing supply if landlords sell or convert","Inspection capacity requires dedicated staff"]
+    "pros": [
+      "Directly improves health outcomes \u2014 lead exposure disproportionately harms children",
+      "NH Housing lead abatement program provides existing state funding to leverage",
+      "Proactive enforcement prevents deterioration into uninhabitable conditions"
+    ],
+    "cons": [
+      "Remediation costs can be significant \u2014 may cause some landlords to exit the rental market",
+      "Aggressive code enforcement may reduce affordable housing supply if landlords sell or convert",
+      "Inspection capacity requires dedicated staff"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1200,8 +1885,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Data-driven tracking creates accountability for displacement prevention goals","Enables early intervention before displacement becomes severe","Demographic change data strengthens advocacy for preservation policies"],
-    "cons": ["Monitoring alone doesn't prevent displacement \u2014 it identifies the problem","Data collection across multiple sources is complex and time-consuming","Defining and measuring \"displacement\" is methodologically challenging"]
+    "pros": [
+      "Data-driven tracking creates accountability for displacement prevention goals",
+      "Enables early intervention before displacement becomes severe",
+      "Demographic change data strengthens advocacy for preservation policies"
+    ],
+    "cons": [
+      "Monitoring alone doesn't prevent displacement \u2014 it identifies the problem",
+      "Data collection across multiple sources is complex and time-consuming",
+      "Defining and measuring \"displacement\" is methodologically challenging"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1214,8 +1907,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Empowers tenants to preserve their own housing stability through ownership","Designated organizations can acquire and maintain affordability long-term","Prevents speculative purchases that lead to rent increases"],
-    "cons": ["Tenants rarely have the financial capacity to exercise purchase rights","Right of first offer/refusal delays sales, potentially lowering property values","NH legal framework for such programs is untested \u2014 legal risk"]
+    "pros": [
+      "Empowers tenants to preserve their own housing stability through ownership",
+      "Designated organizations can acquire and maintain affordability long-term",
+      "Prevents speculative purchases that lead to rent increases"
+    ],
+    "cons": [
+      "Tenants rarely have the financial capacity to exercise purchase rights",
+      "Right of first offer/refusal delays sales, potentially lowering property values",
+      "NH legal framework for such programs is untested \u2014 legal risk"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1228,8 +1929,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Prevents foreclosure and displacement \u2014 far cheaper than rehousing","Stabilizes neighborhoods by keeping homes occupied and maintained","Targets crisis moments where a small amount of assistance has outsized impact"],
-    "cons": ["Ongoing program funding required with no asset created","Eligibility determination is sensitive \u2014 risk of fraud or misuse","May delay inevitable outcomes for financially distressed homeowners"]
+    "pros": [
+      "Prevents foreclosure and displacement \u2014 far cheaper than rehousing",
+      "Stabilizes neighborhoods by keeping homes occupied and maintained",
+      "Targets crisis moments where a small amount of assistance has outsized impact"
+    ],
+    "cons": [
+      "Ongoing program funding required with no asset created",
+      "Eligibility determination is sensitive \u2014 risk of fraud or misuse",
+      "May delay inevitable outcomes for financially distressed homeowners"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1242,8 +1951,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Tracking ensures the existing STR ban is actually effective","Data on enforcement actions supports continued policy defense","Low-cost activity relative to other housing preservation strategies"],
-    "cons": ["Monitoring without enforcement is ineffective \u2014 requires staff capacity","Draws attention to STR policy that some want reopened","Limited impact if STR violations are minimal under current ban"]
+    "pros": [
+      "Tracking ensures the existing STR ban is actually effective",
+      "Data on enforcement actions supports continued policy defense",
+      "Low-cost activity relative to other housing preservation strategies"
+    ],
+    "cons": [
+      "Monitoring without enforcement is ineffective \u2014 requires staff capacity",
+      "Draws attention to STR policy that some want reopened",
+      "Limited impact if STR violations are minimal under current ban"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1256,8 +1973,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["489 federally subsidized units at risk is a significant share of Portsmouth's affordable stock","Proactive engagement gives city time to plan preservation strategies before expiration","Preservation costs far less per unit than building replacement affordable housing"],
-    "cons": ["Property owners may prefer to exit subsidy programs for market-rate rents","City has limited leverage over federal subsidy decisions","Preservation financing is complex and competitive"]
+    "pros": [
+      "489 federally subsidized units at risk is a significant share of Portsmouth's affordable stock",
+      "Proactive engagement gives city time to plan preservation strategies before expiration",
+      "Preservation costs far less per unit than building replacement affordable housing"
+    ],
+    "cons": [
+      "Property owners may prefer to exit subsidy programs for market-rate rents",
+      "City has limited leverage over federal subsidy decisions",
+      "Preservation financing is complex and competitive"
+    ]
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -1270,8 +1995,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Systematic assessment identifies the most critical rehabilitation needs","Data supports targeted deployment of rehabilitation loans and grants","Prevents loss of aging housing stock through deterioration"],
-    "cons": ["Property-by-property assessment is labor-intensive and costly","Property owners may resist inspections as intrusive","Assessment findings may reveal more need than available rehabilitation funding"]
+    "pros": [
+      "Systematic assessment identifies the most critical rehabilitation needs",
+      "Data supports targeted deployment of rehabilitation loans and grants",
+      "Prevents loss of aging housing stock through deterioration"
+    ],
+    "cons": [
+      "Property-by-property assessment is labor-intensive and costly",
+      "Property owners may resist inspections as intrusive",
+      "Assessment findings may reveal more need than available rehabilitation funding"
+    ]
   },
   {
     "category": "Special Populations",
@@ -1284,8 +2017,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Comprehensive strategy addresses all stages from independent living to memory care","Coordinated planning prevents gaps in the senior housing pipeline","Aging-in-place support reduces the most expensive care options"],
-    "cons": ["Comprehensive strategy is planning-intensive \u2014 implementation may be slow","Market already provides some senior housing options \u2014 public role unclear for all segments","Assisted living and memory care are primarily private-sector products"]
+    "pros": [
+      "Comprehensive strategy addresses all stages from independent living to memory care",
+      "Coordinated planning prevents gaps in the senior housing pipeline",
+      "Aging-in-place support reduces the most expensive care options"
+    ],
+    "cons": [
+      "Comprehensive strategy is planning-intensive \u2014 implementation may be slow",
+      "Market already provides some senior housing options \u2014 public role unclear for all segments",
+      "Assisted living and memory care are primarily private-sector products"
+    ]
   },
   {
     "category": "Special Populations",
@@ -1298,8 +2039,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Wraparound services dramatically improve outcomes for vulnerable populations","More cost-effective than cycling through emergency services and shelters","Addresses root causes of housing instability, not just symptoms"],
-    "cons": ["Supportive housing is expensive to operate \u2014 requires sustained social service funding","Siting can face significant neighborhood opposition (NIMBYism)","Ongoing service provision requires partnerships with social service agencies"]
+    "pros": [
+      "Wraparound services dramatically improve outcomes for vulnerable populations",
+      "More cost-effective than cycling through emergency services and shelters",
+      "Addresses root causes of housing instability, not just symptoms"
+    ],
+    "cons": [
+      "Supportive housing is expensive to operate \u2014 requires sustained social service funding",
+      "Siting can face significant neighborhood opposition (NIMBYism)",
+      "Ongoing service provision requires partnerships with social service agencies"
+    ]
   },
   {
     "category": "Special Populations",
@@ -1312,8 +2061,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Moderate-income affordable options are virtually nonexistent \u2014 clear market gap","Frees up family housing when seniors move to appropriate settings","Addresses a growing need as Portsmouth's population ages"],
-    "cons": ["Affordable assisted living is extremely difficult to finance \u2014 operating costs are high","Primarily a private-market product \u2014 city role is limited to incentives and zoning","Regulatory complexity in healthcare-adjacent housing"]
+    "pros": [
+      "Moderate-income affordable options are virtually nonexistent \u2014 clear market gap",
+      "Frees up family housing when seniors move to appropriate settings",
+      "Addresses a growing need as Portsmouth's population ages"
+    ],
+    "cons": [
+      "Affordable assisted living is extremely difficult to finance \u2014 operating costs are high",
+      "Primarily a private-market product \u2014 city role is limited to incentives and zoning",
+      "Regulatory complexity in healthcare-adjacent housing"
+    ]
   },
   {
     "category": "Special Populations",
@@ -1326,8 +2083,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["People with disabilities face severe housing barriers \u2014 documented unmet need","Universal design benefits all residents as they age, not just people with current disabilities","Aligns with Fair Housing Act obligations"],
-    "cons": ["Accessible housing costs more to build than conventional units","Needs assessment requires engagement with disability communities, which takes time","Small population size makes dedicated programs difficult to sustain"]
+    "pros": [
+      "People with disabilities face severe housing barriers \u2014 documented unmet need",
+      "Universal design benefits all residents as they age, not just people with current disabilities",
+      "Aligns with Fair Housing Act obligations"
+    ],
+    "cons": [
+      "Accessible housing costs more to build than conventional units",
+      "Needs assessment requires engagement with disability communities, which takes time",
+      "Small population size makes dedicated programs difficult to sustain"
+    ]
   },
   {
     "category": "Special Populations",
@@ -1340,8 +2105,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Veterans at $43,669 median income (~50% AMI) are significantly housing-burdened","Federal VA programs (VASH vouchers, SSVF) provide existing funding to leverage","Strong public and political support for veteran services"],
-    "cons": ["Veteran-specific programs may duplicate existing general housing assistance","1,366 veterans is a relatively small target population for dedicated programs","VA program navigation is complex \u2014 requires specialized knowledge"]
+    "pros": [
+      "Veterans at $43,669 median income (~50% AMI) are significantly housing-burdened",
+      "Federal VA programs (VASH vouchers, SSVF) provide existing funding to leverage",
+      "Strong public and political support for veteran services"
+    ],
+    "cons": [
+      "Veteran-specific programs may duplicate existing general housing assistance",
+      "1,366 veterans is a relatively small target population for dedicated programs",
+      "VA program navigation is complex \u2014 requires specialized knowledge"
+    ]
   },
   {
     "category": "Special Populations",
@@ -1354,8 +2127,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Addresses documented out-migration of 25-34 age cohort \u2014 critical for workforce","Micro-units and shared housing models can serve this population affordably","GBCC and UNH partnerships provide institutional anchors"],
-    "cons": ["Young professionals may be a transient population with limited community investment","Micro-units and shared housing may not address the needs of those starting families","Market-rate micro-units may still be unaffordable in Portsmouth's price environment"]
+    "pros": [
+      "Addresses documented out-migration of 25-34 age cohort \u2014 critical for workforce",
+      "Micro-units and shared housing models can serve this population affordably",
+      "GBCC and UNH partnerships provide institutional anchors"
+    ],
+    "cons": [
+      "Young professionals may be a transient population with limited community investment",
+      "Micro-units and shared housing may not address the needs of those starting families",
+      "Market-rate micro-units may still be unaffordable in Portsmouth's price environment"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1368,8 +2149,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Public understanding is a prerequisite for political support for housing reform","Social media and local press are low-cost channels for reaching residents","Data-driven messaging (vacancy rates, median rents) makes abstract issues concrete"],
-    "cons": ["Awareness campaigns don't directly produce housing","Messaging risks backlash if perceived as advocacy rather than information","Sustained campaigns require ongoing content production and management"]
+    "pros": [
+      "Public understanding is a prerequisite for political support for housing reform",
+      "Social media and local press are low-cost channels for reaching residents",
+      "Data-driven messaging (vacancy rates, median rents) makes abstract issues concrete"
+    ],
+    "cons": [
+      "Awareness campaigns don't directly produce housing",
+      "Messaging risks backlash if perceived as advocacy rather than information",
+      "Sustained campaigns require ongoing content production and management"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1382,8 +2171,16 @@
     "is_new": false,
     "status": "in-progress",
     "status_detail": "City maintains Housing page with reports, data, committee info. Housing Related Reports & Data page is fairly comprehensive; could be enhanced",
-    "pros": ["Centralizes information that is currently scattered across city departments and websites","Existing Housing Related Reports page provides a foundation to build on","Self-service resource reduces staff time spent answering basic inquiries"],
-    "cons": ["Website development and maintenance require staff or consultant resources","Static websites quickly become outdated without regular content updates","Digital-only resources don't reach residents without internet access"]
+    "pros": [
+      "Centralizes information that is currently scattered across city departments and websites",
+      "Existing Housing Related Reports page provides a foundation to build on",
+      "Self-service resource reduces staff time spent answering basic inquiries"
+    ],
+    "cons": [
+      "Website development and maintenance require staff or consultant resources",
+      "Static websites quickly become outdated without regular content updates",
+      "Digital-only resources don't reach residents without internet access"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1396,8 +2193,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Creates regular accountability mechanism for housing goals and production targets","Trend data over multiple years reveals whether policies are working","Public reporting builds credibility with residents and developers"],
-    "cons": ["Annual report requires consistent data collection and staff time to produce","Reports risk becoming pro-forma exercises if Council doesn't act on findings","Production tracking depends on having clear targets to measure against"]
+    "pros": [
+      "Creates regular accountability mechanism for housing goals and production targets",
+      "Trend data over multiple years reveals whether policies are working",
+      "Public reporting builds credibility with residents and developers"
+    ],
+    "cons": [
+      "Annual report requires consistent data collection and staff time to produce",
+      "Reports risk becoming pro-forma exercises if Council doesn't act on findings",
+      "Production tracking depends on having clear targets to measure against"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1410,8 +2215,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Employers are natural allies \u2014 housing affordability directly affects their workforce","Education is the prerequisite to employer participation in housing programs","Low-cost activity with potential for high-impact partnerships"],
-    "cons": ["Education alone doesn't produce employer action \u2014 follow-up is essential","Employer attention is limited \u2014 housing competes with many business priorities","May raise expectations that employers will solve the problem"]
+    "pros": [
+      "Employers are natural allies \u2014 housing affordability directly affects their workforce",
+      "Education is the prerequisite to employer participation in housing programs",
+      "Low-cost activity with potential for high-impact partnerships"
+    ],
+    "cons": [
+      "Education alone doesn't produce employer action \u2014 follow-up is essential",
+      "Employer attention is limited \u2014 housing competes with many business priorities",
+      "May raise expectations that employers will solve the problem"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1424,8 +2237,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Visual communication makes complex housing data accessible to general public","Volunteer designers reduce cost while building community engagement","Shareable formats extend reach beyond city meetings and reports"],
-    "cons": ["Infographics can oversimplify nuanced housing issues","Maintaining accuracy requires review as data changes","Design quality varies with volunteer capacity"]
+    "pros": [
+      "Visual communication makes complex housing data accessible to general public",
+      "Volunteer designers reduce cost while building community engagement",
+      "Shareable formats extend reach beyond city meetings and reports"
+    ],
+    "cons": [
+      "Infographics can oversimplify nuanced housing issues",
+      "Maintaining accuracy requires review as data changes",
+      "Design quality varies with volunteer capacity"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1438,8 +2259,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Fair housing compliance is a legal obligation \u2014 education reduces violations","Source-of-income discrimination limits voucher utilization in tight markets","Educated landlords are less likely to engage in unintentional discrimination"],
-    "cons": ["Education is necessary but not sufficient \u2014 enforcement matters more","NH legal framework for fair housing enforcement at the local level is limited","Landlords may view fair housing training as burdensome or adversarial"]
+    "pros": [
+      "Fair housing compliance is a legal obligation \u2014 education reduces violations",
+      "Source-of-income discrimination limits voucher utilization in tight markets",
+      "Educated landlords are less likely to engage in unintentional discrimination"
+    ],
+    "cons": [
+      "Education is necessary but not sufficient \u2014 enforcement matters more",
+      "NH legal framework for fair housing enforcement at the local level is limited",
+      "Landlords may view fair housing training as burdensome or adversarial"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1452,8 +2281,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "Housing Blue Ribbon Committee reestablished March 2024 with working groups (Zoning, Parking/Transportation, Financial Tools); regular public meetings ongoing",
-    "pros": ["Representative engagement produces policies that reflect community values","Early involvement reduces opposition later in the process","Plain-language materials expand participation beyond regular meeting attendees"],
-    "cons": ["Meaningful engagement is resource-intensive \u2014 poorly done engagement is worse than none","Engaged voices are often not representative of most-affected populations","Engagement fatigue \u2014 residents may disengage if they feel input isn't used"]
+    "pros": [
+      "Representative engagement produces policies that reflect community values",
+      "Early involvement reduces opposition later in the process",
+      "Plain-language materials expand participation beyond regular meeting attendees"
+    ],
+    "cons": [
+      "Meaningful engagement is resource-intensive \u2014 poorly done engagement is worse than none",
+      "Engaged voices are often not representative of most-affected populations",
+      "Engagement fatigue \u2014 residents may disengage if they feel input isn't used"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1466,8 +2303,16 @@
     "is_new": false,
     "status": "complete",
     "status_detail": "Completed 2024; summary report published; findings fed into Housing Committee and Master Plan work",
-    "pros": ["Established format with documented outcomes and community trust","11 dialogue goals provide measurable framework for follow-up","Broad participation model reaches beyond typical public hearing attendees"],
-    "cons": ["Dialogue outcomes are advisory \u2014 implementation depends on Council action","Continuing the same format may not reach new voices","Staff time to organize and facilitate is significant"]
+    "pros": [
+      "Established format with documented outcomes and community trust",
+      "11 dialogue goals provide measurable framework for follow-up",
+      "Broad participation model reaches beyond typical public hearing attendees"
+    ],
+    "cons": [
+      "Dialogue outcomes are advisory \u2014 implementation depends on Council action",
+      "Continuing the same format may not reach new voices",
+      "Staff time to organize and facilitate is significant"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1480,8 +2325,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Directly addresses documented barriers: student debt (40%), car loans (34%), medical costs (38%)","Pre-purchase counseling reduces mortgage default rates","Builds household financial stability that extends beyond housing"],
-    "cons": ["Counseling addresses demand-side barriers but doesn't create affordable supply","Participation rates in financial counseling programs are often low","Programs require partnerships with certified HUD counseling agencies"]
+    "pros": [
+      "Directly addresses documented barriers: student debt (40%), car loans (34%), medical costs (38%)",
+      "Pre-purchase counseling reduces mortgage default rates",
+      "Builds household financial stability that extends beyond housing"
+    ],
+    "cons": [
+      "Counseling addresses demand-side barriers but doesn't create affordable supply",
+      "Participation rates in financial counseling programs are often low",
+      "Programs require partnerships with certified HUD counseling agencies"
+    ]
   },
   {
     "category": "Infrastructure & Services",
@@ -1494,8 +2347,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Proactive infrastructure investment removes a major barrier to housing development","Spreading costs across developments is more efficient than project-by-project upgrades","Demonstrates city commitment to housing growth areas"],
-    "cons": ["Infrastructure investment requires significant capital expenditure from city budget","Benefits accrue to future development \u2014 timing of return on investment is uncertain","Prioritizing housing areas may delay infrastructure needs elsewhere"]
+    "pros": [
+      "Proactive infrastructure investment removes a major barrier to housing development",
+      "Spreading costs across developments is more efficient than project-by-project upgrades",
+      "Demonstrates city commitment to housing growth areas"
+    ],
+    "cons": [
+      "Infrastructure investment requires significant capital expenditure from city budget",
+      "Benefits accrue to future development \u2014 timing of return on investment is uncertain",
+      "Prioritizing housing areas may delay infrastructure needs elsewhere"
+    ]
   },
   {
     "category": "Infrastructure & Services",
@@ -1508,8 +2369,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Separating parking from individual sites reduces development costs and enables more housing","Shared facilities are more efficient than duplicated project-by-project parking","Developer parking contributions create a funding mechanism"],
-    "cons": ["Structured parking is very expensive to build \u2014 $30K-$60K per space","Downtown parking is politically contentious with residents and businesses","Municipal parking facilities require ongoing operational management"]
+    "pros": [
+      "Separating parking from individual sites reduces development costs and enables more housing",
+      "Shared facilities are more efficient than duplicated project-by-project parking",
+      "Developer parking contributions create a funding mechanism"
+    ],
+    "cons": [
+      "Structured parking is very expensive to build \u2014 $30K-$60K per space",
+      "Downtown parking is politically contentious with residents and businesses",
+      "Municipal parking facilities require ongoing operational management"
+    ]
   },
   {
     "category": "Infrastructure & Services",
@@ -1522,8 +2391,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Reducing car dependence supports reduced parking requirements for housing","Transit, bike, and pedestrian improvements benefit all residents, not just new housing","Aligns with climate and sustainability goals"],
-    "cons": ["Significant public investment required for meaningful multimodal infrastructure","Portsmouth's geography and low density make transit service challenging","Behavioral change from car dependence is slow regardless of infrastructure"]
+    "pros": [
+      "Reducing car dependence supports reduced parking requirements for housing",
+      "Transit, bike, and pedestrian improvements benefit all residents, not just new housing",
+      "Aligns with climate and sustainability goals"
+    ],
+    "cons": [
+      "Significant public investment required for meaningful multimodal infrastructure",
+      "Portsmouth's geography and low density make transit service challenging",
+      "Behavioral change from car dependence is slow regardless of infrastructure"
+    ]
   },
   {
     "category": "Infrastructure & Services",
@@ -1536,8 +2413,17 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Publicly documented capacity data enables informed discussion of housing impacts on schools.","School Board coordination ensures housing planning aligns with enrollment trends.","Sherburne School provides a direct precedent for school-to-housing conversion.","Surplus school properties are often well-located in neighborhoods."],
-    "cons": ["Capacity documentation alone doesn't address school quality concerns","Enrollment projections are inherently uncertain \u2014 capacity claims may be challenged","School capacity varies by grade level and program \u2014 aggregate numbers can be misleading"]
+    "pros": [
+      "Publicly documented capacity data enables informed discussion of housing impacts on schools.",
+      "School Board coordination ensures housing planning aligns with enrollment trends.",
+      "Sherburne School provides a direct precedent for school-to-housing conversion.",
+      "Surplus school properties are often well-located in neighborhoods."
+    ],
+    "cons": [
+      "Capacity documentation alone doesn't address school quality concerns",
+      "Enrollment projections are inherently uncertain \u2014 capacity claims may be challenged",
+      "School capacity varies by grade level and program \u2014 aggregate numbers can be misleading"
+    ]
   },
   {
     "category": "Infrastructure & Services",
@@ -1550,8 +2436,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Comprehensive capacity data prevents infrastructure being used as a false excuse to block housing","Mapping growth areas helps target housing incentives and zoning changes","Data supports capital improvement planning"],
-    "cons": ["Analysis can be used to argue against development as easily as for it","Comprehensive infrastructure studies are expensive and time-consuming","Capacity findings become outdated as conditions change"]
+    "pros": [
+      "Comprehensive capacity data prevents infrastructure being used as a false excuse to block housing",
+      "Mapping growth areas helps target housing incentives and zoning changes",
+      "Data supports capital improvement planning"
+    ],
+    "cons": [
+      "Analysis can be used to argue against development as easily as for it",
+      "Comprehensive infrastructure studies are expensive and time-consuming",
+      "Capacity findings become outdated as conditions change"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1564,8 +2458,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Specific targets create accountability and measurable progress","Targets by affordability level ensure production serves a range of incomes","Annual reporting against targets makes housing a regular policy conversation"],
-    "cons": ["Targets without implementation tools are aspirational, not actionable","City has limited direct control over private-market housing production","Setting targets too high invites criticism; too low normalizes inadequate production"]
+    "pros": [
+      "Specific targets create accountability and measurable progress",
+      "Targets by affordability level ensure production serves a range of incomes",
+      "Annual reporting against targets makes housing a regular policy conversation"
+    ],
+    "cons": [
+      "Targets without implementation tools are aspirational, not actionable",
+      "City has limited direct control over private-market housing production",
+      "Setting targets too high invites criticism; too low normalizes inadequate production"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1578,8 +2480,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Visual mapping of developable parcels makes opportunities concrete for developers","Pipeline tracking shows what's in progress and where gaps remain","GIS analysis (e.g., Byron Matto's work) can quantify ADU and conversion potential"],
-    "cons": ["GIS maintenance requires ongoing staff time and data updates","Parcel-level analysis may identify sites with political or neighborhood sensitivities","Inventory shows potential, not probability \u2014 landowners may not be interested in developing"]
+    "pros": [
+      "Visual mapping of developable parcels makes opportunities concrete for developers",
+      "Pipeline tracking shows what's in progress and where gaps remain",
+      "GIS analysis (e.g., Byron Matto's work) can quantify ADU and conversion potential"
+    ],
+    "cons": [
+      "GIS maintenance requires ongoing staff time and data updates",
+      "Parcel-level analysis may identify sites with political or neighborhood sensitivities",
+      "Inventory shows potential, not probability \u2014 landowners may not be interested in developing"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1592,8 +2502,16 @@
     "is_new": false,
     "status": "early-stage",
     "status_detail": "RKG 2022 study aging; HOP 2.0 audit partially updates picture; Master Plan (2025\u20132026) will include housing needs analysis but no standalone updated gap analysis commissioned",
-    "pros": ["RKG 2022 study is aging \u2014 market conditions have shifted significantly","Updated data prevents advocacy from relying on outdated numbers","Master Plan housing needs analysis may partially serve this function"],
-    "cons": ["Comprehensive gap analyses cost $100K+ and take months to complete","Risk of analysis paralysis \u2014 waiting for perfect data delays action on known needs","Frequent updates may show marginal changes that don't justify the cost"]
+    "pros": [
+      "RKG 2022 study is aging \u2014 market conditions have shifted significantly",
+      "Updated data prevents advocacy from relying on outdated numbers",
+      "Master Plan housing needs analysis may partially serve this function"
+    ],
+    "cons": [
+      "Comprehensive gap analyses cost $100K+ and take months to complete",
+      "Risk of analysis paralysis \u2014 waiting for perfect data delays action on known needs",
+      "Frequent updates may show marginal changes that don't justify the cost"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1606,8 +2524,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Real-time public data builds transparency and supports evidence-based advocacy","Dashboard automates what would otherwise be manual data compilation","Consistent metrics enable year-over-year trend tracking"],
-    "cons": ["Data infrastructure and dashboard development require upfront investment","Some housing data (vacancy, rents) is difficult to collect reliably at the municipal level","Dashboards require ongoing maintenance or become misleading"]
+    "pros": [
+      "Real-time public data builds transparency and supports evidence-based advocacy",
+      "Dashboard automates what would otherwise be manual data compilation",
+      "Consistent metrics enable year-over-year trend tracking"
+    ],
+    "cons": [
+      "Data infrastructure and dashboard development require upfront investment",
+      "Some housing data (vacancy, rents) is difficult to collect reliably at the municipal level",
+      "Dashboards require ongoing maintenance or become misleading"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1620,8 +2546,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["AMI calibration ensures production targets match the income distribution of demand","RKG data (52% of demand at \u226480% AMI) provides the baseline for calibration","Prevents a scenario where 'housing production' means only luxury units"],
-    "cons": ["Production at lower AMI levels requires subsidy \u2014 targets may exceed available funding","AMI bands are somewhat arbitrary \u2014 household circumstances vary within each band","Market-rate development doesn't respond to AMI targets without incentives or requirements"]
+    "pros": [
+      "AMI calibration ensures production targets match the income distribution of demand",
+      "RKG data (52% of demand at \u226480% AMI) provides the baseline for calibration",
+      "Prevents a scenario where 'housing production' means only luxury units"
+    ],
+    "cons": [
+      "Production at lower AMI levels requires subsidy \u2014 targets may exceed available funding",
+      "AMI bands are somewhat arbitrary \u2014 household circumstances vary within each band",
+      "Market-rate development doesn't respond to AMI targets without incentives or requirements"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1634,8 +2568,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["1.86% vacancy is well below the 4-6% functional market threshold \u2014 data makes this visible","Tracking vacancy over time shows whether policies are improving market function","Clear target (4-6%) provides a benchmark for progress"],
-    "cons": ["Municipal-level vacancy data is notoriously unreliable \u2014 collection methods matter","Vacancy rate alone doesn't distinguish between affordable and luxury vacancies","Achieving 4-6% vacancy requires significant net new production in a built-out city"]
+    "pros": [
+      "1.86% vacancy is well below the 4-6% functional market threshold \u2014 data makes this visible",
+      "Tracking vacancy over time shows whether policies are improving market function",
+      "Clear target (4-6%) provides a benchmark for progress"
+    ],
+    "cons": [
+      "Municipal-level vacancy data is notoriously unreliable \u2014 collection methods matter",
+      "Vacancy rate alone doesn't distinguish between affordable and luxury vacancies",
+      "Achieving 4-6% vacancy requires significant net new production in a built-out city"
+    ]
   },
   {
     "category": "Climate & Sustainability",
@@ -1648,8 +2590,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Climate integration protects housing investment from flood, heat, and storm damage","Proactive standards avoid costly retrofits and insurance increases later","Aligns housing policy with city climate action goals"],
-    "cons": ["Higher building standards increase construction costs","Climate requirements may conflict with affordability if not carefully balanced","Regulatory burden may discourage housing production if requirements are excessive"]
+    "pros": [
+      "Climate integration protects housing investment from flood, heat, and storm damage",
+      "Proactive standards avoid costly retrofits and insurance increases later",
+      "Aligns housing policy with city climate action goals"
+    ],
+    "cons": [
+      "Higher building standards increase construction costs",
+      "Climate requirements may conflict with affordability if not carefully balanced",
+      "Regulatory burden may discourage housing production if requirements are excessive"
+    ]
   },
   {
     "category": "Climate & Sustainability",
@@ -1662,8 +2612,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Energy efficiency reduces utility costs for occupants \u2014 an affordability benefit","Climate-conscious retrofits extend the useful life of aging housing stock","Federal incentives (IRA, Weatherization Assistance) provide funding leverage"],
-    "cons": ["Retrofit costs can be significant, especially for older buildings","Outreach and uptake are typically slow without aggressive promotion","Some retrofits may trigger other code upgrades, increasing total project cost"]
+    "pros": [
+      "Energy efficiency reduces utility costs for occupants \u2014 an affordability benefit",
+      "Climate-conscious retrofits extend the useful life of aging housing stock",
+      "Federal incentives (IRA, Weatherization Assistance) provide funding leverage"
+    ],
+    "cons": [
+      "Retrofit costs can be significant, especially for older buildings",
+      "Outreach and uptake are typically slow without aggressive promotion",
+      "Some retrofits may trigger other code upgrades, increasing total project cost"
+    ]
   },
   {
     "category": "Climate & Sustainability",
@@ -1676,8 +2634,16 @@
     "is_new": false,
     "status": "",
     "status_detail": "",
-    "pros": ["Portsmouth's coastal location makes flood risk a real and growing concern","Updated flood maps protect future housing from known hazards","Building standards that account for sea level rise are cost-effective when applied at construction"],
-    "cons": ["Updated flood maps may constrain development in areas currently zoned for housing","Higher flood resilience standards increase construction costs","Climate adaptation requirements add regulatory complexity for developers"]
+    "pros": [
+      "Portsmouth's coastal location makes flood risk a real and growing concern",
+      "Updated flood maps protect future housing from known hazards",
+      "Building standards that account for sea level rise are cost-effective when applied at construction"
+    ],
+    "cons": [
+      "Updated flood maps may constrain development in areas currently zoned for housing",
+      "Higher flood resilience standards increase construction costs",
+      "Climate adaptation requirements add regulatory complexity for developers"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1690,8 +2656,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Primary research fills a critical gap \u2014 existing data doesn't capture Portsmouth-specific conditions","Directly engages the people most affected by housing challenges","Findings strengthen advocacy by putting faces and stories behind statistics"],
-    "cons": ["Surveying vulnerable populations requires sensitivity, trust-building, and ethical protocols","Sample sizes for specific subgroups may be too small for statistically robust findings","Research takes time \u2014 results may arrive after policy windows close"]
+    "pros": [
+      "Primary research fills a critical gap \u2014 existing data doesn't capture Portsmouth-specific conditions",
+      "Directly engages the people most affected by housing challenges",
+      "Findings strengthen advocacy by putting faces and stories behind statistics"
+    ],
+    "cons": [
+      "Surveying vulnerable populations requires sensitivity, trust-building, and ethical protocols",
+      "Sample sizes for specific subgroups may be too small for statistically robust findings",
+      "Research takes time \u2014 results may arrive after policy windows close"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1704,8 +2678,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Quantifies the economic cost of housing unaffordability \u2014 a powerful argument for action","Employer data reframes housing as a business competitiveness issue","Precursor to employer roundtable (#71) \u2014 builds the evidence base first"],
-    "cons": ["Survey response rates from businesses are typically low","Employers may be reluctant to share salary and recruitment data","Results may confirm what's already known without changing the political calculus"]
+    "pros": [
+      "Quantifies the economic cost of housing unaffordability \u2014 a powerful argument for action",
+      "Employer data reframes housing as a business competitiveness issue",
+      "Precursor to employer roundtable (#71) \u2014 builds the evidence base first"
+    ],
+    "cons": [
+      "Survey response rates from businesses are typically low",
+      "Employers may be reluctant to share salary and recruitment data",
+      "Results may confirm what's already known without changing the political calculus"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1718,8 +2700,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Bridges the gap between county-level RHNA data and Portsmouth-specific needs","UNH partnership provides low-cost research capacity","Calibrates regional housing needs to local demographics and market conditions"],
-    "cons": ["Methodology for localizing county data involves assumptions that can be challenged","May duplicate portions of the Master Plan housing needs analysis","Academic partnerships may produce findings on slower timelines than advocacy needs"]
+    "pros": [
+      "Bridges the gap between county-level RHNA data and Portsmouth-specific needs",
+      "UNH partnership provides low-cost research capacity",
+      "Calibrates regional housing needs to local demographics and market conditions"
+    ],
+    "cons": [
+      "Methodology for localizing county data involves assumptions that can be challenged",
+      "May duplicate portions of the Master Plan housing needs analysis",
+      "Academic partnerships may produce findings on slower timelines than advocacy needs"
+    ]
   },
   {
     "category": "Education & Outreach",
@@ -1732,8 +2722,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Board members make the land use decisions that determine whether HAP actions translate to housing","Orientation creates shared understanding across boards that currently operate independently","New appointee onboarding ensures continuity as board membership changes"],
-    "cons": ["Board members serve voluntarily \u2014 mandatory training may deter participation","Orientation content must be carefully balanced to inform rather than prescribe outcomes","Annual refreshers require ongoing coordination and content development"]
+    "pros": [
+      "Board members make the land use decisions that determine whether HAP actions translate to housing",
+      "Orientation creates shared understanding across boards that currently operate independently",
+      "New appointee onboarding ensures continuity as board membership changes"
+    ],
+    "cons": [
+      "Board members serve voluntarily \u2014 mandatory training may deter participation",
+      "Orientation content must be carefully balanced to inform rather than prescribe outcomes",
+      "Annual refreshers require ongoing coordination and content development"
+    ]
   },
   {
     "category": "Permitting & Process",
@@ -1746,8 +2744,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Unlocks staff capacity for HAP implementation without new headcount \u2014 budget-compatible","Process reforms benefit all applicants, not just housing projects","Directly addresses the implementation bottleneck \u2014 without capacity, the HAP sits on a shelf"],
-    "cons": ["Workflow assessment takes time that already-stretched staff may not have","Process changes face institutional inertia and staff resistance","Efficiency gains may be absorbed by growing application volume rather than freed for planning"]
+    "pros": [
+      "Unlocks staff capacity for HAP implementation without new headcount \u2014 budget-compatible",
+      "Process reforms benefit all applicants, not just housing projects",
+      "Directly addresses the implementation bottleneck \u2014 without capacity, the HAP sits on a shelf"
+    ],
+    "cons": [
+      "Workflow assessment takes time that already-stretched staff may not have",
+      "Process changes face institutional inertia and staff resistance",
+      "Efficiency gains may be absorbed by growing application volume rather than freed for planning"
+    ]
   },
   {
     "action": "HAP formal adoption and governance framework",
@@ -1760,8 +2766,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Transforms the HAP from advisory to binding \u2014 creates legal and political accountability","Named departmental ownership ensures someone is responsible for driving implementation","Formal adoption gives the HAP standing in budget deliberations and land use decisions"],
-    "cons": ["Council may resist binding adoption if it constrains future discretion on individual projects","Formal governance structure adds administrative overhead and meeting obligations","Political risk if Council adopts the HAP but then visibly fails to implement it"]
+    "pros": [
+      "Transforms the HAP from advisory to binding \u2014 creates legal and political accountability",
+      "Named departmental ownership ensures someone is responsible for driving implementation",
+      "Formal adoption gives the HAP standing in budget deliberations and land use decisions"
+    ],
+    "cons": [
+      "Council may resist binding adoption if it constrains future discretion on individual projects",
+      "Formal governance structure adds administrative overhead and meeting obligations",
+      "Political risk if Council adopts the HAP but then visibly fails to implement it"
+    ]
   },
   {
     "action": "HAP implementation accountability and reporting",
@@ -1774,8 +2788,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Creates regular, visible accountability that prevents the HAP from being shelved after adoption","Public dashboard builds transparency and resident trust in the housing reform process","Quarterly cadence keeps housing on the Council agenda rather than being a once-a-year topic"],
-    "cons": ["Reporting requires staff time to compile data \u2014 adds to already-stretched capacity","Public dashboards showing slow progress could be used to criticize the city rather than motivate action","Risk of measuring activity (items advanced) rather than impact (units produced, affordability achieved)"]
+    "pros": [
+      "Creates regular, visible accountability that prevents the HAP from being shelved after adoption",
+      "Public dashboard builds transparency and resident trust in the housing reform process",
+      "Quarterly cadence keeps housing on the Council agenda rather than being a once-a-year topic"
+    ],
+    "cons": [
+      "Reporting requires staff time to compile data \u2014 adds to already-stretched capacity",
+      "Public dashboards showing slow progress could be used to criticize the city rather than motivate action",
+      "Risk of measuring activity (items advanced) rather than impact (units produced, affordability achieved)"
+    ]
   },
   {
     "action": "HAP budget alignment requirement",
@@ -1788,13 +2810,21 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Forces the city to put resources behind HAP commitments rather than treating it as an unfunded mandate","Annual budget alignment creates a natural prioritization and sequencing mechanism","Dedicated funding line item makes HAP spending visible and accountable to taxpayers"],
-    "cons": ["Competes with other budget priorities in a fiscally constrained environment","Dedicated housing budget may be cut in lean years, undermining implementation continuity","Budget requirement may make Council less willing to adopt the HAP in the first place"]
+    "pros": [
+      "Forces the city to put resources behind HAP commitments rather than treating it as an unfunded mandate",
+      "Annual budget alignment creates a natural prioritization and sequencing mechanism",
+      "Dedicated funding line item makes HAP spending visible and accountable to taxpayers"
+    ],
+    "cons": [
+      "Competes with other budget priorities in a fiscally constrained environment",
+      "Dedicated housing budget may be cut in lean years, undermining implementation continuity",
+      "Budget requirement may make Council less willing to adopt the HAP in the first place"
+    ]
   },
   {
     "action": "Land value capture and anti-speculation strategy",
     "category": "Incentives & Financial Tools",
-    "description": "Develop a coordinated strategy to capture land value increases resulting from upzoning and public investment, and to prevent speculative land price escalation that undermines housing affordability. Tools to evaluate include: strategic land banking through a municipal acquisition fund for parcels in areas targeted for upzoning (acquire before rezoning drives prices up); enhanced use of TIF districts to capture incremental tax revenue from upzoned areas; inclusionary zoning in-lieu fees calibrated to land value increases; and monitoring of land transaction prices in areas where zoning changes are proposed or adopted.",
+    "description": "Develop a coordinated strategy to capture land value increases resulting from upzoning and public investment, and to prevent speculative land price escalation that undermines housing affordability. Portsmouth has established the Below Market Rate Housing Trust Fund (capitalized at $500,000 through equal contributions from the City and SoBow Square, LLC), providing an existing capital vehicle for land banking. Tools to deploy and evaluate include: strategic land banking \u2014 acquiring parcels in areas targeted for upzoning before rezoning drives prices up; resale and affordability covenants attached to all projects receiving city financial assistance or city-controlled land; enhanced use of TIF districts to capture incremental tax revenue from upzoned areas; calibration of inclusionary zoning density bonuses to actual land value increases; and monitoring of land transaction prices in areas where zoning changes are proposed or adopted.",
     "target": "Strategy framework developed within first year of HAP adoption. Land price monitoring initiated immediately upon adoption of any major upzoning.",
     "metric": "Land transaction price trends in upzoned areas vs. citywide baseline; number of parcels acquired for housing through land banking; TIF revenue captured and deployed for housing infrastructure.",
     "notes": "SEQUENCING PREREQUISITE: This strategy must be in active development before missing middle housing allowances and single-family zone reform proceed to ordinance drafting. Upzoning without land value capture mechanisms risks a scenario where land prices rise faster than housing gets built \u2014 enriching landowners without producing affordable units. Portsmouth's compact geography and high land values make this risk particularly acute. A responsible party should be assigned in Phase 1, not deferred to Phase 3.\n\nThis is a structural gap identified in reviewer feedback. Upzoning without land value capture mechanisms risks a scenario where land prices rise faster than housing gets built \u2014 the zoning reform enriches landowners without producing affordable units. Portsmouth's compact geography and high land values make this risk particularly acute. The strategy should be developed in coordination with the fiscal impact analysis and buildout capacity modeling.",
@@ -1802,8 +2832,17 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Prevents upzoning from primarily benefiting land speculators rather than producing housing","Land banking acquires parcels at pre-upzoning prices, dramatically reducing future housing development costs","Creates a self-reinforcing cycle: public investment increases land values, captured value funds more housing investment"],
-    "cons": ["Land banking requires significant upfront capital that the city may not have","Land value capture mechanisms may face legal challenges under NH property rights framework","Monitoring and enforcement add administrative complexity"]
+    "pros": [
+      "Prevents upzoning from primarily benefiting land speculators rather than producing housing",
+      "Land banking acquires parcels at pre-upzoning prices, dramatically reducing future housing development costs",
+      "Creates a self-reinforcing cycle: public investment increases land values, captured value funds more housing investment"
+    ],
+    "cons": [
+      "Land banking requires timely deployment of capital ahead of upzoning announcements \u2014 delayed action forfeits the pre-speculation acquisition window",
+      "Land value capture mechanisms (beyond resale covenants on assisted projects) may face legal challenges under NH property rights framework",
+      "Monitoring and enforcement add administrative complexity",
+      "$500k fund capitalization is meaningful but limited relative to Portsmouth land values \u2014 strategic parcel prioritization is essential"
+    ]
   },
   {
     "action": "Development feasibility and pro forma analysis (2026 market conditions)",
@@ -1816,8 +2855,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Calibrates incentives to actual development economics rather than assumptions from 2022","Break-even rent analysis shows exactly where the affordability gap is and how large the subsidy needs to be","Sensitivity analysis lets policymakers see which incentive levers have the most impact per dollar"],
-    "cons": ["Pro forma analysis requires developer input and market data that may be proprietary or contested","Results become outdated quickly in volatile cost environments \u2014 requires regular updating","Analysis may show that some housing types are simply infeasible without deep subsidy, which could discourage action"]
+    "pros": [
+      "Calibrates incentives to actual development economics rather than assumptions from 2022",
+      "Break-even rent analysis shows exactly where the affordability gap is and how large the subsidy needs to be",
+      "Sensitivity analysis lets policymakers see which incentive levers have the most impact per dollar"
+    ],
+    "cons": [
+      "Pro forma analysis requires developer input and market data that may be proprietary or contested",
+      "Results become outdated quickly in volatile cost environments \u2014 requires regular updating",
+      "Analysis may show that some housing types are simply infeasible without deep subsidy, which could discourage action"
+    ]
   },
   {
     "action": "Buildout capacity modeling (current vs. reformed zoning)",
@@ -1830,8 +2877,16 @@
     "is_new": true,
     "status": "",
     "status_detail": "",
-    "pros": ["Connects zoning reform proposals directly to unit production estimates \u2014 makes the case for reform concrete.","Visual gap analysis makes housing capacity and demand data accessible for public and Council review.","Realistic capacity adjustments prevent overpromising what zoning changes alone can deliver."],
-    "cons": ["Modeling requires assumptions about owner willingness and market absorption that are inherently uncertain","Theoretical capacity numbers can be misleadingly large \u2014 critics may argue reforms aren't needed if current zoning already allows thousands of units","Parcel-level analysis may identify politically sensitive sites, creating opposition before reforms are even proposed"]
+    "pros": [
+      "Connects zoning reform proposals directly to unit production estimates \u2014 makes the case for reform concrete.",
+      "Visual gap analysis makes housing capacity and demand data accessible for public and Council review.",
+      "Realistic capacity adjustments prevent overpromising what zoning changes alone can deliver."
+    ],
+    "cons": [
+      "Modeling requires assumptions about owner willingness and market absorption that are inherently uncertain",
+      "Theoretical capacity numbers can be misleadingly large \u2014 critics may argue reforms aren't needed if current zoning already allows thousands of units",
+      "Parcel-level analysis may identify politically sensitive sites, creating opposition before reforms are even proposed"
+    ]
   },
   {
     "category": "Production Targets & Data",
@@ -1844,8 +2899,20 @@
     "is_new": true,
     "status": "not-started",
     "status_detail": "Not yet initiated. Elevated to high-urgency pre-triage item.",
-    "pros": ["Provides early warning of shifts in housing utilization and ownership patterns that may reduce effective year-round supply.","Supports data-driven decision-making rather than reactive policy debates.","Improves transparency around market structure and long-term housing trends.","Helps distinguish between supply constraints and ownership concentration trends.","Aligns with production targets by ensuring new units are functioning as intended in the year-round housing market."],
-    "cons": ["Data collection may be imperfect or require cross-department coordination.","Monitoring does not by itself increase housing supply.","Risk of misinterpretation if indicators are viewed without context.","Could generate political pressure for policy responses before trends are fully established.","Some ownership or utilization data may be difficult to access or verify."]
+    "pros": [
+      "Provides early warning of shifts in housing utilization and ownership patterns that may reduce effective year-round supply.",
+      "Supports data-driven decision-making rather than reactive policy debates.",
+      "Improves transparency around market structure and long-term housing trends.",
+      "Helps distinguish between supply constraints and ownership concentration trends.",
+      "Aligns with production targets by ensuring new units are functioning as intended in the year-round housing market."
+    ],
+    "cons": [
+      "Data collection may be imperfect or require cross-department coordination.",
+      "Monitoring does not by itself increase housing supply.",
+      "Risk of misinterpretation if indicators are viewed without context.",
+      "Could generate political pressure for policy responses before trends are fully established.",
+      "Some ownership or utilization data may be difficult to access or verify."
+    ]
   },
   {
     "action": "Transfer of development rights",
@@ -1855,8 +2922,14 @@
     "sources": "John Tabor/City of Dover",
     "target": "",
     "metric": "",
-    "pros": ["Bypass zoning restrictions to get more density","CUP still required"],
-    "cons": ["Limited by available conservation land","Perceived as spot zoning by neighborhoods"],
+    "pros": [
+      "Bypass zoning restrictions to get more density",
+      "CUP still required"
+    ],
+    "cons": [
+      "Limited by available conservation land",
+      "Perceived as spot zoning by neighborhoods"
+    ],
     "status": ""
   },
   {
@@ -1867,8 +2940,20 @@
     "sources": "Progress Portsmouth",
     "target": "",
     "metric": "",
-    "pros": ["Addresses a gap in housing options for residents for whom conventional rentals are financially out of reach","Co-living can achieve higher unit density per square foot than conventional multifamily","G1/G2 zones already permit co-living; parking standard revision could make that permission actionable","Kitchenette allowance may expand market viability without materially changing neighborhood character","A higher building cap could enable adaptive reuse of existing commercial and office structures"],
-    "cons": ["Expanding to MRB may draw opposition given its proximity to residential neighborhoods","Further parking reductions may face scrutiny in the Route 1 corridor absent transit alternatives; Planning Board already holds modification discretion under 10.815.41","Kitchenette permission may complicate fire and building code compliance review","Reducing CUP requirements removes a community input mechanism","Operational cost of the onsite manager requirement (10.815.25) remains regardless of zoning changes and may affect project economics"],
+    "pros": [
+      "Addresses a gap in housing options for residents for whom conventional rentals are financially out of reach",
+      "Co-living can achieve higher unit density per square foot than conventional multifamily",
+      "G1/G2 zones already permit co-living; parking standard revision could make that permission actionable",
+      "Kitchenette allowance may expand market viability without materially changing neighborhood character",
+      "A higher building cap could enable adaptive reuse of existing commercial and office structures"
+    ],
+    "cons": [
+      "Expanding to MRB may draw opposition given its proximity to residential neighborhoods",
+      "Further parking reductions may face scrutiny in the Route 1 corridor absent transit alternatives; Planning Board already holds modification discretion under 10.815.41",
+      "Kitchenette permission may complicate fire and building code compliance review",
+      "Reducing CUP requirements removes a community input mechanism",
+      "Operational cost of the onsite manager requirement (10.815.25) remains regardless of zoning changes and may affect project economics"
+    ],
     "status": ""
   },
   {
@@ -1882,8 +2967,16 @@
     "is_new": true,
     "status": "in-progress",
     "status_detail": "Bills in House committee as of March 2026. HB1540 and HB1726 had executive sessions scheduled March 3, 2026. No Planning Department ordinance conflict review on record yet.",
-    "pros": ["Proactive review prevents Portsmouth from being caught off-guard by state preemption of its February 2026 ordinance","HB1662 loan guarantees, if enacted, would directly support ADU production goals","HB1079 non-conforming structure provision could unlock ADU potential in older neighborhoods not addressed by current ordinance"],
-    "cons": ["Legislative outcomes uncertain; monitoring effort may not yield actionable conflict","HB1540 uniform standards could constrain locally tailored provisions Portsmouth has adopted","Staff bandwidth for bill tracking competes with implementation priorities"]
+    "pros": [
+      "Proactive review prevents Portsmouth from being caught off-guard by state preemption of its February 2026 ordinance",
+      "HB1662 loan guarantees, if enacted, would directly support ADU production goals",
+      "HB1079 non-conforming structure provision could unlock ADU potential in older neighborhoods not addressed by current ordinance"
+    ],
+    "cons": [
+      "Legislative outcomes uncertain; monitoring effort may not yield actionable conflict",
+      "HB1540 uniform standards could constrain locally tailored provisions Portsmouth has adopted",
+      "Staff bandwidth for bill tracking competes with implementation priorities"
+    ]
   },
   {
     "category": "Zoning & Land Use",
@@ -1896,8 +2989,16 @@
     "is_new": true,
     "status": "not-started",
     "status_detail": "",
-    "pros": ["Provides spatial framework for directing infrastructure investment and zoning reform in a coordinated way.","Area-specific standards allow design context to vary \u2014 what works on Lafayette Road differs from the West End.","Grounds the zoning modernization consultant scope in city-designated priorities rather than consultant discretion."],
-    "cons": ["Designation process can become contentious if residents interpret it as a signal of unwanted density.","Design guideline development requires staff time and likely consultant support.","Risk of 'target area' framing implying other areas are excluded from housing investment."]
+    "pros": [
+      "Provides spatial framework for directing infrastructure investment and zoning reform in a coordinated way.",
+      "Area-specific standards allow design context to vary \u2014 what works on Lafayette Road differs from the West End.",
+      "Grounds the zoning modernization consultant scope in city-designated priorities rather than consultant discretion."
+    ],
+    "cons": [
+      "Designation process can become contentious if residents interpret it as a signal of unwanted density.",
+      "Design guideline development requires staff time and likely consultant support.",
+      "Risk of 'target area' framing implying other areas are excluded from housing investment."
+    ]
   },
   {
     "category": "Incentives & Financial Tools",
