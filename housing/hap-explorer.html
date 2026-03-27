@@ -281,6 +281,33 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
   .action-card{break-inside:avoid;}
   .card-body{display:block!important;}
 }
+
+/* ── MASTER PLAN / RESOURCES OVERLAYS ── */
+.mp-overlay,.res-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,26,46,0.6);z-index:200;justify-content:center;align-items:flex-start;padding-top:80px;}
+.mp-overlay.open,.res-overlay.open{display:flex;}
+.mp-panel,.res-panel{background:var(--white);border-radius:var(--radius-lg);width:92%;max-width:740px;max-height:76vh;overflow-y:auto;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;}
+.mp-header,.res-header{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--white);border-radius:var(--radius-lg) var(--radius-lg) 0 0;z-index:1;}
+.mp-header h3,.res-header h3{font-family:'DM Serif Display',Georgia,serif;font-size:1.15rem;color:var(--navy);}
+.mp-close,.res-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--slate);padding:4px 8px;line-height:1;}
+.mp-tab-row{display:flex;gap:0;border-bottom:1px solid var(--border);padding:0 24px;background:var(--cream);flex-shrink:0;}
+.mp-tab{padding:10px 16px;font-size:0.82rem;font-weight:600;cursor:pointer;color:var(--slate);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;}
+.mp-tab.active{color:var(--gold-dim);border-bottom-color:var(--gold);}
+.mp-tab-panel{display:none;padding:20px 24px;font-size:0.88rem;color:var(--navy);line-height:1.7;}
+.mp-tab-panel.active{display:block;}
+.mp-tab-panel h4{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-dim);margin:0 0 8px;}
+.mp-tab-panel h4+h4{margin-top:16px;}
+.mp-tab-panel p{margin-bottom:12px;color:var(--slate);}
+.mp-tab-panel ul{margin:0 0 14px 0;padding-left:18px;}
+.mp-tab-panel li{margin-bottom:5px;color:var(--slate);}
+.mp-tab-panel li strong{color:var(--navy);}
+.mp-callout{background:var(--cream-warm);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:12px 16px;margin:12px 0;font-size:0.85rem;color:var(--navy);line-height:1.6;font-style:italic;}
+.res-body{padding:16px 24px;font-size:0.87rem;color:var(--navy);}
+.res-group-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-dim);margin:16px 0 6px;}
+.res-group-label:first-child{margin-top:0;}
+.res-row{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);}
+.res-row:last-child{border-bottom:none;}
+.res-tag{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--cream-warm);color:var(--gold-dim);border-radius:4px;padding:2px 7px;white-space:nowrap;flex-shrink:0;}
+.res-label{font-size:0.85rem;color:var(--navy-mid);flex:1;line-height:1.4;}
 </style>
 </head>
 <body>
@@ -311,7 +338,9 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
       <div class="view-controls">
         <div class="view-divider"></div>
         <div class="header-toolbar view-toggle">
-          <button class="view-btn" data-view="glossary" onclick="toggleGlossary()">&#128218; Glossary</button>
+          <button class="view-btn" onclick="toggleMpPanel()">&#128203; Master Plan</button>
+          <button class="view-btn" onclick="toggleResPanel()">&#128218; Resources</button>
+          <button class="view-btn" data-view="glossary" onclick="toggleGlossary()">&#128212; Glossary</button>
           <button class="view-btn active" data-view="cards" onclick="setView('cards')">&#9783; Cards</button>
           <button class="view-btn" data-view="table" onclick="setView('table')">&#9776; Table</button>
           <button class="view-btn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
@@ -330,6 +359,112 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
     <div class="glossary-body">
       <input class="glossary-search" id="glossarySearch" type="text" placeholder="Search terms..." oninput="filterGlossary()">
       <div id="glossaryEntries"></div>
+    </div>
+  </div>
+</div>
+
+<div class="mp-overlay" id="mpOverlay">
+  <div class="mp-panel">
+    <div class="mp-header">
+      <h3>Relationship to the Master Plan Update</h3>
+      <button class="mp-close" onclick="toggleMpPanel()">&#10005;</button>
+    </div>
+    <div class="mp-tab-row">
+      <div class="mp-tab active" onclick="switchMpTab(this,'mpt-context')">Context</div>
+      <div class="mp-tab" onclick="switchMpTab(this,'mpt-continuity')">Continuity</div>
+      <div class="mp-tab" onclick="switchMpTab(this,'mpt-gaps')">Gaps Addressed</div>
+      <div class="mp-tab" onclick="switchMpTab(this,'mpt-risks')">Coordination Risks</div>
+    </div>
+    <div class="mp-tab-panel active" id="mpt-context">
+      <h4>Where the Housing Action Plan fits</h4>
+      <p>Portsmouth's 2017 Master Plan identified housing as a priority across multiple themes — <em>Diverse</em>, <em>Vibrant</em>, and <em>Resilient</em> — but its action items were never consolidated into an implementation framework. The Housing Action Plan was developed to close that gap.</p>
+      <p>The city is currently engaged in a new Master Plan update (anticipated 2026–27). The Housing Action Plan is intentionally designed to feed into that process: it provides a tested, evidence-based inventory of housing strategies that the Master Plan update can formalize, prioritize, and adopt.</p>
+      <div class="mp-callout">"Implementation of the Master Plan's housing goals will be advanced in substantial part through the Portsmouth Housing Action Plan, a Council-adopted policy document targeted for adoption in July 2026. The Housing Action Plan provides the detailed action framework — including specific zoning amendments, financial incentives, affordability targets, and accountability mechanisms — that the Master Plan's housing goals require."</div>
+      <h4>Intended relationship</h4>
+      <ul>
+        <li>The Housing Action Plan does not replace the Master Plan — it operationalizes its housing chapter</li>
+        <li>Items in this Explorer trace directly to 2017 Master Plan actions where applicable (see Sources field on each card)</li>
+        <li>Not all Housing Action Plan items will be implemented immediately — a triage and prioritization process will identify the subset of actions to advance during the current Council term</li>
+        <li>The Master Plan's housing recommendations should be understood as consistent with, and reinforced by, the Housing Action Plan rather than as a parallel or alternative framework</li>
+      </ul>
+    </div>
+    <div class="mp-tab-panel" id="mpt-continuity">
+      <h4>Drawing from sidelined knowledge</h4>
+      <p>Many Housing Action Plan items represent direct continuity with findings and recommendations that were documented in the 2017 Master Plan but never acted upon. In cataloguing these connections, the Housing Action Plan serves as an updated, unified implementation source — not a new direction, but a recovery of existing institutional knowledge.</p>
+      <p>As of v2.8, 26 Housing Action Plan items carry explicit attribution to specific 2017 Master Plan actions in their Sources field. These span Zoning, Permitting, Incentives, Partnerships, Special Populations, Infrastructure, and Climate categories.</p>
+      <p>The Master Plan update is an opportunity to formally close the loop: adopting a Housing Action Plan that the new Master Plan can reference as its housing implementation framework — an explicit acknowledgment that the Council's decision to create the Housing Action Plan was the right response to the pace problem the Master Plan cycle represents.</p>
+    </div>
+    <div class="mp-tab-panel" id="mpt-gaps">
+      <h4>2017 Master Plan items now addressed in the Housing Action Plan</h4>
+      <ul>
+        <li><strong>1.1.1</strong> Reinvestment in underutilized buildings and land — Z-29, I-4, PL-1</li>
+        <li><strong>1.2.1</strong> Mixed-use development / Gateway PD options — Z-1, Z-11, Z-28</li>
+        <li><strong>1.2.2</strong> Route 1 Bypass redevelopment — Z-15</li>
+        <li><strong>2.1.2</strong> Architectural design standards — P-5</li>
+        <li><strong>2.1.3</strong> Residential zoning integrity — Z-8, Z-33, Z-37</li>
+        <li><strong>3.1.2</strong> CDBG rehabilitation programs — I-14</li>
+        <li><strong>3.1.4</strong> Live/work unit zoning — Z-14</li>
+        <li><strong>3.2.1</strong> Streamline affordable housing approvals — P-1, I-3</li>
+        <li><strong>3.2.2</strong> Mixed-income multifamily with parking/height incentives — Z-5, Z-6, Z-7, Z-12, Z-25</li>
+        <li><strong>3.2.3</strong> Funding for special populations — SP-1 through SP-6, PC-9</li>
+        <li><strong>3.2.4</strong> First-time homebuyer education and incentives — I-12, I-21, EO-9</li>
+        <li><strong>3.2.5</strong> Micro-units — Z-20</li>
+        <li><strong>3.2.7</strong> PHA mixed-use redevelopment — PL-4, PC-8</li>
+        <li><strong>4.3.2–4.3.4</strong> Parking study and reform — Z-4, IS-2</li>
+        <li><strong>5.1.1 / 5.1.3</strong> Sustainable building and stormwater — CS-1, CS-2, CS-3</li>
+        <li><strong>5.5.1</strong> Sea level rise in adaptation planning — CS-3</li>
+      </ul>
+      <p style="font-size:0.8rem;color:var(--slate-light);">See the Sources field on individual items for full attribution. One 2017 item — 5.4.7 (LEED-ND in neighborhood planning) — has no direct Housing Action Plan analog and may warrant consideration in the Master Plan update.</p>
+    </div>
+    <div class="mp-tab-panel" id="mpt-risks">
+      <h4>Risks if the two documents are not explicitly coordinated</h4>
+      <ul>
+        <li><strong>Timeline drift:</strong> Housing Action Plan adoption is July 2026; Master Plan completion is early 2027. Without an explicit link, overlapping items risk being deferred pending the Master Plan — delaying actions the Council has already committed to.</li>
+        <li><strong>Scope absorption:</strong> A zoning modernization consultant scoped to the Master Plan but not the Housing Action Plan may reinvent Housing Action Plan zoning items rather than execute them, adding time and cost.</li>
+        <li><strong>Public confusion:</strong> Residents will encounter housing recommendations from both documents simultaneously — without guidance on how they relate, who is accountable, or on what timeline.</li>
+        <li><strong>Weakened Council commitment:</strong> The Housing Action Plan exists precisely because the Master Plan cycle was too slow. Connecting the two documents acknowledges that decision and strengthens both.</li>
+      </ul>
+      <p>Progress Portsmouth has requested that the Master Plan's housing section include explicit language establishing this relationship before the April 22, 2026 Public Open House — the last practical insertion point before the plan enters broad public circulation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="res-overlay" id="resOverlay">
+  <div class="res-panel">
+    <div class="res-header">
+      <h3>Sources &amp; Reference Materials</h3>
+      <button class="res-close" onclick="toggleResPanel()">&#10005;</button>
+    </div>
+    <div class="res-body">
+      <div class="res-group-label">Foundation documents — Portsmouth</div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth 2017 Master Plan — Housing &amp; Land Use chapters (Actions 1.1–5.5)</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">City Council Housing Policy 2016-01 (Perkins, Dec 2016) — Master Plan Strategy attachment</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth Housing Committee Work Plan 2024–25</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">RKG Associates Housing Needs Assessment, 2022</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Places to Live Dialogue — community engagement record, 2024</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Blue Ribbon Committee on Housing, 2016</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth Planning Board — HAP presentations, Feb–Mar 2026</span></div>
+      <div class="res-group-label">Comparable plans</div>
+      <div class="res-row"><span class="res-tag">NH</span><span class="res-label">Keene Housing Action Plan</span></div>
+      <div class="res-row"><span class="res-tag">ME</span><span class="res-label">South Portland Housing Production Plan</span></div>
+      <div class="res-row"><span class="res-tag">WA</span><span class="res-label">Burien Housing Action Plan</span></div>
+      <div class="res-group-label">State law &amp; guidance</div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">HB 577 (2025) — ADU reform, amending RSA 674:71–73; eff. 7/1/25</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">HB 631 (2025) — Multifamily on commercial land; adaptive reuse exemptions; eff. 7/1/26</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">SB 284 (2025) — Residential parking cap (1 space/unit max); eff. 9/13/25</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">SB 283 (2025) — Below-grade FAR exclusion; eff. ~Nov 2025</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">HB 457 (2025) — Occupancy restriction limits; eff. 9/13/25</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">SB 282 (2025) — Single-stairway buildings up to 4 floors; eff. 9/13/25</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">RSA 79-E — Community Revitalization Tax Relief Incentive</span></div>
+      <div class="res-row"><span class="res-tag">NH RSA</span><span class="res-label">RSA 674:58–61 — Workforce Housing statute</span></div>
+      <div class="res-row"><span class="res-tag">NHMA</span><span class="res-label">Changes to Planning &amp; Zoning Laws in 2025 (Revised Aug 13, 2025)</span></div>
+      <div class="res-row"><span class="res-tag">NHMA</span><span class="res-label">Revised Law on Accessory Dwelling Units — 2025 Edition (Aug 12, 2025)</span></div>
+      <div class="res-row"><span class="res-tag">NH Housing</span><span class="res-label">Municipal Guide to RSA 79-E — Portsmouth City Council presentation, Mar 2026 (Wrightsman)</span></div>
+      <div class="res-group-label">National research</div>
+      <div class="res-row"><span class="res-tag">AEI</span><span class="res-label">AEI Housing Supply Accelerator — reform framework and benchmarking</span></div>
+      <div class="res-row"><span class="res-tag">Research</span><span class="res-label">Ivory Innovations Housing Affordability Index</span></div>
+      <div class="res-row"><span class="res-tag">NHFA</span><span class="res-label">NH Housing Finance Authority — workforce housing data and reports</span></div>
+      <div class="res-row"><span class="res-tag">NZA</span><span class="res-label">National Zoning Atlas — NH coverage by Saint Anselm College (data frozen Jun 1, 2024)</span></div>
     </div>
   </div>
 </div>
@@ -452,8 +587,9 @@ function renderContent(){
   let h='';
 
   // Revision banner
-  h+=`<div class="revision-banner"><span class="rev-date">Version 2.7 — March 26, 2026</span><br>
+  h+=`<div class="revision-banner"><span class="rev-date">Version 2.8 — March 27, 2026</span><br>
   <div class="rev-content" id="revContent"><strong>Revision history:</strong> v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022. v1.1 (Feb 10) status audit adding 3 items to 122. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.3 (Feb 17) pros/cons analysis added for all items. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added. v2.1 (Mar 6) 2026 NH legislative session analysis: RSA 79-E item updated to reflect HB1103 passing House Housing Committee 17-0 with amendment on March 3, expanding 79-E credits to wider property types; new item added tracking HB1079, HB1540, and HB1662 for conflicts with Portsmouth's February 17, 2026 ADU ordinance. Total items: 135. v2.2 (Mar 8) sequencing and provisional data revisions: 5 evaluation items updated — land value capture, missing middle, and single-family zone reform designated pre-triage-priority with explicit sequencing prerequisites; housing utilization monitoring elevated to pre-triage-priority; federally subsidized unit preservation strategy reframed as verification-first with PROVISIONAL DATA flag on RKG 2022 NHPD unit counts pending PHA confirmation. v2.3 (Mar 12) 2016 Housing Policy integration: source attribution added to 14 existing items tracing to City Council Housing Policy 2016-01 (Perkins, Dec 2016) and its Master Plan Strategy attachment; 1 new item added (Zoning &amp; Land Use) for housing target area designation with area-specific design standards per §III.3. Total items: 136. v2.6 (Mar 24) three-source gap analysis complete: added items 138–145 from AEI/Housing Supply Accelerator and Ivory Innovations source review (permit review timeline audit, building code review, pre-approved design templates, institutional land inventory, impact fee calibration, entry-level ownership strategy, shared equity homeownership framework, third-party plan review); expanded items 13 and 37 to absorb new research; retired item 54 (superseded by item 144); cross-references added to items 2 and 34. Total items: 145. v2.7 (Mar 26) stable category-prefixed IDs added to all 145 items (Z-1 through GA-3); retired and out-of-scope items now greyed and struck through; deferred status added to vocabulary; IDs displayed on all cards, table view, and yield view.
+   v2.8 (Mar 27, 2026): Added 2025 state law compliance flags (HB 577/631, SB 284/283/282, HB 457) to Z-2, Z-3, Z-4, Z-5, Z-21, Z-25, Z-29, Z-36; added 2017 Master Plan source attributions to 26 items spanning all major categories; added Master Plan relationship panel and Resources panel to Explorer header.
   <div class="ai-note">This module was developed with AI assistance. Claude by Anthropic served as the primary AI model for data structuring, analysis, pros/cons generation, and HTML development. All content reflects Progress Portsmouth's research, policy positions, and editorial judgment — AI tools were used to accelerate production, not to substitute for local knowledge or advocacy strategy.</div></div>
   <button class="rev-toggle" id="revToggle" onclick="const c=document.getElementById('revContent');const t=document.getElementById('revToggle');c.classList.toggle('expanded');t.textContent=c.classList.contains('expanded')?'Read less \u25b4':'Read more \u25be';">Read more ▾</button></div>`;
 
@@ -604,11 +740,26 @@ function renderContent(){
     h+=`</div>`;
   }
 
-  h+=`<div class="version-note">📌 Version 2.7 — March 26, 2026 — Stable IDs (Z-1 through GA-3) · retired/out-of-scope visual treatment · deferred status added · 145 items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
+  h+=`<div class="version-note">📌 Version 2.8 — March 27, 2026 — 2025 state law compliance flags · 2017 Master Plan attributions (26 items) · Master Plan &amp; Resources panels added · 145 items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
 
   document.getElementById('content').innerHTML=h;
 }
 
+
+function toggleMpPanel(){document.getElementById('mpOverlay').classList.toggle('open');}
+function toggleResPanel(){document.getElementById('resOverlay').classList.toggle('open');}
+function switchMpTab(el,targetId){
+  const panel=el.closest('.mp-panel');
+  panel.querySelectorAll('.mp-tab').forEach(t=>t.classList.remove('active'));
+  panel.querySelectorAll('.mp-tab-panel').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(targetId).classList.add('active');
+}
+// Close panels on overlay click
+document.addEventListener('click',function(e){
+  if(e.target.id==='mpOverlay') document.getElementById('mpOverlay').classList.remove('open');
+  if(e.target.id==='resOverlay') document.getElementById('resOverlay').classList.remove('open');
+});
 document.addEventListener('DOMContentLoaded',function(){
   init();
   const si=document.getElementById('searchInput');
