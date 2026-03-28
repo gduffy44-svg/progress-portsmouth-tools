@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portsmouth Housing Media Coverage | March 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2332;
+            --navy-light: #2d3e52;
+            --gold: #f4a261;
+            --coral: #e76f51;
+            --green: #4a9079;
+            --gray-light: #f8f9fa;
+            --gray-mid: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: white;
+        }
+        
+        header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header .subtitle {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        header .tagline {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .update-badge {
+            display: inline-block;
+            background: rgba(244, 162, 97, 0.15);
+            color: var(--gold);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(244, 162, 97, 0.3);
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-box {
+            background: var(--gray-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            margin-top: 0.25rem;
+        }
+        
+        .stat-box.highlight {
+            background: linear-gradient(135deg, var(--coral) 0%, #d45a3e 100%);
+        }
+        
+        .stat-box.highlight .stat-number,
+        .stat-box.highlight .stat-label {
+            color: white;
+        }
+
+        .stat-box.positive {
+            background: linear-gradient(135deg, #2a9d8f 0%, #1e7a6e 100%);
+        }
+        
+        .stat-box.positive .stat-number,
+        .stat-box.positive .stat-label {
+            color: white;
+        }
+        
+        /* Story Cards */
+        .story {
+            border-left: 4px solid var(--gray-mid);
+            padding: 1rem 1rem 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--gray-light);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .story.nhpr { border-color: #1a73e8; }
+        .story.nhbr { border-color: var(--green); }
+        .story.wmur { border-color: var(--coral); }
+        .story.seacoast { border-color: var(--gold); }
+        .story.patch { border-color: #9c27b0; }
+        .story.context { border-color: var(--gray-mid); }
+        .story.nhhfa { border-color: #2a9d8f; }
+        
+        .story-date {
+            font-size: 0.8rem;
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .story-outlet {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+        
+        .story-outlet.nhpr { background: #e3f2fd; color: #1a73e8; }
+        .story-outlet.nhbr { background: #e8f5e9; color: var(--green); }
+        .story-outlet.wmur { background: #fbe9e7; color: var(--coral); }
+        .story-outlet.seacoast { background: #fff8e1; color: #f57c00; }
+        .story-outlet.patch { background: #f3e5f5; color: #9c27b0; }
+        .story-outlet.context { background: #eceff1; color: var(--gray-mid); }
+        .story-outlet.nhhfa { background: #e0f2f1; color: #00796b; }
+        
+        .story-title {
+            font-weight: 600;
+            color: var(--navy);
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+        
+        .story-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .story-title a:hover {
+            color: var(--coral);
+        }
+        
+        .story-summary {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .story-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin-right: 0.25rem;
+            margin-top: 0.5rem;
+        }
+        
+        .story-tag.volume { background: #bbdefb; color: #1565c0; }
+        .story-tag.process { background: #ffe0b2; color: #e65100; }
+        .story-tag.external { background: #e1bee7; color: #7b1fa2; }
+        .story-tag.positive { background: #c8e6c9; color: #2e7d32; }
+        .story-tag.local { background: #fff9c4; color: #f57f17; }
+        .story-tag.action { background: #c8e6c9; color: #1b5e20; }
+        
+        /* Patterns Section */
+        .pattern-section h3 {
+            color: var(--navy);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .pattern-list {
+            list-style: none;
+        }
+        
+        .pattern-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .pattern-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+            font-weight: bold;
+        }
+        
+        .pattern-list strong {
+            color: var(--navy);
+        }
+        
+        /* Missing Section */
+        .missing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .missing-item {
+            background: #fff5f5;
+            border: 1px solid #ffcdd2;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .missing-item h4 {
+            color: var(--coral);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .missing-item p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Callout */
+        .callout {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        
+        .callout h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .callout p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+        
+        .callout strong {
+            color: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        footer .brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer .tagline {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        footer .date {
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="top">
+        <div class="update-badge">Updated: March 28, 2026</div>
+        <h1>📰 Portsmouth Housing Media Coverage &amp; Analysis</h1>
+        <p class="subtitle">March 2026 Media Scan (Feb 10–Mar 28)</p>
+        <p class="tagline">Tracking what's covered, what's missing, and what it means for housing action in Portsmouth.</p>
+        <nav class="nav-links">
+            <a href="#stats">📊 Stats</a>
+            <a href="#stories">🗂️ Stories</a>
+            <a href="#patterns">🔍 Patterns</a>
+            <a href="#takeaway">💡 Takeaway</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <!-- Stats -->
+        <section class="card" id="stats">
+            <h2>📊 By The Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">16</div>
+                    <div class="stat-label">Stories This Period (Feb 10–Mar 28)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Outlets Covering Housing</div>
+                </div>
+                <div class="stat-box positive">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Housing Action Plan Implementation Stories</div>
+                </div>
+                <div class="stat-box highlight">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Opinion/Column Pieces</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stories -->
+        <section class="card" id="stories">
+            <h2>🗂️ Coverage This Period</h2>
+            <p style="font-size:0.8rem;color:#888;margin-bottom:1.25rem;">🔒 SeacoastOnline stories are paywalled. Summaries based on headlines, URL slugs, and available preview text.</p>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 25, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/local/2026/03/25/portsmouth-nh-master-plan-open-house/89087221007/" target="_blank">Portsmouth Master Plan open house set for April 22 🔒</a></h4>
+                <p class="story-summary">Coverage of the city's announcement of the April 22 Draft Plan Open House at Community Campus, 100 Campus Drive, 6–8 PM. Utile (Master Plan consultants) and city staff will present draft recommendations in an informal science-fair format with large-format boards. First local news coverage to frame the Master Plan and housing planning as convergent rather than parallel. The open house is the last practical window for the public — and for advocates — to ensure the Housing Action Plan's production priorities appear in the Master Plan housing chapter before the document moves toward final adoption. The April 22 date is also the deadline for the cross-reference language PP flagged in its March memo to Planning Director Britz, Utile's Zöe Mueller, and City Manager Conard.</p>
+                <span class="story-tag action">Master Plan</span>
+                <span class="story-tag positive">Housing Action Plan</span>
+                <span class="story-tag process">Public input</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 21, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline — Column</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/opinion/columns/2026/03/21/housing-options-are-critical-for-portsmouths-future-splaine/89223672007/" target="_blank">Housing options are critical for Portsmouth's future — Splaine 🔒</a></h4>
+                <p class="story-summary">Column by Jim Splaine — long-time Portsmouth civic figure, former assistant mayor, police commissioner, school board member, and NH state senator and representative — making the public case that expanding housing options is essential to Portsmouth's future. Splaine's civic standing gives this column broader political reach than a typical advocacy piece: he is not a developer, not a newcomer, and not a partisan. His entering the opinion space on housing signals the issue has moved from fringe advocacy to mainstream civic concern. The specific arguments are behind the paywall, but the URL slug ("housing-options-are-critical") and Splaine's known positions suggest a pro-supply, pro-variety framing consistent with his earlier writing on micro-housing. Fourth opinion piece this period; the volume itself is now a media pattern worth noting.</p>
+                <span class="story-tag positive">Civic advocacy</span>
+                <span class="story-tag process">Opinion</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 20, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline — Guest Column</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/opinion/columns/guest/2026/03/20/portsmouth-zoning-erasing-affordable-housing-morgan/89212215007/" target="_blank">Portsmouth zoning erasing affordable housing — Morgan 🔒</a></h4>
+                <p class="story-summary">Second Morgan guest column this period — following the February 26 piece on zoning consultants — this time making the more direct argument that Portsmouth's current zoning is actively erasing affordable housing rather than merely failing to produce it. The slug ("zoning-erasing-affordable-housing") is a significant rhetorical escalation: the Feb 26 column questioned the remedy; this one indicts the existing condition. Directly relevant context: the February 2026 ADU ordinance amended zoning in ways that should, in theory, increase supply, but Morgan's framing suggests displacement-via-upzoning or loss of naturally occurring affordable housing through redevelopment pressure is the actual on-the-ground dynamic. The pattern of two consecutive Morgan columns in four weeks signals a sustained, organized critique — not a one-off letter. Whether city staff or Planning Board members respond publicly is worth tracking. This column also strengthens the case that HAP Item Z-22 (addressing displacement risk) is underweighted in the current triage framework.</p>
+                <span class="story-tag process">Zoning critique</span>
+                <span class="story-tag process">Opinion</span>
+                <span class="story-tag volume">Displacement framing</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 11, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/2026/03/11/portsmouth-planning-staff-to-help-create-housing-action-plan/89080321007/" target="_blank">Portsmouth planning staff to help create housing action plan 🔒</a></h4>
+                <p class="story-summary">First implementation-focused story since the February 19 vote. Councilor Tabor reported that planning staff are "very eager" to take the Housing Action Plan on as the council's primary strategic priority and that discussions are underway about realigning staff capacity to see it through. Tabor met with City Manager Conard and planning staff about potentially reviving the Housing Navigator position. Mayor McEachern praised planning department engagement. Councilor Cook cited the $1M median home price on record in a council context. Tabor's "no silver bullets" framing is the most substantive public acknowledgment yet that the Housing Action Plan requires a portfolio of tools — zoning, land repurposing, and financial incentives — not any single intervention. The story does not name a timeline for the Navigator hire, assign responsibility for specific Housing Action Plan components, or indicate when public hearings will be scheduled. The Navigator position has since been confirmed as unfilled — Planning Department is coordinating via staff reassignment.</p>
+                <span class="story-tag action">Implementation</span>
+                <span class="story-tag positive">Housing Action Plan</span>
+                <span class="story-tag process">Housing Navigator</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 9, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/local/2026/03/09/portsmouth-274-unit-apartment-kane-company-gnod/89080321007/" target="_blank">'Missing middle' rentals touted in 274-unit Portsmouth apartment plan 🔒</a></h4>
+                <p class="story-summary">The Kane Company's proposal for three six-story buildings totaling 274 market-rate apartments at 150 Portsmouth Blvd. cleared the Technical Advisory Committee on March 3 and heads to the Planning Board. The project is the first major GNOD test case: Kane is seeking the density bonus (up to 120 units/building, six stories) by offering to transfer separate land to the city for workforce housing rather than providing affordable units on-site. Senior VP Kimery Poldrack framed the target tenant as "missing middle" — teachers, firefighters — and cited a mix of unit sizes and rental rates. The land-transfer mechanism is significant and undercovered: the city would receive property but bears the burden of actually developing workforce units. That's a different affordability commitment than on-site set-asides, and the story doesn't examine who controls the transferred land, what gets built on it, or on what timeline. 59% of the 8.4-acre site stays open space.</p>
+                <span class="story-tag action">Development pipeline</span>
+                <span class="story-tag local">GNOD</span>
+                <span class="story-tag process">Affordability mechanism</span>
+            </div>
+
+            <div class="story nhpr">
+                <span class="story-date">Feb 11, 2026</span>
+                <span class="story-outlet nhpr">NHPR / Portsmouth Herald</span>
+                <h4 class="story-title"><a href="https://www.nhpr.org/nh-news/2026-02-11/nh-seacoast-housing-market-home-prices-smash-records" target="_blank">Seacoast home prices smash records as the median price tops $1 million</a></h4>
+                <p class="story-summary">Seacoast Board of Realtors data shows the January median single-family sale price hit $1,087,500 — a 25.5% jump from January 2025 and the first time the threshold has been exceeded. The high was a Rye property at $3 million. Framed as a market milestone rather than a housing access story — no mention of displacement, workforce impact, or the Housing Action Plan process then underway. The data point has since been cited by Councilor Cook in the council chamber, where it carries more policy weight than the original coverage suggested.</p>
+                <span class="story-tag external">Market data</span>
+                <span class="story-tag volume">Price record</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 3, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/2026/03/03/portsmouth-considers-tax-relief-incentive-creating-more-housing/88941649007/" target="_blank">Portsmouth considers tax relief incentive for creating more housing 🔒</a></h4>
+                <p class="story-summary">First local news piece to examine specific policy tools following the Feb 19 Housing Action Plan vote. The city is weighing a property tax incentive — likely an abatement or current-use mechanism — to reduce the cost barrier for developers building new housing. Details behind paywall, but the frame is notable: the story treats a supply-side fiscal tool as a live policy option, not a hypothetical. Worth watching whether this connects to the Housing Action Plan implementation process or is a parallel track from City Manager Conard's office. A tax incentive tied to affordability requirements would be meaningfully different from a market-rate stimulus — that distinction hasn't been publicly drawn.</p>
+                <span class="story-tag action">Policy tool</span>
+                <span class="story-tag positive">Housing Action Plan follow-on</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 2, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline — Column</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/opinion/columns/2026/03/02/nh-housing-hb-1786-affordable-republicans-tackle-real-solutions/88942268007/" target="_blank">NH housing: HB 1786 — Republicans tackle real solutions 🔒</a></h4>
+                <p class="story-summary">Column making the case that HB 1786 — which would impose a semi-annual assessment on non-primary-residence luxury properties valued over $1 million to fund statewide housing programs — represents Republicans engaging with substantive affordability policy rather than procedural reform. HB 1786 would generate direct revenue for the Affordable Housing Fund, which the Ayotte budget cut from $25M to near zero. The column is notable for the bipartisan framing in an election year. No local outlet has connected HB 1786 to Portsmouth's situation: the city holds Housing Champion status and lost access to those funds; the Housing Action Plan is being built without that infrastructure.</p>
+                <span class="story-tag external">State legislation</span>
+                <span class="story-tag process">Opinion</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Feb 26, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline — Guest Column</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/opinion/columns/guest/2026/02/26/more-consultants-are-not-the-answer-to-portsmouths-zoning-woes-morgan/88863145007/" target="_blank">More consultants are not the answer to Portsmouth's zoning woes — Morgan 🔒</a></h4>
+                <p class="story-summary">Guest column by Morgan, appearing one week after the Housing Action Plan vote, arguing that hiring outside consultants to address zoning will not solve Portsmouth's housing production problem. Directly relevant context: the Planning Department has signaled it plans to hire a consultant to "modernize" the zoning ordinance — likely following the Utile Master Plan update. The column's critique aligns with a real risk: a technical zoning modernization that doesn't explicitly incorporate the Housing Action Plan's production targets could undo years of advocacy work. Whether Morgan proposes an alternative approach or simply opposes the consultant model is behind the paywall — but the framing alone puts this issue into the public debate at a strategically useful moment. This is the first of two consecutive Morgan guest columns; see Mar 20 entry.</p>
+                <span class="story-tag process">Zoning reform</span>
+                <span class="story-tag process">Opinion</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Mar 3, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/local/2026/03/03/72-apartments-portsmouth-tour-restaurant-581-lafayette-road/88941440007/" target="_blank">72 apartments proposed at Tour restaurant site, 581 Lafayette Road 🔒</a></h4>
+                <p class="story-summary">A proposed 72-apartment project at 581 Lafayette Road — the Tour restaurant site, formerly Tuscan Kitchen and Jerry Lewis Cinemas — is on hold. McNabb has suggested co-living as a potential alternative. Co-living is permitted by Conditional Use Permit in Gateway districts under Section 10.815 of the Zoning Ordinance, so the use itself is not the barrier at 581 Lafayette. The problem is parking. The ordinance waives parking entirely for co-living facilities within 600 feet of a public parking garage — but requires 1 space per every 4 units otherwise. There is no public garage near the Route 1 corridor. The Planning Board has discretion under Section 10.815.41 to modify that standard, but exercising that discretion on a gateway corridor site is a different ask than waiving parking downtown.</p>
+                <span class="story-tag process">On hold</span>
+                <span class="story-tag zoning">Zoning barrier</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Feb 20, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/2026/02/20/co-living-mark-mcnabb-vision-downtown-portsmouth/88702436007/" target="_blank">Mark McNabb's vision for co-living in downtown Portsmouth 🔒</a></h4>
+                <p class="story-summary">Feature published the day after the Housing Action Plan vote, profiling McNabb's co-living strategy. Active projects: 1–15 Congress St. (40 units approved) and proposed 55 units at 134 Pleasant St. (former Citizens Bank). McNabb frames co-living as normalizing how workers already live — pooling rent to afford downtown. Published alongside the new Housing Action Plan mandate without connecting the two.</p>
+                <span class="story-tag action">Developer profile</span>
+                <span class="story-tag process">Co-living pipeline</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Feb 19, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/news/local/2026/02/19/portsmouth-council-votes-to-address-housing-crisis-with-action-plan/88737893007/" target="_blank">Portsmouth council votes to address 'housing crisis' with action plan 🔒</a></h4>
+                <p class="story-summary">Coverage of the 9–0 vote to create a Housing Action Plan by July 2026 and hire a Housing Navigator. First mainstream story to use "housing crisis" in connection with a Portsmouth Council vote. Reported the vote but not what the plan must contain, when public hearings occur, or who the Navigator will be.</p>
+                <span class="story-tag action">Local action</span>
+                <span class="story-tag positive">Housing Action Plan vote</span>
+            </div>
+
+            <div class="story seacoast">
+                <span class="story-date">Feb 10, 2026</span>
+                <span class="story-outlet seacoast">SeacoastOnline — Guest Column</span>
+                <h4 class="story-title"><a href="https://www.seacoastonline.com/story/opinion/columns/guest/2026/02/10/portsmouth-needs-a-housing-action-plan-not-more-drift-duffy/88593475007/" target="_blank">Portsmouth needs a Housing Action Plan, not more drift — Duffy 🔒</a></h4>
+                <p class="story-summary">Guest column one week before the Feb 17 vote, making the public case for the Housing Action Plan. The headline framing — "not more drift" — directly named the pattern of procedural delay from the prior two years. Contributed to the pre-vote pressure environment. Full arguments behind paywall; byline is Duffy.</p>
+                <span class="story-tag positive">Pre-vote advocacy</span>
+                <span class="story-tag process">Opinion</span>
+            </div>
+
+            <div class="story nhbr">
+                <span class="story-date">Feb 6, 2026</span>
+                <span class="story-outlet nhbr">NH Business Review</span>
+                <h4 class="story-title"><a href="https://www.nhbr.com/housing-champions-repeal-pits-legislature-against-governor/" target="_blank">Housing Champions repeal pits NH Legislature against governor</a></h4>
+                <p class="story-summary">NH House voted 185–166 to repeal Housing Champions (HB 1196). Gov. Ayotte opposes. Full repeal could claw back $2.6M in unspent grants. Portsmouth holds the designation. No local outlet connected this to the new Housing Action Plan mandate.</p>
+                <span class="story-tag external">State politics</span>
+                <span class="story-tag process">Legislative risk</span>
+            </div>
+
+            <div class="story nhpr">
+                <span class="story-date">Feb 28, 2026</span>
+                <span class="story-outlet nhpr">NHPR</span>
+                <h4 class="story-title"><a href="https://www.nhpr.org/nh-news/2026-02-02/nh-housing-production-reached-20-year-high-in-2025-but-still-doesnt-meet-demand" target="_blank">NH housing production reached 20-year high in 2025 — but still falls short of demand</a></h4>
+                <p class="story-summary">NH issued 5,800+ permits in 2025 — highest since 2006. But only ~80% of the five-year production goal needed to stabilize the market by 2040. Portsmouth among top permit-issuing cities. Framed as progress, not a gap analysis.</p>
+                <span class="story-tag external">State data</span>
+                <span class="story-tag volume">Volume framing</span>
+            </div>
+
+            <div class="story nhpr">
+                <span class="story-date">Feb 18, 2026</span>
+                <span class="story-outlet nhpr">NHPR</span>
+                <h4 class="story-title"><a href="https://www.nhpr.org/nh-news/2026-02-18/cinde-warmington-running-new-hampshire-governor-2026" target="_blank">Cinde Warmington launches second bid for NH governor</a></h4>
+                <p class="story-summary">Housing affordability cited as central to her campaign. Portsmouth Mayor reportedly weighing a gubernatorial bid. Housing as electoral backdrop — no policy specifics, no connection to Portsmouth's Housing Action Plan process.</p>
+                <span class="story-tag external">State politics</span>
+                <span class="story-tag process">Electoral framing</span>
+            </div>
+        </section>
+
+        <!-- Patterns -->
+        <section class="card" id="patterns">
+            <h2>🔍 What The Pattern Reveals</h2>
+            <div class="pattern-section">
+                <h3>This Period's Coverage Emphasized:</h3>
+                <ul class="pattern-list">
+                    <li><strong>Opinion volume is now the dominant form:</strong> Five of sixteen pieces are columns or guest columns — up from three of thirteen. Morgan has published twice; Splaine has entered the space. Opinion is where the housing policy debate is being conducted while news coverage has largely moved on from the February vote.</li>
+                    <li><strong>Morgan as sustained critic:</strong> Two consecutive guest columns in four weeks — first questioning the consultant model (Feb 26), then indicting existing zoning for erasing affordable housing (Mar 20). This is no longer a one-off; it's a positioned critique with accumulating public presence. No city official or Planning Board member has responded in print.</li>
+                    <li><strong>Splaine's entry signals mainstreaming:</strong> Splaine is not an advocacy newcomer. His joining the housing opinion space signals the issue has moved from fringe concern to mainstream civic priority — a shift worth tracking in future coverage.</li>
+                    <li><strong>Master Plan and Housing Action Plan are finally appearing together in print:</strong> The Mar 25 open house story is the first local piece to frame both processes as connected. The April 22 event is now on the public radar.</li>
+                    <li><strong>McNabb as the housing story:</strong> Three of sixteen pieces touch his projects. The developer continues to generate more housing coverage than the policy process.</li>
+                    <li><strong>Housing Action Plan vote covered, implementation still not followed:</strong> One news story on the March 11 staffing update; public hearing timing, Navigator status, and plan content remain unreported.</li>
+                </ul>
+            </div>
+            <h3>⚠️ What's Still Missing</h3>
+            <div class="missing-grid">
+                <div class="missing-item"><h4>Housing Action Plan Public Hearings — When and How?</h4><p>Two hearings required. Dates not set. No coverage of the process or what residents can actually shape.</p></div>
+                <div class="missing-item"><h4>Housing Navigator — Position Not Being Filled</h4><p>The city confirmed it will not hire a Navigator. Planning Department staff are coordinating via reassignment, with no dedicated lead identified. This decision is unreported.</p></div>
+                <div class="missing-item"><h4>Tax Incentive — Affordability Strings Attached?</h4><p>The Mar 3 tax relief story raises the right question. The follow-up: does any proposed incentive require affordable units in return, or is it an unattached market-rate stimulus?</p></div>
+                <div class="missing-item"><h4>Zoning Consultant Scope — Who Controls It?</h4><p>Morgan's two columns have now made this a sustained public debate. The missing story: will the Housing Action Plan's production targets be written into the consultant RFP before it's published — and who decides that?</p></div>
+                <div class="missing-item"><h4>McNabb Pipeline vs. Housing Action Plan Affordability Targets</h4><p>No story has asked: do co-living units at market rates address the affordability problem the Housing Action Plan is meant to solve? The 20% set-aside at 581 Lafayette deserves scrutiny as a potential model.</p></div>
+                <div class="missing-item"><h4>Displacement Data</h4><p>$1M+ Seacoast median home price. $2,300–$3,500/mo Portsmouth rents (up from March 6). Morgan's Mar 20 column names the displacement pattern. No news story has followed it.</p></div>
+            </div>
+            <div class="callout" id="takeaway">
+                <h3>Opinion Is Outpacing News. The Critic Has Found a Sustained Voice. The April 22 Window Is Now Open.</h3>
+                <p>Five opinion pieces in seven weeks — including two consecutive Morgan columns and Splaine's debut on the topic — show the policy debate intensifying on the opinion pages while news coverage remains episodic.</p>
+                <p>The Mar 20 Morgan column is the most substantively significant new piece: framing existing zoning as actively erasing affordable housing is a displacement argument, not just a supply argument. If it goes unanswered by city staff or the Planning Board, it sets a public framing that will be hard to dislodge.</p>
+                <p>The April 22 Master Plan open house is the next high-stakes public moment. It is now on the media radar. <strong>Whether reporters connect it to the Housing Action Plan — and whether the Housing Action Plan's priorities appear in the draft Master Plan housing chapter — is the question this period's coverage has set up but not yet answered.</strong></p>
+                <p><strong>The question is no longer "will Portsmouth act?" It's "who's watching to make sure the action matches the scale of the problem?"</strong></p>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="brand">PROGRESS PORTSMOUTH</div>
+            <p class="tagline">Tracking housing coverage so you can track housing action</p>
+            <a href="https://www.progressportsmouth.com">Visit ProgressPortsmouth.com</a>
+            <br><a href="#top">↑ Back to Top</a>
+            <p class="date">Media scan compiled March 28, 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

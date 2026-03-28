@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portsmouth Housing Meetings Tracker | March–July 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy: #1a365d;
+            --navy-dark: #0f2744;
+            --gold: #f4a261;
+            --coral: #e76f51;
+            --green: #2a9d8f;
+            --light-gold: rgba(244, 162, 97, 0.15);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            min-height: 100vh;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .header h1 span {
+            color: var(--gold);
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .update-date {
+            display: inline-block;
+            background: var(--light-gold);
+            color: var(--gold);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .legend {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-council { background: var(--coral); }
+        .dot-planning { background: var(--green); }
+        .dot-zoning { background: #8b5cf6; }
+        .dot-housing { background: var(--gold); }
+        .dot-other { background: #64748b; }
+        
+        .date-header {
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .meetings-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .meeting-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 1rem;
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+        }
+        
+        .meeting-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transform: translateX(2px);
+        }
+        
+        .meeting-card.council { border-left-color: var(--coral); }
+        .meeting-card.planning { border-left-color: var(--green); }
+        .meeting-card.zoning { border-left-color: #8b5cf6; }
+        .meeting-card.housing { border-left-color: var(--gold); }
+        .meeting-card.other { border-left-color: #64748b; }
+        
+        .meeting-card.highlight {
+            background: linear-gradient(to right, rgba(244, 162, 97, 0.05), white);
+        }
+
+        .meeting-card.past {
+            opacity: 0.6;
+        }
+
+        .meeting-card.today-card {
+            border-width: 4px;
+            box-shadow: 0 4px 16px rgba(244, 162, 97, 0.2);
+        }
+        
+        .meeting-time {
+            min-width: 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .time-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+        
+        .time-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #999;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+        
+        .meeting-info {
+            flex: 1;
+        }
+        
+        .meeting-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        
+        .meeting-location {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .meeting-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .tag-agenda { background: #d1fae5; color: #065f46; }
+        .tag-pending { background: #fef3c7; color: #92400e; }
+        .tag-housing { background: var(--light-gold); color: #9a3412; }
+        .tag-adu { background: #e0e7ff; color: #3730a3; }
+        .tag-zoning { background: #f3e8ff; color: #6b21a8; }
+        .tag-budget { background: #fce7f3; color: #9d174d; }
+        .tag-completed { background: #e2e8f0; color: #475569; }
+        .tag-today { background: #fef3c7; color: #b45309; border: 1px solid #f59e0b; }
+        
+        .meeting-note {
+            margin-top: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(244, 162, 97, 0.08);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        .meeting-note strong {
+            color: var(--coral);
+        }
+        
+        .meeting-links {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .meeting-links a {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--navy);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            transition: all 0.15s;
+        }
+        
+        .meeting-links a:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--coral), #d35f43);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+        }
+        
+        .highlight-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        .highlight-box.budget-highlight {
+            background: linear-gradient(135deg, var(--navy), #234e8e);
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box.hap-highlight {
+            background: linear-gradient(135deg, var(--green), #1e7a6e);
+            box-shadow: 0 4px 15px rgba(42, 157, 143, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-divider {
+            text-align: center;
+            padding: 0.5rem;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+        
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .branding {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .meeting-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .meeting-time {
+                width: auto;
+                text-align: left;
+            }
+            
+            .legend {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Portsmouth <span>Housing Meetings</span> Tracker</h1>
+            <div class="subtitle">Portsmouth, New Hampshire</div>
+            <div class="update-date">Updated: March 28, 2026 — Verified against City Calendar</div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item"><span class="legend-dot dot-council"></span> City Council</div>
+            <div class="legend-item"><span class="legend-dot dot-planning"></span> Planning Board</div>
+            <div class="legend-item"><span class="legend-dot dot-zoning"></span> Zoning/BOA</div>
+            <div class="legend-item"><span class="legend-dot dot-housing"></span> Housing Related</div>
+            <div class="legend-item"><span class="legend-dot dot-other"></span> Other Boards</div>
+        </div>
+
+        <div class="highlight-box hap-highlight">
+            <h3>✅ Housing Action Plan Production Now Underway</h3>
+            <p>Council voted 9–0 on Feb 17 to direct City staff to produce a Housing Action Plan by July 2026, including two required public hearings. Planning Department staff are coordinating the process via reassignment — no dedicated Housing Navigator position will be filled. Watch for public hearing announcements — that is when the plan's content gets decided.</p>
+        </div>
+
+        <div class="highlight-box budget-highlight">
+            <h3>📊 FY27 Budget — City Manager's Proposal Expected April</h3>
+            <p>The City Manager's proposed budget is expected in April. Budget work sessions confirmed: May 11 (General Fund), May 13 (Enterprise/Special Revenue), May 18 (Public Hearing). Watch for how Housing Action Plan coordination is staffed in the General Government budget.</p>
+        </div>
+
+        <!-- ===================== NEXT UPCOMING: APRIL ===================== -->
+        <div class="meetings-section">
+            <div class="date-header">📅 Looking Ahead — April 2026</div>
+
+            <div class="meeting-card other">
+                <div class="meeting-time">
+                    <div class="time-value">4/1</div>
+                    <div class="time-label">WED</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Historic District Commission</div>
+                    <div class="meeting-location">📍 Council Chambers — 6:30 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-pending">Agenda Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card council">
+                <div class="meeting-time">
+                    <div class="time-value">4/6</div>
+                    <div class="time-label">MON</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">City Council Meeting</div>
+                    <div class="meeting-location">📍 Council Chambers — 7:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-pending">Agenda Pending</span>
+                    </div>
+                    <div class="meeting-note">
+                        <strong>Watch:</strong> Any Housing Action Plan process announcements. City Manager budget expected in April — watch for Housing Action Plan coordination staffing and funding.
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card planning">
+                <div class="meeting-time">
+                    <div class="time-value">4/7</div>
+                    <div class="time-label">TUE</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Technical Advisory Committee</div>
+                    <div class="meeting-location">📍 Conference Room A — 2:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-pending">Agenda Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card planning">
+                <div class="meeting-time">
+                    <div class="time-value">4/17</div>
+                    <div class="time-label">THU</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Planning Board</div>
+                    <div class="meeting-location">📍 Council Chambers — 7:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-pending">Agenda Pending</span>
+                        <span class="tag tag-housing">HAP + Master Plan</span>
+                    </div>
+                    <div class="meeting-note">
+                        <strong>Key board to watch</strong> as Housing Action Plan production and Master Plan Phase 3 move forward simultaneously. Watch for signals on how Planning Department is integrating both processes given staffing constraints.
+                    </div>
+                    <div class="meeting-links">
+                        <a href="https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" target="_blank">📄 Planning Dept Schedule</a>
+                        <a href="/cdn-cgi/l/email-protection#ef9f838e8181868188af9f809d9b9c82809a9b878187c1888099">✉️ Written Comments</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card council">
+                <div class="meeting-time">
+                    <div class="time-value">4/20</div>
+                    <div class="time-label">MON</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">City Council Meeting</div>
+                    <div class="meeting-location">📍 Council Chambers — 7:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-pending">Agenda Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card zoning">
+                <div class="meeting-time">
+                    <div class="time-value">4/21</div>
+                    <div class="time-label">TUE</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Board of Adjustment</div>
+                    <div class="meeting-location">📍 Council Chambers — 7:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-pending">Agenda Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card housing highlight">
+                <div class="meeting-time">
+                    <div class="time-value">4/22</div>
+                    <div class="time-label">WED</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Master Plan — Draft Plan Open House ⭐</div>
+                    <div class="meeting-location">📍 Community Campus, 100 Campus Drive — 6:00–8:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-housing">High Priority</span>
+                        <span class="tag tag-agenda">Confirmed</span>
+                    </div>
+                    <div class="meeting-note">
+                        <strong>Major public input opportunity.</strong> Utile (Master Plan consultants) and City staff will present draft recommendations. Informal "science fair" style open house with large-format boards. Light food provided. Housing is a central topic. This is where housing priorities either get embedded in the Master Plan or don't.
+                    </div>
+                    <div class="meeting-links">
+                        <a href="https://www.portsmouthnh.gov/planportsmouth/master-plan" target="_blank">📄 Master Plan Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== MAY–JULY LOOK-AHEAD ===================== -->
+        <div class="meetings-section">
+            <div class="date-header">📅 Looking Ahead — May–July 2026</div>
+
+            <div class="meeting-card council">
+                <div class="meeting-time">
+                    <div class="time-value">5/11</div>
+                    <div class="time-label">MON</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">City Council Budget Work Session — General Fund</div>
+                    <div class="meeting-location">📍 Council Chambers — 6:00 PM (with Public Comment)</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-housing">FY27 Budget</span>
+                    </div>
+                    <div class="meeting-note">
+                        General Government, Fire, Police, School Depts. <strong>Watch:</strong> Whether Housing Action Plan coordination costs appear in the General Government budget and at what level.
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card council">
+                <div class="meeting-time">
+                    <div class="time-value">5/13</div>
+                    <div class="time-label">WED</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Budget Work Session — Enterprise &amp; Special Revenue Funds</div>
+                    <div class="meeting-location">📍 Council Chambers — 6:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-housing">FY27 Budget</span>
+                    </div>
+                    <div class="meeting-note">
+                        Water/Sewer, Parking, Stormwater. Parking fund is relevant to housing — parking reform reduces per-unit housing costs.
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card council highlight">
+                <div class="meeting-time">
+                    <div class="time-value">5/18</div>
+                    <div class="time-label">MON</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">City Council — Opening of Budget Public Hearing</div>
+                    <div class="meeting-location">📍 Council Chambers — 7:00 PM</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-housing">Budget Public Hearing</span>
+                    </div>
+                    <div class="meeting-note">
+                        <strong>Public comment opportunity</strong> on the FY27 budget. If Housing Action Plan coordination is underfunded or omitted, this is the formal public comment window.
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card housing">
+                <div class="meeting-time">
+                    <div class="time-value">TBD</div>
+                    <div class="time-label">SPR</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Housing Action Plan Public Input Hearings (2 required)</div>
+                    <div class="meeting-location">📍 To be announced by Planning Department</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-housing">High Priority</span>
+                    </div>
+                    <div class="meeting-note">
+                        The Feb 17 resolution requires at least two public hearings before the Housing Action Plan is finalized. Dates not yet announced. <strong>These are the primary opportunities for the public to shape what the plan contains.</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meeting-card council">
+                <div class="meeting-time">
+                    <div class="time-value">JUL</div>
+                    <div class="time-label">2026</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Housing Action Plan Completion Deadline</div>
+                    <div class="meeting-location">📍 City Council</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-housing">Deadline</span>
+                    </div>
+                    <div class="meeting-note">
+                        Council resolution sets July 2026 as the target. Master Plan Phase 3 (Developing the Plan) runs March–August — both processes run simultaneously. How they coordinate will determine what housing production commitments end up in each document.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== KEY COMPLETED ITEMS ===================== -->
+        <div class="section-divider">▾ Key Completed This Period ▾</div>
+
+        <div class="meetings-section">
+            <div class="date-header" style="opacity: 0.6;">📅 Thursday, March 26, 2026 — Completed</div>
+
+            <div class="meeting-card planning past">
+                <div class="meeting-time">
+                    <div class="time-value">7:00</div>
+                    <div class="time-label">PM</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Planning Board</div>
+                    <div class="meeting-location">📍 Council Chambers, 1 Junkins Avenue</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-completed">Completed</span>
+                        <span class="tag tag-housing">HAP + Master Plan</span>
+                    </div>
+                    <div class="meeting-links">
+                        <a href="https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" target="_blank">📄 Planning Dept Schedule</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="meetings-section">
+            <div class="date-header" style="opacity: 0.6;">📅 Monday, March 16, 2026 — Completed ⭐</div>
+
+            <div class="meeting-card council past">
+                <div class="meeting-time">
+                    <div class="time-value">6:00</div>
+                    <div class="time-label">PM</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">City Council Work Session — Community Revitalization Tax Relief + Public Hearing</div>
+                    <div class="meeting-location">📍 Council Chambers</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-completed">Completed</span>
+                        <span class="tag tag-housing">Tax Relief</span>
+                        <span class="tag tag-housing">Tax Exemptions</span>
+                    </div>
+                    <div class="meeting-note">
+                        <strong>Community Revitalization Tax Relief Work Session:</strong> NH Housing's Sarah Wrightsman presented on RSA 79-E options — traditional revitalization zones, Residential Property Revitalization Zones, Office Conversion Zones, and Housing Opportunity Zones. Informational session; no Council action taken. Planning Director Peter Britz presented examples from other communities.<br><br>
+                        <strong>Also on agenda:</strong> Public hearing on elderly and disabled tax exemption income limit adjustments (Social Security COLA vs. CPI-U options), veterans tax credit updates.
+                    </div>
+                    <div class="meeting-links">
+                        <a href="https://www.portsmouthnh.gov/citycouncil/city-council-actions" target="_blank">📄 View Actions</a>
+                        <a href="https://www.youtube.com/CityofPortsmouth" target="_blank">📺 Recording</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="meetings-section">
+            <div class="date-header" style="opacity: 0.6;">📅 Tuesday, March 17, 2026 — Completed</div>
+
+            <div class="meeting-card zoning past">
+                <div class="meeting-time">
+                    <div class="time-value">7:00</div>
+                    <div class="time-label">PM</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Board of Adjustment</div>
+                    <div class="meeting-location">📍 Council Chambers</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="meetings-section">
+            <div class="date-header" style="opacity: 0.6;">📅 Wednesday, March 11, 2026 — Completed</div>
+
+            <div class="meeting-card housing past">
+                <div class="meeting-time">
+                    <div class="time-value">2:00</div>
+                    <div class="time-label">PM</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">Portsmouth Housing Authority Board of Commissioners</div>
+                    <div class="meeting-location">📍 Margeson Apartments, 245 Middle Street</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-completed">Completed</span>
+                        <span class="tag tag-housing">Housing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="meetings-section">
+            <div class="date-header" style="opacity: 0.6;">📅 Monday, February 17, 2026 — Completed ⭐</div>
+
+            <div class="meeting-card council past">
+                <div class="meeting-time">
+                    <div class="time-value">7:00</div>
+                    <div class="time-label">PM</div>
+                </div>
+                <div class="meeting-info">
+                    <div class="meeting-title">City Council — 9–0 Housing Action Plan Vote + Zoning Ordinances</div>
+                    <div class="meeting-location">📍 Council Chambers</div>
+                    <div class="meeting-tags">
+                        <span class="tag tag-completed">Completed</span>
+                        <span class="tag tag-housing">9–0 HAP Vote</span>
+                        <span class="tag tag-adu">ADU Ordinance</span>
+                        <span class="tag tag-zoning">Parking Reform</span>
+                    </div>
+                    <div class="meeting-note">
+                        <strong>Housing Action Plan approved 9–0.</strong> Council directed City staff to create a Housing Action Plan by July 2026 with two required public hearings.<br><br>
+                        <strong>Also approved:</strong> ADU Ordinance (by right in all single-family zones; 750 sq ft min; internal door requirement removed), Off-Street Parking reform (CUPs eliminated), Solar Energy Systems ordinance.
+                    </div>
+                    <div class="meeting-links">
+                        <a href="https://www.portsmouthnh.gov/citycouncil/city-council-actions" target="_blank">📄 View Actions</a>
+                        <a href="https://www.youtube.com/CityofPortsmouth" target="_blank">📺 Recording</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>All meetings at Municipal Complex, 1 Junkins Avenue unless noted.</p>
+            <p>Meetings verified against: <a href="https://www.portsmouthnh.gov/city-municipal-meetings-calendar" target="_blank">portsmouthnh.gov Municipal Calendar</a> &amp; <a href="https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" target="_blank">Planning Dept Schedule</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">Written comments to Planning Board: <a href="/cdn-cgi/l/email-protection#62120e030c0c0b0c0522120d1016110f0d17160a0c0a4c050d14"><span class="__cf_email__" data-cfemail="4e3e222f20202720290e3e213c3a3d23213b3a26202660292138">[email&#160;protected]</span></a> | Contact all Councilors via <a href="https://www.portsmouthnh.gov/citycouncil/contact-all-city-councilors" target="_blank">Council contact page</a></p>
+            <div style="margin-top: 1rem; padding-top: 0.75re
