@@ -3332,5 +3332,30 @@
       "Budget requirement may make Council less willing to adopt the HAP in the first place"
     ],
     "id": "GA-3"
+  },
+  {
+    "id": "GA-4",
+    "category": "Governance & Accountability",
+    "action": "Forensic review of land use board decision patterns for housing applications (2021–2025)",
+    "description": "Commission a structured review of decisions by the Zoning Board of Adjustment, Historic District Commission, and Planning Board on housing applications over the prior four years to identify patterns in how each body exercises discretionary authority. The review examines three dimensions: (1) legal fidelity — whether denials were compelled by ordinance language or represented discretionary interpretations where approval was legally defensible under a fair reading of applicable standards; (2) Master Plan alignment — whether decisions reflect or contradict the housing production goals established in the adopted Master Plan, which the city's own zoning authority is legally grounded in; and (3) interpretive posture — whether boards apply the principle, established in Richmond Co. v. City of Concord (149 N.H. 312, 2003) and reinforced in Appeal of Town of Windham (2022), that the land use process is not adversarial and that boards have a constitutional obligation to work with applicants rather than treat ambiguity as grounds for denial. RSA 676:3,I (effective August 2022) requires specific written findings of fact to support any disapproval; the review will assess whether Portsmouth denials meet that standard. Four decisions across the review period have been identified where the record supports a credible legal defense of approval and will serve as anchor cases for the methodology.",
+    "target": "Review completed and findings presented to the Housing Committee within 12 months of Housing Action Plan adoption. Findings incorporated into the zoning modernization consultant scope prior to RFP issuance.",
+    "metric": "Review completed (yes/no); number of applications identified as discretionary denials by board; ordinance provisions flagged for excessive or vague discretionary language; Master Plan alignment gaps identified by board; written findings adequacy assessed under RSA 676:3,I; training or appointment recommendations issued by board (yes/no).",
+    "notes": "Approximately 200 housing units — market-rate but functionally affordable by design (micro units, co-living, and modest 1BR rentals) — are estimated to have been denied across the three boards during the review period. These units fall outside the explicit statutory protections of RSA 672:1, III-e and the workforce housing statute. The policy argument for a more applicant-favorable interpretive posture rests on a convergence of legal threads rather than a single controlling doctrine: RSA 672:1's prohibition on unreasonable exercise of zoning powers, the constitutional duty-to-assist established in case law, the RSA 676:3,I written findings requirement, and the city's own Master Plan housing goals, which provide the policy foundation for the zoning authority boards exercise. The review should explicitly separate legal questions from policy questions and should not presuppose findings. Its purpose is to establish a documented, credible evidence base for two downstream actions: targeted ordinance revisions through zoning modernization, and evaluation of whether board appointment criteria and training adequately reflect the interpretive standards boards are legally and constitutionally obligated to apply.",
+    "sources": "Richmond Co. v. City of Concord, 149 N.H. 312 (2003); Appeal of Town of Windham, NH Supreme Court No. 2021-0473 (2022); RSA 672:1, III-e; RSA 676:3,I (amended 2022); Dartmouth v. Hanover (2018); Stephen C. Buckley, NHMA Legal Services Counsel, Planning Board Basics (2024 Spring Planning and Zoning Conference)",
+    "is_new": true,
+    "status": "",
+    "status_detail": "",
+    "pros": [
+      "Establishes a credible, documented evidence base that distinguishes ordinance problems from board behavior problems — critical for targeting zoning modernization correctly",
+      "Frames the issue in legal and constitutional terms rather than political ones, reducing the risk of dismissal as advocacy",
+      "Directly feeds the zoning modernization consultant scope, ensuring the HAP drives that process rather than the reverse",
+      "RSA 676:3,I written findings requirement gives the review a concrete, objective standard against which to assess denials"
+    ],
+    "cons": [
+      "Politically sensitive — any finding that boards have denied legally defensible applications will be read as criticism of named volunteer members",
+      "Market-rate housing lacks the explicit statutory protection that workforce housing has under RSA 672:1,III-e, weakening the legal argument for applicant-favorable interpretation",
+      "Requires access to application records, minutes, and written decisions across three boards over four years — staff capacity and records quality may be limiting factors",
+      "Without a legal opinion accompanying the review, findings about 'legally defensible' approvals may be disputed"
+    ]
   }
 ]
