@@ -182,11 +182,11 @@ body {
   margin-top: 6px;
 }
 .hero-stat-rent .big {
-  font-size: 2.2rem;
+  font-size: 1.55rem;
 }
 .hero-stat-rent {
-  min-width: 130px;
-  padding: 18px 20px;
+  min-width: 100px;
+  padding: 14px 16px;
 }
 
 /* ── MILESTONE BANNER ── */
@@ -526,18 +526,15 @@ select.form-control { cursor: pointer; }
   display: block;
 }
 
-/* ── TAB NAV — scrollable, no overflow ── */
+/* ── TAB NAV — wrapping ── */
 .tab-nav-inner {
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 36px;
   gap: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  flex-wrap: wrap;
 }
-.tab-nav-inner::-webkit-scrollbar { display: none; }
 .tab-btn {
   padding: 13px 16px;
   border: none;
@@ -593,25 +590,26 @@ select.form-control { cursor: pointer; }
   .qr-banner-inner { padding: 14px 20px; gap: 16px; }
   .hero-two-col { grid-template-columns: 1fr; gap: 16px; }
   .contribute-grid { grid-template-columns: 1fr; }
+  .tab-nav-inner { padding: 0 16px; }
+  .tab-btn { padding: 11px 13px; font-size: 0.8rem; }
 }
 @media (max-width: 640px) {
   .header-inner { padding: 12px 16px; }
   .header-center { display: none; }
   .main { padding: 16px 16px 40px; }
   .tab-nav-inner { padding: 0 8px; }
-  .tab-nav { top: 53px; }
-  .tab-btn { padding: 11px 12px; font-size: 0.78rem; }
+  .tab-btn { padding: 10px 10px; font-size: 0.76rem; gap: 4px; }
   .hero { padding: 20px 16px; }
   .hero h2 { font-size: 1.35rem; }
   .hero-stats { gap: 8px; }
-  .hero-stat { min-width: 80px; padding: 10px 12px; }
-  .hero-stat .big { font-size: 1.4rem; }
-  .hero-stat-rent { min-width: 90px; }
-  .hero-stat-rent .big { font-size: 1.7rem; }
+  .hero-stat { min-width: 70px; padding: 10px 10px; }
+  .hero-stat .big { font-size: 1.25rem; }
+  .hero-stat-rent { min-width: 80px; }
+  .hero-stat-rent .big { font-size: 1.3rem; }
   .qr-section { padding: 20px 16px; gap: 20px; }
   .qr-banner-inner { padding: 12px 16px; gap: 12px; }
   .qr-banner-code { padding: 8px; }
-  .qr-banner-code img { width: 160px; height: 160px; }
+  .qr-banner-code img { width: 140px; height: 140px; }
   .section-title { font-size: 1.1rem; }
   .filter-row { gap: 6px; }
   .filter-chip { padding: 5px 10px; font-size: 0.74rem; }
@@ -1312,6 +1310,24 @@ select.form-control { cursor: pointer; }
 </main>
 
 <script>
+// ── REVISION HISTORY TOGGLE ──
+function toggleRevHistory() {
+  const el = document.getElementById('rev-history');
+  const btn = document.getElementById('rev-toggle-btn');
+  const expanded = el.style.webkitLineClamp === 'unset' || el.style.display === 'block';
+  if (expanded) {
+    el.style.display = '-webkit-box';
+    el.style.webkitLineClamp = '3';
+    el.style.overflow = 'hidden';
+    btn.textContent = 'Read more ▾';
+  } else {
+    el.style.display = 'block';
+    el.style.webkitLineClamp = 'unset';
+    el.style.overflow = 'visible';
+    btn.textContent = 'Read less ▴';
+  }
+}
+
 // ── TABS ──
 function switchTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1431,13 +1447,16 @@ document.addEventListener('DOMContentLoaded', function() {
     <div>
       <div style="color:#f4a261;font-weight:700;margin-bottom:4px;">Progress Portsmouth · Housing &amp; Your Business Module</div>
       <div>Version 1.2 · March 30, 2026</div>
-      <div style="margin-top:6px;color:rgba(255,255,255,0.25);font-size:0.67rem;">
+      <div id="rev-history" style="margin-top:6px;color:rgba(255,255,255,0.25);font-size:0.67rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;">
         v1.0 — Initial release, Chamber Housing Breakfast 2026<br>
         v1.1 — Persistent QR banner (inline data URI, no external dependency); Employee Survey Template tab with Google Forms workflow; Chamber Collaborative logo + event title in header; mobile optimization; Housing Navigator updated to reflect no city hire; rental stats updated to March 2026<br>
-        v1.2 — Audit pass: item count updated to 146; survey question count corrected to 9; time estimate unified to "under 5 minutes"; tab comment labels corrected; "Public Housing" → "Housing Authority" in perspectives panel; PP role language corrected to "advocated for"; Housing Committee card updated to reflect no current vacancies; co-living confirmed complete
+        v1.2 — Audit pass: item count updated to 146; survey question count corrected to 9; time estimate unified to "under 5 minutes"; tab comment labels corrected; "Public Housing" → "Housing Authority" in perspectives panel; PP role language corrected to "advocated for"; Housing Committee card updated to reflect no current vacancies; co-living confirmed complete; rent stat font sizes reduced; tab nav set to wrap; mobile optimization pass
       </div>
+      <button id="rev-toggle-btn" onclick="toggleRevHistory()" style="background:none;border:none;color:rgba(244,162,97,0.7);font-family:'JetBrains Mono',monospace;font-size:0.65rem;cursor:pointer;padding:4px 0 0;text-decoration:underline;text-underline-offset:2px;">Read more ▾</button>
     </div>
     <div style="text-align:right;color:rgba(255,255,255,0.25);font-size:0.67rem;">
       <div>progressportsmouth.com</div>
       <div><span>progressportsmouth<!-- -->@gmail.com</span></div>
-      <d
+    </div>
+  </div>
+</div>
