@@ -182,11 +182,11 @@ body {
   margin-top: 6px;
 }
 .hero-stat-rent .big {
-  font-size: 1.55rem;
+  font-size: 2.2rem;
 }
 .hero-stat-rent {
-  min-width: 100px;
-  padding: 14px 16px;
+  min-width: 130px;
+  padding: 18px 20px;
 }
 
 /* ── MILESTONE BANNER ── */
@@ -526,21 +526,25 @@ select.form-control { cursor: pointer; }
   display: block;
 }
 
-/* ── TAB NAV — wrapping ── */
+/* ── TAB NAV — scrollable, no overflow ── */
 .tab-nav-inner {
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0 12px;
   gap: 0;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
+.tab-nav-inner::-webkit-scrollbar { display: none; }
 .tab-btn {
-  padding: 13px 16px;
+  padding: 12px 14px;
   border: none;
   background: transparent;
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--slate);
   cursor: pointer;
@@ -549,8 +553,9 @@ select.form-control { cursor: pointer; }
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex-shrink: 0;
+  margin-bottom: -2px;
 }
 
 /* ── QR BANNER — responsive ── */
@@ -590,26 +595,25 @@ select.form-control { cursor: pointer; }
   .qr-banner-inner { padding: 14px 20px; gap: 16px; }
   .hero-two-col { grid-template-columns: 1fr; gap: 16px; }
   .contribute-grid { grid-template-columns: 1fr; }
-  .tab-nav-inner { padding: 0 16px; }
-  .tab-btn { padding: 11px 13px; font-size: 0.8rem; }
 }
 @media (max-width: 640px) {
   .header-inner { padding: 12px 16px; }
   .header-center { display: none; }
   .main { padding: 16px 16px 40px; }
-  .tab-nav-inner { padding: 0 8px; }
-  .tab-btn { padding: 10px 10px; font-size: 0.76rem; gap: 4px; }
+  .tab-nav-inner { padding: 0 4px; }
+  .tab-nav { top: 53px; }
+  .tab-btn { padding: 10px 9px; font-size: 0.72rem; gap: 3px; }
   .hero { padding: 20px 16px; }
   .hero h2 { font-size: 1.35rem; }
   .hero-stats { gap: 8px; }
-  .hero-stat { min-width: 70px; padding: 10px 10px; }
-  .hero-stat .big { font-size: 1.25rem; }
-  .hero-stat-rent { min-width: 80px; }
-  .hero-stat-rent .big { font-size: 1.3rem; }
+  .hero-stat { min-width: 80px; padding: 10px 12px; }
+  .hero-stat .big { font-size: 1.4rem; }
+  .hero-stat-rent { min-width: 90px; }
+  .hero-stat-rent .big { font-size: 1.7rem; }
   .qr-section { padding: 20px 16px; gap: 20px; }
   .qr-banner-inner { padding: 12px 16px; gap: 12px; }
   .qr-banner-code { padding: 8px; }
-  .qr-banner-code img { width: 140px; height: 140px; }
+  .qr-banner-code img { width: 160px; height: 160px; }
   .section-title { font-size: 1.1rem; }
   .filter-row { gap: 6px; }
   .filter-chip { padding: 5px 10px; font-size: 0.74rem; }
@@ -627,7 +631,7 @@ select.form-control { cursor: pointer; }
   <div class="header-inner">
     <div class="header-brand">
       <h1>Progress <span>Portsmouth</span></h1>
-      <div class="header-sub"><a href="https://www.progressportsmouth.com" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);">progressportsmouth.com</a> · March 2026</div>
+      <div class="header-sub">progressportsmouth.com · March 2026</div>
     </div>
     <div class="header-center">
       <div class="header-event-title">Building Capacity: Housing Solutions for Our Workforce</div>
@@ -659,19 +663,19 @@ select.form-control { cursor: pointer; }
 <nav class="tab-nav">
   <div class="tab-nav-inner">
     <button class="tab-btn active" onclick="switchTab('overview', this)">
-      🏙️ The Challenge
+      🏙️ Overview
     </button>
     <button class="tab-btn" onclick="switchTab('hap', this)">
-      📋 HAP · Business Impacts <span class="tab-num" id="hap-count">11</span>
-    </button>
-    <button class="tab-btn" onclick="switchTab('suggest', this)">
-      💡 Suggest an Item
+      📋 Action Items <span class="tab-num" id="hap-count">6</span>
     </button>
     <button class="tab-btn" onclick="switchTab('survey', this)">
-      📋 Employee Survey
+      📋 Survey
     </button>
     <button class="tab-btn" onclick="switchTab('contribute', this)">
       🤝 Contribute
+    </button>
+    <button class="tab-btn" onclick="switchTab('suggest', this)">
+      💡 Suggest an Item
     </button>
   </div>
 </nav>
@@ -708,7 +712,7 @@ select.form-control { cursor: pointer; }
         </div>
         <div>
           <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:6px;">What Progress Portsmouth Did About It</div>
-          <p style="color:rgba(255,255,255,0.75); font-size:0.88rem; line-height:1.6;">Years of public awareness work produced Portsmouth's first formal Housing Action Plan — 145 specific commitments on the record. PP is now handing off its tools to the City while remaining a watchdog and conduit to Council.</p>
+          <p style="color:rgba(255,255,255,0.75); font-size:0.88rem; line-height:1.6;">Years of public awareness work produced Portsmouth's first formal Housing Action Plan — a comprehensive set of commitments on the record. PP is now handing off its tools to the City while remaining a watchdog and conduit to Council.</p>
         </div>
       </div>
     </div>
@@ -717,66 +721,68 @@ select.form-control { cursor: pointer; }
       <div class="milestone-icon">✅</div>
       <div class="milestone-text">
         <strong>Landmark Achievement:</strong> Portsmouth City Council voted to adopt a formal Housing Action Plan — 
-        146 specific action items across 13 categories. The City's triage and prioritization process is due to the Council by July 2026. 
-        Progress Portsmouth advocated for this plan and spent years building the public awareness and political will 
+        A structured list of action items across 13 categories. The City's triage and prioritization process is due to Council by July 2026. 
+        Progress Portsmouth created this plan as a starting point and spent years building the public awareness and political will 
         to get the City to adopt it. Now the baton passes: the City's Planning Department and Planning Board take 
         ownership of implementation, and Progress Portsmouth stays on as community watchdog and conduit to Council. 
-        Two wins are already on the books: <strong>ADU ordinance reform</strong> and 
-        <strong>parking requirement elimination</strong>, both passed February 2026.
+        Two wins are already on the books: <strong>parking minimum elimination</strong> and
+        <strong>the Co-Living Ordinance</strong>, both passed February 2026.
       </div>
     </div>
 
     <div class="wins-row">
       <div class="win-chip">
-        <div class="win-chip-icon">🏠</div>
-        <div class="win-chip-text">
-          <strong>✓ Complete · Feb 2026</strong>
-          ADU Ordinance Reform — simplified approval for accessory dwelling units
-        </div>
-      </div>
-      <div class="win-chip">
         <div class="win-chip-icon">🚗</div>
         <div class="win-chip-text">
           <strong>✓ Complete · Feb 2026</strong>
-          Parking Minimums Eliminated — CUP requirement removed citywide
+          Parking Minimums Eliminated — lower construction costs mean more housing
         </div>
       </div>
       <div class="win-chip">
-        <div class="win-chip-icon">📋</div>
+        <div class="win-chip-icon">🏘️</div>
+        <div class="win-chip-text">
+          <strong>✓ Complete · Feb 2026</strong>
+          Co-Living Ordinance — shared workforce housing now permitted citywide
+        </div>
+      </div>
+      <div class="win-chip">
+        <div class="win-chip-icon">🏗️</div>
         <div class="win-chip-text">
           <strong>In Progress</strong>
-          Zoning Modernization — consultant engagement planned for 2026–27
+          Missing Middle Housing — duplexes and small multifamily in residential neighborhoods
         </div>
       </div>
+    </div>
     </div>
 
-    <div style="background:var(--navy); border-radius:var(--radius); padding:20px 24px; margin-bottom:16px; color:rgba(255,255,255,0.85); font-size:0.9rem; line-height:1.65;">
-      <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:10px;">Three perspectives you've heard today — and the one that's missing</div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:14px;">
-        <div style="background:rgba(255,255,255,0.07); border-radius:6px; padding:12px 14px;">
-          <div style="font-weight:700; font-size:0.85rem; color:var(--gold); margin-bottom:4px;">The Developer</div>
-          <div style="font-size:0.82rem;">What it costs to build and what makes a project pencil out.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border-radius:6px; padding:12px 14px;">
-          <div style="font-weight:700; font-size:0.85rem; color:var(--gold); margin-bottom:4px;">The City</div>
-          <div style="font-size:0.82rem;">What the City has committed to and how the plan is structured.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border-radius:6px; padding:12px 14px;">
-          <div style="font-weight:700; font-size:0.85rem; color:var(--gold); margin-bottom:4px;">Housing Authority</div>
-          <div style="font-size:0.82rem;">What the subsidized and affordable pipeline looks like and who it reaches.</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(244,162,97,0.4); border-radius:6px; padding:12px 14px;">
-          <div style="font-weight:700; font-size:0.85rem; color:var(--gold); margin-bottom:4px;">Your Business ←</div>
-          <div style="font-size:0.82rem;">What happens to <em>your</em> workforce — and what you can actually do about it.</div>
-        </div>
-      </div>
-      <div style="font-size:0.84rem; color:rgba(255,255,255,0.65); border-top:1px solid rgba(255,255,255,0.1); padding-top:12px;">Progress Portsmouth tracks the 145-item plan so business owners don't have to. Use this tool to follow what's moving, what's stalled, and where your voice matters most.</div>
-    </div>
 
     <div style="background:var(--cream-warm); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; font-size:0.9rem; line-height:1.7; color:var(--navy);">
       <strong style="display:block; margin-bottom:8px; font-family:'DM Serif Display',Georgia,serif; font-size:1.05rem;">The Housing Action Plan Explorer</strong>
       Progress Portsmouth created this tool — and the Housing Action Plan itself — as a starting point to hand off to the City. 
-      The Explorer tracks all 146 action items, their implementation status, and estimated housing yield. 
+      The Explorer tracks all action items, their implementation status, and estimated housing yield. 
+      It's now being offered to the City's Planning Department as a foundation to build from. 
+      Use the tabs above to explore items that affect your business, suggest additions, and find out how to get involved.
+      <div style="margin-top:12px;">
+        <a href="https://progress-portsmouth-tools.vercel.app/housing/hap-explorer.html" target="_blank"
+           style="display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:var(--white); padding:9px 18px; border-radius:var(--radius); font-size:0.83rem; font-weight:700; text-decoration:none; transition:0.2s ease;"
+           onmouseover="this.style.background='#2d3e52'" onmouseout="this.style.background='#1a2332'">
+          🔍 Open the Explorer →
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── TAB 2: HAP ITEMS ── -->
+  <section class="tab-panel" id="tab-hap">
+
+    <div class="section-title">Housing Action Plan Items Affecting the Business Community</div>
+    <div class="section-sub">These action items from Portsmouth's Housing Action Plan have direct workforce or economic relevance. Click any item to expand.</div>
+
+    <div style="background:var(--cream-warm); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; font-size:0.9rem; line-height:1.7; color:var(--navy);">
+      <strong style="display:block; margin-bottom:8px; font-family:'DM Serif Display',Georgia,serif; font-size:1.05rem;">The Housing Action Plan Explorer</strong>
+      Progress Portsmouth created this tool — and the Housing Action Plan itself — as a starting point to hand off to the City. 
+      The Explorer tracks all action items, their implementation status, and estimated housing yield. 
       It's now being offered to the City's Planning Department as a foundation to build from. 
       Use the tabs above to explore items that affect your business, suggest additions, and find out how to get involved.
       <div style="margin-top:12px;">
@@ -800,7 +806,7 @@ select.form-control { cursor: pointer; }
     <div style="background:linear-gradient(135deg,#1a3a2e,#2a5040);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:22px;border-left:5px solid var(--gold);">
       <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;">Highest-Impact Action You Can Take Right Now</div>
       <div style="font-family:'DM Serif Display',Georgia,serif;font-size:1.3rem;color:var(--white);margin-bottom:10px;">Survey your employees about housing</div>
-      <div style="font-size:0.9rem;color:rgba(255,255,255,0.82);line-height:1.65;max-width:680px;">Portsmouth's Housing Committee is right now prioritizing the 145 items in the City's newly approved Housing Action Plan. The more data and real employer evidence they have, the better their decisions. A simple internal survey — 9 questions, under 5 minutes per employee — can generate exactly the kind of localized evidence that moves policy.</div>
+      <div style="font-size:0.9rem;color:rgba(255,255,255,0.82);line-height:1.65;max-width:680px;">Portsmouth's Housing Committee is right now prioritizing items in the City's newly approved Housing Action Plan. The more data and real employer evidence they have, the better their decisions. A simple internal survey — 10 questions, 5 minutes per employee — can generate exactly the kind of localized evidence that moves policy.</div>
       <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
         <button onclick="switchTab('survey', document.querySelectorAll('.tab-btn')[3])" style="background:var(--gold);color:var(--navy-deep);border:none;padding:10px 20px;border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;">📋 Get the Survey Template →</button>
         <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);display:flex;align-items:center;">Send results to Progress Portsmouth — we'll aggregate and share with the Housing Committee.</div>
@@ -817,40 +823,26 @@ select.form-control { cursor: pointer; }
 
     <div id="hap-cards">
 
-      <div class="action-card status-complete" data-status="complete" onclick="toggleCard(this)">
-        <div class="card-head">
-          <span class="card-cat-icon">🏠</span>
-          <span class="card-title">Accessory Dwelling Unit (ADU) Ordinance Reform</span>
-          <span class="status-badge badge-complete">✅ Complete</span>
-          <span class="card-arrow">▼</span>
-        </div>
-        <div class="card-body">
-          <div class="card-field">
-            <div class="card-label">What It Does</div>
-            <div class="card-value">Simplifies the approval process for ADUs — garage apartments, in-law suites, backyard cottages — by eliminating the Conditional Use Permit requirement. Passed February 2026.</div>
-          </div>
-          <div class="biz-impact">
-            <div class="card-label">Business Relevance</div>
-            <div class="card-value">Property-owning employees and employers can now add housing units more easily. ADUs are an immediate, incremental supply boost in established neighborhoods — keeping workers closer to the job.</div>
-          </div>
-        </div>
-      </div>
+
+
+
+
 
       <div class="action-card status-complete" data-status="complete" onclick="toggleCard(this)">
         <div class="card-head">
-          <span class="card-cat-icon">🚗</span>
-          <span class="card-title">Parking Minimum Elimination</span>
+          <span class="card-cat-icon">🏘️</span>
+          <span class="card-title">Co-Living Ordinance</span>
           <span class="status-badge badge-complete">✅ Complete</span>
           <span class="card-arrow">▼</span>
         </div>
         <div class="card-body">
           <div class="card-field">
             <div class="card-label">What It Does</div>
-            <div class="card-value">Removes citywide minimum parking requirements that inflated construction costs. Passed February 2026 as part of zoning simplification.</div>
+            <div class="card-value">Establishes a regulatory framework for co-living housing — shared arrangements with private bedrooms and communal spaces — as a distinct permitted housing type in Portsmouth. The ordinance originated from a proposal by developer Mark McNabb and was advanced through the Housing Action Plan process.</div>
           </div>
           <div class="biz-impact">
             <div class="card-label">Business Relevance</div>
-            <div class="card-value">Lower construction costs mean more housing gets built at lower per-unit costs — reducing rents at the margin. For businesses in walkable areas, it also reduces land locked up for parking.</div>
+            <div class="card-value">Co-living is among the most cost-effective formats for young workers and recent arrivals — the demographic most likely to fill entry- and mid-level positions. It also illustrates how the process is supposed to work: a private-sector idea, surfaced through community advocacy, becomes adopted city policy. That pipeline is what Progress Portsmouth exists to keep open.</div>
           </div>
         </div>
       </div>
@@ -893,43 +885,9 @@ select.form-control { cursor: pointer; }
         </div>
       </div>
 
-      <div class="action-card status-in-progress" data-status="in-progress" onclick="toggleCard(this)">
-        <div class="card-head">
-          <span class="card-cat-icon">🔧</span>
-          <span class="card-title">Zoning Ordinance Modernization (Consultant)</span>
-          <span class="status-badge badge-progress">🔵 In Progress</span>
-          <span class="card-arrow">▼</span>
-        </div>
-        <div class="card-body">
-          <div class="card-field">
-            <div class="card-label">What It Does</div>
-            <div class="card-value">The City plans to hire a consultant to modernize Portsmouth's zoning code, following completion of the Master Plan update (Utile, expected December 2026). The scope must explicitly incorporate Housing Action Plan housing production targets — this is an active advocacy priority.</div>
-          </div>
-          <div class="biz-impact">
-            <div class="card-label">Business Relevance</div>
-            <div class="card-value">The single highest-leverage moment for systematic housing reform. Business community engagement in scoping this work can ensure workforce housing priorities are embedded, not treated as peripheral.</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="action-card status-not-started" data-status="not-started" onclick="toggleCard(this)">
-        <div class="card-head">
-          <span class="card-cat-icon">🧭</span>
-          <span class="card-title">Housing Navigator Position</span>
-          <span class="status-badge badge-not" style="background:#fff0ed;color:#c0392b;border-color:#f5c6c0;">⚠️ Not Filling</span>
-          <span class="card-arrow">▼</span>
-        </div>
-        <div class="card-body">
-          <div class="card-field">
-            <div class="card-label">What It Does</div>
-            <div class="card-value">The Housing Action Plan called for a dedicated City Housing Navigator to guide residents and employers through programs, subsidy access, and development processes. The City has decided not to fill this position — the Planning Department is absorbing the function via staff reassignment, with no named lead identified. Progress Portsmouth considers this an implementation gap worth watching.</div>
-          </div>
-          <div class="biz-impact">
-            <div class="card-label">Business Relevance</div>
-            <div class="card-value">Businesses trying to connect employees with housing resources — down payment assistance, rental programs, employer-assisted housing — currently have no dedicated point of contact inside City Hall. This is a gap. Progress Portsmouth is tracking whether Planning staff can effectively absorb this function, and the business community has standing to weigh in on whether that's adequate.</div>
-          </div>
-        </div>
-      </div>
+
+
 
       <div class="action-card status-early-stage" data-status="early-stage" onclick="toggleCard(this)">
         <div class="card-head">
@@ -988,125 +946,42 @@ select.form-control { cursor: pointer; }
         </div>
       </div>
 
-      <div class="action-card status-not-started" data-status="not-started" onclick="toggleCard(this)">
-        <div class="card-head">
-          <span class="card-cat-icon">📋</span>
-          <span class="card-title">Survey Your Own Employees on Housing</span>
-          <span class="status-badge badge-not">⬜ Not Started</span>
-          <span class="card-arrow">▼</span>
-        </div>
-        <div class="card-body">
-          <div class="card-field">
-            <div class="card-label">What It Does</div>
-            <div class="card-value">Employers conduct structured surveys of their own workforce to document housing cost burden, commute distance, housing type, and unmet needs. Results can be shared — aggregated or directly — with city planners and the Housing Committee as a planning input.</div>
-          </div>
-          <div class="biz-impact">
-            <div class="card-label">Business Relevance · A Local Proof Point</div>
-            <div class="card-value">This is not hypothetical. Harmony Homes (John Randolph) conducted an employee housing survey whose findings directly informed a cottage cluster development in Dover, NH. A focused internal survey can generate the kind of localized evidence that moves planning decisions — in Portsmouth and across the Seacoast.</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="action-card status-complete" data-status="complete" onclick="toggleCard(this)">
-        <div class="card-head">
-          <span class="card-cat-icon">🏘️</span>
-          <span class="card-title">Co-Living Ordinance</span>
-          <span class="status-badge badge-complete">✅ Complete</span>
-          <span class="card-arrow">▼</span>
-        </div>
-        <div class="card-body">
-          <div class="card-field">
-            <div class="card-label">What It Does</div>
-            <div class="card-value">Establishes a regulatory framework for co-living housing — shared arrangements with private bedrooms and communal spaces — as a distinct permitted housing type in Portsmouth. The ordinance originated from a proposal by developer Mark McNabb and was advanced through the Housing Action Plan process.</div>
-          </div>
-          <div class="biz-impact">
-            <div class="card-label">Business Relevance</div>
-            <div class="card-value">Co-living is among the most cost-effective formats for young workers and recent arrivals — the demographic most likely to fill entry- and mid-level positions. It also illustrates how the process is supposed to work: a private-sector idea, surfaced through community advocacy, becomes adopted city policy. That pipeline is what Progress Portsmouth exists to keep open.</div>
-          </div>
-        </div>
-      </div>
+
     </div>
 
   </section>
 
-  <!-- ── TAB 3: SUGGEST ── -->
-  <section class="tab-panel" id="tab-suggest">
-
-    <div class="suggest-intro">
-      <strong>What's missing from this plan?</strong><br>
-      The Housing Action Plan reflects what city planners and advocates identified — but you see workforce housing barriers 
-      every day. If there's a policy gap, zoning obstacle, or program idea that would make a difference for your business, 
-      we want to hear it. Submissions go directly to Progress Portsmouth's policy team.
-    </div>
-
-    <div class="suggest-form">
-      <div class="form-group">
-        <label class="form-label">Your Organization (optional)</label>
-        <input type="text" class="form-control" id="sug-org" placeholder="e.g., Pease Development Authority, restaurant name, etc.">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Topic / Category</label>
-        <select class="form-control" id="sug-cat">
-          <option value="">— Select a category —</option>
-          <option>Workforce / Employee Retention</option>
-          <option>Commercial Property Reuse</option>
-          <option>Permitting / Regulatory Barriers</option>
-          <option>Employer-Assisted Housing</option>
-          <option>Financing / Incentives</option>
-          <option>Transit / Commute Access</option>
-          <option>Land Availability</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Describe the Issue or Idea</label>
-        <textarea class="form-control" id="sug-idea" rows="4"
-          placeholder="What barrier do you face? What policy change, program, or action would help? Be as specific as you can."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Your Name / Email (optional — for follow-up)</label>
-        <input type="text" class="form-control" id="sug-contact" placeholder="Name and/or email">
-      </div>
-      <button class="submit-btn" onclick="submitSuggestion()">
-        📬 Submit to Progress Portsmouth
-      </button>
-      <div class="submit-confirm" id="submit-confirm">
-        ✅ Thanks — your suggestion has been recorded and will be reviewed by our policy team.
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ── TAB 4: SURVEY TEMPLATE ── -->
+  <!-- ── TAB 5: SURVEY TEMPLATE ── -->
   <section class="tab-panel" id="tab-survey">
 
     <div class="section-title">Employee Housing Survey Template</div>
-    <div class="section-sub" style="margin-bottom:16px;">A 9-question survey your employees can complete on their phone in under 5 minutes. We recommend Google Forms — it's free, requires no account from employees, and auto-aggregates results in a spreadsheet you can forward to us.</div>
+    <div class="section-sub" style="margin-bottom:16px;">A 9-question survey your employees can complete on their phone in under 3 minutes. Use whichever tool fits how your team already communicates.</div>
 
     <div style="background:var(--white);border:1px solid rgba(244,162,97,0.4);border-left:4px solid var(--gold);border-radius:var(--radius);padding:16px 20px;margin-bottom:22px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;">
       <div style="flex:1;min-width:200px;">
-        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-dim);margin-bottom:6px;">Recommended: Google Forms</div>
-        <div style="font-size:0.9rem;color:var(--navy);line-height:1.6;"><strong>Three steps:</strong> Copy the questions below → paste into a new Google Form at <span style="font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--cream-warm);padding:1px 6px;border-radius:4px;">forms.google.com</span> → share the link with employees by email or Slack. Takes you about 10 minutes to set up. Results auto-collect in a spreadsheet — just forward it to us when you're ready.</div>
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-dim);margin-bottom:6px;">Pick your tool</div>
+        <div style="font-size:0.9rem;color:var(--navy);line-height:1.6;"><strong>Google Forms</strong> (forms.google.com) — free, no employee login needed, auto-aggregates to a spreadsheet. <strong>SurveyMonkey</strong> — if your team already uses it. <strong>Microsoft Forms</strong> — if your org runs on Microsoft 365. <strong>Email</strong> — paste the questions into a message, employees reply directly. Forward results to us in any format.</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0;min-width:160px;">
         <div style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--navy);"><span style="color:#2e7d32;font-size:1rem;">✓</span> Free, no employee login needed</div>
         <div style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--navy);"><span style="color:#2e7d32;font-size:1rem;">✓</span> Mobile-optimized</div>
         <div style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--navy);"><span style="color:#2e7d32;font-size:1rem;">✓</span> Auto-aggregates to a spreadsheet</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--navy);"><span style="color:#2e7d32;font-size:1rem;">✓</span> Under 5 min per employee</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--navy);"><span style="color:#2e7d32;font-size:1rem;">✓</span> Under 3 min per employee</div>
       </div>
     </div>
 
     <div style="background:rgba(244,162,97,0.1);border:1px solid rgba(244,162,97,0.35);border-left:4px solid var(--gold);border-radius:var(--radius);padding:16px 20px;margin-bottom:22px;font-size:0.9rem;color:var(--navy);line-height:1.6;">
-      <strong>Why this matters right now:</strong> Portsmouth City Council approved a 146-item Housing Action Plan on February 17, 2026. The Housing Committee is actively prioritizing which items move first. Employer data — even from a handful of businesses — is the kind of concrete, local evidence that shapes those decisions. Harmony Homes conducted a similar survey whose findings directly informed a cottage cluster development in Dover. The window for data to influence Portsmouth's priorities is <em>now</em>.
+      <strong>Why this matters right now:</strong> Portsmouth City Council approved a comprehensive Housing Action Plan on February 17, 2026. The Housing Committee is actively prioritizing which items move first. Employer data — even from a handful of businesses — is the kind of concrete, local evidence that shapes those decisions. Harmony Homes conducted a similar survey whose findings directly informed a cottage cluster development in Dover. The window for data to influence Portsmouth's priorities is <em>now</em>.
     </div>
 
     <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
         <div>
           <div style="font-family:'DM Serif Display',Georgia,serif;font-size:1.1rem;color:var(--navy);">Portsmouth Workforce Housing Survey</div>
-          <div style="font-size:0.8rem;color:var(--slate);margin-top:3px;">Paste these questions into Google Forms · All questions optional · Responses anonymous</div>
+          <div style="font-size:0.8rem;color:var(--slate);margin-top:3px;">Copy into any survey tool · All questions optional · Responses anonymous</div>
         </div>
-        <button onclick="copyTemplate()" style="background:var(--navy);color:var(--white);border:none;padding:9px 18px;border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;" id="copy-btn">📋 Copy Questions for Google Forms</button>
+        <button onclick="copyTemplate()" style="background:var(--navy);color:var(--white);border:none;padding:9px 18px;border-radius:var(--radius);font-family:'Source Sans 3',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;" id="copy-btn">📋 Copy All Questions</button>
       </div>
 
       <div id="survey-template" style="font-size:0.9rem;color:var(--navy);line-height:1.7;">
@@ -1224,14 +1099,14 @@ select.form-control { cursor: pointer; }
       </div>
       <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius);padding:18px 20px;min-width:200px;">
         <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:10px;">Progress Portsmouth is independent</div>
-        <div style="font-size:0.84rem;color:rgba(255,255,255,0.78);line-height:1.6;">We are not part of city government. We advocate, monitor progress on all 146 HAP commitments, and report publicly — including when the City falls short of its own plan.</div>
+        <div style="font-size:0.84rem;color:rgba(255,255,255,0.78);line-height:1.6;">We are not part of city government. We advocate, monitor progress on every commitment in the Housing Action Plan, and report publicly — including when the City falls short of its own plan.</div>
       </div>
     </div>
 
   </section>
 
 
-  <!-- ── TAB 5: CONTRIBUTE ── -->
+  <!-- ── TAB 4: CONTRIBUTE ── -->
   <section class="tab-panel" id="tab-contribute">
 
     <div class="section-title">How the Business Community Can Drive This Forward</div>
@@ -1255,24 +1130,15 @@ select.form-control { cursor: pointer; }
 
       <div class="contrib-card">
         <div class="contrib-icon">🏗️</div>
-        <div class="contrib-title">Employer-Enabled Housing: More Options Than You Think</div>
-        <div class="contrib-desc">There are more levers here than most employers realize:</div>
-        <ul style="margin-top:8px; padding-left:18px; font-size:0.84rem; color:var(--slate); line-height:1.7;">
-          <li><strong>Survey your workforce</strong> — like Harmony Homes did, generating data that shaped a Dover cottage cluster</li>
-          <li><strong>Sponsor a land trust unit</strong> — fund one permanently affordable deed-restricted unit; it stays affordable forever</li>
-          <li><strong>Act as lease guarantor</strong> — co-sign leases for new employees with thin credit, lowering their barrier to entry</li>
-          <li><strong>Negotiate a rental block</strong> — secure units at a building at preferred rates in exchange for occupancy commitments</li>
-          <li><strong>Offer a housing stipend</strong> — a taxable but competitive benefit that directly offsets rent burden</li>
-          <li><strong>Partner with a developer</strong> — contribute land, capital, or off-take commitments to unlock a workforce housing project</li>
-          <li><strong>Bridge housing for new hires</strong> — lease a few short-term units to house employees while they find permanent housing</li>
-        </ul>
+        <div class="contrib-title">Employer-Enabled Housing</div>
+        <div class="contrib-desc">There are more levers than most employers realize: housing stipends, lease guaranty for new hires, negotiated rental blocks at nearby buildings, bridge housing during onboarding, land trust sponsorships, or direct developer partnerships. Progress Portsmouth can help identify what fits your situation.</div>
         <a href="https://progressportsmouth.com" class="contrib-action" target="_blank">Talk to us about what fits →</a>
       </div>
 
       <div class="contrib-card">
         <div class="contrib-icon">🤝</div>
         <div class="contrib-title">Join the Housing Committee</div>
-        <div class="contrib-desc">Portsmouth's Housing Committee is fully seated, but members cycle off on a rolling basis. Business representation on the committee is thin — when a seat opens, an employer appointment is a direct seat at the table where Housing Action Plan implementation decisions get made. Progress Portsmouth can flag the timing and support an application.</div>
+        <div class="contrib-desc">Two seats on Portsmouth's Housing Committee are currently open. Committee members directly shape how Housing Action Plan items are prioritized and scheduled. Business representation is thin right now — an appointment is a direct seat at the table where implementation decisions get made.</div>
         <a href="https://progressportsmouth.com" class="contrib-action" target="_blank">Learn about the process →</a>
       </div>
 
@@ -1283,19 +1149,7 @@ select.form-control { cursor: pointer; }
         <a href="https://progressportsmouth.com" class="contrib-action" target="_blank">Stay informed →</a>
       </div>
 
-      <div class="contrib-card">
-        <div class="contrib-icon">🏗️</div>
-        <div class="contrib-title">Understand Why Affordable Housing Is So Hard to Finance</div>
-        <div class="contrib-desc">Affordable housing costs just as much to build as market-rate housing — but can only charge a fraction of the rent. Progress Portsmouth's capital stack explainer, drawn from our conversation with POAH's Rodger Brown, explains the financing gap in plain English: why tax credits, state grants, and city land contributions are all required just to make one project pencil.</div>
-        <a href="https://progress-portsmouth-tools.vercel.app/housing/affordable-housing-finance-explainer.html" class="contrib-action" target="_blank">Read the explainer →</a>
-      </div>
 
-      <div class="contrib-card">
-        <div class="contrib-icon">💰</div>
-        <div class="contrib-title">Support Progress Portsmouth</div>
-        <div class="contrib-desc">Progress Portsmouth is independent of city government and intends to stay that way. We monitor progress on all 146 Housing Action Plan commitments and report publicly — including when the City falls short. Funding supports the HAP Explorer, policy research, data analysis, and the sustained public engagement that keeps commitments from becoming forgotten footnotes.</div>
-        <a href="https://progressportsmouth.com" class="contrib-action" target="_blank">Support our work →</a>
-      </div>
 
     </div>
 
@@ -1303,7 +1157,7 @@ select.form-control { cursor: pointer; }
     <div class="qr-section">
       <div class="qr-text">
         <h3>Take this with you — <span>scan now</span></h3>
-        <p>This page tracks the Housing Action Plan items most relevant to your business — and links to the full Explorer for real-time status on all 145 items. Scan to bookmark it now.</p>
+        <p>This page tracks the Housing Action Plan items most relevant to your business — and links to the full Explorer for real-time status on all items. Scan to bookmark it now.</p>
         <div class="url">progress-portsmouth-tools.vercel.app/housing/pp-business-module.html</div>
       </div>
       <div class="qr-box">
@@ -1317,24 +1171,6 @@ select.form-control { cursor: pointer; }
 </main>
 
 <script>
-// ── REVISION HISTORY TOGGLE ──
-function toggleRevHistory() {
-  const el = document.getElementById('rev-history');
-  const btn = document.getElementById('rev-toggle-btn');
-  const expanded = el.style.webkitLineClamp === 'unset' || el.style.display === 'block';
-  if (expanded) {
-    el.style.display = '-webkit-box';
-    el.style.webkitLineClamp = '3';
-    el.style.overflow = 'hidden';
-    btn.textContent = 'Read more ▾';
-  } else {
-    el.style.display = 'block';
-    el.style.webkitLineClamp = 'unset';
-    el.style.overflow = 'visible';
-    btn.textContent = 'Read less ▴';
-  }
-}
-
 // ── TABS ──
 function switchTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1371,10 +1207,9 @@ function filterCards(status, btn) {
 // ── COPY SURVEY TEMPLATE ──
 function copyTemplate() {
   const questions = `Portsmouth Workforce Housing Survey
-Paste this into Google Forms at forms.google.com — takes about 10 minutes to set up.
-Share the link with employees. Forward the results spreadsheet to progressportsmouth@gmail.com.
+Works with Google Forms, SurveyMonkey, Microsoft Forms, or email.
+Forward results to progressportsmouth@gmail.com in any format.
 All questions are optional and responses are anonymous.
-9 questions · under 5 minutes per employee
 
 SECTION 1 — WHERE YOU LIVE
 Q1. What is your current zip code of residence? (open text)
@@ -1438,6 +1273,19 @@ function submitSuggestion() {
 
 
 
+// ── REVISION HISTORY TOGGLE ──
+function toggleRevHistory() {
+  var more = document.getElementById('rev-more');
+  var btn  = document.getElementById('rev-toggle');
+  if (more.style.display === 'none') {
+    more.style.display = 'inline';
+    btn.textContent = '− read less';
+  } else {
+    more.style.display = 'none';
+    btn.textContent = '+ read more';
+  }
+}
+
 // ── EMAIL BUTTON ──
 document.addEventListener('DOMContentLoaded', function() {
   var btn = document.getElementById('pp-email-btn');
@@ -1448,23 +1296,72 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+
+  <!-- ── TAB 3: SUGGEST ── -->
+  <section class="tab-panel" id="tab-suggest">
+
+    <div class="suggest-intro">
+      <strong>What's missing from this plan?</strong><br>
+      The Housing Action Plan reflects what city planners and advocates identified — but you see workforce housing barriers 
+      every day. If there's a policy gap, zoning obstacle, or program idea that would make a difference for your business, 
+      we want to hear it. Submissions go directly to Progress Portsmouth's policy team.
+    </div>
+
+    <div class="suggest-form">
+      <div class="form-group">
+        <label class="form-label">Your Organization (optional)</label>
+        <input type="text" class="form-control" id="sug-org" placeholder="e.g., Pease Development Authority, restaurant name, etc.">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Topic / Category</label>
+        <select class="form-control" id="sug-cat">
+          <option value="">— Select a category —</option>
+          <option>Workforce / Employee Retention</option>
+          <option>Commercial Property Reuse</option>
+          <option>Permitting / Regulatory Barriers</option>
+          <option>Employer-Assisted Housing</option>
+          <option>Financing / Incentives</option>
+          <option>Transit / Commute Access</option>
+          <option>Land Availability</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Describe the Issue or Idea</label>
+        <textarea class="form-control" id="sug-idea" rows="4"
+          placeholder="What barrier do you face? What policy change, program, or action would help? Be as specific as you can."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Name / Email (optional — for follow-up)</label>
+        <input type="text" class="form-control" id="sug-contact" placeholder="Name and/or email">
+      </div>
+      <button class="submit-btn" onclick="submitSuggestion()">
+        📬 Submit to Progress Portsmouth
+      </button>
+      <div class="submit-confirm" id="submit-confirm">
+        ✅ Thanks — your suggestion has been recorded and will be reviewed by our policy team.
+      </div>
+    </div>
+
+  </section>
 <!-- REVISION BLOCK -->
 <div style="background:#0a1220;color:rgba(255,255,255,0.4);padding:20px 36px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;line-height:1.8;border-top:2px solid rgba(255,255,255,0.07);">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;">
     <div>
       <div style="color:#f4a261;font-weight:700;margin-bottom:4px;">Progress Portsmouth · Housing &amp; Your Business Module</div>
       <div>Version 1.3 · March 30, 2026</div>
-      <div id="rev-history" style="margin-top:6px;color:rgba(255,255,255,0.25);font-size:0.67rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;">
-        v1.3 — Added capital stack explainer card to Contribute tab, linking to affordable housing finance explainer (POAH/Rodger Brown call, Mar 2026)<br>
-        v1.0 — Initial release, Chamber Housing Breakfast 2026<br>
-        v1.1 — Persistent QR banner (inline data URI, no external dependency); Employee Survey Template tab with Google Forms workflow; Chamber Collaborative logo + event title in header; mobile optimization; Housing Navigator updated to reflect no city hire; rental stats updated to March 2026<br>
-        v1.2 — Audit pass: item count updated to 146; survey question count corrected to 9; time estimate unified to "under 5 minutes"; tab comment labels corrected; "Public Housing" → "Housing Authority" in perspectives panel; PP role language corrected to "advocated for"; Housing Committee card updated to reflect no current vacancies; co-living confirmed complete; rent stat font sizes reduced; tab nav set to wrap; mobile optimization pass
+      <div style="margin-top:6px;color:rgba(255,255,255,0.25);font-size:0.67rem;">
+        v1.3 — March 30, 2026 — revision toggle; nav mobile fix; footer cleaned
+        <span id="rev-more" style="display:none;">
+          <br>v1.1 — Persistent QR banner; employee survey tab; Chamber Collaborative branding; mobile optimization
+          <br>v1.0 — Initial release, Chamber Housing Breakfast 2026
+        </span>
+        <br><button onclick="toggleRevHistory()" id="rev-toggle"
+          style="background:none;border:none;color:rgba(255,255,255,0.35);font-family:'JetBrains Mono',monospace;font-size:0.67rem;cursor:pointer;padding:2px 0;text-decoration:underline;">
+          + read more
+        </button>
       </div>
-      <button id="rev-toggle-btn" onclick="toggleRevHistory()" style="background:none;border:none;color:rgba(244,162,97,0.7);font-family:'JetBrains Mono',monospace;font-size:0.65rem;cursor:pointer;padding:4px 0 0;text-decoration:underline;text-underline-offset:2px;">Read more ▾</button>
     </div>
     <div style="text-align:right;color:rgba(255,255,255,0.25);font-size:0.67rem;">
-      <div>progressportsmouth.com</div>
       <div><span>progressportsmouth<!-- -->@gmail.com</span></div>
-    </div>
-  </div>
-</div>
+      <d
