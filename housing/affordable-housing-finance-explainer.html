@@ -118,6 +118,51 @@ main {
 .why-box p:last-child { margin-bottom: 0; }
 .why-box strong { color: white; }
 
+/* ─── WHY STATS STRIP ─── */
+.why-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 20px;
+  flex-wrap: wrap;
+}
+.why-stat {
+  flex: 1;
+  min-width: 140px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 16px 18px;
+  text-align: center;
+}
+.why-stat-gap {
+  background: rgba(231,111,81,0.2);
+  border: 1px solid rgba(231,111,81,0.4);
+}
+.ws-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.why-stat-gap .ws-num { color: #f4a0a0; }
+.ws-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+}
+.why-stat-vs {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .why-stats { flex-direction: column; gap: 8px; }
+  .why-stat-vs { display: none; }
+  .why-stat { min-width: unset; width: 100%; }
+}
+
 /* ─── SECTION TITLES ─── */
 .section-title {
   font-family: 'DM Serif Display', serif;
@@ -563,14 +608,30 @@ footer a:hover { text-decoration: underline; }
   <div class="why-box">
     <h2>Why can't we just build more affordable housing?</h2>
     <p>It's a fair question. Portsmouth has land. Developers build here all the time. So why isn't someone building apartments that working families can afford?</p>
-    <p>The short answer: <strong>affordable housing costs just as much to build as market-rate housing, but it can only charge a fraction of the rent.</strong> A developer who builds a 60-unit apartment building in Portsmouth today might spend $15 million. To pay back that $15 million — plus interest, plus operating costs — the building needs to generate enough rent income. Market-rate apartments at $2,800/month can do that. Affordable apartments at $1,400/month cannot. The math doesn't work.</p>
-    <p>The gap between what the building costs and what affordable rents can support has to be filled by someone else — federal tax credits, state grants, city land contributions, and other subsidies. Assembling that financing is the real challenge. It requires years of applications, multiple funding sources, and every piece arriving in the right order. When any piece falls through, the deal collapses.</p>
-    <p><strong>This is what Rodger Brown of POAH — the nonprofit developer behind Portsmouth's most ambitious affordable projects — explained to Progress Portsmouth.</strong> Everything in this guide traces back to that conversation.</p>
+    <p>The core problem is simple: <strong>affordable housing costs just as much to build as market-rate housing — but it can only charge a fraction of the rent.</strong> The gap between what the building costs and what affordable rents can support has to be filled by grants, tax credits, and subsidies. Assembling that financing is the real challenge — it requires years of applications, multiple funding sources, and every piece arriving in the right order.</p>
+
+    <div class="why-stats">
+      <div class="why-stat">
+        <div class="ws-num">$15M</div>
+        <div class="ws-label">Cost to build a typical 60-unit affordable building in NH today</div>
+      </div>
+      <div class="why-stat-vs">vs.</div>
+      <div class="why-stat">
+        <div class="ws-num">$2,800</div>
+        <div class="ws-label">Market rent per month — enough to repay the loan</div>
+      </div>
+      <div class="why-stat-vs">vs.</div>
+      <div class="why-stat why-stat-gap">
+        <div class="ws-num">$1,400</div>
+        <div class="ws-label">Affordable rent per month (60% AMI) — not enough. Gap must be filled another way.</div>
+      </div>
+    </div>
+
+    <p style="margin-top:0;font-size:0.88rem;"><strong>This is what Rodger Brown of POAH</strong> — the nonprofit developer behind Portsmouth's most ambitious affordable projects — explained to Progress Portsmouth. Everything in this guide traces back to that conversation.</p>
   </div>
 
   <!-- ─── SECTION 1: THE BASIC PROBLEM ─── -->
-  <div class="section-title">First: the basic problem</div>
-  <p class="section-intro">Building affordable housing is not fundamentally different from building any other housing — except that the revenue side is capped below what the market would pay. That gap has to be filled with something other than rent income.</p>
+  <div class="section-title">The four pieces of the puzzle</div>
 
   <div class="analogy-grid">
     <div class="analogy-card">
@@ -873,9 +934,10 @@ footer a:hover { text-decoration: underline; }
   <p style="margin-top:16px;"><strong style="color:white;">Progress Portsmouth</strong> · Data-driven housing advocacy for a Portsmouth that works for everyone</p>
   <p style="margin-top:4px;">For educational purposes. Financial figures are illustrative approximations based on publicly available POAH project data and NH market conditions.</p>
   <div class="rev-block">
-    <span style="font-weight:700;color:#2d3e52;background:white;padding:2px 8px;border-radius:3px;">v1.6 · March 30, 2026</span>
+    <span style="font-weight:700;color:#2d3e52;background:white;padding:2px 8px;border-radius:3px;">v1.7 · March 30, 2026</span>
     <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.textContent=this.textContent.includes('▸')?'▴ Hide history':'▸ Show history'" class="rev-toggle">▸ Show history</button>
     <div class="rev-history">
+      <strong>v1.7 · March 30, 2026</strong> — Visual redesign of opening section: why-box wall-of-text replaced with intro paragraphs + three-stat comparison strip ($15M / $2,800 / $1,400). Redundant section-intro removed. LIHTC, State Resources, and Grants stack layer bodies converted from prose to structured bullets. Section renamed to "The four pieces of the puzzle".<br>
       <strong>v1.6 · March 30, 2026</strong> — Plain-English opening section added explaining the core financing problem for a lay audience. Capital stack defined in plain English before the interactive diagram. Operating gap punchline restated in direct language. "Rodger" spelling confirmed throughout. RSA 79-E card updated to reflect March 16, 2026 City Council work session outcome (informational only; no program adopted; adoption requires a Council vote). Footer PP link and header PP link added. Mobile analogy grid fixed to 2-column. All "Why can't we build more?" framing added.<br>
       <strong>v1.5 · March 22, 2026</strong> — Mobile optimization pass: disabled sticky positioning on stack diagram at ≤640px; reduced percentage font size and layer padding on mobile; tightened main padding and section dividers at small screens; added scroll-to-detail behavior when a stack layer is tapped on mobile.<br>
       <strong>v1.4 · March 21, 2026</strong> — Design fixes: stack layers changed from fixed height to min-height. Portsmouth Finance Map cards restructured with read-more/less toggles.<br>
@@ -905,13 +967,15 @@ const layers = {
     pct: 26,
     color: '#1a7a5e',
     body: `
-      <p><strong>What it is, in plain English:</strong> LIHTC stands for Low-Income Housing Tax Credits — a federal program created in 1986 that is the single largest source of affordable housing capital in the country. Here's the key: <em>corporations owe the IRS money. POAH can trade them a dollar off their tax bill in exchange for a dollar of cash upfront.</em> POAH uses that cash to build; the corporation gets a tax break. Everyone wins — except the IRS.</p>
-      <p><strong>How it works:</strong> The IRS allocates credits to state agencies (NH Housing), who award them competitively to developers. POAH sells those credits to a corporate investor (a bank or insurance company). The investor pays cash upfront; POAH builds. The investor claims the credits over 10 years.</p>
-      <p><strong>Two types with very different mechanics:</strong></p>
-      <p><strong>9% LIHTC</strong> — the more powerful version, used for new construction. Highly competitive. NH receives ~$4.2M in annual 9% credits, generating roughly <strong>$37M in equity for the entire state per year</strong>. That sounds like a lot until you realize NH needs thousands of new affordable units.</p>
-      <p><strong>4% LIHTC</strong> — paired with Tax-Exempt Bond financing. Less restrictive to access, but generates less equity per unit and often needs more supplemental subsidy.</p>
-      <p><strong>Long-term affordability strings (LURA):</strong> NH Housing requires 9% projects to remain affordable for 60–75 years; 4% projects for 30–60 years. Federal minimums are just 30 years.</p>
-      <p><strong>NH constraint:</strong> The state controls the allocation. The problem isn't the LIHTC program itself — it's the loss of the soft debt programs that have to sit underneath it (see State Resources).</p>
+      <p><strong>What it is, in plain English:</strong> LIHTC stands for Low-Income Housing Tax Credits — the federal program created in 1986 that is the single largest source of affordable housing capital in the country. The key insight: <em>corporations owe the IRS money. POAH trades them a dollar off their tax bill in exchange for a dollar of cash upfront.</em> POAH uses that cash to build; the corporation gets a tax break.</p>
+      <p><strong>How it works:</strong> The IRS allocates credits to state agencies (NH Housing), who award them competitively to developers. POAH sells those credits to a corporate investor. The investor pays cash upfront; POAH builds and the investor claims credits over 10 years.</p>
+      <p><strong>Two types:</strong></p>
+      <ul style="margin:6px 0 12px 18px;font-size:0.9rem;color:var(--muted);line-height:1.7;">
+        <li><strong>9% LIHTC</strong> — the powerful version, for new construction. Highly competitive. NH gets ~$4.2M/year in credits, generating ~$37M statewide equity annually — a small number for a state with a severe shortage.</li>
+        <li><strong>4% LIHTC</strong> — paired with Tax-Exempt Bond financing. Less restrictive, but generates less equity and usually needs more supplemental subsidy.</li>
+      </ul>
+      <p><strong>Long-term affordability (LURA):</strong> NH Housing requires 9% projects to stay affordable 60–75 years; 4% projects 30–60 years. Federal minimums are just 30 years.</p>
+      <p><strong>NH constraint:</strong> The allocation is controlled by the state. The real problem isn't LIHTC itself — it's the loss of the soft debt programs that must sit underneath it (see State Resources).</p>
     `
   },
   state: {
@@ -920,11 +984,14 @@ const layers = {
     color: '#c8822a',
     body: `
       <p><strong>What it is, in plain English:</strong> "Soft debt" or grants from NH Housing — money that either doesn't need to be repaid, or is repaid only from project cash flow at low or no interest. This is the "free money" Brown kept referring to. Without it, most affordable projects don't pencil regardless of everything else.</p>
-      <p><strong>Affordable Housing Fund (AHF)</strong> — NH Housing's primary gap-filling tool. Funded by NH's statewide Real Estate Transfer Tax and legislative appropriations. Functions as a revolving loan fund. This is the program Brown was describing when he said NH "severely limited" affordable housing resources — cuts to AHF appropriations are the specific constraint.</p>
-      <p><strong>HOME</strong> — federal capital subsidy administered by HUD, passed through NH Housing. Subject to extensive federal compliance requirements.</p>
-      <p><strong>Housing Trust Fund (HTF)</strong> — federal program for extremely low-income households (below 30% AMI). Administered through NH Housing.</p>
+      <p><strong>The main programs:</strong></p>
+      <ul style="margin:6px 0 12px 18px;font-size:0.9rem;color:var(--muted);line-height:1.7;">
+        <li><strong>Affordable Housing Fund (AHF)</strong> — NH Housing's primary gap-filler. Funded by NH's statewide Real Estate Transfer Tax and legislative appropriations. This is the program Brown described when he said NH "severely limited" affordable housing resources — legislative cuts to AHF are the specific constraint.</li>
+        <li><strong>HOME</strong> — federal capital subsidy administered by HUD, passed through NH Housing. Subject to extensive federal compliance requirements.</li>
+        <li><strong>Housing Trust Fund (HTF)</strong> — federal program for extremely low-income households (below 30% AMI).</li>
+      </ul>
       <div class="brown-quote">The state of New Hampshire kind of drastically changed their allocation of resources... and it severely limited our ability to produce housing, because you really need that deeply subsidized or free money from the state to cover the cost.</div>
-      <p><strong>Portsmouth relevance:</strong> NH already collects a statewide Real Estate Transfer Tax that feeds the AHF. The problem isn't the absence of a mechanism — it's that the legislature has chronically underfunded the AHF. Restoring AHF funding is the most direct path to unlocking more projects like Christ Church and Sherburne.</p>
+      <p><strong>Portsmouth relevance:</strong> NH already collects a statewide RETT that feeds the AHF. The problem isn't the absence of the mechanism — it's that the legislature has chronically underfunded the AHF. Restoring AHF funding is the most direct path to unlocking more projects.</p>
     `
   },
   city: {
@@ -943,13 +1010,15 @@ const layers = {
     pct: 9,
     color: '#7d5a3c',
     body: `
-      <p><strong>What it is, in plain English:</strong> Federal grants, state-level tax credit programs, and one-time contributions from third parties. This layer varies most by project — and has more sources than most people realize.</p>
-      <p><strong>Federal Home Loan Bank — Affordable Housing Program (AHP)</strong> — a competitive grant and subsidized loan program often overlooked by advocates. <em>Portsmouth example:</em> Christ Church Workforce Housing won an <strong>$850K AHP grant plus a $4M subsidized loan</strong> — nearly $5M from a single source most people have never heard of.</p>
-      <p><strong>NH CDFA State Tax Credits</strong> — distinct from LIHTC. Businesses or individuals contribute to qualifying projects and receive a <strong>75¢ state tax credit for every $1 contributed</strong> (effective cost: 25 cents on the dollar). No complex legal structure. CRA-eligible for local banks. Credits can be spread over 5 years.</p>
-      <p><strong>Current Portsmouth CDFA gaps Portsmouth businesses can fill right now:</strong></p>
-      <p>— <strong>Christ Church</strong> (44 units, under construction): ~$195,000 in CDFA credits still available.</p>
-      <p>— <strong>Sherburne School</strong> (90 units, pre-development): $625,000 in CDFA credits available.</p>
-      <p><strong>Scale of LIHTC nationally:</strong> Since 1986, LIHTC has produced 3.5 million+ affordable units — the largest single source of affordable housing capital in U.S. history.</p>
+      <p><strong>What it is, in plain English:</strong> Federal grants, state-level tax credit programs, and one-time contributions. This layer varies most by project — and has more sources than most people realize.</p>
+      <p><strong>Federal Home Loan Bank — AHP:</strong> A competitive grant program often overlooked. Christ Church Workforce Housing won an <strong>$850K grant plus a $4M subsidized loan</strong> — nearly $5M from a single source most people have never heard of.</p>
+      <p><strong>NH CDFA State Tax Credits:</strong> Businesses contribute to qualifying projects and receive a <strong>75¢ state tax credit per $1 contributed</strong> (effective cost: 25 cents on the dollar). CRA-eligible for banks. Credits spread over 5 years. No complex legal structure required.</p>
+      <p><strong>Current Portsmouth CDFA gaps businesses can fill right now:</strong></p>
+      <ul style="margin:6px 0 12px 18px;font-size:0.9rem;color:var(--muted);line-height:1.7;">
+        <li><strong>Christ Church</strong> (44 units, under construction): ~$195,000 in CDFA credits available</li>
+        <li><strong>Sherburne School</strong> (90 units, pre-development): $625,000 in CDFA credits available</li>
+      </ul>
+      <p><strong>Scale:</strong> Since 1986, LIHTC has produced 3.5M+ affordable units nationwide — the largest single source of affordable housing capital in U.S. history.</p>
     `
   },
   equity: {
