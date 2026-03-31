@@ -781,29 +781,6 @@ select.form-control { cursor: pointer; }
     <div class="section-title">Housing Action Plan Items Affecting the Business Community</div>
     <div class="section-sub">These action items from Portsmouth's Housing Action Plan have direct workforce or economic relevance. Click any item to expand.</div>
 
-    <div style="background:var(--cream-warm); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; font-size:0.9rem; line-height:1.7; color:var(--navy);">
-      <strong style="display:block; margin-bottom:8px; font-family:'DM Serif Display',Georgia,serif; font-size:1.05rem;">The Housing Action Plan Explorer</strong>
-      Progress Portsmouth created this tool — and the Housing Action Plan itself — as a starting point to hand off to the City. 
-      The Explorer tracks all action items, their implementation status, and estimated housing yield. 
-      It's now being offered to the City's Planning Department as a foundation to build from. 
-      Use the tabs above to explore items that affect your business, suggest additions, and find out how to get involved.
-      <div style="margin-top:12px;">
-        <a href="https://progress-portsmouth-tools.vercel.app/housing/hap-explorer.html" target="_blank"
-           style="display:inline-flex; align-items:center; gap:6px; background:var(--navy); color:var(--white); padding:9px 18px; border-radius:var(--radius); font-size:0.83rem; font-weight:700; text-decoration:none; transition:0.2s ease;"
-           onmouseover="this.style.background='#2d3e52'" onmouseout="this.style.background='#1a2332'">
-          🔍 Open the Explorer →
-        </a>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ── TAB 2: HAP ITEMS ── -->
-  <section class="tab-panel" id="tab-hap">
-
-    <div class="section-title">Housing Action Plan Items Affecting the Business Community</div>
-    <div class="section-sub">These action items from Portsmouth's Housing Action Plan have direct workforce or economic relevance. Click any item to expand.</div>
-
     <!-- FEATURED CALL TO ACTION: SURVEY -->
     <div style="background:linear-gradient(135deg,#1a3a2e,#2a5040);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:22px;border-left:5px solid var(--gold);">
       <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;">Highest-Impact Action You Can Take Right Now</div>
@@ -1170,6 +1147,57 @@ select.form-control { cursor: pointer; }
 
   </section>
 
+
+
+
+  <!-- ── TAB 3: SUGGEST ── -->
+  <section class="tab-panel" id="tab-suggest">
+
+    <div class="suggest-intro">
+      <strong>What's missing from this plan?</strong><br>
+      The Housing Action Plan reflects what city planners and advocates identified — but you see workforce housing barriers 
+      every day. If there's a policy gap, zoning obstacle, or program idea that would make a difference for your business, 
+      we want to hear it. Submissions go directly to Progress Portsmouth's policy team.
+    </div>
+
+    <div class="suggest-form">
+      <div class="form-group">
+        <label class="form-label">Your Organization (optional)</label>
+        <input type="text" class="form-control" id="sug-org" placeholder="e.g., Pease Development Authority, restaurant name, etc.">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Topic / Category</label>
+        <select class="form-control" id="sug-cat">
+          <option value="">— Select a category —</option>
+          <option>Workforce / Employee Retention</option>
+          <option>Commercial Property Reuse</option>
+          <option>Permitting / Regulatory Barriers</option>
+          <option>Employer-Assisted Housing</option>
+          <option>Financing / Incentives</option>
+          <option>Transit / Commute Access</option>
+          <option>Land Availability</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Describe the Issue or Idea</label>
+        <textarea class="form-control" id="sug-idea" rows="4"
+          placeholder="What barrier do you face? What policy change, program, or action would help? Be as specific as you can."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Name / Email (optional — for follow-up)</label>
+        <input type="text" class="form-control" id="sug-contact" placeholder="Name and/or email">
+      </div>
+      <button class="submit-btn" onclick="submitSuggestion()">
+        📬 Submit to Progress Portsmouth
+      </button>
+      <div class="submit-confirm" id="submit-confirm">
+        ✅ Thanks — your suggestion has been recorded and will be reviewed by our policy team.
+      </div>
+    </div>
+
+  </section>
+
 </main>
 
 <script>
@@ -1297,55 +1325,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-
-
-  <!-- ── TAB 3: SUGGEST ── -->
-  <section class="tab-panel" id="tab-suggest">
-
-    <div class="suggest-intro">
-      <strong>What's missing from this plan?</strong><br>
-      The Housing Action Plan reflects what city planners and advocates identified — but you see workforce housing barriers 
-      every day. If there's a policy gap, zoning obstacle, or program idea that would make a difference for your business, 
-      we want to hear it. Submissions go directly to Progress Portsmouth's policy team.
-    </div>
-
-    <div class="suggest-form">
-      <div class="form-group">
-        <label class="form-label">Your Organization (optional)</label>
-        <input type="text" class="form-control" id="sug-org" placeholder="e.g., Pease Development Authority, restaurant name, etc.">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Topic / Category</label>
-        <select class="form-control" id="sug-cat">
-          <option value="">— Select a category —</option>
-          <option>Workforce / Employee Retention</option>
-          <option>Commercial Property Reuse</option>
-          <option>Permitting / Regulatory Barriers</option>
-          <option>Employer-Assisted Housing</option>
-          <option>Financing / Incentives</option>
-          <option>Transit / Commute Access</option>
-          <option>Land Availability</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Describe the Issue or Idea</label>
-        <textarea class="form-control" id="sug-idea" rows="4"
-          placeholder="What barrier do you face? What policy change, program, or action would help? Be as specific as you can."></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Your Name / Email (optional — for follow-up)</label>
-        <input type="text" class="form-control" id="sug-contact" placeholder="Name and/or email">
-      </div>
-      <button class="submit-btn" onclick="submitSuggestion()">
-        📬 Submit to Progress Portsmouth
-      </button>
-      <div class="submit-confirm" id="submit-confirm">
-        ✅ Thanks — your suggestion has been recorded and will be reviewed by our policy team.
-      </div>
-    </div>
-
-  </section>
 <!-- REVISION BLOCK -->
 <div style="background:#0a1220;color:rgba(255,255,255,0.4);padding:20px 36px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;line-height:1.8;border-top:2px solid rgba(255,255,255,0.07);">
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;">
