@@ -40,6 +40,8 @@ header h1 em{color:var(--gold);font-style:normal}
 .fbtn[data-f="concern"].active,.fbtn[data-f="concern"]:hover{background:var(--red);color:#fff}
 .fbtn[data-f="unrelated"]{border-color:var(--gray);color:var(--gray)}
 .fbtn[data-f="unrelated"].active,.fbtn[data-f="unrelated"]:hover{background:var(--gray);color:#fff}
+.fbtn[data-f="portsmouth"]{border-color:var(--teal);color:var(--teal)}
+.fbtn[data-f="portsmouth"].active,.fbtn[data-f="portsmouth"]:hover{background:var(--teal);color:#fff}
 .sc{max-width:960px;margin:24px auto 0;padding:0 24px}
 .th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--gray);text-transform:uppercase;padding:20px 0 6px;border-top:1px solid rgba(45,62,82,.12);margin-top:20px}
 .th.first{border-top:none;margin-top:0}
@@ -154,6 +156,7 @@ footer{background:var(--navy-dark);margin-top:48px;padding:28px 24px;text-align:
     <button class="fbtn" data-f="mixed">~ Mixed</button>
     <button class="fbtn" data-f="concern">&minus; Concern</button>
     <button class="fbtn" data-f="unrelated">Unrelated</button>
+    <button class="fbtn" data-f="portsmouth" style="border-color:#3a7d6e;color:#3a7d6e;">&#9679; Portsmouth only</button>
   </div>
 </div>
 
@@ -611,10 +614,10 @@ footer{background:var(--navy-dark);margin-top:48px;padding:28px 24px;text-align:
     <div class="fo">Progress Portsmouth</div>
     <div class="fl"><a href="https://progressportsmouth.com">progressportsmouth.com</a></div>
     <div class="fm">
-      v1.3 &middot; April 2, 2026 &middot;
+      v1.4 &middot; April 2, 2026 &middot;
       <span class="rt" onclick="document.querySelector('.rn').classList.toggle('open')">revision notes</span>
       <div class="rn">
-        v1.3 &mdash; April 2, 2026: Final draft. Authorization/appropriation callout box added near top of page. &sect;203 advocate take: &ldquo;cheaper&rdquo; &rarr; &ldquo;often cheaper.&rdquo; &sect;205 enforcement language hedged to reflect HUD rulemaking dependency. &sect;212 pencil language softened. &sect;704 advocate take reframed as procedural safeguard rather than structural equity fix. &sect;302&ndash;303 and &sect;803 punchy language replaced with evidence-based framing. Regional workforce housing relevance notes added to &sect;302&ndash;303, &sect;401&ndash;402, and &sect;503.<br><br>v1.2 &mdash; April 2, 2026: Full audit revision. Subtitle changed to &ldquo;guide to the major housing-relevant provisions.&rdquo; Scope note added. Sections 504, 505, 701&ndash;704, 801&ndash;802, and 1101&ndash;1102 added to achieve full title coverage. Sec. 203 expanded to include landlords and rental stock. Sec. 205 rewritten to flag performance regime dimension. Sec. 201 Portsmouth language softened &mdash; no confirmed 2026 RAD conversion on record. Sec. 212 local claims made conditional. Sec. 901 Advocate Read softened &mdash; capital-freeze framing replaced with concern and underwriting uncertainty. Sec. 803 reframed as political signal rather than proven policy outcome. CSS rewritten clean.<br><br>
+        v1.4 &mdash; April 2, 2026: Added Portsmouth-only filter to nav bar.<br><br>v1.3 &mdash; April 2, 2026: Final draft. Authorization/appropriation callout box added near top of page. &sect;203 advocate take: &ldquo;cheaper&rdquo; &rarr; &ldquo;often cheaper.&rdquo; &sect;205 enforcement language hedged to reflect HUD rulemaking dependency. &sect;212 pencil language softened. &sect;704 advocate take reframed as procedural safeguard rather than structural equity fix. &sect;302&ndash;303 and &sect;803 punchy language replaced with evidence-based framing. Regional workforce housing relevance notes added to &sect;302&ndash;303, &sect;401&ndash;402, and &sect;503.<br><br>v1.2 &mdash; April 2, 2026: Full audit revision. Subtitle changed to &ldquo;guide to the major housing-relevant provisions.&rdquo; Scope note added. Sections 504, 505, 701&ndash;704, 801&ndash;802, and 1101&ndash;1102 added to achieve full title coverage. Sec. 203 expanded to include landlords and rental stock. Sec. 205 rewritten to flag performance regime dimension. Sec. 201 Portsmouth language softened &mdash; no confirmed 2026 RAD conversion on record. Sec. 212 local claims made conditional. Sec. 901 Advocate Read softened &mdash; capital-freeze framing replaced with concern and underwriting uncertainty. Sec. 803 reframed as political signal rather than proven policy outcome. CSS rewritten clean.<br><br>
         v1.1 &mdash; April 2, 2026: Sec. 901 downgraded from Helpful to Mixed based on Homefront/Up for Growth briefing on Senate-passed disposition requirement language.<br><br>
         v1.0 &mdash; April 2, 2026: Initial publication based on Senate Banking Committee section-by-section summary.
       </div>
@@ -636,7 +639,9 @@ document.querySelectorAll('.fbtn').forEach(function(btn){
     btn.classList.add('active');
     var f=btn.dataset.f;
     document.querySelectorAll('.card').forEach(function(c){
-      c.classList.toggle('hidden',f!=='all'&&c.dataset.cat!==f);
+      if(f==='all') c.classList.remove('hidden');
+      else if(f==='portsmouth') c.classList.toggle('hidden', !c.querySelector('.ptag'));
+      else c.classList.toggle('hidden', c.dataset.cat!==f);
     });
     document.querySelectorAll('.tg').forEach(function(g){
       var n=g.nextElementSibling,vis=false;
