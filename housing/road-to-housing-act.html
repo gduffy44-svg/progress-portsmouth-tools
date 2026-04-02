@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21st Century ROAD to Housing Act -- Progress Portsmouth</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2d3e52;--navy-dark:#1a2332;--gold:#f4a261;--gold-dark:#c8822a;--teal:#3a7d6e;--cream:#f8f4ee;--green:#2e7d4f;--green-light:#e8f5ee;--amber:#b45309;--amber-light:#fef3c7;--red:#9b2335;--red-light:#fde8ec;--gray:#64748b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--navy-dark);line-height:1.6}
+header{background:var(--navy-dark);overflow:hidden}
+.hstripe{height:4px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--teal))}
+.hinner{max-width:960px;margin:0 auto;padding:36px 24px 24px}
+.hlabel{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:10px}
+header h1{font-family:'DM Serif Display',serif;font-size:clamp(26px,4vw,38px);color:#fff;line-height:1.15;max-width:720px}
+header h1 em{color:var(--gold);font-style:normal}
+.hsub{margin-top:12px;font-size:15px;color:rgba(255,255,255,.6);max-width:640px;font-weight:300}
+.scope{max-width:960px;margin:0 auto;padding:0 24px 20px;font-size:12px;color:rgba(255,255,255,.35);font-style:italic}
+.sband{background:var(--navy);border-top:1px solid rgba(255,255,255,.07)}
+.sbinner{max-width:960px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.spill{display:flex;align-items:center;gap:10px}
+.snum{font-family:'DM Serif Display',serif;font-size:28px;color:var(--gold);line-height:1}
+.slabel{font-size:12px;color:rgba(255,255,255,.5);line-height:1.3;max-width:80px}
+.sdiv{width:1px;height:36px;background:rgba(255,255,255,.12)}
+.anote{max-width:960px;margin:28px auto 0;padding:0 24px}
+.acard{background:var(--navy);border-left:4px solid var(--gold-dark);border-radius:6px;padding:18px 22px;color:rgba(255,255,255,.82);font-size:14px;font-style:italic}
+.acard strong{color:var(--gold);font-style:normal;font-weight:600}
+.fbar{max-width:960px;margin:28px auto 0;padding:0 24px}
+.flabel{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--gray);text-transform:uppercase;margin-bottom:10px}
+.fbtns{display:flex;flex-wrap:wrap;gap:8px}
+.fbtn{padding:7px 16px;border-radius:20px;border:1.5px solid;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s ease;background:transparent}
+.fbtn[data-f="all"]{border-color:var(--navy);color:var(--navy)}
+.fbtn[data-f="all"].active,.fbtn[data-f="all"]:hover{background:var(--navy);color:#fff}
+.fbtn[data-f="helpful"]{border-color:var(--green);color:var(--green)}
+.fbtn[data-f="helpful"].active,.fbtn[data-f="helpful"]:hover{background:var(--green);color:#fff}
+.fbtn[data-f="mixed"]{border-color:var(--amber);color:var(--amber)}
+.fbtn[data-f="mixed"].active,.fbtn[data-f="mixed"]:hover{background:var(--amber);color:#fff}
+.fbtn[data-f="concern"]{border-color:var(--red);color:var(--red)}
+.fbtn[data-f="concern"].active,.fbtn[data-f="concern"]:hover{background:var(--red);color:#fff}
+.fbtn[data-f="unrelated"]{border-color:var(--gray);color:var(--gray)}
+.fbtn[data-f="unrelated"].active,.fbtn[data-f="unrelated"]:hover{background:var(--gray);color:#fff}
+.sc{max-width:960px;margin:24px auto 0;padding:0 24px}
+.th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--gray);text-transform:uppercase;padding:20px 0 6px;border-top:1px solid rgba(45,62,82,.12);margin-top:20px}
+.th.first{border-top:none;margin-top:0}
+.tn{font-family:'DM Serif Display',serif;font-size:19px;color:var(--navy-dark);margin-bottom:12px}
+.tg{margin-bottom:8px}
+.card{background:#fff;border-radius:8px;margin-bottom:10px;border:1px solid rgba(45,62,82,.1);overflow:hidden;transition:box-shadow .18s ease}
+.card:hover{box-shadow:0 4px 16px rgba(45,62,82,.1)}
+.card.hidden{display:none}
+.ch{display:flex;align-items:stretch;cursor:pointer;user-select:none}
+.ca{width:5px;flex-shrink:0}
+.card.helpful .ca{background:var(--green)}
+.card.mixed .ca{background:var(--amber)}
+.card.concern .ca{background:var(--red)}
+.card.unrelated .ca{background:var(--gray)}
+.cm{flex:1;padding:14px 16px;display:flex;align-items:center;gap:14px}
+.cb{flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;padding:3px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.05em}
+.card.helpful .cb{background:var(--green-light);color:var(--green)}
+.card.mixed .cb{background:var(--amber-light);color:var(--amber)}
+.card.concern .cb{background:var(--red-light);color:var(--red)}
+.card.unrelated .cb{background:#f1f5f9;color:var(--gray)}
+.ct{flex:1;font-weight:600;font-size:14.5px;color:var(--navy-dark);line-height:1.3}
+.csn{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gray);flex-shrink:0}
+.cv{padding:14px 16px;display:flex;align-items:center;color:var(--gray);font-size:11px;transition:transform .2s ease}
+.card.open .cv{transform:rotate(180deg)}
+.cd{display:none;padding:0 16px 16px 21px;border-top:1px solid rgba(45,62,82,.07)}
+.card.open .cd{display:block}
+.cdi{padding-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.db h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
+.db p,.db ul{font-size:13.5px;color:#374151;line-height:1.55}
+.db ul{padding-left:16px}
+.db ul li{margin-bottom:3px}
+.at{margin-top:12px;grid-column:1/-1;padding:12px 14px;border-radius:5px;font-size:13.5px;line-height:1.55}
+.card.helpful .at{background:var(--green-light);border-left:3px solid var(--green)}
+.card.mixed .at{background:var(--amber-light);border-left:3px solid var(--amber)}
+.card.concern .at{background:var(--red-light);border-left:3px solid var(--red)}
+.card.unrelated .at{background:#f1f5f9;border-left:3px solid var(--gray)}
+.at strong{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.card.helpful .at strong{color:var(--green)}
+.card.mixed .at strong{color:var(--amber)}
+.card.concern .at strong{color:var(--red)}
+.card.unrelated .at strong{color:var(--gray)}
+.ptag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;background:rgba(58,125,110,.12);color:var(--teal);border:1px solid rgba(58,125,110,.25);border-radius:3px;padding:2px 6px;margin-left:6px;vertical-align:middle}
+.bs{max-width:960px;margin:32px auto 0;padding:0 24px}
+.bc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.bcard{background:var(--navy-dark);border-radius:8px;padding:22px;color:rgba(255,255,255,.8);font-size:13.5px;line-height:1.6}
+.bcard h3{font-family:'DM Serif Display',serif;font-size:16px;color:var(--gold);margin-bottom:10px}
+.bcard ul{padding-left:16px}
+.bcard ul li{margin-bottom:5px}
+.leg{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px;padding:16px;background:#fff;border-radius:8px;border:1px solid rgba(45,62,82,.1)}
+.li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--navy)}
+.ld{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+footer{background:var(--navy-dark);margin-top:48px;padding:28px 24px;text-align:center}
+.fi{max-width:960px;margin:0 auto}
+.fo{font-family:'DM Serif Display',serif;font-size:16px;color:var(--gold);margin-bottom:4px}
+.fl{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:12px}
+.fl a{color:rgba(255,255,255,.65);text-decoration:none}
+.fl a:hover{color:var(--gold)}
+.fm{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);line-height:1.7}
+.rt{color:rgba(255,255,255,.4);cursor:pointer;text-decoration:underline}
+.rn{display:none;margin-top:8px;color:rgba(255,255,255,.3);text-align:left;max-width:700px;margin-left:auto;margin-right:auto}
+.rn.open{display:block}
+@media(max-width:600px){.cdi{grid-template-columns:1fr}.csn,.sdiv{display:none}.snum{font-size:22px}.bc{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hstripe"></div>
+  <div class="hinner">
+    <div class="hlabel">Federal Housing Policy &mdash; Progress Portsmouth Analysis</div>
+    <h1>21st Century <em>ROAD to Housing</em> Act</h1>
+    <p class="hsub">A guide to the major housing-relevant provisions, rated from the perspective of an affordable housing advocate in Portsmouth, NH.</p>
+  </div>
+  <div class="scope">This guide covers provisions most material to Portsmouth&rsquo;s housing context. Administrative, severability, and oversight sections are included in condensed form. All 11 titles are represented.</div>
+</header>
+
+<div class="sband">
+  <div class="sbinner">
+    <div class="spill"><div class="snum">11</div><div class="slabel">titles in the bill</div></div>
+    <div class="sdiv"></div>
+    <div class="spill"><div class="snum" id="hcount">--</div><div class="slabel">helpful provisions</div></div>
+    <div class="sdiv"></div>
+    <div class="spill"><div class="snum" id="mcount">--</div><div class="slabel">mixed / conditional</div></div>
+    <div class="sdiv"></div>
+    <div class="spill"><div class="snum" id="ccount">--</div><div class="slabel">concerns</div></div>
+  </div>
+</div>
+
+<div class="anote">
+  <div class="acard">
+    <strong>How to read this:</strong> Every provision is rated from an affordable housing advocate&rsquo;s perspective in Portsmouth.
+    <span style="color:#6ee7a0;font-style:normal;font-weight:600;">Green = net positive</span> for supply or affordability.
+    <span style="color:#fcd34d;font-style:normal;font-weight:600;">Amber = depends on implementation.</span>
+    <span style="color:#fca5a5;font-style:normal;font-weight:600;">Red = harmful or a political warning signal.</span>
+    A <span style="background:rgba(58,125,110,.25);color:#6ee7bc;padding:1px 5px;border-radius:3px;font-style:normal;font-size:12px;font-family:monospace;">Portsmouth</span> tag marks provisions with direct local relevance.
+  </div>
+</div>
+
+<div style="max-width:960px;margin:20px auto 0;padding:0 24px">
+  <div style="background:#fff3cd;border:1.5px solid #c8822a;border-radius:6px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start">
+    <div style="font-size:22px;line-height:1;flex-shrink:0">&#9888;</div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#c8822a;margin-bottom:4px">Key context for the entire bill</div>
+      <div style="font-size:13.5px;color:#374151;line-height:1.55"><strong style="color:#1a2332">Most of this bill authorizes programs that only exist if Congress later funds them.</strong> Title XI, Sec. 1102 states explicitly that no additional funds are authorized. Provisions listed as pilots, grants, or new programs require a separate appropriations vote to become real. Throughout this guide, &ldquo;only if funded&rdquo; is not a caveat &mdash; it is the operative condition for a significant share of the bill&rsquo;s supply-side provisions.</div>
+    </div>
+  </div>
+</div>
+<div class="fbar">
+  <div class="flabel">Filter by advocate rating</div>
+  <div class="fbtns">
+    <button class="fbtn active" data-f="all">All provisions</button>
+    <button class="fbtn" data-f="helpful">+ Helpful</button>
+    <button class="fbtn" data-f="mixed">~ Mixed</button>
+    <button class="fbtn" data-f="concern">&minus; Concern</button>
+    <button class="fbtn" data-f="unrelated">Unrelated</button>
+  </div>
+</div>
+
+<div class="sc" id="root">
+<div class="tg" data-tg="t1">
+  <div class="th first">Title 1</div>
+  <div class="tn">Improving Financial Literacy</div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 101 &mdash; Housing Counseling Reform</span><span class="csn">101</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Allows HUD to review housing counselor performance, require retraining, and decertify counselors persistently out of compliance.</p></div>
+    <div class="db"><h4>What it does not do</h4><p>No new funding for counseling agencies. No expansion of who can access services. Oversight without investment in capacity.</p></div>
+    <div class="at"><strong>Advocate read</strong>Quality control is reasonable, but counseling agencies are already understaffed. More oversight without more resources may strain thin capacity. Net effect is marginal.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t2">
+  <div class="th">Title 2</div>
+  <div class="tn">Building More in America</div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 201 &mdash; RAD Cap Lifted<span class="ptag">Portsmouth</span></span><span class="csn">201</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Removes the cap on the Rental Assistance Demonstration program, allowing PHAs to convert public housing to project-based rental assistance and unlock private rehabilitation financing. Codifies tenant protections including relocation rights and right to return.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Portsmouth Housing Authority manages 650+ public housing units. An uncapped RAD program gives PHA more flexibility to pursue private rehabilitation financing &mdash; though no specific RAD conversion is confirmed in recent public documents.</p></div>
+    <div class="at"><strong>Advocate read</strong>One of the stronger provisions in the bill. RAD has a track record as a preservation mechanism. Codifying tenant protections alongside the cap lift addresses the historic concern that conversions could displace residents.</div>
+  </div></div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 202 &mdash; HUD Grants Weighted Toward Opportunity Zones</span><span class="csn">202</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Allows HUD to give priority in competitive grant competitions to applicants in or serving federal Opportunity Zones.</p></div>
+    <div class="db"><h4>The problem</h4><p>The OZ framework created in 2017 has a mixed affordability record &mdash; many investments went to market-rate development. Tying HUD housing grants to an OZ preference inherits that ambiguity.</p></div>
+    <div class="at"><strong>Advocate read</strong>The intent &mdash; directing resources toward disinvested areas &mdash; is reasonable. Impact depends on how HUD implements the preference and whether any affordability conditions attach.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 203 &mdash; Whole-Home Repairs Act<span class="ptag">Portsmouth</span></span><span class="csn">203</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Creates a pilot offering grants and forgivable loans for deferred maintenance and health hazards in aging homes &mdash; for both homeowners and landlords &mdash; stabilizing housing stock across tenure types.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Portsmouth's housing stock is old: roughly 73% of owner-occupied units were built before 1980, 61% before 1960. Preservation of aging rental properties is as important locally as owner-occupied homes &mdash; both tenure types are relevant here.</p></div>
+    <div class="at"><strong>Advocate read</strong>Preservation is often cheaper than new construction. This provision targets affordability-through-stability across both tenure types. Strong, if funded.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 204 &mdash; Community Investment Cap Raised for Banks</span><span class="csn">204</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Raises the Public Welfare Investment cap for nationally chartered banks from 15% to 20% of capital, expanding private investment capacity for LIHTC, CDFIs, and other affordable housing vehicles.</p></div>
+    <div class="db"><h4>What it means</h4><p>More private capital can flow into affordable housing financing without requiring federal appropriations. Benefits are diffuse but directionally correct.</p></div>
+    <div class="at"><strong>Advocate read</strong>A quiet but meaningful provision. Expands the private capital pool for affordable projects at no budget cost.</div>
+  </div></div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 205 and 206 &mdash; CDBG: Production Pilot and New Construction Eligibility<span class="ptag">Portsmouth</span></span><span class="csn">205-206</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Sec. 206 adds new construction as an eligible CDBG use &mdash; previously not permitted. Sec. 205 is more complex: it ties some CDBG funding to housing production outcomes, including bonuses for faster building and modest reductions for grantees that lag. This is a performance regime, not just expanded flexibility.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Portsmouth is a CDBG entitlement city. Using CDBG for new affordable construction is a genuine improvement. The Sec. 205 performance structure adds scrutiny &mdash; cities facing local political barriers to production could be exposed to funding adjustments depending on how HUD defines production benchmarks in rulemaking.</p></div>
+    <div class="at"><strong>Advocate read</strong>Opening CDBG to new construction is overdue and clearly positive. The Sec. 205 performance regime is more politically charged than the headline suggests &mdash; not just more flexibility but accountability with mild consequences. For Portsmouth, actively working on housing production, that trade-off is probably manageable.</div>
+  </div></div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 207 and 208 &mdash; Environmental Review Streamlining</span><span class="csn">207-208</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Sec. 207 empowers state and local governments to streamline federal environmental reviews. Sec. 208 right-sizes NEPA review specifically for small and infill housing projects.</p></div>
+    <div class="db"><h4>The tension</h4><p>Environmental review protects communities &mdash; especially lower-income ones &mdash; from harmful development. Sec. 208&rsquo;s infill focus is more defensible. Sec. 207&rsquo;s broader delegation warrants close attention in rulemaking.</p></div>
+    <div class="at"><strong>Advocate read</strong>Right-sizing NEPA for small infill projects makes sense and could help unlock missing-middle housing. Broader streamlining language often travels further in implementation than authors intend.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 209, 210, 211 &mdash; Planning Grants, Innovation Fund, Pattern Books</span><span class="csn">209-211</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Competitive grants for regional housing planning (209); flexible funding for communities actively building supply (210); pre-approved design pattern books to speed permitting (211).</p></div>
+    <div class="db"><h4>What to watch</h4><p>All three are unfunded pilot authorizations. Title XI includes a &ldquo;No Additional Funds Authorized&rdquo; clause &mdash; these programs exist only if separately appropriated.</p></div>
+    <div class="at"><strong>Advocate read</strong>The tools are right. Pattern books could help Portsmouth move faster on ADU and missing-middle housing. But these programs require appropriations to exist, which is far from guaranteed.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 212 &mdash; RESIDE Act: Vacant Buildings to Housing<span class="ptag">Portsmouth</span></span><span class="csn">212</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Creates a pilot within the HOME program to convert vacant and abandoned buildings into attainable housing, providing federal subsidy for adaptive reuse projects that often require public support to pencil.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Adaptive reuse proposals have surfaced in Portsmouth&rsquo;s urban core &mdash; including discussions around 134 Pleasant Street and the former J.J. Newberry building. This provision could be useful where such opportunities emerge, though a systematic local vacancy case has not been established.</p></div>
+    <div class="at"><strong>Advocate read</strong>Adaptive reuse typically requires public subsidy to work. This creates a vehicle for that. Potentially useful for Portsmouth on a project-by-project basis as opportunities surface downtown.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 213 &mdash; FHA Multifamily Loan Limit Increase</span><span class="csn">213</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Requires FHA to increase multifamily loan limits to better match actual housing market costs, restoring FHA-backed multifamily financing viability in high-cost markets.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>When loan limits lag construction costs, FHA financing is effectively unavailable in expensive markets. This is a structural fix for the Seacoast region.</p></div>
+    <div class="at"><strong>Advocate read</strong>Quiet but important. Updating limits to match Seacoast construction costs makes a key affordable apartment financing tool actually usable locally.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t3">
+  <div class="th">Title 3</div>
+  <div class="tn">Manufactured Housing for America</div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 301 &mdash; Manufactured Housing Definition Expanded; Energy Standards Paused</span><span class="csn">301</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Broadens the legal definition of manufactured housing to include units not built on a permanent chassis, expanding factory-built options. Also blocks energy efficiency standards from taking effect until formally adopted by HUD.</p></div>
+    <div class="db"><h4>The problem</h4><p>Pausing energy standards could mean lower-income households &mdash; who disproportionately live in manufactured homes &mdash; face higher utility costs for years. Energy efficiency is an affordability issue. Two distinct policy choices are bundled here.</p></div>
+    <div class="at"><strong>Advocate read</strong>The definition expansion is a supply win. The energy standard pause is a real cost to the residents those homes serve. Both deserve to be named clearly.</div>
+  </div></div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 302 and 303 &mdash; Modular and Manufactured Housing Financing Studies</span><span class="csn">302-303</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Directs FHA to assess lending barriers for modular housing and expand financing access for manufactured homes. Includes a cost-effectiveness study of factory-built housing finance.</p></div>
+    <div class="db"><h4>The limitation</h4><p>These are study and assessment directives. Financing barriers for manufactured and modular housing are already well-documented &mdash; the gap is action, not additional research.</p></div>
+    <div class="at"><strong>Advocate read</strong>Factory-built housing is a legitimate affordability pathway. The financing barriers are well-documented; directing HUD to study them is a weaker response than the scale of the problem warrants. Limited direct Portsmouth relevance, though factory-built housing could ease regional workforce housing production in outlying Seacoast communities.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 304 &mdash; PRICE Act: Protecting Manufactured Housing Communities</span><span class="csn">304</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Authorizes HUD&rsquo;s PRICE Program, providing grants to preserve and stabilize manufactured housing communities and protect residents from displacement when parks are sold or closed.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>Manufactured housing communities are a major source of naturally occurring affordable housing. When parks close, residents lose both their home and often their primary asset.</p></div>
+    <div class="at"><strong>Advocate read</strong>Anti-displacement protection for a housing population consistently underrepresented in federal policy. Unambiguously positive, even with limited direct Portsmouth relevance.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t4">
+  <div class="th">Title 4</div>
+  <div class="tn">Accessing the American Dream</div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 401 and 402 &mdash; Small-Dollar Mortgage Reform</span><span class="csn">401-402</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Directs CFPB and FHFA to study barriers to small-dollar mortgages and potentially ease rules on lender compensation and loan fees.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Limited. Portsmouth&rsquo;s median home price makes small-dollar mortgages largely irrelevant here. The homeownership barrier locally is price, not origination economics.</p></div>
+    <div class="at"><strong>Advocate read</strong>A reasonable fix for a real problem in lower-cost markets. Does not move the needle in Portsmouth or the broader Seacoast region, where the barrier to homeownership is price, not loan origination economics.</div>
+  </div></div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 403 &mdash; Appraisal Workforce Expansion</span><span class="csn">403</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Allows licensed (not just credentialed) appraisers to conduct FHA appraisals, expanding the workforce and potentially reducing delays.</p></div>
+    <div class="db"><h4>What to watch</h4><p>Appraisal bias is a documented problem. Expanding the workforce without improving training standards could amplify existing inequities. This addresses delays, not accuracy and bias.</p></div>
+    <div class="at"><strong>Advocate read</strong>Marginal benefit, real risk if not paired with stronger standards on appraisal quality and bias review.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 404 &mdash; Family Self-Sufficiency Homeownership Pilot</span><span class="csn">404</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Expands HUD&rsquo;s Family Self-Sufficiency program to help more families build savings and work toward homeownership as an economic mobility pathway.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>FSS has a solid evidence base for helping voucher-holders build assets. Homeownership is one of the few legal wealth-building mechanisms accessible to lower-income households, though Portsmouth&rsquo;s price levels put it out of reach for most FSS participants.</p></div>
+    <div class="at"><strong>Advocate read</strong>Equity-positive. Addresses part of the historical wealth gap created by discriminatory housing policy. The policy direction is sound even where the local pathway is narrow.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 405 &mdash; Voucher Inspection Reform<span class="ptag">Portsmouth</span></span><span class="csn">405</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Units inspected by another federal program within the past year automatically satisfy voucher inspection requirements. Landlords can also request pre-inspections before a tenant is placed.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Landlord reluctance to participate in the voucher program is a documented barrier in high-demand markets like Portsmouth. Reducing inspection friction removes a real pain point &mdash; though it does not address the deeper problem of payment standards lagging market rents.</p></div>
+    <div class="at"><strong>Advocate read</strong>Practical and meaningful. Inspection delays discourage landlord participation, limiting options for the lowest-income households. A genuine improvement within the current system.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t5">
+  <div class="th">Title 5</div>
+  <div class="tn">Program Reform</div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 501 &mdash; CDBG-DR Permanently Authorized</span><span class="csn">501</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Makes CDBG-Disaster Recovery permanent law rather than requiring ad hoc Congressional authorization after each disaster. Creates a dedicated HUD office to administer it.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>Permanent authorization means faster, more predictable disaster recovery response &mdash; removing the political bottleneck that has previously delayed housing recovery for years following major disasters.</p></div>
+    <div class="at"><strong>Advocate read</strong>Strong structural fix. Permanent authorization removes a known failure mode from the federal disaster housing response system.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 502 &mdash; HOME Program Reauthorized and Reformed<span class="ptag">Portsmouth</span></span><span class="csn">502</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Reforms and reauthorizes the HOME Investment Partnerships Program with updates aimed at improving administration and facilitating more affordable housing construction.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>HOME dollars flow through NH Housing to municipalities and nonprofits, including Portsmouth-area projects. More and better-administered HOME is a direct local benefit.</p></div>
+    <div class="at"><strong>Advocate read</strong>Straightforwardly positive. HOME is one of the primary federal tools for affordable housing production that reaches Portsmouth through the state pipeline.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 503 &mdash; Rural Housing Service Reform</span><span class="csn">503</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Decouples rental assistance from expiring USDA mortgages, preserving affordable housing in rural areas. Protects an estimated 400,000 rural families from displacement when project mortgages mature.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Limited direct impact locally, but relevant to the broader NH Seacoast region. Workforce housing shortages in outlying towns affect the regional labor supply Portsmouth&rsquo;s economy depends on.</p></div>
+    <div class="at"><strong>Advocate read</strong>Important anti-displacement provision at scale for markets that receive even less policy attention than Portsmouth. Indirect relevance via regional workforce housing dynamics: housing stability in outlying NH communities affects who can afford to work in Portsmouth.</div>
+  </div></div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 504 &mdash; New Moving to Work Cohort</span><span class="csn">504</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Authorizes a new Moving to Work cohort allowing participating housing authorities to waive certain HUD requirements in exchange for testing new program approaches.</p></div>
+    <div class="db"><h4>The tension</h4><p>MTW has generated genuine innovation in some PHAs and has been used to implement self-sufficiency requirements critics argue harm vulnerable residents. Outcomes depend entirely on which authorities participate and what waivers they pursue.</p></div>
+    <div class="at"><strong>Advocate read</strong>A neutral tool that produces good or bad outcomes depending on implementation. Monitor what specific waivers participating PHAs request.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 505 &mdash; Homelessness Funding Flexibility</span><span class="csn">505</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Allows states and localities receiving Emergency Solutions Grant funding to request a waiver of the statutory 60% spending cap on emergency shelter and street outreach &mdash; giving communities more flexibility to respond to homelessness as local conditions require.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>The 60% cap was designed to push communities toward prevention over emergency shelter. A waiver pathway creates flexibility without eliminating the underlying policy preference.</p></div>
+    <div class="at"><strong>Advocate read</strong>Sensible flexibility provision. Gives localities room to respond to actual conditions rather than statutory proportionality requirements that may not fit the local pattern of need.</div>
+  </div></div>
+</div>
+<div class="card concern" data-cat="concern">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Concern</span><span class="ct">Sec. 803 &mdash; Study on Work Requirements in Public Housing</span><span class="csn">803</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Directs HUD to study the implementation of work requirements by public housing agencies, assessing effects on homelessness, poverty, job attainment, and administrative capacity. It orders a study &mdash; not work requirements themselves.</p></div>
+    <div class="db"><h4>Why advocates are wary</h4><p>The broader evidence on work requirements in housing and safety-net programs &mdash; documented repeatedly by CBPP &mdash; shows they tend to increase housing instability without improving long-term employment outcomes. In federal housing policy, a mandated study is typically the precursor to policy expansion.</p></div>
+    <div class="at"><strong>Advocate read</strong>This provision does not impose work requirements. A study is not a mandate. The concern is that mandated research in this area has historically preceded policy expansion &mdash; and the weight of existing evidence on work requirements in housing programs, documented by CBPP and others, is already substantial. Advocates should treat this as an early indicator of where the policy conversation is heading.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t6">
+  <div class="th">Title 6</div>
+  <div class="tn">Veterans and Housing</div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 601, 602, 603 &mdash; Veterans Housing Access and HUD-VASH Reform</span><span class="csn">601-603</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Adds VA loan disclosures to standard mortgage applications. Permanently excludes veterans&rsquo; disability compensation from income calculations under HUD-VASH, helping disabled homeless veterans qualify for housing assistance.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>The HUD-VASH fix removes a regulatory barrier that was actively preventing some of the most vulnerable veterans from accessing housing. Many veterans are also unaware of their VA home loan benefit, which often offers better terms than FHA.</p></div>
+    <div class="at"><strong>Advocate read</strong>The HUD-VASH income exclusion is the most substantive provision here &mdash; permanently removing a rule that blocked disabled homeless veterans from housing access. The disclosure requirements are straightforward improvements.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t7">
+  <div class="th">Title 7</div>
+  <div class="tn">Oversight and Accountability</div>
+</div>
+<div class="card unrelated" data-cat="unrelated">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Unrelated</span><span class="ct">Sec. 701, 702, 703 &mdash; Annual Congressional Testimony Requirements</span><span class="csn">701-703</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Requires HUD Secretary and heads of FHA, Ginnie Mae, USDA, FHFA, and VA to testify annually before Congress on operations and performance. Sec. 703 requires the Interagency Council on Homelessness to report annually on homelessness reduction plans.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Administrative oversight provisions. No direct local impact. More transparent federal housing agency accountability is marginally positive for advocates who track federal program performance.</p></div>
+    <div class="at"><strong>Advocate read</strong>Appropriate Congressional oversight. Not substantive housing policy.</div>
+  </div></div>
+</div>
+<div class="card helpful" data-cat="helpful">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Helpful</span><span class="ct">Sec. 704 &mdash; Appraisal Reconsideration of Value<span class="ptag">Portsmouth</span></span><span class="csn">704</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Requires USDA, FHA, and FHFA to implement formal procedures allowing consumers to request a second appraisal or reconsideration of value when they believe their home has been undervalued.</p></div>
+    <div class="db"><h4>Why it matters</h4><p>Appraisal bias is a documented mechanism through which housing wealth disparities are perpetuated &mdash; disproportionately affecting communities of color. A formal reconsideration process creates a procedural check on undervaluation without requiring a full regulatory overhaul.</p></div>
+    <div class="at"><strong>Advocate read</strong>A meaningful procedural safeguard that creates a formal check on appraisal disputes, including cases of potential bias. It does not structurally reform how appraisals are conducted, but it gives consumers a documented path to challenge valuations they believe are inaccurate.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t8">
+  <div class="th">Title 8</div>
+  <div class="tn">Coordination, Studies, and Reporting</div>
+</div>
+<div class="card unrelated" data-cat="unrelated">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Unrelated</span><span class="ct">Sec. 801 and 802 &mdash; Interagency Coordination and Joint Reviews</span><span class="csn">801-802</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Sec. 801 directs HUD, USDA, and VA to identify collaboration areas to streamline housing program implementation. Sec. 802 directs HUD and USDA to coordinate on joint environmental reviews for projects funded by both agencies.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Administrative coordination provisions. Reducing duplicative reviews has marginal benefit for projects that cross agency funding streams. No direct local policy impact.</p></div>
+    <div class="at"><strong>Advocate read</strong>Process improvements that may reduce friction at the margins. Not substantive housing policy from a local advocacy standpoint.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t9">
+  <div class="th">Title 9</div>
+  <div class="tn">Homeownership for Main Street America</div>
+</div>
+<div class="card mixed" data-cat="mixed">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Mixed</span><span class="ct">Sec. 901 &mdash; Institutional Investor Restrictions on Single-Family Homes<span class="ptag">Portsmouth</span></span><span class="csn">901</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Prohibits large institutional investors from purchasing certain single-family homes. The Senate-passed language goes beyond the White House&rsquo;s original proposal by attaching a disposition requirement to newly built homes &mdash; requiring investors to sell within roughly seven years &mdash; not just restricting purchases of existing stock.</p></div>
+    <div class="db"><h4>The rental production concern</h4><p>Multifamily rental communities are typically financed on long hold structures, with investors underwriting returns over 15&ndash;20 years. A forced seven-year sale window raises required returns and can make new deals financially unviable. Bipartisan House members including Financial Services Chair French Hill and Ranking Member Maxine Waters have raised concerns. Industry sources report underwriting assumptions in to-be-built communities are being revisited, though systematic evidence of a capital freeze remains more anecdotal than documented.</p></div>
+    <div class="db"><h4>Portsmouth relevance</h4><p>Institutional buying competes with first-time buyers in the Seacoast market &mdash; restricting that is positive. But Portsmouth also needs new family-sized rental production. If the disposition requirement deters new rental construction capital, the city loses on both ends. The existing-vs.-new distinction is the crux of what House negotiations need to resolve.</p></div>
+    <div class="db"><h4>What a fix looks like</h4><p>The most viable path in Hill discussions: apply the investor restriction to existing single-family home purchases only, with a carveout for capital financing new rental construction. The seven-year disposition requirement is the specific provision that proposed fixes target.</p></div>
+    <div class="at"><strong>Advocate read &mdash; updated April 2, 2026</strong>Downgraded from Helpful (v1.0) based on Senate-passed language. Restricting corporate purchases of existing homes is sound policy with clear homeownership benefits. Attaching a forced-sale timeline to new rental construction capital is a different intervention. The concern about chilling new rental supply is credible enough to warrant a targeted fix &mdash; and the fix is achievable without gutting the original intent.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t10">
+  <div class="th">Title 10</div>
+  <div class="tn">Central Bank Digital Currency</div>
+</div>
+<div class="card unrelated" data-cat="unrelated">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Unrelated</span><span class="ct">Sec. 1001 &mdash; Federal Reserve Barred from Issuing Digital Currency</span><span class="csn">1001</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Prohibits the Federal Reserve from issuing a central bank digital currency.</p></div>
+    <div class="db"><h4>Housing connection</h4><p>None. A political add-on with no relationship to housing affordability, supply, or finance. Its presence reflects legislative horse-trading, not housing policy.</p></div>
+    <div class="at"><strong>Advocate read</strong>Set this aside entirely.</div>
+  </div></div>
+</div>
+<div class="tg" data-tg="t11">
+  <div class="th">Title 11</div>
+  <div class="tn">Miscellaneous</div>
+</div>
+<div class="card unrelated" data-cat="unrelated">
+  <div class="ch" onclick="toggleCard(this.parentElement)">
+    <div class="ca"></div>
+    <div class="cm"><span class="cb">Unrelated</span><span class="ct">Sec. 1101 and 1102 &mdash; Severability and No Additional Funds</span><span class="csn">1101-1102</span></div>
+    <div class="cv">&#9660;</div>
+  </div>
+  <div class="cd"><div class="cdi">
+    <div class="db"><h4>What it does</h4><p>Sec. 1101 is a standard severability clause. Sec. 1102 states that no additional funds are authorized by the bill.</p></div>
+    <div class="db"><h4>Why Sec. 1102 matters</h4><p>The &ldquo;No Additional Funds Authorized&rdquo; clause is significant context for the entire bill. Many provisions &mdash; pilot programs, planning grants, innovation funds, pattern books &mdash; are authorizations requiring separate appropriations. Authorization without appropriation is common. This is why the phrase &ldquo;only if funded&rdquo; recurs throughout this guide.</p></div>
+    <div class="at"><strong>Advocate read</strong>Sec. 1101 is boilerplate. Sec. 1102 is the single most important context for reading the bill&rsquo;s actual impact potential.</div>
+  </div></div>
+</div>
+</div>
+
+<div class="bs">
+  <div class="leg">
+    <div class="li"><div class="ld" style="background:var(--green)"></div>Helpful</div>
+    <div class="li"><div class="ld" style="background:var(--amber)"></div>Mixed &mdash; depends on implementation</div>
+    <div class="li"><div class="ld" style="background:var(--red)"></div>Concern or warning signal</div>
+    <div class="li"><div class="ld" style="background:var(--gray)"></div>Unrelated or administrative</div>
+    <div class="li"><div class="ld" style="background:var(--teal)"></div>Direct Portsmouth relevance</div>
+  </div>
+  <div class="bc">
+    <div class="bcard">
+      <h3>What this bill does well</h3>
+      <ul>
+        <li>Lifts the RAD cap and codifies tenant protections (Sec. 201)</li>
+        <li>Opens CDBG to new affordable construction (Sec. 206)</li>
+        <li>Addresses adaptive reuse financing via RESIDE (Sec. 212)</li>
+        <li>Permanently authorizes CDBG-DR for disaster recovery (Sec. 501)</li>
+        <li>Restricts institutional investors from buying existing homes &mdash; if Sec. 901 is fixed in the House</li>
+        <li>Reforms and reauthorizes HOME program (Sec. 502)</li>
+        <li>Reduces voucher inspection friction (Sec. 405)</li>
+        <li>Establishes appraisal reconsideration rights (Sec. 704)</li>
+        <li>Permanently protects disabled veterans in HUD-VASH (Sec. 603)</li>
+        <li>ESG flexibility for homelessness response (Sec. 505)</li>
+      </ul>
+    </div>
+    <div class="bcard">
+      <h3>What is missing or concerning</h3>
+      <ul>
+        <li>Sec. 901 Senate language risks chilling new rental construction &mdash; a House fix is needed</li>
+        <li>No expansion of Section 8 or Housing Choice Voucher program</li>
+        <li>No new LIHTC allocations or 4% LIHTC fix</li>
+        <li>Sec. 803 work requirements study is a political signal, not neutral research</li>
+        <li>Many provisions are unfunded pilot authorizations (see Sec. 1102)</li>
+        <li>No rent stabilization or national tenant protection floor</li>
+        <li>Energy standard pause in Sec. 301 harms manufactured housing residents</li>
+        <li>Sec. 205 performance regime could penalize cities facing local production barriers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fi">
+    <div class="fo">Progress Portsmouth</div>
+    <div class="fl"><a href="https://progressportsmouth.com">progressportsmouth.com</a></div>
+    <div class="fm">
+      v1.3 &middot; April 2, 2026 &middot;
+      <span class="rt" onclick="document.querySelector('.rn').classList.toggle('open')">revision notes</span>
+      <div class="rn">
+        v1.3 &mdash; April 2, 2026: Final draft. Authorization/appropriation callout box added near top of page. &sect;203 advocate take: &ldquo;cheaper&rdquo; &rarr; &ldquo;often cheaper.&rdquo; &sect;205 enforcement language hedged to reflect HUD rulemaking dependency. &sect;212 pencil language softened. &sect;704 advocate take reframed as procedural safeguard rather than structural equity fix. &sect;302&ndash;303 and &sect;803 punchy language replaced with evidence-based framing. Regional workforce housing relevance notes added to &sect;302&ndash;303, &sect;401&ndash;402, and &sect;503.<br><br>v1.2 &mdash; April 2, 2026: Full audit revision. Subtitle changed to &ldquo;guide to the major housing-relevant provisions.&rdquo; Scope note added. Sections 504, 505, 701&ndash;704, 801&ndash;802, and 1101&ndash;1102 added to achieve full title coverage. Sec. 203 expanded to include landlords and rental stock. Sec. 205 rewritten to flag performance regime dimension. Sec. 201 Portsmouth language softened &mdash; no confirmed 2026 RAD conversion on record. Sec. 212 local claims made conditional. Sec. 901 Advocate Read softened &mdash; capital-freeze framing replaced with concern and underwriting uncertainty. Sec. 803 reframed as political signal rather than proven policy outcome. CSS rewritten clean.<br><br>
+        v1.1 &mdash; April 2, 2026: Sec. 901 downgraded from Helpful to Mixed based on Homefront/Up for Growth briefing on Senate-passed disposition requirement language.<br><br>
+        v1.0 &mdash; April 2, 2026: Initial publication based on Senate Banking Committee section-by-section summary.
+      </div>
+      <br>Created with AI assistance in research and information design, with human editorial control.
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleCard(c){c.classList.toggle('open')}
+var counts={helpful:0,mixed:0,concern:0,unrelated:0};
+document.querySelectorAll('.card').forEach(function(c){var k=c.dataset.cat;if(counts[k]!==undefined)counts[k]++;});
+document.getElementById('hcount').textContent=counts.helpful;
+document.getElementById('mcount').textContent=counts.mixed;
+document.getElementById('ccount').textContent=counts.concern;
+document.querySelectorAll('.fbtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    var f=btn.dataset.f;
+    document.querySelectorAll('.card').forEach(function(c){
+      c.classList.toggle('hidden',f!=='all'&&c.dataset.cat!==f);
+    });
+    document.querySelectorAll('.tg').forEach(function(g){
+      var n=g.nextElementSibling,vis=false;
+      while(n&&!n.classList.contains('tg')){
+        if(n.classList.contains('card')&&!n.classList.contains('hidden'))vis=true;
+        n=n.nextElementSibling;
+      }
+      g.style.display=vis?'':'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
