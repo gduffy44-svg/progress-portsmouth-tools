@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By-Right vs. Discretionary Permitting — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #2d3e52;
+    --navy-dark: #1a2332;
+    --gold: #f4a261;
+    --gold-dark: #c8822a;
+    --teal: #3a7d6e;
+    --coral: #e76f51;
+    --cream: #f8f4ee;
+    --byright: #3a7d6e;
+    --byright-light: #d4ede8;
+    --disc: #c8822a;
+    --disc-light: #fdebd6;
+    --text: #1a2332;
+    --muted: #6b7c8f;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--navy-dark);
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .site-header a {
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .site-header a:hover { color: var(--gold); }
+  .header-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dark);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border: 1px solid rgba(244,162,97,0.15);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 240px; height: 240px;
+    border: 1px solid rgba(58,125,110,0.2);
+    border-radius: 50%;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    line-height: 1.65;
+  }
+
+  /* MAIN */
+  .main { max-width: 920px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+  /* CORE CONCEPT */
+  .concept-box {
+    background: #fff;
+    border-left: 4px solid var(--gold-dark);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .concept-box p {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .concept-box strong { color: var(--navy); }
+
+  /* COMPARISON TABS */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .split-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .path-card {
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+  }
+  .path-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .path-card.byright {
+    background: var(--byright-light);
+    border-color: var(--byright);
+  }
+  .path-card.disc {
+    background: var(--disc-light);
+    border-color: var(--disc);
+  }
+  .path-card h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+  .path-card.byright h2 { color: var(--byright); }
+  .path-card.disc h2 { color: var(--disc); }
+  .path-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* PROCESS FLOWS */
+  .flows { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
+
+  .flow-column {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .flow-header {
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .flow-header.byright { background: var(--byright); }
+  .flow-header.disc { background: var(--disc); }
+  .flow-header h3 {
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .flow-header .icon {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .flow-steps { padding: 1rem 1.25rem 1.25rem; }
+  .step {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 4px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin: 0 -0.5rem;
+  }
+  .step:last-child { border-bottom: none; }
+  .step:hover { background: rgba(0,0,0,0.025); }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .byright .step-num { background: var(--byright); color: #fff; }
+  .disc .step-num { background: var(--disc); color: #fff; }
+  .step-body { flex: 1; }
+  .step-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 0.15rem;
+  }
+  .step-detail {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.45;
+    display: none;
+  }
+  .step.open .step-detail { display: block; }
+  .step-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    margin-top: 0.3rem;
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+  .tag-time { background: #e8f4f0; color: var(--teal); }
+  .tag-risk { background: #fde8e4; color: var(--coral); }
+  .tag-cost { background: #fff0e0; color: var(--gold-dark); }
+  .tag-ok { background: #e8f4f0; color: var(--teal); }
+
+  /* WHAT'S AT STAKE */
+  .stakes { margin-bottom: 2.5rem; }
+  .stakes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .stake-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .stake-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .stake-metric {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 0.15rem;
+  }
+  .stake-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .stake-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* SCENARIO EXPLORER */
+  .scenario-section { margin-bottom: 2.5rem; }
+  .scenario-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .scenario-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--navy);
+    background: transparent;
+    color: var(--navy);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .scenario-btn:hover, .scenario-btn.active {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .scenario-panel {
+    display: none;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .scenario-panel.active { display: block; }
+  .scenario-top {
+    background: var(--navy);
+    padding: 1.25rem 1.5rem;
+    color: #fff;
+  }
+  .scenario-top h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .scenario-top p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .scenario-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .scenario-col {
+    padding: 1.25rem 1.5rem;
+  }
+  .scenario-col:first-child {
+    border-right: 1px solid rgba(0,0,0,0.07);
+    background: #f7fcfa;
+  }
+  .scenario-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid;
+  }
+  .scenario-col:first-child h4 { color: var(--byright); border-color: var(--byright); }
+  .scenario-col:last-child h4 { color: var(--disc); border-color: var(--disc); }
+
+  .scenario-item {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .scenario-item::before {
+    content: '→';
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .outcome-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .outcome-cell {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.83rem;
+  }
+  .outcome-cell:first-child { background: #f7fcfa; border-right: 1px solid rgba(0,0,0,0.07); }
+  .outcome-cell .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .outcome-cell .value {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .value.good { color: var(--byright); }
+  .value.bad { color: var(--coral); }
+  .value.neutral { color: var(--gold-dark); }
+
+  /* HAP LINK */
+  .hap-section {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 1.75rem 1.75rem;
+    margin-bottom: 2.5rem;
+    color: #fff;
+  }
+  .hap-section h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+  }
+  .hap-section > p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.25rem;
+    max-width: 560px;
+  }
+  .hap-items { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .hap-item {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .hap-item:hover { background: rgba(244,162,97,0.25); border-color: var(--gold); }
+  .hap-item.open { background: rgba(244,162,97,0.2); border-color: var(--gold); }
+  .hap-item-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.15rem;
+  }
+  .hap-item-name {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .hap-item-detail {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+  .hap-item.open .hap-item-detail { display: block; }
+
+  /* FOOTER */
+  .footer {
+    border-top: 2px solid var(--gold-dark);
+    padding: 2rem 1.5rem;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .footer-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .footer-block { flex: 1; min-width: 200px; }
+  .footer-block .meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .footer-block p {
+    font-size: 0.8rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .footer-block a {
+    color: var(--gold-dark);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-block a:hover { text-decoration: underline; }
+  .revision-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold-dark);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    margin-top: 0.3rem;
+    display: block;
+  }
+  .revision-notes {
+    display: none;
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+    background: rgba(0,0,0,0.03);
+    border-radius: 4px;
+    padding: 0.6rem 0.8rem;
+  }
+  .revision-notes.open { display: block; }
+  .ai-disclosure {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    .hero { padding: 2rem 1.25rem 1.75rem; }
+    .main { padding: 1.5rem 1rem 2rem; }
+    .split-header { grid-template-columns: 1fr; }
+    .flows { grid-template-columns: 1fr; }
+    .stakes-grid { grid-template-columns: 1fr 1fr; }
+    .scenario-body { grid-template-columns: 1fr; }
+    .scenario-col:first-child { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .outcome-row { grid-template-columns: 1fr; }
+    .outcome-cell:first-child { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .hap-items { flex-direction: column; }
+    .footer-meta { gap: 1rem; }
+    .site-header { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="header-badge">HAP Triage Module</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Housing Action Plan — Context Module 3</p>
+    <h1>By-Right vs.<br><em>Discretionary</em> Permitting</h1>
+    <p class="hero-sub">The same housing project can face two very different paths through Portsmouth's approval process. Understanding which path applies — and why — is foundational to evaluating many of the zoning items in the Housing Action Plan.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- CORE CONCEPT -->
+  <div class="concept-box">
+    <p><strong>The core distinction:</strong> A <strong>by-right</strong> project meets the rules as written — staff reviews the application against objective standards and issues a permit. A <strong>discretionary</strong> project does not meet those rules and must go before a board (typically the ZBA) to request an exception. The board has latitude to approve, condition, or deny. That latitude is the variable that shapes developer behavior before an application is even filed.</p>
+  </div>
+
+  <!-- PROCESS FLOWS -->
+  <p class="section-label">The Two Paths — click any step to expand</p>
+  <div class="flows">
+
+    <!-- BY RIGHT -->
+    <div class="flow-column byright">
+      <div class="flow-header byright">
+        <div class="icon">✓</div>
+        <h3>By-Right Approval</h3>
+      </div>
+      <div class="flow-steps">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Project meets zoning standards</div>
+            <div class="step-detail">Use type, density, height, setbacks, and parking are all permitted as-of-right in the applicable zone. No special findings required.</div>
+            <span class="step-tag tag-ok">No exceptions needed</span>
+          </div>
+        </div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Submit application to Planning staff</div>
+            <div class="step-detail">Application reviewed against objective, measurable standards. Staff cannot deny a project that meets all code requirements.</div>
+            <span class="step-tag tag-time">Weeks, not months</span>
+          </div>
+        </div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Staff technical review</div>
+            <div class="step-detail">Planning reviews for completeness and code compliance. May include DPW, fire, building — all objective criteria. Public comment is not part of merit review.</div>
+            <span class="step-tag tag-ok">Predictable timeline</span>
+          </div>
+        </div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Permit issued</div>
+            <div class="step-detail">If the project meets objective standards, the permit must be issued. Outcome is predictable before the application is filed.</div>
+            <span class="step-tag tag-ok">Low uncertainty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCRETIONARY -->
+    <div class="flow-column disc">
+      <div class="flow-header disc">
+        <div class="icon">?</div>
+        <h3>Discretionary Approval</h3>
+      </div>
+      <div class="flow-steps">
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Project doesn't meet current zoning</div>
+            <div class="step-detail">The project type, density, or form is not permitted as-of-right. A variance or special exception from the ZBA, or conditional use approval from the Planning Board, is required.</div>
+            <span class="step-tag tag-risk">Exception required</span>
+          </div>
+        </div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Prepare variance application</div>
+            <div class="step-detail">Applicant must document "unnecessary hardship" or meet other variance standards. This often requires legal counsel and expert testimony — adding cost before a single board hearing.</div>
+            <span class="step-tag tag-cost">Legal & consulting costs</span>
+          </div>
+        </div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Public hearing before ZBA or Planning Board</div>
+            <div class="step-detail">Board members apply subjective standards. Abutters and neighbors can testify in opposition. Outcome depends on board composition, community sentiment, and the specific project. Findings must be written under RSA 676:3,I but quality of findings varies.</div>
+            <span class="step-tag tag-risk">Outcome uncertain</span>
+            <span class="step-tag tag-time">Months of lead time</span>
+          </div>
+        </div>
+        <div class="step" onclick="toggleStep(this)">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Approval, denial, or conditional approval</div>
+            <div class="step-detail">Conditions can significantly change project economics. Denial triggers appeal rights. Either path adds time and cost — and the uncertainty alone is enough to prevent some projects from being proposed at all.</div>
+            <span class="step-tag tag-risk">Possible appeal / litigation</span>
+            <span class="step-tag tag-cost">Higher carrying costs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S AT STAKE -->
+  <div class="stakes">
+    <p class="section-label">Why the distinction matters for housing production</p>
+    <div class="stakes-grid">
+      <div class="stake-card">
+        <div class="stake-icon">⏱</div>
+        <div class="stake-metric">6–18 mo.</div>
+        <div class="stake-label">Time difference</div>
+        <div class="stake-desc">Discretionary review can add 6 to 18 months to a project timeline. In a high-cost market, carrying costs during that period can make a project infeasible.</div>
+      </div>
+      <div class="stake-card">
+        <div class="stake-icon">📉</div>
+        <div class="stake-metric">Chilling effect</div>
+        <div class="stake-label">Proposals never filed</div>
+        <div class="stake-desc">The most significant impact is invisible: projects that developers choose not to pursue because the approval path is too risky or expensive to justify the attempt.</div>
+      </div>
+      <div class="stake-card">
+        <div class="stake-icon">⚖️</div>
+        <div class="stake-metric">RSA 672:1 III-e</div>
+        <div class="stake-label">Legal obligation</div>
+        <div class="stake-desc">NH law prohibits municipal ordinances that unreasonably discourage housing. Zoning that forces housing into variance processes may conflict with this standard.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO EXPLORER -->
+  <div class="scenario-section">
+    <p class="section-label">Scenario explorer — same project, two paths</p>
+    <div class="scenario-tabs">
+      <button class="scenario-btn active" onclick="showScenario('adu', this)">ADU on a lot</button>
+      <button class="scenario-btn" onclick="showScenario('mixed', this)">Mixed-use building</button>
+      <button class="scenario-btn" onclick="showScenario('duplex', this)">Duplex conversion</button>
+    </div>
+
+    <!-- ADU -->
+    <div class="scenario-panel active" id="scenario-adu">
+      <div class="scenario-top">
+        <h3>Accessory Dwelling Unit — single-family lot</h3>
+        <p>A homeowner wants to add an ADU above their garage on a residential lot.</p>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-col byright">
+          <h4>If permitted by-right</h4>
+          <div class="scenario-item">ADU is an allowed use in the zone — no exception needed</div>
+          <div class="scenario-item">Building permit application submitted directly to staff</div>
+          <div class="scenario-item">Review is objective: lot coverage, height, setbacks</div>
+          <div class="scenario-item">Permit issued in weeks; homeowner knows outcome before applying</div>
+        </div>
+        <div class="scenario-col disc">
+          <h4>Under current Portsmouth rules (many zones)</h4>
+          <div class="scenario-item">ADU triggers special exception or variance requirement</div>
+          <div class="scenario-item">Homeowner retains attorney; files with ZBA</div>
+          <div class="scenario-item">Public hearing scheduled — neighbors may oppose</div>
+          <div class="scenario-item">3–6 months minimum; outcome uncertain; many homeowners give up</div>
+        </div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-cell">
+          <div class="label">Result (by-right)</div>
+          <div class="value good">ADU built; housing unit added</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="label">Result (discretionary)</div>
+          <div class="value bad">Many homeowners abandon the project before filing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIXED USE -->
+    <div class="scenario-panel" id="scenario-mixed">
+      <div class="scenario-top">
+        <h3>Mixed-use infill — ground floor commercial, upper-floor housing</h3>
+        <p>A developer wants to build a 4-story mixed-use building on an underutilized downtown parcel.</p>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-col byright">
+          <h4>If permitted by-right</h4>
+          <div class="scenario-item">Use type, height, and density all meet zone standards</div>
+          <div class="scenario-item">Site plan review is technical; focused on circulation, drainage, design standards</div>
+          <div class="scenario-item">Developer can model project economics with confidence before land acquisition</div>
+          <div class="scenario-item">Timeline is known; financing can be structured accordingly</div>
+        </div>
+        <div class="scenario-col disc">
+          <h4>Under current Portsmouth rules (some zones)</h4>
+          <div class="scenario-item">Density or height requires variance; use may require special exception</div>
+          <div class="scenario-item">Months of pre-application work before hearing; expert testimony needed</div>
+          <div class="scenario-item">Neighbors can condition or defeat approval; board outcome unpredictable</div>
+          <div class="scenario-item">Lenders discount discretionary approvals; financing harder to secure before approval</div>
+        </div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-cell">
+          <div class="label">Result (by-right)</div>
+          <div class="value good">Project advances; financing secured; units built</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="label">Result (discretionary)</div>
+          <div class="value bad">Project modified to reduce density, or abandoned; fewer units</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUPLEX -->
+    <div class="scenario-panel" id="scenario-duplex">
+      <div class="scenario-top">
+        <h3>Duplex conversion — existing single-family home</h3>
+        <p>An owner wants to convert a large older home into a two-unit structure.</p>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-col byright">
+          <h4>If permitted by-right</h4>
+          <div class="scenario-item">Two-family use is allowed in zone — building permit only</div>
+          <div class="scenario-item">No public hearing; conversion reviewed against objective building code</div>
+          <div class="scenario-item">Owner can begin planning and financing with certainty</div>
+          <div class="scenario-item">Second unit added to housing stock in months</div>
+        </div>
+        <div class="scenario-col disc">
+          <h4>Under current Portsmouth rules (most residential zones)</h4>
+          <div class="scenario-item">Two-family use not permitted as-of-right; variance or special exception required</div>
+          <div class="scenario-item">ZBA hearing required; findings of hardship must be documented</div>
+          <div class="scenario-item">Neighbor opposition common in single-family zones</div>
+          <div class="scenario-item">Legal costs often approach or exceed renovation cost for modest conversions</div>
+        </div>
+      </div>
+      <div class="outcome-row">
+        <div class="outcome-cell">
+          <div class="label">Result (by-right)</div>
+          <div class="value good">Conversion completed; ownership housing supply increases</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="label">Result (discretionary)</div>
+          <div class="value bad">High process cost relative to project value; rarely attempted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HAP CONNECTIONS -->
+  <div class="hap-section">
+    <h3>Housing Action Plan items that address this</h3>
+    <p>Several HAP items directly target the by-right gap — expanding what's allowed as-of-right in Portsmouth's zoning. Click each to see how.</p>
+    <div class="hap-items">
+      <div class="hap-item" onclick="toggleHapItem(this)">
+        <div class="hap-item-code">Z-2 + P-2</div>
+        <div class="hap-item-name">ADU ordinance enhancements + Administrative approval for ADUs</div>
+        <div class="hap-item-detail">Z-2 strengthens Portsmouth's ADU ordinance beyond baseline state compliance. P-2 establishes administrative (staff-level) approval for ADUs, removing the special exception requirement and eliminating ZBA involvement for applications that meet objective dimensional standards.</div>
+      </div>
+      <div class="hap-item" onclick="toggleHapItem(this)">
+        <div class="hap-item-code">Z-26</div>
+        <div class="hap-item-name">Reduce conditional use permits for housing</div>
+        <div class="hap-item-detail">Directly targets the discretionary review burden by reducing the categories of housing development that require a conditional use permit. Fewer CUP requirements means more projects can proceed on an administrative, by-right basis.</div>
+      </div>
+      <div class="hap-item" onclick="toggleHapItem(this)">
+        <div class="hap-item-code">P-5</div>
+        <div class="hap-item-name">Design guideline clarity</div>
+        <div class="hap-item-detail">Establishes clear, measurable design guidelines that allow more projects to be reviewed administratively against objective standards, reducing the subjective board review of design elements that currently adds discretionary delay and uncertainty.</div>
+      </div>
+      <div class="hap-item" onclick="toggleHapItem(this)">
+        <div class="hap-item-code">Z-8</div>
+        <div class="hap-item-name">Lot size and dimensional requirement updates</div>
+        <div class="hap-item-detail">Current minimum lot sizes and dimensional standards force many infill projects into variance territory. Updating these to reflect the typical lot patterns in Portsmouth's built-out neighborhoods removes a common upstream trigger for discretionary review.</div>
+      </div>
+      <div class="hap-item" onclick="toggleHapItem(this)">
+        <div class="hap-item-code">Z-4</div>
+        <div class="hap-item-name">Parking requirement reform</div>
+        <div class="hap-item-detail">Parking minimums frequently generate variances in dense neighborhoods where meeting them is physically impossible on existing lots. Reforming parking requirements in walkable and transit-accessible areas removes one of the most common triggers for discretionary review on otherwise conforming projects.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY TAKEAWAY -->
+  <div class="concept-box" style="border-color: var(--teal); margin-bottom: 0;">
+    <p><strong>For triage:</strong> When evaluating any zoning item in the Housing Action Plan, the threshold question is whether it moves housing production from discretionary to by-right. Items that accomplish this shift have compounding impact — they reduce cost, reduce timeline, and reduce the chilling effect on projects that are never proposed. Items that only modify conditions within a discretionary process have more limited reach.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-meta">
+    <div class="footer-block">
+      <div class="meta-label">Document</div>
+      <p>By-Right vs. Discretionary Permitting<br>
+      <strong>Version 1.0</strong> · April 2026</p>
+      <button class="revision-toggle" onclick="toggleRevision(this)">Revision notes ↓</button>
+      <div class="revision-notes">
+        <strong>v1.0 (April 2026)</strong> — Initial release for Housing Committee triage support. HAP item cross-references based on Portsmouth Housing Action Plan as adopted February 17, 2026.
+      </div>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Source</div>
+      <p>Progress Portsmouth<br>
+      <a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Legal basis</div>
+      <p>RSA 672:1 III-e (prohibition on unreasonable discouragement of housing); RSA 676:3,I (written findings requirement)</p>
+    </div>
+  </div>
+  <p class="ai-disclosure">Created with AI assistance in research and information design, with human editorial control.</p>
+</footer>
+
+<script>
+  function toggleStep(el) {
+    el.classList.toggle('open');
+  }
+
+  function showScenario(id, btn) {
+    document.querySelectorAll('.scenario-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('scenario-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleHapItem(el) {
+    el.classList.toggle('open');
+  }
+
+  function toggleRevision(btn) {
+    const notes = btn.nextElementSibling;
+    notes.classList.toggle('open');
+    btn.textContent = notes.classList.contains('open') ? 'Revision notes ↑' : 'Revision notes ↓';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missing Middle Housing — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#2d3e52;--navy-dark:#1a2332;--gold:#f4a261;--gold-dark:#c8822a;--teal:#3a7d6e;--coral:#e76f51;--cream:#f8f4ee;--text:#1a2332;--muted:#6b7c8f;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;}
+  .site-header{background:var(--navy-dark);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
+  .site-header a{color:rgba(255,255,255,.55);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;}
+  .site-header a:hover{color:var(--gold);}
+  .header-badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);padding:.2rem .6rem;border-radius:2px;}
+  .hero{background:var(--navy);padding:3rem 2rem 2.5rem;overflow:hidden;position:relative;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border:1px solid rgba(244,162,97,.15);border-radius:50%;}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.15;margin-bottom:1rem;}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:600px;line-height:1.65;}
+  .main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 3rem;}
+  .concept-box{background:#fff;border-left:4px solid var(--gold-dark);padding:1.25rem 1.5rem;margin-bottom:2.5rem;border-radius:0 6px 6px 0;}
+  .concept-box p{font-size:1rem;line-height:1.7;}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+
+  /* SPECTRUM */
+  .spectrum-section{margin-bottom:2.5rem;}
+  .spectrum-scroll{overflow-x:auto;padding-bottom:.5rem;}
+  .spectrum{display:flex;gap:0;min-width:640px;}
+  .stype{flex:1;cursor:pointer;transition:transform .2s;}
+  .stype:hover{transform:translateY(-4px);}
+  .stype.active .stype-card{border-bottom:3px solid var(--gold);}
+  .stype-visual{height:80px;display:flex;align-items:flex-end;justify-content:center;gap:2px;padding-bottom:0;background:var(--cream);border-radius:6px 6px 0 0;overflow:hidden;}
+  .bldg{background:var(--navy);border-radius:2px 2px 0 0;width:12px;transition:all .2s;}
+  .stype-card{background:#fff;padding:.75rem .6rem;border-radius:0 0 6px 6px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  .stype-name{font-size:.8rem;font-weight:700;color:var(--navy);margin-bottom:.15rem;line-height:1.2;}
+  .stype-units{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);}
+  .stype-status{font-size:.65rem;margin-top:.3rem;padding:.15rem .35rem;border-radius:3px;display:inline-block;}
+  .status-allowed{background:#e8f4f0;color:var(--teal);}
+  .status-limited{background:#fff0e0;color:var(--gold-dark);}
+  .status-blocked{background:#fde8e4;color:var(--coral);}
+  .gap-overlay{background:rgba(231,111,81,.08);border:2px dashed rgba(231,111,81,.4);border-radius:6px;display:flex;align-items:center;justify-content:center;min-width:100px;}
+  .gap-label{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--coral);text-align:center;padding:.5rem;}
+
+  .detail-panel{background:#fff;border-radius:10px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-top:1rem;display:none;}
+  .detail-panel.active{display:block;}
+  .detail-panel h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);margin-bottom:.5rem;}
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:.75rem;}
+  .detail-item{}
+  .detail-item .di-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem;}
+  .detail-item .di-val{font-size:.88rem;font-weight:600;color:var(--text);}
+
+  /* LEGAL FRAME */
+  .legal-section{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem;}
+  .legal-card{background:#fff;border-radius:8px;padding:1.25rem;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .legal-card h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:2px solid var(--navy);}
+  .legal-card p{font-size:.83rem;color:var(--text);line-height:1.55;}
+  .legal-card .cite{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--teal);display:block;margin-top:.4rem;}
+
+  /* HAP */
+  .hap-section{background:var(--navy);border-radius:10px;padding:1.75rem;margin-bottom:2.5rem;color:#fff;}
+  .hap-section h3{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:.4rem;}
+  .hap-section>p{font-size:.88rem;color:rgba(255,255,255,.7);margin-bottom:1.25rem;}
+  .hap-items{display:flex;flex-wrap:wrap;gap:.6rem;}
+  .hap-item{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:5px;padding:.5rem .85rem;cursor:pointer;transition:all .18s;}
+  .hap-item:hover,.hap-item.open{background:rgba(244,162,97,.2);border-color:var(--gold);}
+  .hap-item-code{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold);margin-bottom:.15rem;}
+  .hap-item-name{font-size:.82rem;color:rgba(255,255,255,.9);font-weight:600;line-height:1.3;}
+  .hap-item-detail{display:none;margin-top:.5rem;font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.5;}
+  .hap-item.open .hap-item-detail{display:block;}
+
+  .footer{border-top:2px solid var(--gold-dark);padding:2rem 1.5rem;max-width:960px;margin:0 auto;}
+  .footer-meta{display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:1rem;}
+  .footer-block{flex:1;min-width:180px;}
+  .footer-block .meta-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+  .footer-block p{font-size:.8rem;line-height:1.5;}
+  .footer-block a{color:var(--gold-dark);text-decoration:none;font-weight:600;}
+  .revision-toggle{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-dark);cursor:pointer;background:none;border:none;padding:0;text-decoration:underline;margin-top:.3rem;display:block;}
+  .revision-notes{display:none;margin-top:.5rem;font-size:.78rem;color:var(--muted);background:rgba(0,0,0,.03);border-radius:4px;padding:.6rem .8rem;line-height:1.5;}
+  .revision-notes.open{display:block;}
+  .ai-disclosure{font-size:.75rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(0,0,0,.08);padding-top:.75rem;margin-top:.75rem;}
+
+  @media(max-width:640px){
+    .hero{padding:2rem 1.25rem 1.75rem;}
+    .main{padding:1.5rem 1rem 2rem;}
+    .detail-grid{grid-template-columns:1fr 1fr;}
+    .legal-section{grid-template-columns:1fr;}
+    .footer-meta{gap:1rem;}
+    .site-header{padding:1rem;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="header-badge">HAP Triage Module</span>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Housing Action Plan — Context Module 6</p>
+    <h1>The <em>Missing Middle</em>:<br>Housing Types Portsmouth Lacks</h1>
+    <p class="hero-sub">Portsmouth's current zoning creates a gap between single-family homes and large apartment buildings — a range of housing types that once defined New England neighborhoods but are now largely prohibited from being built new. Understanding this gap is essential to evaluating the zoning category of the Housing Action Plan.</p>
+  </div>
+</section>
+<main class="main">
+  <div class="concept-box">
+    <p><strong>"Missing middle" housing</strong> refers to multi-unit or clustered housing types compatible in scale with single-family neighborhoods — duplexes, triplexes, fourplexes, cottage courts, townhouses, and small apartment buildings. They are "missing" not because they don't exist in Portsmouth's older neighborhoods, but because current zoning largely prevents building new ones.</p>
+  </div>
+
+  <p class="section-label">The housing type spectrum — click any type to explore</p>
+  <div class="spectrum-section">
+    <div class="spectrum-scroll">
+      <div class="spectrum" id="spectrum"></div>
+    </div>
+    <div id="detail-panels"></div>
+  </div>
+
+  <!-- LEGAL FRAME -->
+  <p class="section-label" style="margin-top:2.5rem;">The legal and regulatory frame</p>
+  <div class="legal-section">
+    <div class="legal-card">
+      <h4>Why missing middle is banned</h4>
+      <p>Most of Portsmouth's residential zones permit single-family homes as-of-right but require a variance or special exception for duplexes, triplexes, or small multifamily. These are the same housing types that make up much of Portsmouth's older, walkable neighborhoods — built before current zoning existed.</p>
+      <span class="cite">RSA 672:1 III-e — prohibition on unreasonable discouragement of housing</span>
+    </div>
+    <div class="legal-card">
+      <h4>The zoning history</h4>
+      <p>Mid-20th century zoning reforms replaced use-mixed neighborhood patterns with single-use residential zones. The result is that buildings considered normal in Portsmouth's historic core are nonconforming — and illegal to replicate — in most of the city's residential land area.</p>
+      <span class="cite">See also: HAP items Z-22 through Z-30 (zoning reform category)</span>
+    </div>
+  </div>
+
+  <!-- HAP CONNECTIONS -->
+  <div class="hap-section">
+    <h3>Housing Action Plan items that address the missing middle</h3>
+    <p>Several HAP zoning items directly expand what types of housing are permitted and in which zones.</p>
+    <div class="hap-items">
+      <div class="hap-item" onclick="this.classList.toggle('open')">
+        <div class="hap-item-code">Z-2 + P-2</div>
+        <div class="hap-item-name">ADU ordinance enhancements + Administrative approval for ADUs</div>
+        <div class="hap-item-detail">ADUs are the most politically accessible missing middle type. Z-2 strengthens Portsmouth's ADU ordinance; P-2 establishes administrative approval, making ADUs by-right in practice — a high-yield, low-disruption first step toward filling the missing middle gap.</div>
+      </div>
+      <div class="hap-item" onclick="this.classList.toggle('open')">
+        <div class="hap-item-code">Z-26 + Z-5</div>
+        <div class="hap-item-name">Reduce conditional use permits for housing + Missing middle housing allowances</div>
+        <div class="hap-item-detail">Z-26 reduces the CUP burden that forces small multifamily through discretionary review. Z-5 directly addresses missing middle housing allowances — expanding the types and configurations permitted in residential zones to replicate Portsmouth's pre-zoning neighborhood patterns.</div>
+      </div>
+      <div class="hap-item" onclick="this.classList.toggle('open')">
+        <div class="hap-item-code">Z-9</div>
+        <div class="hap-item-name">Cottage housing / cluster development provisions</div>
+        <div class="hap-item-detail">Creates a regulatory pathway for cottage courts and small clustered housing — a type common in Portsmouth's historic fabric but currently without a clear by-right option. Z-9 establishes the standards needed to permit this form without a variance.</div>
+      </div>
+      <div class="hap-item" onclick="this.classList.toggle('open')">
+        <div class="hap-item-code">Z-8</div>
+        <div class="hap-item-name">Lot size and dimensional requirement updates</div>
+        <div class="hap-item-detail">Current lot size minimums and dimensional standards often make missing middle types physically impossible on existing infill lots, even when the use is technically permitted. Z-8 is a precondition for many other zoning items to have real reach.</div>
+      </div>
+      <div class="hap-item" onclick="this.classList.toggle('open')">
+        <div class="hap-item-code">Z-5</div>
+        <div class="hap-item-name">Missing middle housing allowances</div>
+        <div class="hap-item-detail">Z-5 directly targets the missing middle gap — expanding the range of housing types permitted as-of-right in residential zones. This is the core zoning item for filling in the spectrum between single-family homes and large apartment buildings.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-box" style="border-color:var(--teal);margin-bottom:0;">
+    <p><strong>For triage:</strong> Missing middle items in the HAP are not about large-scale development — they're about replicating the building patterns already present in Portsmouth's most livable neighborhoods. The question for each item is whether it gives those patterns a legal pathway, and whether that pathway requires discretionary review or is truly by-right.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-meta">
+    <div class="footer-block">
+      <div class="meta-label">Document</div>
+      <p>Missing Middle Housing Explainer<br><strong>Version 1.0</strong> · April 2026</p>
+      <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
+      <div class="revision-notes">v1.0 (April 2026) — Initial release. HAP item codes should be verified against the adopted Housing Action Plan (Feb. 17, 2026). "Missing middle" framing draws on Opticos Design / D. Parolek's original concept.</div>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Source</div>
+      <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+  </div>
+  <p class="ai-disclosure">Created with AI assistance in research and information design, with human editorial control.</p>
+</footer>
+
+<script>
+const types=[
+  {id:'sfh',name:'Single-family',units:'1 unit',status:'allowed',statusLabel:'Allowed by-right',desc:'Detached home on its own lot. Permitted as-of-right in all residential zones in Portsmouth.',density:'4–8 units/acre',scale:'1 story–2.5 stories',cost:'Highest per-unit land cost',visual:[{w:20,h:50}]},
+  {id:'adu',name:'ADU',units:'1–2 units',status:'limited',statusLabel:'Special exception (most zones)',desc:'Accessory Dwelling Unit: a secondary unit on a single-family lot — above a garage, attached, or detached cottage. Currently requires special exception in most Portsmouth zones.',density:'Adds 1 unit to existing lot',scale:'1–2 stories',cost:'Lowest new-unit cost when site is owned',visual:[{w:16,h:45},{w:10,h:25}]},
+  {id:'duplex',name:'Duplex',units:'2 units',status:'blocked',statusLabel:'Variance required (most zones)',desc:'Two units side-by-side or stacked. Indistinguishable in scale from a single-family home. The most common form of housing in Portsmouth\'s pre-zoning neighborhoods — and largely prohibited from being built new.',density:'6–12 units/acre',scale:'2–3 stories',cost:'~30% lower per-unit than single-family',visual:[{w:14,h:50},{w:14,h:50}]},
+  {id:'triplex',name:'Triplex / Fourplex',units:'3–4 units',status:'blocked',statusLabel:'Variance required citywide',desc:'Three or four attached units. A cornerstone of walkable New England neighborhoods. Currently requires a variance in all Portsmouth residential zones — meaning most are never proposed.',density:'10–20 units/acre',scale:'2–3 stories',cost:'~40% lower per-unit than single-family',visual:[{w:10,h:52},{w:10,h:52},{w:10,h:48},{w:10,h:48}]},
+  {id:'cottage',name:'Cottage court',units:'4–12 units',status:'blocked',statusLabel:'No clear pathway',desc:'Small detached or semi-detached cottages clustered around a shared courtyard or green. Common in Portsmouth\'s historic fabric. No specific regulatory pathway exists in current zoning — projects require creative variance applications.',density:'12–25 units/acre',scale:'1–2 stories',cost:'Moderate; lower land cost per unit',visual:[{w:8,h:35},{w:8,h:35},{w:8,h:35},{w:8,h:38}]},
+  {id:'townhouse',name:'Townhouse',units:'4–20 units',status:'limited',statusLabel:'Permitted in some zones',desc:'Attached row housing sharing side walls. Permitted in some commercial and mixed-use zones but not in most residential zones. A high-yield missing middle type on infill parcels.',density:'20–40 units/acre',scale:'2–4 stories',cost:'Efficient; no elevator required',visual:[{w:9,h:55},{w:9,h:60},{w:9,h:58},{w:9,h:55},{w:9,h:60}]},
+  {id:'small-apt',name:'Small apartment',units:'5–30 units',status:'limited',statusLabel:'Limited zones; often needs variance',desc:'A small multifamily building that fits on a standard urban lot. Often the most efficient form for infill — but requires rezoning or variance in most residential zones. Frequently requires variances for density, height, or parking.',density:'40–80 units/acre',scale:'3–5 stories',cost:'Lower per-unit at scale; elevator threshold matters',visual:[{w:10,h:65},{w:10,h:65},{w:10,h:70},{w:10,h:65}]},
+  {id:'large-apt',name:'Large multifamily',units:'30+ units',status:'allowed',statusLabel:'Allowed in designated zones',desc:'Large apartment complex or tower. Permitted in designated downtown and mixed-use zones. These projects generate the most debate but actually produce a smaller share of Portsmouth\'s potential supply than missing middle types at scale.',density:'80–200+ units/acre',scale:'4–12+ stories',cost:'Highest total cost; lowest per-unit at scale',visual:[{w:12,h:75},{w:12,h:80},{w:12,h:80},{w:12,h:75}]},
+];
+
+function render(){
+  const spectrum=document.getElementById('spectrum');
+  const panels=document.getElementById('detail-panels');
+  types.forEach((t,i)=>{
+    const isMissing=t.status==='blocked'||(t.id==='adu'&&t.status==='limited');
+    const bldgs=t.visual.map(b=>`<div class="bldg" style="width:${b.w}px;height:${b.h}px;opacity:${t.status==='blocked'?0.4:1};background:${t.status==='blocked'?'var(--coral)':t.status==='limited'?'var(--gold-dark)':'var(--teal)'}"></div>`).join('');
+    const statusColor=t.status==='allowed'?'status-allowed':t.status==='limited'?'status-limited':'status-blocked';
+    spectrum.innerHTML+=`<div class="stype" id="st-${t.id}" onclick="showDetail('${t.id}')">
+      <div class="stype-visual">${bldgs}</div>
+      <div class="stype-card">
+        <div class="stype-name">${t.name}</div>
+        <div class="stype-units">${t.units}</div>
+        <div class="stype-status ${statusColor}">${t.statusLabel}</div>
+      </div>
+    </div>`;
+    panels.innerHTML+=`<div class="detail-panel" id="dp-${t.id}">
+      <h3>${t.name}</h3>
+      <p style="font-size:.9rem;color:var(--muted);line-height:1.6;">${t.desc}</p>
+      <div class="detail-grid">
+        <div class="detail-item"><div class="di-label">Typical density</div><div class="di-val">${t.density}</div></div>
+        <div class="detail-item"><div class="di-label">Building scale</div><div class="di-val">${t.scale}</div></div>
+        <div class="detail-item"><div class="di-label">Cost profile</div><div class="di-val">${t.cost}</div></div>
+      </div>
+    </div>`;
+  });
+}
+
+function showDetail(id){
+  document.querySelectorAll('.stype').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.detail-panel').forEach(p=>p.classList.remove('active'));
+  const stype=document.getElementById('st-'+id);
+  const panel=document.getElementById('dp-'+id);
+  if(panel.classList.contains('was-active')){
+    panel.classList.remove('was-active');
+    stype.classList.remove('active');
+  } else {
+    stype.classList.add('active');
+    panel.classList.add('active');
+    panel.classList.add('was-active');
+  }
+}
+render();
+</script>
+</body>
+</html>

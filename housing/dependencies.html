@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAP Item Dependencies — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#2d3e52;--navy-dark:#1a2332;--gold:#f4a261;--gold-dark:#c8822a;--teal:#3a7d6e;--coral:#e76f51;--cream:#f8f4ee;--text:#1a2332;--muted:#6b7c8f;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;}
+  .site-header{background:var(--navy-dark);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
+  .site-header a{color:rgba(255,255,255,.55);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;}
+  .site-header a:hover{color:var(--gold);}
+  .header-badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);padding:.2rem .6rem;border-radius:2px;}
+  .hero{background:var(--navy);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border:1px solid rgba(244,162,97,.15);border-radius:50%;}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.15;margin-bottom:1rem;}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:600px;line-height:1.65;}
+  .main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 3rem;}
+  .concept-box{background:#fff;border-left:4px solid var(--gold-dark);padding:1.25rem 1.5rem;margin-bottom:2.5rem;border-radius:0 6px 6px 0;}
+  .concept-box p{font-size:1rem;line-height:1.7;}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+
+  /* DEPENDENCY MAP */
+  .map-wrap{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:2.5rem;}
+  .map-controls{background:var(--navy);padding:1rem 1.25rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
+  .map-controls span{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;margin-right:.5rem;}
+  .filter-btn{padding:.35rem .75rem;border:1px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.75);font-family:'Source Sans 3',sans-serif;font-size:.75rem;font-weight:600;border-radius:3px;cursor:pointer;transition:all .15s;}
+  .filter-btn:hover,.filter-btn.active{background:var(--gold);border-color:var(--gold);color:var(--navy-dark);}
+  .map-body{padding:1.5rem;overflow-x:auto;}
+  .dep-chain{margin-bottom:1.5rem;}
+  .dep-chain:last-child{margin-bottom:0;}
+  .dep-chain-title{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem;padding-bottom:.35rem;border-bottom:1px solid rgba(0,0,0,.07);}
+  .dep-flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
+  .dep-node{padding:.5rem .85rem;border-radius:5px;cursor:pointer;transition:all .18s;position:relative;}
+  .dep-node:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12);}
+  .dep-node.precondition{background:var(--navy);color:#fff;}
+  .dep-node.dependent{background:rgba(58,125,110,.15);border:1px solid var(--teal);color:var(--teal);}
+  .dep-node.parallel{background:rgba(200,130,42,.12);border:1px solid var(--gold-dark);color:var(--gold-dark);}
+  .dep-node .dn-code{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;margin-bottom:.1rem;}
+  .dep-node .dn-name{font-size:.75rem;font-weight:600;line-height:1.2;}
+  .dep-arrow{color:var(--muted);font-size:1rem;flex-shrink:0;}
+
+  /* TOOLTIP */
+  .tooltip{position:fixed;background:var(--navy-dark);color:#fff;border-radius:6px;padding:.75rem 1rem;font-size:.78rem;max-width:240px;pointer-events:none;display:none;z-index:1000;box-shadow:0 8px 24px rgba(0,0,0,.2);line-height:1.45;}
+  .tooltip.visible{display:block;}
+  .tooltip .tt-code{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);margin-bottom:.25rem;}
+
+  /* PRIORITY CLUSTERS */
+  .clusters{margin-bottom:2.5rem;}
+  .cluster-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1rem;}
+  .cluster-card{background:#fff;border-radius:8px;padding:1.25rem;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .cluster-card h4{font-size:.88rem;font-weight:700;margin-bottom:.5rem;padding-bottom:.35rem;border-bottom:2px solid;}
+  .cluster-card.first h4{color:var(--coral);border-color:var(--coral);}
+  .cluster-card.mid h4{color:var(--gold-dark);border-color:var(--gold-dark);}
+  .cluster-card.later h4{color:var(--teal);border-color:var(--teal);}
+  .cluster-card p{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:.65rem;}
+  .cluster-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
+  .ctag{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.18rem .45rem;border-radius:3px;}
+  .ctag.first{background:#fde8e4;color:var(--coral);}
+  .ctag.mid{background:#fff0e0;color:var(--gold-dark);}
+  .ctag.later{background:#e8f4f0;color:var(--teal);}
+
+  /* FOOTER */
+  .footer{border-top:2px solid var(--gold-dark);padding:2rem 1.5rem;max-width:960px;margin:0 auto;}
+  .footer-meta{display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:1rem;}
+  .footer-block{flex:1;min-width:180px;}
+  .footer-block .meta-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+  .footer-block p{font-size:.8rem;line-height:1.5;}
+  .footer-block a{color:var(--gold-dark);text-decoration:none;font-weight:600;}
+  .revision-toggle{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-dark);cursor:pointer;background:none;border:none;padding:0;text-decoration:underline;margin-top:.3rem;display:block;}
+  .revision-notes{display:none;margin-top:.5rem;font-size:.78rem;color:var(--muted);background:rgba(0,0,0,.03);border-radius:4px;padding:.6rem .8rem;line-height:1.5;}
+  .revision-notes.open{display:block;}
+  .ai-disclosure{font-size:.75rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(0,0,0,.08);padding-top:.75rem;margin-top:.75rem;}
+
+  @media(max-width:640px){
+    .hero{padding:2rem 1.25rem 1.75rem;}
+    .main{padding:1.5rem 1rem 2rem;}
+    .cluster-grid{grid-template-columns:1fr;}
+    .dep-flow{gap:.3rem;}
+    .dep-node{padding:.4rem .65rem;}
+    .dep-node .dn-name{font-size:.7rem;}
+    .footer-meta{gap:1rem;}
+    .site-header{padding:1rem;}
+  }
+</style>
+</head>
+<body>
+<div class="tooltip" id="tooltip"></div>
+<header class="site-header">
+  <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="header-badge">HAP Triage Module</span>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Housing Action Plan — Context Module 8</p>
+    <h1>Why Sequence Matters:<br><em>Item Dependencies in the HAP</em></h1>
+    <p class="hero-sub">Not all 145 Housing Action Plan items are equally ready to implement. Some items are preconditions for others — completing them out of order wastes effort or creates conflicts. This module maps the key dependency relationships to inform triage sequencing.</p>
+  </div>
+</section>
+<main class="main">
+  <div class="concept-box">
+    <p><strong>A dependency relationship</strong> means that Item B cannot be fully implemented — or its impact is substantially diminished — until Item A is complete. Triage that ignores dependencies risks selecting items that look high-priority in isolation but are blocked by upstream work that hasn't been scheduled.</p>
+  </div>
+
+  <p class="section-label">Dependency chains — hover items for detail, filter by category</p>
+  <div class="map-wrap">
+    <div class="map-controls">
+      <span>Filter:</span>
+      <button class="filter-btn active" onclick="filterChains('all',this)">All</button>
+      <button class="filter-btn" onclick="filterChains('zoning',this)">Zoning</button>
+      <button class="filter-btn" onclick="filterChains('process',this)">Process</button>
+      <button class="filter-btn" onclick="filterChains('housing',this)">Affordability Tools</button>
+      <button class="filter-btn" onclick="filterChains('land',this)">Land / Economic</button>
+    </div>
+    <div class="map-body" id="map-body"></div>
+  </div>
+
+  <!-- PRIORITY CLUSTERS -->
+  <div class="clusters">
+    <p class="section-label">Sequencing logic — three clusters for triage</p>
+    <div class="cluster-grid">
+      <div class="cluster-card first">
+        <h4>Foundation items — complete first</h4>
+        <p>These items are preconditions for multiple downstream items. Delaying them delays everything that depends on them. Triage should treat these as high-priority regardless of their individual complexity.</p>
+        <div class="cluster-tags">
+          <span class="ctag first">P-5 Design guideline clarity</span>
+          <span class="ctag first">Z-8 Lot size &amp; dimensions</span>
+          <span class="ctag first">PL-1 Public land inventory</span>
+          <span class="ctag first">Z-30 Workforce housing ord.</span>
+          <span class="ctag first">P-12 Permit timeline audit</span>
+        </div>
+      </div>
+      <div class="cluster-card mid">
+        <h4>Mid-stream items — need foundation</h4>
+        <p>These items are ready to move once foundation items are in place. Many are the most visible and politically significant items in the HAP — they benefit from having upstream work done first.</p>
+        <div class="cluster-tags">
+          <span class="ctag mid">Z-2 ADU ordinance</span>
+          <span class="ctag mid">Z-5 Missing middle allowances</span>
+          <span class="ctag mid">Z-9 Cottage housing</span>
+          <span class="ctag mid">Z-6 Density bonus</span>
+          <span class="ctag mid">Z-4 Parking reform</span>
+        </div>
+      </div>
+      <div class="cluster-card later">
+        <h4>Downstream items — complex chains</h4>
+        <p>These items have multiple upstream dependencies or require significant institutional capacity before implementation is meaningful. Scheduling them too early creates delays and dilutes effort.</p>
+        <div class="cluster-tags">
+          <span class="ctag later">I-11 CLT support</span>
+          <span class="ctag later">I-22 Shared equity program</span>
+          <span class="ctag later">Z-11 Form-based code reform</span>
+          <span class="ctag later">P-6 Pre-application meetings</span>
+          <span class="ctag later">HTF-1 Housing Trust Fund</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-box" style="border-color:var(--teal);margin-bottom:0;">
+    <p><strong>For triage:</strong> The July 2026 Council deadline creates pressure to show early progress. Foundation items are the right answer to that pressure — they're the ones that unlock the rest of the plan. Selecting only visible mid-stream items without clearing upstream dependencies risks delivering activity without impact.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-meta">
+    <div class="footer-block">
+      <div class="meta-label">Document</div>
+      <p>HAP Item Dependency Map<br><strong>Version 1.0</strong> · April 2026</p>
+      <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
+      <div class="revision-notes">v1.0 (April 2026) — Dependency relationships are drawn from Progress Portsmouth's pre-triage framework analysis. Item codes should be verified against the adopted Housing Action Plan (Feb. 17, 2026). This map represents representative key dependencies, not an exhaustive enumeration of all inter-item relationships in the plan.</div>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Source</div>
+      <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Note</div>
+      <p>HAP item codes require verification against the adopted plan before formal use in committee materials.</p>
+    </div>
+  </div>
+  <p class="ai-disclosure">Created with AI assistance in research and information design, with human editorial control.</p>
+</footer>
+
+<script>
+const chains=[
+  {
+    cat:'zoning',
+    title:'Zoning reform chain — dimensional standards must precede use expansion',
+    nodes:[
+      {code:'Z-8',name:'Lot size & dimensional requirements',type:'precondition',detail:'Most missing middle proposals are blocked by lot size minimums and setback requirements. Z-8 — lot size and dimensional requirement updates — is the upstream fix that makes Z-5, Z-2, and Z-26 physically usable on existing infill lots.'},
+      {code:'Z-5',name:'Missing middle housing allowances',type:'precondition',detail:'Z-5 directly expands the range of housing types permitted in residential zones. It is a precondition for lower-level use items: without the allowance, administrative or by-right approval pathways have nothing to apply to.'},
+      {code:'Z-2',name:'ADU ordinance enhancements',type:'dependent',detail:'Depends on Z-8 dimensional relief to function on most existing lots. Without setback and lot size updates, by-right ADU permission is legally granted but physically unavailable to most properties.'},
+      {code:'Z-26',name:'Reduce conditional use permits for housing',type:'dependent',detail:'CUP reduction has greatest impact after dimensional barriers (Z-8) are cleared. Reducing CUPs on projects that still can\'t meet dimensional standards shifts process burden without removing the underlying constraint.'},
+    ]
+  },
+  {
+    cat:'zoning',
+    title:'Design standards chain — guideline clarity required before by-right expansion',
+    nodes:[
+      {code:'P-5',name:'Design guideline clarity',type:'precondition',detail:'By-right approval requires clear, objective, measurable design guidelines. Without P-5, expanded by-right permissions are vulnerable to legal challenge and staff inconsistency. This is a true upstream dependency for any administrative approval pathway.'},
+      {code:'Z-26',name:'Reduce conditional use permits',type:'dependent',detail:'Relies on P-5 to establish the standards against which by-right applications are reviewed. Without objective guidelines, planning staff cannot defensibly approve or deny applications administratively.'},
+      {code:'Z-9',name:'Cottage housing / cluster development',type:'dependent',detail:'A housing form with no existing standards framework in Portsmouth. P-5 must establish baseline design parameters before a by-right pathway for cottage courts is legally defensible.'},
+      {code:'Z-11',name:'Form-based code reform',type:'dependent',detail:'Form-based code work is downstream of P-5 — design guideline clarity is essentially the proto-form-based work that informs and enables eventual full code restructuring.'},
+    ]
+  },
+  {
+    cat:'process',
+    title:'Permitting process chain — capacity before volume expansion',
+    nodes:[
+      {code:'P-12',name:'Permit timeline audit & enforcement',type:'precondition',detail:'P-12 establishes measurable timeline standards and an enforcement framework. This must be in place before expanded by-right programs (Z-2, Z-5, Z-26) generate new application volume — otherwise improvement is buried under backlog.'},
+      {code:'P-6',name:'Pre-application meetings',type:'dependent',detail:'A structured pre-application program requires staff bandwidth that P-12 aims to free. Running P-6 without addressing underlying timeline performance risks degrading the existing permitting pipeline.'},
+      {code:'Z-2',name:'ADU ordinance enhancements',type:'parallel',detail:'ADU applications will increase significantly once Z-2 is strengthened and P-2 provides administrative approval. P-12 timeline improvements should be timed to absorb this volume increase without creating backlog.'},
+    ]
+  },
+  {
+    cat:'housing',
+    title:'Affordability tools chain — legal framework before programs',
+    nodes:[
+      {code:'Z-30',name:'Workforce housing ordinance (RSA 674:58-61)',type:'precondition',detail:'Z-30 operationalizes the RSA 674:58-61 framework including covenant authority — the legal infrastructure for all resale restriction and affordability preservation programs. Must be in place before any program producing restricted units can function reliably.'},
+      {code:'Z-6',name:'Density bonus program',type:'dependent',detail:'Covenants from Z-6 require the framework established by Z-30 to be legally sound and administratively enforceable. Launching the density bonus before the covenant framework is in place produces restrictions that may not hold at resale.'},
+      {code:'I-22',name:'Shared equity / permanently affordable homeownership',type:'dependent',detail:'I-22 is entirely dependent on Z-30. The shared equity program is an operationalization of the covenant framework — partner identification and deal structure both require that legal infrastructure to exist first.'},
+    ]
+  },
+  {
+    cat:'land',
+    title:'Land and economic development chain',
+    nodes:[
+      {code:'PL-1',name:'Public land inventory for housing',type:'precondition',detail:'PL-1 identifies what the city actually has to work with. Required before any project-specific disposition, RFP, or partnership structure can be built — you cannot structure ground leases or RFPs without knowing which parcels are available and suitable.'},
+      {code:'PL-2',name:'Public land RFPs for housing',type:'dependent',detail:'PL-2 is the disposition vehicle — structuring RFPs that can include ground lease preference or affordability requirements. Directly depends on PL-1 to define the pool of eligible parcels.'},
+      {code:'I-11',name:'Community Land Trust support',type:'dependent',detail:'CLT activity in Portsmouth depends on PL-2 to define what city land can be conveyed via ground lease. Without a land disposition framework, CLT partnership conversations lack a concrete deal structure.'},
+      {code:'HTF-1',name:'Housing Trust Fund governance',type:'dependent',detail:'HTF investment criteria and deal structures depend on PL-1 (what land is available), Z-30 (how covenants work), and I-11/PC-2 (who the city\'s partners are). Trust Fund governance should follow that upstream work, not precede it.'},
+    ]
+  },
+];
+
+const tooltip=document.getElementById('tooltip');
+
+function renderChains(filter){
+  const body=document.getElementById('map-body');
+  body.innerHTML='';
+  const filtered=filter==='all'?chains:chains.filter(c=>c.cat===filter);
+  if(filtered.length===0){
+    body.innerHTML='<p style="color:var(--muted);font-size:.88rem;padding:.5rem 0;">No dependency chains in this category.</p>';
+    return;
+  }
+  filtered.forEach(chain=>{
+    let nodesHtml=chain.nodes.map((n,i)=>{
+      const arrow=i<chain.nodes.length-1?'<span class="dep-arrow">→</span>':'';
+      return `<div class="dep-node ${n.type}" 
+        onmouseenter="showTip(event,'${n.code}','${n.name.replace(/'/g,"\\'")}','${n.detail.replace(/'/g,"\\'")}')" 
+        onmouseleave="hideTip()"
+        ontouchstart="showTip(event,'${n.code}','${n.name.replace(/'/g,"\\'")}','${n.detail.replace(/'/g,"\\'")}')">
+        <div class="dn-code">${n.code}</div>
+        <div class="dn-name">${n.name}</div>
+      </div>${arrow}`;
+    }).join('');
+    body.innerHTML+=`<div class="dep-chain" data-cat="${chain.cat}">
+      <div class="dep-chain-title">${chain.title}</div>
+      <div class="dep-flow">${nodesHtml}</div>
+    </div>`;
+  });
+}
+
+function showTip(e,code,name,detail){
+  tooltip.innerHTML=`<div class="tt-code">${code}</div><strong>${name}</strong><br>${detail}`;
+  tooltip.classList.add('visible');
+  moveTip(e);
+}
+function moveTip(e){
+  const x=e.touches?e.touches[0].clientX:e.clientX;
+  const y=e.touches?e.touches[0].clientY:e.clientY;
+  tooltip.style.left=(x+12)+'px';
+  tooltip.style.top=(y-10)+'px';
+}
+function hideTip(){tooltip.classList.remove('visible');}
+document.addEventListener('mousemove',moveTip);
+
+function filterChains(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderChains(cat);
+}
+
+renderChains('all');
+</script>
+</body>
+</html>
