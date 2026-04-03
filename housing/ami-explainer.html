@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What AMI Means in Portsmouth — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#2d3e52;--navy-dark:#1a2332;--gold:#f4a261;--gold-dark:#c8822a;--teal:#3a7d6e;--coral:#e76f51;--cream:#f8f4ee;--text:#1a2332;--muted:#6b7c8f;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;}
+  .site-header{background:var(--navy-dark);padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
+  .site-header a{color:rgba(255,255,255,.55);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+  .site-header a:hover{color:var(--gold);}
+  .header-right{display:flex;align-items:center;gap:1rem;}
+  .header-badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);padding:.2rem .6rem;border-radius:2px;}
+  .hero{background:var(--navy);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border:1px solid rgba(244,162,97,.15);border-radius:50%;}
+  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+  .hero-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.15;margin-bottom:1rem;}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:600px;line-height:1.65;}
+  .main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 3rem;}
+  .concept-box{background:#fff;border-left:4px solid var(--gold-dark);padding:1.25rem 1.5rem;margin-bottom:2.5rem;border-radius:0 6px 6px 0;}
+  .concept-box p{font-size:1rem;color:var(--text);line-height:1.7;}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+  .hh-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+  .hh-btn{padding:.45rem .9rem;border:2px solid var(--navy);background:transparent;color:var(--navy);font-family:'Source Sans 3',sans-serif;font-size:.83rem;font-weight:600;border-radius:4px;cursor:pointer;transition:all .18s;}
+  .hh-btn.active,.hh-btn:hover{background:var(--navy);color:#fff;}
+  .ami-wrap{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:2.5rem;}
+  .ami-table-head{background:var(--navy);display:grid;grid-template-columns:100px 1fr 1fr 1fr 1fr;padding:.75rem 1.25rem;gap:.5rem;}
+  .ami-table-head span{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);}
+  .ami-row{display:grid;grid-template-columns:100px 1fr 1fr 1fr 1fr;padding:.8rem 1.25rem;gap:.5rem;border-bottom:1px solid rgba(0,0,0,.06);align-items:center;transition:background .15s;}
+  .ami-row:hover{background:#faf9f7;}
+  .ami-row:last-child{border-bottom:none;}
+  .ami-tier{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:500;padding:.2rem .5rem;border-radius:3px;text-align:center;}
+  .t30{background:#fde8e4;color:var(--coral);}
+  .t50{background:#fff0e0;color:var(--gold-dark);}
+  .t60{background:#fff7e0;color:#b07a00;}
+  .t80{background:#e8f4f0;color:var(--teal);}
+  .t100{background:#e8ecf2;color:var(--navy);}
+  .t120{background:#2d3e52;color:#fff;}
+  .ami-cell{font-size:.88rem;color:var(--text);}
+  .ami-cell .main-val{font-weight:600;}
+  .ami-cell .rent-val{font-weight:700;color:var(--navy);}
+  .ami-cell .rent-pct{font-size:.72rem;color:var(--muted);}
+  .jobs-section{margin-bottom:2.5rem;}
+  .jobs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
+  .job-card{background:#fff;border-radius:8px;padding:1.25rem;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+  .job-title{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:.15rem;}
+  .job-wage{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--text);margin-bottom:.1rem;}
+  .job-ami{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.15rem .4rem;border-radius:3px;display:inline-block;margin-bottom:.6rem;}
+  .job-desc{font-size:.78rem;color:var(--muted);line-height:1.45;}
+  .gap-section{background:var(--navy);border-radius:10px;padding:1.75rem;margin-bottom:2.5rem;color:#fff;}
+  .gap-section h3{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:.4rem;}
+  .gap-section > p{font-size:.88rem;color:rgba(255,255,255,.7);margin-bottom:1.5rem;}
+  .gap-bars{display:flex;flex-direction:column;gap:.75rem;}
+  .gap-bar-row{display:flex;align-items:center;gap:1rem;}
+  .gap-bar-label{font-size:.8rem;color:rgba(255,255,255,.8);width:140px;flex-shrink:0;}
+  .gap-bar-track{flex:1;height:32px;background:rgba(255,255,255,.1);border-radius:4px;position:relative;}
+  .gap-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:.6rem;}
+  .gap-bar-val{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:#fff;font-weight:500;}
+  .market-marker{position:absolute;right:0;top:0;bottom:0;width:2px;background:var(--gold);}
+  .market-tag{position:absolute;right:4px;top:-18px;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold);white-space:nowrap;}
+  .footer{border-top:2px solid var(--gold-dark);padding:2rem 1.5rem;max-width:960px;margin:0 auto;}
+  .footer-meta{display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:1rem;}
+  .footer-block{flex:1;min-width:180px;}
+  .footer-block .meta-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+  .footer-block p{font-size:.8rem;color:var(--text);line-height:1.5;}
+  .footer-block a{color:var(--gold-dark);text-decoration:none;font-weight:600;}
+  .footer-block a:hover{text-decoration:underline;}
+  .revision-toggle{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-dark);cursor:pointer;background:none;border:none;padding:0;text-decoration:underline;margin-top:.3rem;display:block;}
+  .revision-notes{display:none;margin-top:.5rem;font-size:.78rem;color:var(--muted);background:rgba(0,0,0,.03);border-radius:4px;padding:.6rem .8rem;line-height:1.5;}
+  .revision-notes.open{display:block;}
+  .ai-disclosure{font-size:.75rem;color:var(--muted);font-style:italic;border-top:1px solid rgba(0,0,0,.08);padding-top:.75rem;margin-top:.75rem;}
+  @media(max-width:640px){
+    .hero{padding:2rem 1.25rem 1.75rem;}
+    .main{padding:1.5rem 1rem 2rem;}
+    .ami-table-head,.ami-row{grid-template-columns:75px 1fr 1fr;gap:.25rem;}
+    .ami-table-head span:nth-child(n+4),.ami-row > *:nth-child(n+4){display:none;}
+    .jobs-grid{grid-template-columns:1fr 1fr;}
+    .gap-bar-label{width:90px;font-size:.72rem;}
+    .footer-meta{gap:1rem;}
+    .site-header{padding:1rem;}
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="https://progressportsmouth.com">&#8592; Progress Portsmouth</a>
+  <div class="header-right">
+    <a href="./learning-library.html">&#8592; Library</a>
+    <span class="header-badge">HAP Triage Module</span>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Housing Action Plan &#8212; Context Module 5</p>
+    <h1>What AMI Means in<br><em>Portsmouth Dollars</em></h1>
+    <p class="hero-sub">The Housing Action Plan uses AMI tiers extensively to define affordability targets. This module translates those percentages into actual household incomes and rents for Portsmouth, so those thresholds are grounded in the real market.</p>
+  </div>
+</section>
+<main class="main">
+  <div class="concept-box">
+    <p><strong>Area Median Income (AMI)</strong> is set annually by HUD for each metro area. For Portsmouth, HUD uses Rockingham County as the geography. AMI is the baseline for calculating income limits and maximum affordable rents. A unit is affordable at 80% AMI if a household earning 80% of the area median pays no more than 30% of their income in rent.</p>
+  </div>
+  <p class="section-label">Select household size &#8212; Rockingham County, NH (HUD 2024)</p>
+  <div class="hh-tabs">
+    <button class="hh-btn" onclick="showHH(1,this)">1 Person</button>
+    <button class="hh-btn active" onclick="showHH(2,this)">2 Person</button>
+    <button class="hh-btn" onclick="showHH(3,this)">3 Person</button>
+    <button class="hh-btn" onclick="showHH(4,this)">4 Person</button>
+  </div>
+  <div class="ami-wrap">
+    <div class="ami-table-head">
+      <span>AMI tier</span>
+      <span>Annual income</span>
+      <span>Monthly income</span>
+      <span>Max affordable rent</span>
+      <span>Context</span>
+    </div>
+    <div id="ami-table-body"></div>
+  </div>
+  <div class="jobs-section">
+    <p class="section-label">Who earns what in Portsmouth &#8212; representative occupations</p>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div class="job-title">School teacher</div>
+        <div class="job-wage">~$62,000/yr</div>
+        <div class="job-ami t80">~75% AMI (3-person)</div>
+        <div class="job-desc">Maximum affordable rent: ~$1,550/mo. Portsmouth median 1BR: ~$2,300/mo. Gap: ~$750/mo.</div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Restaurant worker</div>
+        <div class="job-wage">~$38,000/yr</div>
+        <div class="job-ami t30" style="background:#fde8e4;color:var(--coral);">~46% AMI (2-person)</div>
+        <div class="job-desc">Maximum affordable rent: ~$950/mo. Virtually no unsubsidized housing available at this level in Portsmouth.</div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Healthcare tech</div>
+        <div class="job-wage">~$75,000/yr</div>
+        <div class="job-ami t100" style="background:#e8ecf2;color:var(--navy);">~90% AMI (2-person)</div>
+        <div class="job-desc">Maximum affordable rent: ~$1,875/mo. Still below Portsmouth median market rent for a 1BR.</div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Police officer</div>
+        <div class="job-wage">~$72,000/yr</div>
+        <div class="job-ami t80">~87% AMI (1-person)</div>
+        <div class="job-desc">Earns above workforce housing threshold but below what is needed to afford Portsmouth market rents without housing cost burden.</div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Software developer</div>
+        <div class="job-wage">~$115,000/yr</div>
+        <div class="job-ami t120" style="background:#2d3e52;color:#fff;">~140% AMI</div>
+        <div class="job-desc">Can afford market rents. Supply constraints still affect this group through competition for limited units, driving prices up for all.</div>
+      </div>
+      <div class="job-card">
+        <div class="job-title">Home health aide</div>
+        <div class="job-wage">~$34,000/yr</div>
+        <div class="job-ami t30" style="background:#fde8e4;color:var(--coral);">~41% AMI (1-person)</div>
+        <div class="job-desc">Below 50% AMI. Requires deep subsidy (Section 8, project-based vouchers) to afford any market-rate housing in Portsmouth.</div>
+      </div>
+    </div>
+  </div>
+  <div class="gap-section">
+    <h3>The affordability gap &#8212; what AMI tiers can afford vs. market</h3>
+    <p>Maximum affordable rents at each AMI tier vs. Portsmouth's approximate median market rent for a 1-bedroom unit (~$2,250/mo, 2024).</p>
+    <div class="gap-bars">
+      <div class="gap-bar-row">
+        <span class="gap-bar-label">30% AMI</span>
+        <div class="gap-bar-track">
+          <div class="gap-bar-fill" style="width:28%;background:var(--coral);"><span class="gap-bar-val">$620/mo</span></div>
+          <div class="market-marker"></div>
+          <div class="market-tag">Market ~$2,250</div>
+        </div>
+      </div>
+      <div class="gap-bar-row">
+        <span class="gap-bar-label">50% AMI</span>
+        <div class="gap-bar-track">
+          <div class="gap-bar-fill" style="width:46%;background:var(--gold-dark);"><span class="gap-bar-val">$1,035/mo</span></div>
+          <div class="market-marker"></div>
+        </div>
+      </div>
+      <div class="gap-bar-row">
+        <span class="gap-bar-label">60% AMI</span>
+        <div class="gap-bar-track">
+          <div class="gap-bar-fill" style="width:56%;background:#b07a00;"><span class="gap-bar-val">$1,260/mo</span></div>
+          <div class="market-marker"></div>
+        </div>
+      </div>
+      <div class="gap-bar-row">
+        <span class="gap-bar-label">80% AMI</span>
+        <div class="gap-bar-track">
+          <div class="gap-bar-fill" style="width:72%;background:var(--teal);"><span class="gap-bar-val">$1,620/mo</span></div>
+          <div class="market-marker"></div>
+        </div>
+      </div>
+      <div class="gap-bar-row">
+        <span class="gap-bar-label">100% AMI</span>
+        <div class="gap-bar-track">
+          <div class="gap-bar-fill" style="width:90%;background:var(--navy);"><span class="gap-bar-val">$2,025/mo</span></div>
+          <div class="market-marker"></div>
+        </div>
+      </div>
+      <div class="gap-bar-row">
+        <span class="gap-bar-label">120% AMI</span>
+        <div class="gap-bar-track">
+          <div class="gap-bar-fill" style="width:100%;background:#4a5e72;border-radius:4px;"><span class="gap-bar-val">$2,430/mo</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:rgba(255,255,255,.4);margin-top:1.25rem;">Max affordable rent = 30% of monthly income at each tier (2-person household, Rockingham County 2024). Market rent is approximate 2024 median for Portsmouth 1BR.</p>
+  </div>
+  <div class="concept-box" style="border-color:var(--teal);margin-bottom:0;">
+    <p><strong>For triage:</strong> When the Housing Action Plan specifies an affordability target, check which AMI tier it uses and whether that tier reaches the workers Portsmouth actually needs to house. 80% AMI reaches teachers and healthcare workers &#8212; but not restaurant staff or home health aides, who require deeper subsidy or a fundamentally different supply strategy.</p>
+  </div>
+</main>
+<footer class="footer">
+  <div class="footer-meta">
+    <div class="footer-block">
+      <div class="meta-label">Document</div>
+      <p>AMI in Portsmouth Dollars<br><strong>Version 1.1</strong> &#183; April 2026</p>
+      <button class="revision-toggle" onclick="var n=this.nextElementSibling;n.classList.toggle('open');this.textContent=n.classList.contains('open')?'Revision notes \u2191':'Revision notes \u2193'">Revision notes &#8595;</button>
+      <div class="revision-notes">v1.1 (April 2026) &#8212; Rebuilt to resolve blank page rendering issue; added library navigation link.<br>v1.0 (April 2026) &#8212; Initial release. Income limits from HUD 2024 Rockingham County. Wage figures from BLS and NHES. Market rents are 2024 estimates.</div>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Source</div>
+      <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+    <div class="footer-block">
+      <div class="meta-label">Data</div>
+      <p>HUD 2024 Income Limits, Rockingham County NH &#183; BLS Occupational Employment Statistics &#183; NH Employment Security</p>
+    </div>
+  </div>
+  <p class="ai-disclosure">Created with AI assistance in research and information design, with human editorial control.</p>
+</footer>
+<script>
+var amiData = {
+  1: {base:83800, tiers:[
+    {pct:30,cls:'t30',context:'Deep subsidy required; Section 8 territory'},
+    {pct:50,cls:'t50',context:'LIHTC projects; project-based vouchers'},
+    {pct:60,cls:'t60',context:'Standard LIHTC ceiling; most subsidized housing'},
+    {pct:80,cls:'t80',context:'Workforce housing; NH statutory definition'},
+    {pct:100,cls:'t100',context:'Area median; market at or near this level'},
+    {pct:120,cls:'t120',context:'Above median; market-rate housing serves this group'}
+  ]},
+  2: {base:95800, tiers:[
+    {pct:30,cls:'t30',context:'Deep subsidy required; Section 8 territory'},
+    {pct:50,cls:'t50',context:'LIHTC projects; project-based vouchers'},
+    {pct:60,cls:'t60',context:'Standard LIHTC ceiling; most subsidized housing'},
+    {pct:80,cls:'t80',context:'Workforce housing; NH statutory definition'},
+    {pct:100,cls:'t100',context:'Area median; market at or near this level'},
+    {pct:120,cls:'t120',context:'Above median; market-rate housing serves this group'}
+  ]},
+  3: {base:107800, tiers:[
+    {pct:30,cls:'t30',context:'Deep subsidy required; Section 8 territory'},
+    {pct:50,cls:'t50',context:'LIHTC projects; project-based vouchers'},
+    {pct:60,cls:'t60',context:'Standard LIHTC ceiling; most subsidized housing'},
+    {pct:80,cls:'t80',context:'Workforce housing; NH statutory definition'},
+    {pct:100,cls:'t100',context:'Area median; market at or near this level'},
+    {pct:120,cls:'t120',context:'Above median; market-rate housing serves this group'}
+  ]},
+  4: {base:119700, tiers:[
+    {pct:30,cls:'t30',context:'Deep subsidy required; Section 8 territory'},
+    {pct:50,cls:'t50',context:'LIHTC projects; project-based vouchers'},
+    {pct:60,cls:'t60',context:'Standard LIHTC ceiling; most subsidized housing'},
+    {pct:80,cls:'t80',context:'Workforce housing; NH statutory definition'},
+    {pct:100,cls:'t100',context:'Area median; market at or near this level'},
+    {pct:120,cls:'t120',context:'Above median; market-rate housing serves this group'}
+  ]}
+};
+
+function fmtDollar(n) {
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function renderTable(size) {
+  var d = amiData[size];
+  if (!d) return;
+  var body = document.getElementById('ami-table-body');
+  if (!body) return;
+  var html = '';
+  for (var i = 0; i < d.tiers.length; i++) {
+    var t = d.tiers[i];
+    var inc = d.base * (t.pct / 100);
+    var mo = inc / 12;
+    var rent = mo * 0.30;
+    html += '<div class="ami-row">';
+    html += '<div><span class="ami-tier ' + t.cls + '">' + t.pct + '% AMI</span></div>';
+    html += '<div class="ami-cell"><div class="main-val">' + fmtDollar(inc) + '/yr</div></div>';
+    html += '<div class="ami-cell"><div class="main-val">' + fmtDollar(mo) + '/mo</div></div>';
+    html += '<div class="ami-cell"><div class="rent-val">' + fmtDollar(rent) + '/mo</div><div class="rent-pct">30% of income</div></div>';
+    html += '<div class="ami-cell" style="font-size:.78rem;color:var(--muted);line-height:1.4;">' + t.context + '</div>';
+    html += '</div>';
+  }
+  body.innerHTML = html;
+}
+
+function showHH(size, btn) {
+  var btns = document.querySelectorAll('.hh-btn');
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+  btn.classList.add('active');
+  renderTable(size);
+}
+
+document.addEventListener('DOMContentLoaded', function() { renderTable(2); });
+</script>
+</body>
+</html>
