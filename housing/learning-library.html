@@ -527,7 +527,7 @@
 <header class="site-header">
   <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
   <div class="header-right">
-    <span class="header-count" id="module-count">8 modules</span>
+    <span class="header-count" id="module-count">9 modules</span>
   </div>
 </header>
 
@@ -542,7 +542,7 @@
     <p class="hero-desc">Interactive modules for Housing Committee members and partners. Each module explains a foundational concept in housing policy — with Portsmouth context, relevant law, and connections to the Housing Action Plan.</p>
     <div class="hero-meta">
       <div class="hero-stat">
-        <span class="stat-val">8</span>
+        <span class="stat-val">9</span>
         <span class="stat-label">Modules</span>
       </div>
       <div class="hero-divider"></div>
@@ -566,7 +566,7 @@
   <div class="filter-bar">
     <span class="filter-label">Show:</span>
     <button class="filter-btn active" onclick="filterModules('all', this)">All modules <span class="filter-count">7</span></button>
-    <button class="filter-btn" onclick="filterModules('regulatory', this)">Zoning &amp; Regulation <span class="filter-count">3</span></button>
+    <button class="filter-btn" onclick="filterModules('regulatory', this)">Zoning &amp; Regulation <span class="filter-count">4</span></button>
     <button class="filter-btn" onclick="filterModules('economics', this)">Economics <span class="filter-count">3</span></button>
     <button class="filter-btn" onclick="filterModules('affordability', this)">Affordability Tools <span class="filter-count">1</span></button>
     <button class="filter-btn" onclick="filterModules('implementation', this)">Implementation <span class="filter-count">1</span></button>
@@ -958,6 +958,53 @@
       </div>
     </div>
 
+
+    <!-- 9. Zoning Triage Reference -->
+    <div class="module-card cat-regulatory" data-cat="regulatory">
+      <div class="card-visual">
+        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="300" height="120" fill="#1a2332"/>
+          <!-- Zone map grid -->
+          <rect x="20" y="15" width="55" height="90" fill="rgba(231,111,81,.35)" rx="2"/>
+          <text x="47" y="55" font-family="monospace" font-size="8" fill="rgba(231,111,81,.9)" text-anchor="middle">R/SRA</text>
+          <text x="47" y="66" font-family="monospace" font-size="7" fill="rgba(231,111,81,.6)" text-anchor="middle">SRB</text>
+          <text x="47" y="77" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.8)" text-anchor="middle">85.8%</text>
+          <rect x="80" y="15" width="40" height="90" fill="rgba(58,125,110,.35)" rx="2"/>
+          <text x="100" y="62" font-family="monospace" font-size="7.5" fill="rgba(58,125,110,.9)" text-anchor="middle">GRA</text>
+          <text x="100" y="72" font-family="monospace" font-size="7" fill="rgba(58,125,110,.7)" text-anchor="middle">GRB</text>
+          <rect x="125" y="15" width="32" height="90" fill="rgba(58,125,110,.5)" rx="2"/>
+          <text x="141" y="67" font-family="monospace" font-size="7.5" fill="rgba(58,125,110,.9)" text-anchor="middle">GRC</text>
+          <rect x="162" y="15" width="36" height="90" fill="rgba(200,130,42,.5)" rx="2"/>
+          <text x="180" y="62" font-family="monospace" font-size="7.5" fill="rgba(244,162,97,.9)" text-anchor="middle">G1/G2</text>
+          <rect x="203" y="15" width="32" height="90" fill="rgba(45,62,82,.7)" rx="2" stroke="rgba(244,162,97,.3)" stroke-width="1"/>
+          <text x="219" y="62" font-family="monospace" font-size="7" fill="rgba(255,255,255,.7)" text-anchor="middle">CD4/5</text>
+          <!-- Compliance flag -->
+          <rect x="245" y="14" width="40" height="18" fill="rgba(231,111,81,.7)" rx="2"/>
+          <text x="265" y="26" font-family="monospace" font-size="7" fill="#fff" text-anchor="middle">Jul 2026</text>
+          <rect x="245" y="35" width="40" height="18" fill="rgba(200,130,42,.5)" rx="2"/>
+          <text x="265" y="47" font-family="monospace" font-size="7" fill="#fff" text-anchor="middle">SB 284</text>
+          <rect x="245" y="56" width="40" height="18" fill="rgba(58,125,110,.5)" rx="2"/>
+          <text x="265" y="68" font-family="monospace" font-size="7" fill="#fff" text-anchor="middle">HB 577 ✓</text>
+        </svg>
+      </div>
+      <div class="card-top">
+        <span class="card-cat">Zoning &amp; Regulation</span>
+        <span class="card-num">Module 09</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">Portsmouth Zoning: The Triage Reference</h2>
+        <p class="card-question">Zone structure, approval pathways, compliance deadlines, and all 38 Z-items grouped by mechanism — in one place.</p>
+        <div class="card-tags">
+          <span class="card-tag">38 Z-items</span>
+          <span class="card-tag">Compliance flags</span>
+          <span class="card-tag">Approval matrix</span>
+        </div>
+        <a class="card-link" href="./zoning-ordinance-triage.html" target="_blank">
+          Open module <span class="arrow">&#8594;</span>
+        </a>
+      </div>
+    </div>
+
   </div><!-- /module-grid -->
 
   <!-- SUGGESTED READING PATH -->
@@ -1006,6 +1053,11 @@
         <span class="path-step-num">8</span>
         <span class="path-step-name">Housing Finance</span>
       </a>
+      <span class="path-arrow">&#8594;</span>
+      <a class="path-step" href="./zoning-ordinance-triage.html" target="_blank">
+        <span class="path-step-num">9</span>
+        <span class="path-step-name">Zoning Triage Ref.</span>
+      </a>
     </div>
   </div>
 
@@ -1046,7 +1098,7 @@
     });
 
     document.getElementById('module-count').textContent =
-      visible === 8 ? '8 modules' : `${visible} of 7 modules`;
+      visible === 9 ? '9 modules' : `${visible} of 7 modules`;
   }
 </script>
 
