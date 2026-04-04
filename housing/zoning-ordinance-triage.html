@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portsmouth Zoning — HAP Triage Reference · Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#2d3e52; --navy-dark:#1a2332; --gold:#f4a261; --gold-dark:#c8822a;
+  --teal:#3a7d6e; --coral:#e76f51; --cream:#f8f4ee; --text:#1a2332; --muted:#6b7c8f;
+  --warm-gray:#e8e4de; --white:#fff;
+  --c-done:#3a7d6e; --c-progress:#c8822a; --c-blank:#6b7c8f; --c-compliance:#e76f51;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;font-size:15px;}
+
+/* NAV */
+.lib-nav{background:var(--navy-dark);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.07);}
+.lib-nav a{color:rgba(255,255,255,.55);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.lib-nav a:hover{color:var(--gold);}
+.lib-nav-right{display:flex;align-items:center;gap:1rem;}
+.lib-badge{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);padding:.2rem .55rem;border-radius:2px;}
+
+/* HERO */
+.hero{background:var(--navy);padding:2.5rem 1.5rem 2rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(244,162,97,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,162,97,.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:32px;background:linear-gradient(to bottom,transparent,var(--cream));}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+.hero-eyebrow{display:flex;align-items:center;gap:.65rem;margin-bottom:1rem;}
+.eyebrow-rule{width:24px;height:2px;background:var(--gold-dark);flex-shrink:0;}
+.eyebrow-text{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3.5vw,2.5rem);color:#fff;line-height:1.15;margin-bottom:.75rem;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.65);max-width:560px;line-height:1.65;}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+
+/* SOURCE LINKS */
+.source-strip{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.source-link{display:flex;align-items:center;gap:.5rem;background:var(--white);border:1.5px solid var(--warm-gray);border-radius:6px;padding:.65rem 1rem;text-decoration:none;transition:all .18s;flex:1;min-width:200px;}
+.source-link:hover{border-color:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.source-link .sl-icon{font-size:1.1rem;flex-shrink:0;}
+.source-link .sl-text{}
+.source-link .sl-label{font-size:.68rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.1rem;}
+.source-link .sl-title{font-size:.88rem;font-weight:700;color:var(--navy);display:block;line-height:1.25;}
+.source-link .sl-url{font-size:.72rem;color:var(--muted);display:block;margin-top:.1rem;}
+
+/* COMPLIANCE ALERT */
+.compliance-box{background:var(--navy-dark);border-radius:10px;padding:1.5rem 1.75rem;margin-bottom:2.5rem;color:#fff;position:relative;overflow:hidden;}
+.compliance-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--gold));}
+.compliance-box h3{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--gold);margin-bottom:.35rem;}
+.compliance-box > p{font-size:.85rem;color:rgba(255,255,255,.65);margin-bottom:1rem;}
+.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;}
+.comp-item{border-radius:6px;padding:.8rem 1rem;}
+.comp-done{background:rgba(58,125,110,.2);border:1px solid rgba(58,125,110,.4);}
+.comp-active{background:rgba(200,130,42,.2);border:1px solid rgba(200,130,42,.5);}
+.comp-deadline{background:rgba(231,111,81,.2);border:1px solid rgba(231,111,81,.5);}
+.comp-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem;}
+.comp-done .comp-tag{color:#6ecfb8;}
+.comp-active .comp-tag{color:var(--gold);}
+.comp-deadline .comp-tag{color:#f4a09a;}
+.comp-item h4{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:.25rem;line-height:1.3;}
+.comp-item p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.45;}
+.comp-hap{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.4);margin-top:.3rem;}
+
+/* ZONE TABLE */
+.zone-section{margin-bottom:2.5rem;}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+.zone-table{width:100%;background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);border-collapse:collapse;}
+.zone-table th{background:var(--navy);color:rgba(255,255,255,.75);font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1rem;text-align:left;font-weight:500;}
+.zone-table td{padding:.65rem 1rem;font-size:.83rem;border-bottom:1px solid var(--warm-gray);vertical-align:top;}
+.zone-table tr:last-child td{border-bottom:none;}
+.zone-table tr:hover td{background:#faf9f7;}
+.zone-code{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;color:var(--navy);white-space:nowrap;}
+.zone-name{font-size:.82rem;color:var(--muted);}
+.zone-share{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:700;}
+.share-big{color:var(--coral);}
+.share-med{color:var(--gold-dark);}
+.share-small{color:var(--teal);}
+.housing-pill{display:inline-block;font-size:.65rem;padding:.15rem .45rem;border-radius:3px;margin:.1rem .1rem 0 0;font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+.pill-right{background:#e8f4f0;color:var(--teal);}
+.pill-cup{background:#fff0e0;color:var(--gold-dark);}
+.pill-var{background:#fde8e4;color:var(--coral);}
+.pill-no{background:rgba(0,0,0,.06);color:var(--muted);}
+.zone-hap-items{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);}
+
+/* HAP GROUPS */
+.hap-section{margin-bottom:2.5rem;}
+.group-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.group-btn{padding:.4rem .85rem;border:1.5px solid var(--warm-gray);background:transparent;color:var(--muted);font-family:'Source Sans 3',sans-serif;font-size:.78rem;font-weight:600;border-radius:20px;cursor:pointer;transition:all .18s;white-space:nowrap;}
+.group-btn:hover{border-color:var(--navy);color:var(--navy);}
+.group-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+.item-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;}
+.hap-item-card{background:var(--white);border-radius:8px;padding:.9rem 1.1rem;box-shadow:0 1px 6px rgba(0,0,0,.06);cursor:pointer;transition:all .18s;border-left:4px solid var(--warm-gray);}
+.hap-item-card:hover{box-shadow:0 3px 12px rgba(0,0,0,.1);transform:translateY(-1px);}
+.hap-item-card.open{border-left-color:var(--gold-dark);}
+.hap-item-card.st-complete{border-left-color:var(--teal);}
+.hap-item-card.st-progress{border-left-color:var(--gold-dark);}
+.hap-item-card.st-compliance{border-left-color:var(--coral);}
+.hap-item-card.st-blank{border-left-color:var(--warm-gray);}
+.item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.3rem;}
+.item-code{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700;color:var(--navy);}
+.item-status-badge{font-family:'JetBrains Mono',monospace;font-size:.58rem;padding:.1rem .4rem;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.badge-complete{background:#e8f4f0;color:var(--teal);}
+.badge-progress{background:#fff0e0;color:var(--gold-dark);}
+.badge-compliance{background:#fde8e4;color:var(--coral);}
+.badge-blank{background:rgba(0,0,0,.05);color:var(--muted);}
+.item-title{font-size:.88rem;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:.35rem;}
+.item-desc{font-size:.8rem;color:var(--muted);line-height:1.5;display:none;}
+.hap-item-card.open .item-desc{display:block;}
+.item-note{font-size:.75rem;background:rgba(200,130,42,.08);border-left:2px solid var(--gold-dark);padding:.45rem .65rem;border-radius:0 4px 4px 0;margin-top:.5rem;color:var(--text);line-height:1.5;display:none;}
+.hap-item-card.open .item-note{display:block;}
+
+/* 85% BOX */
+.stat-box{background:var(--navy);border-radius:10px;padding:1.5rem 1.75rem;margin-bottom:2.5rem;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center;color:#fff;}
+.stat-num{font-family:'DM Serif Display',serif;font-size:3.5rem;color:var(--coral);line-height:1;}
+.stat-body h3{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;margin-bottom:.35rem;}
+.stat-body p{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.55;}
+.stat-body p+p{margin-top:.5rem;}
+.stat-body strong{color:#fff;}
+
+/* APPROVAL MATRIX */
+.matrix-wrap{background:var(--white);border-radius:10px;overflow-x:auto;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:2.5rem;}
+.matrix{width:100%;border-collapse:collapse;}
+.matrix th{background:var(--navy);color:rgba(255,255,255,.75);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem .85rem;text-align:center;font-weight:500;}
+.matrix th:first-child{text-align:left;}
+.matrix td{padding:.55rem .85rem;font-size:.8rem;border-bottom:1px solid var(--warm-gray);text-align:center;vertical-align:middle;}
+.matrix td:first-child{text-align:left;font-weight:600;color:var(--navy);}
+.matrix tr:last-child td{border-bottom:none;}
+.matrix tr:hover td{background:#faf9f7;}
+.m-right{color:var(--teal);font-weight:700;font-size:.78rem;}
+.m-cup{color:var(--gold-dark);font-weight:600;font-size:.78rem;}
+.m-var{color:var(--coral);font-weight:600;font-size:.78rem;}
+.m-no{color:rgba(0,0,0,.2);font-size:.78rem;}
+
+/* FOOTER */
+.page-footer{background:var(--navy-dark);padding:2rem 1.5rem;margin-top:1rem;}
+.footer-inner{max-width:960px;margin:0 auto;display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap;}
+.footer-block{flex:1;min-width:180px;}
+.footer-block .fb-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+.footer-block p{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.6;}
+.footer-block a{color:var(--gold);text-decoration:none;}
+.footer-block a:hover{text-decoration:underline;}
+.rev-toggle{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(255,255,255,.35);cursor:pointer;background:none;border:none;padding:0;text-decoration:underline;margin-top:.35rem;display:block;}
+.rev-notes{display:none;margin-top:.5rem;font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5;}
+.rev-notes.open{display:block;}
+.footer-ai{width:100%;padding-top:1.25rem;margin-top:1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.72rem;color:rgba(255,255,255,.3);font-style:italic;}
+
+@media(max-width:640px){
+  .lib-nav{padding:0 1rem;}
+  .hero{padding:2rem 1rem 1.75rem;}
+  .main{padding:1.5rem 1rem 3rem;}
+  .compliance-grid{grid-template-columns:1fr;}
+  .item-grid{grid-template-columns:1fr;}
+  .stat-box{grid-template-columns:1fr;gap:.75rem;}
+  .stat-num{font-size:2.5rem;}
+  .source-link{min-width:unset;width:100%;}
+  .footer-inner{gap:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lib-nav">
+  <a href="https://progressportsmouth.com">&#8592; Progress Portsmouth</a>
+  <div class="lib-nav-right">
+    <a href="./learning-library.html">&#8592; Library</a>
+    <span class="lib-badge">HAP Triage Module</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-rule"></div>
+      <span class="eyebrow-text">Housing Action Plan &#8212; Context Module 09 &#183; Zoning Reference</span>
+    </div>
+    <h1>Portsmouth Zoning:<br><em>The Triage Reference</em></h1>
+    <p class="hero-sub">A compact reference for Housing Committee members evaluating the 38 zoning items in the Housing Action Plan &#8212; zone structure, approval pathways, compliance deadlines, and every Z-item grouped by mechanism.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- SOURCE LINKS -->
+  <p class="section-label" style="margin-bottom:.65rem;">Go to the source</p>
+  <div class="source-strip">
+    <a class="source-link" href="./zoning-ordinance-public.html" target="_blank">
+      <span class="sl-icon">&#128218;</span>
+      <span class="sl-text">
+        <span class="sl-label">Plain English Guide</span>
+        <span class="sl-title">Portsmouth Zoning Ordinance — Plain Language</span>
+        <span class="sl-url">Progress Portsmouth &#183; All 15 articles explained</span>
+      </span>
+    </a>
+    <a class="source-link" href="https://files.portsmouthnh.gov/files/planning/ZoningOrd-250505+ADOPTED.pdf" target="_blank">
+      <span class="sl-icon">&#128196;</span>
+      <span class="sl-text">
+        <span class="sl-label">Official Ordinance</span>
+        <span class="sl-title">Portsmouth Zoning Ordinance (Feb 17, 2026)</span>
+        <span class="sl-url">portsmouthnh.gov &#183; 362 pages &#183; Adopted text</span>
+      </span>
+    </a>
+    <a class="source-link" href="https://www.portsmouthnh.gov/planportsmouth/land-use-and-zoning-regulations" target="_blank">
+      <span class="sl-icon">&#128205;</span>
+      <span class="sl-text">
+        <span class="sl-label">City Planning Dept</span>
+        <span class="sl-title">Zoning Maps, Applications &amp; Planning Staff</span>
+        <span class="sl-url">portsmouthnh.gov &#183; (603) 610&#8209;7216</span>
+      </span>
+    </a>
+  </div>
+
+  <!-- COMPLIANCE DEADLINES -->
+  <div class="compliance-box">
+    <h3>State law compliance deadlines</h3>
+    <p>Several HAP zoning items are driven by state mandates &#8212; not optional policy. These cannot be deprioritized.</p>
+    <div class="compliance-grid">
+      <div class="comp-item comp-done">
+        <div class="comp-tag">&#10003; Complete</div>
+        <h4>ADUs by-right citywide</h4>
+        <p>HB 577 (eff. July 1, 2025) + Portsmouth March 2026 ordinance update. Detached and attached ADUs are now by-right. No CUP required.</p>
+        <div class="comp-hap">Z-2 &#183; Z-36</div>
+      </div>
+      <div class="comp-item comp-active">
+        <div class="comp-tag">&#9654; In progress</div>
+        <h4>Parking cap (SB 284)</h4>
+        <p>Effective Sept 13, 2025. State caps parking at 1 space per residential unit. Portsmouth&#8217;s 1.3&#8211;1.5 space standard is currently unlawful.</p>
+        <div class="comp-hap">Z-4 &#183; Z-21</div>
+      </div>
+      <div class="comp-item comp-deadline">
+        <div class="comp-tag">&#9650; Deadline July 1, 2026</div>
+        <h4>Commercial conversions + multifamily in commercial zones (HB 631)</h4>
+        <p>State will require multifamily allowed on commercially zoned land and automatic setback/height exemptions for adaptive reuse. Portsmouth must amend before July 1, 2026.</p>
+        <div class="comp-hap">Z-3 &#183; Z-25 &#183; Z-29</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 85.8% PROBLEM -->
+  <div class="stat-box">
+    <div class="stat-num">85.8%</div>
+    <div class="stat-body">
+      <h3>Single-family zones dominate Portsmouth&#8217;s residential land</h3>
+      <p>The R, SRA, and SRB zones together cover <strong>2,276 acres</strong> &#8212; 85.8% of all residential land in the city. These zones currently allow <strong>only single-family homes by-right</strong>. Virtually all missing middle housing requires a variance or is prohibited outright.</p>
+      <p>Any serious housing production strategy eventually has to engage Z-33 (single-family zone reform). The dependency note flags this requires anti-speculation groundwork first. But the scale of the problem should inform how the committee weights zoning category items overall.</p>
+    </div>
+  </div>
+
+  <!-- ZONE STRUCTURE -->
+  <div class="zone-section">
+    <p class="section-label">Zone structure &#8212; the 10 zones that matter most for housing HAP</p>
+    <table class="zone-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Land share</th>
+          <th>Housing types currently permitted</th>
+          <th>Key HAP items</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="zone-code">R</span><br><span class="zone-name">Rural Residential</span></td>
+          <td>Rural Residential</td>
+          <td><span class="zone-share share-big">Large</span><br>5-acre min. lot</td>
+          <td>
+            <span class="housing-pill pill-right">SFH by-right</span>
+            <span class="housing-pill pill-right">ADU by-right</span>
+            <span class="housing-pill pill-no">Multifamily: prohibited</span>
+          </td>
+          <td class="zone-hap-items">Z-8, Z-33</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">SRA / SRB</span><br><span class="zone-name">Single Residence A &amp; B</span></td>
+          <td>Single Residence</td>
+          <td><span class="zone-share share-big">Large</span><br>Together ~85% res. land</td>
+          <td>
+            <span class="housing-pill pill-right">SFH by-right</span>
+            <span class="housing-pill pill-right">ADU by-right</span>
+            <span class="housing-pill pill-var">2-family: variance</span>
+            <span class="housing-pill pill-no">3+: prohibited</span>
+          </td>
+          <td class="zone-hap-items">Z-5, Z-8, Z-33</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">GRA / GRB</span><br><span class="zone-name">General Residence A &amp; B</span></td>
+          <td>General Residence</td>
+          <td><span class="zone-share share-med">Medium</span><br>7,500 sf min.</td>
+          <td>
+            <span class="housing-pill pill-right">SFH + 2-fam by-right</span>
+            <span class="housing-pill pill-right">ADU by-right</span>
+            <span class="housing-pill pill-right">3&#8211;4 unit by-right</span>
+            <span class="housing-pill pill-var">5&#8211;8: special exception</span>
+          </td>
+          <td class="zone-hap-items">Z-5, Z-8, Z-26</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">GRC</span><br><span class="zone-name">General Residence C</span></td>
+          <td>General Residence C</td>
+          <td><span class="zone-share share-med">Moderate</span><br>3,500 sf min.</td>
+          <td>
+            <span class="housing-pill pill-right">SFH through 4-unit by-right</span>
+            <span class="housing-pill pill-var">5&#8211;8: special exception</span>
+            <span class="housing-pill pill-no">8+: prohibited</span>
+          </td>
+          <td class="zone-hap-items">Z-5, Z-8</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">G1 / G2</span><br><span class="zone-name">Gateway Mixed Use</span></td>
+          <td>Gateway Mixed Use</td>
+          <td><span class="zone-share share-small">Smaller</span><br>Major corridors</td>
+          <td>
+            <span class="housing-pill pill-right">Broad housing by-right</span>
+            <span class="housing-pill pill-cup">Density bonus: CUP</span>
+            <span class="housing-pill pill-right">Workforce bonus available</span>
+          </td>
+          <td class="zone-hap-items">Z-6, Z-7, Z-12, Z-22, Z-23</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">CD4 / CD5</span><br><span class="zone-name">Character Districts</span></td>
+          <td>Character Districts (downtown)</td>
+          <td><span class="zone-share share-small">Smaller</span><br>Downtown core</td>
+          <td>
+            <span class="housing-pill pill-right">Mixed use by-right</span>
+            <span class="housing-pill pill-right">Multifamily by-right</span>
+            <span class="housing-pill pill-right">Form-based standards apply</span>
+          </td>
+          <td class="zone-hap-items">Z-7, Z-11, Z-26, Z-35</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">OR</span><br><span class="zone-name">Office / Research</span></td>
+          <td>Office Research</td>
+          <td><span class="zone-share share-small">Moderate</span><br>3-acre min.</td>
+          <td>
+            <span class="housing-pill pill-no">Residential: currently prohibited</span>
+            <span class="housing-pill pill-compliance" style="background:#fde8e4;color:var(--coral);">HB 631 mandates change by Jul 2026</span>
+          </td>
+          <td class="zone-hap-items">Z-1, Z-3, Z-25, Z-29</td>
+        </tr>
+        <tr>
+          <td><span class="zone-code">B / GB</span><br><span class="zone-name">Business zones</span></td>
+          <td>Business / General Business</td>
+          <td><span class="zone-share share-med">Moderate</span><br>Highway corridors</td>
+          <td>
+            <span class="housing-pill pill-cup">Residential: CUP in B</span>
+            <span class="housing-pill pill-no">GB: residential limited</span>
+            <span class="housing-pill pill-compliance" style="background:#fde8e4;color:var(--coral);">HB 631 expands rights Jul 2026</span>
+          </td>
+          <td class="zone-hap-items">Z-3, Z-25, Z-29, Z-35</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:.6rem;font-style:italic;">&#9878; Simplified for triage orientation. Confirm specific parcel rules with the Planning Department or the <a href="./zoning-ordinance-public.html" style="color:var(--gold-dark);">plain English guide</a>.</p>
+  </div>
+
+  <!-- APPROVAL MATRIX -->
+  <div class="zone-section">
+    <p class="section-label">Approval pathway by housing type &#8212; current Portsmouth rules</p>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Housing type</th>
+            <th>R / SRA / SRB</th>
+            <th>GRA / GRB</th>
+            <th>GRC</th>
+            <th>G1 / G2</th>
+            <th>CD4 / CD5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Single-family</td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+          </tr>
+          <tr>
+            <td>ADU (attached or detached)</td>
+            <td><span class="m-right">By-right &#9733;</span></td>
+            <td><span class="m-right">By-right &#9733;</span></td>
+            <td><span class="m-right">By-right &#9733;</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+          </tr>
+          <tr>
+            <td>2-family / duplex</td>
+            <td><span class="m-var">Variance</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+          </tr>
+          <tr>
+            <td>3&#8211;4 unit multifamily</td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+          </tr>
+          <tr>
+            <td>5&#8211;8 unit multifamily</td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-var">Sp. exception</span></td>
+            <td><span class="m-var">Sp. exception</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+          </tr>
+          <tr>
+            <td>9+ unit multifamily</td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-right">By-right</span></td>
+            <td><span class="m-right">By-right</span></td>
+          </tr>
+          <tr>
+            <td>Cottage / cluster housing</td>
+            <td><span class="m-no">No pathway</span></td>
+            <td><span class="m-no">No pathway</span></td>
+            <td><span class="m-no">No pathway</span></td>
+            <td><span class="m-cup">CUP</span></td>
+            <td><span class="m-cup">CUP</span></td>
+          </tr>
+          <tr>
+            <td>Coliving</td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-no">Prohibited</span></td>
+            <td><span class="m-cup">CUP (B, G1, G2)</span></td>
+            <td><span class="m-cup">CUP</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:.4rem;font-style:italic;">&#9733; By-right as of HB 577 (July 2025) + Portsmouth March 2026 ordinance update.</p>
+  </div>
+
+  <!-- HAP Z-ITEMS BY MECHANISM -->
+  <div class="hap-section">
+    <p class="section-label">All 38 Z-items grouped by mechanism &#8212; click any to expand</p>
+    <div class="group-tabs">
+      <button class="group-btn active" onclick="showGroup('all',this)">All 38</button>
+      <button class="group-btn" onclick="showGroup('compliance',this)">&#9650; Compliance-driven</button>
+      <button class="group-btn" onclick="showGroup('dimensional',this)">Dimensional</button>
+      <button class="group-btn" onclick="showGroup('use',this)">Use permissions</button>
+      <button class="group-btn" onclick="showGroup('overlay',this)">Overlay &amp; incentive</button>
+      <button class="group-btn" onclick="showGroup('process',this)">Process &amp; audit</button>
+      <button class="group-btn" onclick="showGroup('complete',this)">&#10003; Complete</button>
+    </div>
+    <div class="item-grid" id="item-grid"></div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <div class="fb-label">Document</div>
+      <p>Portsmouth Zoning &#8212; HAP Triage Reference<br><strong style="color:rgba(255,255,255,.7);">Version 1.0</strong> &#183; April 2026</p>
+      <button class="rev-toggle" onclick="var n=this.nextElementSibling;n.classList.toggle('open');this.textContent=n.classList.contains('open')?'Revision notes \u2191':'Revision notes \u2193'">Revision notes &#8595;</button>
+      <div class="rev-notes">v1.0 (April 2026) &#8212; Initial release. Built for Housing Committee triage support. Zone data drawn from Portsmouth Zoning Ordinance as amended Feb 17, 2026. HAP item data from hap-actions.json (146 items, verified April 2026). Compliance deadlines reflect HB 577, SB 284, HB 631 as enacted.</div>
+    </div>
+    <div class="footer-block">
+      <div class="fb-label">Sources</div>
+      <p>Portsmouth Zoning Ordinance (Feb 17, 2026) &#183; Progress Portsmouth Housing Action Plan data &#183; NH RSA 674 &#183; HB 577, SB 284, HB 631 (2025 session)</p>
+    </div>
+    <div class="footer-block">
+      <div class="fb-label">Organization</div>
+      <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+    <p class="footer-ai">Created with AI assistance in research and information design, with human editorial control. Not a legal document &#8212; confirm rules with the Planning Department or official ordinance before acting.</p>
+  </div>
+</footer>
+
+<script>
+var items = [
+  // COMPLIANCE
+  {id:'Z-2',title:'ADU ordinance enhancements (beyond state compliance)',status:'in-progress',group:'compliance',desc:'HB 577 (July 2025) and Portsmouth\'s March 2026 ordinance update established by-right ADUs statewide and locally. Z-2 now addresses enhancements beyond the baseline: dimensional optimization, design guidance, and ensuring the ordinance is fully calibrated — not merely compliant.',note:''},
+  {id:'Z-3',title:'Residential conversion ordinance',status:'in-progress',group:'compliance',desc:'Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones.',note:'⚠ DEADLINE: HB 631 (eff. July 1, 2026) mandates multifamily on commercially zoned land and adaptive reuse conversion rights. Portsmouth ordinance must be amended before July 1, 2026.'},
+  {id:'Z-4',title:'Parking requirement reform',status:'in-progress',group:'compliance',desc:'Comprehensive parking reform: maximums, shared parking, and market-responsive standards. Phase 1 study in progress.',note:'⚠ SB 284 (eff. Sept 13, 2025) caps parking at 1 space per residential unit statewide. Portsmouth\'s 1.3–1.5 space standard is currently unlawful. Ordinance amendment is time-sensitive.'},
+  {id:'Z-21',title:'Comprehensive zoning audit',status:'in-progress',group:'compliance',desc:'Full audit of zoning ordinance identifying provisions that constrain housing production. GIS analysis shows 69.9% of single-family zone parcels violate current dimensional standards.',note:'Audit scope includes SB 283 (FAR calculation change), HB 457 (occupancy standards), and HB 577 compliance check. Running audit in parallel with reform items is the logical sequencing.'},
+  {id:'Z-25',title:'Allow multifamily in Office/Research zones',status:'early-stage',group:'compliance',desc:'Amend O/R zoning to allow residential as-of-right — not just conversion from existing buildings.',note:'⚠ DEADLINE: HB 631 (eff. July 1, 2026) mandates municipalities allow multifamily on commercially zoned land where infrastructure exists. Currently prohibited in Portsmouth O/R zones.'},
+  {id:'Z-29',title:'Adaptive reuse ordinance streamlining',status:'',group:'compliance',desc:'Simplify permitting for conversion of historic or underutilized non-residential buildings to housing. Align with RSA 79-E.',note:'⚠ DEADLINE: HB 631 (eff. July 1, 2026) will require automatic exemptions from setbacks, height, and frontage for existing buildings converted to residential through adaptive reuse, provided building meets fire/life safety codes.'},
+  {id:'Z-36',title:'Monitor 2026 NH ADU legislation for conflicts',status:'in-progress',group:'compliance',desc:'Track pending NH bills (HB1079, HB1540, HB1662) that could conflict with Portsmouth\'s existing ADU ordinance.',note:'Ongoing monitoring item. No action required until bill outcomes are known.'},
+
+  // DIMENSIONAL
+  {id:'Z-7',title:'Height limit modernization',status:'',group:'dimensional',desc:'Review and selectively increase building height limits in downtown, Gateway, and transit-proximate zones. Current 35-foot residential limit constrains density in areas where greater height is contextually appropriate.',note:''},
+  {id:'Z-8',title:'Lot size and dimensional requirement updates',status:'',group:'dimensional',desc:'Reduce minimum lot sizes, frontage requirements, and setbacks. GIS analysis: R Zone requires 5-acre minimums (proposed: 1 acre). SRB: 15,000 sf (proposed: 7,500 sf). 69.9% of current parcels in single-family zones are already nonconforming — meaning the rules don\'t match the actual built environment.',note:'DEPENDENCY: Z-5 (missing middle) requires this item to run concurrently. By-right missing middle allowances produce limited yield without dimensional reform — most infill lots can\'t meet current minimums.'},
+  {id:'Z-17',title:'Allow subdivision of existing larger houses',status:'',group:'dimensional',desc:'Many larger homes were historically multifamily, then converted to single-family. Reducing dimensional barriers enables re-subdivision into multiple ownership units.',note:''},
+  {id:'Z-32',title:'Family-sized unit zoning incentives',status:'',group:'dimensional',desc:'Incentivize production of 3+ bedroom units — underrepresented in Portsmouth\'s pipeline — through density or dimensional allowances.',note:''},
+  {id:'Z-38',title:'Entry-level ownership housing feasibility',status:'not-started',group:'dimensional',desc:'Portsmouth\'s current dimensional standards make small-lot ownership production nearly impossible. Feasibility study for cottage-style, townhouse, and small-lot ownership housing types.',note:'DEPENDENCY: Requires Z-8 (lot size reform) and Z-33 (SF zone reform) to have proceeded first.'},
+
+  // USE PERMISSIONS
+  {id:'Z-5',title:'Missing middle housing allowances',status:'',group:'use',desc:'Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. GIS analysis: Portsmouth dedicates 85.8% of residential land to single-family-only zones.',note:'DEPENDENCY: Requires Z-8 (lot size reform) to run concurrently. Missing middle allowances without dimensional reform produce limited real-world yield.'},
+  {id:'Z-9',title:'Cottage housing / cluster development provisions',status:'',group:'use',desc:'Create zoning for cottage housing clusters: small detached units around shared open space, reduced lot-per-unit requirements. Currently no regulatory pathway in Portsmouth.',note:''},
+  {id:'Z-13',title:'Expand manufactured home and modular housing zoning',status:'',group:'use',desc:'Manufactured homes currently defined only within mobile home park provisions. Expand to allow manufactured and modular housing on individual residential lots where single-family is permitted.',note:''},
+  {id:'Z-14',title:'Live/work unit zoning',status:'',group:'use',desc:'Much of the south end and other mixed-use areas don\'t allow live/work units — a gap given existing use patterns and housing demand from creative and small-business workers.',note:''},
+  {id:'Z-15',title:'Outlying neighborhood development',status:'',group:'use',desc:'Urban design guidance for outlying neighborhoods — compatible infill, missing middle, and open space. Draft Master Plan (Utile, March 2026) provides framework for this work.',note:''},
+  {id:'Z-16',title:'Pease Tradeport housing exploration',status:'',group:'use',desc:'Explore residential use within Pease Tradeport, which operates under PDA governance and federal deed restrictions. Complex jurisdictional and legal constraints apply.',note:'Requires PDA governance analysis and federal BRAC deed restriction review before zoning discussion is meaningful.'},
+  {id:'Z-18',title:'Facilitate room rental / home sharing',status:'',group:'use',desc:'Clarify zoning rules for room rentals and home sharing — currently ambiguous in Portsmouth ordinance.',note:''},
+  {id:'Z-19',title:'Seasonal worker housing provisions',status:'',group:'use',desc:'Create CUP or by-right permissions in appropriate zones for seasonal worker housing — typically employer-sponsored or dormitory-style.',note:''},
+  {id:'Z-20',title:'Micro-unit allowances',status:'',group:'use',desc:'Currently allowed in some zones but few projects in pipeline. Further study to ensure micro-unit standards support habitability and don\'t inadvertently enable substandard housing.',note:''},
+  {id:'Z-27',title:'Industrial land reclassification study',status:'',group:'use',desc:'Identify industrial-zoned parcels that are functionally obsolete or underutilized and evaluate for mixed-use or residential reclassification.',note:''},
+  {id:'Z-30',title:'Workforce housing ordinance (RSA 674:58-61)',status:'early-stage',group:'use',desc:'Adopt or strengthen local workforce housing ordinance consistent with RSA 674:58-61 framework, including covenant authority for resale restrictions.',note:''},
+  {id:'Z-31',title:'Senior housing zoning incentives',status:'',group:'use',desc:'Zoning incentives specifically for senior housing: relaxed parking minimums, density bonuses, and streamlined approval for age-targeted projects.',note:''},
+  {id:'Z-33',title:'Single-family zone reform strategy (R, SRA, SRB)',status:'',group:'use',desc:'Comprehensive reform of Portsmouth\'s three single-family-only zones (2,276 acres, 85.8% of all residential land). The highest-impact single zoning action available.',note:'SEQUENCING PREREQUISITE: Land value capture and anti-speculation strategy (I-20) must be in active development before ordinance drafting begins. Without it, upzoning in these zones creates speculation risk.'},
+  {id:'Z-34',title:'Transfer of development rights',status:'',group:'use',desc:'Allow landowners in lower-density areas to sell development rights to developers in higher-density zones — preserving open space while concentrating density where infrastructure supports it.',note:''},
+
+  // OVERLAY & INCENTIVE
+  {id:'Z-6',title:'Density bonus program',status:'in-progress',group:'overlay',desc:'Offer increased density in exchange for affordable or workforce housing units. Define affordability thresholds (80% AMI) and covenant duration. Key tool under Dillon\'s Rule — voluntary, not mandatory.',note:''},
+  {id:'Z-10',title:'Inclusionary zoning with in-lieu fee option',status:'in-progress',group:'overlay',desc:'Require or incentivize affordable units in developments above threshold size, with a payment-in-lieu option funding the Housing Trust Fund.',note:'LEGAL: Mandatory inclusionary zoning is not authorized under NH Dillon\'s Rule. This item must be structured as a voluntary incentive — density bonus in exchange for affordable units — not a mandatory condition of approval. Legislation to change this is moving in 2026 session but not yet enacted.'},
+  {id:'Z-12',title:'Affordable housing overlay zone',status:'in-progress',group:'overlay',desc:'Establish an overlay district that grants additional density, reduced parking, and streamlined review for projects meeting affordability thresholds.',note:''},
+  {id:'Z-22',title:'Zone specifically for diverse housing',status:'',group:'overlay',desc:'Make diverse housing an explicit zoning purpose in targeted areas — reducing the risk that any housing type requires a variance or special exception.',note:''},
+  {id:'Z-23',title:'TOD overlay near transit stops and corridors',status:'',group:'overlay',desc:'Transit-oriented development overlay allowing higher density near fixed transit stops and year-round bus corridors.',note:'Limited TOD feasibility in Portsmouth given current transit infrastructure. Effectiveness depends on transit investment that is not yet committed.'},
+  {id:'Z-28',title:'Mixed-income development standards',status:'',group:'overlay',desc:'Establish standards and incentives for mixed-income projects combining market-rate and affordable units in the same development.',note:''},
+  {id:'Z-37',title:'Housing target area designation',status:'not-started',group:'overlay',desc:'Designate specific areas for concentrated housing investment with area-specific design standards. Distinct from GIS site inventory and TOD overlay.',note:'Should be scoped into zoning map amendments rather than as a separate overlay — reduces regulatory complexity.'},
+
+  // PROCESS & AUDIT
+  {id:'Z-11',title:'Form-based code reform for use deregulation',status:'complete',group:'process',desc:'Reform Character Districts to deregulate use allowances as originally intended by the FBC framework. Uses should track form, not use categories.',note:''},
+  {id:'Z-24',title:'Short-term rental regulation',status:'complete',group:'process',desc:'STR regulation adopted. Colleague advises against reopening — doing so could allow the balance to tip in the wrong direction.',note:''},
+  {id:'Z-1',title:'Rezone outdated O/R and GB districts',status:'complete',group:'process',desc:'GNOD Gateway rezoning completed. O/R and GB districts now enable residential uses.',note:''},
+  {id:'Z-26',title:'Reduce conditional use permits for housing',status:'in-progress',group:'process',desc:'Identify housing types currently requiring CUPs that could be allowed by-right with objective standards. CUPs add 3–6 months and introduce approval uncertainty.',note:''},
+  {id:'Z-35',title:'Revise co-living (Section 10.815) standards',status:'',group:'process',desc:'Current co-living ordinance creates barriers to viability. Evaluate expanding CUP use to MRB, OR, and WB zones; reduce management and reporting requirements; align definitions with market practice.',note:''},
+];
+
+function statusClass(item){
+  if(item.status==='complete') return 'st-complete';
+  if(item.status==='in-progress'||item.status==='early-stage') return 'st-progress';
+  if(item.group==='compliance') return 'st-compliance';
+  return 'st-blank';
+}
+function badgeClass(item){
+  if(item.status==='complete') return 'badge-complete';
+  if(item.status==='in-progress'||item.status==='early-stage') return 'badge-progress';
+  if(item.group==='compliance') return 'badge-compliance';
+  return 'badge-blank';
+}
+function badgeLabel(item){
+  if(item.status==='complete') return 'Complete';
+  if(item.status==='in-progress') return 'In progress';
+  if(item.status==='early-stage') return 'Early stage';
+  if(item.status==='not-started') return 'Not started';
+  if(item.group==='compliance') return 'Compliance';
+  return 'Not started';
+}
+
+function renderItems(filter){
+  var grid = document.getElementById('item-grid');
+  var filtered = filter === 'all' ? items :
+    filter === 'complete' ? items.filter(function(i){return i.status==='complete';}) :
+    items.filter(function(i){return i.group===filter;});
+  grid.innerHTML = filtered.map(function(item){
+    return '<div class="hap-item-card '+statusClass(item)+'" onclick="this.classList.toggle(\'open\')">' +
+      '<div class="item-top">' +
+        '<span class="item-code">'+item.id+'</span>' +
+        '<span class="item-status-badge '+badgeClass(item)+'">'+badgeLabel(item)+'</span>' +
+      '</div>' +
+      '<div class="item-title">'+item.title+'</div>' +
+      '<div class="item-desc">'+item.desc+'</div>' +
+      (item.note ? '<div class="item-note">'+item.note+'</div>' : '') +
+    '</div>';
+  }).join('');
+}
+
+function showGroup(group, btn){
+  document.querySelectorAll('.group-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  renderItems(group);
+}
+
+renderItems('all');
+</script>
+</body>
+</html>
