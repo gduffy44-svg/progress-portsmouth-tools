@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Is Not at the Table — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #2d3e52;
+  --navy-dark: #1a2332;
+  --gold: #f4a261;
+  --gold-dark: #c8822a;
+  --teal: #3a7d6e;
+  --coral: #e76f51;
+  --cream: #f8f4ee;
+  --text: #1a2332;
+  --muted: #6b7c8f;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+/* HEADER NAV */
+.site-header {
+  background: var(--navy-dark);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.site-header a {
+  color: rgba(255,255,255,.55);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.site-header a:hover { color: var(--gold); }
+.header-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.header-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-dark);
+  padding: .2rem .55rem;
+  border-radius: 2px;
+}
+
+/* HERO */
+.hero {
+  background: var(--navy-dark);
+  padding: 4rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 110% 50%, rgba(58,125,110,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at -10% 80%, rgba(244,162,97,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* Empty chair SVG illustration */
+.hero-illustration {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .12;
+  width: 260px;
+  display: none;
+}
+@media (min-width: 900px) { .hero-illustration { display: block; } }
+
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.72);
+  max-width: 560px;
+  line-height: 1.75;
+}
+.hero-stat-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  border-left: 3px solid var(--gold-dark);
+  padding-left: 1rem;
+}
+.hero-stat .num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat .label {
+  font-size: .8rem;
+  color: rgba(255,255,255,.55);
+  margin-top: .2rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* MAIN CONTENT */
+.main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+/* TABLE ILLUSTRATION */
+.table-section {
+  margin: 2rem 0 3rem;
+}
+.table-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+.table-visual {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.table-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(58,125,110,.15) 0%, transparent 70%);
+}
+.seats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.seat {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 1.1rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all .25s;
+  position: relative;
+}
+.seat.present {
+  background: rgba(58,125,110,.2);
+  border-color: var(--teal);
+}
+.seat.absent {
+  background: rgba(231,111,81,.08);
+  border-color: rgba(231,111,81,.3);
+  opacity: .75;
+}
+.seat:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); opacity: 1; }
+.seat-icon { font-size: 1.6rem; margin-bottom: .4rem; }
+.seat-name {
+  font-size: .8rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Source Sans 3', sans-serif;
+}
+.seat-tag {
+  display: inline-block;
+  margin-top: .4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .15rem .45rem;
+  border-radius: 2px;
+}
+.seat.present .seat-tag { background: rgba(58,125,110,.4); color: #7ecdc0; }
+.seat.absent .seat-tag { background: rgba(231,111,81,.25); color: #f4a08a; }
+
+.table-caption {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: .8rem;
+  color: rgba(255,255,255,.4);
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+/* DETAIL PANEL */
+.detail-panel {
+  margin-top: 1.5rem;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.75rem;
+  border-left: 4px solid var(--coral);
+  display: none;
+  animation: fadeSlide .25s ease;
+}
+.detail-panel.active { display: block; }
+@keyframes fadeSlide { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform: translateY(0); } }
+.detail-panel h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-bottom: .75rem;
+}
+.detail-panel p { font-size: .95rem; color: #444; line-height: 1.75; }
+.detail-panel .barriers {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: .75rem;
+}
+.barrier-pill {
+  background: var(--cream);
+  border: 1px solid rgba(45,62,82,.12);
+  border-radius: 6px;
+  padding: .6rem .9rem;
+  font-size: .85rem;
+  color: var(--navy);
+}
+.barrier-pill strong { display: block; font-size: .75rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--coral); margin-bottom: .15rem; }
+
+/* SECTION */
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  margin: 3rem 0 .75rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid rgba(45,62,82,.12);
+}
+.body-text { font-size: 1rem; color: #444; line-height: 1.8; margin-bottom: 1.25rem; }
+
+/* WHY IT MATTERS — structural barriers */
+.barriers-section { margin: 1.5rem 0; }
+.barrier-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(45,62,82,.08);
+}
+.barrier-row:last-child { border-bottom: none; }
+.barrier-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold-dark);
+  line-height: 1;
+  min-width: 2rem;
+  padding-top: .1rem;
+}
+.barrier-content h4 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: .3rem; }
+.barrier-content p { font-size: .9rem; color: #555; line-height: 1.65; }
+
+/* PROCESS BOX */
+.process-box {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  color: #fff;
+}
+.process-box h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.process-step {
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.process-step .step-icon { font-size: 1.4rem; margin-bottom: .5rem; }
+.process-step h4 { font-size: .85rem; font-weight: 600; color: #fff; margin-bottom: .35rem; }
+.process-step p { font-size: .8rem; color: rgba(255,255,255,.6); line-height: 1.55; }
+
+/* WHAT WORKS */
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+.method-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.25rem;
+  border-top: 3px solid var(--teal);
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.method-card .method-icon { font-size: 1.5rem; margin-bottom: .6rem; }
+.method-card h4 { font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+.method-card p { font-size: .85rem; color: #555; line-height: 1.6; }
+
+/* HAP CONNECTIONS */
+.hap-section {
+  background: rgba(45,62,82,.04);
+  border: 1px solid rgba(45,62,82,.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.hap-section h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.hap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  padding: .75rem 0;
+  border-bottom: 1px solid rgba(45,62,82,.08);
+  cursor: pointer;
+}
+.hap-item:last-child { border-bottom: none; }
+.hap-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .7rem;
+  background: var(--navy);
+  color: var(--gold);
+  padding: .2rem .5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+  margin-top: .1rem;
+}
+.hap-text h4 { font-size: .9rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
+.hap-text p { font-size: .82rem; color: #666; line-height: 1.55; }
+
+/* CALLOUT */
+.callout {
+  background: linear-gradient(135deg, rgba(231,111,81,.08), rgba(244,162,97,.06));
+  border: 1px solid rgba(231,111,81,.2);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+}
+.callout p {
+  font-size: 1rem;
+  color: var(--navy);
+  line-height: 1.75;
+}
+.callout p strong { color: var(--coral); }
+
+/* FOOTER */
+footer {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,.45);
+  padding: 2rem;
+  font-size: .78rem;
+  line-height: 1.7;
+}
+footer a { color: rgba(255,255,255,.45); }
+.revision-toggle {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.35);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: .5rem;
+  display: block;
+}
+.revision-history { display: none; margin-top: .75rem; }
+.revision-history.open { display: block; }
+.revision-history p { margin-bottom: .35rem; }
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .hero { padding: 2.5rem 1.25rem 2rem; }
+  .hero-stat-row { gap: 1.25rem; }
+  .main { padding: 2rem 1rem 3rem; }
+  .seat-name { font-size: .75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  <div class="header-right">
+    <a href="./learning-library.html">← Library</a>
+    <span class="header-badge">HAP Triage Module</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Empty chair SVG -->
+  <svg class="hero-illustration" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="60" y="10" width="80" height="120" rx="8" fill="white"/>
+    <rect x="50" y="130" width="20" height="90" rx="4" fill="white"/>
+    <rect x="130" y="130" width="20" height="90" rx="4" fill="white"/>
+    <rect x="40" y="205" width="120" height="16" rx="4" fill="white"/>
+    <line x1="60" y1="130" x2="140" y2="130" stroke="white" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="hero-label">Housing Action Plan — Civic Engagement Series</p>
+    <h1>Who Is <em>Not</em><br>at the Table?</h1>
+    <p class="hero-sub">Public input processes in Portsmouth routinely reach some residents and systematically miss others. Understanding who is structurally absent — and why — is essential to designing an equitable Housing Action Plan process.</p>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="num">~50%</div>
+        <div class="label">of Portsmouth residents rent</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">6pm</div>
+        <div class="label">typical meeting start time</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">0</div>
+        <div class="label">abutter notices sent to renters</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TABLE ILLUSTRATION -->
+  <div class="table-section">
+    <p class="table-label">Select a seat to see who typically shows up — and who doesn't</p>
+    <div class="table-visual">
+      <div class="seats-grid" id="seats-grid">
+        <!-- Populated by JS -->
+      </div>
+      <p class="table-caption">A typical Portsmouth land use or Housing Committee public hearing</p>
+    </div>
+    <div id="detail-panel" class="detail-panel"></div>
+  </div>
+
+  <!-- WHY IT MATTERS -->
+  <h2 class="section-heading">Why the gap is structural, not behavioral</h2>
+  <p class="body-text">Renters and lower-income residents are not absent from civic processes because they are disengaged. They face concrete structural barriers that make participation at a Tuesday evening City Hall meeting economically and practically irrational — even when the meeting directly affects their housing.</p>
+
+  <div class="barriers-section">
+    <div class="barrier-row">
+      <div class="barrier-num">1</div>
+      <div class="barrier-content">
+        <h4>Evening meetings conflict with shift work</h4>
+        <p>Hourly workers in restaurants, hotels, retail, and healthcare — the people most directly affected by Portsmouth's housing affordability crisis — often work evenings and weekends. A 6pm City Hall meeting is not accessible to them in the same way it is to a salaried professional with schedule flexibility.</p>
+      </div>
+    </div>
+    <div class="barrier-row">
+      <div class="barrier-num">2</div>
+      <div class="barrier-content">
+        <h4>Notification systems are built around property ownership</h4>
+        <p>Abutter notifications go to property owners of record. Renters — even long-term residents with deep community ties — receive no notice when zoning or housing policy changes that directly affect their homes and neighborhoods are being considered.</p>
+      </div>
+    </div>
+    <div class="barrier-row">
+      <div class="barrier-num">3</div>
+      <div class="barrier-content">
+        <h4>Mobility reduces the perceived return on participation</h4>
+        <p>Renters move more frequently than homeowners. When someone believes they may not be in Portsmouth in two years, attending a multi-hour meeting to influence a policy that takes five years to implement has a poor expected return. This is rational calculation, not apathy.</p>
+      </div>
+    </div>
+    <div class="barrier-row">
+      <div class="barrier-num">4</div>
+      <div class="barrier-content">
+        <h4>The financial stakes are asymmetric</h4>
+        <p>A homeowner who attends a zoning hearing is protecting an asset worth hundreds of thousands of dollars. A renter's attendance protects nothing with comparable financial weight. The ROI of civic participation differs structurally between these groups — and it shows in who shows up.</p>
+      </div>
+    </div>
+    <div class="barrier-row">
+      <div class="barrier-num">5</div>
+      <div class="barrier-content">
+        <h4>Language and information barriers</h4>
+        <p>Public notices are written in bureaucratic language, posted on the city website, and published in the Portsmouth Herald. None of these channels reliably reach renters, lower-income residents, or non-English speakers. "The door is open" is not the same as an accessible process.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE CONSEQUENCE -->
+  <div class="callout">
+    <p>Portsmouth's Housing Committee is evaluating 146 Housing Action Plan items that will shape who can live in this city for decades. <strong>The input record from that process will matter</strong> — politically and legally — if the plan's implementation is ever contested. A process weighted toward one segment of the population produces a plan with a legitimacy gap, regardless of intent.</p>
+  </div>
+
+  <!-- HOW TRADITIONAL PROCESS WORKS -->
+  <h2 class="section-heading">How the traditional public process works</h2>
+  <p class="body-text">Understanding the standard process helps explain why it systematically produces unrepresentative input — and why different methods are needed to reach different populations.</p>
+
+  <div class="process-box">
+    <h3>The standard Portsmouth public input pathway</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-icon">📋</div>
+        <h4>Legal notice posted</h4>
+        <p>Notice published in Portsmouth Herald and on city website. Abutter mailings sent to property owners within 200 ft.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">🏛️</div>
+        <h4>Evening public hearing</h4>
+        <p>Meeting held at City Hall at 6–7pm. Attendees sign up to speak for 2–3 minutes each.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">✋</div>
+        <h4>Comment period closes</h4>
+        <p>Written comments accepted until a deadline. Format and submission process vary by body.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">🗳️</div>
+        <h4>Board deliberates and votes</h4>
+        <p>Members weigh testimony received. No mechanism to flag whether input was demographically representative.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WORKS INSTEAD -->
+  <h2 class="section-heading">What reaches residents who don't attend hearings</h2>
+  <p class="body-text">Designing for structural barriers requires different channels, not just more hearings. These approaches have been used in comparable New Hampshire communities to broaden participation in housing and planning processes.</p>
+
+  <div class="methods-grid">
+    <div class="method-card">
+      <div class="method-icon">📱</div>
+      <h4>Short digital surveys</h4>
+      <p>Three-minute surveys distributed via QR code at laundromats, grocery stores, libraries, and transit stops. Available in multiple languages. No account or registration required.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🏢</div>
+      <h4>Employer partnerships</h4>
+      <p>Partner with major Portsmouth employers — restaurants, hotels, Portsmouth Regional Hospital, the school district — to distribute input opportunities to workers during breaks or via payroll communications.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">📍</div>
+      <h4>Pop-up input sessions</h4>
+      <p>Brief structured conversations at locations renters frequent: the rec center, the public library, Market Basket, the farmers market. Weekend and daytime availability.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">💬</div>
+      <h4>Social media prompts</h4>
+      <p>Structured questions on Instagram and Nextdoor with a clear, low-effort way to respond. Renters skew younger and are reachable through channels homeowners are less likely to use.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">🌐</div>
+      <h4>Plain-language materials</h4>
+      <p>One-page summaries of proposals in plain English and Spanish, distributed through community organizations, schools, and social service agencies.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-icon">📊</div>
+      <h4>Track and report input demographics</h4>
+      <p>After each input session, report publicly on who participated — by tenure type if possible. Transparency about representativeness creates accountability.</p>
+    </div>
+  </div>
+
+  <!-- HAP CONNECTIONS -->
+  <div class="hap-section">
+    <h3>Housing Action Plan items that address civic participation</h3>
+    <div class="hap-item">
+      <span class="hap-code">CE-1</span>
+      <div class="hap-text">
+        <h4>Community engagement strategy for housing</h4>
+        <p>Develop a formal outreach strategy for housing policy input that reaches renters, lower-income residents, and non-English speakers through channels beyond traditional public hearings.</p>
+      </div>
+    </div>
+    <div class="hap-item">
+      <span class="hap-code">CE-2</span>
+      <div class="hap-text">
+        <h4>Multi-lingual public notice and materials</h4>
+        <p>Require housing-related public notices to be available in Spanish and other languages prevalent in Portsmouth's renter population.</p>
+      </div>
+    </div>
+    <div class="hap-item">
+      <span class="hap-code">CE-3</span>
+      <div class="hap-text">
+        <h4>Renter representation in planning processes</h4>
+        <p>Establish formal mechanisms to ensure renter voices are represented in Housing Committee and Planning Board deliberations on housing policy.</p>
+      </div>
+    </div>
+    <div class="hap-item">
+      <span class="hap-code">CE-4</span>
+      <div class="hap-text">
+        <h4>Annual housing needs survey</h4>
+        <p>Conduct a recurring survey of Portsmouth residents — targeted to renters and lower-income households — to document housing needs and experiences outside of project-specific public hearings.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p>The ask is not to discount homeowner input — that input is legitimate and important. It is to <strong>design the process so that renter input is equally accessible</strong>, which requires different methods, not just more meetings. A Housing Action Plan adopted after input weighted toward one demographic group has a legitimacy problem that surfaces when implementation gets contested.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:860px;margin:0 auto;">
+    <p>Progress Portsmouth — <a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    <p style="margin-top:.35rem;">Version 1.0 — April 2026 &nbsp;|&nbsp; <em>Who Is Not at the Table</em></p>
+    <p style="margin-top:.35rem;">Created with AI assistance in research and information design, with human editorial control.</p>
+    <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Revision history</button>
+    <div class="revision-history">
+      <p><strong>v1.0 — April 7, 2026</strong> — Initial release. Seat-selector illustration, structural barriers analysis, participatory methods guide, HAP CE item references.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const seats = [
+  {
+    id: 'homeowner',
+    icon: '🏠',
+    name: 'Homeowner',
+    tag: 'Typically present',
+    present: true,
+    detail: {
+      heading: 'Homeowners — structurally advantaged to participate',
+      body: 'Homeowners have strong financial incentives to attend land use hearings: they are protecting an asset worth hundreds of thousands of dollars. They receive abutter notices, have schedule flexibility if salaried, and have been attending these meetings for years — they know the process.',
+      barriers: []
+    }
+  },
+  {
+    id: 'developer',
+    icon: '🏗️',
+    name: 'Developer',
+    tag: 'Typically present',
+    present: true,
+    detail: {
+      heading: 'Developers — highly motivated, well-resourced',
+      body: 'Developers have the most direct financial stake in land use decisions and can afford legal and planning representation. They attend every relevant meeting and often shape the framing of public discussion.',
+      barriers: []
+    }
+  },
+  {
+    id: 'planner',
+    icon: '📐',
+    name: 'Planning Staff',
+    tag: 'Typically present',
+    present: true,
+    detail: {
+      heading: 'Planning & city staff — present but constrained',
+      body: 'Staff attend to present analysis and answer questions. They are not advocates and are constrained from expressing opinions on contested applications. Their presence does not represent any constituency.',
+      barriers: []
+    }
+  },
+  {
+    id: 'renter',
+    icon: '🪑',
+    name: 'Renter',
+    tag: 'Structurally absent',
+    present: false,
+    detail: {
+      heading: 'Renters — ~50% of Portsmouth, largely absent',
+      body: 'Renters are the population most directly affected by housing policy — and the least represented in the rooms where it is made. Multiple structural barriers combine to make participation irrational, even when the renter cares deeply about housing outcomes.',
+      barriers: [
+        { label: 'Timing', text: 'Evening meetings conflict with shift work in restaurants, hotels, and retail.' },
+        { label: 'Notification', text: 'Abutter notices go to property owners. Renters are never notified.' },
+        { label: 'Stability', text: 'Frequent moves reduce the expected return on investing in a slow policy process.' },
+        { label: 'ROI', text: 'No financial asset to protect means the calculus of attending differs fundamentally.' }
+      ]
+    }
+  },
+  {
+    id: 'worker',
+    icon: '🪑',
+    name: 'Service Worker',
+    tag: 'Structurally absent',
+    present: false,
+    detail: {
+      heading: 'Service workers — the workforce the HAP is meant to house',
+      body: 'Teachers, nurses, hospitality workers, tradespeople — the people Portsmouth\'s Housing Action Plan is most explicitly designed to retain in the city — are almost never present at housing policy hearings. Their schedules, wages, and notification channels all create barriers to participation.',
+      barriers: [
+        { label: 'Schedule', text: 'Irregular hours, evening shifts, weekend work. 6pm City Hall meetings are inaccessible.' },
+        { label: 'Awareness', text: 'No employer or community network reliably routes housing policy information to this group.' },
+        { label: 'Process knowledge', text: 'The public comment format — signing up, 3-minute slots, standing at a mic — can be intimidating without prior experience.' }
+      ]
+    }
+  },
+  {
+    id: 'young',
+    icon: '🪑',
+    name: 'Young Resident',
+    tag: 'Structurally absent',
+    present: false,
+    detail: {
+      heading: 'Young residents — priced out before they can weigh in',
+      body: 'Residents in their 20s and early 30s are among the most affected by Portsmouth\'s housing market — and among the least likely to attend a Tuesday planning board meeting. They engage digitally, move frequently, and are not yet embedded in the civic networks that route information about public hearings.',
+      barriers: [
+        { label: 'Channel', text: 'Not reading the Portsmouth Herald or checking city.portsmouth.nh.us for legal notices.' },
+        { label: 'Mobility', text: 'High probability of leaving the city before a 5-year policy implementation cycle completes.' },
+        { label: 'Format', text: 'Traditional civic participation formats — formal, slow, legalistic — do not match how this group engages.' }
+      ]
+    }
+  },
+  {
+    id: 'noenglish',
+    icon: '🪑',
+    name: 'Non-English Speaker',
+    tag: 'Structurally absent',
+    present: false,
+    detail: {
+      heading: 'Non-English speakers — effectively excluded by design',
+      body: 'Public notices, staff reports, and public testimony are conducted exclusively in English. No translation services are routinely provided at Portsmouth land use hearings. This functionally excludes a segment of Portsmouth\'s renter population from participating in decisions that directly affect their housing.',
+      barriers: [
+        { label: 'Language', text: 'All notices, materials, and proceedings are English-only.' },
+        { label: 'Translation', text: 'No interpreter services routinely available at hearings.' },
+        { label: 'Network', text: 'Limited access to civic information through English-language community channels.' }
+      ]
+    }
+  },
+  {
+    id: 'senior',
+    icon: '🪑',
+    name: 'Fixed-Income Senior',
+    tag: 'Inconsistently present',
+    present: false,
+    detail: {
+      heading: 'Fixed-income seniors — present when organized, absent otherwise',
+      body: 'Seniors on fixed incomes face displacement pressure and have time to attend meetings — but only when organized to do so. Without active outreach from senior service organizations, this population is largely absent from housing policy discussions despite being significantly affected by cost increases.',
+      barriers: [
+        { label: 'Transportation', text: 'Getting to City Hall is a barrier for seniors without reliable transportation.' },
+        { label: 'Information', text: 'Housing policy changes often not communicated through senior-focused channels.' },
+        { label: 'Organization', text: 'Participation spikes when senior advocacy organizations mobilize — and collapses without them.' }
+      ]
+    }
+  }
+];
+
+function renderSeats() {
+  const grid = document.getElementById('seats-grid');
+  grid.innerHTML = seats.map(s => `
+    <div class="seat ${s.present ? 'present' : 'absent'}" onclick="showDetail('${s.id}')">
+      <div class="seat-icon">${s.icon}</div>
+      <div class="seat-name">${s.name}</div>
+      <span class="seat-tag">${s.tag}</span>
+    </div>
+  `).join('');
+}
+
+let activeId = null;
+function showDetail(id) {
+  const panel = document.getElementById('detail-panel');
+  if (activeId === id) {
+    panel.classList.remove('active');
+    activeId = null;
+    return;
+  }
+  activeId = id;
+  const s = seats.find(x => x.id === id);
+  if (!s) return;
+
+  const barrierHtml = s.detail.barriers.length
+    ? `<div class="barriers">${s.detail.barriers.map(b =>
+        `<div class="barrier-pill"><strong>${b.label}</strong>${b.text}</div>`
+      ).join('')}</div>`
+    : '';
+
+  panel.innerHTML = `
+    <h3>${s.detail.heading}</h3>
+    <p>${s.detail.body}</p>
+    ${barrierHtml}
+  `;
+  panel.style.borderLeftColor = s.present ? 'var(--teal)' : 'var(--coral)';
+  panel.classList.add('active');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+renderSeats();
+</script>
+</body>
+</html>

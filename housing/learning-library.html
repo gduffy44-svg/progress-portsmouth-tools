@@ -527,7 +527,7 @@
 <header class="site-header">
   <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
   <div class="header-right">
-    <span class="header-count" id="module-count">9 modules</span>
+    <span class="header-count" id="module-count">10 modules</span>
   </div>
 </header>
 
@@ -542,7 +542,7 @@
     <p class="hero-desc">Interactive modules for Housing Committee members and partners. Each module explains a foundational concept in housing policy — with Portsmouth context, relevant law, and connections to the Housing Action Plan.</p>
     <div class="hero-meta">
       <div class="hero-stat">
-        <span class="stat-val">9</span>
+        <span class="stat-val">10</span>
         <span class="stat-label">Modules</span>
       </div>
       <div class="hero-divider"></div>
@@ -1005,6 +1005,48 @@
       </div>
     </div>
 
+    <!-- 10. Who Is Not at the Table -->
+    <div class="module-card cat-implementation" data-cat="implementation">
+      <div class="card-visual">
+        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="300" height="120" fill="#1a2332"/>
+          <ellipse cx="150" cy="58" rx="80" ry="32" fill="rgba(45,62,82,.6)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          <!-- Present seats -->
+          <circle cx="100" cy="24" r="9" fill="rgba(58,125,110,.75)"/>
+          <circle cx="150" cy="16" r="9" fill="rgba(58,125,110,.75)"/>
+          <circle cx="200" cy="24" r="9" fill="rgba(58,125,110,.75)"/>
+          <circle cx="220" cy="58" r="9" fill="rgba(58,125,110,.75)"/>
+          <circle cx="80" cy="58" r="9" fill="rgba(58,125,110,.75)"/>
+          <!-- Absent seats (dashed) -->
+          <circle cx="110" cy="94" r="9" fill="none" stroke="rgba(231,111,81,.65)" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <circle cx="155" cy="102" r="9" fill="none" stroke="rgba(231,111,81,.65)" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <circle cx="200" cy="94" r="9" fill="none" stroke="rgba(231,111,81,.65)" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <text x="88" y="12" font-family="monospace" font-size="6" fill="rgba(58,125,110,.8)" text-anchor="middle">OWNER</text>
+          <text x="150" y="5" font-family="monospace" font-size="6" fill="rgba(58,125,110,.8)" text-anchor="middle">DEVELOPER</text>
+          <text x="212" y="12" font-family="monospace" font-size="6" fill="rgba(58,125,110,.8)" text-anchor="middle">STAFF</text>
+          <text x="110" y="112" font-family="monospace" font-size="6" fill="rgba(231,111,81,.75)" text-anchor="middle">RENTER</text>
+          <text x="155" y="120" font-family="monospace" font-size="6" fill="rgba(231,111,81,.75)" text-anchor="middle">WORKER</text>
+          <text x="200" y="112" font-family="monospace" font-size="6" fill="rgba(231,111,81,.75)" text-anchor="middle">YOUNG</text>
+        </svg>
+      </div>
+      <div class="card-top">
+        <span class="card-cat">Implementation</span>
+        <span class="card-num">Module 10</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">Who Is Not at the Table?</h2>
+        <p class="card-question">Renters, service workers, and young residents are structurally absent from Portsmouth's public input processes — and from the rooms where housing policy is made.</p>
+        <div class="card-tags">
+          <span class="card-tag">Civic engagement</span>
+          <span class="card-tag">Renters</span>
+          <span class="card-tag">Process design</span>
+        </div>
+        <a class="card-link" href="./voices-not-heard.html" target="_blank">
+          Open module <span class="arrow">&#8594;</span>
+        </a>
+      </div>
+    </div>
+
   </div><!-- /module-grid -->
 
   <!-- SUGGESTED READING PATH -->
@@ -1058,6 +1100,11 @@
         <span class="path-step-num">9</span>
         <span class="path-step-name">Zoning Triage Ref.</span>
       </a>
+      <span class="path-arrow">&#8594;</span>
+      <a class="path-step" href="./voices-not-heard.html" target="_blank">
+        <span class="path-step-num">10</span>
+        <span class="path-step-name">Who Is Not at the Table</span>
+      </a>
     </div>
   </div>
 
@@ -1068,9 +1115,9 @@
   <div class="footer-inner">
     <div class="footer-block">
       <div class="fb-label">Resource</div>
-      <p>Housing Policy Reference Library<br><strong style="color:rgba(255,255,255,.7);">Version 1.0</strong> · April 2026</p>
+      <p>Housing Policy Reference Library<br><strong style="color:rgba(255,255,255,.7);">Version 1.1</strong> · April 2026</p>
       <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
-      <div class="revision-notes">v1.0 (April 2026) — Initial release with 7 modules. Prepared for Housing Committee triage support, July 2026 Council deadline. Additional modules may be added as triage progresses.</div>
+      <div class="revision-notes">v1.0 (April 2026) — Initial release with 9 modules. Prepared for Housing Committee triage support, July 2026 Council deadline.<br>v1.1 (April 2026) — Added Module 10: Who Is Not at the Table (voices-not-heard.html). Updated Missing Middle module (Module 02) with three-question structure, barrier accordion, and corrected HAP item codes.</div>
     </div>
     <div class="footer-block">
       <div class="fb-label">Organization</div>
@@ -1098,7 +1145,7 @@
     });
 
     document.getElementById('module-count').textContent =
-      visible === 9 ? '9 modules' : `${visible} of 7 modules`;
+      visible === 10 ? '10 modules' : `${visible} of 10 modules`;
   }
 </script>
 
