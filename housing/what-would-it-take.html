@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Would It Take? Conditions for Production · Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#2d3e52; --navy-dark:#1a2332; --gold:#f4a261; --gold-dark:#c8822a;
+  --teal:#3a7d6e; --coral:#e76f51; --cream:#f8f4ee; --text:#1a2332; --muted:#6b7c8f;
+  --warm-gray:#e8e4de; --white:#fff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;font-size:15px;}
+
+/* ── NAV BAR ── */
+.lib-nav{background:var(--navy-dark);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:300;border-bottom:1px solid rgba(255,255,255,.07);}
+.lib-nav a{color:rgba(255,255,255,.55);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.lib-nav a:hover{color:var(--gold);}
+.lib-nav-right{display:flex;align-items:center;gap:1rem;}
+.lib-badge{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);padding:.2rem .55rem;border-radius:2px;}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:2.25rem 1.5rem 1.75rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(244,162,97,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,162,97,.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:32px;background:linear-gradient(to bottom,transparent,var(--cream));}
+.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
+.hero-text{}
+.hero-eyebrow{display:flex;align-items:center;gap:.65rem;margin-bottom:.75rem;}
+.eyebrow-rule{width:24px;height:2px;background:var(--gold-dark);flex-shrink:0;}
+.eyebrow-text{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,3vw,2.25rem);color:#fff;line-height:1.15;margin-bottom:.5rem;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero h1 strong{font-style:normal;color:rgba(255,255,255,.85);font-weight:400;}
+.hero-sub{font-size:.88rem;color:rgba(255,255,255,.6);max-width:520px;line-height:1.6;}
+
+/* ── METHODOLOGY DIAGRAM (hero graphic) ── */
+.hero-diagram{flex-shrink:0;width:280px;}
+
+/* ── METHODOLOGY ACCORDION ── */
+.method-accordion{max-width:960px;margin:1.5rem auto 0;padding:0 1.5rem;}
+.method-toggle{width:100%;background:var(--white);border:1px solid var(--warm-gray);border-radius:8px;padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--navy);transition:background .15s;}
+.method-toggle:hover{background:#f5f1eb;}
+.method-toggle .mt-label{display:flex;align-items:center;gap:.65rem;}
+.method-toggle .mt-icon{font-size:.9rem;}
+.method-toggle .mt-chevron{font-size:.72rem;color:var(--muted);transition:transform .2s;}
+.method-toggle.open .mt-chevron{transform:rotate(180deg);}
+.method-body{display:none;background:var(--white);border:1px solid var(--warm-gray);border-top:none;border-radius:0 0 8px 8px;padding:1.5rem 1.75rem;}
+.method-body.open{display:block;}
+.method-body p{font-size:.88rem;color:var(--text);line-height:1.7;margin-bottom:.65rem;}
+.method-body p:last-child{margin-bottom:0;}
+.method-body strong{color:var(--navy);}
+.example-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem;}
+.example-card{background:var(--cream);border:1px solid var(--warm-gray);border-radius:6px;padding:.85rem 1rem;border-left:3px solid var(--gold-dark);}
+.ex-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;}
+.ex-text{font-size:.8rem;color:var(--text);line-height:1.5;}
+.ex-text em{color:var(--teal);font-style:normal;font-weight:600;}
+
+/* ── MAIN TWO-COLUMN LAYOUT ── */
+.app-shell{max-width:960px;margin:1.5rem auto 4rem;padding:0 1.5rem;display:grid;grid-template-columns:220px 1fr;gap:1.25rem;align-items:start;}
+
+/* ── LEFT: TYPE NAV ── */
+.type-nav{position:sticky;top:64px; /* 52px nav + 12px gap */}
+.type-nav-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:.5rem .75rem;display:block;}
+.type-nav-list{background:var(--white);border:1px solid var(--warm-gray);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.type-nav-btn{width:100%;background:transparent;border:none;border-bottom:1px solid var(--warm-gray);padding:.7rem .85rem;cursor:pointer;text-align:left;display:flex;align-items:center;gap:.65rem;transition:background .15s;font-family:'Source Sans 3',sans-serif;}
+.type-nav-btn:last-child{border-bottom:none;}
+.type-nav-btn:hover{background:#f5f1eb;}
+.type-nav-btn.active{background:var(--navy);}
+.type-nav-btn .tn-icon{font-size:1rem;flex-shrink:0;line-height:1;}
+.type-nav-btn .tn-text{}
+.type-nav-btn .tn-label{font-size:.8rem;font-weight:700;color:var(--navy);line-height:1.2;display:block;}
+.type-nav-btn.active .tn-label{color:#fff;}
+.type-nav-btn .tn-sub{font-size:.65rem;color:var(--muted);display:block;margin-top:.05rem;}
+.type-nav-btn.active .tn-sub{color:rgba(255,255,255,.5);}
+
+/* Status key below nav */
+.status-key{margin-top:.85rem;background:var(--white);border:1px solid var(--warm-gray);border-radius:8px;padding:.75rem .85rem;}
+.sk-title{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:block;}
+.sk-item{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--muted);margin-bottom:.3rem;}
+.sk-item:last-child{margin-bottom:0;}
+.sk-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+
+/* ── RIGHT: CONTENT PANELS ── */
+.content-area{}
+.conditions-panel{display:none;}
+.conditions-panel.active{display:block;}
+
+.panel-header{background:var(--navy);border-radius:10px 10px 0 0;padding:1.25rem 1.5rem;}
+.panel-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;line-height:1.2;margin-bottom:.3rem;}
+.panel-subtitle{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.5;}
+.panel-example-tag{display:inline-block;background:rgba(244,162,97,.15);border:1px solid rgba(244,162,97,.3);border-radius:4px;padding:.2rem .55rem;font-size:.68rem;font-family:'JetBrains Mono',monospace;color:var(--gold);margin-top:.6rem;}
+
+.conditions-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--white);border-radius:0 0 10px 10px;box-shadow:0 4px 16px rgba(0,0,0,.08);overflow:hidden;}
+
+.col-header{padding:.75rem 1.25rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:2px solid var(--warm-gray);display:flex;align-items:center;gap:.4rem;}
+.col-header.city{background:rgba(58,125,110,.07);color:var(--teal);}
+.col-header.dev{background:rgba(200,130,42,.07);color:var(--gold-dark);}
+
+.conditions-list{padding:1.1rem 1.25rem;}
+.conditions-list.city-list{border-right:1px solid var(--warm-gray);}
+
+.condition-item{margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--warm-gray);}
+.condition-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.condition-text{font-size:.86rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:.25rem;}
+.condition-note{font-size:.77rem;color:var(--muted);line-height:1.5;margin-bottom:.35rem;}
+.hap-tags{display:flex;flex-wrap:wrap;gap:.25rem;}
+.hap-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;padding:.1rem .4rem;border-radius:3px;white-space:nowrap;}
+.hap-tag.st-complete{background:#e8f4f0;color:var(--teal);}
+.hap-tag.st-progress{background:#fff0e0;color:var(--gold-dark);}
+.hap-tag.st-blank{background:rgba(0,0,0,.05);color:var(--muted);}
+.hap-tag.st-compliance{background:#fde8e4;color:var(--coral);}
+
+/* SYNTHESIS */
+.synthesis{background:var(--navy-dark);border-radius:10px;padding:1.5rem 1.75rem;margin-top:1.25rem;color:#fff;}
+.synthesis h3{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:.6rem;}
+.synthesis p{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:.5rem;}
+.synthesis p:last-child{margin-bottom:0;}
+.synthesis strong{color:#fff;}
+
+/* FOOTER */
+.page-footer{background:var(--navy-dark);padding:1.75rem 1.5rem;}
+.footer-inner{max-width:960px;margin:0 auto;display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-block{flex:1;min-width:160px;}
+.fb-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.35rem;display:block;}
+.footer-block p{font-size:.75rem;color:rgba(255,255,255,.5);line-height:1.55;}
+.footer-block a{color:var(--gold);text-decoration:none;}
+.rev-toggle{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.3);cursor:pointer;background:none;border:none;padding:0;text-decoration:underline;margin-top:.3rem;display:block;}
+.rev-notes{display:none;margin-top:.4rem;font-size:.72rem;color:rgba(255,255,255,.35);line-height:1.5;}
+.rev-notes.open{display:block;}
+.footer-ai{width:100%;padding-top:1rem;margin-top:.75rem;border-top:1px solid rgba(255,255,255,.07);font-size:.7rem;color:rgba(255,255,255,.3);font-style:italic;}
+
+/* ── MOBILE ── */
+@media(max-width:680px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-diagram{display:none;}
+  .app-shell{grid-template-columns:1fr;padding:0 1rem;}
+  .type-nav{position:static;}
+  .type-nav-list{display:grid;grid-template-columns:repeat(2,1fr);}
+  .type-nav-btn{border-bottom:1px solid var(--warm-gray);border-right:1px solid var(--warm-gray);}
+  .type-nav-btn:nth-child(even){border-right:none;}
+  .conditions-grid{grid-template-columns:1fr;}
+  .conditions-list.city-list{border-right:none;border-bottom:1px solid var(--warm-gray);}
+  .example-strip{grid-template-columns:1fr;}
+  .method-accordion{padding:0 1rem;}
+  .footer-inner{gap:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="lib-nav">
+  <a href="https://progressportsmouth.com">&#8592; Progress Portsmouth</a>
+  <div class="lib-nav-right">
+    <a href="./learning-library.html">&#8592; Library</a>
+    <span class="lib-badge">HAP Triage Module</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-rule"></div>
+        <span class="eyebrow-text">Housing Action Plan &#8212; Module 11 &#183; Production Strategy</span>
+      </div>
+      <h1><em>What Would It Take?</em><br><strong>Conditions for Production</strong></h1>
+      <p class="hero-sub">For each housing type Portsmouth needs, what conditions — city-side and developer-side — would actually have to exist for it to get built here? Work backwards from that question to find where the HAP has the most leverage.</p>
+    </div>
+
+    <!-- METHODOLOGY DIAGRAM -->
+    <div class="hero-diagram">
+      <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" aria-label="Reverse-engineering methodology diagram">
+        <defs>
+          <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(244,162,97,.6)"/>
+          </marker>
+          <marker id="arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(58,125,110,.5)"/>
+          </marker>
+        </defs>
+
+        <!-- Background -->
+        <rect width="280" height="200" fill="rgba(255,255,255,.04)" rx="8"/>
+
+        <!-- Step 1: Desired outcome -->
+        <rect x="8" y="12" width="264" height="36" fill="rgba(244,162,97,.12)" rx="6" stroke="rgba(244,162,97,.3)" stroke-width="1"/>
+        <text x="140" y="27" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="rgba(244,162,97,.7)" text-anchor="middle" letter-spacing="1">DESIRED OUTCOME</text>
+        <text x="140" y="41" font-family="'Source Sans 3',sans-serif" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="600">50 units of affordable housing in Portsmouth</text>
+
+        <!-- Arrow down -->
+        <line x1="140" y1="48" x2="140" y2="60" stroke="rgba(244,162,97,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <text x="145" y="57" font-family="'JetBrains Mono',monospace" font-size="7" fill="rgba(255,255,255,.35)" letter-spacing=".5">reverse engineer</text>
+
+        <!-- Step 2: Two columns of conditions -->
+        <!-- City side -->
+        <rect x="8" y="62" width="124" height="96" fill="rgba(58,125,110,.12)" rx="5" stroke="rgba(58,125,110,.3)" stroke-width="1"/>
+        <text x="70" y="77" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(58,125,110,.9)" text-anchor="middle" letter-spacing=".5">CITY-SIDE CONDITIONS</text>
+        <text x="20" y="93" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)">&#10003; By-right zoning</text>
+        <text x="20" y="107" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)">&#10003; Parking reform</text>
+        <text x="20" y="121" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)">&#10003; HTF gap funding</text>
+        <text x="20" y="135" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.55)">&#10003; Public land RFP</text>
+        <text x="20" y="149" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.4)">&#10003; Fast permitting</text>
+
+        <!-- Developer side -->
+        <rect x="148" y="62" width="124" height="96" fill="rgba(200,130,42,.1)" rx="5" stroke="rgba(200,130,42,.25)" stroke-width="1"/>
+        <text x="210" y="77" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(200,130,42,.85)" text-anchor="middle" letter-spacing=".5">DEVELOPER CONDITIONS</text>
+        <text x="158" y="93" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)">&#10003; LIHTC allocation</text>
+        <text x="158" y="107" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)">&#10003; Viable proforma</text>
+        <text x="158" y="121" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.65)">&#10003; 30-yr covenant</text>
+        <text x="158" y="135" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.55)">&#10003; Mgmt capacity</text>
+        <text x="158" y="149" font-family="'Source Sans 3',sans-serif" font-size="8.5" fill="rgba(255,255,255,.4)">&#10003; Environmental OK</text>
+
+        <!-- Arrow down from city side only -->
+        <line x1="70" y1="158" x2="70" y2="170" stroke="rgba(58,125,110,.4)" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <!-- Step 3: HAP items -->
+        <rect x="8" y="172" width="124" height="22" fill="rgba(58,125,110,.18)" rx="4" stroke="rgba(58,125,110,.35)" stroke-width="1"/>
+        <text x="70" y="181" font-family="'JetBrains Mono',monospace" font-size="7" fill="rgba(58,125,110,.9)" text-anchor="middle">HAP ITEMS THAT ADDRESS THIS</text>
+        <text x="70" y="190" font-family="'JetBrains Mono',monospace" font-size="7" fill="rgba(255,255,255,.55)" text-anchor="middle">Z-26, Z-4, HTF-1, PL-2, I-3...</text>
+
+        <!-- City acts label -->
+        <text x="152" y="185" font-family="'Source Sans 3',sans-serif" font-size="8" fill="rgba(200,130,42,.5)" font-style="italic">city cannot control &#8594;</text>
+        <text x="152" y="195" font-family="'Source Sans 3',sans-serif" font-size="8" fill="rgba(200,130,42,.35)" font-style="italic">defines the ceiling</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY ACCORDION -->
+<div class="method-accordion">
+  <button class="method-toggle" onclick="toggleMethod(this)">
+    <span class="mt-label">
+      <span class="mt-icon">&#128270;</span>
+      About this methodology — reverse engineering preferred outcomes
+    </span>
+    <span class="mt-chevron">&#9660;</span>
+  </button>
+  <div class="method-body">
+    <p>The conventional approach to triage asks: <em>which HAP items should we prioritize?</em> This module asks a prior question: <strong>under what circumstances would the housing we want actually get built in Portsmouth?</strong> Work backwards from that answer, and the HAP items that address those conditions become the ones that matter most.</p>
+    <p>The method was field-tested in two Portsmouth conversations. A nonprofit developer inquiry in spring 2026 surfaced the specific conditions under which a mission-driven affordable housing organization would consider a project here — site control, subsidy availability, zoning certainty, and a willing city partner. A Planning Board presentation several years earlier laid out, item by item, what a developer would need from the city and what he was willing to self-impose to make a micro-unit project work. Both produced the same artifact: a two-column list of city-side and developer-side conditions.</p>
+    <p>Triage decisions that address the city-side column have the most direct leverage over production. The developer-side column defines the ceiling of what city action can achieve — if the math doesn't work on that side, no amount of regulatory reform unlocks production. Items that address no column in any housing type's profile deserve scrutiny about what they're actually for.</p>
+    <div class="example-strip">
+      <div class="example-card">
+        <div class="ex-label">Real example &#183; Spring 2026</div>
+        <div class="ex-text">A nonprofit affordable housing developer was asked: <em>"Under what circumstances would your organization pursue a project in Portsmouth?"</em> The answer was a specific list — 50+ unit site, subsidy-eligible zoning, city land disposition willingness, committed local funding partner. Every item mapped to the HAP.</div>
+      </div>
+      <div class="example-card">
+        <div class="ex-label">Real example &#183; ~2020</div>
+        <div class="ex-text">A developer presented to the Planning Board a bulleted list of what he needed from the city (parking standard relief, administrative approval pathway, design flexibility) and what he was willing to self-impose (unit size floors, management protocol, noise mitigation) to make a <em>micro-unit development</em> viable. That list is a conditions-for-production profile.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TWO-COLUMN APP SHELL -->
+<div class="app-shell">
+
+  <!-- LEFT: STICKY TYPE NAV -->
+  <div class="type-nav">
+    <span class="type-nav-label">Select housing type</span>
+    <div class="type-nav-list">
+      <button class="type-nav-btn active" onclick="showType('affordable',this)">
+        <span class="tn-icon">🏛</span>
+        <span class="tn-text">
+          <span class="tn-label">Permanently affordable</span>
+          <span class="tn-sub">LIHTC / nonprofit</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('workforce',this)">
+        <span class="tn-icon">🏘</span>
+        <span class="tn-text">
+          <span class="tn-label">Workforce / missing middle</span>
+          <span class="tn-sub">Duplex–4-plex, 80–120% AMI</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('adu',this)">
+        <span class="tn-icon">🏠</span>
+        <span class="tn-text">
+          <span class="tn-label">ADU</span>
+          <span class="tn-sub">Homeowner-produced</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('micro',this)">
+        <span class="tn-icon">📦</span>
+        <span class="tn-text">
+          <span class="tn-label">Micro-unit</span>
+          <span class="tn-sub">Studios &lt;400 sf</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('coliving',this)">
+        <span class="tn-icon">🤝</span>
+        <span class="tn-text">
+          <span class="tn-label">Co-living</span>
+          <span class="tn-sub">Section 10.815</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('senior',this)">
+        <span class="tn-icon">🌿</span>
+        <span class="tn-text">
+          <span class="tn-label">Senior housing</span>
+          <span class="tn-sub">Age-targeted, 55+/62+</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('marketrate',this)">
+        <span class="tn-icon">🏗</span>
+        <span class="tn-text">
+          <span class="tn-label">Market-rate multifamily</span>
+          <span class="tn-sub">6+ units, private developer</span>
+        </span>
+      </button>
+      <button class="type-nav-btn" onclick="showType('ownership',this)">
+        <span class="tn-icon">🔑</span>
+        <span class="tn-text">
+          <span class="tn-label">Entry-level ownership</span>
+          <span class="tn-sub">Cottage, townhouse</span>
+        </span>
+      </button>
+    </div>
+
+    <!-- STATUS KEY -->
+    <div class="status-key">
+      <span class="sk-title">HAP item status</span>
+      <div class="sk-item"><span class="sk-dot" style="background:var(--teal)"></span>Complete</div>
+      <div class="sk-item"><span class="sk-dot" style="background:var(--gold-dark)"></span>In progress</div>
+      <div class="sk-item"><span class="sk-dot" style="background:var(--muted)"></span>Not started</div>
+      <div class="sk-item"><span class="sk-dot" style="background:var(--coral)"></span>Compliance deadline</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: CONTENT PANELS -->
+  <div class="content-area">
+
+    <!-- 1. PERMANENTLY AFFORDABLE -->
+    <div class="conditions-panel active" id="panel-affordable">
+      <div class="panel-header">
+        <div class="panel-title">Permanently affordable housing</div>
+        <div class="panel-subtitle">LIHTC-financed, mission-driven nonprofit developer. Targeting 30–60% AMI with long-term income restrictions. Requires complex multi-source capital stack.</div>
+        <span class="panel-example-tag">&#128204; Field-tested: nonprofit developer inquiry, spring 2026</span>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">Site with 50+ unit potential in subsidy-eligible zone</div>
+              <div class="condition-note">Nonprofits can't assemble land the way private developers can. They need a site already configured for scale — public land disposition or a willing seller at below-market terms.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">PL-2 Public land RFPs</span>
+                <span class="hap-tag st-progress">PL-3 Sherburne School</span>
+                <span class="hap-tag st-blank">PL-1 Land inventory</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Zoning certainty — no discretionary approval risk</div>
+              <div class="condition-note">LIHTC applications require confirmed approvals before tax credit allocation. Any ZBA or Planning Board uncertainty kills the financing timeline.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">Z-26 Reduce CUPs</span>
+                <span class="hap-tag st-progress">Z-12 Affordable overlay</span>
+                <span class="hap-tag st-blank">Z-22 Zone for diverse housing</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Local soft money or gap financing</div>
+              <div class="condition-note">LIHTC alone doesn't close the gap. A city contribution — HTF funds, fee waivers, or a subordinate loan — is often what tips a project into feasibility for state allocation.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">HTF-1 Housing Trust Fund</span>
+                <span class="hap-tag st-blank">I-2 Fee waivers</span>
+                <span class="hap-tag st-blank">I-7 Tax credits utilization</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Parking relief — maximums, not minimums</div>
+              <div class="condition-note">A 50-unit affordable project with structured parking makes the proforma unviable. Statewide cap (SB 284) helps, but city must amend its own ordinance.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-compliance">Z-4 Parking reform</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Committed city partner relationship</div>
+              <div class="condition-note">Nonprofit developers choose markets where the city actively partners — not just permits. Staff capacity, clear point of contact, and political consistency matter.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">PC-2 Nonprofit engagement</span>
+                <span class="hap-tag st-blank">P-10 Housing Navigator</span>
+                <span class="hap-tag st-blank">PC-4 Developer listening</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Expedited permitting for affordable projects</div>
+              <div class="condition-note">Every month of delay costs carrying costs that compound against the proforma. Affordable projects need faster lanes, not slower ones.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-3 Expedited review</span>
+                <span class="hap-tag st-blank">P-12 Permit timeline audit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">NH Housing tax credit allocation</div>
+              <div class="condition-note">LIHTC is a competitive state allocation. Portsmouth projects compete statewide. Strong local support letters and a committed city partner improve competitiveness.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Long-term affordability covenant (30–40 years)</div>
+              <div class="condition-note">LIHTC requires 30-year minimum. Mission-driven developers often extend voluntarily. City can negotiate longer terms through land disposition agreements.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Operating reserve and management capacity</div>
+              <div class="condition-note">Developer must demonstrate long-term management capacity to funders. Smaller NH nonprofits may need a larger co-developer or managing partner.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Acceptance of income-targeting restrictions</div>
+              <div class="condition-note">Units restricted to 30–60% AMI. In Portsmouth's market, this means rents well below what private developers expect. Only mission-driven developers self-impose this.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Environmental and site due diligence</div>
+              <div class="condition-note">Phase I/II environmental, geotech, and utility assessments before committing. Public land dispositions should clear these before RFP release where possible.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. WORKFORCE / MISSING MIDDLE -->
+    <div class="conditions-panel" id="panel-workforce">
+      <div class="panel-header">
+        <div class="panel-title">Workforce &amp; missing middle housing</div>
+        <div class="panel-subtitle">Duplexes through 4-plexes affordable to 80–120% AMI households. Produced by small builders or individual investors. Currently blocked in 85.8% of Portsmouth's residential land.</div>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">By-right permission in residential zones</div>
+              <div class="condition-note">The single most important condition. No small builder absorbs the cost and timeline risk of a ZBA variance or Planning Board CUP for a 3- or 4-unit building.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-5 Missing middle allowances</span>
+                <span class="hap-tag st-blank">Z-33 SF zone reform</span>
+                <span class="hap-tag st-progress">Z-26 Reduce CUPs</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Lot size and dimensional reform — must move with Z-5</div>
+              <div class="condition-note">Missing middle allowances without dimensional reform produce almost nothing. A 3-unit building on a 15,000 sf minimum lot doesn't pencil. Z-5 and Z-8 are a package.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-8 Dimensional updates</span>
+                <span class="hap-tag st-blank">Z-5 Missing middle</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Parking maximum of 1 space per unit</div>
+              <div class="condition-note">Each additional parking space adds $15,000–$40,000 in cost on a small infill lot. SB 284 statewide cap is in effect — Portsmouth must amend its ordinance.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-compliance">Z-4 Parking reform</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Clear, predictable design standards</div>
+              <div class="condition-note">Small builders won't invest in drawings before knowing the rules. Objective standards replace subjective board review and eliminate approval uncertainty.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">P-5 Design guideline clarity</span>
+                <span class="hap-tag st-blank">P-14 Pre-approved templates</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Anti-speculation safeguards before upzoning</div>
+              <div class="condition-note">Upzoning without land value capture allows speculation to absorb the benefit. Z-33's own sequencing note flags this — I-20 must be in motion first.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-20 Land value capture</span>
+                <span class="hap-tag st-blank">Z-33 SF zone reform</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer/owner-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Construction cost that yields positive return at market rents</div>
+              <div class="condition-note">In Portsmouth's market, a 3-unit building needs rents north of $2,000/unit to cover construction and financing. Current land costs pressure this further. The math works in Gateway zones; it doesn't yet work in most residential zones.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Access to construction financing for small projects</div>
+              <div class="condition-note">Banks are reluctant lenders on 2–4 unit non-owner-occupied residential. Many small builders need owner-occupancy or personal guarantee structures to get financing.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Contractor availability</div>
+              <div class="condition-note">NH's construction labor market is tight. Small infill projects compete with larger commercial work. Delays erode margins quickly.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Tolerance for neighbor friction</div>
+              <div class="condition-note">Even with by-right permission, small builders face informal pressure. The psychological cost of neighborhood conflict deters risk-averse builders even when the legal path is clear.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ADU -->
+    <div class="conditions-panel" id="panel-adu">
+      <div class="panel-header">
+        <div class="panel-title">Accessory Dwelling Units (ADUs)</div>
+        <div class="panel-subtitle">Homeowner-produced secondary units. By-right since February 2026. The production bottleneck has shifted from permission to awareness and financing.</div>
+        <span class="panel-example-tag">&#9989; Most regulatory conditions complete</span>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">By-right approval — already achieved</div>
+              <div class="condition-note">February 2026 ordinance eliminates CUP requirement citywide, consistent with RSA 674:71–73. The regulatory barrier is resolved. Production bottleneck is now elsewhere.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-complete">Z-2 ADU enhancements</span>
+                <span class="hap-tag st-progress">Z-36 Monitor 2026 legislation</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Streamlined permitting and inspection</div>
+              <div class="condition-note">Homeowners are not developers. A complicated permit process and unclear timelines deter the homeowners most likely to add units.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">P-2 Admin approval</span>
+                <span class="hap-tag st-blank">P-3 Online permitting portal</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Public education and homeowner outreach</div>
+              <div class="condition-note">Most homeowners who could build an ADU don't know they now can. Awareness is the current constraint, not permission.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">P-10 Housing Navigator</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">ADU-specific financing programs</div>
+              <div class="condition-note">Construction loans for ADUs are a niche product. Programs helping homeowners access below-market financing dramatically increase production rates.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-1 ADU tax incentive</span>
+                <span class="hap-tag st-blank">I-14 Rehab loan/grant program</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Homeowner-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Owner-occupancy of primary residence</div>
+              <div class="condition-note">Portsmouth's ordinance retains the owner-occupancy requirement. This limits ADU production to homeowners who live on site — not investor-owned properties, which are a significant share of Portsmouth's housing stock.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Access to $150,000–$250,000 construction financing</div>
+              <div class="condition-note">A detached ADU in Portsmouth's construction market costs $150–250K. Most homeowners can't cash-fund this. HELOC availability depends on existing equity — relatively strong in Portsmouth.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Willingness to be a landlord</div>
+              <div class="condition-note">Many homeowners who have the lot, the equity, and the permission still don't build because they don't want tenant management responsibility. No policy addresses this directly.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Adequate lot size and setback compliance</div>
+              <div class="condition-note">Not every lot can accommodate a detached ADU. Tight setbacks, large main structures, or complex topography reduce feasibility even with by-right permission.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. MICRO-UNIT -->
+    <div class="conditions-panel" id="panel-micro">
+      <div class="panel-header">
+        <div class="panel-title">Micro-unit housing</div>
+        <div class="panel-subtitle">Studios under 400 sq ft for single-person households. No dedicated regulatory pathway in Portsmouth. No examples in the current pipeline.</div>
+        <span class="panel-example-tag">&#128204; Based on Planning Board presentation, ~2020</span>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">Explicit micro-unit definition and by-right allowance</div>
+              <div class="condition-note">Currently allowed in some zones but no dedicated standards. Without a clear definition, each project requires individual interpretation — a deal-killer for small-margin projects.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-20 Micro-unit allowances</span>
+                <span class="hap-tag st-progress">Z-26 Reduce CUPs</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Parking maximum well below 1 per unit</div>
+              <div class="condition-note">Micro-unit tenants are car-light by design. A requirement of 0.5 or less — or none for downtown locations — is a hard condition. The Planning Board presentation flagged this explicitly.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-compliance">Z-4 Parking reform</span>
+                <span class="hap-tag st-blank">Z-20 Micro-unit allowances</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Density by floor area, not unit count</div>
+              <div class="condition-note">Micro-unit buildings require more units per square foot to achieve comparable revenue. Unit-count density limits create artificial ceilings that make the typology unviable.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-7 Height limit modernization</span>
+                <span class="hap-tag st-blank">Z-8 Dimensional updates</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Building code flexibility for small rooms</div>
+              <div class="condition-note">Code minimum room sizes can conflict with purpose-designed micro-unit layouts. A code affordability review is needed to identify which standards create unnecessary friction.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">P-13 Building code review</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Self-imposed unit size floor (~250–300 sf minimum)</div>
+              <div class="condition-note">The Planning Board presentation committed to minimum unit sizes — not as a regulatory requirement but as a quality standard the developer imposed on himself to manage neighbor concerns about "shoebox" housing.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Management protocol for higher unit density</div>
+              <div class="condition-note">The developer committed to on-site management presence and noise mitigation standards beyond what the ordinance requires — a self-imposed condition in exchange for density tolerance.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Premium sq ft rents with high occupancy</div>
+              <div class="condition-note">Micro-units charge $4–6/sf vs $2.50–3.50/sf for conventional units, but total rent is lower. The proforma only works with high occupancy and minimal vacancy. Requires risk-tolerant capital.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Design investment to signal intent</div>
+              <div class="condition-note">Micro-units succeed when design makes small feel intentional — natural light, high ceilings, built-in storage. Budget cuts here produce units that feel deficient rather than efficient.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. CO-LIVING -->
+    <div class="conditions-panel" id="panel-coliving">
+      <div class="panel-header">
+        <div class="panel-title">Co-living facilities</div>
+        <div class="panel-subtitle">Private sleeping rooms with shared common spaces. CUP required in B and Gateway zones. First Portsmouth approval obtained 2025–26. Parking standard is the primary barrier outside downtown.</div>
+        <span class="panel-example-tag">&#128204; First Portsmouth approval: Tracy Kozak, 2025–26</span>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">CUP pathway — in place, but creates uncertainty</div>
+              <div class="condition-note">Co-living requires Planning Board CUP in B, G1, G2 zones. Achievable, but CUP introduces timeline and opposition risk. By-right with objective standards would unlock more projects.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-35 Revise co-living standards</span>
+                <span class="hap-tag st-progress">Z-26 Reduce CUPs</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Parking standard relief — the actual barrier</div>
+              <div class="condition-note">1 space per 4 rooms (unless within 600 ft of a public garage) makes co-living unviable outside downtown. This single standard explains why only one project has been approved.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-35 Revise co-living standards</span>
+                <span class="hap-tag st-compliance">Z-4 Parking reform</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Zone expansion beyond B and Gateway</div>
+              <div class="condition-note">Expanding co-living CUP eligibility to MRB, OR, and WB zones opens additional sites without requiring residential rezoning.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-35 Revise co-living standards</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Simplified management requirements</div>
+              <div class="condition-note">Current ordinance: 24/7 on-site management, posted contact signage, annual city reporting. These requirements favor institutional operators and deter smaller local ones.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-35 Revise co-living standards</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Operator-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Site within 600 ft of parking or transit</div>
+              <div class="condition-note">Operators self-select sites satisfying the parking standard — concentrating co-living in downtown where land is most expensive, the opposite of where co-living can deliver affordability.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">24/7 management capacity</div>
+              <div class="condition-note">The on-site management requirement is a real operating cost that favors institutional co-living operators over smaller local ones.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Tenant screening for community fit</div>
+              <div class="condition-note">Successful co-living depends on compatible housemates. Operators self-impose screening beyond standard rental criteria — employment, lifestyle, and community compatibility.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Below-market revenue per room accepted</div>
+              <div class="condition-note">Co-living rooms are priced below comparable studio apartments. Revenue model depends on shared space efficiency and high occupancy — not higher rents per unit.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. SENIOR HOUSING -->
+    <div class="conditions-panel" id="panel-senior">
+      <div class="panel-header">
+        <div class="panel-title">Senior housing</div>
+        <div class="panel-subtitle">Age-targeted housing for 55+/62+ households. Many seniors have equity but need appropriately configured units. Portsmouth's aging population is a primary driver of housing mismatch.</div>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">Density bonus and reduced parking for age-restricted projects</div>
+              <div class="condition-note">Senior housing receives no specific incentives in Portsmouth's current ordinance. Density bonuses and reduced parking minimums (seniors drive less) would lower cost and signal market priority.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-31 Senior housing incentives</span>
+                <span class="hap-tag st-progress">Z-6 Density bonus</span>
+                <span class="hap-tag st-compliance">Z-4 Parking reform</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Property tax bridge for seniors who downsize</div>
+              <div class="condition-note">Seniors in large single-family homes would move to appropriate housing — freeing those homes for families — but face tax increases their fixed income can't absorb.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-8 Senior property tax deferral</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Accessibility incentives</div>
+              <div class="condition-note">Incentivizing accessible unit production — density bonuses, fee waivers — reduces the cost premium of building universal design features in from the start.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-17 Density bonus for accessible units</span>
+                <span class="hap-tag st-blank">I-19 Accessibility retrofit incentive</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer/operator-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Demonstrated demand at target price point</div>
+              <div class="condition-note">Developers require market studies showing absorption. Portsmouth's senior population has purchasing power, but little comparable product exists locally to benchmark pricing.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Proximity to services, medical care, walkable amenities</div>
+              <div class="condition-note">Senior residents self-select for walkability and service proximity — concentrating demand on the same limited downtown-adjacent land every other housing type competes for.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Sufficient scale for amenity viability (40+ units)</div>
+              <div class="condition-note">Community programming and on-site services require unit count to be financially sustainable. Under 40 units typically can't support the amenity package that distinguishes senior housing from generic apartments.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">HOPA compliance for 55+ designation</div>
+              <div class="condition-note">At least 80% of units must be occupied by a person 55+, with age-verification policies in place. Legal compliance adds administrative overhead that smaller operators find burdensome.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. MARKET-RATE MULTIFAMILY -->
+    <div class="conditions-panel" id="panel-marketrate">
+      <div class="panel-header">
+        <div class="panel-title">Market-rate multifamily</div>
+        <div class="panel-subtitle">6+ unit buildings at market rents, for-profit developers. Already broadly permitted in Gateway and Character Districts. Key remaining constraints: commercial/O/R zones (HB 631 deadline), permitting timelines, construction economics.</div>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">Zone expansion into commercial and O/R districts</div>
+              <div class="condition-note">HB 631 (eff. July 1, 2026) mandates multifamily allowance on commercially zoned land where infrastructure exists. Portsmouth must amend before the deadline — the clock is running.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-compliance">Z-3 Residential conversion ordinance</span>
+                <span class="hap-tag st-compliance">Z-25 Multifamily in O/R zones</span>
+                <span class="hap-tag st-compliance">Z-29 Adaptive reuse streamlining</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Height and density allowances</div>
+              <div class="condition-note">Market-rate multifamily economics require sufficient unit count to spread land cost. Height limit reform in Gateway and downtown-adjacent zones directly affects feasibility thresholds.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-7 Height limit modernization</span>
+                <span class="hap-tag st-progress">Z-6 Density bonus</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Predictable, timely permitting</div>
+              <div class="condition-note">An 18-month site plan review adds $500K–$1M in carrying cost to a typical project. Timeline certainty is as valuable as timeline speed — developers underwrite schedules, not best-case scenarios.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">P-1 Streamline site plan review</span>
+                <span class="hap-tag st-blank">P-12 Permit timeline audit</span>
+                <span class="hap-tag st-blank">P-4 Concurrent review</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Impact fee calibration by unit type</div>
+              <div class="condition-note">Flat impact fees that don't distinguish unit types are a blunt instrument. Smaller units generating less school-age population demand shouldn't carry the same fee as larger family units.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">P-15 Impact fee calibration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Land cost that supports the proforma</div>
+              <div class="condition-note">Portsmouth's land values are high and rising. Market-rate multifamily pencils in Gateway zones today but only barely. Any additional cost — fees, parking, delays — pushes projects below return thresholds.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Construction financing availability</div>
+              <div class="condition-note">Construction lenders require strong borrower track records. First-time Portsmouth developers and smaller projects face tighter scrutiny than established regional developers.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Investor return threshold (5–7% yield on cost)</div>
+              <div class="condition-note">The spread between stabilized net operating income and total development cost must hit investor hurdles. In Portsmouth's high-cost environment, this requires either premium rents, reduced costs, or both.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Rent absorption confidence at delivery</div>
+              <div class="condition-note">Developers require confidence that sufficient rental demand exists at underwritten rents 18–24 months into the future. Portsmouth's strong market supports this — but only in genuinely walkable locations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. ENTRY-LEVEL OWNERSHIP -->
+    <div class="conditions-panel" id="panel-ownership">
+      <div class="panel-header">
+        <div class="panel-title">Entry-level ownership housing</div>
+        <div class="panel-subtitle">Cottage housing, townhouses, small-lot single-family for first-time buyers. The hardest type to produce in Portsmouth's current environment. Requires dimensional reform, shared equity tools, and anti-speculation safeguards to function at accessible price points.</div>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">Small-lot and cottage zoning reform</div>
+              <div class="condition-note">Portsmouth's minimum lot sizes make small-lot fee-simple ownership nearly impossible in most zones. Even GRC's 3,500 sf minimum is too large for cottage-court configurations that work in other NH markets.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">Z-9 Cottage housing provisions</span>
+                <span class="hap-tag st-blank">Z-8 Dimensional updates</span>
+                <span class="hap-tag st-blank">Z-38 Entry-level ownership strategy</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Land value capture before upzoning — critical sequencing</div>
+              <div class="condition-note">Upzoning without price controls allows speculation to absorb the value gain — land prices rise to capture new density, and resulting units are no longer entry-level. I-20 must be in motion before Z-33 or Z-9 proceed.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-20 Land value capture</span>
+                <span class="hap-tag st-blank">Z-33 SF zone reform</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Shared equity / resale covenant mechanism</div>
+              <div class="condition-note">Without a resale covenant, any below-market ownership unit becomes market-rate at first sale. RSA 674:60 enables resale covenants on assisted projects — the legal tool exists, the policy hasn't been activated.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-22 Shared equity homeownership</span>
+                <span class="hap-tag st-blank">I-12 First-time homebuyer expansion</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Public land disposition prioritizing ownership</div>
+              <div class="condition-note">City RFPs that score entry-level ownership with resale covenants create a pipeline that doesn't depend on private land at market prices — the only near-term route to accessible ownership.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">PL-2 Public land RFPs</span>
+                <span class="hap-tag st-blank">I-20 Land value capture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer/buyer-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Construction cost that allows sale below $350–400K</div>
+              <div class="condition-note">Building a new unit in Portsmouth costs $250–350/sf all-in. A 1,000 sf cottage at $300/sf costs $300K before land, financing, and margin. Without subsidy or donated land, it cannot reach entry-level price points.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Buyer qualification at target income levels</div>
+              <div class="condition-note">A household at 80% AMI (~$82K for a family of three) can safely afford a mortgage of ~$275–300K. At Portsmouth's land prices, this gap requires subsidy, shared equity, or a resale covenant.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Acceptance of resale restriction if subsidized</div>
+              <div class="condition-note">Buyers receiving below-market pricing must accept a covenant keeping the unit affordable at next sale. They forgo appreciation in exchange for access — a real tradeoff not all buyers will accept.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Viable shared ownership governance</div>
+              <div class="condition-note">Cottage court and clustered ownership requires a shared ownership structure (HOA or condo association). Poorly structured HOAs deter buyers — governance design is a real project risk.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYNTHESIS -->
+    <div class="synthesis">
+      <h3>What this tells you about triage</h3>
+      <p>Several HAP items appear across multiple housing type profiles — meaning they address conditions that block many types of production simultaneously. These have the broadest leverage.</p>
+      <p><strong>Z-4 (parking reform)</strong> appears in six of eight profiles. It is the single most cross-cutting city-side condition. <strong>Z-26 (reduce CUPs)</strong> appears in five. <strong>P-1 and P-12</strong> (permitting process) appear in four. These are not the most visible items in the HAP — but they may be the most consequential for production volume.</p>
+      <p>Items appearing in only one profile serve a real purpose but have narrower leverage. They may still warrant Year 1 action if the committee believes that type is a specific priority — but they shouldn't be ranked ahead of cross-cutting items on leverage grounds alone.</p>
+      <p>The <strong>developer/owner-side column</strong> defines the ceiling of what city action can achieve. If the math doesn't work on that side, regulatory reform alone won't unlock production. Read this module alongside the pro forma module.</p>
+    </div>
+
+  </div><!-- /content-area -->
+</div><!-- /app-shell -->
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <div class="fb-label">Document</div>
+      <p>What Would It Take? Conditions for Production<br><strong style="color:rgba(255,255,255,.7);">Version 1.1</strong> &#183; April 2026</p>
+      <button class="rev-toggle" onclick="var n=this.nextElementSibling;n.classList.toggle('open');this.textContent=n.classList.contains('open')?'Revision notes \u2191':'Revision notes \u2193'">Revision notes &#8595;</button>
+      <div class="rev-notes">v1.1 (April 2026) — Restructured to two-column sticky nav layout. Added methodology diagram. Updated title. Corrected module number to 11.<br>v1.0 (April 2026) — Initial release. Eight housing type profiles with city-side and developer-side conditions mapped to HAP items.</div>
+    </div>
+    <div class="footer-block">
+      <div class="fb-label">Sources</div>
+      <p>HAP action item data (146 items) &#183; Portsmouth Zoning Ordinance (Feb 17, 2026) &#183; NH RSA 674 &#183; Developer conversations, 2020–2026</p>
+    </div>
+    <div class="footer-block">
+      <div class="fb-label">Organization</div>
+      <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+    <p class="footer-ai">Created with AI assistance in research and information design, with human editorial control.</p>
+  </div>
+</footer>
+
+<script>
+function showType(id, btn) {
+  document.querySelectorAll('.type-nav-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.conditions-panel').forEach(function(p){p.classList.remove('active');});
+  var panel = document.getElementById('panel-'+id);
+  if (panel) panel.classList.add('active');
+  // On mobile, scroll panel into view
+  if (window.innerWidth <= 680 && panel) {
+    panel.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function toggleMethod(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>
