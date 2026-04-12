@@ -104,7 +104,7 @@
   <div class="hero-inner">
     <p class="hero-label">Housing Action Plan — Context Module 8</p>
     <h1>Why Sequence Matters:<br><em>Item Dependencies in the HAP</em></h1>
-    <p class="hero-sub">Not all 145 Housing Action Plan items are equally ready to implement. Some items are preconditions for others — completing them out of order wastes effort or creates conflicts. This module maps the key dependency relationships to inform triage sequencing.</p>
+    <p class="hero-sub">Not all 148 Housing Action Plan items are equally ready to implement. Some items are preconditions for others — completing them out of order wastes effort or creates conflicts. This module maps the key dependency relationships to inform triage sequencing.</p>
   </div>
 </section>
 <main class="main">
@@ -174,9 +174,9 @@
   <div class="footer-meta">
     <div class="footer-block">
       <div class="meta-label">Document</div>
-      <p>HAP Item Dependency Map<br><strong>Version 1.0</strong> · April 2026</p>
+      <p>HAP Item Dependency Map<br><strong>Version 1.1</strong> · April 2026</p>
       <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
-      <div class="revision-notes">v1.0 (April 2026) — Dependency relationships are drawn from Progress Portsmouth's pre-triage framework analysis. Item codes should be verified against the adopted Housing Action Plan (Feb. 17, 2026). This map represents representative key dependencies, not an exhaustive enumeration of all inter-item relationships in the plan.</div>
+      <div class="revision-notes">v1.1 (April 2026) — Item count updated to 148. Added PL-8 (GNOD land transfer pipeline management) to land chain, dependent on Z-1 and PL-1. Added new PHA partnership chain: PC-8 → PC-10 (scattered-site project-based voucher program).<br>v1.0 (April 2026) — Dependency relationships are drawn from Progress Portsmouth's pre-triage framework analysis. Item codes should be verified against the adopted Housing Action Plan (Feb. 17, 2026). This map represents representative key dependencies, not an exhaustive enumeration of all inter-item relationships in the plan.</div>
     </div>
     <div class="footer-block">
       <div class="meta-label">Source</div>
@@ -236,8 +236,17 @@ const chains=[
     nodes:[
       {code:'PL-1',name:'Public land inventory for housing',type:'precondition',detail:'PL-1 identifies what the city actually has to work with. Required before any project-specific disposition, RFP, or partnership structure can be built — you cannot structure ground leases or RFPs without knowing which parcels are available and suitable.'},
       {code:'PL-2',name:'Public land RFPs for housing',type:'dependent',detail:'PL-2 is the disposition vehicle — structuring RFPs that can include ground lease preference or affordability requirements. Directly depends on PL-1 to define the pool of eligible parcels.'},
+      {code:'PL-8',name:'GNOD land transfer pipeline management',type:'dependent',detail:'PL-8 establishes the administrative process for receiving and acting on GNOD land transfer offers (Section 10.686.30). Depends on Z-1 (GNOD being in effect and generating development activity) and PL-1 (land inventory framework to evaluate suitability of offered parcels). Accepted parcels feed into PL-2 RFP process.'},
       {code:'I-22',name:'Shared equity / permanently affordable homeownership',type:'dependent',detail:'I-22 is the HAP\'s primary vehicle for permanent affordability — partner identification and shared equity policy. Depends on PL-2 to define what city land can be conveyed via ground lease, and on Z-30 for the covenant framework that makes resale restrictions enforceable.'},
       {code:'HTF-1',name:'Housing Trust Fund governance',type:'dependent',detail:'HTF investment criteria and deal structures depend on PL-1 (what land is available), Z-30 (how covenants work), and I-22/PC-2 (who the city\'s partners are). Trust Fund governance should follow that upstream work, not precede it.'},
+    ]
+  },
+  {
+    cat:'land',
+    title:'PHA partnership chain',
+    nodes:[
+      {code:'PC-8',name:'PHA onsite services expansion',type:'precondition',detail:'PC-8 establishes the working relationship framework between the city and PHA. A functioning city-PHA partnership with aligned priorities is a prerequisite for any new programmatic ask — including a scattered-site voucher program that falls outside PHA\'s standard practice.'},
+      {code:'PC-10',name:'PHA scattered-site project-based voucher program',type:'dependent',detail:'PC-10 depends entirely on PHA\'s willingness to designate scattered-site small multifamily as a strategic priority and to commit administrative capacity to managing multiple small HAP contracts. Without PC-8 establishing a strong partnership baseline, PC-10 has no pathway to implementation.'},
     ]
   },
 ];
