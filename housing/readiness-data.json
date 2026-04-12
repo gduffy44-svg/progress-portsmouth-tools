@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Is Portsmouth Ready?",
+    "subtitle": "A Developer's Readiness Assessment",
+    "description": "For each condition workforce housing developers require, where does Portsmouth currently stand — and what HAP actions would change the rating?",
+    "lastUpdated": "2026-04-11",
+    "version": "1.0",
+    "hapExplorerUrl": "https://progress-portsmouth-tools.vercel.app/housing/hap-explorer.html",
+    "financeExplainerUrl": "https://progress-portsmouth-tools.vercel.app/housing/affordable-housing-finance-explainer.html",
+    "whatWouldItTakeUrl": "https://progress-portsmouth-tools.vercel.app/housing/what-would-it-take.html"
+  },
+  "conditions": [
+    {
+      "id": "land",
+      "name": "Land Availability",
+      "icon": "🏗️",
+      "rating": "in-progress",
+      "whatYouNeed": {
+        "noah": "An existing small multifamily property (4–20 units) in a location where workforce rents cover operating costs plus modest debt service. Portsmouth land values are the single biggest barrier — high acquisition cost compresses margins at workforce rent levels. A city-facilitated land pipeline or below-market site changes the math entirely.",
+        "lihtc": "A site already configured for 50+ units — public land disposition or a willing seller at below-market terms. Nonprofits cannot assemble land competitively against private buyers in a hot market. Public land, contributed at nominal cost, can eliminate $2–5M from the capital stack — the single largest local lever available."
+      },
+      "currentStatus": "Housing Committee has begun inventorying city-owned sites. The Sherburne School 99-year ground lease model is established precedent. No standing RFP-ready pipeline exists. No formal land inventory with environmental clearance has been completed.",
+      "hapItems": [
+        { "id": "PL-1", "label": "Land inventory" },
+        { "id": "PL-2", "label": "Public land RFPs" },
+        { "id": "PL-3", "label": "Sherburne School model" }
+      ],
+      "whatChangesThis": "Adoption of a standing land inventory with Phase I environmental clearance completed before RFP release. At least one additional city-owned site publicly identified as RFP-ready following the Sherburne precedent.",
+      "decisionPoint": "Land inventory completion; Council land disposition policy",
+      "whoDecides": "City Council / City Manager"
+    },
+    {
+      "id": "zoning",
+      "name": "Zoning Certainty",
+      "icon": "📐",
+      "rating": "not-yet",
+      "whatYouNeed": {
+        "noah": "By-right approval for small multifamily rehab. No requirement to re-justify existing use or obtain a CUP for code-compliant work on existing stock. Rehab projects can't absorb the cost and timeline of discretionary review.",
+        "lihtc": "Confirmed zoning approval before LIHTC application deadline. Tax credit allocators will not commit to sites with unresolved discretionary review risk. Any ZBA or Planning Board uncertainty — regardless of how likely approval is — kills the financing timeline."
+      },
+      "currentStatus": "Most multifamily in Portsmouth still requires a CUP or discretionary ZBA review. Affordable overlay (Z-12) not yet adopted. Z-26 (reduce CUPs) has not been triaged. Projects that should be by-right remain exposed to board discretion and political opposition.",
+      "hapItems": [
+        { "id": "Z-26", "label": "Reduce CUPs" },
+        { "id": "Z-12", "label": "Affordable overlay" },
+        { "id": "Z-22", "label": "Zone for diverse housing" }
+      ],
+      "whatChangesThis": "Triage and adoption of Z-26 and Z-12. Specifically: a defined set of zones where affordable and workforce multifamily is permitted by right, removing discretionary board review as a risk factor for financing.",
+      "decisionPoint": "Z-26 and Z-12 triage decisions",
+      "whoDecides": "Planning Board / City Council"
+    },
+    {
+      "id": "permitting",
+      "name": "Permitting Speed",
+      "icon": "⏱️",
+      "rating": "not-yet",
+      "whatYouNeed": {
+        "noah": "Predictable timeline under 6 months from complete application to permit. Small developers can't absorb long queues — a rehab project delayed 8 months is often a project that doesn't happen. Carrying costs on land compound against thin workforce rent margins.",
+        "lihtc": "Published timeline benchmarks with a dedicated affordable housing review track. LIHTC tax credit applications require confirmed permits before allocation rounds. A delay that pushes a project past a round date costs a full year — and may cost the project entirely."
+      },
+      "currentStatus": "No expedited review track exists for affordable or workforce projects. No published timeline benchmarks or service level agreements. Affordable projects move through the same queue as market-rate luxury development.",
+      "hapItems": [
+        { "id": "I-3", "label": "Expedited review" },
+        { "id": "P-12", "label": "Permit timeline audit" }
+      ],
+      "whatChangesThis": "I-3 adoption with published service level agreements. A dedicated affordable housing review track with a named staff contact and committed timeline — not a policy aspiration but an operational commitment.",
+      "decisionPoint": "I-3 triage; Planning Department operational change",
+      "whoDecides": "City Manager / Planning Director"
+    },
+    {
+      "id": "incentives",
+      "name": "Incentive Stack",
+      "icon": "💰",
+      "rating": "in-progress",
+      "whatYouNeed": {
+        "noah": "Fee waivers and tax abatement sufficient to offset the spread between market construction cost and what workforce rents can service. NH CDFA tax credits are available now from local businesses — no city action required. Tax abatement via RSA 79-E would directly improve operating cash flow.",
+        "lihtc": "Local soft money — Housing Trust Fund grants, fee waivers, or a subordinate loan — to tip a project into feasibility for NH Housing's LIHTC allocation. A city contribution of even $500K–$1M signals commitment, improves statewide competitiveness, and often unlocks multiples in federal and state matching funds."
+      },
+      "currentStatus": "NH CDFA tax credits are available now — local businesses can contribute and receive 75¢ in state tax credits per dollar contributed. RSA 79-E work session held March 16, 2026 — informational only, no program adopted. No Housing Trust Fund established. Fee waiver policy not yet formalized as ordinance.",
+      "hapItems": [
+        { "id": "HTF-1", "label": "Housing Trust Fund" },
+        { "id": "I-2", "label": "Fee waivers" },
+        { "id": "I-7", "label": "Tax credits utilization" },
+        { "id": "I-14", "label": "CDBG rehab" }
+      ],
+      "whatChangesThis": "HTF-1 and I-2 triage and adoption. RSA 79-E program formally adopted by Council vote designating eligible areas and terms. Active CDFA outreach campaign to Portsmouth businesses coordinated by the city.",
+      "decisionPoint": "HTF-1, I-2 triage; 79-E Council vote",
+      "whoDecides": "City Council"
+    },
+    {
+      "id": "parking",
+      "name": "Parking Standards",
+      "icon": "🚗",
+      "rating": "in-progress",
+      "whatYouNeed": {
+        "noah": "No parking minimums for small multifamily rehab in urban locations. Rehab of existing buildings shouldn't trigger new parking requirements that change the project economics entirely.",
+        "lihtc": "Parking standards that eliminate the need for structured decks. One structured parking space costs $30,000–$50,000 to build — on a 60-unit building, a 1:1 requirement can add $1.5–3M to the capital stack, often making the project infeasible."
+      },
+      "currentStatus": "SB 284 (statewide 1 space/unit maximum cap) took effect September 2025. Portsmouth's zoning ordinance has not yet been amended to align with the new state law. Minimum requirements may still apply in some zones, creating compliance ambiguity.",
+      "hapItems": [
+        { "id": "Z-4", "label": "Parking reform" }
+      ],
+      "whatChangesThis": "Z-4 adoption. Ordinance amendment explicitly removing parking minimums in target zones and aligning with SB 284 maximums. Ideally: zero minimums in transit-proximate and downtown zones.",
+      "decisionPoint": "Z-4 triage and ordinance amendment",
+      "whoDecides": "Planning Board / City Council"
+    },
+    {
+      "id": "financing",
+      "name": "Financing Access",
+      "icon": "🏦",
+      "rating": "in-progress",
+      "whatYouNeed": {
+        "noah": "Accessible financing that doesn't require LIHTC complexity. CDFA tax credits from local businesses, local bank CRA lending, and possible subordinate city debt through a Housing Trust Fund. The market won't provide conventional financing at rates that support workforce rents — the gap has to be bridged.",
+        "lihtc": "State AHF soft debt, 9% or 4% LIHTC allocation, and Federal Home Loan Bank AHP grants. All are competitive statewide — Portsmouth must earn its share through strong applications, committed city partnership, and competitive sites."
+      },
+      "currentStatus": "NH CDFA program is active now. Current Portsmouth project gaps: Christ Church needs ~$195K, Sherburne School needs ~$625K in CDFA contributions — local businesses can act today. State Affordable Housing Fund severely underfunded by legislature. No local subordinate debt mechanism exists.",
+      "hapItems": [
+        { "id": "I-7", "label": "Tax credits utilization" },
+        { "id": "HTF-1", "label": "Housing Trust Fund" },
+        { "id": "PC-9", "label": "State advocacy" }
+      ],
+      "whatChangesThis": "Active CDFA outreach campaign to Portsmouth businesses. Housing Trust Fund capitalized with initial appropriation. Sustained state-level advocacy for AHF restoration — Portsmouth's most impactful financing lever is one the legislature controls.",
+      "decisionPoint": "HTF-1 adoption; NH legislative session (AHF appropriation)",
+      "whoDecides": "City Council; State Legislature"
+    },
+    {
+      "id": "political",
+      "name": "Political Stability",
+      "icon": "🏛️",
+      "rating": "in-progress",
+      "whatYouNeed": {
+        "noah": "Confidence that a project permitted under current rules won't face opposition during construction. A clear staff point of contact who can navigate city processes. A council that won't relitigate approvals under political pressure.",
+        "lihtc": "Council consistency across election cycles. LIHTC projects take 3–5 years from concept to occupancy. Mission-driven developers choose markets with sustained political commitment — they don't return to cities where approved projects were derailed or where the environment shifts mid-project."
+      },
+      "currentStatus": "HAP Council adoption targeted July 2026. Housing Navigator position not yet funded or hired. Council composition subject to November 2026 elections. Housing Champion designation established. No formal developer liaison function exists.",
+      "hapItems": [
+        { "id": "PC-2", "label": "Nonprofit engagement" },
+        { "id": "P-10", "label": "Housing Navigator" },
+        { "id": "PC-4", "label": "Developer listening sessions" }
+      ],
+      "whatChangesThis": "Navigator hire with a developer-liaison function. Formal HAP adoption by Council in July 2026. Sustained pro-housing Council majority through November 2026 elections and beyond.",
+      "decisionPoint": "Navigator hire; HAP adoption; November 2026 elections",
+      "whoDecides": "City Council / City Manager / Voters"
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Portsmouth Ready? — Developer Readiness Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:        #2d3e52;
+    --navy-dark:   #1a2332;
+    --gold:        #f4a261;
+    --gold-dark:   #c8822a;
+    --teal:        #3a7d6e;
+    --coral:       #e76f51;
+    --cream:       #f8f4ee;
+    --ready:       #3a7d6e;
+    --progress:    #c8822a;
+    --notyet:      #e76f51;
+    --text:        #1a2332;
+    --muted:       #6b7a8d;
+    --border:      #e0d8cc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+  /* NAV */
+  .nav { background: var(--navy-dark); padding: 14px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .nav a { color: rgba(255,255,255,.6); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .06em; transition: color .2s; }
+  .nav a:hover { color: var(--gold); }
+  .nav .sep { color: rgba(255,255,255,.2); font-size: 10px; }
+  .nav-badge { margin-left: auto; background: var(--gold-dark); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #3a4f66 100%); padding: 64px 24px 56px; text-align: center; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent, transparent 60px, rgba(244,162,97,.04) 60px, rgba(244,162,97,.04) 61px); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4rem); font-style: italic; font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 6px; }
+  .hero-sub { font-size: 13px; font-weight: 300; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 28px; }
+  .hero-rule { width: 48px; height: 2px; background: var(--gold); margin: 0 auto 28px; opacity: .7; }
+  .hero-desc { max-width: 580px; margin: 0 auto 36px; font-size: 16px; font-weight: 300; color: rgba(255,255,255,.8); line-height: 1.75; }
+  .hero-desc strong { color: var(--gold); font-weight: 600; }
+
+  /* TOGGLE */
+  .toggle-group { display: inline-flex; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 6px; overflow: hidden; }
+  .toggle-btn { padding: 12px 32px; font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .04em; border: none; cursor: pointer; transition: all .25s; background: transparent; color: rgba(255,255,255,.55); }
+  .toggle-btn.active { background: var(--gold); color: var(--navy-dark); }
+  .toggle-btn:hover:not(.active) { color: rgba(255,255,255,.9); }
+
+  /* META BAR */
+  .meta-bar { background: var(--navy-dark); border-bottom: 2px solid var(--gold-dark); padding: 10px 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,.4); letter-spacing: .06em; }
+  .meta-bar a { color: var(--gold); text-decoration: none; opacity: .8; }
+  .meta-bar a:hover { opacity: 1; }
+  .meta-bar strong { color: rgba(255,255,255,.7); }
+
+  /* LEGEND */
+  .legend-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+  /* CONDITIONS */
+  .conditions { max-width: 860px; margin: 0 auto; padding: 36px 20px 64px; display: flex; flex-direction: column; gap: 16px; }
+
+  /* CARD */
+  .card { background: #fff; border: 1px solid var(--border); border-left: 5px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(26,35,50,.06); transition: box-shadow .2s; }
+  .card:hover { box-shadow: 0 4px 16px rgba(26,35,50,.1); }
+  .card[data-rating="ready"]       { border-left-color: var(--ready); }
+  .card[data-rating="in-progress"] { border-left-color: var(--gold-dark); }
+  .card[data-rating="not-yet"]     { border-left-color: var(--coral); }
+
+  .card-header { padding: 22px 24px 18px; display: flex; align-items: flex-start; gap: 16px; cursor: pointer; user-select: none; }
+  .card-icon { font-size: 26px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .card-title-group { flex: 1; }
+  .card-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); margin-bottom: 6px; line-height: 1.2; }
+  .rating-badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+  .rating-badge.ready       { background: #e6f2ee; color: var(--ready); }
+  .rating-badge.in-progress { background: #fdf0de; color: var(--gold-dark); }
+  .rating-badge.not-yet     { background: #fdecea; color: var(--coral); }
+  .rating-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .card-chevron { font-size: 20px; color: var(--muted); transition: transform .25s; flex-shrink: 0; margin-top: 4px; opacity: .5; }
+  .card.open .card-chevron { transform: rotate(180deg); }
+  .card-body { display: none; padding: 4px 24px 28px; border-top: 1px solid var(--border); }
+  .card.open .card-body { display: block; }
+
+  /* BODY ELEMENTS */
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .dev-label { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); background: rgba(58,125,110,.1); border: 1px solid rgba(58,125,110,.2); padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; }
+  .need-text { font-size: 15px; line-height: 1.75; color: #2a3545; }
+  .status-text { font-size: 14px; line-height: 1.75; color: #4a5568; }
+
+  .hap-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .hap-chip { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; background: rgba(45,62,82,.06); color: var(--navy); border: 1px solid rgba(45,62,82,.15); border-radius: 4px; padding: 5px 10px; text-decoration: none; transition: background .15s, border-color .15s; cursor: pointer; }
+  .hap-chip:hover { background: rgba(244,162,97,.15); border-color: var(--gold-dark); color: var(--gold-dark); }
+  .hap-chip-id { opacity: .5; }
+
+  .changes-box { background: rgba(200,130,42,.07); border-left: 3px solid var(--gold); padding: 14px 16px; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.7; color: #2a3545; }
+
+  .decision-row { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 6px; }
+  .decision-item { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .decision-item strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); margin-bottom: 3px; }
+
+  /* SUMMARY */
+  .summary-section { background: var(--navy-dark); padding: 60px 24px; }
+  .summary-inner { max-width: 860px; margin: 0 auto; }
+  .summary-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .summary-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-style: italic; color: #fff; margin-bottom: 8px; font-weight: 400; }
+  .summary-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.6); margin-bottom: 36px; max-width: 560px; line-height: 1.65; }
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .summary-table th { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); padding: 10px 14px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .summary-table td { padding: 14px 14px; border-bottom: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.75); vertical-align: middle; }
+  .summary-table tr:last-child td { border-bottom: none; }
+  .td-condition { font-weight: 700 !important; color: #fff !important; white-space: nowrap; }
+  .td-small { font-size: 12px; color: rgba(255,255,255,.45) !important; font-weight: 300 !important; }
+  .summary-coda { margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.1); font-size: 15px; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.75; }
+  .summary-coda strong { color: var(--gold); font-weight: 600; }
+
+  /* FOOTER */
+  .page-footer { background: var(--navy-dark); border-top: 1px solid rgba(255,255,255,.06); padding: 32px 24px; text-align: center; }
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 16px; color: rgba(255,255,255,.45); margin-bottom: 10px; }
+  .footer-links { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .04em; line-height: 2.2; }
+  .footer-links a { color: rgba(244,162,97,.65); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-ai { margin-top: 14px; font-size: 11px; color: rgba(255,255,255,.2); font-style: italic; }
+
+  /* REVISION */
+  .revision-wrap { max-width: 860px; margin: 0 auto; padding: 20px 20px 0; }
+  .revision-toggle { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); cursor: pointer; background: none; border: none; letter-spacing: .04em; }
+  .revision-toggle:hover { color: var(--navy); }
+  .revision-body { display: none; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); line-height: 1.9; }
+  .revision-body.open { display: block; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 44px 16px 40px; }
+    .hero h1 { font-size: 2rem; }
+    .toggle-btn { padding: 10px 16px; font-size: 12px; }
+    .conditions { padding: 20px 12px 40px; }
+    .card-header { padding: 16px 16px 12px; gap: 10px; }
+    .card-body { padding: 0 14px 20px; }
+    .decision-row { flex-direction: column; gap: 10px; }
+    .legend-bar { gap: 14px; }
+    .nav-badge { display: none; }
+    .td-small { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://www.progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="sep">·</span>
+  <a href="./learning-library.html">← Library</a>
+  <span class="sep">·</span>
+  <a href="./what-would-it-take.html">← What Would It Take?</a>
+  <span class="nav-badge">Developer Series · Module 12</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Housing Action Plan — Module 12 · Developer Series</div>
+    <h1>Is Portsmouth Ready?</h1>
+    <div class="hero-sub">A Developer's Readiness Assessment</div>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">
+      Not a pitch. A status report.<br>
+      For each condition workforce housing requires, here is where Portsmouth currently stands — and what HAP decisions would change the rating.<br><br>
+      <strong>Ratings update as triage decisions are made.</strong> This reflects current status, not aspirations.
+    </p>
+    <div class="toggle-group">
+      <button class="toggle-btn active" id="btn-noah" onclick="setMode('noah')">NOAH / Small Developer</button>
+      <button class="toggle-btn" id="btn-lihtc" onclick="setMode('lihtc')">Nonprofit / LIHTC</button>
+    </div>
+  </div>
+</section>
+
+<div class="meta-bar" id="meta-bar"><span>Loading…</span></div>
+
+<div class="legend-bar">
+  <div class="legend-item"><div class="dot" style="background:var(--ready)"></div>In place — rely on this today</div>
+  <div class="legend-item"><div class="dot" style="background:var(--gold-dark)"></div>In progress — triage pending</div>
+  <div class="legend-item"><div class="dot" style="background:var(--coral)"></div>Not yet — no active mechanism</div>
+</div>
+
+<div class="conditions" id="conditions-container">
+  <div style="text-align:center;padding:60px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em">Loading readiness data…</div>
+</div>
+
+<section class="summary-section" id="summary-section" style="display:none">
+  <div class="summary-inner">
+    <div class="summary-eyebrow">Summary</div>
+    <div class="summary-title">The Conditional Yes</div>
+    <div class="summary-desc">Portsmouth is buildable. Whether workforce housing gets built here depends on which conditions get resolved — and when.</div>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Condition</th><th>Rating</th><th>Decision point</th><th>Who decides</th></tr>
+      </thead>
+      <tbody id="summary-tbody"></tbody>
+    </table>
+    <p class="summary-coda" id="summary-coda"></p>
+  </div>
+</section>
+
+<div class="revision-wrap">
+  <button class="revision-toggle" onclick="document.getElementById('rev-body').classList.toggle('open');this.textContent=this.textContent.includes('▸')?'▾ Hide revision history':'▸ Revision history'">▸ Revision history</button>
+  <div class="revision-body" id="rev-body">
+    v1.0 · April 2026 — Initial release. Seven conditions across Land, Zoning, Permitting, Incentives, Parking, Financing, Political Stability. NOAH / LIHTC developer toggle. Live JSON data source (readiness-data.json). Summary table auto-generated from ratings.
+  </div>
+</div>
+
+<footer class="page-footer">
+  <div class="footer-logo">Progress Portsmouth</div>
+  <div class="footer-links">
+    <a href="https://www.progressportsmouth.com">progressportsmouth.com</a> &nbsp;·&nbsp;
+    <a href="./affordable-housing-finance-explainer.html">Finance Explainer</a> &nbsp;·&nbsp;
+    <a href="./hap-explorer.html">HAP Explorer</a> &nbsp;·&nbsp;
+    <a href="./what-would-it-take.html">What Would It Take?</a>
+  </div>
+  <div class="footer-ai">Created with AI assistance in research and information design, with human editorial control.</div>
+</footer>
+
+<script>
+let currentMode = 'noah';
+let data = null;
+
+const LABELS = { 'ready':'In Place', 'in-progress':'In Progress', 'not-yet':'Not Yet' };
+const SYMBOLS = { 'ready':'🟢', 'in-progress':'🟡', 'not-yet':'🔴' };
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-noah').classList.toggle('active', mode === 'noah');
+  document.getElementById('btn-lihtc').classList.toggle('active', mode === 'lihtc');
+  if (data) renderConditions();
+}
+
+async function loadData() {
+  try {
+    const res = await fetch('./readiness-data.json');
+    if (!res.ok) throw new Error();
+    data = await res.json();
+    renderMeta(); renderConditions(); renderSummary();
+  } catch(e) {
+    document.getElementById('conditions-container').innerHTML =
+      `<div style="text-align:center;padding:60px;color:var(--coral);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em">
+        Unable to load readiness-data.json<br>Ensure both files are in the same /housing/ directory on Vercel.
+      </div>`;
+  }
+}
+
+function renderMeta() {
+  const m = data.meta;
+  document.title = `${m.title} — Progress Portsmouth`;
+  document.getElementById('meta-bar').innerHTML =
+    `<span>Last updated: <strong>${m.lastUpdated}</strong></span>
+     <span>v${m.version}</span>
+     <span style="opacity:.2">·</span>
+     <a href="${m.financeExplainerUrl}">Finance Explainer →</a>
+     <a href="${m.hapExplorerUrl}">HAP Explorer →</a>`;
+}
+
+function renderConditions() {
+  const container = document.getElementById('conditions-container');
+  const wasOpen = {};
+  container.querySelectorAll('.card.open').forEach(c => wasOpen[c.dataset.id] = true);
+
+  container.innerHTML = data.conditions.map(c => {
+    const need = c.whatYouNeed[currentMode];
+    const devLabel = currentMode === 'noah' ? 'NOAH / Small Developer' : 'Nonprofit / LIHTC';
+    const chips = c.hapItems.map(h =>
+      `<a class="hap-chip" href="${data.meta.hapExplorerUrl}" target="_blank">
+        <span class="hap-chip-id">${h.id}</span>${h.label}
+      </a>`).join('');
+
+    return `
+    <div class="card ${wasOpen[c.id] ? 'open' : ''}" data-rating="${c.rating}" data-id="${c.id}">
+      <div class="card-header" onclick="toggleCard('${c.id}')">
+        <div class="card-icon">${c.icon}</div>
+        <div class="card-title-group">
+          <div class="card-name">${c.name}</div>
+          <span class="rating-badge ${c.rating}"><span class="rating-dot"></span>${LABELS[c.rating]}</span>
+        </div>
+        <div class="card-chevron">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="section-label">What you need</div>
+        <div class="dev-label">${devLabel}</div>
+        <div class="need-text">${need}</div>
+        <div class="section-label">Where Portsmouth stands</div>
+        <div class="status-text">${c.currentStatus}</div>
+        <div class="section-label">HAP items</div>
+        <div class="hap-chips">${chips}</div>
+        <div class="section-label">What would change this rating</div>
+        <div class="changes-box">${c.whatChangesThis}</div>
+        <div class="section-label">Decision details</div>
+        <div class="decision-row">
+          <div class="decision-item"><strong>Decision point</strong>${c.decisionPoint}</div>
+          <div class="decision-item"><strong>Who decides</strong>${c.whoDecides}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderSummary() {
+  const ready    = data.conditions.filter(c => c.rating === 'ready').length;
+  const progress = data.conditions.filter(c => c.rating === 'in-progress').length;
+  const notyet   = data.conditions.filter(c => c.rating === 'not-yet').length;
+
+  document.getElementById('summary-tbody').innerHTML = data.conditions.map(c => `
+    <tr>
+      <td class="td-condition">${c.icon} ${c.name}</td>
+      <td>${SYMBOLS[c.rating]} ${LABELS[c.rating]}</td>
+      <td class="td-small">${c.decisionPoint}</td>
+      <td class="td-small">${c.whoDecides}</td>
+    </tr>`).join('');
+
+  document.getElementById('summary-coda').innerHTML =
+    `Current status: <strong>${ready} condition${ready!==1?'s':''} in place</strong>, ${progress} in progress, ${notyet} not yet addressed. 
+    The HAP triage process currently underway will determine how many move from yellow to green — 
+    and whether Portsmouth becomes a market where workforce housing developers choose to work.`;
+
+  document.getElementById('summary-section').style.display = 'block';
+}
+
+function toggleCard(id) {
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  if (!card) return;
+  card.classList.toggle('open');
+  if (card.classList.contains('open'))
+    setTimeout(() => card.scrollIntoView({ behavior:'smooth', block:'nearest' }), 60);
+}
+
+loadData();
+</script>
+</body>
+</html>
