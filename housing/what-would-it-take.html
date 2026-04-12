@@ -322,6 +322,13 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
           <span class="tn-sub">Cottage, townhouse</span>
         </span>
       </button>
+      <button class="type-nav-btn" onclick="showType('noah',this)">
+        <span class="tn-icon">🔧</span>
+        <span class="tn-text">
+          <span class="tn-label">NOAH preservation</span>
+          <span class="tn-sub">Small multifamily rehab</span>
+        </span>
+      </button>
     </div>
 
     <!-- STATUS KEY -->
@@ -907,6 +914,80 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
       </div>
     </div>
 
+    <!-- 9. NOAH PRESERVATION -->
+    <div class="conditions-panel" id="panel-noah">
+      <div class="panel-header">
+        <div class="panel-title">NOAH preservation — small multifamily rehab</div>
+        <div class="panel-subtitle">Acquisition and value-add rehab of existing 2–20 unit properties. The developer goal: add units or bedrooms, reduce deferred maintenance, and cash-flow at workforce rents. Willingness to income-restrict exists — but only if the math works. This is the most accessible entry point for the city: smaller scale, faster timeline, and no new construction required.</div>
+        <span class="panel-example-tag">&#128204; Field-tested: small developer inquiry, spring 2026</span>
+      </div>
+      <div class="conditions-grid">
+        <div>
+          <div class="col-header city">&#127961; City-side conditions</div>
+          <div class="conditions-list city-list">
+            <div class="condition-item">
+              <div class="condition-text">Grant or low-interest loan program for property improvements</div>
+              <div class="condition-note">The most direct lever. A city grant program covering safety-related improvements — lead abatement, knob-and-tube rewiring, heating systems — allows acquisition with less permanent debt. Less debt means cash flow is achievable at lower rents. CDBG rehab funds are the nearest existing mechanism; a dedicated small-landlord grant program tied to affordability commitments doesn't yet exist.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">I-14 CDBG rehab</span>
+                <span class="hap-tag st-blank">I-2 Fee waivers</span>
+                <span class="hap-tag st-blank">HTF-1 Housing Trust Fund</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">By-right permission to add units to existing structures</div>
+              <div class="condition-note">If the city allows unit addition by right — not via ZBA variance — small developers can underwrite the project before acquisition. Discretionary review makes rehab projects unfinanceable: lenders won't commit to a project whose approval is uncertain.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-progress">Z-26 Reduce CUPs</span>
+                <span class="hap-tag st-complete">Z-2 ADU enhancements</span>
+                <span class="hap-tag st-blank">Z-8 Dimensional updates</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">RSA 79-E tax abatement during income-restriction period</div>
+              <div class="condition-note">Property tax is one of the largest operating expenses on small multifamily. Abating the tax on improved value during an affordability covenant period directly improves cash flow — potentially the difference between market-rate and workforce rents being viable. RSA 79-E work session held March 2026; no program adopted yet. Adoption requires City Council vote.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">I-7 Tax credits utilization</span>
+              </div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Project-based vouchers for income-restricted units</div>
+              <div class="condition-note">If Portsmouth Housing Authority can attach project-based vouchers to income-restricted units during the affordability period, the developer receives market-equivalent revenue on those units while tenants pay income-appropriate rents. This is the revenue-side solution that makes income restriction viable without a grant. Currently no formal mechanism exists for PHA to attach vouchers to privately-owned small multifamily.</div>
+              <div class="hap-tags">
+                <span class="hap-tag st-blank">PC-2 Nonprofit engagement</span>
+                <span class="hap-tag st-blank">PC-8 PHA coordination</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-header dev">&#128202; Developer/owner-side conditions</div>
+          <div class="conditions-list">
+            <div class="condition-item">
+              <div class="condition-text">Acquisition cost manageable with 25% down</div>
+              <div class="condition-note">Portsmouth small multifamily prices require substantial down payments. A 6-unit property at current market values may require $300–500K down — beyond reach for early-stage investors without seller financing or city gap assistance. This is the primary entry barrier, not zoning.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Seller financing or deferred capital gains structure</div>
+              <div class="condition-note">When sellers are willing to finance the sale — accepting installment payments rather than a lump sum — buyers avoid the 25% conventional down payment requirement and sellers defer capital gains tax. This is a genuine workaround for Portsmouth's acquisition cost problem. City cannot mandate this, but can facilitate introductions between motivated sellers and qualified buyers.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Deferred maintenance priced into acquisition</div>
+              <div class="condition-note">Older Portsmouth small multifamily often carries significant deferred maintenance — lead paint, aging electrical, outdated heating. If this isn't accurately priced into acquisition, the developer absorbs unexpected costs post-closing that eliminate cash flow. Due diligence capacity is a real constraint for first-time investors.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Cash flow at workforce rents post-improvement</div>
+              <div class="condition-note">The developer model only works if operating expenses plus debt service are coverable at rents below market. The math requires: low acquisition cost (seller finance or city gap), reduced operating cost (79-E abatement, grant-funded improvements), and/or revenue support (project-based vouchers). All three levers together may make income restriction viable; any one alone likely doesn't.</div>
+            </div>
+            <div class="condition-item">
+              <div class="condition-text">Willingness to income-restrict if financially viable</div>
+              <div class="condition-note">Field testing confirms: small investors are willing to income-restrict units if the pro forma supports it. This is not a values problem — it's a math problem. The city's job is to make the math work, not to mandate an outcome the economics can't support.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- SYNTHESIS -->
     <div class="synthesis">
       <h3>What this tells you about triage</h3>
@@ -924,13 +1005,13 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   <div class="footer-inner">
     <div class="footer-block">
       <div class="fb-label">Document</div>
-      <p>What Would It Take? Conditions for Production<br><strong style="color:rgba(255,255,255,.7);">Version 1.2</strong> &#183; April 2026</p>
+      <p>What Would It Take? Conditions for Production<br><strong style="color:rgba(255,255,255,.7);">Version 1.3</strong> &#183; April 2026</p>
       <button class="rev-toggle" onclick="var n=this.nextElementSibling;n.classList.toggle('open');this.textContent=n.classList.contains('open')?'Revision notes \u2191':'Revision notes \u2193'">Revision notes &#8595;</button>
-      <div class="rev-notes">v1.2 (April 2026) — Permanently affordable section: GNOD land transfer (Section 10.686.30) added to land condition as second site pathway alongside city-owned land disposition. Z-1 HAP tag added. Brown's operating gap caveat included.<br>v1.1 (April 2026) — Restructured to two-column sticky nav layout. Added methodology diagram. Updated title. Corrected module number to 11.<br>v1.0 (April 2026) — Initial release. Eight housing type profiles with city-side and developer-side conditions mapped to HAP items.</div>
+      <div class="rev-notes">v1.3 (April 2026) — Added ninth housing type: NOAH preservation / small multifamily rehab. City-side conditions: improvement grant/loan program, by-right unit addition, RSA 79-E abatement, project-based vouchers. Developer-side conditions: acquisition cost, seller financing, deferred maintenance, cash flow at workforce rents, income-restriction willingness. Based on field-tested small developer input, spring 2026.<br>v1.2 (April 2026) — Permanently affordable section: GNOD land transfer (Section 10.686.30) added to land condition as second site pathway alongside city-owned land disposition. Z-1 HAP tag added. Brown's operating gap caveat included.<br>v1.1 (April 2026) — Restructured to two-column sticky nav layout. Added methodology diagram. Updated title. Corrected module number to 11.<br>v1.0 (April 2026) — Initial release. Eight housing type profiles with city-side and developer-side conditions mapped to HAP items.</div>
     </div>
     <div class="footer-block">
       <div class="fb-label">Sources</div>
-      <p>HAP action item data (146 items) &#183; Portsmouth Zoning Ordinance (Feb 17, 2026) &#183; NH RSA 674 &#183; Developer conversations, 2020–2026</p>
+      <p>HAP action item data (147 items) &#183; Portsmouth Zoning Ordinance (Feb 17, 2026) &#183; NH RSA 674 &#183; Developer conversations, 2020–2026</p>
     </div>
     <div class="footer-block">
       <div class="fb-label">Organization</div>
