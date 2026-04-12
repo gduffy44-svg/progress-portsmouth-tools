@@ -3,8 +3,8 @@
     "title": "Is Portsmouth Ready?",
     "subtitle": "A Developer's Readiness Assessment",
     "description": "For each condition workforce housing developers require, where does Portsmouth currently stand — and what HAP actions would change the rating?",
-    "lastUpdated": "2026-04-11",
-    "version": "1.0",
+    "lastUpdated": "2026-04-12",
+    "version": "1.1",
     "hapExplorerUrl": "https://progress-portsmouth-tools.vercel.app/housing/hap-explorer.html",
     "financeExplainerUrl": "https://progress-portsmouth-tools.vercel.app/housing/affordable-housing-finance-explainer.html",
     "whatWouldItTakeUrl": "https://progress-portsmouth-tools.vercel.app/housing/what-would-it-take.html"
@@ -16,14 +16,15 @@
       "icon": "🏗️",
       "rating": "in-progress",
       "whatYouNeed": {
-        "noah": "An existing small multifamily property (4–20 units) in a location where workforce rents cover operating costs plus modest debt service. Portsmouth land values are the single biggest barrier — high acquisition cost compresses margins at workforce rent levels. A city-facilitated land pipeline or below-market site changes the math entirely.",
-        "lihtc": "A site already configured for 50+ units — public land disposition or a willing seller at below-market terms. Nonprofits cannot assemble land competitively against private buyers in a hot market. Public land, contributed at nominal cost, can eliminate $2–5M from the capital stack — the single largest local lever available."
+        "noah": "An existing small multifamily property (4–20 units) where workforce rents cover operating costs plus modest debt service. Portsmouth land values are the single biggest barrier — high acquisition cost compresses margins at workforce rent levels. A city-facilitated land pipeline or below-market site changes the math. The GNOD land transfer mechanism (Section 10.686.30) creates a secondary pipeline: privately-owned parcels conveyed to the City by GNOD developers can be made available for small-scale affordable development, at zero acquisition cost.",
+        "lihtc": "A site already configured for 50+ units — city land disposition, a willing seller at below-market terms, or a GNOD land transfer parcel. Nonprofits cannot assemble land competitively against private buyers in a hot market. The GNOD mechanism (Section 10.686.30) is a distinct pathway: GNOD developers convey land to the City (minimum 1 acre per 20 acres of development), City Council accepts and designates use, then city conveys to a nonprofit developer — eliminating land acquisition cost from the capital stack. As Rodger Brown confirmed, free land cuts a meaningful sliver from total project costs but does not resolve the operating gap. State AHF funding remains the binding constraint."
       },
-      "currentStatus": "Housing Committee has begun inventorying city-owned sites. The Sherburne School 99-year ground lease model is established precedent. No standing RFP-ready pipeline exists. No formal land inventory with environmental clearance has been completed.",
+      "currentStatus": "Two distinct land pathways exist. First: city-owned parcels — Sherburne School 99-year ground lease model is established precedent; Housing Committee has begun inventorying next sites; no RFP-ready pipeline with Phase I environmental clearance completed. Second: GNOD land transfer (Section 10.686.30) — privately-owned GNOD parcels may be conveyed to the City in lieu of building workforce units, subject to City Council acceptance; ratio is 1 contiguous acre per 20 acres of GNOD development; developer bears all costs. City Council designates procurement and disposition for accepted parcels. Development rights banking (Section 10.686.40) applies when transfers exceed minimum. As Rodger Brown confirmed: free land cuts a meaningful sliver from project costs but does not resolve the operating gap — state AHF funding remains the binding constraint.",
       "hapItems": [
         { "id": "PL-1", "label": "Land inventory" },
         { "id": "PL-2", "label": "Public land RFPs" },
-        { "id": "PL-3", "label": "Sherburne School model" }
+        { "id": "PL-3", "label": "Sherburne School model" },
+        { "id": "Z-1", "label": "GNOD — Section 10.686.30" }
       ],
       "whatChangesThis": "Adoption of a standing land inventory with Phase I environmental clearance completed before RFP release. At least one additional city-owned site publicly identified as RFP-ready following the Sherburne precedent.",
       "decisionPoint": "Land inventory completion; Council land disposition policy",
