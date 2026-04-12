@@ -3380,5 +3380,30 @@
       "Transferred parcels may be irregular in size or location, limiting nonprofit developer interest",
       "Administrative process adds staff capacity requirements during a period when Planning Dept is already stretched"
     ]
+  },
+  {
+    "id": "PC-10",
+    "category": "Partnerships & Civic Engagement",
+    "action": "PHA scattered-site project-based voucher program for private small multifamily",
+    "description": "Explore a Housing Assistance Payments (HAP) contract program in which Portsmouth Housing Authority attaches project-based vouchers to income-restricted units in privately-owned small multifamily properties (2–20 units). Landlords receive market-equivalent revenue; tenants pay income-appropriate rents; the city gains de facto affordable units without new construction. Frame as a preservation program targeting naturally occurring affordable housing at risk of market-rate conversion.",
+    "target": "Preliminary feasibility conversation with PHA completed within 6 months; program design developed within 12 months if PHA willing",
+    "metric": "Number of PBV units placed in private small multifamily; number of landlord participants; units preserved at workforce rent levels",
+    "sources": "HUD Housing Choice Voucher Program — Project-Based Voucher regulations (24 CFR Part 983); field-tested small developer input, spring 2026",
+    "notes": "Federal law permits PHA to attach project-based vouchers to privately-owned scattered-site properties under 24 CFR Part 983. HUD site selection criteria and administrative requirements apply. Key conditions: (1) PHA must designate this as a strategic priority — not standard practice for small scattered-site properties; (2) HAP contract terms (typically 10–20 years) give lenders a revenue stream to underwrite against, improving landlord acquisition financing; (3) landlord must commit to income restriction for contract duration; (4) PHA administrative capacity for managing multiple small HAP contracts is a real constraint. A scattered-site PBV program could be co-designed with the city using HUD preservation criteria — HUD looks favorably on preservation framing. Cross-references: PC-8 (PHA coordination), I-14 (CDBG rehab), I-7 (tax credits).",
+    "is_new": true,
+    "status": "not-started",
+    "status_detail": "No conversation with PHA initiated. No HUD feasibility assessment completed.",
+    "pros": [
+      "Solves the revenue-side cash flow problem for small landlords willing to income-restrict — more durable than a one-time grant",
+      "HAP contract gives lenders a predictable revenue stream to underwrite against, potentially improving acquisition financing",
+      "Preserves existing affordable stock without new construction cost or timeline",
+      "HUD preservation criteria may support program design and funding eligibility"
+    ],
+    "cons": [
+      "Requires PHA as willing partner — administrative capacity and strategic alignment with Craig Welch are preconditions",
+      "HUD site selection criteria for scattered-site properties may be difficult to meet for some small multifamily",
+      "PHA voucher pool is heavily committed — adding new HAP contracts competes with existing obligations",
+      "Program design and HUD approval process is complex and time-intensive"
+    ]
   }
 ]
