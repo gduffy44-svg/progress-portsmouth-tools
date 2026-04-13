@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital Flow Scoring Tool — Progress Portsmouth HAP Triage</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #2d3e52;
+  --navy-dark: #1a2332;
+  --gold:      #f4a261;
+  --gold-dark: #c8822a;
+  --teal:      #3a7d6e;
+  --coral:     #e76f51;
+  --cream:     #f8f4ee;
+  --muted:     #6b7a8d;
+  --border:    #e0d8cc;
+  --text:      #1a2332;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+/* NAV */
+.nav { background: var(--navy-dark); padding: 14px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.nav a { color: rgba(255,255,255,.6); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .06em; transition: color .2s; }
+.nav a:hover { color: var(--gold); }
+.nav .sep { color: rgba(255,255,255,.2); }
+.nav-badge { margin-left: auto; background: var(--gold-dark); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 40px 24px 36px; border-bottom: 3px solid var(--gold-dark); }
+.hero-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.hero-left { flex: 1; min-width: 280px; }
+.hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-style: italic; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+.hero-desc { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.65); line-height: 1.65; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+.btn-print { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 8px 16px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.btn-print:hover { background: rgba(255,255,255,.2); }
+.btn-reset { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: 1px solid rgba(231,111,81,.4); color: rgba(231,111,81,.8); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 8px 16px; border-radius: 4px; cursor: pointer; transition: all .2s; }
+.btn-reset:hover { border-color: var(--coral); color: var(--coral); }
+
+/* ITEM INPUT */
+.item-input-section { background: #fff; border-bottom: 1px solid var(--border); }
+.item-input-inner { max-width: 860px; margin: 0 auto; padding: 24px; display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; }
+.input-group { flex: 1; min-width: 200px; }
+.input-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: block; }
+.input-field { width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 10px 14px; font-family: 'Source Sans 3', sans-serif; font-size: 15px; color: var(--text); background: var(--cream); transition: border-color .2s; }
+.input-field:focus { outline: none; border-color: var(--navy); background: #fff; }
+.input-field::placeholder { color: var(--muted); font-weight: 300; }
+
+/* MAIN */
+main { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
+
+/* QUESTION CARDS */
+.questions { display: flex; flex-direction: column; gap: 20px; }
+.q-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; border-left: 5px solid var(--border); transition: border-color .2s; }
+.q-card.answered { border-left-color: var(--teal); }
+.q-header { padding: 20px 24px 16px; display: flex; gap: 16px; align-items: flex-start; }
+.q-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--gold-dark); background: rgba(200,130,42,.1); border: 1px solid rgba(200,130,42,.2); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.q-card.answered .q-num { background: rgba(58,125,110,.1); border-color: rgba(58,125,110,.3); color: var(--teal); }
+.q-text-group { flex: 1; }
+.q-text { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); line-height: 1.3; margin-bottom: 4px; }
+.q-sub { font-size: 13px; font-weight: 300; color: var(--muted); }
+.q-body { padding: 0 24px 20px 70px; }
+
+/* CHOICE BUTTONS */
+.choices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.choice-btn {
+  padding: 8px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  background: transparent;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s;
+}
+.choice-btn:hover { border-color: var(--navy); color: var(--navy); }
+.choice-btn.selected { background: var(--navy); border-color: var(--navy); color: #fff; }
+.choice-btn.selected.actor-home { background: var(--teal); border-color: var(--teal); }
+.choice-btn.selected.actor-small { background: var(--gold-dark); border-color: var(--gold-dark); }
+.choice-btn.selected.actor-non { background: var(--coral); border-color: var(--coral); }
+.choice-btn.selected.actor-multi { background: var(--navy); border-color: var(--navy); }
+
+/* RATIONALE */
+.rationale-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: block; }
+.rationale-field { width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 10px 14px; font-family: 'Source Sans 3', sans-serif; font-size: 13px; color: var(--text); resize: vertical; min-height: 60px; transition: border-color .2s; background: #faf9f6; }
+.rationale-field:focus { outline: none; border-color: var(--navy); background: #fff; }
+.rationale-field::placeholder { color: #b0b8c4; font-weight: 300; }
+
+/* SUMMARY PANEL */
+.summary-panel { background: var(--navy-dark); border-radius: 10px; padding: 28px 32px; margin-top: 32px; display: none; }
+.summary-panel.visible { display: block; }
+.summary-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.summary-item-name { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-style: italic; color: #fff; margin-bottom: 20px; }
+.summary-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.summary-row { display: flex; gap: 16px; align-items: flex-start; }
+.summary-q-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); width: 140px; flex-shrink: 0; padding-top: 2px; }
+.summary-q-val { flex: 1; }
+.summary-answer { font-size: 13px; font-weight: 700; color: #fff; }
+.summary-rationale { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.55); margin-top: 2px; font-style: italic; }
+.summary-verdict { background: rgba(244,162,97,.12); border: 1px solid rgba(244,162,97,.25); border-radius: 8px; padding: 16px 20px; }
+.summary-verdict-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.summary-verdict-text { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.65; }
+
+/* LEGEND */
+.legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; padding: 14px 16px; background: rgba(248,244,238,.6); border: 1px solid var(--border); border-radius: 8px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); font-weight: 600; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* PRINT */
+@media print {
+  .nav, .btn-print, .btn-reset, .hero-actions, .page-footer { display: none !important; }
+  body { background: white; }
+  .hero { background: #2d3e52; padding: 20px 24px; }
+  .q-card { break-inside: avoid; border: 1px solid #ccc; }
+  .summary-panel { background: #f8f4ee; border: 2px solid #2d3e52; }
+  .summary-panel.visible { display: block !important; }
+  .summary-item-name, .summary-eyebrow, .summary-verdict-label { color: #2d3e52 !important; }
+  .summary-answer { color: #1a2332 !important; }
+  .summary-rationale { color: #6b7a8d !important; }
+  .summary-verdict-text { color: #2a3545 !important; }
+  .summary-verdict { background: #eee; border: 1px solid #ccc; }
+  .choice-btn.selected { background: #2d3e52 !important; color: white !important; }
+}
+
+/* FOOTER */
+.page-footer { background: var(--navy-dark); padding: 28px 24px; text-align: center; }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 15px; color: rgba(255,255,255,.45); margin-bottom: 8px; }
+.footer-links { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .04em; line-height: 2.2; }
+.footer-links a { color: rgba(244,162,97,.65); text-decoration: none; }
+.footer-links a:hover { color: var(--gold); }
+.footer-ai { margin-top: 12px; font-size: 11px; color: rgba(255,255,255,.2); font-style: italic; }
+
+@media (max-width: 640px) {
+  .q-body { padding-left: 24px; }
+  .hero-inner { flex-direction: column; }
+  .summary-row { flex-direction: column; gap: 4px; }
+  .summary-q-label { width: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://www.progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="sep">·</span>
+  <a href="./learning-library.html">← Library</a>
+  <span class="sep">·</span>
+  <a href="./capital-flow-test.html">← The Capital Flow Test</a>
+  <span class="nav-badge">HAP Triage Tool</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Housing Action Plan — Capital Flow Scoring Tool</div>
+      <h1>Does This Item Move Capital?</h1>
+      <p class="hero-desc">A structured triage instrument for Housing Committee members. Enter a HAP item, answer four questions, and generate a record of your reasoning. One item at a time.</p>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
+      <button class="btn-reset" onclick="resetTool()">↺ New Item</button>
+    </div>
+  </div>
+</div>
+
+<div class="item-input-section">
+  <div class="item-input-inner">
+    <div class="input-group">
+      <label class="input-label" for="item-id">HAP Item ID</label>
+      <input class="input-field" id="item-id" type="text" placeholder="e.g. Z-4" maxlength="10" oninput="updateSummary()">
+    </div>
+    <div class="input-group" style="flex:3">
+      <label class="input-label" for="item-name">Item name / description</label>
+      <input class="input-field" id="item-name" type="text" placeholder="e.g. Parking reform — remove minimums in target zones" oninput="updateSummary()">
+    </div>
+    <div class="input-group" style="flex:1;min-width:140px;">
+      <label class="input-label" for="session-date">Triage date</label>
+      <input class="input-field" id="session-date" type="date" oninput="updateSummary()">
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div>Homeowner track</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gold-dark)"></div>Small/private developer track</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--coral)"></div>Nonprofit/mission developer track</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--navy)"></div>Multiple actors</div>
+    <span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.04em;margin-left:auto;">Reference: <a href="./capital-flow-test.html" style="color:var(--gold-dark);text-decoration:none;">Capital Flow Test module →</a></span>
+  </div>
+
+  <div class="questions">
+
+    <!-- Q1 -->
+    <div class="q-card" id="q1-card">
+      <div class="q-header">
+        <div class="q-num">1</div>
+        <div class="q-text-group">
+          <div class="q-text">Which actor does this item primarily address?</div>
+          <div class="q-sub">Whose capital decision does this item affect most directly?</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="choices">
+          <button class="choice-btn actor-home" onclick="selectChoice(this,'q1','Homeowner / Small landlord')">🏠 Homeowner / Small landlord</button>
+          <button class="choice-btn actor-small" onclick="selectChoice(this,'q1','Small / private developer')">🔧 Small / private developer</button>
+          <button class="choice-btn actor-non" onclick="selectChoice(this,'q1','Nonprofit / mission developer')">🏛️ Nonprofit / mission developer</button>
+          <button class="choice-btn actor-multi" onclick="selectChoice(this,'q1','Multiple actor types')">⬡ Multiple actor types</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q1','No specific actor — process or governance')">⚙️ No specific actor</button>
+        </div>
+        <label class="rationale-label" for="r1">Rationale (optional)</label>
+        <textarea class="rationale-field" id="r1" placeholder="Which actor specifically, and why this item targets them…" oninput="updateSummary()"></textarea>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card" id="q2-card">
+      <div class="q-header">
+        <div class="q-num">2</div>
+        <div class="q-text-group">
+          <div class="q-text">Does this change an investment decision, or reduce friction for one already being made?</div>
+          <div class="q-sub">The difference matters: a decision-changer unlocks projects that wouldn't otherwise happen. A friction-reducer helps projects that are already likely.</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="choices">
+          <button class="choice-btn" onclick="selectChoice(this,'q2','Changes the decision — unlocks projects that otherwise wouldn\'t happen')">Changes the decision</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q2','Reduces friction — helps projects already leaning toward yes')">Reduces friction</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q2','Neither — process or governance improvement without direct capital effect')">Neither</button>
+        </div>
+        <label class="rationale-label" for="r2">Rationale (optional)</label>
+        <textarea class="rationale-field" id="r2" placeholder="Why this is a decision-changer vs. friction-reducer vs. neither…" oninput="updateSummary()"></textarea>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card" id="q3-card">
+      <div class="q-header">
+        <div class="q-num">3</div>
+        <div class="q-text-group">
+          <div class="q-text">What is the city's actual leverage here?</div>
+          <div class="q-sub">Can the city deliver this outcome through its own action, or does it depend on another actor agreeing, or on state/federal decisions?</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="choices">
+          <button class="choice-btn" onclick="selectChoice(this,'q3','Direct — city action alone is sufficient')">Direct — city action alone</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q3','Conditional — requires another actor to respond (developer, PHA, state agency)')">Conditional — actor must respond</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q3','Outside city control — requires state or federal action')">Outside city control</button>
+        </div>
+        <label class="rationale-label" for="r3">Rationale (optional)</label>
+        <textarea class="rationale-field" id="r3" placeholder="What specifically does the city control here, and what depends on others…" oninput="updateSummary()"></textarea>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card" id="q4-card">
+      <div class="q-header">
+        <div class="q-num">4</div>
+        <div class="q-text-group">
+          <div class="q-text">What happens if this item is delayed two years?</div>
+          <div class="q-sub">This is the opportunity cost question. Delay is the default outcome for any item that doesn't get prioritized — the question is what that costs.</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="choices">
+          <button class="choice-btn" onclick="selectChoice(this,'q4','Capital goes elsewhere — specific projects stall or leave the market')">Capital goes elsewhere</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q4','Project stalls but likely recovers when item is eventually adopted')">Project stalls, likely recovers</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q4','Compliance deadline — state law requires action by a fixed date')">Compliance deadline</button>
+          <button class="choice-btn" onclick="selectChoice(this,'q4','No material effect — item is important but not time-sensitive')">No material effect</button>
+        </div>
+        <label class="rationale-label" for="r4">Rationale (optional)</label>
+        <textarea class="rationale-field" id="r4" placeholder="Specific project or actor at risk if delayed, or why timing doesn't matter…" oninput="updateSummary()"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-panel" id="summary-panel">
+    <div class="summary-eyebrow">Scoring record — Capital Flow Assessment</div>
+    <div class="summary-item-name" id="summary-item-name">—</div>
+    <div class="summary-rows" id="summary-rows"></div>
+    <div class="summary-verdict">
+      <div class="summary-verdict-label">Committee record</div>
+      <div class="summary-verdict-text" id="summary-verdict"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <div class="footer-logo">Progress Portsmouth</div>
+  <div class="footer-links">
+    <a href="https://www.progressportsmouth.com">progressportsmouth.com</a> ·
+    <a href="./learning-library.html">Library</a> ·
+    <a href="./capital-flow-test.html">Capital Flow Test module</a> ·
+    <a href="./hap-explorer.html">HAP Explorer</a>
+  </div>
+  <div class="footer-ai">Created with AI assistance in research and information design, with human editorial control. · v1.0 · April 2026</div>
+</footer>
+
+<script>
+const answers = { q1: null, q2: null, q3: null, q4: null };
+
+function selectChoice(btn, qId, value) {
+  // Deselect siblings
+  btn.closest('.choices').querySelectorAll('.choice-btn').forEach(b => {
+    b.classList.remove('selected','actor-home','actor-small','actor-non','actor-multi');
+  });
+  btn.classList.add('selected');
+  // Preserve actor color
+  if (qId === 'q1') {
+    if (value.includes('Homeowner')) btn.classList.add('actor-home');
+    else if (value.includes('Small')) btn.classList.add('actor-small');
+    else if (value.includes('Nonprofit')) btn.classList.add('actor-non');
+    else if (value.includes('Multiple')) btn.classList.add('actor-multi');
+  }
+  answers[qId] = value;
+  document.getElementById(qId+'-card').classList.add('answered');
+  updateSummary();
+}
+
+function updateSummary() {
+  const id = document.getElementById('item-id').value.trim();
+  const name = document.getElementById('item-name').value.trim();
+  const date = document.getElementById('session-date').value;
+
+  const answered = Object.values(answers).filter(Boolean).length;
+  const panel = document.getElementById('summary-panel');
+
+  if (answered === 0 && !id && !name) { panel.classList.remove('visible'); return; }
+  panel.classList.add('visible');
+
+  // Item name
+  const label = [id, name].filter(Boolean).join(' — ') || 'Item not yet named';
+  document.getElementById('summary-item-name').textContent = label + (date ? ` · ${date}` : '');
+
+  // Rows
+  const qs = [
+    { key: 'q1', label: 'Actor addressed', rationale: document.getElementById('r1').value },
+    { key: 'q2', label: 'Decision impact',  rationale: document.getElementById('r2').value },
+    { key: 'q3', label: 'City leverage',    rationale: document.getElementById('r3').value },
+    { key: 'q4', label: 'Delay cost',       rationale: document.getElementById('r4').value },
+  ];
+  document.getElementById('summary-rows').innerHTML = qs.map(q => `
+    <div class="summary-row">
+      <div class="summary-q-label">${q.label}</div>
+      <div class="summary-q-val">
+        <div class="summary-answer">${answers[q.key] || '—'}</div>
+        ${q.rationale ? `<div class="summary-rationale">${q.rationale}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  // Verdict
+  let verdict = generateVerdict();
+  document.getElementById('summary-verdict').textContent = verdict;
+}
+
+function generateVerdict() {
+  const a1 = answers.q1 || '';
+  const a2 = answers.q2 || '';
+  const a3 = answers.q3 || '';
+  const a4 = answers.q4 || '';
+
+  if (!a1 && !a2 && !a3 && !a4) return 'Complete all four questions to generate a verdict.';
+
+  const parts = [];
+
+  if (a2.includes('Changes')) parts.push('This item changes investment decisions');
+  else if (a2.includes('friction')) parts.push('This item reduces friction for decisions already in motion');
+  else if (a2.includes('Neither')) parts.push('This item does not directly affect capital decisions');
+
+  if (a1 && !a1.includes('No specific')) parts.push(`primary actor: ${a1.split(' —')[0].replace(/[🏠🔧🏛️⬡⚙️]/u,'').trim()}`);
+
+  if (a3.includes('Direct')) parts.push('city can deliver this through its own action');
+  else if (a3.includes('Conditional')) parts.push('requires another actor to respond');
+  else if (a3.includes('Outside')) parts.push('outcome depends on state or federal action');
+
+  if (a4.includes('goes elsewhere')) parts.push('delay risks losing specific projects or investment');
+  else if (a4.includes('recovers')) parts.push('delay is costly but recoverable');
+  else if (a4.includes('Compliance')) parts.push('compliance deadline — state law sets the timeline');
+  else if (a4.includes('No material')) parts.push('timing is not critical');
+
+  if (parts.length === 0) return 'Answer more questions to generate a verdict.';
+  return parts.join('; ') + '.';
+}
+
+function resetTool() {
+  if (!confirm('Clear all answers and start a new item?')) return;
+  document.getElementById('item-id').value = '';
+  document.getElementById('item-name').value = '';
+  document.getElementById('session-date').value = '';
+  ['r1','r2','r3','r4'].forEach(id => document.getElementById(id).value = '');
+  document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected','actor-home','actor-small','actor-non','actor-multi'));
+  document.querySelectorAll('.q-card').forEach(c => c.classList.remove('answered'));
+  Object.keys(answers).forEach(k => answers[k] = null);
+  document.getElementById('summary-panel').classList.remove('visible');
+}
+
+// Set today's date as default
+document.getElementById('session-date').valueAsDate = new Date();
+</script>
+
+</body>
+</html>
