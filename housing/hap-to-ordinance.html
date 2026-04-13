@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From HAP to Ordinance — Progress Portsmouth</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #2d3e52;
+  --navy-dark: #1a2332;
+  --gold:      #f4a261;
+  --gold-dark: #c8822a;
+  --teal:      #3a7d6e;
+  --coral:     #e76f51;
+  --cream:     #f8f4ee;
+  --muted:     #6b7a8d;
+  --border:    #e0d8cc;
+  --text:      #1a2332;
+
+  --path-a: #2d3e52;
+  --path-b: #3a7d6e;
+  --path-c: #c8822a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+/* NAV */
+.nav { background: var(--navy-dark); padding: 14px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.nav a { color: rgba(255,255,255,.6); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .06em; transition: color .2s; }
+.nav a:hover { color: var(--gold); }
+.nav .sep { color: rgba(255,255,255,.2); }
+.nav-badge { margin-left: auto; background: var(--gold-dark); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); padding: 64px 24px 56px; text-align: center; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent, transparent 60px, rgba(244,162,97,.04) 60px, rgba(244,162,97,.04) 61px); pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-style: italic; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+.hero-rule { width: 48px; height: 2px; background: var(--gold); margin: 20px auto; opacity: .7; }
+.hero-desc { font-size: 16px; font-weight: 300; color: rgba(255,255,255,.8); line-height: 1.75; }
+
+/* MAIN */
+main { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+.section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.section-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 12px; }
+.section-body { font-size: 15px; line-height: 1.75; color: #2a3545; margin-bottom: 32px; }
+.section-body strong { color: var(--navy); font-weight: 700; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* CONCEPT BOX */
+.concept-box { background: var(--navy); border-radius: 10px; padding: 28px 32px; margin-bottom: 40px; }
+.concept-box p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.85); line-height: 1.8; }
+.concept-box strong { color: var(--gold); font-weight: 600; }
+
+/* PATH TABS */
+.path-tabs { display: flex; gap: 8px; margin-bottom: 0; flex-wrap: wrap; }
+.path-tab { padding: 10px 20px; border: none; border-radius: 6px 6px 0 0; font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .2s; background: rgba(45,62,82,.08); color: var(--muted); border-bottom: 3px solid transparent; }
+.path-tab.active-a { background: var(--path-a); color: #fff; }
+.path-tab.active-b { background: var(--path-b); color: #fff; }
+.path-tab.active-c { background: var(--path-c); color: #fff; }
+.path-tab:not(.active-a):not(.active-b):not(.active-c):hover { background: rgba(45,62,82,.15); color: var(--navy); }
+
+/* PROCESS PANELS */
+.process-panel { display: none; background: #fff; border: 1px solid var(--border); border-radius: 0 10px 10px 10px; padding: 28px; }
+.process-panel.active { display: block; }
+.process-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.process-meta-item { font-size: 13px; }
+.process-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 3px; }
+.process-meta-val { font-weight: 700; color: var(--navy); }
+.process-meta-val.warn { color: var(--coral); }
+.process-meta-val.ok { color: var(--teal); }
+
+/* STEPS */
+.steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+.steps::before { content: ''; position: absolute; left: 18px; top: 36px; bottom: 20px; width: 2px; background: var(--border); z-index: 0; }
+.step { display: flex; gap: 20px; position: relative; z-index: 1; }
+.step:not(:last-child) { margin-bottom: 0; }
+.step-connector { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.step-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; flex-shrink: 0; background: #fff; border: 2px solid var(--border); color: var(--muted); z-index: 1; }
+.panel-a .step-num.active { background: var(--path-a); border-color: var(--path-a); color: #fff; }
+.panel-b .step-num.active { background: var(--path-b); border-color: var(--path-b); color: #fff; }
+.panel-c .step-num.active { background: var(--path-c); border-color: var(--path-c); color: #fff; }
+.step-line { width: 2px; flex: 1; background: var(--border); min-height: 20px; }
+.step-content { padding: 6px 0 28px; flex: 1; }
+.step-title { font-weight: 700; color: var(--navy); font-size: 15px; margin-bottom: 3px; }
+.step-desc { font-size: 13px; color: #4a5568; line-height: 1.65; margin-bottom: 6px; }
+.step-time { display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--muted); background: rgba(248,244,238,.8); border: 1px solid var(--border); padding: 2px 8px; border-radius: 3px; margin-top: 4px; }
+.step-time.slow { color: var(--coral); background: rgba(231,111,81,.06); border-color: rgba(231,111,81,.2); }
+.step-time.ok { color: var(--teal); background: rgba(58,125,110,.06); border-color: rgba(58,125,110,.2); }
+.step-law { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(45,62,82,.5); margin-top: 4px; letter-spacing: .04em; }
+.step-note { font-size: 12px; color: var(--gold-dark); background: rgba(200,130,42,.07); border-left: 3px solid var(--gold); padding: 6px 10px; border-radius: 0 4px 4px 0; margin-top: 6px; line-height: 1.5; }
+
+/* TOTAL TIME */
+.total-time { background: rgba(26,35,50,.05); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+.total-time-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.total-time-val { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--navy); }
+.total-time-val.warn { color: var(--coral); }
+.total-time-val.ok { color: var(--teal); }
+
+/* ACCELERATION */
+.accel-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px; }
+.accel-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 20px; border-top: 4px solid var(--border); }
+.accel-card.high { border-top-color: var(--teal); }
+.accel-card.medium { border-top-color: var(--gold-dark); }
+.accel-card.structural { border-top-color: var(--coral); }
+.accel-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+.accel-card.high .accel-tag { color: var(--teal); }
+.accel-card.medium .accel-tag { color: var(--gold-dark); }
+.accel-card.structural .accel-tag { color: var(--coral); }
+.accel-title { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+.accel-desc { font-size: 13px; color: #4a5568; line-height: 1.65; margin-bottom: 10px; }
+.accel-saves { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--teal); background: rgba(58,125,110,.08); border: 1px solid rgba(58,125,110,.2); padding: 3px 8px; border-radius: 3px; display: inline-block; }
+.accel-who { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+/* WHAT DOESN'T REQUIRE ORDINANCE */
+.path-select { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+.path-row { display: flex; align-items: flex-start; gap: 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+.path-row-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.path-row-body { flex: 1; }
+.path-row-title { font-weight: 700; color: var(--navy); font-size: 14px; margin-bottom: 3px; }
+.path-row-desc { font-size: 13px; color: #4a5568; line-height: 1.6; }
+.path-row-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-top: 6px; display: inline-block; }
+.path-row-time.fast { color: var(--teal); background: rgba(58,125,110,.08); border: 1px solid rgba(58,125,110,.2); }
+.path-row-time.medium { color: var(--gold-dark); background: rgba(200,130,42,.08); border: 1px solid rgba(200,130,42,.2); }
+.path-row-time.slow { color: var(--coral); background: rgba(231,111,81,.08); border: 1px solid rgba(231,111,81,.2); }
+
+/* ADVOCACY BOX */
+.advocacy-box { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); border-radius: 10px; padding: 32px; margin-bottom: 40px; border: 1px solid rgba(244,162,97,.2); }
+.advocacy-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-style: italic; color: #fff; margin-bottom: 20px; }
+.advocacy-items { display: flex; flex-direction: column; gap: 14px; }
+.advocacy-item { display: flex; gap: 14px; }
+.advocacy-marker { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--gold); background: rgba(244,162,97,.15); border: 1px solid rgba(244,162,97,.3); border-radius: 4px; padding: 3px 8px; flex-shrink: 0; margin-top: 2px; white-space: nowrap; }
+.advocacy-text { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.65; }
+.advocacy-text strong { color: var(--gold); font-weight: 600; }
+
+/* FOOTER */
+.page-footer { background: var(--navy-dark); padding: 32px 24px; text-align: center; }
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 16px; color: rgba(255,255,255,.45); margin-bottom: 10px; }
+.footer-links { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .04em; line-height: 2.2; }
+.footer-links a { color: rgba(244,162,97,.65); text-decoration: none; }
+.footer-links a:hover { color: var(--gold); }
+.footer-ai { margin-top: 14px; font-size: 11px; color: rgba(255,255,255,.2); font-style: italic; }
+
+/* REVISION */
+.revision-wrap { max-width: 900px; margin: 0 auto; padding: 20px 24px 0; }
+.revision-toggle { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); cursor: pointer; background: none; border: none; letter-spacing: .04em; }
+.revision-body { display: none; margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); line-height: 1.9; }
+.revision-body.open { display: block; }
+
+@media (max-width: 680px) {
+  .accel-grid { grid-template-columns: 1fr; }
+  .steps::before { left: 16px; }
+  .path-tabs { gap: 4px; }
+  .path-tab { padding: 8px 14px; font-size: 12px; }
+}
+
+@media print {
+  .nav, .page-footer, .revision-wrap { display: none; }
+  body { background: white; }
+  .process-panel { display: block !important; break-before: page; }
+  .hero { background: #2d3e52; padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://www.progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="sep">·</span>
+  <a href="./learning-library.html">← Library</a>
+  <span class="nav-badge">Implementation Module 13</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Housing Action Plan — Module 13 · Implementation</div>
+    <h1>From HAP to Ordinance</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">How does a prioritized HAP item become law? This module maps the three paths a zoning reform idea takes — with realistic timelines, the legal requirements at each step, and concrete strategies the Housing Committee can advocate to accelerate the process.</p>
+  </div>
+</section>
+
+<main>
+
+  <div class="concept-box">
+    <p><strong>The most important thing to understand first:</strong> not all HAP items travel the same path. Some require a full zoning ordinance amendment — a 6–18 month process involving the Planning Board, Legal Department, and three Council readings. Others can move through administrative policy, Council resolution, or fee schedule changes in a fraction of the time. <strong>Correctly identifying the path is the first acceleration strategy.</strong></p>
+  </div>
+
+  <div class="section-eyebrow">Choose a path</div>
+  <div class="section-title">Three routes from HAP to implementation</div>
+
+  <div class="path-tabs">
+    <button class="path-tab active-a" onclick="showPath('a', this)">Path A — Ordinance Amendment</button>
+    <button class="path-tab" onclick="showPath('b', this)">Path B — Administrative / Policy</button>
+    <button class="path-tab" onclick="showPath('c', this)">Path C — Council Resolution</button>
+  </div>
+
+  <!-- PATH A: ORDINANCE AMENDMENT -->
+  <div class="process-panel panel-a active" id="panel-a">
+    <div class="process-meta">
+      <div class="process-meta-item">
+        <span class="process-meta-label">Typical timeline</span>
+        <span class="process-meta-val warn">6–18 months</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Legal authority</span>
+        <span class="process-meta-val">RSA 675:2 (Portsmouth as city)</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Examples</span>
+        <span class="process-meta-val">Z-4, Z-5, Z-8, Z-26, Z-33</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Council vote required</span>
+        <span class="process-meta-val warn">Yes — 3 readings</span>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Housing Committee prioritization</div>
+          <div class="step-desc">HC votes to prioritize an item and formally recommends it for Planning Board action. This is not a directive — the HC cannot instruct the PB, only recommend. The recommendation should include a clear statement of intent, the problem being solved, and any requested timeline.</div>
+          <div class="step-time ok">⏱ 1–2 months (HC triage process)</div>
+          <div class="step-note">Acceleration: The stronger and more specific the HC recommendation, the less ambiguity the PB has to resolve. A recommendation that arrives with draft policy language, a legal memo, and a clear problem statement moves faster than a general request.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Planning staff review and draft language</div>
+          <div class="step-desc">Planning & Sustainability Department reviews the recommendation, assesses legal and zoning implications, and drafts proposed ordinance language in coordination with the City Attorney's office. This is often the longest and least visible phase — work product is internal until ready for PB presentation.</div>
+          <div class="step-time slow">⏱ 2–6 months (depends heavily on staff capacity)</div>
+          <div class="step-law">RSA 674:16 — Planning board recommends amendments to local legislative body</div>
+          <div class="step-note">Acceleration: HC could advocate for a shared drafting process — HC members with policy expertise working alongside staff during drafting, not just reviewing afterward. Also: pre-approved language for compliance-driven items (HB 577, SB 284, HB 631) already exists from NHMA; staff doesn't need to draft from scratch.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Planning Board work session(s)</div>
+          <div class="step-desc">Planning Board reviews draft language in one or more work sessions. Members ask questions, request revisions, and may send the item back to staff for redrafting. Complex or controversial items may require multiple sessions. This phase is often where items stall — PB work session calendars are crowded.</div>
+          <div class="step-time slow">⏱ 1–3 months (scheduling dependent)</div>
+          <div class="step-note">Acceleration: HC members attending PB work sessions as public participants — not to lobby, but to answer factual questions about the HAP intent — can reduce revision cycles. Early relationship-building between HC and PB on complex items prevents surprises.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Planning Board public hearing</div>
+          <div class="step-desc">Legally required under RSA 675:2. Public notice must be posted and published at least 10 days before the hearing. The PB hears public comment, deliberates, and votes on whether to recommend the amendment to the City Council. If the amendment is substantively altered after the hearing, a second hearing is required (14-day minimum gap).</div>
+          <div class="step-time slow">⏱ 6–8 weeks (notice requirements + scheduling)</div>
+          <div class="step-law">RSA 675:2 + RSA 675:7 — public notice requirements</div>
+          <div class="step-note">Acceleration: If HC can help ensure draft language is clean before the public hearing, the PB is less likely to substantially alter it — avoiding a mandatory second hearing. Well-drafted amendments with clear purpose statements also reduce public confusion and opposition.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">5</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">City Council — First Reading</div>
+          <div class="step-desc">Amendment forwarded to City Council agenda. First reading is typically a presentation and introduction — no vote on substance. Council members may ask questions. Item must then be calendared for second reading, which requires a minimum scheduling gap under Portsmouth practice.</div>
+          <div class="step-time">⏱ 2–4 weeks (agenda scheduling)</div>
+          <div class="step-note">Portsmouth note: Three readings is Portsmouth's local practice, not a state law requirement. RSA 675:2 gives Portsmouth flexibility in determining its own amendment process. The three-reading structure is a Council self-governance choice that could be modified for specific categories of items.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">6</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">City Council — Second Reading (Public Hearing)</div>
+          <div class="step-desc">Second reading typically includes a public hearing on the amendment. Council hears public comment and may refer back to committee or request further information. This is where political opposition surfaces most visibly. If the Council substantially amends the proposal, it may need to return to the Planning Board.</div>
+          <div class="step-time">⏱ 2–4 weeks (scheduling gap)</div>
+          <div class="step-note">Acceleration: HC members can provide public testimony at the Council public hearing supporting the amendment — this is appropriate advocacy. Organized and credible public support at this stage moves items forward; silence is often read as low priority.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">7</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">City Council — Third Reading and Vote</div>
+          <div class="step-desc">Final Council vote. Adoption requires majority vote. Amendment takes effect as specified in the ordinance — typically immediately upon adoption or within a stated period. Text filed with City Clerk. Ordinance updated.</div>
+          <div class="step-time ok">⏱ 2–3 weeks (scheduling gap)</div>
+          <div class="step-law">RSA 675:8 — certified copies filed with City Clerk</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-time">
+      <div class="total-time-label">Typical total</div>
+      <div class="total-time-val warn">9–18 months from HC priority vote to effective date</div>
+    </div>
+  </div>
+
+  <!-- PATH B: ADMINISTRATIVE -->
+  <div class="process-panel panel-b" id="panel-b">
+    <div class="process-meta">
+      <div class="process-meta-item">
+        <span class="process-meta-label">Typical timeline</span>
+        <span class="process-meta-val ok">1–4 months</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Authority</span>
+        <span class="process-meta-val">City Manager / Planning Director / Fee Committee</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Examples</span>
+        <span class="process-meta-val">I-3, P-12, I-2 (partial), PC-4</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Council vote required</span>
+        <span class="process-meta-val ok">Not always</span>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Identify the administrative authority</div>
+          <div class="step-desc">Many HAP items don't require an ordinance change — they require a decision by the City Manager, Planning Director, or a department head. Permitting timelines, staff workflows, developer outreach programs, and some fee structures fall into this category. The HC should explicitly flag which items are administrative, not legislative.</div>
+          <div class="step-time ok">⏱ Part of triage — no additional time</div>
+          <div class="step-note">This is the most underused acceleration in Portsmouth's current process. Items like I-3 (expedited review track) and P-12 (permit timeline audit) don't require Council action — they require a management decision by Peter Britz and the City Manager.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">HC recommendation to City Manager / Planning Director</div>
+          <div class="step-desc">HC formally requests that the administrative authority act. This can happen in parallel with ordinance track items — no need to wait for the legislative process. A written recommendation with specific deliverables and a requested timeline is more effective than a general ask.</div>
+          <div class="step-time ok">⏱ 2–4 weeks (HC preparation and transmission)</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Staff implementation</div>
+          <div class="step-desc">Planning and relevant departments implement the change. May require internal workflow changes, staff training, or coordination across departments. The HC should request a written confirmation of implementation with a specific date — otherwise administrative items drift.</div>
+          <div class="step-time ok">⏱ 1–3 months (staff capacity dependent)</div>
+          <div class="step-note">Accountability mechanism: HC should request a 90-day status report on all administrative track items. Without this, administrative commitments tend to be deprioritized when staff face competing demands.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-time">
+      <div class="total-time-label">Typical total</div>
+      <div class="total-time-val ok">6–16 weeks from HC recommendation to implementation</div>
+    </div>
+  </div>
+
+  <!-- PATH C: COUNCIL RESOLUTION -->
+  <div class="process-panel panel-c" id="panel-c">
+    <div class="process-meta">
+      <div class="process-meta-item">
+        <span class="process-meta-label">Typical timeline</span>
+        <span class="process-meta-val">2–5 months</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Authority</span>
+        <span class="process-meta-val">City Council (majority vote, no PB required)</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Examples</span>
+        <span class="process-meta-val">HTF-1, PL-2, land disposition policy, 79-E adoption</span>
+      </div>
+      <div class="process-meta-item">
+        <span class="process-meta-label">Planning Board required</span>
+        <span class="process-meta-val ok">No</span>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">HC drafts resolution recommendation</div>
+          <div class="step-desc">Some HAP items — particularly policy adoptions, program establishment, and land disposition frameworks — require a Council vote but not a zoning ordinance amendment. These travel directly to the Council without Planning Board review. HC prepares a resolution recommendation with supporting materials.</div>
+          <div class="step-time ok">⏱ 3–6 weeks (HC preparation)</div>
+          <div class="step-note">Examples: adopting a 79-E program (designating eligible areas), establishing Housing Trust Fund governance, adopting a land disposition policy prioritizing affordable housing, authorizing a City Manager to negotiate a ground lease.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Legal review and Council agenda</div>
+          <div class="step-desc">City Attorney reviews the proposed resolution. If straightforward, this can happen quickly. City Manager places the item on Council agenda. May go through a Council committee first (e.g., Finance Committee for HTF governance).</div>
+          <div class="step-time">⏱ 3–6 weeks (legal review + scheduling)</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector"><div class="step-num active">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Council discussion and vote</div>
+          <div class="step-desc">Resolutions typically require fewer readings than ordinance amendments. A resolution may pass in a single meeting or require one additional meeting. Public comment may or may not be solicited depending on the item.</div>
+          <div class="step-time ok">⏱ 2–6 weeks (Council scheduling)</div>
+          <div class="step-note">This path is significantly faster than Path A and should be the default for any item that doesn't require changing the zoning ordinance text. Many teams default to the full ordinance path out of habit when a resolution would suffice.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-time">
+      <div class="total-time-label">Typical total</div>
+      <div class="total-time-val">2–5 months from HC recommendation to Council vote</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-eyebrow">Acceleration strategies</div>
+  <div class="section-title">What the Housing Committee can advocate for</div>
+  <p class="section-body">These are concrete changes — some within the HC's direct control, others requiring Council or Planning Board cooperation — that would materially reduce the time from HAP prioritization to implementation. Each is grounded in Portsmouth's specific process.</p>
+
+  <div class="accel-grid">
+    <div class="accel-card high">
+      <div class="accel-tag">High impact · Immediate</div>
+      <div class="accel-title">Correct path identification during triage</div>
+      <div class="accel-desc">Before any item leaves triage, explicitly classify it: ordinance amendment (Path A), administrative action (Path B), or Council resolution (Path C). This single discipline could cut 6+ months from items incorrectly assumed to need an ordinance amendment.</div>
+      <div class="accel-saves">Potential savings: 3–9 months per item</div>
+      <div class="accel-who">Who controls: Housing Committee</div>
+    </div>
+
+    <div class="accel-card high">
+      <div class="accel-tag">High impact · Near-term</div>
+      <div class="accel-title">Pre-drafted language for compliance items</div>
+      <div class="accel-desc">HB 577, SB 284, and HB 631 amendments are state compliance requirements. NHMA has already published model ordinance language. The HC should formally request that Planning staff adopt NHMA model language as a starting point rather than drafting from scratch — eliminating the longest phase of Path A.</div>
+      <div class="accel-saves">Potential savings: 2–4 months (drafting phase)</div>
+      <div class="accel-who">Who controls: HC recommendation to Planning Director</div>
+    </div>
+
+    <div class="accel-card medium">
+      <div class="accel-tag">Medium impact · Near-term</div>
+      <div class="accel-title">Bundled amendment cycles</div>
+      <div class="accel-desc">Planning Board and Council can process multiple related amendments in a single hearing cycle — one public hearing, one set of readings — instead of sequential individual items. For HAP zoning items that are legally and substantively related (e.g., parking + dimensional reform), bundling reduces total calendar time significantly.</div>
+      <div class="accel-saves">Potential savings: 4–8 months per additional item bundled</div>
+      <div class="accel-who">Who controls: HC coordinates with Planning staff; PB must agree</div>
+    </div>
+
+    <div class="accel-card medium">
+      <div class="accel-tag">Medium impact · Near-term</div>
+      <div class="accel-title">HC-PB joint work sessions</div>
+      <div class="accel-desc">Request that the Planning Board schedule joint work sessions with the HC on priority HAP zoning items — before drafting begins. Early alignment on intent and scope prevents PB from sending items back for redrafting. Reduces revision cycles, which are the biggest source of unpredictable delay.</div>
+      <div class="accel-saves">Potential savings: 1–3 months (revision cycles)</div>
+      <div class="accel-who">Who controls: HC chairs + PB chairs must jointly agree</div>
+    </div>
+
+    <div class="accel-card medium">
+      <div class="accel-tag">Medium impact · Near-term</div>
+      <div class="accel-title">Parallel processing — administrative and ordinance tracks</div>
+      <div class="accel-desc">Administrative Path B items should be initiated simultaneously with ordinance track items, not sequentially. A permitting reform (I-3) can be underway while a zoning amendment (Z-4) is in Planning Board review. Most of Portsmouth's current process is sequential by default, not by necessity.</div>
+      <div class="accel-saves">Potential savings: 3–6 months (overall pipeline)</div>
+      <div class="accel-who">Who controls: HC operational discipline; City Manager cooperation</div>
+    </div>
+
+    <div class="accel-card medium">
+      <div class="accel-tag">Medium impact · Near-term</div>
+      <div class="accel-title">90-day accountability check on administrative items</div>
+      <div class="accel-desc">HC formally requests a written status report on all Path B items 90 days after recommendation. Without a structured check-in, administrative items tend to be deprioritized as staff face competing demands. A formal reporting expectation changes the incentive structure.</div>
+      <div class="accel-saves">Impact: Prevents stall, not calendar compression</div>
+      <div class="accel-who">Who controls: Housing Committee (can adopt as standard practice)</div>
+    </div>
+
+    <div class="accel-card structural">
+      <div class="accel-tag">Structural · Requires Council action</div>
+      <div class="accel-title">Consent agenda for uncontested HAP amendments</div>
+      <div class="accel-desc">Portsmouth's three-reading requirement is local practice, not state law. RSA 675:2 gives the Council flexibility to determine its own process. The Council could adopt a rule allowing HAP amendments with Planning Board recommendation and no public opposition to be consolidated into a consent agenda at second reading — skipping a standalone third reading for uncontested items.</div>
+      <div class="accel-saves">Potential savings: 2–4 weeks per uncontested item</div>
+      <div class="accel-who">Who controls: City Council (requires self-governance amendment)</div>
+    </div>
+
+    <div class="accel-card structural">
+      <div class="accel-tag">Structural · Requires Council action</div>
+      <div class="accel-title">Compliance deadline as priority queue</div>
+      <div class="accel-desc">Three HAP items (Z-3/Z-25 for HB 631, Z-2 for HB 577 verification, Z-4 for SB 284) have hard state compliance deadlines — July 1, 2026 for HB 631. The Council should formally designate compliance-driven amendments as a priority queue with guaranteed scheduling within 30 days of PB referral, bypassing the standard agenda backlog.</div>
+      <div class="accel-saves">Impact: Avoids legal exposure from missed deadlines</div>
+      <div class="accel-who">Who controls: City Council / City Manager</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-eyebrow">What the HC can advocate for — the direct ask</div>
+  <div class="section-title">A concrete reform agenda</div>
+
+  <div class="advocacy-box">
+    <div class="advocacy-title">The Housing Committee's process reform ask</div>
+    <div class="advocacy-items">
+      <div class="advocacy-item">
+        <span class="advocacy-marker">Ask 1</span>
+        <div class="advocacy-text">Require <strong>path classification</strong> for every HAP item at triage — ordinance, administrative, or resolution — before the item leaves the Housing Committee. The HC adopts this as its own standard operating procedure immediately, with no action by any other body required.</div>
+      </div>
+      <div class="advocacy-item">
+        <span class="advocacy-marker">Ask 2</span>
+        <div class="advocacy-text">Request that the <strong>Planning Director confirm</strong> which HAP items on the priority list require new ordinance language vs. NHMA model adoption vs. administrative change, and provide an estimated drafting timeline for each. This creates a public record of the process commitment.</div>
+      </div>
+      <div class="advocacy-item">
+        <span class="advocacy-marker">Ask 3</span>
+        <div class="advocacy-text">Request that the <strong>City Manager establish</strong> a parallel administrative implementation track for Path B items — a named staff lead, a 90-day reporting requirement, and a public status dashboard or summary. Visible accountability changes behavior.</div>
+      </div>
+      <div class="advocacy-item">
+        <span class="advocacy-marker">Ask 4</span>
+        <div class="advocacy-text">Request that the <strong>City Council direct</strong> the Planning Board to schedule joint work sessions with the HC on the top three priority zoning items within 60 days of HAP adoption. Naming a specific number and timeline makes this actionable, not aspirational.</div>
+      </div>
+      <div class="advocacy-item">
+        <span class="advocacy-marker">Ask 5</span>
+        <div class="advocacy-text">Propose that the <strong>Council explore</strong> a consent agenda rule for uncontested HAP amendments — those with Planning Board recommendation and no registered opposition — to reduce the three-reading timeline. RSA 675:2 explicitly permits this flexibility.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div class="revision-wrap">
+  <button class="revision-toggle" onclick="document.getElementById('rev-body').classList.toggle('open');this.textContent=this.textContent.includes('▸')?'▾ Hide revision history':'▸ Revision history'">▸ Revision history</button>
+  <div class="revision-body" id="rev-body">
+    v1.0 · April 2026 — Initial release. Three implementation paths (ordinance amendment, administrative, Council resolution) with realistic timing estimates. Eight acceleration strategies, five advocacy asks. Process grounded in RSA 675:2 (Portsmouth city form), RSA 675:7 (notice requirements), and Portsmouth's local three-reading practice.
+  </div>
+</div>
+
+<footer class="page-footer">
+  <div class="footer-logo">Progress Portsmouth</div>
+  <div class="footer-links">
+    <a href="https://www.progressportsmouth.com">progressportsmouth.com</a> ·
+    <a href="./learning-library.html">Library</a> ·
+    <a href="./hap-explorer.html">HAP Explorer</a> ·
+    <a href="./what-would-it-take.html">What Would It Take?</a>
+  </div>
+  <div class="footer-ai">Created with AI assistance in research and information design, with human editorial control.</div>
+</footer>
+
+<script>
+function showPath(path, btn) {
+  // Deactivate all tabs
+  document.querySelectorAll('.path-tab').forEach(t => {
+    t.classList.remove('active-a','active-b','active-c');
+  });
+  // Deactivate all panels
+  document.querySelectorAll('.process-panel').forEach(p => p.classList.remove('active'));
+  // Activate selected
+  btn.classList.add('active-' + path);
+  document.getElementById('panel-' + path).classList.add('active');
+}
+</script>
+</body>
+</html>
