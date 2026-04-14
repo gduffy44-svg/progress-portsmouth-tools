@@ -395,7 +395,7 @@ main {
 }
 .calc-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-style: italic;
   color: #fff;
   margin-bottom: 4px;
@@ -421,8 +421,8 @@ main {
 }
 .calc-input-wrap span {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: rgba(255,255,255,.75);
+  font-size: 16px;
+  color: rgba(255,255,255,.85);
 }
 .calc-input {
   background: none;
@@ -442,7 +442,7 @@ main {
 }
 .calc-preset {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -461,31 +461,31 @@ main {
   gap: 8px;
 }
 .calc-result {
-  background: rgba(255,255,255,.06);
+  background: rgba(255,255,255,.1);
   border-radius: 6px;
-  padding: 10px 12px;
-  border: 1px solid rgba(255,255,255,.08);
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.2);
 }
 .calc-result-type {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.65);
-  margin-bottom: 4px;
+  color: rgba(255,255,255,.8);
+  margin-bottom: 6px;
 }
 .calc-result-affordable {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 .calc-result-market {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: rgba(255,255,255,.6);
+  font-size: 11px;
+  color: rgba(255,255,255,.75);
 }
-.can-afford { color: #7ecabb; }
-.cannot-afford { color: #f4a08a; }
+.can-afford { color: #5dd8c8; }
+.cannot-afford { color: #ff8a6e; }
 
 /* INSIGHTS */
 .insights-grid {
@@ -1086,6 +1086,9 @@ main {
 @media (max-width: 700px) {
   .unit-stats { grid-template-columns: repeat(2, 1fr); }
   .calc-results { grid-template-columns: repeat(2, 1fr); }
+  .calc-preset { font-size: 12px; padding: 8px 12px; }
+  .calc-result { padding: 14px; }
+  .calc-result-affordable { font-size: 16px; }
   .insights-grid { grid-template-columns: 1fr; }
   .masthead-inner { flex-direction: column; align-items: flex-start; }
   .masthead-right { text-align: left; }
