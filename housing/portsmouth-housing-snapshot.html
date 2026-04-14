@@ -388,7 +388,7 @@ main {
 
 /* AFFORDABILITY CALC */
 .calc-wrap {
-  background: var(--navy);
+  background: var(--navy-dark);
   border-radius: 8px;
   padding: 22px 24px;
   margin-bottom: 24px;
@@ -461,17 +461,17 @@ main {
   gap: 8px;
 }
 .calc-result {
-  background: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.22);
   border-radius: 6px;
   padding: 14px 16px;
-  border: 1px solid rgba(255,255,255,.28);
+  border: 1px solid rgba(255,255,255,.4);
 }
 .calc-result-type {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.8);
+  color: rgba(255,255,255,.95);
   margin-bottom: 6px;
 }
 .calc-result-affordable {
@@ -1175,10 +1175,10 @@ main {
         </div>
       </div>
       <div class="calc-results" id="calc-results">
-        <div class="calc-result"><div class="calc-result-type">Studio</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.65);">Enter income</div><div class="calc-result-market" id="cr-studio-market"></div></div>
-        <div class="calc-result"><div class="calc-result-type">1-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.65);">Enter income</div><div class="calc-result-market" id="cr-1br-market"></div></div>
-        <div class="calc-result"><div class="calc-result-type">2-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.65);">Enter income</div><div class="calc-result-market" id="cr-2br-market"></div></div>
-        <div class="calc-result"><div class="calc-result-type">3-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.65);">Enter income</div><div class="calc-result-market" id="cr-3br-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">Studio</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.9);">Enter income</div><div class="calc-result-market" id="cr-studio-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">1-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.9);">Enter income</div><div class="calc-result-market" id="cr-1br-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">2-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.9);">Enter income</div><div class="calc-result-market" id="cr-2br-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">3-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.9);">Enter income</div><div class="calc-result-market" id="cr-3br-market"></div></div>
       </div>
     </div>
 
@@ -1555,7 +1555,7 @@ function calcAffordability() {
     const canAfford = affordable >= u.median;
     const diff = Math.abs(affordable - u.median);
     const body = income === 0
-      ? `<div class="calc-result-affordable" style="color:rgba(255,255,255,.65)">Enter income</div>`
+      ? `<div class="calc-result-affordable" style="color:rgba(255,255,255,.9)">Enter income</div>`
       : canAfford
         ? `<div class="calc-result-affordable can-afford">✓ Within reach</div><div class="calc-result-market">$${diff.toLocaleString()}/mo to spare</div>`
         : `<div class="calc-result-affordable cannot-afford">✗ Out of reach</div><div class="calc-result-market">$${diff.toLocaleString()}/mo short</div>`;
