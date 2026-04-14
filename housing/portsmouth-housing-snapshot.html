@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portsmouth Housing Snapshot — Progress Portsmouth</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ── SNAPSHOT DATA ── edit this block when the content agent runs ── */
+/*
+  To update: paste the content agent's output here, replacing the
+  values in the SNAPSHOT_DATA object in the <script> block below.
+  Then git commit and push. The page updates automatically.
+*/
+
+:root {
+  --navy:      #2d3e52;
+  --navy-dark: #1a2332;
+  --gold:      #f4a261;
+  --gold-dark: #c8822a;
+  --teal:      #3a7d6e;
+  --coral:     #e76f51;
+  --cream:     #f8f4ee;
+  --muted:     #6b7c8f;
+  --border:    rgba(45,62,82,.1);
+  --text:      #1a2332;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+.nav {
+  background: var(--navy-dark);
+  padding: 13px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav a {
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav a:hover { color: var(--gold); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-jump {
+  display: flex;
+  gap: 12px;
+}
+.nav-jump a {
+  font-size: 9px;
+  letter-spacing: .1em;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  background: var(--navy);
+  padding: 40px 28px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244,162,97,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,162,97,.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.masthead-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.masthead-left {}
+.masthead-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.masthead-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold-dark);
+}
+.masthead h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+}
+.masthead h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.masthead-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.55);
+  margin-top: 10px;
+  max-width: 460px;
+  line-height: 1.65;
+}
+.masthead-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+.masthead-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 4px;
+}
+.masthead-date-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  color: #fff;
+}
+.freshness-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 8px;
+}
+.freshness-badge.fresh { background: rgba(58,125,110,.25); color: #7ecabb; }
+.freshness-badge.stale { background: rgba(200,130,42,.2); color: var(--gold); }
+.freshness-badge.old   { background: rgba(231,111,81,.2); color: #f4a08a; }
+
+.gold-rule {
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold) 40%, transparent);
+}
+
+/* ── SECTION NAV PILLS ── */
+.section-nav {
+  background: rgba(45,62,82,.06);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px;
+  display: flex;
+  gap: 0;
+}
+.section-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: all .2s;
+}
+.section-pill:hover { color: var(--navy); }
+.section-pill.s1 { border-bottom-color: var(--teal); color: var(--teal); }
+.section-pill.s2 { border-bottom-color: var(--gold-dark); color: var(--gold-dark); }
+.section-pill.s3 { border-bottom-color: var(--coral); color: var(--coral); }
+.pill-coming {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(107,124,143,.12);
+  color: var(--muted);
+}
+
+/* ── MAIN ── */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 28px 80px;
+}
+
+/* ── SECTION FRAME ── */
+.snapshot-section {
+  padding: 48px 0 0;
+  border-top: none;
+}
+.snapshot-section + .snapshot-section {
+  margin-top: 8px;
+}
+
+.section-hdr {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.section-hdr-accent {
+  width: 4px;
+  border-radius: 2px;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-height: 40px;
+}
+.s1 .section-hdr-accent { background: var(--teal); }
+.s2 .section-hdr-accent { background: var(--gold-dark); }
+.s3 .section-hdr-accent { background: var(--coral); }
+.section-hdr-text {}
+.section-hdr-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.s1 .section-hdr-label { color: var(--teal); }
+.s2 .section-hdr-label { color: var(--gold-dark); }
+.s3 .section-hdr-label { color: var(--coral); }
+.section-hdr-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.section-hdr-meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .04em;
+}
+
+/* ── ① RENTAL MARKET ── */
+.unit-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.unit-stat {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 16px 14px;
+  border-top: 3px solid var(--teal);
+  position: relative;
+}
+.unit-stat.scarce { border-top-color: var(--coral); }
+.unit-stat-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.unit-stat-median {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.unit-stat-sub {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.unit-stat-range {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.unit-stat-inventory {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.unit-stat-inventory.ok    { background: rgba(58,125,110,.1); color: var(--teal); }
+.unit-stat-inventory.scarce { background: rgba(231,111,81,.1); color: var(--coral); }
+
+/* INVENTORY VISUAL */
+.inventory-bar-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+.inventory-bar-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.bar-row:last-child { margin-bottom: 0; }
+.bar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--navy);
+  width: 72px;
+  flex-shrink: 0;
+}
+.bar-track {
+  flex: 1;
+  height: 10px;
+  background: rgba(45,62,82,.08);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--teal);
+  transition: width .6s ease;
+}
+.bar-fill.scarce { background: var(--coral); }
+.bar-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--navy);
+  width: 32px;
+  text-align: right;
+}
+
+/* AFFORDABILITY CALC */
+.calc-wrap {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+.calc-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.calc-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.calc-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.calc-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 6px;
+  padding: 8px 14px;
+  flex: 1;
+  min-width: 180px;
+}
+.calc-input-wrap span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+}
+.calc-input {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  width: 100%;
+}
+.calc-input::placeholder { color: rgba(255,255,255,.3); }
+.calc-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.calc-preset {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 4px;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.6);
+  cursor: pointer;
+  transition: all .15s;
+}
+.calc-preset:hover { background: rgba(255,255,255,.12); color: #fff; }
+.calc-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.calc-result {
+  background: rgba(255,255,255,.06);
+  border-radius: 6px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.calc-result-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 4px;
+}
+.calc-result-affordable {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.calc-result-market {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,.4);
+}
+.can-afford { color: #7ecabb; }
+.cannot-afford { color: #f4a08a; }
+
+/* INSIGHTS */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 0;
+}
+.insight-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  border-left: 4px solid var(--border);
+}
+.insight-card.insight-coral { border-left-color: var(--coral); }
+.insight-card.insight-gold  { border-left-color: var(--gold-dark); }
+.insight-card.insight-teal  { border-left-color: var(--teal); }
+.insight-card.insight-navy  { border-left-color: var(--navy); }
+.insight-icon { font-size: 16px; margin-bottom: 6px; }
+.insight-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.insight-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── ② MEETINGS (scaffolded) ── */
+.coming-soon-section {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(45,62,82,.02) 8px,
+    rgba(45,62,82,.02) 16px
+  );
+  border: 1.5px dashed rgba(45,62,82,.15);
+  border-radius: 10px;
+  padding: 36px 32px;
+  text-align: center;
+}
+.coming-soon-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.coming-soon-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.coming-soon-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.coming-soon-preview {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.preview-chip {
+  background: rgba(45,62,82,.06);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0 0;
+}
+
+/* ── FOOTER ── */
+.page-footer {
+  background: var(--navy-dark);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+.footer-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+.footer-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(244,162,97,.55);
+  text-decoration: none;
+  letter-spacing: .06em;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-ai {
+  width: 100%;
+  font-size: 10px;
+  color: rgba(255,255,255,.18);
+  font-style: italic;
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+/* ── PRINT ── */
+@media print {
+  .nav, .section-nav, .calc-presets, .page-footer { display: none; }
+  body { background: white; }
+  .masthead { background: var(--navy); -webkit-print-color-adjust: exact; }
+  .coming-soon-section { border-style: solid; }
+  @page { margin: 1.5cm; }
+}
+
+@media (max-width: 700px) {
+  .unit-stats { grid-template-columns: repeat(2, 1fr); }
+  .calc-results { grid-template-columns: repeat(2, 1fr); }
+  .insights-grid { grid-template-columns: 1fr; }
+  .masthead-inner { flex-direction: column; align-items: flex-start; }
+  .masthead-right { text-align: left; }
+  main { padding: 0 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  <div class="nav-right">
+    <div class="nav-jump">
+      <a href="#market">Market</a>
+      <a href="#meetings">Meetings</a>
+      <a href="#media">Media</a>
+    </div>
+  </div>
+</nav>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Progress Portsmouth · Portsmouth, NH</div>
+      <h1>Housing<br><em>Snapshot</em></h1>
+      <p class="masthead-desc">Rental market, upcoming hearings, and media coverage — Portsmouth's housing situation, updated in one place.</p>
+    </div>
+    <div class="masthead-right">
+      <div class="masthead-date">Last updated</div>
+      <div class="masthead-date-val" id="display-date">March 28, 2026</div>
+      <div class="freshness-badge stale" id="freshness-badge">⏱ 17 days ago</div>
+    </div>
+  </div>
+</div>
+<div class="gold-rule"></div>
+
+<div class="section-nav">
+  <a class="section-pill s1" href="#market">📊 Rental Market</a>
+  <a class="section-pill s2" href="#meetings">📅 Upcoming Meetings <span class="pill-coming">Coming soon</span></a>
+  <a class="section-pill s3" href="#media">📰 Media Coverage <span class="pill-coming">Coming soon</span></a>
+</div>
+
+<main>
+
+  <!-- ══ ① RENTAL MARKET ══ -->
+  <section class="snapshot-section s1" id="market">
+    <div class="section-hdr">
+      <div class="section-hdr-accent"></div>
+      <div class="section-hdr-text">
+        <div class="section-hdr-label">Section 1 of 3 · Rental Market</div>
+        <div class="section-hdr-title">What it actually costs to rent in Portsmouth</div>
+        <div class="section-hdr-meta" id="market-meta">Current listings · ZIP 03801 · Market-rate only · Updated March 28, 2026</div>
+      </div>
+    </div>
+
+    <!-- UNIT STATS -->
+    <div class="unit-stats" id="unit-stats">
+      <!-- Populated by JS from SNAPSHOT_DATA -->
+    </div>
+
+    <!-- INVENTORY BARS -->
+    <div class="inventory-bar-wrap">
+      <div class="inventory-bar-title">Available listings — total units on market right now</div>
+      <div id="inventory-bars"><!-- Populated by JS --></div>
+    </div>
+
+    <!-- AFFORDABILITY CALCULATOR -->
+    <div class="calc-wrap">
+      <div class="calc-title">Can you afford Portsmouth?</div>
+      <div class="calc-sub">Enter your gross annual income. We'll show you what you can afford at the 30% threshold — the standard measure of housing affordability.</div>
+      <div class="calc-controls">
+        <div class="calc-input-wrap">
+          <span>$</span>
+          <input class="calc-input" id="income-input" type="number" placeholder="Annual income" oninput="calcAffordability()">
+        </div>
+        <div class="calc-presets">
+          <button class="calc-preset" onclick="setIncome(35000)">Service worker<br>~$35k</button>
+          <button class="calc-preset" onclick="setIncome(50000)">Early career<br>~$50k</button>
+          <button class="calc-preset" onclick="setIncome(69000)">City median<br>~$69k</button>
+          <button class="calc-preset" onclick="setIncome(106000)">HH median<br>~$106k</button>
+          <button class="calc-preset" onclick="setIncome(140000)">Family<br>~$140k</button>
+        </div>
+      </div>
+      <div class="calc-results" id="calc-results">
+        <div class="calc-result"><div class="calc-result-type">Studio</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.3);">Enter income</div><div class="calc-result-market" id="cr-studio-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">1-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.3);">Enter income</div><div class="calc-result-market" id="cr-1br-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">2-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.3);">Enter income</div><div class="calc-result-market" id="cr-2br-market"></div></div>
+        <div class="calc-result"><div class="calc-result-type">3-Bedroom</div><div class="calc-result-affordable" style="color:rgba(255,255,255,.3);">Enter income</div><div class="calc-result-market" id="cr-3br-market"></div></div>
+      </div>
+    </div>
+
+    <!-- INSIGHTS -->
+    <div class="insights-grid" id="insights-grid">
+      <!-- Populated by JS from SNAPSHOT_DATA -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══ ② MEETINGS ══ -->
+  <section class="snapshot-section s2" id="meetings">
+    <div class="section-hdr">
+      <div class="section-hdr-accent"></div>
+      <div class="section-hdr-text">
+        <div class="section-hdr-label">Section 2 of 3 · Upcoming Meetings</div>
+        <div class="section-hdr-title">Housing hearings, committee sessions &amp; votes</div>
+        <div class="section-hdr-meta">Planning Board · ZBA · HDC · Housing Committee · City Council</div>
+      </div>
+    </div>
+    <div class="coming-soon-section">
+      <div class="coming-soon-label">In build</div>
+      <div class="coming-soon-title">Meeting calendar coming next</div>
+      <div class="coming-soon-desc">Upcoming agendas across all five land use boards and the Housing Committee — flagged for HAP relevance, annotated with what to watch for.</div>
+      <div class="coming-soon-preview">
+        <span class="preview-chip">📅 Planning Board dates</span>
+        <span class="preview-chip">⚠️ HAP compliance flags</span>
+        <span class="preview-chip">🔗 Agenda links</span>
+        <span class="preview-chip">📝 Editorial notes</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══ ③ MEDIA ══ -->
+  <section class="snapshot-section s3" id="media">
+    <div class="section-hdr">
+      <div class="section-hdr-accent"></div>
+      <div class="section-hdr-text">
+        <div class="section-hdr-label">Section 3 of 3 · Media Coverage</div>
+        <div class="section-hdr-title">What's being covered — and what isn't</div>
+        <div class="section-hdr-meta">Seacoast Online · Portsmouth Herald · NHPR · InDepthNH</div>
+      </div>
+    </div>
+    <div class="coming-soon-section">
+      <div class="coming-soon-label">In build</div>
+      <div class="coming-soon-title">Media tracker coming soon</div>
+      <div class="coming-soon-desc">Recent housing coverage across local outlets, with pattern analysis — what's getting attention, what's missing, and what it means for advocacy.</div>
+      <div class="coming-soon-preview">
+        <span class="preview-chip">📰 Story summaries</span>
+        <span class="preview-chip">🔒 Paywall flags</span>
+        <span class="preview-chip">🔍 Pattern analysis</span>
+        <span class="preview-chip">💡 Advocacy takeaway</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <span class="footer-brand">Progress Portsmouth</span>
+  <div class="footer-links">
+    <a href="https://progressportsmouth.com">progressportsmouth.com</a>
+    <a href="./hap-explorer.html">HAP Explorer</a>
+    <a href="./learning-library.html">Library</a>
+    <a href="./zoning-ordinance-public.html">Zoning Guide</a>
+  </div>
+  <div class="footer-ai">Created with AI assistance in research and information design, with human editorial control. Not an official City of Portsmouth document.</div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  SNAPSHOT DATA — update this block when the content agent runs
+//  Then git commit and push. Everything below renders automatically.
+// ══════════════════════════════════════════════════════════════
+const SNAPSHOT_DATA = {
+  updated: "March 28, 2026",
+  updated_iso: "2026-03-28",
+
+  rental: {
+    units: [
+      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32,  scarce: false },
+      { type: "1-Bedroom", median: 2600, min: 1290, max: 3820, count: 47,  scarce: false },
+      { type: "2-Bedroom", median: 3100, min: 1690, max: 4795, count: 55,  scarce: false },
+      { type: "3-Bedroom", median: 3500, min: 2450, max: 5500, count: 17,  scarce: true  }
+    ],
+    insights: [
+      {
+        icon: "🚫",
+        title: "Families are locked out",
+        body: "Only ~17 three-bedroom apartments available in the entire city. Even at median family income ($140k), you're paying exactly 30% of gross. There is no margin.",
+        type: "coral"
+      },
+      {
+        icon: "💸",
+        title: "Studios require six figures",
+        body: "Median studio rent of $2,300/mo requires $92,000/year at the 30% threshold. Even the smallest units are out of reach for most workers.",
+        type: "gold"
+      },
+      {
+        icon: "📉",
+        title: "151 total units for 22,000 residents",
+        body: "Across all bedroom sizes, roughly 151 units are available in Portsmouth right now. The math is simple: not enough housing at any price point.",
+        type: "teal"
+      },
+      {
+        icon: "📈",
+        title: "Rents rose across all types in March",
+        body: "Medians are up since early March: studios +$200, 1BRs +$200, 2BRs +$300. The 2BR top end has reached $4,795.",
+        type: "navy"
+      }
+    ]
+  }
+};
+// ══════════════════════════════════════════════════════════════
+
+// ── FRESHNESS ────────────────────────────────────────────────
+function computeFreshness() {
+  const updated = new Date(SNAPSHOT_DATA.updated_iso);
+  const now = new Date();
+  const days = Math.floor((now - updated) / (1000 * 60 * 60 * 24));
+  const badge = document.getElementById('freshness-badge');
+  document.getElementById('display-date').textContent = SNAPSHOT_DATA.updated;
+  if (days === 0) {
+    badge.textContent = '✓ Updated today';
+    badge.className = 'freshness-badge fresh';
+  } else if (days <= 7) {
+    badge.textContent = `↺ ${days} day${days>1?'s':''} ago`;
+    badge.className = 'freshness-badge fresh';
+  } else if (days <= 21) {
+    badge.textContent = `⏱ ${days} days ago`;
+    badge.className = 'freshness-badge stale';
+  } else {
+    badge.textContent = `⚠ ${days} days ago`;
+    badge.className = 'freshness-badge old';
+  }
+}
+
+// ── UNIT STATS ───────────────────────────────────────────────
+function renderUnitStats() {
+  const container = document.getElementById('unit-stats');
+  container.innerHTML = SNAPSHOT_DATA.rental.units.map(u => `
+    <div class="unit-stat${u.scarce ? ' scarce' : ''}">
+      <div class="unit-stat-inventory ${u.scarce ? 'scarce' : 'ok'}">~${u.count} available</div>
+      <div class="unit-stat-type">${u.type}</div>
+      <div class="unit-stat-median">$${u.median.toLocaleString()}<span style="font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:300;color:var(--muted)">/mo</span></div>
+      <div class="unit-stat-sub">Median monthly rent</div>
+      <div class="unit-stat-range">$${u.min.toLocaleString()} – $${u.max.toLocaleString()}</div>
+    </div>`).join('');
+}
+
+// ── INVENTORY BARS ───────────────────────────────────────────
+function renderInventoryBars() {
+  const units = SNAPSHOT_DATA.rental.units;
+  const maxCount = Math.max(...units.map(u => u.count));
+  document.getElementById('inventory-bars').innerHTML = units.map(u => `
+    <div class="bar-row">
+      <div class="bar-label">${u.type}</div>
+      <div class="bar-track">
+        <div class="bar-fill${u.scarce ? ' scarce' : ''}" style="width:${Math.round(u.count/maxCount*100)}%"></div>
+      </div>
+      <div class="bar-count">${u.count}</div>
+    </div>`).join('');
+}
+
+// ── INSIGHTS ─────────────────────────────────────────────────
+function renderInsights() {
+  document.getElementById('insights-grid').innerHTML =
+    SNAPSHOT_DATA.rental.insights.map(i => `
+      <div class="insight-card insight-${i.type}">
+        <div class="insight-icon">${i.icon}</div>
+        <div class="insight-title">${i.title}</div>
+        <div class="insight-body">${i.body}</div>
+      </div>`).join('');
+}
+
+// ── AFFORDABILITY CALC ───────────────────────────────────────
+function setIncome(val) {
+  document.getElementById('income-input').value = val;
+  calcAffordability();
+}
+
+function calcAffordability() {
+  const income = parseFloat(document.getElementById('income-input').value) || 0;
+  const affordable = Math.round(income / 12 * 0.3);
+  const units = SNAPSHOT_DATA.rental.units;
+  const ids = ['studio','1br','2br','3br'];
+  const labels = ['Studio','1-Bedroom','2-Bedroom','3-Bedroom'];
+
+  document.getElementById('calc-results').innerHTML = units.map((u, i) => {
+    const canAfford = affordable >= u.median;
+    const diff = Math.abs(affordable - u.median);
+    const body = income === 0
+      ? `<div class="calc-result-affordable" style="color:rgba(255,255,255,.3)">Enter income</div>`
+      : canAfford
+        ? `<div class="calc-result-affordable can-afford">✓ Within reach</div><div class="calc-result-market">$${diff.toLocaleString()}/mo to spare</div>`
+        : `<div class="calc-result-affordable cannot-afford">✗ Out of reach</div><div class="calc-result-market">$${diff.toLocaleString()}/mo short</div>`;
+    return `<div class="calc-result">
+      <div class="calc-result-type">${u.type}</div>
+      ${body}
+      <div class="calc-result-market" style="margin-top:4px">Median: $${u.median.toLocaleString()}/mo</div>
+    </div>`;
+  }).join('');
+}
+
+// ── MARKET META ──────────────────────────────────────────────
+function updateMeta() {
+  document.getElementById('market-meta').textContent =
+    `Current listings · ZIP 03801 · Market-rate only · Updated ${SNAPSHOT_DATA.updated}`;
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+computeFreshness();
+renderUnitStats();
+renderInventoryBars();
+renderInsights();
+updateMeta();
+</script>
+
+</body>
+</html>
