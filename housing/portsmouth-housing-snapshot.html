@@ -932,6 +932,148 @@ main {
 }
 .media-archive-link:hover { color: var(--gold); }
 
+/* ── ③ MEDIA ── */
+.media-period-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.media-period-count {
+  font-weight: 400;
+  color: rgba(107,124,143,.6);
+}
+
+.story-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.story-card-hdr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.story-outlet {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--navy);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.story-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+.story-paywall {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  background: rgba(231,111,81,.08);
+  color: var(--coral);
+  border: 1px solid rgba(231,111,81,.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.story-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(45,62,82,.07);
+  color: var(--muted);
+  border: 1px solid rgba(45,62,82,.1);
+}
+.story-tag.tag-hap { background: rgba(200,130,42,.1); color: var(--gold-dark); border-color: rgba(200,130,42,.2); }
+.story-tag.tag-hot { background: rgba(231,111,81,.1); color: var(--coral); border-color: rgba(231,111,81,.2); }
+
+.story-headline {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+  line-height: 1.35;
+  margin-bottom: 6px;
+  text-decoration: none;
+  display: block;
+}
+.story-headline:hover { color: var(--gold-dark); }
+.story-summary {
+  font-size: 13px;
+  color: #3a4a5c;
+  line-height: 1.6;
+}
+.story-advocacy-note {
+  font-size: 12px;
+  color: var(--gold-dark);
+  background: rgba(200,130,42,.07);
+  border-left: 3px solid var(--gold);
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+  margin-top: 8px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.media-analysis {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.analysis-col {}
+.analysis-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.analysis-col:first-child .analysis-label { color: var(--teal); }
+.analysis-col:last-child .analysis-label { color: var(--coral); }
+.analysis-body {
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.65;
+}
+
+.media-takeaway {
+  background: rgba(200,130,42,.08);
+  border: 1px solid rgba(200,130,42,.2);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #3a4a5c;
+  line-height: 1.6;
+}
+.media-takeaway strong { color: var(--navy); }
+
+.media-footer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 16px;
+  letter-spacing: .02em;
+}
+
 /* ── PRINT ── */
 @media print {
   .nav, .section-nav, .calc-presets, .page-footer { display: none; }
@@ -1257,12 +1399,32 @@ const SNAPSHOT_DATA = {
   media: {
     period: "Feb 10 – Apr 14, 2026",
     stats: [
-      { val: "17", label: "Stories this period" },
-      { val: "4",  label: "Outlets covering housing" },
-      { val: "5",  label: "Opinion / column pieces" },
+      { val: "19", label: "Stories this period" },
+      { val: "5",  label: "Outlets covering housing" },
+      { val: "6",  label: "Opinion / column pieces" },
       { val: "4",  label: "HAP implementation stories" }
     ],
     highlights: [
+      {
+        date: "Apr 9, 2026",
+        outlet: "SeacoastOnline — Guest Column",
+        headline: "Don't sideline local control in New Hampshire housing push — Rep. Mandelbaum",
+        url: "https://www.seacoastonline.com/story/opinion/columns/guest/2026/04/09/dont-sideline-local-control-in-new-hampshire-housing-push-rep-mandelbaum/89522709007/",
+        paywalled: true,
+        tags: ["Opinion", "Opposition"],
+        advocacy: "This is the principal counter-narrative to HAP-aligned zoning reform — local control framing used to resist state housing mandates. Understanding this argument is essential for advocates engaging the April 22 Master Plan open house and the HAP triage process.",
+        summary: "State Rep. Mandelbaum argues against state-level housing mandates, framing resistance as defense of local control rather than opposition to housing production. The op-ed appears one week before the April 17 Planning Board meeting and the April 22 Master Plan open house — timing that matters."
+      },
+      {
+        date: "Apr 8, 2026",
+        outlet: "NHPR",
+        headline: "NH housing market showing early signs of stabilizing",
+        url: "https://www.nhpr.org/nh-news/2026-04-08/housing-market-cooling-nh-real-estate-data",
+        paywalled: false,
+        tags: ["Market data", "State policy"],
+        advocacy: "",
+        summary: "NH median single-family price reached $530,000 in Q1 2026 — the smallest annual increase since May 2023. Homes staying on market longer (44 days vs. 32 last year). Inventory still less than half of pre-pandemic levels. Framed as stabilization; advocates should note that 'cooling' at $530,000 statewide still means Portsmouth's $875,000 median is nearly double the state figure."
+      },
       {
         date: "Apr 1, 2026",
         outlet: "Josiah Bartlett Center",
@@ -1270,7 +1432,8 @@ const SNAPSHOT_DATA = {
         url: "https://jbartlett.org/category/housing/",
         paywalled: false,
         tags: ["State policy", "Supply"],
-        summary: "New analysis showing NH municipalities are permitting more units than in years — but new construction is concentrated in select communities and skewed heavily toward rentals. Single-family restrictions remain a significant barrier to ownership-accessible housing. Portsmouth cited as a community where supply has increased. Directly relevant to HAP items targeting missing middle and by-right production."
+        advocacy: "",
+        summary: "New analysis showing NH municipalities are permitting more units than in years — but new construction is concentrated in select communities and skewed heavily toward rentals. Single-family restrictions remain a significant barrier. Portsmouth cited as a community where supply has increased. Directly relevant to HAP items targeting missing middle and by-right production."
       },
       {
         date: "Mar 25, 2026",
@@ -1279,6 +1442,7 @@ const SNAPSHOT_DATA = {
         url: "https://www.seacoastonline.com/story/news/local/2026/03/25/portsmouth-nh-master-plan-open-house/89087221007/",
         paywalled: true,
         tags: ["Master Plan", "HAP"],
+        advocacy: "",
         summary: "First local coverage to frame the Master Plan and housing planning as convergent rather than parallel. The April 22 open house is the last practical window to ensure HAP production priorities appear in the Master Plan housing chapter before final adoption."
       },
       {
@@ -1288,31 +1452,24 @@ const SNAPSHOT_DATA = {
         url: "https://www.seacoastonline.com/story/opinion/columns/guest/2026/03/20/portsmouth-zoning-erasing-affordable-housing-morgan/89212215007/",
         paywalled: true,
         tags: ["Opinion", "Displacement"],
-        summary: "Second consecutive Morgan guest column in four weeks — a significant escalation from 'consultants won't fix this' (Feb 26) to 'current zoning is actively erasing affordable housing.' The pattern of sustained, organized critique strengthens the case that HAP item Z-22 (displacement risk) is underweighted in triage."
-      },
-      {
-        date: "Mar 9, 2026",
-        outlet: "SeacoastOnline",
-        headline: "'Missing middle' rentals touted in 274-unit Portsmouth apartment plan",
-        url: "https://www.seacoastonline.com/story/news/local/2026/03/09/portsmouth-274-unit-apartment-kane-company-gnod/89080321007/",
-        paywalled: true,
-        tags: ["Development", "GNOD"],
-        summary: "Kane Company's 274-unit proposal at 150 Portsmouth Blvd is the first major GNOD test case. The land-transfer mechanism — where the city receives property but must develop workforce units independently — is significantly undercovered. The story doesn't examine who controls the transferred land or on what timeline."
+        advocacy: "",
+        summary: "Second consecutive Morgan guest column in four weeks — escalating from 'consultants won't fix this' (Feb 26) to 'current zoning is actively erasing affordable housing.' Sustained, organized critique strengthens the case that HAP item Z-22 (displacement risk) is underweighted in triage."
       },
       {
         date: "Feb 11, 2026",
         outlet: "NHPR / Portsmouth Herald",
-        headline: "Seacoast home prices smash records as the median price tops $1 million",
+        headline: "Seacoast home prices smash records as median tops $1 million",
         url: "https://www.nhpr.org/nh-news/2026-02-11/nh-seacoast-housing-market-home-prices-smash-records",
         paywalled: false,
         tags: ["Market data"],
-        summary: "January median single-family sale price hit $1,087,500 — a 25.5% jump from January 2025, the first time the threshold has been exceeded. Framed as a market milestone rather than a housing access story. The data point has since been cited by Councilor Cook in the council chamber, where it carries more policy weight than the original coverage suggested."
+        advocacy: "",
+        summary: "January median single-family sale price hit $1,087,500 — a 25.5% jump from January 2025. Framed as a market milestone rather than a housing access story. The data point has since been cited in the council chamber, where it carries more policy weight than the original coverage suggested."
       }
     ],
     pattern: {
-      covered: "Development pipeline projects (especially GNOD/Kane), opinion and advocacy columns, market price records, HAP process updates. Volume of opinion pieces (5 of 17 stories) signals the issue has moved from fringe advocacy to mainstream civic debate.",
-      missing: "The land-transfer affordability mechanism in the GNOD framework — what happens to land the city receives, on what timeline, built by whom. HAP triage process itself has no coverage. Displacement and NOAH (naturally occurring affordable housing) loss are absent from news coverage despite being central policy concerns. State funding cuts (AHF) and their local impact are uncovered.",
-      takeaway: "Local media is treating housing as a development story and an opinion battleground. The policy and process questions — what the HAP triage produces, who controls the land transfers, what happens to existing affordable units — are not being asked. The April 22 Master Plan Open House is an opportunity to change that narrative, but only if advocates show up with specific asks, not general support."
+      covered: "Development pipeline projects, opinion and advocacy columns (now 6 of 19 stories — rising), market price records, HAP process updates, and now opposition framing via local-control arguments. The Mandelbaum op-ed signals organized political resistance is moving into the public arena.",
+      missing: "The HAP triage process itself has zero coverage — no journalist has reported on how the Housing Committee will work through 148 items by July. The land-transfer affordability mechanism in GNOD, displacement and NOAH loss, and state AHF funding cuts remain uncovered.",
+      takeaway: "The Mandelbaum op-ed is the most strategically significant recent story. The local-control counter-narrative is now active in print. Advocates need a clear response ready for the April 22 open house and HAP triage sessions: what local control has produced (85.8% single-family zoning, 17 three-bedroom apartments available citywide) versus what state accountability would produce."
     }
   }
 };
@@ -1469,6 +1626,7 @@ function renderMedia() {
         </div>
         <a class="story-headline" href="${s.url}" target="_blank">${s.headline}</a>
         <div class="story-summary">${s.summary}</div>
+        ${s.advocacy ? `<div class="story-advocacy-note">📌 ${s.advocacy}</div>` : ''}
       </div>`).join('');
 
   // Pattern + Takeaway
