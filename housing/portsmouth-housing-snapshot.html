@@ -400,7 +400,7 @@ main {
   color: #fff;
   margin-bottom: 4px;
 }
-.calc-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.calc-sub { font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 16px; }
 .calc-controls {
   display: flex;
   gap: 12px;
@@ -412,8 +412,8 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.35);
   border-radius: 6px;
   padding: 8px 14px;
   flex: 1;
@@ -422,7 +422,7 @@ main {
 .calc-input-wrap span {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.75);
 }
 .calc-input {
   background: none;
@@ -434,7 +434,7 @@ main {
   color: #fff;
   width: 100%;
 }
-.calc-input::placeholder { color: rgba(255,255,255,.3); }
+.calc-input::placeholder { color: rgba(255,255,255,.55); }
 .calc-presets {
   display: flex;
   gap: 6px;
@@ -447,10 +447,10 @@ main {
   letter-spacing: .06em;
   text-transform: uppercase;
   padding: 5px 10px;
-  border: 1px solid rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.3);
   border-radius: 4px;
-  background: rgba(255,255,255,.06);
-  color: rgba(255,255,255,.6);
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.85);
   cursor: pointer;
   transition: all .15s;
 }
@@ -471,18 +471,18 @@ main {
   font-size: 8px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.65);
   margin-bottom: 4px;
 }
 .calc-result-affordable {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   margin-bottom: 2px;
 }
 .calc-result-market {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: rgba(255,255,255,.4);
+  font-size: 10px;
+  color: rgba(255,255,255,.6);
 }
 .can-afford { color: #7ecabb; }
 .cannot-afford { color: #f4a08a; }
@@ -508,15 +508,15 @@ main {
 .insight-icon { font-size: 16px; margin-bottom: 6px; }
 .insight-title {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--navy);
   margin-bottom: 4px;
   line-height: 1.3;
 }
 .insight-body {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.55;
+  font-size: 14px;
+  color: #3a4a5c;
+  line-height: 1.6;
 }
 
 /* ── ② MEETINGS (scaffolded) ── */
@@ -620,6 +620,318 @@ main {
   margin-top: 4px;
 }
 
+/* ── ② MEETINGS ── */
+.meetings-context {
+  background: rgba(200,130,42,.06);
+  border: 1px solid rgba(200,130,42,.18);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #3a4a5c;
+  line-height: 1.6;
+}
+.meetings-context strong { color: var(--navy); }
+
+.meetings-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 20px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.meetings-period:first-of-type { margin-top: 0; }
+
+.meeting-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+}
+.meeting-item.highlight {
+  border-color: rgba(200,130,42,.3);
+  background: rgba(200,130,42,.03);
+}
+.meeting-item.completed {
+  opacity: .55;
+}
+
+.meeting-date-col {
+  text-align: center;
+  flex-shrink: 0;
+}
+.meeting-day-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1;
+  display: block;
+}
+.meeting-day-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.meeting-body {}
+.meeting-board-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.meeting-board {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+}
+.meeting-flag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.flag-hap    { background: rgba(200,130,42,.12); color: var(--gold-dark); border: 1px solid rgba(200,130,42,.2); }
+.flag-hot    { background: rgba(231,111,81,.1); color: var(--coral); border: 1px solid rgba(231,111,81,.2); }
+.flag-budget { background: rgba(45,62,82,.1); color: var(--navy); border: 1px solid rgba(45,62,82,.2); }
+.flag-done   { background: rgba(107,124,143,.1); color: var(--muted); border: 1px solid rgba(107,124,143,.2); }
+
+.meeting-meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .02em;
+}
+.meeting-note {
+  font-size: 13px;
+  color: #3a4a5c;
+  line-height: 1.55;
+  border-left: 3px solid var(--gold);
+  padding-left: 10px;
+  margin-top: 6px;
+}
+.meeting-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.meeting-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  text-decoration: none;
+  letter-spacing: .04em;
+}
+.meeting-link:hover { color: var(--gold); }
+
+.meetings-footer {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 16px;
+  line-height: 1.6;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .02em;
+}
+.meetings-footer a { color: var(--gold-dark); text-decoration: none; }
+
+/* ── ③ MEDIA ── */
+.media-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.media-stat {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.media-stat-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.media-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.media-paywall-note {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  background: rgba(107,124,143,.06);
+  border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .02em;
+}
+
+.media-period-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.story-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+.story-item-hdr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.story-outlet-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--navy);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: .04em;
+}
+.story-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+.story-paywall {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  background: rgba(231,111,81,.08);
+  color: var(--coral);
+  border: 1px solid rgba(231,111,81,.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.story-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+.story-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(45,62,82,.07);
+  color: var(--muted);
+}
+.story-headline {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+  line-height: 1.35;
+  margin-bottom: 6px;
+  text-decoration: none;
+  display: block;
+}
+.story-headline:hover { color: var(--gold-dark); }
+.story-summary {
+  font-size: 13px;
+  color: #3a4a5c;
+  line-height: 1.6;
+}
+
+.media-pattern {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.pattern-block {}
+.pattern-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pattern-covered .pattern-label { color: var(--teal); }
+.pattern-missing .pattern-label  { color: var(--coral); }
+.pattern-text {
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.65;
+}
+
+.media-takeaway {
+  background: rgba(200,130,42,.06);
+  border: 1px solid rgba(200,130,42,.18);
+  border-left: 4px solid var(--gold-dark);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: #3a4a5c;
+  line-height: 1.65;
+}
+.media-takeaway strong { color: var(--navy); }
+
+.media-archive-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--gold-dark);
+  text-decoration: none;
+  margin-top: 14px;
+}
+.media-archive-link:hover { color: var(--gold); }
+
 /* ── PRINT ── */
 @media print {
   .nav, .section-nav, .calc-presets, .page-footer { display: none; }
@@ -636,6 +948,8 @@ main {
   .masthead-inner { flex-direction: column; align-items: flex-start; }
   .masthead-right { text-align: left; }
   main { padding: 0 16px 60px; }
+  .media-stats { grid-template-columns: repeat(2, 1fr); }
+  .media-pattern { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -670,8 +984,8 @@ main {
 
 <div class="section-nav">
   <a class="section-pill s1" href="#market">📊 Rental Market</a>
-  <a class="section-pill s2" href="#meetings">📅 Upcoming Meetings <span class="pill-coming">Coming soon</span></a>
-  <a class="section-pill s3" href="#media">📰 Media Coverage <span class="pill-coming">Coming soon</span></a>
+  <a class="section-pill s2" href="#meetings">📅 Upcoming Meetings</a>
+  <a class="section-pill s3" href="#media">📰 Media Coverage</a>
 </div>
 
 <main>
@@ -738,19 +1052,19 @@ main {
       <div class="section-hdr-text">
         <div class="section-hdr-label">Section 2 of 3 · Upcoming Meetings</div>
         <div class="section-hdr-title">Housing hearings, committee sessions &amp; votes</div>
-        <div class="section-hdr-meta">Planning Board · ZBA · HDC · Housing Committee · City Council</div>
+        <div class="section-hdr-meta" id="meetings-meta">Planning Board · ZBA · HDC · Housing Committee · City Council · Updated April 14, 2026</div>
       </div>
     </div>
-    <div class="coming-soon-section">
-      <div class="coming-soon-label">In build</div>
-      <div class="coming-soon-title">Meeting calendar coming next</div>
-      <div class="coming-soon-desc">Upcoming agendas across all five land use boards and the Housing Committee — flagged for HAP relevance, annotated with what to watch for.</div>
-      <div class="coming-soon-preview">
-        <span class="preview-chip">📅 Planning Board dates</span>
-        <span class="preview-chip">⚠️ HAP compliance flags</span>
-        <span class="preview-chip">🔗 Agenda links</span>
-        <span class="preview-chip">📝 Editorial notes</span>
-      </div>
+
+    <div class="meetings-context">
+      <strong>HAP triage now underway.</strong> The Housing Committee has a July 2026 deadline to deliver prioritization recommendations to Council. Watch the April 17 Planning Board and April 22 Master Plan Open House — both are critical convergence points for housing priorities.
+    </div>
+
+    <div id="meetings-list"><!-- Populated by JS --></div>
+
+    <div class="meetings-footer">
+      Verified against <a href="https://www.portsmouthnh.gov/city-municipal-meetings-calendar" target="_blank">portsmouthnh.gov/city-municipal-meetings-calendar</a> &amp; <a href="https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" target="_blank">Planning Dept Schedule</a> ·
+      Written comments to Planning Board: <a href="mailto:planningboard@cityofportsmouth.com">planningboard@cityofportsmouth.com</a>
     </div>
   </section>
 
@@ -763,20 +1077,15 @@ main {
       <div class="section-hdr-text">
         <div class="section-hdr-label">Section 3 of 3 · Media Coverage</div>
         <div class="section-hdr-title">What's being covered — and what isn't</div>
-        <div class="section-hdr-meta">Seacoast Online · Portsmouth Herald · NHPR · InDepthNH</div>
+        <div class="section-hdr-meta" id="media-meta">Seacoast Online · NHPR · Portsmouth Herald · InDepthNH · Updated April 14, 2026</div>
       </div>
     </div>
-    <div class="coming-soon-section">
-      <div class="coming-soon-label">In build</div>
-      <div class="coming-soon-title">Media tracker coming soon</div>
-      <div class="coming-soon-desc">Recent housing coverage across local outlets, with pattern analysis — what's getting attention, what's missing, and what it means for advocacy.</div>
-      <div class="coming-soon-preview">
-        <span class="preview-chip">📰 Story summaries</span>
-        <span class="preview-chip">🔒 Paywall flags</span>
-        <span class="preview-chip">🔍 Pattern analysis</span>
-        <span class="preview-chip">💡 Advocacy takeaway</span>
-      </div>
-    </div>
+
+    <div id="media-stats-row"><!-- Populated by JS --></div>
+    <div class="media-paywall-note">🔒 SeacoastOnline stories are paywalled. Summaries based on headlines, slugs, and available preview text.</div>
+    <div id="media-stories"><!-- Populated by JS --></div>
+    <div id="media-pattern-block"><!-- Populated by JS --></div>
+    <a class="media-archive-link" href="./portsmouth-media-coverage-tracker.html" target="_blank">→ Full coverage archive (Feb 10 – Mar 28)</a>
   </section>
 
 </main>
@@ -797,47 +1106,214 @@ main {
 //  SNAPSHOT DATA — update this block when the content agent runs
 //  Then git commit and push. Everything below renders automatically.
 // ══════════════════════════════════════════════════════════════
-// ── SNAPSHOT DATA UPDATE — generated April 14, 2026 ──
-// Paste this block into portsmouth-housing-snapshot.html
-// replacing the existing SNAPSHOT_DATA object, then git commit + push.
-
 const SNAPSHOT_DATA = {
-  updated: "April 14, 2026",
-  updated_iso: "2026-04-14",
+  updated: "March 28, 2026",
+  updated_iso: "2026-03-28",
 
   rental: {
     units: [
-      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32, scarce: false },
-      { type: "1-Bedroom", median: 2600, min: 1290, max: 3820, count: 45, scarce: false },
-      { type: "2-Bedroom", median: 3100, min: 1690, max: 4795, count: 52, scarce: false },
-      { type: "3-Bedroom", median: 3500, min: 2400, max: 4500, count: 17, scarce: true  }
+      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32,  scarce: false },
+      { type: "1-Bedroom", median: 2600, min: 1290, max: 3820, count: 47,  scarce: false },
+      { type: "2-Bedroom", median: 3100, min: 1690, max: 4795, count: 55,  scarce: false },
+      { type: "3-Bedroom", median: 3500, min: 2450, max: 5500, count: 17,  scarce: true  }
     ],
     insights: [
       {
         icon: "🚫",
-        title: "Families are still locked out",
-        body: "Only ~17 three-bedroom apartments available citywide. Even at median family income ($140k), a 3BR consumes exactly 30% of gross income — no margin for anything else.",
+        title: "Families are locked out",
+        body: "Only ~17 three-bedroom apartments available in the entire city. Even at median family income ($140k), you're paying exactly 30% of gross. There is no margin.",
         type: "coral"
       },
       {
         icon: "💸",
         title: "Studios require six figures",
-        body: "A median studio at $2,300/mo requires $92,000/year at the 30% threshold. Even the smallest units are out of reach for most Portsmouth workers.",
+        body: "Median studio rent of $2,300/mo requires $92,000/year at the 30% threshold. Even the smallest units are out of reach for most workers.",
         type: "gold"
       },
       {
         icon: "📉",
-        title: "Market flat since March — still critically scarce",
-        body: "Medians unchanged from the March 28 snapshot. No relief at any price point. Total inventory across all sizes remains under 150 units for a city of 22,000.",
+        title: "151 total units for 22,000 residents",
+        body: "Across all bedroom sizes, roughly 151 units are available in Portsmouth right now. The math is simple: not enough housing at any price point.",
         type: "teal"
       },
       {
-        icon: "📊",
-        title: "Bottom of market: $1,260/mo studio at Patriots Park",
-        body: "The lowest available studio in the city is $1,260/mo — still requiring $50,400/year income. There is no affordable option at market rate for workers earning below that threshold.",
+        icon: "📈",
+        title: "Rents rose across all types in March",
+        body: "Medians are up since early March: studios +$200, 1BRs +$200, 2BRs +$300. The 2BR top end has reached $4,795.",
         type: "navy"
       }
     ]
+  },
+
+  meetings: {    context: "HAP triage now underway. The Housing Committee has a July 2026 deadline to deliver prioritization recommendations to Council. Watch the April 17 Planning Board and April 22 Master Plan Open House — both are critical convergence points for housing priorities.",
+    periods: [
+      {
+        label: "📅 Coming up — April 2026",
+        items: [
+          {
+            day_num: "17",
+            day_name: "THU",
+            board: "Planning Board",
+            meta: "Council Chambers · 7:00 PM · Agenda pending",
+            flags: ["HAP", "Master Plan"],
+            note: "Key board to watch as HAP triage and Master Plan Phase 3 move forward simultaneously. Watch for signals on how Planning Department is integrating both processes.",
+            links: [
+              { label: "📄 Planning Dept Schedule", url: "https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" }
+            ],
+            highlight: true
+          },
+          {
+            day_num: "20",
+            day_name: "MON",
+            board: "City Council Meeting",
+            meta: "Council Chambers · 7:00 PM · Agenda pending",
+            flags: [],
+            note: "Watch for any Housing Action Plan process updates or budget-related housing announcements.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "21",
+            day_name: "TUE",
+            board: "Board of Adjustment",
+            meta: "Council Chambers · 7:00 PM · Agenda pending",
+            flags: [],
+            note: "",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "22",
+            day_name: "WED",
+            board: "Master Plan — Draft Plan Open House ⭐",
+            meta: "Community Campus, 100 Campus Drive · 6:00–8:00 PM · Confirmed",
+            flags: ["High Priority"],
+            note: "Major public input opportunity. Utile (Master Plan consultants) and City staff present draft recommendations in an informal open house format. Housing is a central topic. This is where housing priorities either get embedded in the Master Plan or don't.",
+            links: [
+              { label: "📄 Master Plan Info", url: "https://www.portsmouthnh.gov/planportsmouth/master-plan" }
+            ],
+            highlight: true
+          }
+        ]
+      },
+      {
+        label: "📅 May–July 2026",
+        items: [
+          {
+            day_num: "11",
+            day_name: "MAY",
+            board: "City Council Budget Work Session — General Fund",
+            meta: "Council Chambers · 6:00 PM · With public comment",
+            flags: ["FY27 Budget"],
+            note: "Watch whether Housing Action Plan coordination costs appear in the General Government budget and at what level.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "13",
+            day_name: "MAY",
+            board: "Budget Work Session — Enterprise &amp; Special Revenue",
+            meta: "Council Chambers · 6:00 PM",
+            flags: ["FY27 Budget"],
+            note: "Parking fund is relevant to housing — parking reform reduces per-unit housing costs.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "18",
+            day_name: "MAY",
+            board: "City Council — Budget Public Hearing",
+            meta: "Council Chambers · 7:00 PM",
+            flags: ["Budget Public Hearing"],
+            note: "Public comment opportunity on the FY27 budget. If Housing Action Plan coordination is underfunded or omitted, this is the formal public comment window.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "TBD",
+            day_name: "",
+            board: "Housing Action Plan Public Input Hearings (2 required)",
+            meta: "Location to be announced by Planning Department",
+            flags: ["High Priority"],
+            note: "The Feb 17 resolution requires at least two public hearings before the Housing Action Plan is finalized. Dates not yet announced. These are the primary opportunities for the public to shape what the plan contains.",
+            links: [],
+            highlight: true
+          },
+          {
+            day_num: "JUL",
+            day_name: "2026",
+            board: "Housing Action Plan Completion Deadline",
+            meta: "City Council",
+            flags: ["Deadline"],
+            note: "Council resolution sets July 2026 as the target. Master Plan Phase 3 runs March–August — both processes run simultaneously. How they coordinate will determine what housing production commitments end up in each document.",
+            links: [],
+            highlight: false
+          }
+        ]
+      }
+    ]
+  },
+
+  media: {
+    period: "Feb 10 – Apr 14, 2026",
+    stats: [
+      { val: "17", label: "Stories this period" },
+      { val: "4",  label: "Outlets covering housing" },
+      { val: "5",  label: "Opinion / column pieces" },
+      { val: "4",  label: "HAP implementation stories" }
+    ],
+    highlights: [
+      {
+        date: "Apr 1, 2026",
+        outlet: "Josiah Bartlett Center",
+        headline: "NH's new housing is skewed toward rentals — ownership barriers remain",
+        url: "https://jbartlett.org/category/housing/",
+        paywalled: false,
+        tags: ["State policy", "Supply"],
+        summary: "New analysis showing NH municipalities are permitting more units than in years — but new construction is concentrated in select communities and skewed heavily toward rentals. Single-family restrictions remain a significant barrier to ownership-accessible housing. Portsmouth cited as a community where supply has increased. Directly relevant to HAP items targeting missing middle and by-right production."
+      },
+      {
+        date: "Mar 25, 2026",
+        outlet: "SeacoastOnline",
+        headline: "Portsmouth Master Plan open house set for April 22",
+        url: "https://www.seacoastonline.com/story/news/local/2026/03/25/portsmouth-nh-master-plan-open-house/89087221007/",
+        paywalled: true,
+        tags: ["Master Plan", "HAP"],
+        summary: "First local coverage to frame the Master Plan and housing planning as convergent rather than parallel. The April 22 open house is the last practical window to ensure HAP production priorities appear in the Master Plan housing chapter before final adoption."
+      },
+      {
+        date: "Mar 20, 2026",
+        outlet: "SeacoastOnline — Guest Column",
+        headline: "Portsmouth zoning erasing affordable housing — Morgan",
+        url: "https://www.seacoastonline.com/story/opinion/columns/guest/2026/03/20/portsmouth-zoning-erasing-affordable-housing-morgan/89212215007/",
+        paywalled: true,
+        tags: ["Opinion", "Displacement"],
+        summary: "Second consecutive Morgan guest column in four weeks — a significant escalation from 'consultants won't fix this' (Feb 26) to 'current zoning is actively erasing affordable housing.' The pattern of sustained, organized critique strengthens the case that HAP item Z-22 (displacement risk) is underweighted in triage."
+      },
+      {
+        date: "Mar 9, 2026",
+        outlet: "SeacoastOnline",
+        headline: "'Missing middle' rentals touted in 274-unit Portsmouth apartment plan",
+        url: "https://www.seacoastonline.com/story/news/local/2026/03/09/portsmouth-274-unit-apartment-kane-company-gnod/89080321007/",
+        paywalled: true,
+        tags: ["Development", "GNOD"],
+        summary: "Kane Company's 274-unit proposal at 150 Portsmouth Blvd is the first major GNOD test case. The land-transfer mechanism — where the city receives property but must develop workforce units independently — is significantly undercovered. The story doesn't examine who controls the transferred land or on what timeline."
+      },
+      {
+        date: "Feb 11, 2026",
+        outlet: "NHPR / Portsmouth Herald",
+        headline: "Seacoast home prices smash records as the median price tops $1 million",
+        url: "https://www.nhpr.org/nh-news/2026-02-11/nh-seacoast-housing-market-home-prices-smash-records",
+        paywalled: false,
+        tags: ["Market data"],
+        summary: "January median single-family sale price hit $1,087,500 — a 25.5% jump from January 2025, the first time the threshold has been exceeded. Framed as a market milestone rather than a housing access story. The data point has since been cited by Councilor Cook in the council chamber, where it carries more policy weight than the original coverage suggested."
+      }
+    ],
+    pattern: {
+      covered: "Development pipeline projects (especially GNOD/Kane), opinion and advocacy columns, market price records, HAP process updates. Volume of opinion pieces (5 of 17 stories) signals the issue has moved from fringe advocacy to mainstream civic debate.",
+      missing: "The land-transfer affordability mechanism in the GNOD framework — what happens to land the city receives, on what timeline, built by whom. HAP triage process itself has no coverage. Displacement and NOAH (naturally occurring affordable housing) loss are absent from news coverage despite being central policy concerns. State funding cuts (AHF) and their local impact are uncovered.",
+      takeaway: "Local media is treating housing as a development story and an opinion battleground. The policy and process questions — what the HAP triage produces, who controls the land transfers, what happens to existing affordable units — are not being asked. The April 22 Master Plan Open House is an opportunity to change that narrative, but only if advocates show up with specific asks, not general support."
+    }
   }
 };
 // ══════════════════════════════════════════════════════════════
@@ -937,12 +1413,87 @@ function updateMeta() {
     `Current listings · ZIP 03801 · Market-rate only · Updated ${SNAPSHOT_DATA.updated}`;
 }
 
+// ── MEETINGS ─────────────────────────────────────────────────
+function renderMeetings() {
+  const m = SNAPSHOT_DATA.meetings;
+  if (!m) return;
+
+  const flagClass = { 'HAP': 'flag-hap', 'Master Plan': 'flag-hap', 'High Priority': 'flag-hot', 'FY27 Budget': 'flag-budget', 'Budget Public Hearing': 'flag-budget', 'Deadline': 'flag-hot' };
+
+  document.getElementById('meetings-list').innerHTML = m.periods.map(period => `
+    <div class="meetings-period">${period.label}</div>
+    ${period.items.map(item => `
+      <div class="meeting-item${item.highlight ? ' highlight' : ''}">
+        <div class="meeting-date-col">
+          <span class="meeting-day-num">${item.day_num}</span>
+          <span class="meeting-day-name">${item.day_name}</span>
+        </div>
+        <div class="meeting-body">
+          <div class="meeting-board-row">
+            <span class="meeting-board">${item.board}</span>
+            ${(item.flags||[]).map(f => `<span class="meeting-flag ${flagClass[f]||'flag-hap'}">${f}</span>`).join('')}
+          </div>
+          <div class="meeting-meta">${item.meta}</div>
+          ${item.note ? `<div class="meeting-note">${item.note}</div>` : ''}
+          ${(item.links||[]).length ? `<div class="meeting-links">${item.links.map(l => `<a class="meeting-link" href="${l.url}" target="_blank">${l.label}</a>`).join('')}</div>` : ''}
+        </div>
+      </div>`).join('')}
+  `).join('');
+}
+
+// ── MEDIA ────────────────────────────────────────────────────
+function renderMedia() {
+  const m = SNAPSHOT_DATA.media;
+  if (!m) return;
+
+  // Stats
+  document.getElementById('media-stats-row').innerHTML = `
+    <div class="media-stats">
+      ${m.stats.map(s => `
+        <div class="media-stat">
+          <div class="media-stat-val">${s.val}</div>
+          <div class="media-stat-label">${s.label}</div>
+        </div>`).join('')}
+    </div>`;
+
+  // Stories
+  document.getElementById('media-stories').innerHTML =
+    `<div class="media-period-label">📰 Recent coverage — ${m.period}</div>` +
+    m.highlights.map(s => `
+      <div class="story-item">
+        <div class="story-item-hdr">
+          <span class="story-outlet-badge">${s.outlet}</span>
+          <span class="story-date">${s.date}</span>
+          ${s.paywalled ? '<span class="story-paywall">🔒 Paywalled</span>' : ''}
+          <div class="story-tags">${(s.tags||[]).map(t => `<span class="story-tag">${t}</span>`).join('')}</div>
+        </div>
+        <a class="story-headline" href="${s.url}" target="_blank">${s.headline}</a>
+        <div class="story-summary">${s.summary}</div>
+      </div>`).join('');
+
+  // Pattern + Takeaway
+  document.getElementById('media-pattern-block').innerHTML = `
+    <div class="media-pattern">
+      <div class="pattern-block pattern-covered">
+        <div class="pattern-label">What's getting covered</div>
+        <div class="pattern-text">${m.pattern.covered}</div>
+      </div>
+      <div class="pattern-block pattern-missing">
+        <div class="pattern-label">What's missing</div>
+        <div class="pattern-text">${m.pattern.missing}</div>
+      </div>
+    </div>
+    <div class="media-takeaway"><strong>Advocacy takeaway:</strong> ${m.pattern.takeaway}</div>`;
+}
+
 // ── INIT ─────────────────────────────────────────────────────
 computeFreshness();
 renderUnitStats();
 renderInventoryBars();
 renderInsights();
 updateMeta();
+renderMeetings();
+renderMedia();
 </script>
 
 </body>
