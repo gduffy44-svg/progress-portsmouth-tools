@@ -797,40 +797,44 @@ main {
 //  SNAPSHOT DATA — update this block when the content agent runs
 //  Then git commit and push. Everything below renders automatically.
 // ══════════════════════════════════════════════════════════════
+// ── SNAPSHOT DATA UPDATE — generated April 14, 2026 ──
+// Paste this block into portsmouth-housing-snapshot.html
+// replacing the existing SNAPSHOT_DATA object, then git commit + push.
+
 const SNAPSHOT_DATA = {
-  updated: "March 28, 2026",
-  updated_iso: "2026-03-28",
+  updated: "April 14, 2026",
+  updated_iso: "2026-04-14",
 
   rental: {
     units: [
-      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32,  scarce: false },
-      { type: "1-Bedroom", median: 2600, min: 1290, max: 3820, count: 47,  scarce: false },
-      { type: "2-Bedroom", median: 3100, min: 1690, max: 4795, count: 55,  scarce: false },
-      { type: "3-Bedroom", median: 3500, min: 2450, max: 5500, count: 17,  scarce: true  }
+      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32, scarce: false },
+      { type: "1-Bedroom", median: 2600, min: 1290, max: 3820, count: 45, scarce: false },
+      { type: "2-Bedroom", median: 3100, min: 1690, max: 4795, count: 52, scarce: false },
+      { type: "3-Bedroom", median: 3500, min: 2400, max: 4500, count: 17, scarce: true  }
     ],
     insights: [
       {
         icon: "🚫",
-        title: "Families are locked out",
-        body: "Only ~17 three-bedroom apartments available in the entire city. Even at median family income ($140k), you're paying exactly 30% of gross. There is no margin.",
+        title: "Families are still locked out",
+        body: "Only ~17 three-bedroom apartments available citywide. Even at median family income ($140k), a 3BR consumes exactly 30% of gross income — no margin for anything else.",
         type: "coral"
       },
       {
         icon: "💸",
         title: "Studios require six figures",
-        body: "Median studio rent of $2,300/mo requires $92,000/year at the 30% threshold. Even the smallest units are out of reach for most workers.",
+        body: "A median studio at $2,300/mo requires $92,000/year at the 30% threshold. Even the smallest units are out of reach for most Portsmouth workers.",
         type: "gold"
       },
       {
         icon: "📉",
-        title: "151 total units for 22,000 residents",
-        body: "Across all bedroom sizes, roughly 151 units are available in Portsmouth right now. The math is simple: not enough housing at any price point.",
+        title: "Market flat since March — still critically scarce",
+        body: "Medians unchanged from the March 28 snapshot. No relief at any price point. Total inventory across all sizes remains under 150 units for a city of 22,000.",
         type: "teal"
       },
       {
-        icon: "📈",
-        title: "Rents rose across all types in March",
-        body: "Medians are up since early March: studios +$200, 1BRs +$200, 2BRs +$300. The 2BR top end has reached $4,795.",
+        icon: "📊",
+        title: "Bottom of market: $1,260/mo studio at Patriots Park",
+        body: "The lowest available studio in the city is $1,260/mo — still requiring $50,400/year income. There is no affordable option at market rate for workers earning below that threshold.",
         type: "navy"
       }
     ]
