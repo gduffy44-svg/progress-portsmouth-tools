@@ -50,6 +50,23 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .input-field:focus { outline: none; border-color: var(--navy); background: #fff; }
 .input-field::placeholder { color: var(--muted); font-weight: 300; }
 
+/* HAP SELECTOR */
+.hap-selector-wrap { position: relative; flex: 4; min-width: 280px; }
+.hap-search { width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 10px 14px 10px 36px; font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: var(--text); background: var(--cream); transition: border-color .2s; }
+.hap-search:focus { outline: none; border-color: var(--navy); background: #fff; }
+.hap-search::placeholder { color: var(--muted); font-weight: 300; }
+.hap-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; pointer-events: none; }
+.hap-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #fff; border: 1.5px solid var(--navy); border-radius: 6px; max-height: 260px; overflow-y: auto; z-index: 200; box-shadow: 0 8px 24px rgba(26,35,50,.15); }
+.hap-dropdown.open { display: block; }
+.hap-option { padding: 10px 14px; cursor: pointer; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: baseline; transition: background .12s; }
+.hap-option:last-child { border-bottom: none; }
+.hap-option:hover, .hap-option.focused { background: rgba(45,62,82,.06); }
+.hap-option-id { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: var(--gold-dark); flex-shrink: 0; min-width: 44px; }
+.hap-option-name { font-size: 13px; color: var(--text); line-height: 1.4; }
+.hap-option-cat { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); margin-left: auto; flex-shrink: 0; }
+.hap-no-results { padding: 14px; font-size: 13px; color: var(--muted); font-style: italic; text-align: center; }
+.hap-loading { padding: 14px; font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-align: center; letter-spacing: .04em; }
+
 /* MAIN */
 main { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
 
@@ -171,17 +188,29 @@ main { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
 
 <div class="item-input-section">
   <div class="item-input-inner">
-    <div class="input-group">
-      <label class="input-label" for="item-id">HAP Item ID</label>
-      <input class="input-field" id="item-id" type="text" placeholder="e.g. Z-4" maxlength="10" oninput="updateSummary()">
-    </div>
-    <div class="input-group" style="flex:3">
-      <label class="input-label" for="item-name">Item name / description</label>
-      <input class="input-field" id="item-name" type="text" placeholder="e.g. Parking reform — remove minimums in target zones" oninput="updateSummary()">
+    <div class="hap-selector-wrap input-group">
+      <label class="input-label">Select HAP item</label>
+      <span class="hap-search-icon">🔍</span>
+      <input class="hap-search" id="hap-search" type="text" placeholder="Search by ID or name… e.g. Z-4 or parking" autocomplete="off"
+        oninput="filterHAP(this.value)"
+        onfocus="openDropdown()"
+        onkeydown="handleKey(event)">
+      <div class="hap-dropdown" id="hap-dropdown">
+        <div class="hap-loading">Loading HAP items…</div>
+      </div>
     </div>
     <div class="input-group" style="flex:1;min-width:140px;">
       <label class="input-label" for="session-date">Triage date</label>
       <input class="input-field" id="session-date" type="date" oninput="updateSummary()">
+    </div>
+  </div>
+  <!-- Selected item display -->
+  <div id="selected-item-bar" style="display:none; max-width:860px; margin:0 auto; padding:0 24px 16px;">
+    <div style="background:rgba(45,62,82,.06); border:1px solid var(--border); border-radius:6px; padding:10px 16px; display:flex; align-items:center; gap:12px;">
+      <span id="selected-item-id" style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--gold-dark);"></span>
+      <span id="selected-item-name" style="font-size:14px; color:var(--navy); font-weight:600; flex:1;"></span>
+      <span id="selected-item-cat" style="font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:.06em;"></span>
+      <button onclick="clearSelection()" style="background:none; border:none; color:var(--muted); cursor:pointer; font-size:16px; line-height:1; padding:0 4px;" title="Clear selection">×</button>
     </div>
   </div>
 </div>
@@ -309,14 +338,124 @@ main { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
 
 <script>
 const answers = { q1: null, q2: null, q3: null, q4: null };
+let hapItems = [];
+let filteredItems = [];
+let focusedIndex = -1;
+let selectedItem = null;
 
+// ── HAP DATA ────────────────────────────────────────────────
+async function loadHAP() {
+  try {
+    const res = await fetch('./hap-actions.json');
+    if (!res.ok) throw new Error();
+    hapItems = await res.json();
+    // Filter out retired/deferred items
+    hapItems = hapItems.filter(i => i.status !== 'retired' && i.id);
+    renderDropdown(hapItems);
+  } catch(e) {
+    document.getElementById('hap-dropdown').innerHTML =
+      '<div class="hap-no-results">Unable to load HAP items. Ensure hap-actions.json is deployed.</div>';
+  }
+}
+
+function renderDropdown(items) {
+  const dd = document.getElementById('hap-dropdown');
+  if (items.length === 0) {
+    dd.innerHTML = '<div class="hap-no-results">No items match. Try a different search.</div>';
+    return;
+  }
+  dd.innerHTML = items.slice(0, 80).map((item, i) => `
+    <div class="hap-option" data-index="${i}" onclick="selectItem(${hapItems.indexOf(item)})">
+      <span class="hap-option-id">${item.id}</span>
+      <span class="hap-option-name">${item.action}</span>
+      <span class="hap-option-cat">${item.category || ''}</span>
+    </div>`).join('');
+  if (items.length > 80) {
+    dd.innerHTML += `<div class="hap-no-results">Showing first 80 of ${items.length} — type to narrow</div>`;
+  }
+  focusedIndex = -1;
+}
+
+function filterHAP(query) {
+  openDropdown();
+  if (!query.trim()) {
+    renderDropdown(hapItems);
+    return;
+  }
+  const q = query.toLowerCase();
+  filteredItems = hapItems.filter(i =>
+    i.id.toLowerCase().includes(q) ||
+    (i.action || '').toLowerCase().includes(q) ||
+    (i.category || '').toLowerCase().includes(q)
+  );
+  renderDropdown(filteredItems);
+}
+
+function openDropdown() {
+  document.getElementById('hap-dropdown').classList.add('open');
+  document.addEventListener('click', closeOnOutside, { once: true });
+}
+
+function closeOnOutside(e) {
+  const wrap = document.querySelector('.hap-selector-wrap');
+  if (!wrap.contains(e.target)) {
+    document.getElementById('hap-dropdown').classList.remove('open');
+  } else {
+    document.addEventListener('click', closeOnOutside, { once: true });
+  }
+}
+
+function handleKey(e) {
+  const dd = document.getElementById('hap-dropdown');
+  const opts = dd.querySelectorAll('.hap-option');
+  if (!dd.classList.contains('open') || opts.length === 0) return;
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    focusedIndex = Math.min(focusedIndex + 1, opts.length - 1);
+    opts.forEach((o, i) => o.classList.toggle('focused', i === focusedIndex));
+    opts[focusedIndex]?.scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    focusedIndex = Math.max(focusedIndex - 1, 0);
+    opts.forEach((o, i) => o.classList.toggle('focused', i === focusedIndex));
+    opts[focusedIndex]?.scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'Enter' && focusedIndex >= 0) {
+    e.preventDefault();
+    opts[focusedIndex]?.click();
+  } else if (e.key === 'Escape') {
+    dd.classList.remove('open');
+  }
+}
+
+function selectItem(index) {
+  selectedItem = hapItems[index];
+  document.getElementById('hap-dropdown').classList.remove('open');
+  document.getElementById('hap-search').value = `${selectedItem.id} — ${selectedItem.action}`;
+
+  // Show selected bar
+  document.getElementById('selected-item-id').textContent = selectedItem.id;
+  document.getElementById('selected-item-name').textContent = selectedItem.action;
+  document.getElementById('selected-item-cat').textContent = selectedItem.category || '';
+  document.getElementById('selected-item-bar').style.display = 'block';
+
+  updateSummary();
+}
+
+function clearSelection() {
+  selectedItem = null;
+  document.getElementById('hap-search').value = '';
+  document.getElementById('selected-item-bar').style.display = 'none';
+  renderDropdown(hapItems);
+  updateSummary();
+}
+
+// ── QUESTION LOGIC ───────────────────────────────────────────
 function selectChoice(btn, qId, value) {
-  // Deselect siblings
   btn.closest('.choices').querySelectorAll('.choice-btn').forEach(b => {
     b.classList.remove('selected','actor-home','actor-small','actor-non','actor-multi');
   });
   btn.classList.add('selected');
-  // Preserve actor color
   if (qId === 'q1') {
     if (value.includes('Homeowner')) btn.classList.add('actor-home');
     else if (value.includes('Small')) btn.classList.add('actor-small');
@@ -329,21 +468,19 @@ function selectChoice(btn, qId, value) {
 }
 
 function updateSummary() {
-  const id = document.getElementById('item-id').value.trim();
-  const name = document.getElementById('item-name').value.trim();
+  const id   = selectedItem ? selectedItem.id : '';
+  const name = selectedItem ? selectedItem.action : '';
   const date = document.getElementById('session-date').value;
 
   const answered = Object.values(answers).filter(Boolean).length;
   const panel = document.getElementById('summary-panel');
 
-  if (answered === 0 && !id && !name) { panel.classList.remove('visible'); return; }
+  if (answered === 0 && !id) { panel.classList.remove('visible'); return; }
   panel.classList.add('visible');
 
-  // Item name
-  const label = [id, name].filter(Boolean).join(' — ') || 'Item not yet named';
+  const label = [id, name].filter(Boolean).join(' — ') || 'Item not yet selected';
   document.getElementById('summary-item-name').textContent = label + (date ? ` · ${date}` : '');
 
-  // Rows
   const qs = [
     { key: 'q1', label: 'Actor addressed', rationale: document.getElementById('r1').value },
     { key: 'q2', label: 'Decision impact',  rationale: document.getElementById('r2').value },
@@ -357,48 +494,33 @@ function updateSummary() {
         <div class="summary-answer">${answers[q.key] || '—'}</div>
         ${q.rationale ? `<div class="summary-rationale">${q.rationale}</div>` : ''}
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
-  // Verdict
-  let verdict = generateVerdict();
-  document.getElementById('summary-verdict').textContent = verdict;
+  document.getElementById('summary-verdict').textContent = generateVerdict();
 }
 
 function generateVerdict() {
-  const a1 = answers.q1 || '';
-  const a2 = answers.q2 || '';
-  const a3 = answers.q3 || '';
-  const a4 = answers.q4 || '';
-
+  const a1 = answers.q1 || '', a2 = answers.q2 || '',
+        a3 = answers.q3 || '', a4 = answers.q4 || '';
   if (!a1 && !a2 && !a3 && !a4) return 'Complete all four questions to generate a verdict.';
-
   const parts = [];
-
   if (a2.includes('Changes')) parts.push('This item changes investment decisions');
   else if (a2.includes('friction')) parts.push('This item reduces friction for decisions already in motion');
   else if (a2.includes('Neither')) parts.push('This item does not directly affect capital decisions');
-
   if (a1 && !a1.includes('No specific')) parts.push(`primary actor: ${a1.split(' —')[0].replace(/[🏠🔧🏛️⬡⚙️]/u,'').trim()}`);
-
   if (a3.includes('Direct')) parts.push('city can deliver this through its own action');
   else if (a3.includes('Conditional')) parts.push('requires another actor to respond');
   else if (a3.includes('Outside')) parts.push('outcome depends on state or federal action');
-
   if (a4.includes('goes elsewhere')) parts.push('delay risks losing specific projects or investment');
   else if (a4.includes('recovers')) parts.push('delay is costly but recoverable');
   else if (a4.includes('Compliance')) parts.push('compliance deadline — state law sets the timeline');
   else if (a4.includes('No material')) parts.push('timing is not critical');
-
-  if (parts.length === 0) return 'Answer more questions to generate a verdict.';
-  return parts.join('; ') + '.';
+  return parts.length ? parts.join('; ') + '.' : 'Answer more questions to generate a verdict.';
 }
 
 function resetTool() {
   if (!confirm('Clear all answers and start a new item?')) return;
-  document.getElementById('item-id').value = '';
-  document.getElementById('item-name').value = '';
-  document.getElementById('session-date').value = '';
+  clearSelection();
   ['r1','r2','r3','r4'].forEach(id => document.getElementById(id).value = '');
   document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected','actor-home','actor-small','actor-non','actor-multi'));
   document.querySelectorAll('.q-card').forEach(c => c.classList.remove('answered'));
@@ -406,8 +528,8 @@ function resetTool() {
   document.getElementById('summary-panel').classList.remove('visible');
 }
 
-// Set today's date as default
 document.getElementById('session-date').valueAsDate = new Date();
+loadHAP();
 </script>
 
 </body>
