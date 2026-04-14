@@ -9,16 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:      #2d3e52;
-  --navy-dark: #1a2332;
-  --gold:      #f4a261;
-  --gold-dark: #c8822a;
-  --teal:      #3a7d6e;
-  --coral:     #e76f51;
-  --cream:     #f8f4ee;
-  --text:      #1a2332;
-  --muted:     #6b7c8f;
-  --border:    rgba(0,0,0,.09);
+  --navy: #2d3e52; --navy-dark: #1a2332; --gold: #f4a261; --gold-dark: #c8822a;
+  --teal: #3a7d6e; --coral: #e76f51; --cream: #f8f4ee; --text: #1a2332;
+  --muted: #6b7c8f; --border: rgba(0,0,0,.09);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -57,10 +50,10 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .filter-btn { padding: .35rem .85rem; border: 1.5px solid rgba(45,62,82,.22); background: transparent; color: var(--muted); font-family: 'Source Sans 3', sans-serif; font-size: .8rem; font-weight: 600; border-radius: 20px; cursor: pointer; transition: all .18s; white-space: nowrap; }
 .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
 .filter-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
-.filter-btn.active.f-triage { background: var(--gold-dark); border-color: var(--gold-dark); }
-.filter-btn.active.f-zoning { background: var(--navy); border-color: var(--navy); }
+.filter-btn.active.f-triage   { background: var(--gold-dark); border-color: var(--gold-dark); }
+.filter-btn.active.f-zoning   { background: var(--navy); border-color: var(--navy); }
 .filter-btn.active.f-economics { background: var(--teal); border-color: var(--teal); }
-.filter-btn.active.f-tools { background: var(--coral); border-color: var(--coral); }
+.filter-btn.active.f-context  { background: var(--coral); border-color: var(--coral); }
 .filter-count { font-family: 'JetBrains Mono', monospace; font-size: .65rem; margin-left: .25rem; opacity: .55; }
 
 /* CATEGORY SECTIONS */
@@ -68,34 +61,21 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .cat-section.hidden { display: none; }
 
 /* TRIAGE BANNER */
-.triage-banner {
-  background: linear-gradient(135deg, #1a1005 0%, #2a1f0a 50%, #1f180a 100%);
-  border: 1px solid rgba(200,130,42,.35);
-  border-radius: 10px 10px 0 0;
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 0;
-}
+.triage-banner { background: linear-gradient(135deg, #1a1005 0%, #2a1f0a 50%, #1f180a 100%); border: 1px solid rgba(200,130,42,.35); border-radius: 10px 10px 0 0; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .triage-banner-left { display: flex; align-items: center; gap: .75rem; }
 .triage-star { font-size: 1.3rem; }
-.triage-banner-text {}
 .triage-banner-label { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .15rem; }
 .triage-banner-desc { font-size: .85rem; color: rgba(255,255,255,.6); font-weight: 300; }
 .triage-banner-badge { font-family: 'JetBrains Mono', monospace; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--gold-dark); color: #fff; padding: .25rem .7rem; border-radius: 20px; white-space: nowrap; }
 
-/* SECTION HEADER (non-triage) */
+/* SECTION HEADER */
 .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 2px solid var(--border); }
 .section-header-icon { font-size: 1.4rem; }
-.section-header-text {}
 .section-header-label { font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .1rem; }
 .section-header-desc { font-size: .85rem; color: var(--muted); font-weight: 300; }
-.sec-zoning .section-header-label { color: var(--navy); }
+.sec-zoning .section-header-label   { color: var(--navy); }
 .sec-economics .section-header-label { color: var(--teal); }
-.sec-tools .section-header-label { color: var(--coral); }
+.sec-context .section-header-label   { color: var(--coral); }
 
 /* MODULE GRID */
 .module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
@@ -107,11 +87,9 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .module-card.hidden { display: none; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-/* TOOL CARD — distinct from module cards */
+/* TOOL CARD */
 .tool-card { background: linear-gradient(135deg, #1a2332 0%, #2d3e52 100%); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.12), 0 4px 16px rgba(0,0,0,.1); display: flex; flex-direction: column; transition: transform .22s ease, box-shadow .22s ease; animation: fadeUp .4s ease both; border: 1px solid rgba(244,162,97,.2); }
 .tool-card:hover { transform: translateY(-3px); box-shadow: 0 2px 8px rgba(0,0,0,.15), 0 12px 32px rgba(0,0,0,.15); }
-.tool-card .card-visual { border-bottom: 1px solid rgba(255,255,255,.08); }
-.tool-card .card-top { border-bottom: none; }
 .tool-card .card-cat { background: rgba(244,162,97,.15); color: var(--gold); border: 1px solid rgba(244,162,97,.3); }
 .tool-card .card-num { color: rgba(255,255,255,.3); }
 .tool-card .card-title { color: #fff; }
@@ -120,19 +98,16 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .tool-card .card-link { background: var(--gold); color: var(--navy-dark); }
 .tool-card .card-link:hover { background: #f8b980; }
 
-/* CARD VISUAL */
+/* CARD PARTS */
 .card-visual { height: 120px; position: relative; overflow: hidden; flex-shrink: 0; }
 .card-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-/* CARD TOP */
 .card-top { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.1rem .5rem; }
 .card-cat { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 3px; font-weight: 500; }
 .card-num { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--muted); letter-spacing: .04em; }
-
-/* CARD BODY */
 .card-body { padding: 0 1.1rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
 .card-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--navy); line-height: 1.25; margin-bottom: .45rem; }
 .card-question { font-size: .82rem; color: var(--muted); line-height: 1.55; font-style: italic; margin-bottom: .85rem; flex: 1; }
+.card-when { font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gold-dark); background: rgba(200,130,42,.08); border: 1px solid rgba(200,130,42,.18); padding: .2rem .5rem; border-radius: 3px; display: inline-block; margin-bottom: .6rem; }
 .card-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .9rem; }
 .card-tag { font-family: 'JetBrains Mono', monospace; font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; padding: .18rem .45rem; border-radius: 3px; background: rgba(45,62,82,.07); color: var(--muted); }
 .card-link { display: flex; align-items: center; justify-content: space-between; padding: .65rem .9rem; border-radius: 6px; text-decoration: none; font-size: .83rem; font-weight: 700; transition: all .18s; margin-top: auto; }
@@ -140,33 +115,32 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .card-link:hover .arrow { transform: translateX(3px); }
 
 /* COLOR THEMES */
-/* Triage */
-.cat-triage .card-cat { background: rgba(200,130,42,.12); color: var(--gold-dark); }
-.cat-triage .card-link { background: var(--gold-dark); color: #fff; }
+.cat-triage .card-cat   { background: rgba(200,130,42,.12); color: var(--gold-dark); }
+.cat-triage .card-link  { background: var(--gold-dark); color: #fff; }
 .cat-triage .card-link:hover { background: #a86e22; }
-
-/* Zoning */
-.cat-zoning .card-cat { background: rgba(45,62,82,.1); color: var(--navy); }
-.cat-zoning .card-link { background: var(--navy); color: #fff; }
+.cat-zoning .card-cat   { background: rgba(45,62,82,.1); color: var(--navy); }
+.cat-zoning .card-link  { background: var(--navy); color: #fff; }
 .cat-zoning .card-link:hover { background: var(--navy-dark); }
-
-/* Economics */
-.cat-economics .card-cat { background: rgba(58,125,110,.12); color: var(--teal); }
+.cat-economics .card-cat  { background: rgba(58,125,110,.12); color: var(--teal); }
 .cat-economics .card-link { background: var(--teal); color: #fff; }
 .cat-economics .card-link:hover { background: #2d6358; }
+.cat-context .card-cat  { background: rgba(231,111,81,.12); color: var(--coral); }
+.cat-context .card-link { background: var(--coral); color: #fff; }
+.cat-context .card-link:hover { background: #c5593d; }
 
-/* Tools */
-.cat-tools .card-cat { background: rgba(231,111,81,.12); color: var(--coral); }
-.cat-tools .card-link { background: var(--coral); color: #fff; }
-.cat-tools .card-link:hover { background: #c5593d; }
-
-/* SUGGESTED PATH */
+/* PHASE PATHS */
 .path-section { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-.path-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
-.path-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--navy); }
-.path-header p { font-size: .85rem; color: var(--muted); }
-.path-flow { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
-.path-step { display: flex; align-items: center; gap: .4rem; background: #fff; border: 1.5px solid var(--border); border-radius: 6px; padding: .5rem .85rem; text-decoration: none; transition: all .18s; }
+.path-section-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: .3rem; }
+.path-section-desc { font-size: .85rem; color: var(--muted); margin-bottom: 1.75rem; }
+.phase-paths { display: flex; flex-direction: column; gap: 1.25rem; }
+.phase-path {}
+.phase-path-label { font-family: 'JetBrains Mono', monospace; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .6rem; display: flex; align-items: center; gap: .5rem; }
+.phase-path-label span { display: inline-block; padding: .15rem .55rem; border-radius: 10px; }
+.pp-1 span { background: rgba(45,62,82,.1); color: var(--navy); }
+.pp-2 span { background: rgba(200,130,42,.12); color: var(--gold-dark); }
+.pp-3 span { background: rgba(58,125,110,.1); color: var(--teal); }
+.path-flow { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; }
+.path-step { display: flex; align-items: center; gap: .4rem; background: #fff; border: 1.5px solid var(--border); border-radius: 6px; padding: .45rem .75rem; text-decoration: none; transition: all .18s; }
 .path-step:hover { border-color: var(--navy); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 .path-step-num { font-family: 'JetBrains Mono', monospace; font-size: .62rem; width: 18px; height: 18px; background: var(--navy); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .path-step-name { font-size: .78rem; font-weight: 600; color: var(--navy); }
@@ -199,18 +173,15 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <div class="eyebrow-rule"></div>
-      <span class="eyebrow-text">Progress Portsmouth · Housing Action Plan</span>
-    </div>
+    <div class="hero-eyebrow"><div class="eyebrow-rule"></div><span class="eyebrow-text">Progress Portsmouth · Housing Action Plan</span></div>
     <h1>Housing Policy<br><em>Reference Library</em></h1>
-    <p class="hero-desc">Interactive modules for Housing Committee members and partners. Each module explains a foundational concept in housing policy — with Portsmouth context, relevant law, and connections to the Housing Action Plan.</p>
+    <p class="hero-desc">Interactive modules for Housing Committee members and partners. Organized around the triage process — from initial sweep to sequencing.</p>
     <div class="hero-meta">
       <div class="hero-stat"><span class="stat-val">13</span><span class="stat-label">Modules</span></div>
       <div class="hero-divider"></div>
       <div class="hero-stat"><span class="stat-val">148</span><span class="stat-label">HAP Items</span></div>
       <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="stat-val">4</span><span class="stat-label">Topic areas</span></div>
+      <div class="hero-stat"><span class="stat-val">3</span><span class="stat-label">Topic areas</span></div>
     </div>
   </div>
 </section>
@@ -220,11 +191,11 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
   <!-- FILTER BAR -->
   <div class="filter-bar">
     <span class="filter-label">Jump to:</span>
-    <button class="filter-btn active" onclick="filterSections('all', this)">All <span class="filter-count">13</span></button>
-    <button class="filter-btn f-triage" onclick="filterSections('triage', this)">🎯 Triage Tools <span class="filter-count">6</span></button>
-    <button class="filter-btn f-zoning" onclick="filterSections('zoning', this)">📐 Zoning Foundations <span class="filter-count">2</span></button>
-    <button class="filter-btn f-economics" onclick="filterSections('economics', this)">📊 Economics &amp; Finance <span class="filter-count">3</span></button>
-    <button class="filter-btn f-tools" onclick="filterSections('tools', this)">🔧 Incentives &amp; Context <span class="filter-count">3</span></button>
+    <button class="filter-btn active" onclick="filterSections('all',this)">All <span class="filter-count">13</span></button>
+    <button class="filter-btn f-triage" onclick="filterSections('triage',this)">🎯 Triage <span class="filter-count">9</span></button>
+    <button class="filter-btn f-zoning" onclick="filterSections('zoning',this)">📐 Zoning Foundation <span class="filter-count">1</span></button>
+    <button class="filter-btn f-economics" onclick="filterSections('economics',this)">📊 Economics &amp; Finance <span class="filter-count">3</span></button>
+    <button class="filter-btn f-context" onclick="filterSections('context',this)">📚 Background &amp; Context <span class="filter-count">2</span></button>
   </div>
 
   <!-- ══ SECTION 1: TRIAGE ══ -->
@@ -232,14 +203,73 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
     <div class="triage-banner">
       <div class="triage-banner-left">
         <span class="triage-star">🎯</span>
-        <div class="triage-banner-text">
-          <div class="triage-banner-label">Triage Tools</div>
-          <div class="triage-banner-desc">Use these modules and tools during and before HAP prioritization sessions</div>
+        <div>
+          <div class="triage-banner-label">Triage</div>
+          <div class="triage-banner-desc">Modules and tools directly tied to HAP prioritization — Phase 1 sweep through Phase 3 sequencing</div>
         </div>
       </div>
       <span class="triage-banner-badge">Recommended for committee sessions</span>
     </div>
     <div class="triage-grid">
+
+      <!-- M02: Missing Middle — moved to Triage -->
+      <div class="module-card cat-triage" data-cat="triage">
+        <div class="card-visual">
+          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="120" fill="#1a2332"/>
+            <rect x="20" y="75" width="22" height="30" fill="rgba(58,125,110,.7)" rx="1"/>
+            <polygon points="20,75 42,75 31,58" fill="rgba(58,125,110,.7)"/>
+            <rect x="55" y="65" width="18" height="40" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
+            <rect x="76" y="55" width="18" height="50" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
+            <rect x="97" y="60" width="18" height="45" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
+            <rect x="118" y="50" width="18" height="55" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
+            <rect x="139" y="55" width="18" height="50" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
+            <rect x="170" y="35" width="28" height="70" fill="rgba(58,125,110,.7)" rx="1"/>
+            <rect x="201" y="45" width="28" height="60" fill="rgba(58,125,110,.5)" rx="1"/>
+            <text x="97" y="22" font-family="monospace" font-size="8" fill="rgba(244,162,97,.7)" text-anchor="middle">MISSING MIDDLE</text>
+            <line x1="55" y1="26" x2="157" y2="26" stroke="rgba(244,162,97,.3)" stroke-width="1"/>
+            <line x1="15" y1="105" x2="240" y2="105" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 02</span></div>
+        <div class="card-body">
+          <h2 class="card-title">The Missing Middle: Housing Types Portsmouth Lacks</h2>
+          <div class="card-when">Phase 1 — Z-item sweep</div>
+          <p class="card-question">What housing types exist in Portsmouth's older neighborhoods but can't be built new — and why? Essential context for Z-5, Z-8, Z-9.</p>
+          <div class="card-tags"><span class="card-tag">Housing types</span><span class="card-tag">Zoning history</span><span class="card-tag">Infill</span></div>
+          <a class="card-link" href="./missing-middle.html" target="_blank">Open module <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- M03: 79-E — moved to Triage -->
+      <div class="module-card cat-triage" data-cat="triage">
+        <div class="card-visual">
+          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="120" fill="#2d3e52"/>
+            <rect x="30" y="65" width="240" height="6" fill="rgba(255,255,255,.1)" rx="3"/>
+            <rect x="30" y="65" width="160" height="6" fill="#c8822a" rx="3"/>
+            <line x1="30" y1="55" x2="30" y2="80" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+            <line x1="190" y1="55" x2="190" y2="80" stroke="#f4a261" stroke-width="1.5"/>
+            <line x1="270" y1="55" x2="270" y2="80" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+            <rect x="50" y="30" width="24" height="30" fill="rgba(255,255,255,.15)" rx="2"/>
+            <rect x="80" y="18" width="24" height="42" fill="#c8822a" rx="2" opacity=".9"/>
+            <text x="56" y="45" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle">Pre</text>
+            <text x="92" y="27" font-family="monospace" font-size="7.5" fill="#f4a261" text-anchor="middle">Post</text>
+            <text x="30" y="90" font-family="monospace" font-size="8" fill="rgba(255,255,255,.4)">Apply</text>
+            <text x="170" y="90" font-family="monospace" font-size="8" fill="#f4a261">Relief ends</text>
+            <circle cx="200" cy="35" r="16" fill="none" stroke="rgba(244,162,97,.15)" stroke-width="1"/>
+            <text x="200" y="39" font-family="monospace" font-size="10" fill="rgba(244,162,97,.6)" text-anchor="middle">79-E</text>
+          </svg>
+        </div>
+        <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 03</span></div>
+        <div class="card-body">
+          <h2 class="card-title">RSA 79-E: Community Revitalization Tax Relief</h2>
+          <div class="card-when">Phase 1–2 — I-category items</div>
+          <p class="card-question">How temporary property tax relief unlocks investment in older buildings and new housing — an active HAP pathway under consideration.</p>
+          <div class="card-tags"><span class="card-tag">Tax incentive</span><span class="card-tag">Rehabilitation</span><span class="card-tag">NH Housing</span></div>
+          <a class="card-link" href="./rsa-79e-explainer.html" target="_blank">Open module <span class="arrow">→</span></a>
+        </div>
+      </div>
 
       <!-- M07: Dependencies -->
       <div class="module-card cat-triage" data-cat="triage">
@@ -263,11 +293,8 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
             <line x1="96" y1="39" x2="98" y2="39" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
             <line x1="96" y1="66" x2="98" y2="66" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
             <line x1="96" y1="93" x2="98" y2="93" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
-            <path d="M146 39 L168 39" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
-            <path d="M146 66 L168 66" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
             <rect x="168" y="44" width="48" height="24" rx="3" fill="#2d3e52" stroke="rgba(200,130,42,.4)" stroke-width="1.5"/>
-            <text x="192" y="55" font-family="monospace" font-size="7.5" fill="rgba(200,130,42,.8)" text-anchor="middle">I-11 CLT</text>
-            <path d="M216 56 L240 56" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <text x="192" y="57" font-family="monospace" font-size="7.5" fill="rgba(200,130,42,.8)" text-anchor="middle">I-11 CLT</text>
             <rect x="240" y="46" width="46" height="20" rx="3" fill="#2d3e52" stroke="rgba(200,130,42,.25)" stroke-width="1.5"/>
             <text x="263" y="57" font-family="monospace" font-size="7" fill="rgba(200,130,42,.5)" text-anchor="middle">HTF-1 Fund</text>
           </svg>
@@ -275,7 +302,8 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 07</span></div>
         <div class="card-body">
           <h2 class="card-title">Why Sequence Matters: Item Dependencies</h2>
-          <p class="card-question">Which items are preconditions for others, and what does that mean for triage?</p>
+          <div class="card-when">Phase 3 — Sequencing</div>
+          <p class="card-question">Which items are preconditions for others, and what does that mean for triage ordering?</p>
           <div class="card-tags"><span class="card-tag">Sequencing</span><span class="card-tag">Dependency map</span><span class="card-tag">Triage</span></div>
           <a class="card-link" href="./dependencies.html" target="_blank">Open module <span class="arrow">→</span></a>
         </div>
@@ -291,8 +319,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
             <text x="47" y="66" font-family="monospace" font-size="7" fill="rgba(231,111,81,.6)" text-anchor="middle">SRB</text>
             <text x="47" y="77" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.8)" text-anchor="middle">85.8%</text>
             <rect x="80" y="15" width="40" height="90" fill="rgba(58,125,110,.35)" rx="2"/>
-            <text x="100" y="62" font-family="monospace" font-size="7.5" fill="rgba(58,125,110,.9)" text-anchor="middle">GRA</text>
-            <text x="100" y="72" font-family="monospace" font-size="7" fill="rgba(58,125,110,.7)" text-anchor="middle">GRB</text>
+            <text x="100" y="62" font-family="monospace" font-size="7.5" fill="rgba(58,125,110,.9)" text-anchor="middle">GRA/GRB</text>
             <rect x="125" y="15" width="32" height="90" fill="rgba(58,125,110,.5)" rx="2"/>
             <text x="141" y="67" font-family="monospace" font-size="7.5" fill="rgba(58,125,110,.9)" text-anchor="middle">GRC</text>
             <rect x="162" y="15" width="36" height="90" fill="rgba(200,130,42,.5)" rx="2"/>
@@ -310,6 +337,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 09</span></div>
         <div class="card-body">
           <h2 class="card-title">Portsmouth Zoning: The Triage Reference</h2>
+          <div class="card-when">Phase 1 — Z-item sweep</div>
           <p class="card-question">Zone structure, approval pathways, compliance deadlines, and all 38 Z-items grouped by mechanism.</p>
           <div class="card-tags"><span class="card-tag">38 Z-items</span><span class="card-tag">Compliance flags</span><span class="card-tag">Approval matrix</span></div>
           <a class="card-link" href="./zoning-ordinance-triage.html" target="_blank">Open module <span class="arrow">→</span></a>
@@ -329,10 +357,6 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
             <text x="77" y="53" font-family="monospace" font-size="6.5" fill="rgba(58,125,110,.9)" text-anchor="middle">Parking reform</text>
             <rect x="18" y="60" width="118" height="12" fill="rgba(58,125,110,.2)" rx="2"/>
             <text x="77" y="69" font-family="monospace" font-size="6.5" fill="rgba(58,125,110,.9)" text-anchor="middle">Soft money / HTF</text>
-            <rect x="18" y="76" width="118" height="12" fill="rgba(58,125,110,.15)" rx="2"/>
-            <text x="77" y="85" font-family="monospace" font-size="6.5" fill="rgba(58,125,110,.7)" text-anchor="middle">Fast permitting</text>
-            <rect x="18" y="92" width="118" height="12" fill="rgba(58,125,110,.1)" rx="2"/>
-            <text x="77" y="101" font-family="monospace" font-size="6.5" fill="rgba(58,125,110,.55)" text-anchor="middle">Land disposition</text>
             <rect x="158" y="10" width="130" height="100" fill="rgba(200,130,42,.1)" rx="3" stroke="rgba(200,130,42,.25)" stroke-width="1"/>
             <text x="223" y="22" font-family="monospace" font-size="7" fill="rgba(200,130,42,.8)" text-anchor="middle">DEVELOPER-SIDE</text>
             <rect x="164" y="28" width="118" height="12" fill="rgba(200,130,42,.18)" rx="2"/>
@@ -346,7 +370,8 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 11</span></div>
         <div class="card-body">
           <h2 class="card-title">What Would It Take?</h2>
-          <p class="card-question">For each housing type Portsmouth needs, what conditions would actually have to exist for it to get built here?</p>
+          <div class="card-when">Pre-reading — before Phase 2</div>
+          <p class="card-question">For each housing type Portsmouth needs, what city-side and developer-side conditions would actually have to align? Frames the Phase 2 capital flow questions.</p>
           <div class="card-tags"><span class="card-tag">9 housing types</span><span class="card-tag">Production conditions</span><span class="card-tag">HAP cross-reference</span></div>
           <a class="card-link" href="./what-would-it-take.html" target="_blank">Open module <span class="arrow">→</span></a>
         </div>
@@ -358,7 +383,8 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 12</span></div>
         <div class="card-body">
           <h2 class="card-title">The Capital Flow Test</h2>
-          <p class="card-question">Which HAP items actually change investment decisions — and for which actors? Explicit ratings matrix across 14 category types.</p>
+          <div class="card-when">Pre-reading — before Phase 2</div>
+          <p class="card-question">The conceptual grounding for the four triage questions. Which item types change investment decisions — and for which actors?</p>
           <div class="card-tags"><span class="card-tag">3 actor tracks</span><span class="card-tag">Ratings matrix</span><span class="card-tag">Acid test</span></div>
           <a class="card-link" href="./capital-flow-test.html" target="_blank">Open module <span class="arrow">→</span></a>
         </div>
@@ -370,9 +396,43 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 13</span></div>
         <div class="card-body">
           <h2 class="card-title">From HAP to Ordinance</h2>
-          <p class="card-question">Three implementation paths, realistic timelines, and concrete strategies the Housing Committee can advocate to accelerate zoning reform.</p>
+          <div class="card-when">Phase 3 — Sequencing</div>
+          <p class="card-question">Three implementation paths with realistic timelines. Which items go to Planning Board, which to City Manager, which to Council resolution?</p>
           <div class="card-tags"><span class="card-tag">3 paths</span><span class="card-tag">Process timelines</span><span class="card-tag">Advocacy asks</span></div>
           <a class="card-link" href="./hap-to-ordinance.html" target="_blank">Open module <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- M08: Housing Finance -->
+      <div class="module-card cat-triage" data-cat="triage">
+        <div class="card-visual">
+          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="120" fill="#1a2332"/>
+            <rect x="30" y="98" width="36" height="16" fill="#2d3e52" rx="1"/>
+            <rect x="30" y="71" width="36" height="25" fill="#1a7a5e"/>
+            <rect x="30" y="54" width="36" height="15" fill="#c8822a"/>
+            <rect x="30" y="41" width="36" height="11" fill="#3a7d6e"/>
+            <rect x="30" y="29" width="36" height="10" fill="#7d5a3c"/>
+            <rect x="30" y="14" width="36" height="13" fill="#1a5276" rx="1"/>
+            <text x="72" y="108" font-family="monospace" font-size="7" fill="rgba(255,255,255,.45)">Debt 21%</text>
+            <text x="72" y="87" font-family="monospace" font-size="7" fill="rgba(58,122,94,.9)">LIHTC 26%</text>
+            <text x="72" y="64" font-family="monospace" font-size="7" fill="rgba(200,130,42,.8)">State 15%</text>
+            <text x="72" y="50" font-family="monospace" font-size="7" fill="rgba(58,125,110,.7)">City 11%</text>
+            <text x="72" y="37" font-family="monospace" font-size="7" fill="rgba(125,90,60,.8)">Grants 9%</text>
+            <text x="72" y="23" font-family="monospace" font-size="7" fill="rgba(100,130,180,.8)">Equity 18%</text>
+            <line x1="170" y1="20" x2="170" y2="100" stroke="rgba(231,111,81,.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <text x="220" y="23" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle">Cost $15M</text>
+            <text x="220" y="74" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.7)" text-anchor="middle">Rent covers</text>
+            <text x="220" y="85" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.5)" text-anchor="middle">only $1.5M</text>
+          </svg>
+        </div>
+        <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 08</span></div>
+        <div class="card-body">
+          <h2 class="card-title">How Affordable Housing Gets Financed</h2>
+          <div class="card-when">Phase 2 — I and HTF items</div>
+          <p class="card-question">Capital stack, operating gap, and what Portsmouth can do about it. Essential for evaluating incentive and funding items.</p>
+          <div class="card-tags"><span class="card-tag">LIHTC</span><span class="card-tag">Capital stack</span><span class="card-tag">Operating gap</span></div>
+          <a class="card-link" href="./housing-finance.html" target="_blank">Open module <span class="arrow">→</span></a>
         </div>
       </div>
 
@@ -385,27 +445,26 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Triage Tool</span><span class="card-num">Companion</span></div>
         <div class="card-body">
           <h2 class="card-title">Capital Flow Scoring Tool</h2>
-          <p class="card-question">One HAP item at a time: four structured questions that generate a committee record of reasoning. Printable for session use.</p>
-          <div class="card-tags"><span class="card-tag">4 questions</span><span class="card-tag">Committee record</span><span class="card-tag">Print-ready</span></div>
+          <div class="card-when" style="background:rgba(255,255,255,.06);border-color:rgba(244,162,97,.25);color:var(--gold);">Use after sessions — not during</div>
+          <p class="card-question">Select any of the 148 HAP items, answer four structured questions, generate a printable record of the committee's reasoning.</p>
+          <div class="card-tags"><span class="card-tag">148 items</span><span class="card-tag">Committee record</span><span class="card-tag">Print-ready</span></div>
           <a class="card-link" href="./capital-flow-scoring.html" target="_blank">Open tool <span class="arrow">→</span></a>
         </div>
       </div>
 
     </div>
-  </div><!-- /triage section -->
+  </div>
 
-  <!-- ══ SECTION 2: ZONING FOUNDATIONS ══ -->
+  <!-- ══ SECTION 2: ZONING FOUNDATION ══ -->
   <div class="cat-section" id="sec-zoning" data-section="zoning">
     <div class="section-header sec-zoning">
       <div class="section-header-icon">📐</div>
-      <div class="section-header-text">
-        <div class="section-header-label">Zoning Foundations</div>
-        <div class="section-header-desc">Conceptual grounding for the regulatory items that dominate the HAP — pre-reading for Z-category triage</div>
+      <div>
+        <div class="section-header-label">Zoning Foundation</div>
+        <div class="section-header-desc">The single most important concept to understand before evaluating any Z-category item</div>
       </div>
     </div>
-    <div class="module-grid">
-
-      <!-- M01 -->
+    <div class="module-grid" style="grid-template-columns: repeat(3,1fr);">
       <div class="module-card cat-zoning" data-cat="zoning">
         <div class="card-visual">
           <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -424,40 +483,11 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Zoning</span><span class="card-num">Module 01</span></div>
         <div class="card-body">
           <h2 class="card-title">By-Right vs. Discretionary Permitting</h2>
-          <p class="card-question">Why does the approval pathway determine whether housing gets built at all?</p>
+          <p class="card-question">Why does the approval pathway determine whether housing gets built at all? The foundational concept behind most HAP zoning items.</p>
           <div class="card-tags"><span class="card-tag">Approval process</span><span class="card-tag">ZBA</span><span class="card-tag">Developer behavior</span></div>
           <a class="card-link" href="./byright-vs-discretionary.html" target="_blank">Open module <span class="arrow">→</span></a>
         </div>
       </div>
-
-      <!-- M02 -->
-      <div class="module-card cat-zoning" data-cat="zoning">
-        <div class="card-visual">
-          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="300" height="120" fill="#1a2332"/>
-            <rect x="20" y="75" width="22" height="30" fill="rgba(58,125,110,.7)" rx="1"/>
-            <polygon points="20,75 42,75 31,58" fill="rgba(58,125,110,.7)"/>
-            <rect x="55" y="65" width="18" height="40" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
-            <rect x="76" y="55" width="18" height="50" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
-            <rect x="97" y="60" width="18" height="45" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
-            <rect x="118" y="50" width="18" height="55" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
-            <rect x="139" y="55" width="18" height="50" fill="none" stroke="rgba(244,162,97,.5)" stroke-width="1.5" stroke-dasharray="3 2" rx="1"/>
-            <rect x="170" y="35" width="28" height="70" fill="rgba(58,125,110,.7)" rx="1"/>
-            <rect x="201" y="45" width="28" height="60" fill="rgba(58,125,110,.5)" rx="1"/>
-            <text x="97" y="22" font-family="monospace" font-size="8" fill="rgba(244,162,97,.7)" text-anchor="middle">MISSING MIDDLE</text>
-            <line x1="55" y1="26" x2="157" y2="26" stroke="rgba(244,162,97,.3)" stroke-width="1"/>
-            <line x1="15" y1="105" x2="240" y2="105" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="card-top"><span class="card-cat">Zoning</span><span class="card-num">Module 02</span></div>
-        <div class="card-body">
-          <h2 class="card-title">The Missing Middle: Housing Types Portsmouth Lacks</h2>
-          <p class="card-question">What housing types exist in Portsmouth's older neighborhoods but can't be built new — and why?</p>
-          <div class="card-tags"><span class="card-tag">Housing types</span><span class="card-tag">Zoning history</span><span class="card-tag">Infill</span></div>
-          <a class="card-link" href="./missing-middle.html" target="_blank">Open module <span class="arrow">→</span></a>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -465,9 +495,9 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
   <div class="cat-section" id="sec-economics" data-section="economics">
     <div class="section-header sec-economics">
       <div class="section-header-icon">📊</div>
-      <div class="section-header-text">
+      <div>
         <div class="section-header-label">Economics &amp; Finance</div>
-        <div class="section-header-desc">The pro forma, AMI, and capital stack — why the math works or doesn't, and what Portsmouth can do about it</div>
+        <div class="section-header-desc">The pro forma, AMI, and capital stack — why the math works or doesn't</div>
       </div>
     </div>
     <div class="module-grid">
@@ -486,18 +516,10 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
             <rect x="72" y="30" width="28" height="75" fill="rgba(58,125,110,.6)" rx="2"/>
             <text x="86" y="110" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.4)" text-anchor="middle">VALUE</text>
             <text x="108" y="27" font-family="monospace" font-size="7.5" fill="rgba(58,125,110,.8)">Feasible</text>
-            <rect x="155" y="20" width="28" height="85" fill="rgba(255,255,255,.07)" rx="2"/>
             <rect x="155" y="50" width="28" height="55" fill="rgba(231,111,81,.5)" rx="0 0 2 2"/>
             <rect x="155" y="37" width="28" height="13" fill="rgba(200,130,42,.6)"/>
-            <rect x="155" y="20" width="28" height="17" fill="rgba(231,111,81,.3)"/>
-            <text x="169" y="110" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.4)" text-anchor="middle">COST</text>
             <rect x="197" y="50" width="28" height="55" fill="rgba(231,111,81,.4)" rx="2"/>
-            <text x="211" y="110" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.4)" text-anchor="middle">VALUE</text>
             <text x="195" y="45" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.8)">Gap →</text>
-            <rect x="245" y="40" width="40" height="3" fill="rgba(255,255,255,.1)" rx="1.5"/>
-            <circle cx="265" cy="41.5" r="5" fill="rgba(244,162,97,.6)"/>
-            <rect x="245" y="55" width="40" height="3" fill="rgba(255,255,255,.1)" rx="1.5"/>
-            <circle cx="272" cy="56.5" r="5" fill="rgba(244,162,97,.6)"/>
           </svg>
         </div>
         <div class="card-top"><span class="card-cat">Economics</span><span class="card-num">Module 04</span></div>
@@ -536,85 +558,22 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         </div>
       </div>
 
-      <!-- M08 -->
-      <div class="module-card cat-economics" data-cat="economics">
-        <div class="card-visual">
-          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="300" height="120" fill="#1a2332"/>
-            <rect x="30" y="98" width="36" height="16" fill="#2d3e52" rx="1"/>
-            <rect x="30" y="71" width="36" height="25" fill="#1a7a5e" rx="0"/>
-            <rect x="30" y="54" width="36" height="15" fill="#c8822a" rx="0"/>
-            <rect x="30" y="41" width="36" height="11" fill="#3a7d6e" rx="0"/>
-            <rect x="30" y="29" width="36" height="10" fill="#7d5a3c" rx="0"/>
-            <rect x="30" y="14" width="36" height="13" fill="#1a5276" rx="1"/>
-            <text x="72" y="108" font-family="monospace" font-size="7" fill="rgba(255,255,255,.45)">Debt 21%</text>
-            <text x="72" y="87" font-family="monospace" font-size="7" fill="rgba(58,122,94,.9)">LIHTC 26%</text>
-            <text x="72" y="64" font-family="monospace" font-size="7" fill="rgba(200,130,42,.8)">State 15%</text>
-            <text x="72" y="50" font-family="monospace" font-size="7" fill="rgba(58,125,110,.7)">City 11%</text>
-            <text x="72" y="37" font-family="monospace" font-size="7" fill="rgba(125,90,60,.8)">Grants 9%</text>
-            <text x="72" y="23" font-family="monospace" font-size="7" fill="rgba(100,130,180,.8)">Equity 18%</text>
-            <line x1="170" y1="20" x2="170" y2="100" stroke="rgba(231,111,81,.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
-            <rect x="175" y="14" width="90" height="14" fill="rgba(255,255,255,.06)" rx="2"/>
-            <rect x="175" y="60" width="90" height="40" fill="rgba(255,255,255,.06)" rx="2"/>
-            <text x="220" y="23" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle">Cost $15M</text>
-            <text x="220" y="74" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.7)" text-anchor="middle">Rent covers</text>
-            <text x="220" y="85" font-family="monospace" font-size="7.5" fill="rgba(231,111,81,.5)" text-anchor="middle">only $1.5M</text>
-          </svg>
-        </div>
-        <div class="card-top"><span class="card-cat">Economics</span><span class="card-num">Module 08</span></div>
-        <div class="card-body">
-          <h2 class="card-title">How Affordable Housing Gets Financed</h2>
-          <p class="card-question">What is the capital stack, why does the operating gap exist, and what can Portsmouth actually do about it?</p>
-          <div class="card-tags"><span class="card-tag">LIHTC</span><span class="card-tag">Capital stack</span><span class="card-tag">Operating gap</span></div>
-          <a class="card-link" href="./housing-finance.html" target="_blank">Open module <span class="arrow">→</span></a>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- ══ SECTION 4: INCENTIVES, TOOLS & CONTEXT ══ -->
-  <div class="cat-section" id="sec-tools" data-section="tools">
-    <div class="section-header sec-tools">
-      <div class="section-header-icon">🔧</div>
-      <div class="section-header-text">
-        <div class="section-header-label">Incentives, Tools &amp; Context</div>
-        <div class="section-header-desc">79-E, permanent affordability tools, and the equity lens — essential background for specific HAP categories</div>
+  <!-- ══ SECTION 4: BACKGROUND & CONTEXT ══ -->
+  <div class="cat-section" id="sec-context" data-section="context">
+    <div class="section-header sec-context">
+      <div class="section-header-icon">📚</div>
+      <div>
+        <div class="section-header-label">Background &amp; Context</div>
+        <div class="section-header-desc">Important framing that doesn't directly answer the four triage questions — read before or after sessions</div>
       </div>
     </div>
     <div class="module-grid">
 
-      <!-- M03 -->
-      <div class="module-card cat-tools" data-cat="tools">
-        <div class="card-visual">
-          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="300" height="120" fill="#2d3e52"/>
-            <rect x="30" y="65" width="240" height="6" fill="rgba(255,255,255,.1)" rx="3"/>
-            <rect x="30" y="65" width="160" height="6" fill="#c8822a" rx="3"/>
-            <line x1="30" y1="55" x2="30" y2="80" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
-            <line x1="190" y1="55" x2="190" y2="80" stroke="#f4a261" stroke-width="1.5"/>
-            <line x1="270" y1="55" x2="270" y2="80" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
-            <rect x="50" y="30" width="24" height="30" fill="rgba(255,255,255,.15)" rx="2"/>
-            <rect x="80" y="18" width="24" height="42" fill="#c8822a" rx="2" opacity=".9"/>
-            <text x="56" y="45" font-family="monospace" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle">Pre</text>
-            <text x="92" y="27" font-family="monospace" font-size="7.5" fill="#f4a261" text-anchor="middle">Post</text>
-            <text x="30" y="90" font-family="monospace" font-size="8" fill="rgba(255,255,255,.4)">Apply</text>
-            <text x="170" y="90" font-family="monospace" font-size="8" fill="#f4a261">Relief ends</text>
-            <circle cx="200" cy="35" r="16" fill="none" stroke="rgba(244,162,97,.15)" stroke-width="1"/>
-            <text x="200" y="39" font-family="monospace" font-size="10" fill="rgba(244,162,97,.6)" text-anchor="middle">79-E</text>
-          </svg>
-        </div>
-        <div class="card-top"><span class="card-cat">Incentives</span><span class="card-num">Module 03</span></div>
-        <div class="card-body">
-          <h2 class="card-title">RSA 79-E: Community Revitalization Tax Relief</h2>
-          <p class="card-question">How can temporary property tax relief unlock investment in older buildings and new housing?</p>
-          <div class="card-tags"><span class="card-tag">Tax incentive</span><span class="card-tag">Rehabilitation</span><span class="card-tag">NH Housing</span></div>
-          <a class="card-link" href="./rsa-79e-explainer.html" target="_blank">Open module <span class="arrow">→</span></a>
-        </div>
-      </div>
-
       <!-- M06 -->
-      <div class="module-card cat-tools" data-cat="tools">
+      <div class="module-card cat-context" data-cat="context">
         <div class="card-visual">
           <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="300" height="120" fill="#2a1f14"/>
@@ -628,7 +587,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
             <text x="140" y="107" font-family="monospace" font-size="10" fill="rgba(200,130,42,.5)">✓ Density bonus</text>
           </svg>
         </div>
-        <div class="card-top"><span class="card-cat">Tools</span><span class="card-num">Module 06</span></div>
+        <div class="card-top"><span class="card-cat">Context</span><span class="card-num">Module 06</span></div>
         <div class="card-body">
           <h2 class="card-title">Permanent Affordability: The Tools Available to Portsmouth</h2>
           <p class="card-question">What's actually off the table under Dillon's Rule — and what tools does Portsmouth have?</p>
@@ -638,7 +597,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
       </div>
 
       <!-- M10 -->
-      <div class="module-card cat-tools" data-cat="tools">
+      <div class="module-card cat-context" data-cat="context">
         <div class="card-visual">
           <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect width="300" height="120" fill="#1a2332"/>
@@ -651,9 +610,6 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
             <circle cx="110" cy="94" r="9" fill="none" stroke="rgba(231,111,81,.65)" stroke-width="1.5" stroke-dasharray="3 2"/>
             <circle cx="155" cy="102" r="9" fill="none" stroke="rgba(231,111,81,.65)" stroke-width="1.5" stroke-dasharray="3 2"/>
             <circle cx="200" cy="94" r="9" fill="none" stroke="rgba(231,111,81,.65)" stroke-width="1.5" stroke-dasharray="3 2"/>
-            <text x="88" y="12" font-family="monospace" font-size="6" fill="rgba(58,125,110,.8)" text-anchor="middle">OWNER</text>
-            <text x="150" y="5" font-family="monospace" font-size="6" fill="rgba(58,125,110,.8)" text-anchor="middle">DEVELOPER</text>
-            <text x="212" y="12" font-family="monospace" font-size="6" fill="rgba(58,125,110,.8)" text-anchor="middle">STAFF</text>
             <text x="110" y="112" font-family="monospace" font-size="6" fill="rgba(231,111,81,.75)" text-anchor="middle">RENTER</text>
             <text x="155" y="120" font-family="monospace" font-size="6" fill="rgba(231,111,81,.75)" text-anchor="middle">WORKER</text>
             <text x="200" y="112" font-family="monospace" font-size="6" fill="rgba(231,111,81,.75)" text-anchor="middle">YOUNG</text>
@@ -662,7 +618,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
         <div class="card-top"><span class="card-cat">Context</span><span class="card-num">Module 10</span></div>
         <div class="card-body">
           <h2 class="card-title">Who Is Not at the Table?</h2>
-          <p class="card-question">Renters, service workers, and young residents are structurally absent from Portsmouth's housing policy process.</p>
+          <p class="card-question">Renters, service workers, and young residents are structurally absent from Portsmouth's housing policy process. Civic context — not a triage instrument.</p>
           <div class="card-tags"><span class="card-tag">Civic engagement</span><span class="card-tag">Renters</span><span class="card-tag">Process design</span></div>
           <a class="card-link" href="./voices-not-heard.html" target="_blank">Open module <span class="arrow">→</span></a>
         </div>
@@ -671,32 +627,51 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
     </div>
   </div>
 
-  <!-- SUGGESTED PATH -->
+  <!-- PHASE PATHS -->
   <div class="path-section">
-    <div class="path-header">
-      <h2>Suggested reading path</h2>
-      <p>New to the Housing Action Plan? Start here.</p>
-    </div>
-    <div class="path-flow">
-      <a class="path-step" href="./byright-vs-discretionary.html" target="_blank"><span class="path-step-num">1</span><span class="path-step-name">By-Right vs. Discretionary</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./missing-middle.html" target="_blank"><span class="path-step-num">2</span><span class="path-step-name">Missing Middle</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./proforma.html" target="_blank"><span class="path-step-num">3</span><span class="path-step-name">Pro Forma</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./ami-explainer.html" target="_blank"><span class="path-step-num">4</span><span class="path-step-name">AMI in Portsmouth</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./permanentaffordability.html" target="_blank"><span class="path-step-num">5</span><span class="path-step-name">Permanent Affordability</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./rsa-79e-explainer.html" target="_blank"><span class="path-step-num">6</span><span class="path-step-name">RSA 79-E</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./dependencies.html" target="_blank"><span class="path-step-num">7</span><span class="path-step-name">Item Dependencies</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./housing-finance.html" target="_blank"><span class="path-step-num">8</span><span class="path-step-name">Housing Finance</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./what-would-it-take.html" target="_blank"><span class="path-step-num">9</span><span class="path-step-name">What Would It Take?</span></a>
-      <span class="path-arrow">→</span>
-      <a class="path-step" href="./capital-flow-test.html" target="_blank"><span class="path-step-num">10</span><span class="path-step-name">Capital Flow Test</span></a>
+    <div class="path-section-title">Reading paths by triage phase</div>
+    <div class="path-section-desc">Not sure where to start? Read what's most useful for the work immediately ahead.</div>
+    <div class="phase-paths">
+
+      <div class="phase-path pp-1">
+        <div class="phase-path-label"><span>Before Session 1 — The Sweep</span></div>
+        <div class="path-flow">
+          <a class="path-step" href="./byright-vs-discretionary.html" target="_blank"><span class="path-step-num">1</span><span class="path-step-name">By-Right vs. Discretionary</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./missing-middle.html" target="_blank"><span class="path-step-num">2</span><span class="path-step-name">Missing Middle</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./zoning-ordinance-triage.html" target="_blank"><span class="path-step-num">3</span><span class="path-step-name">Zoning Triage Reference</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./ami-explainer.html" target="_blank"><span class="path-step-num">4</span><span class="path-step-name">AMI in Portsmouth</span></a>
+        </div>
+      </div>
+
+      <div class="phase-path pp-2">
+        <div class="phase-path-label"><span>Before Phase 2 — Depth Triage</span></div>
+        <div class="path-flow">
+          <a class="path-step" href="./capital-flow-test.html" target="_blank"><span class="path-step-num">1</span><span class="path-step-name">Capital Flow Test</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./what-would-it-take.html" target="_blank"><span class="path-step-num">2</span><span class="path-step-name">What Would It Take?</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./proforma.html" target="_blank"><span class="path-step-num">3</span><span class="path-step-name">Pro Forma</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./rsa-79e-explainer.html" target="_blank"><span class="path-step-num">4</span><span class="path-step-name">RSA 79-E</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./housing-finance.html" target="_blank"><span class="path-step-num">5</span><span class="path-step-name">Housing Finance</span></a>
+        </div>
+      </div>
+
+      <div class="phase-path pp-3">
+        <div class="phase-path-label"><span>Before Phase 3 — Sequencing</span></div>
+        <div class="path-flow">
+          <a class="path-step" href="./dependencies.html" target="_blank"><span class="path-step-num">1</span><span class="path-step-name">Item Dependencies</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./hap-to-ordinance.html" target="_blank"><span class="path-step-num">2</span><span class="path-step-name">From HAP to Ordinance</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./permanentaffordability.html" target="_blank"><span class="path-step-num">3</span><span class="path-step-name">Permanent Affordability</span></a>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -704,17 +679,17 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 
 <footer class="page-footer">
   <div class="footer-inner">
-    <div class="footer-block">
+    <div>
       <div class="fb-label">Resource</div>
-      <p>Housing Policy Reference Library<br><strong style="color:rgba(255,255,255,.7);">Version 2.0</strong> · April 2026</p>
+      <p>Housing Policy Reference Library<br><strong style="color:rgba(255,255,255,.7);">Version 2.1</strong> · April 2026</p>
       <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
-      <div class="revision-notes">v2.0 (April 2026) — Major restructure: four category sections (Triage, Zoning Foundations, Economics &amp; Finance, Incentives &amp; Context). Triage section with gold banner and "Recommended for committee sessions" treatment. Scoring Tool added as distinct card type. Library now 13 modules + 1 tool card. Filter bar updated to category navigation.<br>v1.x (March–April 2026) — Progressive additions of Modules 08–13. See individual module revision histories.</div>
+      <div class="revision-notes">v2.1 (April 2026) — Restructured around triage phases. M02 (Missing Middle), M03 (79-E), M08 (Housing Finance) moved to Triage section. "Incentives &amp; Context" renamed "Background &amp; Context." Scoring Tool reframed as post-session documentation. Phase-based reading paths replace linear suggested path. Filter updated to 4 sections (Triage 9, Zoning 1, Economics 2, Context 2).<br>v2.0 (April 2026) — Four category sections, gold triage banner, tool card, section navigation.<br>v1.x (March–April 2026) — Progressive additions of Modules 01–13.</div>
     </div>
-    <div class="footer-block">
+    <div>
       <div class="fb-label">Organization</div>
       <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
     </div>
-    <div class="footer-block">
+    <div>
       <div class="fb-label">Context</div>
       <p>Supporting implementation of Portsmouth's Housing Action Plan, adopted unanimously February 17, 2026. Prepared as an outside resource for the Housing Committee.</p>
     </div>
@@ -726,21 +701,15 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 function filterSections(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-
   const sections = document.querySelectorAll('.cat-section');
   if (cat === 'all') {
     sections.forEach(s => s.classList.remove('hidden'));
     document.getElementById('module-count').textContent = '13 modules';
   } else {
-    sections.forEach(s => {
-      const show = s.dataset.section === cat;
-      s.classList.toggle('hidden', !show);
-    });
-    // Scroll to visible section
+    sections.forEach(s => s.classList.toggle('hidden', s.dataset.section !== cat));
     const target = document.getElementById('sec-' + cat);
     if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-    // Update count
-    const counts = { triage: '6 triage tools', zoning: '2 modules', economics: '3 modules', tools: '3 modules' };
+    const counts = { triage: '9 triage resources', zoning: '1 module', economics: '2 modules', context: '2 modules' };
     document.getElementById('module-count').textContent = counts[cat] || '13 modules';
   }
 }
