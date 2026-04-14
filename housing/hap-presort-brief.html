@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAP Pre-Sort Brief — Portsmouth Housing Committee</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #2d3e52; --navy-dark: #1a2332; --gold: #f4a261; --gold-dark: #c8822a;
+  --teal: #3a7d6e; --coral: #e76f51; --cream: #f8f4ee; --muted: #6b7a8d; --border: #d8d0c4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: #e8e4de; color: var(--navy-dark); padding: 40px 20px; }
+
+.print-bar { position: fixed; top: 16px; right: 16px; z-index: 100; }
+.btn-print { background: var(--navy); color: #fff; border: none; border-radius: 6px; padding: 10px 20px; font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
+.btn-print:hover { background: var(--navy-dark); }
+
+.page { background: #fff; max-width: 800px; margin: 0 auto; border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,.15); overflow: hidden; }
+
+.page-header { background: var(--navy); padding: 14px 24px 12px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.page-header-left {}
+.hdr-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+.hdr-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-style: italic; color: #fff; line-height: 1.2; }
+.hdr-right { text-align: right; flex-shrink: 0; display: flex; align-items: center; gap: 20px; }
+.hdr-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(255,255,255,.4); letter-spacing: .08em; text-transform: uppercase; }
+.hdr-stat-val { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--gold); }
+.gold-rule { height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold), transparent); }
+
+.page-body { padding: 16px 24px 18px; }
+
+.intro { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; padding: 8px 14px; background: rgba(248,244,238,.7); border-radius: 6px; border-left: 3px solid var(--gold); }
+.intro strong { color: var(--navy); }
+
+.sections { display: flex; flex-direction: column; gap: 10px; }
+
+.section { border: 1.5px solid var(--border); border-radius: 7px; overflow: hidden; }
+.section-head { padding: 7px 14px; display: flex; align-items: center; gap: 10px; }
+.section-icon { font-size: 12px; flex-shrink: 0; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; flex: 1; }
+.section-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; background: rgba(0,0,0,.08); padding: 2px 8px; border-radius: 10px; }
+.section-rationale { font-size: 11px; color: var(--muted); font-style: italic; margin-left: auto; max-width: 260px; text-align: right; }
+
+.sec-park .section-head   { background: rgba(107,122,141,.08); }
+.sec-park .section-label  { color: var(--muted); }
+.sec-must .section-head   { background: rgba(231,111,81,.08); }
+.sec-must .section-label  { color: var(--coral); }
+.sec-dep .section-head    { background: rgba(200,130,42,.08); }
+.sec-dep .section-label   { color: var(--gold-dark); }
+.sec-quick .section-head  { background: rgba(58,125,110,.08); }
+.sec-quick .section-label { color: var(--teal); }
+
+.items-table { width: 100%; border-collapse: collapse; }
+.items-table tr { border-top: 1px solid var(--border); }
+.items-table tr:first-child { border-top: none; }
+.items-table td { padding: 4px 12px; font-size: 11.5px; vertical-align: middle; }
+.td-id { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; white-space: nowrap; width: 48px; }
+.sec-park .td-id  { color: var(--muted); }
+.sec-must .td-id  { color: var(--coral); }
+.sec-dep .td-id   { color: var(--gold-dark); }
+.sec-quick .td-id { color: var(--teal); }
+.td-name { font-weight: 600; color: var(--navy-dark); line-height: 1.3; }
+.td-note { font-size: 10.5px; color: var(--muted); line-height: 1.4; }
+.td-flag { white-space: nowrap; text-align: right; padding-right: 12px; }
+.flag { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+.flag-compliance { background: rgba(231,111,81,.12); color: var(--coral); border: 1px solid rgba(231,111,81,.25); }
+.flag-dep    { background: rgba(200,130,42,.1); color: var(--gold-dark); border: 1px solid rgba(200,130,42,.2); }
+.flag-admin  { background: rgba(58,125,110,.1); color: var(--teal); border: 1px solid rgba(58,125,110,.2); }
+.flag-done   { background: rgba(107,122,141,.1); color: var(--muted); border: 1px solid rgba(107,122,141,.2); }
+
+/* SUMMARY — single compact row, never wraps */
+.summary-bar { margin-top: 12px; background: var(--navy-dark); border-radius: 5px; padding: 8px 14px; display: flex; align-items: center; gap: 0; }
+.sum-item { display: flex; align-items: center; gap: 5px; padding: 0 12px; border-right: 1px solid rgba(255,255,255,.1); }
+.sum-item:first-child { padding-left: 0; }
+.sum-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--gold); }
+.sum-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+.sum-divider { display: none; }
+.sum-note { font-size: 11px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.4; padding-left: 14px; flex: 1; }
+
+.page-footer { background: var(--navy-dark); padding: 7px 24px; display: flex; justify-content: space-between; align-items: center; }
+.footer-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(255,255,255,.3); letter-spacing: .06em; }
+.footer-ver { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(255,255,255,.2); letter-spacing: .04em; }
+
+@media print {
+  body { background: white; padding: 0; }
+  .print-bar { display: none; }
+  .page { box-shadow: none; max-width: 100%; }
+  @page { margin: 1.2cm; size: A4; }
+}
+@media (max-width: 600px) {
+  .page-body { padding: 12px; }
+  .page-header { padding: 10px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
+</div>
+
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="hdr-eyebrow">Portsmouth Housing Committee · Session 1 Preparation</div>
+      <div class="hdr-title">HAP Pre-Sort Brief</div>
+    </div>
+    <div class="hdr-right">
+      <div class="hdr-stat-label">Total items</div>
+      <div class="hdr-stat-val">148</div>
+    </div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <div class="page-body">
+
+    <div class="intro">
+      This brief identifies items that can be sorted before Session 1 begins — without committee deliberation. Presenting these pre-sorts at the opening of the first session saves roughly 20 minutes and demonstrates to the committee that the process has structure. <strong>All pre-sorts are subject to committee objection</strong> — if any member objects, the item moves to the standard sweep.
+    </div>
+
+    <div class="sections">
+
+      <!-- PRE-PARK: COMPLETE -->
+      <div class="section sec-park">
+        <div class="section-head">
+          <span class="section-icon">✅</span>
+          <span class="section-label">Pre-Park — Already complete</span>
+          <span class="section-count">7</span>
+          <span class="section-rationale">Work is done. No further action this term.</span>
+        </div>
+        <table class="items-table">
+          <tr><td class="td-id">Z-1</td><td><div class="td-name">Rezone outdated O/R and GB districts</div><div class="td-note">GNOD adopted 2024. Complete.</div></td><td class="td-flag"><span class="flag flag-done">Complete</span></td></tr>
+          <tr><td class="td-id">Z-24</td><td><div class="td-name">Short-term rental regulation</div><div class="td-note">STR ordinance adopted.</div></td><td class="td-flag"><span class="flag flag-done">Complete</span></td></tr>
+          <tr><td class="td-id">HTF-1</td><td><div class="td-name">Housing Trust Fund: establish governance and criteria</div><div class="td-note">Council established BMR Housing Trust Fund 2025.</div></td><td class="td-flag"><span class="flag flag-done">Complete</span></td></tr>
+          <tr><td class="td-id">HTF-2</td><td><div class="td-name">Housing Trust Fund: identify and secure funding sources</div><div class="td-note">$500K seed funding appropriated.</div></td><td class="td-flag"><span class="flag flag-done">Complete</span></td></tr>
+          <tr><td class="td-id">EO-7</td><td><div class="td-name">Community engagement on housing policy</div><div class="td-note">Places to Live Dialogue completed.</div></td><td class="td-flag"><span class="flag flag-done">Complete</span></td></tr>
+          <tr><td class="td-id">EO-8</td><td><div class="td-name">Places to Live Dialogue continuation</div><div class="td-note">Completed as part of HAP process.</div></td><td class="td-flag"><span class="flag flag-done">Complete</span></td></tr>
+          <tr><td class="td-id">I-11</td><td><div class="td-name">Community Land Trust support</div><div class="td-note">Retired — no CLT partner identified; subsumed by ground lease strategy.</div></td><td class="td-flag"><span class="flag flag-done">Retired</span></td></tr>
+        </table>
+      </div>
+
+      <!-- PRE-PARK: OUT OF SCOPE -->
+      <div class="section sec-park">
+        <div class="section-head">
+          <span class="section-icon">🅿️</span>
+          <span class="section-label">Pre-Park Candidates — Likely out of scope this term</span>
+          <span class="section-count">6</span>
+          <span class="section-rationale">State action required, or long-horizon only. Committee should confirm.</span>
+        </div>
+        <table class="items-table">
+          <tr><td class="td-id">Z-16</td><td><div class="td-name">Pease Tradeport housing exploration</div><div class="td-note">PDA jurisdiction — not within Portsmouth's zoning authority.</div></td><td class="td-flag"><span class="flag flag-done">Out of scope</span></td></tr>
+          <tr><td class="td-id">Z-19</td><td><div class="td-name">Seasonal worker housing provisions</div><div class="td-note">Niche need, no active project, low leverage this term.</div></td><td class="td-flag"><span class="flag flag-done">Long horizon</span></td></tr>
+          <tr><td class="td-id">Z-34</td><td><div class="td-name">Transfer of development rights</div><div class="td-note">Complex mechanism, no sending/receiving zone framework established.</div></td><td class="td-flag"><span class="flag flag-done">Long horizon</span></td></tr>
+          <tr><td class="td-id">I-16</td><td><div class="td-name">Pillow tax / local option tax for housing</div><div class="td-note">Requires state enabling legislation not currently authorized under NH law.</div></td><td class="td-flag"><span class="flag flag-done">State req'd</span></td></tr>
+          <tr><td class="td-id">PC-3</td><td><div class="td-name">Regional housing coalition</div><div class="td-note">Valuable long-term but no near-term production impact.</div></td><td class="td-flag"><span class="flag flag-done">Long horizon</span></td></tr>
+          <tr><td class="td-id">PC-6</td><td><div class="td-name">UNH / academic partnership</div><div class="td-note">No active partnership pathway; low HC leverage.</div></td><td class="td-flag"><span class="flag flag-done">Long horizon</span></td></tr>
+        </table>
+      </div>
+
+      <!-- MUST PURSUE: COMPLIANCE -->
+      <div class="section sec-must">
+        <div class="section-head">
+          <span class="section-icon">⚠️</span>
+          <span class="section-label">Must Pursue — State compliance deadlines</span>
+          <span class="section-count">6</span>
+          <span class="section-rationale">Not triageable. State law requires action — some already overdue.</span>
+        </div>
+        <table class="items-table">
+          <tr><td class="td-id">Z-2</td><td><div class="td-name">ADU ordinance enhancements</div><div class="td-note">HB 577 (eff. Jul 2025) — verify Portsmouth ordinance fully compliant.</div></td><td class="td-flag"><span class="flag flag-compliance">HB 577</span></td></tr>
+          <tr><td class="td-id">Z-4</td><td><div class="td-name">Parking requirement reform</div><div class="td-note">SB 284 (eff. Sept 2025) caps parking at 1/unit — ordinance amendment needed.</div></td><td class="td-flag"><span class="flag flag-compliance">SB 284</span></td></tr>
+          <tr><td class="td-id">Z-36</td><td><div class="td-name">Monitor 2026 NH ADU legislation for conflicts</div><div class="td-note">Ongoing compliance tracking — administrative action.</div></td><td class="td-flag"><span class="flag flag-compliance">SB 284</span></td></tr>
+          <tr><td class="td-id">Z-3</td><td><div class="td-name">Residential conversion ordinance</div><div class="td-note">HB 631 (eff. Jul 1, 2026) — ordinance amendment required before deadline.</div></td><td class="td-flag"><span class="flag flag-compliance">HB 631 ⚡</span></td></tr>
+          <tr><td class="td-id">Z-25</td><td><div class="td-name">Allow multifamily in Office/Research zones</div><div class="td-note">HB 631 (eff. Jul 1, 2026) — multifamily by right on commercial land required.</div></td><td class="td-flag"><span class="flag flag-compliance">HB 631 ⚡</span></td></tr>
+          <tr><td class="td-id">Z-29</td><td><div class="td-name">Adaptive reuse ordinance streamlining</div><div class="td-note">HB 631 (eff. Jul 1, 2026) — adaptive reuse exemptions required.</div></td><td class="td-flag"><span class="flag flag-compliance">HB 631 ⚡</span></td></tr>
+        </table>
+      </div>
+
+      <!-- HIGH DEPENDENCY -->
+      <div class="section sec-dep">
+        <div class="section-head">
+          <span class="section-icon">🔗</span>
+          <span class="section-label">Dependency Flags — Do not park without noting downstream impact</span>
+          <span class="section-count">7</span>
+          <span class="section-rationale">designated committee member to flag in real time if committee moves to park any of these.</span>
+        </div>
+        <table class="items-table">
+          <tr><td class="td-id">GA-1</td><td><div class="td-name">HAP formal adoption and governance framework</div><div class="td-note">Prerequisite for all items — Council decision, not triage item. Must be resolved separately.</div></td><td class="td-flag"><span class="flag flag-dep">Blocks all</span></td></tr>
+          <tr><td class="td-id">Z-26</td><td><div class="td-name">Reduce conditional use permits for housing</div><div class="td-note">Prerequisite for most by-right production items across Z and I categories.</div></td><td class="td-flag"><span class="flag flag-dep">Blocks 8+</span></td></tr>
+          <tr><td class="td-id">PL-1</td><td><div class="td-name">Public land inventory for housing</div><div class="td-note">Required before PL-2 RFPs, PL-8 GNOD pipeline, and any city land strategy.</div></td><td class="td-flag"><span class="flag flag-dep">Blocks 3</span></td></tr>
+          <tr><td class="td-id">P-5</td><td><div class="td-name">Design guideline clarity</div><div class="td-note">Required for by-right approval pathways to function without board discretion.</div></td><td class="td-flag"><span class="flag flag-dep">Blocks 4</span></td></tr>
+          <tr><td class="td-id">Z-8</td><td><div class="td-name">Lot size and dimensional requirement updates</div><div class="td-note">Package deal with Z-5 (missing middle) — Z-5 without Z-8 produces almost nothing.</div></td><td class="td-flag"><span class="flag flag-dep">Z-5 pair</span></td></tr>
+          <tr><td class="td-id">I-20</td><td><div class="td-name">Land value capture and anti-speculation strategy</div><div class="td-note">Must precede Z-33 single-family zone reform. Upzoning without it subsidizes landowners.</div></td><td class="td-flag"><span class="flag flag-dep">Before Z-33</span></td></tr>
+          <tr><td class="td-id">Z-4</td><td><div class="td-name">Parking requirement reform</div><div class="td-note">Also a compliance item. Parking cost makes LIHTC and workforce projects infeasible without it.</div></td><td class="td-flag"><span class="flag flag-dep">Blocks finance</span></td></tr>
+        </table>
+      </div>
+
+      <!-- QUICK WINS -->
+      <div class="section sec-quick">
+        <div class="section-head">
+          <span class="section-icon">⚡</span>
+          <span class="section-label">Quick Wins — Administrative track, no ordinance needed</span>
+          <span class="section-count">7</span>
+          <span class="section-rationale">HC recommends to Planning Director / City Manager. Can move in parallel with sweep.</span>
+        </div>
+        <table class="items-table">
+          <tr><td class="td-id">I-3</td><td><div class="td-name">Expedited review for workforce housing</div><div class="td-note">Named staff contact + service level agreement. Planning Director decision.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+          <tr><td class="td-id">P-6</td><td><div class="td-name">Pre-application meetings</div><div class="td-note">Formalize pre-app meeting practice for housing projects. No ordinance needed.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+          <tr><td class="td-id">P-9</td><td><div class="td-name">Staff training on housing priorities</div><div class="td-note">City Manager / Planning Director directive. Immediate.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+          <tr><td class="td-id">P-12</td><td><div class="td-name">Permit review timeline audit</div><div class="td-note">Internal process audit. Planning Department operational change.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+          <tr><td class="td-id">PC-4</td><td><div class="td-name">Developer listening sessions</div><div class="td-note">HC can convene directly. No approvals required.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+          <tr><td class="td-id">EO-3</td><td><div class="td-name">Annual housing report to City Council</div><div class="td-note">Staff directive. Reporting cadence, not ordinance.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+          <tr><td class="td-id">PT-4</td><td><div class="td-name">Housing data dashboard</div><div class="td-note">Data infrastructure exists; city IT coordination and staff lead needed.</div></td><td class="td-flag"><span class="flag flag-admin">Admin</span></td></tr>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary-bar">
+      <div class="sum-item"><div class="sum-val">13</div><div class="sum-label">Pre-park</div></div>
+      <div class="sum-divider"></div>
+      <div class="sum-item"><div class="sum-val">6</div><div class="sum-label">Must pursue</div></div>
+      <div class="sum-divider"></div>
+      <div class="sum-item"><div class="sum-val">7</div><div class="sum-label">Dep. flags</div></div>
+      <div class="sum-divider"></div>
+      <div class="sum-item"><div class="sum-val">7</div><div class="sum-label">Quick wins</div></div>
+      <div class="sum-divider"></div>
+      <div class="sum-item"><div class="sum-val">~115</div><div class="sum-label">Remaining</div></div>
+      <div class="sum-divider"></div>
+      <div class="sum-note">Opening the first session with these pre-sorts resolves <strong>13 items in under 5 minutes</strong> and focuses the sweep on the items that actually require deliberation.</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span class="footer-label">Portsmouth Housing Committee · HAP Triage</span>
+    <span class="footer-ver">Pre-Sort Brief · v1.1 · April 2026 · Facilitator reference document</span>
+  </div>
+</div>
+
+</body>
+</html>

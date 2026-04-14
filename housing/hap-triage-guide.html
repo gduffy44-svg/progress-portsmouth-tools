@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAP Triage Session Guide — Portsmouth Housing Committee</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #2d3e52;
+  --navy-dark: #1a2332;
+  --gold:      #f4a261;
+  --gold-dark: #c8822a;
+  --teal:      #3a7d6e;
+  --coral:     #e76f51;
+  --cream:     #f8f4ee;
+  --muted:     #6b7a8d;
+  --border:    #d8d0c4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: #e8e4de;
+  color: var(--navy-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* PRINT BUTTON — screen only */
+.print-bar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+}
+.btn-print {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.btn-print:hover { background: var(--navy-dark); }
+
+/* CARD — A4-ish proportions */
+.card {
+  background: #fff;
+  width: 100%;
+  max-width: 760px;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.15);
+  overflow: hidden;
+}
+
+/* HEADER BAND */
+.card-header {
+  background: var(--navy);
+  padding: 12px 24px 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.card-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-55deg, transparent, transparent 40px, rgba(244,162,97,.04) 40px, rgba(244,162,97,.04) 41px);
+  pointer-events: none;
+}
+.header-left { position: relative; z-index: 1; }
+.header-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.header-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.15;
+}
+.header-right {
+  position: relative;
+  z-index: 1;
+  text-align: right;
+  flex-shrink: 0;
+}
+.header-deadline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 2px;
+}
+.header-deadline-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: .95rem;
+  color: var(--gold);
+}
+.gold-rule {
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), transparent);
+}
+
+/* BODY */
+.card-body { padding: 14px 24px 16px; }
+
+/* PHASE BLOCKS */
+.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.phase {
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.phase-head {
+  padding: 6px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.phase-1 .phase-head { background: rgba(45,62,82,.08); color: var(--navy); }
+.phase-2 .phase-head { background: rgba(200,130,42,.1); color: var(--gold-dark); }
+.phase-3 .phase-head { background: rgba(58,125,110,.1); color: var(--teal); }
+.phase-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.phase-1 .phase-num { background: var(--navy); color: #fff; }
+.phase-2 .phase-num { background: var(--gold-dark); color: #fff; }
+.phase-3 .phase-num { background: var(--teal); color: #fff; }
+.phase-body { padding: 7px 10px; }
+.phase-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy-dark);
+  margin-bottom: 2px;
+}
+.phase-detail {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.phase-sessions {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: .04em;
+}
+
+/* DIVIDER */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 12px 0;
+}
+
+/* TWO COLUMN */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* BUCKETS */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.buckets { display: flex; flex-direction: column; gap: 5px; }
+.bucket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1.5px solid transparent;
+}
+.bucket-pursue { background: rgba(58,125,110,.07); border-color: rgba(58,125,110,.25); }
+.bucket-later  { background: rgba(200,130,42,.07); border-color: rgba(200,130,42,.2); }
+.bucket-park   { background: rgba(107,122,141,.07); border-color: rgba(107,122,141,.2); }
+.bucket-icon { font-size: 12px; flex-shrink: 0; }
+.bucket-text {}
+.bucket-name { font-weight: 700; font-size: 11.5px; }
+.bucket-pursue .bucket-name { color: var(--teal); }
+.bucket-later  .bucket-name { color: var(--gold-dark); }
+.bucket-park   .bucket-name { color: var(--muted); }
+.bucket-desc { font-size: 10.5px; color: var(--muted); line-height: 1.35; }
+
+/* FOUR QUESTIONS */
+.questions { display: flex; flex-direction: column; gap: 5px; }
+.question {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 5px 8px;
+  background: rgba(248,244,238,.6);
+  border-radius: 5px;
+  border-left: 3px solid var(--border);
+}
+.q-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  background: rgba(200,130,42,.1);
+  border: 1px solid rgba(200,130,42,.2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.q-body {}
+.q-text { font-size: 11.5px; font-weight: 700; color: var(--navy-dark); line-height: 1.3; margin-bottom: 1px; }
+.q-choices { font-size: 10.5px; color: var(--muted); line-height: 1.4; }
+
+/* RULES BOX */
+.rules-box {
+  background: rgba(45,62,82,.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 14px;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.rule { font-size: 11px; color: var(--muted); line-height: 1.45; }
+.rule strong { color: var(--navy); font-weight: 700; display: block; margin-bottom: 1px; font-size: 10.5px; }
+
+/* FOOTER STRIP */
+.card-footer {
+  background: var(--navy-dark);
+  padding: 7px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(244,162,97,.55);
+  letter-spacing: .06em;
+  text-decoration: none;
+}
+.footer-version {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,.2);
+  letter-spacing: .04em;
+}
+
+/* PRINT */
+@media print {
+  body { background: white; padding: 0; display: block; }
+  .print-bar { display: none; }
+  .card { box-shadow: none; max-width: 100%; }
+  @page { margin: 1.5cm; size: A4; }
+}
+
+@media (max-width: 600px) {
+  .card-body { padding: 12px; }
+  .card-header { padding: 10px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="btn-print" onclick="window.print()">🖨 Print / Save PDF</button>
+</div>
+
+<div class="card">
+
+  <div class="card-header">
+    <div class="header-left">
+      <div class="header-eyebrow">Portsmouth Housing Committee · Housing Action Plan</div>
+      <div class="header-title">HAP Triage<br>Session Guide</div>
+    </div>
+    <div class="header-right">
+      <div class="header-deadline">Council deadline</div>
+      <div class="header-deadline-val">July 2026</div>
+    </div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <div class="card-body">
+
+    <!-- PHASES -->
+    <div class="section-label">The process — three phases, six sessions</div>
+    <div class="phases">
+      <div class="phase phase-1">
+        <div class="phase-head"><span class="phase-num">1</span>The Sweep</div>
+        <div class="phase-body">
+          <div class="phase-name">Initial sort</div>
+          <div class="phase-detail">Walk all 148 items. Two minutes each. Three buckets only. No deep dives — move fast.</div>
+          <div class="phase-sessions">Sessions 1–2 · ~80 items/session</div>
+        </div>
+      </div>
+      <div class="phase phase-2">
+        <div class="phase-head"><span class="phase-num">2</span>Depth Triage</div>
+        <div class="phase-body">
+          <div class="phase-name">Active list only</div>
+          <div class="phase-detail">Apply the four capital flow questions to each remaining item. Deliberate. Rank within categories.</div>
+          <div class="phase-sessions">Sessions 3–5 · ~25 items/session</div>
+        </div>
+      </div>
+      <div class="phase phase-3">
+        <div class="phase-head"><span class="phase-num">3</span>Sequencing</div>
+        <div class="phase-body">
+          <div class="phase-name">Order the work</div>
+          <div class="phase-detail">Sequence top priorities against dependencies and implementation paths. Assign tracks.</div>
+          <div class="phase-sessions">Session 6 · Final output to Council</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="two-col">
+
+      <!-- BUCKETS -->
+      <div>
+        <div class="section-label">Phase 1 — Three buckets</div>
+        <div class="buckets">
+          <div class="bucket bucket-pursue">
+            <div class="bucket-icon">✅</div>
+            <div class="bucket-text">
+              <div class="bucket-name">Pursue — Year 1</div>
+              <div class="bucket-desc">High priority, actionable, within HC scope. Goes to active list for Phase 2.</div>
+            </div>
+          </div>
+          <div class="bucket bucket-later">
+            <div class="bucket-icon">🕐</div>
+            <div class="bucket-text">
+              <div class="bucket-name">Pursue — Later</div>
+              <div class="bucket-desc">Important but not Year 1. Deferred — may depend on upstream items.</div>
+            </div>
+          </div>
+          <div class="bucket bucket-park">
+            <div class="bucket-icon">🅿️</div>
+            <div class="bucket-text">
+              <div class="bucket-name">Park</div>
+              <div class="bucket-desc">Out of scope, superseded, already complete, or not actionable this term.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOUR QUESTIONS -->
+      <div>
+        <div class="section-label">Phase 2 — Four questions per item</div>
+        <div class="questions">
+          <div class="question">
+            <div class="q-num">1</div>
+            <div class="q-body">
+              <div class="q-text">Who does this affect?</div>
+              <div class="q-choices">Homeowner · Small developer · Nonprofit · Multiple · No specific actor</div>
+            </div>
+          </div>
+          <div class="question">
+            <div class="q-num">2</div>
+            <div class="q-body">
+              <div class="q-text">Does it change a decision or reduce friction?</div>
+              <div class="q-choices">Changes decision · Reduces friction · Neither</div>
+            </div>
+          </div>
+          <div class="question">
+            <div class="q-num">3</div>
+            <div class="q-body">
+              <div class="q-text">What's the city's actual leverage?</div>
+              <div class="q-choices">Direct (city acts alone) · Conditional (actor must respond) · Outside city control</div>
+            </div>
+          </div>
+          <div class="question">
+            <div class="q-num">4</div>
+            <div class="q-body">
+              <div class="q-text">What happens if this is delayed two years?</div>
+              <div class="q-choices">Capital goes elsewhere · Project stalls · Compliance deadline · No material effect</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SESSION RULES -->
+    <div class="rules-box">
+      <div class="rule"><strong>Phase 1 discipline</strong>Two minutes per item. No deliberation — save disagreements for Phase 2. Flag items needing more time; don't resolve them in the sweep.</div>
+      <div class="rule"><strong>Facilitator role</strong>Facilitator calls each item, takes a show of hands on bucket, notes any flags. designated committee member flags dependency conflicts in real time. Move on.</div>
+      <div class="rule"><strong>Reference tools</strong>HAP Explorer for item detail. Capital Flow module for Phase 2 background. Dependency map for sequencing. All optional — sessions run without them.</div>
+    </div>
+
+  </div>
+
+  <div class="card-footer">
+    <span class="footer-version">Portsmouth Housing Committee · HAP Triage Session Guide · v1.1 · April 2026</span>
+    <a class="footer-link" href="https://progress-portsmouth-tools.vercel.app/housing/learning-library.html">Reference library →</a>
+  </div>
+
+</div>
+
+</body>
+</html>
