@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSA 79-E · A Path to Stay in Portsmouth · Progress Portsmouth</title>
-<meta name="description" content="New Hampshire's RSA 79-E lets homeowners add ADUs and convert to small multi-family while deferring the resulting property tax increase. A guide to all five programs under the Community Revitalization Tax Relief Incentive, with eligibility tools for homeowners and developers.">
+<title>Community Revitalization Tax Relief · A Path to Stay in Portsmouth · Progress Portsmouth</title>
+<meta name="description" content="New Hampshire's RSA 79-E lets homeowners add ADUs and convert to small multi-family while temporarily abating the property tax on the improved value. A guide to all five programs under the Community Revitalization Tax Relief Incentive, with eligibility tools for homeowners and developers.">
 <link rel="canonical" href="https://progress-portsmouth-tools.vercel.app/housing/rsa-79e-explainer.html">
 <!-- v2.3 — April 2026 — see revision history in footer -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -432,6 +432,92 @@
   }
   .covenant-box strong { color: var(--navy-deep); }
 
+  /* Mechanics primer — 4-card block for "How it actually works" */
+  .mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 28px 0 40px;
+  }
+  .mech-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 6px;
+    padding: 22px 24px;
+  }
+  .mech-card.butfor { border-left-color: var(--coral); background: #fdf3ef; }
+  .mech-card .mech-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .mech-card.butfor .mech-label { color: var(--coral); }
+  .mech-card .mech-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    line-height: 1.3;
+    color: var(--navy-deep);
+    margin-bottom: 10px;
+  }
+  .mech-card p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Glossary */
+  .glossary-wrap {
+    margin: 40px 0 8px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+  }
+  .glossary-wrap h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--navy-deep);
+    margin-bottom: 6px;
+  }
+  .glossary-wrap .glossary-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .glossary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .gloss-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .gloss-item:nth-child(even) { padding-left: 20px; }
+  .gloss-item:nth-child(odd) { padding-right: 20px; }
+  .gloss-item dt {
+    font-weight: 700;
+    color: var(--navy-deep);
+    margin-bottom: 3px;
+    font-size: 15px;
+  }
+  .gloss-item dd {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  @media (max-width: 640px) {
+    .glossary-list { grid-template-columns: 1fr; }
+    .gloss-item:nth-child(even), .gloss-item:nth-child(odd) { padding-left: 0; padding-right: 0; }
+  }
+
   /* ── ELIGIBILITY CHECKER ── */
   .checker {
     background: var(--white);
@@ -805,9 +891,9 @@
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-kicker">RSA 79-E · Community Revitalization Tax Relief</div>
+    <div class="hero-kicker">Community Revitalization Tax Relief · RSA 79-E</div>
     <h1>A path to stay in Portsmouth —<br><em>and help someone else do the same</em></h1>
-    <p class="hero-sub">New Hampshire law lets homeowners renovate aging properties, add ADUs, and convert to small multi-family — while deferring the property tax increase those improvements create. If Portsmouth adopts it, that's a meaningful path to staying in the city while contributing to its housing supply. Developers rehabilitating larger commercial properties can access the same tool. Here's how both work.</p>
+    <p class="hero-sub">New Hampshire law lets homeowners renovate aging properties, add ADUs, and convert to small multi-family — while temporarily abating the property tax on the improved value. If Portsmouth adopts it, that's a meaningful path to staying in the city while contributing to its housing supply. Developers rehabilitating larger commercial properties can access the same tool. Here's how both work.</p>
     <div class="hero-note">
       <span>⚠</span>
       <span><strong>Important:</strong> RSA 79-E is enabling legislation — municipalities choose whether to adopt it. Portsmouth has not yet adopted any program. This guide explains what current law allows. References to pending legislation (HB 1103) describe a bill that passed the NH House on March 11, 2026 but has not yet been enacted into law.</span>
@@ -837,11 +923,39 @@
   <section class="panel active" id="panel-overview">
 
     <div class="section-label">What is RSA 79-E?</div>
-    <h2 class="section-title">A tax deferral, not a tax break</h2>
-    <p class="section-intro">RSA 79-E doesn't eliminate property taxes. It freezes the assessed value of a property at its pre-renovation level for a set number of years, then allows the full increase to phase in. The incentive makes renovation projects financially viable that otherwise wouldn't pencil out.</p>
+    <h2 class="section-title">Temporary tax relief, not a deferral — and not a permanent break</h2>
+    <p class="section-intro">RSA 79-E doesn't eliminate property taxes, and it doesn't delay them to be repaid later. It's a temporary <em>abatement</em> on the improvement portion of a property's assessed value — for a set number of years, you keep paying taxes on the pre-renovation value, and the improvements aren't taxed (or are partially taxed). When relief ends, the property rolls onto the rolls at its full improved value, permanently. The foregone tax during the relief period is never recovered.</p>
 
     <div class="covenant-box">
       <p><strong>The core bargain:</strong> A property owner rehabilitates an underused or deteriorating building. In exchange, the city holds the assessed value steady during the relief period — taxing the pre-renovation value, not the improved value. After the period ends, full taxes resume on the improved property. In return, the owner agrees to a covenant ensuring a defined public benefit.</p>
+    </div>
+
+    <!-- Mechanics Primer (v2.4) -->
+    <div class="section-label mt-32">How it actually works</div>
+    <h2 class="section-title" style="font-size:22px;margin-bottom:12px;">Four things to understand before debating adoption</h2>
+    <p class="section-intro" style="margin-bottom:4px;">The mechanics drive everything that follows — eligibility rules, covenant design, the "but-for" review, and what Portsmouth actually gains or gives up. Four cards. Read all four.</p>
+
+    <div class="mechanics-grid">
+      <div class="mech-card">
+        <div class="mech-label">What the city foregoes</div>
+        <div class="mech-headline">Tax on the <em>added</em> value, for a set number of years.</div>
+        <p>The pre-project assessed value stays on the rolls and keeps generating tax at the normal rate. Only the value added by the qualifying improvements is abated — at a percentage the city sets (often 100%), for a duration the city sets within the statutory cap.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-label">What happens when relief ends</div>
+        <div class="mech-headline">Full assessment applies. Permanently.</div>
+        <p>At the end of the relief period, the property rolls onto the tax base at its full post-project assessed value. From that point forward the city captures the full tax increment — for as long as the property stands. Nothing is repaid or deferred.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-label">What the owner agrees to</div>
+        <div class="mech-headline">A recorded covenant tied to public benefit.</div>
+        <p>Every grant of relief is paired with a covenant (RSA 79-E:8) committing the project to one or more statutory public benefits. The covenant is recorded with the registry of deeds and <strong>can be required to run up to twice the relief period</strong> — a 15-year grant can carry a 30-year covenant.</p>
+      </div>
+      <div class="mech-card butfor">
+        <div class="mech-label">The "but-for" test</div>
+        <div class="mech-headline">Would this project happen without the relief?</div>
+        <p>The statute directs the governing body to grant relief only where the public benefit would not occur otherwise. This is the hardest part to administer well and where most 79-E programs succeed or fail. A weak but-for review turns the tool into a windfall; a rigid one turns away projects the city actually wants.</p>
+      </div>
     </div>
 
     <!-- Program Overview Cards -->
@@ -1244,7 +1358,7 @@
       <h3>What 79-E doesn't do</h3>
       <ul class="limitation-list">
         <li>It does not control rents after the relief period ends — post-renovation rents are market-rate unless a separate covenant specifies otherwise.</li>
-        <li>It does not make projects financially viable on its own — high land costs and construction costs in Portsmouth mean the tax deferral is one input among many.</li>
+        <li>It does not make projects financially viable on its own — high land costs and construction costs in Portsmouth mean the tax relief is one input among many.</li>
         <li>It does not guarantee affordability in the long run. The statute does not define "affordable" — municipalities must specify this in their adopting ordinance or it is effectively undefined.</li>
         <li>It does not apply if more than 50% of construction costs come from non-repayable state or federal grants (RSA 79-E:14).</li>
         <li>Relief begins at completion, not at groundbreaking. Projects do not receive tax relief during the construction period itself.</li>
@@ -1252,6 +1366,62 @@
         <li>Adaptive reuse is often more expensive than new construction — the incentive reduces but does not eliminate the cost premium.</li>
         <li>The covenant can be required to run up to twice the relief period — a 15-year relief period could mean a 30-year covenant. Developers should model this into long-range assumptions.</li>
       </ul>
+    </div>
+
+    <!-- Glossary (v2.4) -->
+    <div class="glossary-wrap">
+      <h3>Key terms</h3>
+      <p class="glossary-intro">Terms that recur in 79-E adoption debates, covenant drafting, and public hearings. Reference rather than read top-to-bottom.</p>
+      <dl class="glossary-list">
+        <div class="gloss-item">
+          <dt>Abatement vs. deferral</dt>
+          <dd>An abatement reduces tax owed during a period. A deferral delays tax that must eventually be paid. 79-E is an abatement — the foregone tax is never recovered.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Assessed value</dt>
+          <dd>The value a municipality places on a property for tax purposes. 79-E freezes the pre-project assessed value for tax calculations during the relief period; improvement value is partially or fully excluded.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>AMI (Area Median Income)</dt>
+          <dd>HUD-published income threshold for a metro area, adjusted by household size. 80% AMI is the workforce-housing benchmark in HOZ; 60% AMI typically defines affordable housing.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>But-for test</dt>
+          <dd>The statutory requirement that tax relief be granted only where the public benefit would not otherwise occur. Essentially: would the project happen without the incentive?</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Certificate of Occupancy (CO)</dt>
+          <dd>Municipal sign-off that a completed building is fit for occupancy. In HOZ, the relief period begins at CO issuance rather than during construction.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Covenant</dt>
+          <dd>A recorded legal agreement (RSA 79-E:8) between the property owner and the city committing the project to specific public benefits in exchange for tax relief. Runs with the land. Can be required to last up to 2× the relief period.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Fair Market Rent (FMR)</dt>
+          <dd>HUD-published rent benchmark by unit size and area. Used in some 79-E covenants as an alternative to AMI for rent restrictions.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Public benefit categories (RSA 79-E:7)</dt>
+          <dd>Statutory options a 79-E project must advance: economic vitality; cultural/historic significance; preservation of existing building stock; municipal center development; housing in urban or town centers.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Qualifying structure</dt>
+          <dd>Under traditional 79-E, a structure in a designated district that is underutilized or in disrepair. Definitions vary by program — RPR requires 40+ years old and ≤4 units; OCZ requires office/commercial use being converted to residential.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Substantial rehabilitation</dt>
+          <dd>Rehabilitation costs equal to or greater than 15% of the pre-rehab assessed value, or $75,000, whichever is less (RSA 79-E:2, IV). The statutory threshold for eligibility.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Tax relief period</dt>
+          <dd>The finite number of years during which abatement applies, set by the governing body within statutory caps (RSA 79-E:5). Relief begins upon completion of rehabilitation — or, for HOZ, upon issuance of Certificate of Occupancy.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Enabling legislation</dt>
+          <dd>State law that grants municipalities the option to adopt a program. RSA 79-E is enabling — it does nothing automatically. Portsmouth must affirmatively adopt a program by vote of the City Council.</dd>
+        </div>
+      </dl>
     </div>
 
   </section><!-- /overview -->
@@ -1330,9 +1500,9 @@
         <div style="font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:4px;">Estimated improved value</div>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;">
-        <div style="font-family:'DM Serif Display',serif;font-size:32px;color:var(--gold-dark);">~$5K</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:32px;color:var(--gold-dark);">~$2.9K</div>
         <div style="font-size:13px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:4px;">Annual tax savings during relief</div>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">At Portsmouth's ~$10/k tax rate</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">At Portsmouth's FY2026 rate of $11.51 per $1,000</div>
       </div>
       <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;">
         <div style="font-family:'DM Serif Display',serif;font-size:32px;color:var(--navy-deep);">7 yrs</div>
@@ -1383,7 +1553,7 @@
 
     <div class="section-label">For Developers &amp; Property Investors</div>
     <h2 class="section-title">How the math changes with 79-E</h2>
-    <p class="section-intro">For commercial and multi-unit developers, 79-E defers the property tax increase on improved value — improving the early-year cash flow on projects where adaptive reuse makes margins tight. The programs differ in what types of projects qualify and how years stack.</p>
+    <p class="section-intro">For commercial and multi-unit developers, 79-E temporarily abates the property tax on improved value — improving the early-year cash flow on projects where adaptive reuse makes margins tight. The programs differ in what types of projects qualify and how years stack.</p>
 
     <!-- Interactive checker for developers -->
     <div class="checker">
@@ -1536,8 +1706,8 @@
         <li>The affordability bonus (+4 years) does not require new affordable units — rehabilitation of existing below-market units may qualify. The statute uses "a project that includes affordable housing." Municipalities define what "affordable" means in their adopting ordinance.</li>
         <li>The covenant can be required to run up to twice the relief period (RSA 79-E:8). A maximum 15-year relief period could mean a 30-year covenant obligation. Model this into long-range assumptions and legal review.</li>
         <li>Projects receiving more than 50% of construction costs from non-repayable state or federal grants do not qualify for 79-E relief (RSA 79-E:14). Verify grant sources before applying.</li>
-        <li>Relief begins at completion of rehabilitation — not at approval or during construction. Projects do not receive tax deferral during the construction period itself.</li>
-        <li>Adaptive reuse in Portsmouth's constrained market typically costs more than new construction. Verify that the tax deferral materially improves your pro forma before relying on it as a deal-maker.</li>
+        <li>Relief begins at completion of rehabilitation — not at approval or during construction. Projects do not receive tax relief during the construction period itself.</li>
+        <li>Adaptive reuse in Portsmouth's constrained market typically costs more than new construction. Verify that the tax relief materially improves your pro forma before relying on it as a deal-maker.</li>
       </ul>
     </div>
 
@@ -1556,12 +1726,21 @@
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
       <div>
         <span style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Revision History</span>
-        <span style="font-size:12px;color:rgba(255,255,255,.4);margin-left:10px;">v2.3 — April 2026</span>
+        <span style="font-size:12px;color:rgba(255,255,255,.4);margin-left:10px;">v2.4 — April 18, 2026</span>
       </div>
       <button onclick="document.getElementById('rev-detail').style.display=document.getElementById('rev-detail').style.display==='none'?'block':'none';this.textContent=this.textContent==='Show details'?'Hide details':'Show details';"
         style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-size:12px;padding:3px 10px;border-radius:3px;cursor:pointer;font-family:'Source Sans 3',sans-serif;">Show details</button>
     </div>
     <div id="rev-detail" style="display:none;margin-top:12px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;">
+      <strong style="color:rgba(255,255,255,.8);">v2.4 · April 18, 2026 · Terminology and mechanics primer</strong><br>
+      Corrections and additions:
+      <ul style="margin:8px 0 8px 20px;display:flex;flex-direction:column;gap:4px;">
+        <li>Corrected "tax deferral" terminology to "tax relief / abatement" throughout — 79-E is a temporary abatement, not a deferral; foregone tax is never recovered</li>
+        <li>Updated Portsmouth scenario tax savings from "~$5K" at "~$10/k rate" to "~$2.9K" at the FY2026 rate of $11.51/$1,000 (approved by NH DRA Dec. 18, 2025)</li>
+        <li>Added four-card mechanics primer in overview — what city foregoes, what happens after relief, covenant obligations, and the but-for test as a dedicated card</li>
+        <li>Added glossary of 12 key terms (abatement vs. deferral, AMI, but-for test, covenant, CO, FMR, public benefit categories, qualifying structure, substantial rehabilitation, tax relief period, enabling legislation, assessed value)</li>
+        <li>Reordered title and hero kicker: common-sense "Community Revitalization Tax Relief" primary, RSA 79-E secondary</li>
+      </ul>
       <strong style="color:rgba(255,255,255,.8);">v2.3 · April 2026 · Vercel migration and UX fixes</strong><br>
       Moved canonical home to Vercel (progress-portsmouth-tools.vercel.app). Changes include:
       <ul style="margin:8px 0 8px 20px;display:flex;flex-direction:column;gap:4px;">
