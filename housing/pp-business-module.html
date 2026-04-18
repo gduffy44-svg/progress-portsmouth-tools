@@ -419,52 +419,6 @@ select.form-control { cursor: pointer; }
 }
 .contrib-action:hover { color: var(--navy); }
 
-.qr-section {
-  background: linear-gradient(135deg, var(--navy-deep), var(--navy-mid));
-  border-radius: var(--radius-lg);
-  padding: 36px 40px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.qr-text h3 {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: 1.5rem;
-  color: var(--white);
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-.qr-text h3 span { color: var(--gold); }
-.qr-text p { color: rgba(255,255,255,0.72); font-size: 0.93rem; line-height: 1.6; max-width: 420px; }
-.qr-text .url {
-  display: inline-block;
-  margin-top: 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--gold);
-  background: rgba(244,162,97,0.12);
-  padding: 6px 14px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(244,162,97,0.25);
-}
-.qr-box {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 16px;
-  flex-shrink: 0;
-  text-align: center;
-}
-#qr-code canvas, #qr-code img { border-radius: 4px; }
-.qr-box .qr-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--slate);
-  margin-top: 10px;
-}
-
 /* ── RECENT WINS ── */
 .wins-row {
   display: flex;
@@ -559,25 +513,6 @@ select.form-control { cursor: pointer; }
   margin-bottom: -2px;
 }
 
-/* ── QR BANNER — responsive ── */
-.qr-banner-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 18px 36px;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
-}
-.qr-banner-code {
-  background: var(--white);
-  border-radius: 10px;
-  padding: 10px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-.qr-banner-text { flex: 1; min-width: 200px; }
-
 /* ── HERO GRID — mobile stack ── */
 .hero-two-col {
   display: grid;
@@ -593,7 +528,6 @@ select.form-control { cursor: pointer; }
   .header-center { order: 3; width: 100%; text-align: left; min-width: unset; }
   .header-event-title { font-size: 0.88rem; }
   .chamber-logo { height: 36px; }
-  .qr-banner-inner { padding: 14px 20px; gap: 16px; }
   .hero-two-col { grid-template-columns: 1fr; gap: 16px; }
   .contribute-grid { grid-template-columns: 1fr; }
 }
@@ -611,16 +545,11 @@ select.form-control { cursor: pointer; }
   .hero-stat .big { font-size: 1.4rem; }
   .hero-stat-rent { min-width: 90px; }
   .hero-stat-rent .big { font-size: 1.7rem; }
-  .qr-section { padding: 20px 16px; gap: 20px; }
-  .qr-banner-inner { padding: 12px 16px; gap: 12px; }
-  .qr-banner-code { padding: 8px; }
-  .qr-banner-code img { width: 160px; height: 160px; }
   .section-title { font-size: 1.1rem; }
   .filter-row { gap: 6px; }
   .filter-chip { padding: 5px 10px; font-size: 0.74rem; }
   .wins-row { flex-direction: column; }
   .win-chip { min-width: unset; }
-  .qr-text h3 { font-size: 1.2rem; }
   .revision-block { padding: 16px 20px; }
 }
 </style>
@@ -645,21 +574,6 @@ select.form-control { cursor: pointer; }
   </div>
 </header>
 
-
-<!-- PERSISTENT QR BANNER -->
-<div style="background:linear-gradient(135deg,#0d1c30 0%,#1e3048 100%);border-bottom:3px solid var(--gold);">
-  <div class="qr-banner-inner">
-    <div class="qr-banner-code">
-      <img src="data:image/png;base64,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" width="220" height="220" alt="QR code" style="display:block;border-radius:6px;">
-    </div>
-    <div class="qr-banner-text">
-      <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:6px;">Scan now &mdash; keep this resource on your phone</div>
-      <div style="font-family:'DM Serif Display',Georgia,serif;font-size:1.3rem;color:var(--white);margin-bottom:6px;line-height:1.2;">Housing &amp; Your Business · Progress Portsmouth</div>
-      <div style="font-size:0.84rem;color:rgba(255,255,255,0.65);line-height:1.5;max-width:560px;">This page tracks the Housing Action Plan items most relevant to your business — including an employee survey template you can deploy this week. It updates as the plan moves forward.</div>
-      <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--gold);background:rgba(244,162,97,0.1);display:inline-block;padding:4px 12px;border-radius:6px;border:1px solid rgba(244,162,97,0.22);">progress-portsmouth-tools.vercel.app/housing/pp-business-module.html</div>
-    </div>
-  </div>
-</div>
 
 <!-- TAB NAV -->
 <nav class="tab-nav">
@@ -1132,18 +1046,6 @@ select.form-control { cursor: pointer; }
 
     </div>
 
-    <!-- QR CODE -->
-    <div class="qr-section">
-      <div class="qr-text">
-        <h3>Take this with you — <span>scan now</span></h3>
-        <p>This page tracks the Housing Action Plan items most relevant to your business — and links to the full Explorer for real-time status on all items. Scan to bookmark it now.</p>
-        <div class="url">progress-portsmouth-tools.vercel.app/housing/pp-business-module.html</div>
-      </div>
-      <div class="qr-box">
-        <img src="data:image/png;base64,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" width="160" height="160" alt="QR code" style="display:block;border-radius:4px;">
-        <div class="qr-label">Scan to open<br>this page</div>
-      </div>
-    </div>
 
   </section>
 
@@ -1330,10 +1232,11 @@ document.addEventListener('DOMContentLoaded', function() {
   <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;">
     <div>
       <div style="color:#f4a261;font-weight:700;margin-bottom:4px;">Progress Portsmouth · Housing &amp; Your Business Module</div>
-      <div>Version 1.3 · March 30, 2026</div>
+      <div>Version 1.4 · April 18, 2026</div>
       <div style="margin-top:6px;color:rgba(255,255,255,0.25);font-size:0.67rem;">
-        v1.3 — March 30, 2026 — revision toggle; nav mobile fix; footer cleaned
+        v1.4 — April 18, 2026 — removed QR codes (banner and in-tab section); added AI disclosure
         <span id="rev-more" style="display:none;">
+          <br>v1.3 — March 30, 2026 — revision toggle; nav mobile fix; footer cleaned
           <br>v1.1 — Persistent QR banner; employee survey tab; Chamber Collaborative branding; mobile optimization
           <br>v1.0 — Initial release, Chamber Housing Breakfast 2026
         </span>
@@ -1345,4 +1248,9 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <div style="text-align:right;color:rgba(255,255,255,0.25);font-size:0.67rem;">
       <div><span>progressportsmouth<!-- -->@gmail.com</span></div>
-      <d
+      <div style="margin-top:8px;font-style:italic;color:rgba(255,255,255,0.3);max-width:320px;">Created with AI assistance in research and information design, with human editorial control.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
