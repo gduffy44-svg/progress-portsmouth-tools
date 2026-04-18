@@ -40,6 +40,32 @@
     background: var(--cream-2);
   }
 
+  /* ── BACK NAV ── */
+  .back-nav {
+    background: var(--navy-deep);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 12px 24px;
+  }
+  .back-nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .back-nav a {
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    transition: color .15s;
+  }
+  .back-nav a:hover { color: var(--gold); }
+
   /* ── HERO ── */
   .hero {
     background: var(--navy-deep);
@@ -887,6 +913,14 @@
 </style>
 </head>
 <body>
+
+<!-- ── BACK NAV ── -->
+<nav class="back-nav">
+  <div class="back-nav-inner">
+    <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+    <a href="./learning-library.html">← Library</a>
+  </div>
+</nav>
 
 <!-- ── HERO ── -->
 <div class="hero">
@@ -1740,6 +1774,7 @@
         <li>Added four-card mechanics primer in overview — what city foregoes, what happens after relief, covenant obligations, and the but-for test as a dedicated card</li>
         <li>Added glossary of 12 key terms (abatement vs. deferral, AMI, but-for test, covenant, CO, FMR, public benefit categories, qualifying structure, substantial rehabilitation, tax relief period, enabling legislation, assessed value)</li>
         <li>Reordered title and hero kicker: common-sense "Community Revitalization Tax Relief" primary, RSA 79-E secondary</li>
+        <li>Added missing back navigation (← Progress Portsmouth / ← Library) — module was missing required library-module nav links</li>
       </ul>
       <strong style="color:rgba(255,255,255,.8);">v2.3 · April 2026 · Vercel migration and UX fixes</strong><br>
       Moved canonical home to Vercel (progress-portsmouth-tools.vercel.app). Changes include:
