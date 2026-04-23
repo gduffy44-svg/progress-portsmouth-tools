@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Preliminary Recommendations — Housing Action Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #2d3e52;
+  --navy-dark: #1a2332;
+  --gold: #f4a261;
+  --gold-dim: #c8822a;
+  --teal: #3a7d6e;
+  --coral: #e76f51;
+  --cream: #f8f4ee;
+  --white: #ffffff;
+  --slate: #5a6a7a;
+  --border: rgba(45,62,82,0.12);
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(45,62,82,0.10);
+  --status-complete: #2e7d32;
+  --status-complete-bg: #e8f5e9;
+  --status-progress: #1565c0;
+  --status-progress-bg: #e3f2fd;
+  --status-early: #7b1fa2;
+  --status-early-bg: #f3e5f5;
+  --status-not: #555;
+  --status-not-bg: #f0f0f0;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+
+/* HEADER */
+.site-header {
+  background: var(--navy-dark);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.site-header a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; }
+.site-header a:hover { color: var(--gold); }
+.header-logo { color: var(--white); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.02em; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  padding: 36px 28px 28px;
+  color: var(--white);
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.hero-sub {
+  font-size: 0.93rem;
+  color: rgba(255,255,255,0.72);
+  max-width: 700px;
+  line-height: 1.55;
+}
+.hero-note {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(244,162,97,0.15);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 760px;
+}
+
+/* STATS BAR */
+.stats-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 28px;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+.stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.stat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* CONTROLS */
+.controls {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 28px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.78rem;
+  font-family: 'Source Sans 3', sans-serif;
+  cursor: pointer;
+  color: var(--slate);
+  transition: all 0.15s;
+}
+.filter-btn:hover { background: var(--cream); color: var(--navy); }
+.filter-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white); font-weight: 600; }
+.filter-btn.short.active { background: var(--teal); border-color: var(--teal); }
+.filter-btn.long.active { background: var(--coral); border-color: var(--coral); }
+.controls-sep { width: 1px; height: 20px; background: var(--border); margin: 0 4px; }
+.search-wrap { margin-left: auto; }
+.search-input {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.82rem;
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--navy);
+  background: var(--cream);
+  width: 200px;
+}
+.search-input:focus { outline: none; border-color: var(--navy); background: var(--white); }
+
+/* MAIN */
+.main { padding: 20px 28px 48px; max-width: 1100px; margin: 0 auto; }
+
+/* CARDS */
+.cards-grid { display: flex; flex-direction: column; gap: 10px; }
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  overflow: hidden;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(45,62,82,0.13); }
+.card.open { box-shadow: 0 4px 20px rgba(45,62,82,0.15); }
+.card.term-short { border-left-color: var(--teal); }
+.card.term-long { border-left-color: var(--coral); }
+.card.status-complete { border-left-color: var(--status-complete); }
+.card.status-in-progress { border-left-color: var(--status-progress); }
+.card.status-early-stage { border-left-color: var(--status-early); }
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px 16px;
+}
+.id-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: var(--navy);
+  color: var(--white);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.card-title-wrap { flex: 1; }
+.card-action {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.card-cat {
+  font-size: 0.74rem;
+  color: var(--slate);
+  margin-top: 2px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.card-badges { display: flex; align-items: center; gap: 6px; flex-shrink: 0; margin-top: 2px; }
+.term-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.03em;
+  font-family: 'JetBrains Mono', monospace;
+}
+.term-badge.short { background: #e0f2f1; color: var(--teal); }
+.term-badge.long { background: #fbe9e7; color: #bf360c; }
+.status-badge {
+  font-size: 0.67rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+.status-badge.complete { background: var(--status-complete-bg); color: var(--status-complete); }
+.status-badge.in-progress { background: var(--status-progress-bg); color: var(--status-progress); }
+.status-badge.early-stage { background: var(--status-early-bg); color: var(--status-early); }
+.status-badge.not-started { background: var(--status-not-bg); color: var(--status-not); }
+.card-arrow { font-size: 0.7rem; color: var(--slate); flex-shrink: 0; margin-top: 4px; transition: transform 0.2s; }
+.card.open .card-arrow { transform: rotate(180deg); }
+
+/* STAFF COMMENT */
+.staff-note {
+  background: rgba(58,125,110,0.07);
+  border-top: 1px solid rgba(58,125,110,0.15);
+  padding: 8px 16px 8px 40px;
+  font-size: 0.82rem;
+  color: var(--navy-dark);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.staff-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: var(--teal);
+  white-space: nowrap;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+/* CARD BODY */
+.card-body { display: none; padding: 16px 16px 16px 40px; border-top: 1px solid var(--border); }
+.card.open .card-body { display: block; }
+
+.body-section { margin-bottom: 14px; }
+.body-section:last-child { margin-bottom: 0; }
+.body-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.body-text { font-size: 0.88rem; color: var(--navy); line-height: 1.55; }
+
+.status-detail {
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 7px 10px;
+  font-size: 0.83rem;
+  color: var(--navy);
+  margin-top: 4px;
+}
+
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pros-list, .cons-list { font-size: 0.83rem; }
+.pros-list .pc-label { color: var(--status-complete); font-weight: 700; font-size: 0.75rem; margin-bottom: 4px; }
+.cons-list .pc-label { color: var(--coral); font-weight: 700; font-size: 0.75rem; margin-bottom: 4px; }
+.pc-item { display: flex; gap: 6px; margin-bottom: 4px; color: var(--slate); }
+.pc-item::before { content: '•'; flex-shrink: 0; }
+
+.tags-row { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+.tag {
+  background: rgba(45,62,82,0.07);
+  color: var(--navy-dark);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.tag.highlight { background: rgba(244,162,97,0.15); color: var(--gold-dim); }
+
+.metric-box {
+  background: rgba(45,62,82,0.04);
+  border-left: 3px solid var(--gold);
+  padding: 6px 10px;
+  font-size: 0.83rem;
+  color: var(--navy);
+  border-radius: 0 4px 4px 0;
+}
+
+.warn-note {
+  background: #fff8e1;
+  border-left: 3px solid #f9a825;
+  padding: 6px 10px;
+  font-size: 0.81rem;
+  color: #5a4000;
+  border-radius: 0 4px 4px 0;
+  margin-top: 6px;
+}
+
+/* EMPTY */
+.no-results { text-align: center; padding: 48px; color: var(--slate); font-size: 0.9rem; }
+
+/* SECTION HEADERS */
+.section-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate);
+  padding: 12px 0 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.section-header:first-child { margin-top: 0; }
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.75rem;
+  color: var(--slate);
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+.footer a { color: var(--teal); text-decoration: none; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .site-header { position: static; }
+  .hero { padding: 20px 16px; }
+  .stats-bar, .controls { padding: 10px 16px; }
+  .main { padding: 14px 16px 32px; }
+  .card-body { padding: 14px 14px 14px 14px; }
+  .staff-note { padding: 8px 12px; }
+  .pros-cons { grid-template-columns: 1fr; }
+  .search-wrap { margin-left: 0; width: 100%; }
+  .search-input { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://www.progressportsmouth.com">← Progress Portsmouth</a>
+  <span class="header-logo">Housing Action Plan</span>
+</header>
+
+<div class="hero">
+  <div class="hero-label">Portsmouth Housing Committee · April 2026</div>
+  <h1>Staff Preliminary Recommendations</h1>
+  <p class="hero-sub">26 Housing Action Plan items identified by city planning staff as priorities for Housing Committee consideration. Each item links to the full HAP record — description, metrics, pros &amp; cons, sources, and current status.</p>
+  <div class="hero-note">
+    <strong>Context note:</strong> This list represents staff's initial prioritization. The full Housing Action Plan contains 146 items across 13 categories. This subset has not been formally triaged by the Housing Committee and does not reflect goals, yield estimates, responsible parties, or sequencing. The complete HAP and interactive tools are available at <a href="https://progress-portsmouth-tools.vercel.app/housing/" style="color:var(--gold)">progress-portsmouth-tools.vercel.app/housing/</a>.
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num" id="statTotal">26</span> items</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--teal)"></span><span class="stat-num" id="statShort">—</span> Short-Term</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--coral)"></span><span class="stat-num" id="statLong">—</span> Long-Term</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--status-complete)"></span> Complete</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--status-progress)"></span> In Progress</div>
+  <div class="stat-item"><span class="stat-dot" style="background:var(--status-early)"></span> Early Stage</div>
+  <div class="stat-item"><span class="stat-dot" style="background:#ccc"></span> Not Assessed</div>
+</div>
+
+<div class="controls">
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All 26</button>
+  <div class="controls-sep"></div>
+  <button class="filter-btn short" data-filter="short" onclick="setFilter('short',this)">Short-Term</button>
+  <button class="filter-btn long" data-filter="long" onclick="setFilter('long',this)">Long-Term</button>
+  <div class="controls-sep"></div>
+  <button class="filter-btn" data-filter="cat-zoning" onclick="setFilter('cat-zoning',this)">Zoning</button>
+  <button class="filter-btn" data-filter="cat-permitting" onclick="setFilter('cat-permitting',this)">Permitting</button>
+  <button class="filter-btn" data-filter="cat-incentives" onclick="setFilter('cat-incentives',this)">Incentives</button>
+  <button class="filter-btn" data-filter="cat-other" onclick="setFilter('cat-other',this)">Other</button>
+  <div class="search-wrap">
+    <input class="search-input" type="text" placeholder="Search items…" oninput="doSearch(this.value)" id="searchInput">
+  </div>
+</div>
+
+<div class="main">
+  <div class="cards-grid" id="cardsGrid"></div>
+  <div class="no-results" id="noResults" style="display:none">No items match your filter.</div>
+</div>
+
+<footer class="footer">
+  <p>Version 1.0 — April 7, 2026 · Staff priority subset from full 146-item Housing Action Plan</p>
+  <p style="margin-top:4px">Prepared by <a href="https://www.progressportsmouth.com">Progress Portsmouth</a> · Created with AI assistance in research and information design, with human editorial control</p>
+  <p style="margin-top:4px"><a href="https://progress-portsmouth-tools.vercel.app/housing/hap-explorer.html">View full HAP Explorer →</a></p>
+</footer>
+
+<script>
+const ITEMS = [
+  {id:"Z-1",action:"Rezone outdated O/R and GB districts",category:"Zoning & Land Use",catKey:"zoning",term:"short",staffComment:"Included in the CIP.",status:"complete",status_detail:"Gateway Neighborhood Overlay District (GNOD) adopted 2024 for Commerce Way/Portsmouth Blvd parcels; allows up to 6 stories/120 units with workforce housing provisions.",description:"Phase 1: Complete analysis of obsolete Office/Research and General Business zones. Phase 2: Rezone to mixed-use Gateway or similar zoning enabling residential uses.",metric:"Number of parcels rezoned; new housing units permitted in rezoned areas.",notes:"Section 10.686.30 of the Zoning Ordinance establishes the Land Transfer Incentive Option within the GNOD. In lieu of building workforce units or paying in-lieu, a developer may convey land to the City for below-market rate housing.",sources:"HAP Narrative; Bill Bowen; 2016 Housing Committee; HC Work Plan; 2017 Master Plan Action 1.2.1",pros:["Aligns zoning designations with current land use patterns and market demand.","Can generate new tax revenue from underperforming commercial parcels.","Unlocks housing on parcels where current permitted uses have limited market demand."],cons:["May face opposition from existing commercial property owners concerned about property values.","Requires careful transition provisions for existing nonconforming businesses.","Infrastructure in these areas may not be sized for residential use without upgrades."]},
+  {id:"Z-3",action:"Residential conversion ordinance",category:"Zoning & Land Use",catKey:"zoning",term:"short",staffComment:"Continue to adjust zoning ordinance to comply with recent NH state law changes enabling office-to-housing conversions.",status:"in-progress",status_detail:"Council directed Planning Board (Sept 2025) to review Section 10.812 on conversion of pre-1980 dwellings; staff preparing amendments with workforce housing bonus concept.",description:"Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones. Align with recent NH state law changes enabling office-to-housing conversions.",metric:"Number of conversion applications and completed units.",notes:"⚠ Compliance note (HB 631, eff. 7/1/26): State law mandates both multifamily on commercially zoned land and adaptive reuse conversion rights. Portsmouth's ordinance amendment must be in place before 7/1/26.",sources:"HAP Narrative; Bill Bowen; HC Work Plan (Stebbins Thomas)",pros:["Repurposes underutilized commercial space without new construction.","Aligns with post-COVID office vacancy trends.","Can add housing in walkable, already-serviced locations."],cons:["Building code upgrades (fire, egress, accessibility) can be expensive for converters.","May reduce commercial tax base in some cases.","Not all commercial buildings are structurally suitable for residential conversion."]},
+  {id:"Z-5",action:"Missing middle housing allowances",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review. Adopt zoning to allow multifamily by-right in single-family zones with clear dimensional standards.",status:"",status_detail:"",description:"Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. GIS analysis shows Portsmouth dedicates 85.8% of residential land (2,276 acres) exclusively to single-family homes while only 14.2% (375 acres) permits multifamily.",metric:"Number of 2–4 unit permits issued; units produced by type.",notes:"DEPENDENCY: This item requires lot size reform to proceed concurrently. Missing middle allowances produce limited yield without companion dimensional changes.",sources:"HAP Narrative; South Portland 2A; Burien D1; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 3.2.2",pros:["Addresses the gap between single-family and large apartments that barely exists in Portsmouth.","Historically consistent — many Portsmouth neighborhoods were originally built with duplexes and triplexes.","GIS analysis shows multifamily-allowed zones generate 5.71x more assessed value per acre than single-family zones."],cons:["Existing homeowners may oppose by-right allowances in single-family zones.","Land costs in Portsmouth may still make missing middle units expensive.","Design standards need to be clear enough to prevent poor-quality projects."]},
+  {id:"Z-7",action:"Height limit modernization",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review. Review and selectively increase building height limits city-wide.",status:"",status_detail:"",description:"Review and selectively increase building height limits in downtown, Gateway, and transit-proximate zones.",metric:"Zones with updated height limits; additional capacity created.",notes:"",sources:"HAP Narrative; 2017 Listens; 2017 Master Plan Action 3.2.2",pros:["Even one additional story can significantly improve project economics.","Targeted increases in appropriate locations don't affect residential neighborhoods.","More height in fewer locations means less sprawl pressure on surrounding areas."],cons:["Strong community attachment to Portsmouth's existing skyline and character.","Shadow, view, and wind impacts on adjacent properties.","Risk of setting precedent that leads to broader height increases over time."]},
+  {id:"Z-8",action:"Lot size and dimensional requirement updates",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review. Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones to encourage infill development.",status:"",status_detail:"",description:"Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones for infill development. GIS analysis: R Zone (proposed 1-acre min from 5-acre), SRA (15,000 sf from 1-acre), SRB (7,500 sf from 15,000 sf). These reductions would bring the majority of nonconforming parcels into compliance.",metric:"Newly buildable parcels created by changes.",notes:"",sources:"HAP Narrative; Keene 3B; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 2.1.3",pros:["Brings thousands of legally nonconforming parcels into compliance, expanding options for homeowners.","Enables lot splits that create new housing opportunities using existing infrastructure.","Reduces variance applications, saving homeowner cost and ZBA staff time."],cons:["Lot size reductions in established neighborhoods will face organized opposition.","Smaller lots may create stormwater, parking, and privacy concerns.","Without infrastructure analysis, reduced lot sizes in areas with marginal sewer capacity could create service constraints."]},
+  {id:"Z-9",action:"Cottage housing / cluster development provisions",category:"Zoning & Land Use",catKey:"zoning",term:"short",staffComment:"Expand cottage housing cluster zoning to the Gateway zone. Expand from the GNOD.",status:"",status_detail:"",description:"Create zoning for cottage housing clusters: small detached units around shared open space, reduced lot-per-unit requirements.",metric:"Cottage housing projects permitted.",notes:"",sources:"HAP Narrative; Keene 4C",pros:["Creates community-oriented housing with shared green space — appealing to seniors and small households.","Lower per-unit costs than conventional construction.","Gentle density model that tends to generate less neighborhood opposition."],cons:["Requires larger assembled parcels that are scarce in Portsmouth's built-out areas.","Shared ownership and maintenance of common areas can create governance challenges.","Limited developer experience with this model in New Hampshire."]},
+  {id:"Z-10",action:"Inclusionary zoning with in-lieu fee option",category:"Zoning & Land Use",catKey:"zoning",term:"short",staffComment:"Require or incentivize affordable units in developments above threshold size. More to review.",status:"in-progress",status_detail:"RKG feasibility analysis completed Feb 2024; GNOD includes workforce housing requirement with 3 compliance paths (build, payment in lieu, land transfer); citywide IZ under discussion.",description:"Require or incentivize affordable units in developments above threshold size. Payment-in-lieu option funding Housing Trust Fund.",metric:"Affordable units produced; in-lieu fees collected.",notes:"LEGAL NOTE: New Hampshire operates under Dillon's Rule principles. Incentive-based inclusionary zoning (voluntary density bonus in exchange for affordable units, as in GNOD) is legally defensible. Mandatory inclusionary zoning has not been clearly authorized statewide.",sources:"HAP Narrative; Keene 3C; South Portland",pros:["Produces affordable units as a condition of market-rate development.","In-lieu fee option funds Housing Trust Fund for flexible deployment.","GNOD provides working local model with three compliance paths."],cons:["If set too high, can discourage development altogether — calibration is critical.","NH has no state enabling statute, creating potential legal vulnerability.","Small project thresholds can disproportionately burden smaller developers."]},
+  {id:"Z-11",action:"Form-based code reform for use deregulation",category:"Zoning & Land Use",catKey:"zoning",term:"short",staffComment:"Reform Portsmouth's existing form-based code to incentivize more below market-rate housing units.",status:"early-stage",status_detail:"Form-based code adopted in multiple Portsmouth districts (CD4, CD5, Gateway), but the original intent of deregulating uses was not carried through. Reform of existing FBC to address use allowances has not been initiated.",description:"Reform Portsmouth's existing form-based code districts to deregulate use allowances as originally intended by the FBC framework.",metric:"Pilot district adopted; development applications.",notes:"",sources:"HAP Narrative; Bill Bowen",pros:["FBC already adopted — reform is easier than starting from scratch.","Deregulating uses while controlling form can enable housing diversity by right.","Reduces CUP and variance burden on both applicants and boards."],cons:["FBC reform requires technical expertise and significant staff time.","Risk of unintended consequences from use deregulation in historic areas.","Some stakeholders may resist changes to a system they invested in creating."]},
+  {id:"Z-14",action:"Live/work unit zoning",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review.",status:"",status_detail:"",description:"Reform live/work unit regulations to expand access and reduce restrictions. Key reforms: allow non-resident workers to be employed in live/work units (currently banned), and expand to south end districts.",metric:"Live/work permits issued.",notes:"Much of the south end does not currently allow live-work units, despite the area's historic mixed-use character.",sources:"2016 Master Plan (3.1.4); Housing Policy 2016-01 §III Master Plan Strategy 3.1.4",pros:["Reduces commuting and supports small business and creative economy.","Historically consistent with Portsmouth's south end mixed-use character.","Allowing non-resident employees makes units more economically viable."],cons:["Parking and traffic impacts of commercial activity in residential areas.","Code compliance complexity — units must meet both residential and commercial standards.","Risk of units being used primarily as commercial space rather than housing."]},
+  {id:"Z-15",action:"Outlying neighborhood development",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review.",status:"",status_detail:"",description:"Rezone and plan new residential neighborhoods: Portsmouth Green/McKennon's area, Kane development (Commerce Way), southwest quadrant (Heritage Way). Include infrastructure and recreation.",metric:"Parcels rezoned; infrastructure plans adopted; units in pipeline.",notes:"The draft Portsmouth Master Plan Update (Utile, March 2026) provides urban design frameworks for Portsmouth Green/McKennon's and Commerce Way/Kane areas. Heritage Way is not identified as a Master Plan Neighborhood Center study area.",sources:"Bill Bowen; 2017 Master Plan Action 1.2.2; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026)",pros:["Potential for significant unit counts on larger parcels.","Can be designed as complete neighborhoods with amenities from the start.","Reduces development pressure on established neighborhoods."],cons:["Greenfield development may conflict with conservation and open space goals.","Requires substantial infrastructure investment (roads, utilities, schools).","Auto-dependent locations without transit access."]},
+  {id:"Z-21",action:"Comprehensive zoning audit",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review.",status:"in-progress",status_detail:"HOP 2.0 grant ($65,321, Nov 2024) engaged RKG Associates, but the July 2025 scope was narrow — evaluating whether existing density bonuses are working, not a comprehensive zoning audit.",description:"Full audit of zoning ordinance identifying provisions that constrain housing production. Prioritize amendments. GIS analysis quantifies the compliance crisis: 69.9% of parcels in single-family zones violate current zoning requirements.",metric:"Audit completed; constraining provisions identified and amended.",notes:"Audit scope should include: SB 283 (FAR calculation), HB 457 (occupancy restrictions), SB 284 (parking cap), HB 577 (ADU compliance), and district consolidation per the draft Master Plan Update.",sources:"HAP Narrative; Progress Tracker; Byron Matto GIS analysis (Jan 2026); Portsmouth Master Plan Update, Draft Framework (March 2026)",pros:["Identifies provisions in current zoning that limit housing production in a single systematic review.","Creates a roadmap for prioritized amendments rather than piecemeal changes.","Provides evidence base that reduces political risk of individual reforms."],cons:["Comprehensive audits are time-intensive — risk of delaying action on known barriers.","HOP 2.0 / RKG scope was narrower than expected.","Audit findings may overwhelm limited staff capacity to implement changes."]},
+  {id:"Z-33",action:"Single-family zone reform strategy (R, SRA, SRB)",category:"Zoning & Land Use",catKey:"zoning",term:"long",staffComment:"After Master Plan update, more to review.",status:"",status_detail:"",description:"Comprehensive reform of Portsmouth's three single-family-only zones, which together represent 2,276 acres — 85.8% of all residential land.",metric:"Parcels brought into zoning compliance per zone; net new housing units permitted; tax revenue per acre trend.",notes:"SEQUENCING PREREQUISITE: Land value capture and anti-speculation strategy must be in active development before ordinance drafting begins. Draft Master Plan recommends two-stage SRB approach: Stage 1 — reduce min lot size to 7,500 sf and allow two-family by-right; Stage 2 — allow small multifamily by-right.",sources:"Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 2.1.3; Portsmouth Master Plan Update, Draft Framework (March 2026)",pros:["Addresses 85.8% of residential land, currently zoned exclusively for single-family development.","Brings thousands of legally nonconforming parcels into compliance.","Multifamily zones currently generate 5.71x more assessed value per acre."],cons:["Single-family zone reform is the most politically volatile housing action — homeowner opposition will be intense.","Zone-specific proposals need significant refinement through public process.","Risk of speculative land acquisition driving up prices before reforms produce actual housing."]},
+  {id:"Z-36",action:"Monitor 2026 NH ADU legislation for conflicts with Portsmouth ordinance",category:"Zoning & Land Use",catKey:"zoning",term:"short",staffComment:"Work is on-going. Monitor and review as bills progress.",status:"in-progress",status_detail:"Bills in House committee as of March 2026. No Planning Department ordinance conflict review on record yet.",description:"Three bills in the 2026 NH legislative session have direct implications for Portsmouth's ADU ordinance adopted February 17, 2026. Planning Department should review each bill against the adopted ordinance on an ongoing basis.",metric:"Planning Department review completed for each bill; formal city position taken where conflict is identified.",notes:"Bills to monitor: HB1079, HB1540, HB1662. ⚠ Compliance note: Existing ordinance review against HB 577 (eff. 7/1/25) confirms non-compliance in CUP requirements and 30-day notice process.",sources:"Progress Portsmouth; NH General Court 2026 session",pros:["Proactive review prevents Portsmouth from being caught off-guard by state preemption.","HB1662 loan guarantees would directly support ADU production goals.","HB1079 non-conforming structure provision could unlock ADU potential in older neighborhoods."],cons:["Legislative outcomes uncertain; monitoring effort may not yield actionable conflict.","HB1540 uniform standards could constrain locally tailored provisions.","Staff bandwidth for bill tracking competes with implementation priorities."]},
+  {id:"P-14",action:"Pre-approved residential design template program",category:"Permitting & Process",catKey:"permitting",term:"short",staffComment:"Establish a city-maintained library of pre-approved architectural designs for common residential building types.",status:"not-started",status_detail:"",description:"Establish a city-maintained library of pre-approved architectural designs for common residential building types including ADUs, duplexes, triplexes, small apartment buildings (up to 8 units), and cottage housing.",metric:"Number of templates available by building type; average permit review time for template vs. non-template applications.",notes:"This item subsumes the ADU pre-approved plan library referenced in item Z-2 and expands its scope to all small residential building types.",sources:"AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4",pros:["Reduces design and permitting cost for small-scale developers and homeowners.","Standardizes review, reducing staff time and inconsistent outcomes.","Particularly beneficial for first-time developers and owner-builders."],cons:["Template library development requires upfront investment in architectural services.","Maintaining and updating templates as codes change requires ongoing staff attention.","May not serve developers with site-specific design requirements."]},
+  {id:"I-4",action:"RSA 79-E tax relief expansion",category:"Incentives & Financial Tools",catKey:"incentives",term:"short",staffComment:"Expand RSA 79-E tax relief to more areas and project types. Promote existing program.",status:"early-stage",status_detail:"City Council work session held March 16, 2026. Portsmouth has not yet adopted a 79-E Housing Opportunity Zone. HB1103 (2026 session) passed House with amendment on March 3, 2026, expanding RSA 79-E credits.",description:"Expand RSA 79-E tax relief to more areas and project types. Promote existing program.",metric:"RSA 79-E applications; investment leveraged.",notes:"",sources:"Feb 17 2026 Council; 2016 Master Plan",pros:["RSA 79-E is an existing, proven NH tool — no new legislation required.","Tax relief encourages rehabilitation of aging housing stock.","Conway's Housing Opportunity Zone (2024) provides NH precedent for expansion."],cons:["Foregone tax revenue during relief period.","Benefits accrue to property owners who may not pass savings to tenants.","Program awareness is low — underutilized even where currently available."]},
+  {id:"I-12",action:"First-time homebuyer program expansion",category:"Incentives & Financial Tools",catKey:"incentives",term:"long",staffComment:"Expand down payment assistance, closing cost support, and financial literacy programs.",status:"",status_detail:"",description:"Expand down payment assistance, closing cost support, and financial literacy programs.",metric:"First-time buyers assisted; average assistance amount; homeownership rate.",notes:"",sources:"Keene 1B; 2017 Listens; HC Work Plan; 2017 Master Plan Action 3.2.4",pros:["Directly addresses affordability barrier for younger households being priced out.","Financial literacy component builds long-term homeowner success.","Expands access to wealth-building through homeownership."],cons:["Demand-side subsidies can push prices higher in a supply-constrained market.","Benefits are per-household — limited impact on overall affordability.","Student debt burden (40% of RKG survey respondents) may make buyers ineligible anyway."]},
+  {id:"I-18",action:"Historic preservation + housing incentives",category:"Incentives & Financial Tools",catKey:"incentives",term:"long",staffComment:"Part of 79-E. Incentives combining historic preservation with housing production: streamlined historic review, tax credit stacking.",status:"",status_detail:"",description:"Incentives combining historic preservation with housing production: streamlined historic review, tax credit stacking.",metric:"Historic buildings converted to housing; incentives utilized.",notes:"",sources:"2016 Master Plan; RSA 79-E; South Portland",pros:["Stacking historic and housing tax credits can make difficult projects viable.","Preserves Portsmouth's architectural heritage while adding housing supply.","Strong alignment with community values around historic character."],cons:["HDC review process adds time and uncertainty for developers.","Historic preservation standards can conflict with housing efficiency goals.","Tax credit stacking is complex and requires specialized development expertise."]},
+  {id:"HTF-3",action:"Housing Trust Fund: deploy for gap financing",category:"Housing Trust Fund & Funding",catKey:"other",term:"long",staffComment:"Revolving loans/grants for affordable and workforce projects. Prioritize projects leveraging other sources.",status:"",status_detail:"",description:"Revolving loans/grants for affordable and workforce projects. Prioritize projects leveraging other sources.",metric:"Loans/grants made; units produced; leverage ratio.",notes:"",sources:"HAP Narrative; Keene 3D",pros:["Gap financing is often the critical missing piece that makes affordable projects viable.","Revolving loans recycle dollars — repayments fund future projects.","Leverages other funding sources at a high multiplier."],cons:["Fund balance may be insufficient for meaningful gap financing at current levels (~$250K combined).","Loan underwriting requires financial expertise on staff or committee.","Revolving loan repayment assumes projects generate enough revenue to repay."]},
+  {id:"PC-5",action:"State-level housing policy advocacy",category:"Partnerships & Capacity",catKey:"other",term:"long",staffComment:"Organize lobbying for state-level changes: inclusionary zoning enabling, pillow tax authorization, and other tools. Bring to Legislative Subcommittee if necessary.",status:"in-progress",status_detail:"City actively tracked and responded to HB 577 and SB 284; Planning staff coordinating with NHMA on 2026 legislative session.",description:"Organize lobbying for state-level changes: inclusionary zoning enabling, pillow tax authorization, other tools.",metric:"Legislative contacts; bills filed/supported; legislation enacted.",notes:"",sources:"HC Work Plan (PtL Goal 5; Kozak)",pros:["State-level changes (HB 577, SB 284) have been the most impactful housing reforms.","Coordinated advocacy through NHMA multiplies Portsmouth's influence.","Unlocking tools like pillow tax and inclusionary zoning requires state action."],cons:["State legislative outcomes are uncertain and subject to partisan dynamics.","Advocacy requires sustained effort over multiple legislative sessions.","Some state mandates create local implementation challenges."]},
+  {id:"PA-8",action:"Homeowner emergency assistance",category:"Preservation & Anti-Displacement",catKey:"other",term:"long",staffComment:"Emergency grants/loans for homeowners facing foreclosure, major repairs, or tax delinquency. Consider using Housing Trust Fund, Grants, or CDBG.",status:"",status_detail:"",description:"Emergency grants/loans for homeowners facing foreclosure, major repairs, or tax delinquency.",metric:"Homeowners assisted; home retention rate.",notes:"",sources:"Burien A5; 2017 Listens",pros:["Prevents foreclosure and displacement — far cheaper than rehousing.","Stabilizes neighborhoods by keeping homes occupied and maintained.","Targets crisis moments where a small amount of assistance has outsized impact."],cons:["Ongoing program funding required with no asset created.","Eligibility determination is sensitive — risk of fraud or misuse.","May delay inevitable outcomes for financially distressed homeowners."]},
+  {id:"PA-10",action:"Federally subsidized unit preservation strategy",category:"Preservation & Anti-Displacement",catKey:"other",term:"long",staffComment:"Proactively engage owners of federally subsidized housing. Map existing subsidized housing owners.",status:"",status_detail:"",description:"Proactively engage owners of federally subsidized housing approaching subsidy expiration. RKG (2022) identified 489 units in three Portsmouth properties as potentially at risk of subsidy expiration by 2040. First step is direct PHA outreach to verify current subsidy status.",metric:"Subsidized units preserved; units at risk identified; recapitalization deals completed.",notes:"PROVISIONAL DATA: RKG 2022 unit counts (489 units: Osprey Landing 263 LIHTC, Wamesit Place 100 LIHTC, Keefe House 58 S8) are drawn from NHPD database and have not been verified with PHA.",sources:"RKG 2022 (NHPD data: 489 units at risk); South Portland 1A",pros:["489 federally subsidized units at risk is a significant share of Portsmouth's affordable stock.","Proactive engagement gives city time to plan preservation strategies before expiration.","Preservation costs far less per unit than building replacement affordable housing."],cons:["Property owners may prefer to exit subsidy programs for market-rate rents.","City has limited leverage over federal subsidy decisions.","Preservation financing is complex and competitive."]},
+  {id:"EO-2",action:"City housing resources portal",category:"Education & Outreach",catKey:"other",term:"short",staffComment:"Update city's website with housing resources: programs, applications, and ADU guidance.",status:"in-progress",status_detail:"City maintains Housing page with reports, data, committee info. Housing Related Reports & Data page is fairly comprehensive; could be enhanced.",description:"Create/enhance city website with housing resources: programs, applications, ADU guidance, data dashboard.",metric:"Portal launched; page visits; resource downloads.",notes:"",sources:"Keene 4D; HAP Narrative",pros:["Centralizes information that is currently scattered across city departments and websites.","Existing Housing Related Reports page provides a foundation to build on.","Self-service resource reduces staff time spent answering basic inquiries."],cons:["Website development and maintenance require staff or consultant resources.","Static websites quickly become outdated without regular content updates.","Digital-only resources don't reach residents without internet access."]},
+  {id:"CS-3",action:"Flood resilience and climate adaptation",category:"Climate & Sustainability",catKey:"other",term:"long",staffComment:"Part of 79-E, Coastal Resiliency Incentive Zone (CRIZ). Implement Coastal Resiliency Incentive Zone.",status:"",status_detail:"",description:"Ensure new housing accounts for flood risk and sea level rise. Update flood maps and building standards.",metric:"Housing in updated flood zones; flood-resilient standards adopted.",notes:"",sources:"HC Work Plan (PtL Goal 4); Portsmouth Climate Action Plan; 2017 Master Plan Actions 5.1.3, 5.5.1",pros:["Portsmouth's coastal location makes flood risk a real and growing concern.","Updated flood maps protect future housing from known hazards.","Building standards that account for sea level rise are cost-effective when applied at construction."],cons:["Updated flood maps may constrain development in areas currently zoned for housing.","Higher flood resilience standards increase construction costs.","Climate adaptation requirements add regulatory complexity for developers."]},
+  {id:"PT-12",action:"Buildout capacity modeling (current vs. reformed zoning)",category:"Production Targets & Data",catKey:"other",term:"long",staffComment:"After Master Plan Update, more to review. Model the housing production capacity under current zoning versus proposed zoning reforms.",status:"",status_detail:"",description:"Model the theoretical and realistic housing production capacity under current zoning versus proposed zoning reforms. Analysis should show current by-right capacity vs. proposed.",metric:"Theoretical vs. realistic unit capacity under current and reformed zoning; gap to 3,124-unit demand projection.",notes:"This is the analytical bridge between zoning reform proposals and production targets.",sources:"Reviewer feedback (2026); Progress Portsmouth (2026)",pros:["Connects zoning reform proposals directly to unit production estimates — makes the case for reform concrete.","Visual gap analysis makes housing capacity and demand data accessible for public and Council review.","Realistic capacity adjustments prevent overpromising what zoning changes alone can deliver."],cons:["Modeling requires assumptions about owner willingness and market absorption that are inherently uncertain.","Theoretical capacity numbers can be misleadingly large.","Parcel-level analysis may identify politically sensitive sites, creating opposition before reforms are proposed."]},
+  {id:"GA-1",action:"HAP formal adoption and governance framework",category:"Governance & Accountability",catKey:"other",term:"short",staffComment:"Develop Implementation Plan. Housing Action Plan.",status:"",status_detail:"",description:"Establish a formal adoption mechanism for the Housing Action Plan as a binding policy document. Includes: City Council resolution or ordinance formally adopting the HAP; designation of a lead department and responsible staff positions; establishment of a HAP Implementation Committee; and integration of HAP priorities into the city's annual goal-setting.",metric:"Formal adoption vote (yes/no); Implementation Committee formed and meeting (yes/no); HAP referenced in annual city goals (yes/no).",notes:"Formal adoption and named implementation ownership provide the governance foundation for the remaining action items.",sources:"Reviewer feedback (2026); Progress Portsmouth (2026)",pros:["Transforms the HAP from advisory to binding — creates legal and political accountability.","Named departmental ownership ensures someone is responsible for driving implementation.","Formal adoption gives the HAP standing in budget deliberations and land use decisions."],cons:["Council may resist binding adoption if it constrains future discretion on individual projects.","Formal governance structure adds administrative overhead and meeting obligations.","Political risk if Council adopts the HAP but then visibly fails to implement it."]},
+  {id:"GA-3",action:"HAP budget alignment requirement",category:"Governance & Accountability",catKey:"other",term:"short",staffComment:"Require that the annual city budget process explicitly address HAP implementation funding.",status:"",status_detail:"",description:"Require that the annual city budget process explicitly address HAP implementation funding. Includes: a dedicated HAP line item or program budget; requirement that the City Manager's proposed budget identify which HAP actions are funded, partially funded, or unfunded; and a mechanism for the HAP Implementation Committee to submit budget recommendations.",metric:"HAP funding identified in annual budget (yes/no); percentage of HAP actions with dedicated funding; total annual HAP-related appropriation.",notes:"This item ensures HAP implementation is reflected in the annual budget process and that associated costs are not absorbed as an unfunded load on existing staff.",sources:"Reviewer feedback (2026); Progress Portsmouth (2026)",pros:["Forces the city to put resources behind HAP commitments rather than treating it as an unfunded mandate.","Annual budget alignment creates a natural prioritization and sequencing mechanism.","Dedicated funding line item makes HAP spending visible and accountable to taxpayers."],cons:["Competes with other budget priorities in a fiscally constrained environment.","Dedicated housing budget may be cut in lean years, undermining implementation continuity.","Budget requirement may make Council less willing to adopt the HAP in the first place."]}
+];
+
+let currentFilter = 'all';
+let currentSearch = '';
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function doSearch(val) {
+  currentSearch = val.toLowerCase();
+  render();
+}
+
+function matchesFilter(item) {
+  if (currentFilter === 'all') return true;
+  if (currentFilter === 'short') return item.term === 'short';
+  if (currentFilter === 'long') return item.term === 'long';
+  if (currentFilter === 'cat-zoning') return item.catKey === 'zoning';
+  if (currentFilter === 'cat-permitting') return item.catKey === 'permitting';
+  if (currentFilter === 'cat-incentives') return item.catKey === 'incentives';
+  if (currentFilter === 'cat-other') return item.catKey === 'other';
+  return true;
+}
+
+function matchesSearch(item) {
+  if (!currentSearch) return true;
+  const hay = [item.id, item.action, item.description, item.category, item.staffComment, item.notes, item.metric, item.sources].join(' ').toLowerCase();
+  return hay.includes(currentSearch);
+}
+
+function statusLabel(s) {
+  return {complete:'Complete','in-progress':'In Progress','early-stage':'Early Stage','not-started':'Not Started'}[s] || '';
+}
+
+function toggleCard(el) {
+  el.classList.toggle('open');
+}
+
+function render() {
+  const grid = document.getElementById('cardsGrid');
+  const noRes = document.getElementById('noResults');
+  const visible = ITEMS.filter(i => matchesFilter(i) && matchesSearch(i));
+
+  document.getElementById('statTotal').textContent = visible.length;
+
+  const shorts = ITEMS.filter(i => i.term === 'short');
+  const longs = ITEMS.filter(i => i.term === 'long');
+  document.getElementById('statShort').textContent = shorts.length;
+  document.getElementById('statLong').textContent = longs.length;
+
+  if (visible.length === 0) {
+    grid.innerHTML = '';
+    noRes.style.display = 'block';
+    return;
+  }
+  noRes.style.display = 'none';
+
+  // Group by category
+  const cats = {};
+  visible.forEach(item => {
+    if (!cats[item.category]) cats[item.category] = [];
+    cats[item.category].push(item);
+  });
+
+  let html = '';
+  Object.entries(cats).forEach(([cat, items]) => {
+    html += `<div class="section-header">${cat} <span style="font-weight:400;opacity:.6">(${items.length})</span></div>`;
+    items.forEach(item => {
+      const stClass = item.status ? `status-${item.status}` : '';
+      const stLabel = statusLabel(item.status);
+      const stBadge = stLabel ? `<span class="status-badge ${item.status}">${stLabel}</span>` : '';
+      const termClass = item.term === 'short' ? 'term-short' : 'term-long';
+      const termLabel = item.term === 'short' ? 'Short-Term' : 'Long-Term';
+
+      // pros/cons
+      let prosHtml = item.pros.map(p => `<div class="pc-item">${p}</div>`).join('');
+      let consHtml = item.cons.map(c => `<div class="pc-item">${c}</div>`).join('');
+
+      // sources as tags
+      const srcTags = item.sources.split(';').map(s => s.trim()).filter(Boolean).map(s => `<span class="tag">${s}</span>`).join('');
+
+      // notes
+      const notesHtml = item.notes ? `
+        <div class="body-section">
+          <div class="body-label">Notes</div>
+          <div class="${item.notes.startsWith('⚠') || item.notes.startsWith('PROVISIONAL') || item.notes.startsWith('SEQUENCING') || item.notes.startsWith('DEPENDENCY') || item.notes.startsWith('LEGAL') ? 'warn-note' : 'body-text'}">${item.notes}</div>
+        </div>` : '';
+
+      // status detail
+      const sdHtml = item.status_detail ? `<div class="status-detail">${item.status_detail}</div>` : '';
+
+      html += `
+      <div class="card ${termClass} ${stClass ? stClass : ''}" onclick="toggleCard(this)">
+        <div class="card-head">
+          <span class="id-badge">${item.id}</span>
+          <div class="card-title-wrap">
+            <div class="card-action">${item.action}</div>
+            <div class="card-cat">${item.category}</div>
+          </div>
+          <div class="card-badges">
+            <span class="term-badge ${item.term}">${termLabel}</span>
+            ${stBadge}
+          </div>
+          <span class="card-arrow">▼</span>
+        </div>
+        <div class="staff-note">
+          <span class="staff-label">STAFF →</span>
+          <span>${item.staffComment}</span>
+        </div>
+        <div class="card-body">
+          <div class="body-section">
+            <div class="body-label">Description</div>
+            <div class="body-text">${item.description}</div>
+            ${sdHtml}
+          </div>
+          <div class="body-section">
+            <div class="body-label">Metric</div>
+            <div class="metric-box">${item.metric || '<em style="opacity:.5">Not defined</em>'}</div>
+          </div>
+          ${notesHtml}
+          <div class="body-section">
+            <div class="pros-cons">
+              <div class="pros-list"><div class="pc-label">↑ Pros</div>${prosHtml}</div>
+              <div class="cons-list"><div class="pc-label">↓ Cons</div>${consHtml}</div>
+            </div>
+          </div>
+          <div class="body-section">
+            <div class="body-label">Sources</div>
+            <div class="tags-row">${srcTags}</div>
+          </div>
+        </div>
+      </div>`;
+    });
+  });
+
+  grid.innerHTML = html;
+}
+
+render();
+</script>
+</body>
+</html>
