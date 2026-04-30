@@ -36,38 +36,47 @@ body{margin:0;font-family:'Source Sans 3',sans-serif;color:var(--ink);background
 .pre-header h1{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.6vw,30px);line-height:1.18;color:#fff;margin:0 0 8px 0;font-weight:400;}
 .pre-header .subtitle{font-size:0.95rem;line-height:1.5;color:rgba(255,255,255,0.85);}
 
-/* Status banner */
+/* Status banner — softer */
 .status-banner{background:rgba(244,162,97,0.10);border:1px solid rgba(244,162,97,0.4);border-left:5px solid var(--gold);border-radius:4px;padding:18px 22px;margin:24px auto;max-width:1100px;}
 .status-banner-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:8px;}
 .status-banner h2{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin:0 0 8px 0;font-weight:400;}
-.status-banner p{font-size:0.95rem;color:var(--ink);margin:0;line-height:1.55;}
+.status-banner p{font-size:0.95rem;color:var(--ink);margin:0 0 10px 0;line-height:1.6;}
+.status-banner p:last-of-type{margin-bottom:0;}
 .status-banner .meta-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:18px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;padding-top:14px;border-top:1px solid rgba(244,162,97,0.30);}
 
 /* Container */
 .container{max-width:1100px;margin:0 auto;padding:0 28px 60px;}
 
-/* Intake protocol section */
-.intake-section{background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px 28px;margin-bottom:32px;}
-.intake-section h2{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);margin:0 0 14px 0;font-weight:400;}
-.intake-section p{font-size:0.93rem;color:var(--ink);margin:0 0 14px 0;line-height:1.6;}
-.intake-section ol{margin:14px 0 0 0;padding-left:22px;font-size:0.93rem;color:var(--ink);}
-.intake-section ol li{margin-bottom:8px;line-height:1.55;}
-.intake-source{background:var(--cream);border-left:3px solid var(--slate);padding:12px 16px;margin-top:18px;font-size:0.88rem;color:var(--slate);font-style:italic;}
+/* Intake section — softer styling */
+.intake-section{background:#fff;border:1px solid var(--line);border-radius:4px;padding:22px 26px;margin-bottom:32px;}
+.intake-section h2{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin:0 0 12px 0;font-weight:400;}
+.intake-section p{font-size:0.93rem;color:var(--ink);margin:0 0 12px 0;line-height:1.6;}
+.intake-section ol{margin:10px 0 0 0;padding-left:20px;font-size:0.93rem;color:var(--ink);}
+.intake-section ol li{margin-bottom:6px;line-height:1.55;}
+.intake-source{background:var(--cream);border-left:3px solid var(--slate);padding:10px 14px;margin-top:14px;font-size:0.86rem;color:var(--slate);}
+.intake-source strong{color:var(--navy);font-style:normal;}
 
-/* Items count */
-.items-header{display:flex;align-items:baseline;gap:14px;margin:32px 0 14px;flex-wrap:wrap;}
-.items-header h2{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--navy);margin:0;font-weight:400;}
-.items-header .count{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;background:rgba(244,162,97,0.12);padding:4px 12px;border-radius:3px;}
+/* Section headers */
+.section-header{display:flex;align-items:baseline;gap:14px;margin:36px 0 6px;flex-wrap:wrap;border-bottom:2px solid var(--gold);padding-bottom:8px;}
+.section-header h2{font-family:'DM Serif Display',serif;font-size:1.55rem;color:var(--navy);margin:0;font-weight:400;}
+.section-header .count{font-family:'JetBrains Mono',monospace;font-size:0.76rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;background:rgba(244,162,97,0.12);padding:3px 10px;border-radius:3px;}
+.section-desc{font-size:0.9rem;color:var(--slate);margin:0 0 16px 0;line-height:1.55;font-style:italic;}
 
 /* Item cards */
-.item-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:4px;padding:24px 28px;margin-bottom:20px;}
+.item-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:22px 26px;margin-bottom:18px;}
+.item-card.type-new{border-left:4px solid var(--gold);}
+.item-card.type-amendment{border-left:4px solid var(--teal);}
 
-.item-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.item-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
 .item-id{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.10em;font-weight:700;color:var(--gold-dark);background:rgba(244,162,97,0.12);padding:3px 10px;border-radius:3px;}
-.item-cat{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:600;}
-.item-proposed-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:var(--coral-dark);padding:3px 9px;border-radius:3px;font-weight:700;}
+.item-cat{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:600;}
 
-.item-action{font-family:'DM Serif Display',serif;font-size:1.42rem;color:var(--navy);line-height:1.22;margin:6px 0 16px 0;font-weight:400;}
+/* Type tag — distinguishes new vs amendment */
+.item-type-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:3px;}
+.item-type-new{color:#fff;background:var(--gold-dark);}
+.item-type-amendment{color:#fff;background:var(--teal-dark);}
+
+.item-action{font-family:'DM Serif Display',serif;font-size:1.42rem;color:var(--navy);line-height:1.22;margin:8px 0 16px 0;font-weight:400;}
 
 .field{margin-bottom:14px;}
 .field-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:5px;}
@@ -112,16 +121,17 @@ body{margin:0;font-family:'Source Sans 3',sans-serif;color:var(--ink);background
 <div class="pre-header">
   <div class="pre-header-content">
     <h1>Proposed Additions to the Housing Action Plan</h1>
-    <div class="subtitle">External expert input, drafted in standard Housing Action Plan format for Housing Committee and Planning Department review. Not yet incorporated into the canonical plan.</div>
+    <div class="subtitle">Drafted in standard HAP format, sitting outside the canonical plan until you decide what to do with them.</div>
   </div>
 </div>
 
 <div class="status-banner">
-  <div class="status-banner-eyebrow">Review status</div>
-  <h2>For review by Housing Committee chairs and Planning Department</h2>
-  <p>The four items below are drafted in the standard Housing Action Plan item format but live outside the canonical <code>hap-actions.json</code> file. They will be incorporated only on direction from Councilor John Tabor, Asst. Mayor Joanna Kelley, and the Planning Department. If accepted, items will be assigned permanent IDs and merged into the canonical plan. If declined, this file remains as a record of the input and the decision.</p>
+  <div class="status-banner-eyebrow">For your review</div>
+  <h2>Four items, two new and two enrichments</h2>
+  <p>Tom Morgan, AICP — a planner in another NH community — sent us a thoughtful set of comments on the Housing Action Plan. The four items below are the ones we thought were worth your eyes. We've drafted them in the standard HAP item format so you can see exactly what we'd be proposing. Nothing has been merged into the canonical plan. That's your call.</p>
+  <p><strong>Two are new items</strong> (gold border, "New" tag) — they don't currently exist in the plan. <strong>Two are enrichments</strong> (teal border, "Amends I-18" / "Amends Z-9" tag) — they would fold into existing items rather than get their own ID.</p>
   <div class="meta-row">
-    <span>Version 1.0</span>
+    <span>Version 1.1</span>
     <span>April 30, 2026</span>
     <span>4 proposed items</span>
     <span>148 canonical items unchanged</span>
@@ -131,42 +141,52 @@ body{margin:0;font-family:'Source Sans 3',sans-serif;color:var(--ink);background
 <div class="container">
 
   <section class="intake-section">
-    <h2>Intake protocol</h2>
-    <p>Progress Portsmouth received unsolicited expert input from a credentialed planner residing in another New Hampshire community. The input addressed multiple aspects of the Housing Action Plan and surrounding municipal policy. Progress Portsmouth triaged the input through three lenses:</p>
+    <h2>How we triaged Tom's comments</h2>
+    <p>Tom raised more than four points. We worked through everything he sent and sorted into three buckets:</p>
     <ol>
-      <li><strong>Substantive policy or technical contributions</strong> that translate cleanly into action items or amendments — included below.</li>
-      <li><strong>Contested policy positions</strong> that deserve consideration but cannot be silently absorbed into the plan — recorded but not drafted as items.</li>
-      <li><strong>Personnel or process critiques</strong> that fall outside the scope of the action plan — referred to the appropriate body or recorded for context.</li>
+      <li><strong>Substantive policy or technical contributions</strong> that translate cleanly into the plan — the four below.</li>
+      <li><strong>Contested policy positions</strong> that deserve a real conversation but shouldn't be silently absorbed into the plan (e.g. impact fee abolition, ADU minimum size). Recorded but not drafted.</li>
+      <li><strong>Process or personnel observations</strong> that fall outside the plan format. Worth raising in conversation, not as plan items.</li>
     </ol>
-    <p style="margin-top:16px;">The four items below resulted from the first lens. Any of them may be accepted as drafted, accepted with modifications, or declined. The review questions at the end of this page guide the committee and Planning Department's response.</p>
+    <p>The four below came out of the first bucket. Each is drafted with full pros and cons, sources, and notes — same format as canonical items — so you can review them on the same terms as anything else in the plan.</p>
     <div class="intake-source">
-      <strong>Source of input:</strong> Tom Morgan, AICP — credentialed planner, resident of another New Hampshire community. Input received April 30, 2026.
+      <strong>Source:</strong> Tom Morgan, AICP, credentialed planner in another NH community. Comments received April 30, 2026.
     </div>
   </section>
 
-  <div class="items-header">
-    <h2>Proposed items</h2>
-    <span class="count">4 items · drafted in canonical format</span>
+  <!-- New items section -->
+  <div class="section-header">
+    <h2>New items proposed</h2>
+    <span class="count" id="new-count">— items</span>
   </div>
+  <p class="section-desc">If accepted, these would get new canonical IDs and merge into the relevant categories.</p>
+  <div id="new-items-container"></div>
 
-  <div id="items-container"></div>
+  <!-- Amendment items section -->
+  <div class="section-header">
+    <h2>Enrichments to existing items</h2>
+    <span class="count" id="amend-count">— items</span>
+  </div>
+  <p class="section-desc">If accepted, the content folds into the named existing item — no new IDs assigned.</p>
+  <div id="amend-items-container"></div>
 
-  <section class="intake-section" style="margin-top:32px;">
-    <h2>Review questions</h2>
-    <p>For each proposed item, the Housing Committee and Planning Department are asked to consider:</p>
+  <section class="intake-section" style="margin-top:36px;">
+    <h2>Quick review questions</h2>
+    <p>For each item, the questions for you and the Planning team:</p>
     <ol>
-      <li>Should the proposed item be incorporated into the Housing Action Plan as drafted?</li>
-      <li>Should the proposed item be incorporated with modifications? If so, what modifications?</li>
-      <li>Should the proposed item be declined, and on what basis?</li>
-      <li>If accepted, what canonical ID should the item receive within the existing category structure?</li>
+      <li>Want to add it as drafted?</li>
+      <li>Add it with changes? (What changes?)</li>
+      <li>Pass on it, and why?</li>
+      <li>If yes, what canonical ID should it get?</li>
     </ol>
+    <p style="margin-top:14px;">Happy to talk any of these through, or to draft the merge into the canonical JSON once you've decided. — Gerry / Progress Portsmouth</p>
   </section>
 
 </div>
 
 <p class="ai-disclosure">Created with AI assistance in research and information design, with human editorial control.</p>
 <div class="footer">
-  Progress Portsmouth · <a href="https://progressportsmouth.com">progressportsmouth.com</a> · v1.0 · April 30, 2026
+  Progress Portsmouth · <a href="https://progressportsmouth.com">progressportsmouth.com</a> · v1.1 · April 30, 2026
 </div>
 
 <script>
@@ -179,16 +199,20 @@ function escapeHtml(s){
 
 function linkify(text){
   if(!text) return '';
-  // Convert http(s) URLs to clickable links
   return escapeHtml(text).replace(/(https?:\/\/[^\s)]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
 }
 
 function renderItem(item){
-  let h = `<div class="item-card">`;
+  const isAmend = item.type === 'amendment';
+  const typeClass = isAmend ? 'type-amendment' : 'type-new';
+  const tagClass = isAmend ? 'item-type-amendment' : 'item-type-new';
+  const tagLabel = isAmend ? `Amends ${escapeHtml(item.amends)}` : 'New item';
+
+  let h = `<div class="item-card ${typeClass}">`;
   h += `<div class="item-head">`;
   h += `<span class="item-id">${escapeHtml(item.id)}</span>`;
+  h += `<span class="item-type-tag ${tagClass}">${tagLabel}</span>`;
   h += `<span class="item-cat">${escapeHtml(item.category)}</span>`;
-  h += `<span class="item-proposed-tag">Proposed</span>`;
   h += `</div>`;
   h += `<h3 class="item-action">${escapeHtml(item.action)}</h3>`;
 
@@ -230,11 +254,19 @@ async function load(){
     if(!res.ok) throw new Error('Fetch failed: '+res.status);
     const data = await res.json();
     const items = data.proposed_items || [];
-    const container = document.getElementById('items-container');
-    container.innerHTML = items.map(renderItem).join('');
+
+    const newItems = items.filter(i => i.type === 'new');
+    const amendItems = items.filter(i => i.type === 'amendment');
+
+    document.getElementById('new-count').textContent = `${newItems.length} item${newItems.length===1?'':'s'}`;
+    document.getElementById('amend-count').textContent = `${amendItems.length} item${amendItems.length===1?'':'s'}`;
+
+    document.getElementById('new-items-container').innerHTML = newItems.map(renderItem).join('');
+    document.getElementById('amend-items-container').innerHTML = amendItems.map(renderItem).join('');
   } catch(err){
-    document.getElementById('items-container').innerHTML =
-      '<div class="item-card"><h3 class="item-action">Could not load proposed items</h3><p style="color:var(--slate)">' + escapeHtml(err.message) + '</p></div>';
+    const msg = '<div class="item-card type-new"><h3 class="item-action">Could not load proposed items</h3><p style="color:var(--slate)">' + escapeHtml(err.message) + '</p></div>';
+    document.getElementById('new-items-container').innerHTML = msg;
+    document.getElementById('amend-items-container').innerHTML = '';
   }
 }
 load();
