@@ -176,6 +176,38 @@ body{font-family:'Source Sans 3',-apple-system,sans-serif;background:var(--cream
 .status-detail-box.sd-retired .sd-label,.status-detail-box.sd-out-of-scope .sd-label,.status-detail-box.sd-deferred .sd-label{color:#888;}
 .status-detail-box .sd-text{font-size:0.85rem;color:var(--navy);line-height:1.5;}
 
+/* ── PLANNING STAFF NOTE (Apr 23, 2026 minutes) ── */
+.staff-note-box{background:#f4f1ec;border:1px solid #d9d2c4;border-left:4px solid #6b7785;border-radius:var(--radius);padding:12px 14px;margin:10px 0 14px;}
+.staff-note-box .sn-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.staff-note-box .sn-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.10em;text-transform:uppercase;color:#4a5562;font-weight:700;}
+.staff-note-box .sn-term{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.10em;text-transform:uppercase;font-weight:700;padding:2px 8px;border-radius:3px;}
+.staff-note-box .sn-term-short{background:#dde8e2;color:#2c5e54;}
+.staff-note-box .sn-term-long{background:#ebe1cd;color:#8a6c2e;}
+.staff-note-box .sn-text{font-size:0.85rem;line-height:1.55;color:var(--navy);}
+
+/* ── STAFF SHORTLIST FILTER ── */
+.shortlist-toggle-group{display:flex;align-items:center;gap:6px;margin-right:8px;}
+.shortlist-toggle-btn{background:none;border:1px solid rgba(244,162,97,0.55);border-radius:20px;padding:4px 13px;font-size:0.74rem;cursor:pointer;color:rgba(244,162,97,0.95);transition:var(--transition);white-space:nowrap;font-weight:600;display:inline-flex;align-items:center;gap:5px;}
+.shortlist-toggle-btn:hover{background:rgba(244,162,97,0.14);color:#fff;border-color:var(--gold);}
+.shortlist-toggle-btn.active{background:var(--gold);border-color:var(--gold);color:var(--navy);}
+.shortlist-toggle-btn .sl-star{font-size:0.85em;}
+.shortlist-toggle-btn .sl-count{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;font-weight:700;opacity:0.85;margin-left:2px;}
+
+.shortlist-banner{background:linear-gradient(90deg,rgba(244,162,97,0.10) 0%,rgba(244,162,97,0.04) 100%);border:1px solid rgba(244,162,97,0.35);border-left:4px solid var(--gold);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.shortlist-banner .sb-icon{font-size:1.2rem;}
+.shortlist-banner .sb-text{font-size:0.88rem;color:var(--navy);line-height:1.5;flex:1;min-width:240px;}
+.shortlist-banner .sb-text strong{color:var(--gold-dim);}
+.shortlist-banner .sb-meta{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;}
+.shortlist-banner .sb-clear{background:none;border:1px solid rgba(45,62,82,0.25);border-radius:18px;padding:4px 12px;font-size:0.74rem;cursor:pointer;color:var(--navy);transition:var(--transition);white-space:nowrap;}
+.shortlist-banner .sb-clear:hover{background:rgba(45,62,82,0.06);border-color:var(--navy);}
+
+.term-section-header{display:flex;align-items:center;gap:12px;margin:28px 0 14px;padding:10px 0 10px;border-bottom:2px solid var(--gold);}
+.term-section-header:first-child{margin-top:8px;}
+.term-section-header .tsh-label{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);}
+.term-section-header .tsh-count{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;background:rgba(244,162,97,0.12);padding:3px 10px;border-radius:3px;}
+.term-section-header .tsh-desc{font-size:0.82rem;color:var(--slate);font-style:italic;margin-left:auto;}
+@media (max-width:600px){.term-section-header{flex-wrap:wrap;}.term-section-header .tsh-desc{margin-left:0;width:100%;}}
+
 /* ── PROS/CONS ── */
 .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
 .pros-col,.cons-col{border-radius:var(--radius);padding:14px 16px;}
@@ -325,6 +357,9 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
       </div>
     </div>
     <div class="header-row-bottom">
+      <div class="header-toolbar shortlist-toggle-group">
+        <button class="shortlist-toggle-btn" id="shortlistToggle" onclick="toggleShortlist()" title="Show only the 26 items on the City Planning staff shortlist (Apr 23, 2026)"><span class="sl-star">★</span> Staff shortlist <span class="sl-count">26</span></button>
+      </div>
       <div class="header-toolbar status-filter-group">
         <span class="filter-label">Status</span>
         <div class="status-filter" id="statusFilter">
@@ -438,6 +473,7 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
     <div class="res-body">
       <div class="res-group-label">Foundation documents — Portsmouth</div>
       <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth Master Plan Update, Draft Framework — Planning Board presentation, Mar 26, 2026 (Utile/City of Portsmouth); basis for v2.9 alignments to Z-37, Z-15, Z-33, P-5, Z-21</span></div>
+      <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth Housing Committee Minutes — Apr 23, 2026 (City of Portsmouth); Planning Department staff comments on 26 shortlisted action items, basis for v2.16 staff_note field</span></div>
       <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth 2017 Master Plan — Housing &amp; Land Use chapters (Actions 1.1–5.5)</span></div>
       <div class="res-row"><span class="res-tag">Local</span><span class="res-label">City Council Housing Policy 2016-01 (Perkins, Dec 2016) — Master Plan Strategy attachment</span></div>
       <div class="res-row"><span class="res-tag">Local</span><span class="res-label">Portsmouth Housing Committee Work Plan 2024–25</span></div>
@@ -514,6 +550,8 @@ const STATUS_DETAIL_LABELS = {
 };
 
 let activeCategory='all', searchQuery='', currentView='cards', statusFilter='all', yieldSortActive=false;
+let shortlistActive=false;
+try{shortlistActive=localStorage.getItem('hap-explorer-shortlist')==='true';}catch(e){}
 
 async function loadData() {
   try {
@@ -529,6 +567,9 @@ async function loadData() {
 
 async function init() {
   await loadData();
+  // Set initial shortlist toggle state from persisted value
+  const slBtn=document.getElementById('shortlistToggle');
+  if(slBtn) slBtn.classList.toggle('active',shortlistActive);
   renderSidebar();
   renderContent();
   renderGlossary();
@@ -547,16 +588,20 @@ function filterGlossary() {
 function toggleGlossary() { document.getElementById('glossaryOverlay').classList.toggle('open'); }
 
 function renderSidebar() {
-  const cc={};DATA.forEach(i=>{cc[i.category]=(cc[i.category]||0)+1;});
-  let h=`<div class="sidebar-title">Categories</div><div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${DATA.length}</span></div>`;
+  const pool = shortlistActive ? DATA.filter(d=>d.staff_term) : DATA;
+  const cc={};pool.forEach(i=>{cc[i.category]=(cc[i.category]||0)+1;});
+  let h=`<div class="sidebar-title">Categories</div><div class="cat-nav-item ${activeCategory==='all'?'active':''}" onclick="setCategory('all')"><span class="cat-nav-icon">📑</span><span class="cat-nav-label">All Items</span><span class="cat-nav-count">${pool.length}</span></div>`;
   CAT_ORDER.forEach(cat=>{
-    h+=`<div class="cat-nav-item ${activeCategory===cat?'active':''}" title="${cat}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${CAT_ICONS[cat]||'📌'}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${cc[cat]||0}</span></div>`;
+    const cnt=cc[cat]||0;
+    if(shortlistActive && cnt===0) return;
+    h+=`<div class="cat-nav-item ${activeCategory===cat?'active':''}" title="${cat}" onclick="setCategory('${cat.replace(/'/g,"\\'")}')"><span class="cat-nav-icon">${CAT_ICONS[cat]||'📌'}</span><span class="cat-nav-label">${cat}</span><span class="cat-nav-count">${cnt}</span></div>`;
   });
   document.getElementById('sidebar').innerHTML=h;
 }
 
 function getFiltered() {
   return DATA.filter(item=>{
+    if (shortlistActive && !item.staff_term) return false;
     if (activeCategory!=='all' && item.category!==activeCategory) return false;
     if (statusFilter!=='all') {
       const s=item.status||'';
@@ -564,7 +609,7 @@ function getFiltered() {
       if (statusFilter!=='not-started' && s!==statusFilter) return false;
     }
     if (searchQuery) {
-      const hay=([item.action,item.description,item.sources,item.notes,item.target,item.metric,item.category,item.status_detail,item.id,...(item.pros||[]),...(item.cons||[])]).join(' ').toLowerCase();
+      const hay=([item.action,item.description,item.sources,item.notes,item.target,item.metric,item.category,item.status_detail,item.staff_note,item.id,...(item.pros||[]),...(item.cons||[])]).join(' ').toLowerCase();
       return hay.includes(searchQuery);
     }
     return true;
@@ -572,6 +617,14 @@ function getFiltered() {
     if (!yieldSortActive) return 0;
     return ((EVALUATIONS[slugify(b.action)]&&EVALUATIONS[slugify(b.action)].yieldType)?1:0)-((EVALUATIONS[slugify(a.action)]&&EVALUATIONS[slugify(a.action)].yieldType)?1:0);
   });
+}
+
+function toggleShortlist(){
+  shortlistActive=!shortlistActive;
+  try{localStorage.setItem('hap-explorer-shortlist',shortlistActive?'true':'false');}catch(e){}
+  document.getElementById('shortlistToggle').classList.toggle('active',shortlistActive);
+  renderSidebar();
+  renderContent();
 }
 
 function setCategory(c){activeCategory=c;renderSidebar();renderContent();}
@@ -603,13 +656,13 @@ function renderContent(){
   let h='';
 
   // Revision banner
-  h+=`<div class="revision-banner"><span class="rev-date">Version 2.15 — April 20, 2026</span><br>
-  <div class="rev-content" id="revContent"><strong>Revision history:</strong> v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022. v1.1 (Feb 10) status audit adding 3 items to 122. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.3 (Feb 17) pros/cons analysis added for all items. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added. v2.1 (Mar 6) 2026 NH legislative session analysis: RSA 79-E item updated to reflect HB1103 passing House Housing Committee 17-0 with amendment on March 3, expanding 79-E credits to wider property types; new item added tracking HB1079, HB1540, and HB1662 for conflicts with Portsmouth's February 17, 2026 ADU ordinance. Total items: 135. v2.2 (Mar 8) sequencing and provisional data revisions: 5 evaluation items updated — land value capture, missing middle, and single-family zone reform designated pre-triage-priority with explicit sequencing prerequisites; housing utilization monitoring elevated to pre-triage-priority; federally subsidized unit preservation strategy reframed as verification-first with PROVISIONAL DATA flag on RKG 2022 NHPD unit counts pending PHA confirmation. v2.3 (Mar 12) 2016 Housing Policy integration: source attribution added to 14 existing items tracing to City Council Housing Policy 2016-01 (Perkins, Dec 2016) and its Master Plan Strategy attachment; 1 new item added (Zoning &amp; Land Use) for housing target area designation with area-specific design standards per §III.3. Total items: 136. v2.6 (Mar 24) three-source gap analysis complete: added items 138–145 from AEI/Housing Supply Accelerator and Ivory Innovations source review (permit review timeline audit, building code review, pre-approved design templates, institutional land inventory, impact fee calibration, entry-level ownership strategy, shared equity homeownership framework, third-party plan review); expanded items 13 and 37 to absorb new research; retired item 54 (superseded by item 144); cross-references added to items 2 and 34. Total items: 145. v2.7 (Mar 26) stable category-prefixed IDs added to all 145 items (Z-1 through GA-3); retired and out-of-scope items now greyed and struck through; deferred status added to vocabulary; IDs displayed on all cards, table view, and yield view. v2.8 (Mar 27, 2026): Added 2025 state law compliance flags (HB 577/631, SB 284/283/282, HB 457) to Z-2, Z-3, Z-4, Z-5, Z-21, Z-25, Z-29, Z-36; added 2017 Master Plan source attributions to 26 items spanning all major categories; added Master Plan relationship panel and Resources panel to Explorer header. v2.9 (Mar 28, 2026): Five items updated to reflect draft Portsmouth Master Plan Update (Utile/City of Portsmouth, March 2026) — Z-37 description revised to reference all five Gateway Neighborhood Center study areas (replacing 2016 Housing Policy geography); Z-15 notes populated with Master Plan urban design frameworks for Portsmouth Green and Commerce Way areas; Z-33 notes updated with Master Plan SRB two-stage staging recommendation (cross-referencing Z-8 and Z-5); P-5 description strengthened to specify substitution of open-ended discretionary design review with objective standards in Gateway and Character districts; Z-21 notes updated to name district consolidation as a deliverable of the zoning audit. Source attribution and Resources panel entry added for draft Master Plan Update. 145 items total. v2.10 (Mar 29, 2026): Added GA-4 — forensic review of land use board decision patterns for housing applications (2021–2025), covering ZBA, Historic District Commission, and Planning Board. Item examines legal fidelity, Master Plan alignment, and duty-to-assist interpretive posture across all three boards; cites Richmond Co. v. City of Concord (2003), Appeal of Town of Windham (2022), RSA 672:1 III-e, and RSA 676:3,I written findings requirement. Resources panel updated with NH case law and NHMA sources. 146 items total. v2.11 (Mar 30, 2026): Resources panel updated with PP affordable housing finance explainer (capital stack, operating gap, local toolkit — based on POAH/Rodger Brown call). 146 items total. v2.12 (Apr 6, 2026): Pre-handover data audit — Z-11 status corrected from complete to early-stage (FBC use deregulation not initiated); notes fields neutralized across 11 items (Z-14, Z-17, Z-19, Z-23, Z-24, P-11, EO-10, GA-1, GA-2, GA-3, GA-4) to remove advocacy framing, editorial judgments, and politically charged language. 146 items total. v2.13 (Apr 12, 2026): Added PL-8 — GNOD land transfer pipeline management (Section 10.686.30/10.686.40). Updated notes on Z-1, Z-6, PL-1, PL-2, PL-4 to document GNOD land transfer mechanics, City Council approval requirement, 1-acre-per-20-acres ratio, and development rights banking. 147 items total. v2.14 (Apr 12, 2026): Added PC-10 — PHA scattered-site project-based voucher program for private small multifamily. Item count in footer now auto-calculated from live JSON — no manual update required when items are added or removed. 148 items total. v2.15 (Apr 20, 2026): State advocacy revisions — 7 items updated to strengthen state-level policy asks. Z-5 and Z-33 anti-speculation prerequisite reframed with land value capture as preferred mechanism, equivalents (land banking, first-right-of-refusal, short-hold transfer fees) named, and FY2027 Planning Board report trigger added to prevent prerequisite from becoming a circuit breaker on zoning reform. Z-10 state advocacy component added linking HB 631 (eff. 7/1/26) to increased legal exposure of Portsmouth's GNOD inclusionary zoning, framing IZ safe-harbor authorization as protective rather than speculative. I-1 2026 state bill context added (HB 1662 ADU loan guarantees). I-16 renamed from "Pillow tax / local option tax for housing" to "Local option housing revenue authorization"; description rewritten with real estate transfer fee as primary vehicle (Vermont/Massachusetts precedents) and pillow tax as secondary. I-22 state advocacy component added (shared equity property tax assessment clarification + NHHFA QAP priority). PC-5 rewritten as operational prioritized list of six state-level asks with HAP item cross-references. 148 items total.
+  h+=`<div class="revision-banner"><span class="rev-date">Version 2.17 — April 30, 2026</span><br>
+  <div class="rev-content" id="revContent"><strong>Revision history:</strong> v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022. v1.1 (Feb 10) status audit adding 3 items to 122. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.3 (Feb 17) pros/cons analysis added for all items. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added. v2.1 (Mar 6) 2026 NH legislative session analysis: RSA 79-E item updated to reflect HB1103 passing House Housing Committee 17-0 with amendment on March 3, expanding 79-E credits to wider property types; new item added tracking HB1079, HB1540, and HB1662 for conflicts with Portsmouth's February 17, 2026 ADU ordinance. Total items: 135. v2.2 (Mar 8) sequencing and provisional data revisions: 5 evaluation items updated — land value capture, missing middle, and single-family zone reform designated pre-triage-priority with explicit sequencing prerequisites; housing utilization monitoring elevated to pre-triage-priority; federally subsidized unit preservation strategy reframed as verification-first with PROVISIONAL DATA flag on RKG 2022 NHPD unit counts pending PHA confirmation. v2.3 (Mar 12) 2016 Housing Policy integration: source attribution added to 14 existing items tracing to City Council Housing Policy 2016-01 (Perkins, Dec 2016) and its Master Plan Strategy attachment; 1 new item added (Zoning &amp; Land Use) for housing target area designation with area-specific design standards per §III.3. Total items: 136. v2.6 (Mar 24) three-source gap analysis complete: added items 138–145 from AEI/Housing Supply Accelerator and Ivory Innovations source review (permit review timeline audit, building code review, pre-approved design templates, institutional land inventory, impact fee calibration, entry-level ownership strategy, shared equity homeownership framework, third-party plan review); expanded items 13 and 37 to absorb new research; retired item 54 (superseded by item 144); cross-references added to items 2 and 34. Total items: 145. v2.7 (Mar 26) stable category-prefixed IDs added to all 145 items (Z-1 through GA-3); retired and out-of-scope items now greyed and struck through; deferred status added to vocabulary; IDs displayed on all cards, table view, and yield view. v2.8 (Mar 27, 2026): Added 2025 state law compliance flags (HB 577/631, SB 284/283/282, HB 457) to Z-2, Z-3, Z-4, Z-5, Z-21, Z-25, Z-29, Z-36; added 2017 Master Plan source attributions to 26 items spanning all major categories; added Master Plan relationship panel and Resources panel to Explorer header. v2.9 (Mar 28, 2026): Five items updated to reflect draft Portsmouth Master Plan Update (Utile/City of Portsmouth, March 2026) — Z-37 description revised to reference all five Gateway Neighborhood Center study areas (replacing 2016 Housing Policy geography); Z-15 notes populated with Master Plan urban design frameworks for Portsmouth Green and Commerce Way areas; Z-33 notes updated with Master Plan SRB two-stage staging recommendation (cross-referencing Z-8 and Z-5); P-5 description strengthened to specify substitution of open-ended discretionary design review with objective standards in Gateway and Character districts; Z-21 notes updated to name district consolidation as a deliverable of the zoning audit. Source attribution and Resources panel entry added for draft Master Plan Update. 145 items total. v2.10 (Mar 29, 2026): Added GA-4 — forensic review of land use board decision patterns for housing applications (2021–2025), covering ZBA, Historic District Commission, and Planning Board. Item examines legal fidelity, Master Plan alignment, and duty-to-assist interpretive posture across all three boards; cites Richmond Co. v. City of Concord (2003), Appeal of Town of Windham (2022), RSA 672:1 III-e, and RSA 676:3,I written findings requirement. Resources panel updated with NH case law and NHMA sources. 146 items total. v2.11 (Mar 30, 2026): Resources panel updated with PP affordable housing finance explainer (capital stack, operating gap, local toolkit — based on POAH/Rodger Brown call). 146 items total. v2.12 (Apr 6, 2026): Pre-handover data audit — Z-11 status corrected from complete to early-stage (FBC use deregulation not initiated); notes fields neutralized across 11 items (Z-14, Z-17, Z-19, Z-23, Z-24, P-11, EO-10, GA-1, GA-2, GA-3, GA-4) to remove advocacy framing, editorial judgments, and politically charged language. 146 items total. v2.13 (Apr 12, 2026): Added PL-8 — GNOD land transfer pipeline management (Section 10.686.30/10.686.40). Updated notes on Z-1, Z-6, PL-1, PL-2, PL-4 to document GNOD land transfer mechanics, City Council approval requirement, 1-acre-per-20-acres ratio, and development rights banking. 147 items total. v2.14 (Apr 12, 2026): Added PC-10 — PHA scattered-site project-based voucher program for private small multifamily. Item count in footer now auto-calculated from live JSON — no manual update required when items are added or removed. 148 items total. v2.15 (Apr 20, 2026): State advocacy revisions — 7 items updated to strengthen state-level policy asks. Z-5 and Z-33 anti-speculation prerequisite reframed with land value capture as preferred mechanism, equivalents (land banking, first-right-of-refusal, short-hold transfer fees) named, and FY2027 Planning Board report trigger added to prevent prerequisite from becoming a circuit breaker on zoning reform. Z-10 state advocacy component added linking HB 631 (eff. 7/1/26) to increased legal exposure of Portsmouth's GNOD inclusionary zoning, framing IZ safe-harbor authorization as protective rather than speculative. I-1 2026 state bill context added (HB 1662 ADU loan guarantees). I-16 renamed from "Pillow tax / local option tax for housing" to "Local option housing revenue authorization"; description rewritten with real estate transfer fee as primary vehicle (Vermont/Massachusetts precedents) and pillow tax as secondary. I-22 state advocacy component added (shared equity property tax assessment clarification + NHHFA QAP priority). PC-5 rewritten as operational prioritized list of six state-level asks with HAP item cross-references. 148 items total. v2.16 (Apr 30, 2026): Planning staff comments from the April 23, 2026 Housing Committee minutes integrated into 26 shortlisted action items. New fields added: staff_term ('short' or 'long') and staff_note (verbatim staff comment). 8 items flagged short-term (GA-1, GA-3, I-4, EO-2, Z-3, Z-9, Z-10, Z-36) and 18 long-term (Z-1, Z-5, Z-7, Z-8, Z-11, Z-14, Z-15, Z-21, Z-33, P-14, I-12, I-18, HTF-3, PC-5, PA-8, PA-10, PT-12, CS-3). Comments rendered in distinct slate-bordered panel on item cards with term badge. Sources field appended for all 26 items. Resources panel entry added for the minutes. Search index updated to include staff_note. 148 items total. v2.17 (Apr 30, 2026): Added Staff shortlist filter — gold-accented toggle button in header revealing only the 26 items on the City Planning staff shortlist (Apr 23, 2026 minutes). When active, content area shows a banner with item count and source date, sidebar category counts recalculate to reflect the shortlist subset (categories with zero shortlisted items are hidden), and Cards view regroups items into Short-term and Long-term sections (instead of by category) with category shown as an inline tag on each card. Filter state persists across page loads via localStorage. Filter works alongside existing category, status, and search filters. Table and Yield views also respect the filter while retaining category grouping. 148 items total.
   <div class="ai-note">This module was developed with AI assistance. Claude by Anthropic served as the primary AI model for data structuring, analysis, pros/cons generation, and HTML development. All content reflects Progress Portsmouth's research, policy positions, and editorial judgment — AI tools were used to accelerate production, not to substitute for local knowledge or advocacy strategy.</div></div>
   <button class="rev-toggle" id="revToggle" onclick="const c=document.getElementById('revContent');const t=document.getElementById('revToggle');c.classList.toggle('expanded');t.textContent=c.classList.contains('expanded')?'Read less \u25b4':'Read more \u25be';">Read more ▾</button></div>`;
 
-  // Workload summary
-  if(activeCategory==='all'&&!searchQuery&&statusFilter==='all'){
+  // Workload summary (suppressed when shortlist active — replaced by shortlist banner)
+  if(!shortlistActive && activeCategory==='all'&&!searchQuery&&statusFilter==='all'){
     const active=DATA.filter(d=>ACTIVE_STATUSES.has(d.status)).length;
     const retired=DATA.filter(d=>d.status==='retired'||d.status==='out-of-scope').length;
     const deferred=DATA.filter(d=>d.status==='deferred').length;
@@ -638,34 +691,67 @@ function renderContent(){
     </div></div></div>`;
   }
 
+  // Shortlist banner (only when filter active)
+  if(shortlistActive){
+    const totalShort=DATA.filter(d=>d.staff_term==='short').length;
+    const totalLong=DATA.filter(d=>d.staff_term==='long').length;
+    const totalShortlist=totalShort+totalLong;
+    h+=`<div class="shortlist-banner"><span class="sb-icon">★</span><span class="sb-text">Showing <strong>${filtered.length} of ${totalShortlist}</strong> shortlisted items <span class="sb-meta">· City Planning staff shortlist · Apr 23, 2026</span></span><button class="sb-clear" onclick="toggleShortlist()">Show all ${DATA.length} items ✕</button></div>`;
+  }
+
   const hasYield=filtered.some(item=>EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType);
   if(hasYield) h+='<div class="yield-legend">◆ Gold diamond = housing yield estimate available — expand card for details</div>';
 
   if(!filtered.length){h+='<div class="no-results"><div class="icon">🔍</div><div>No action items match your filters.</div></div>';document.getElementById('content').innerHTML=h;return;}
 
+  // Always compute category-grouped structure (used by table and yield views)
   const groups={};
   filtered.forEach(item=>{if(!groups[item.category])groups[item.category]=[];groups[item.category].push(item);});
   const catList=CAT_ORDER.filter(c=>groups[c]);
 
+  // Build cards-view grouping: term-grouped when shortlist active, category-grouped otherwise
+  let renderGroups;
+  if(shortlistActive){
+    const shortItems=filtered.filter(i=>i.staff_term==='short');
+    const longItems=filtered.filter(i=>i.staff_term==='long');
+    const sortByCat=(a,b)=>{
+      const ca=CAT_ORDER.indexOf(a.category), cb=CAT_ORDER.indexOf(b.category);
+      return (ca===-1?999:ca)-(cb===-1?999:cb);
+    };
+    shortItems.sort(sortByCat);
+    longItems.sort(sortByCat);
+    renderGroups=[];
+    if(shortItems.length) renderGroups.push({termHeader:true,label:'Short-term',count:shortItems.length,desc:'Staff flagged for near-term work',items:shortItems});
+    if(longItems.length) renderGroups.push({termHeader:true,label:'Long-term',count:longItems.length,desc:'Pending Master Plan update or sequencing',items:longItems});
+  } else {
+    renderGroups=catList.map(cat=>({termHeader:false,category:cat,items:groups[cat]}));
+  }
+
   // ── CARDS ──
   let n=0;
   h+=`<div style="display:${currentView==='cards'?'block':'none'}">`;
-  catList.forEach(cat=>{
-    const ci=groups[cat];
-    h+=`<div class="cat-header"><span class="cat-header-icon">${CAT_ICONS[cat]||'📌'}</span><span class="cat-header-name">${cat}</span><span class="cat-header-count">${ci.length} items</span></div>`;
-    ci.forEach(item=>{
+  renderGroups.forEach(grp=>{
+    if(grp.termHeader){
+      h+=`<div class="term-section-header"><span class="tsh-label">${grp.label}</span><span class="tsh-count">${grp.count} item${grp.count===1?'':'s'}</span><span class="tsh-desc">${grp.desc}</span></div>`;
+    } else {
+      const cat=grp.category;
+      h+=`<div class="cat-header"><span class="cat-header-icon">${CAT_ICONS[cat]||'📌'}</span><span class="cat-header-name">${cat}</span><span class="cat-header-count">${grp.items.length} items</span></div>`;
+    }
+    grp.items.forEach(item=>{
       n++;
       const s=item.status||'';
       const hs=s!=='';
       const isInactive=INACTIVE_STATUSES.has(s);
       let cc='action-card'+(hs?' status-'+s:item.is_new?' new-item':'');
       const idBadge=item.id?`<span class="item-id-badge">${item.id}</span>`:'';
+      // In shortlist term-grouped view, show category as a sub-tag inline
+      const catTag=grp.termHeader?`<span class="card-tag" style="background:rgba(45,62,82,0.06);color:var(--slate);font-size:0.68rem;margin-left:6px;">${CAT_ICONS[item.category]||''} ${item.category}</span>`:'';
       let badge='';
       if(hs) badge=`<span class="new-badge ${STATUS_BADGE_CLASS[s]||'badge-retired'}">${STATUS_LABELS[s]||s}</span>`;
       else if(item.is_new){const bl=(item.sources&&(item.sources.toLowerCase().includes('advocate')||item.sources.toLowerCase().includes('progress')||item.sources.toLowerCase().includes('reviewer')))?'New':'RKG 2022';badge=`<span class="new-badge badge-new">${bl}</span>`;}
       const yDiamond=(EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType)?'<span class="yield-pill">◆</span>':'';
 
-      h+=`<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span>${idBadge}<span class="card-title">${item.action}</span>${badge}${yDiamond}<span class="card-arrow">▼</span></div><div class="card-body">`;
+      h+=`<div class="${cc}" onclick="toggleCard(this)"><div class="card-head"><span class="card-num">${n}</span>${idBadge}<span class="card-title">${item.action}</span>${catTag}${badge}${yDiamond}<span class="card-arrow">▼</span></div><div class="card-body">`;
       if(hs&&item.status_detail) h+=`<div class="status-detail-box sd-${s}"><div class="sd-label">${STATUS_DETAIL_LABELS[s]||s}</div><div class="sd-text">${item.status_detail}</div></div>`;
       if(!isInactive){
         h+=pcHtml(item);
@@ -673,6 +759,11 @@ function renderContent(){
         if(item.target) h+=`<div class="card-field"><div class="card-field-label">Target</div><div class="card-field-value">${item.target}</div></div>`;
         if(item.metric) h+=`<div class="card-field"><div class="card-field-label">Monitoring Metric</div><div class="card-field-value">${item.metric}</div></div>`;
         if(item.notes) h+=`<div class="card-field"><div class="card-field-label">Notes</div><div class="card-field-value">${item.notes}</div></div>`;
+        if(item.staff_note){
+          const tCls=item.staff_term==='short'?'sn-term-short':'sn-term-long';
+          const tLbl=item.staff_term==='short'?'Short-term':'Long-term';
+          h+=`<div class="staff-note-box"><div class="sn-header"><span class="sn-label">Planning Staff Comment · Apr 23, 2026</span><span class="sn-term ${tCls}">${tLbl}</span></div><div class="sn-text">${item.staff_note}</div></div>`;
+        }
       }
       if(item.sources){h+='<div class="card-tags">';item.sources.split(';').forEach(src=>{src=src.trim();if(src){const hi=src.toLowerCase().includes('rkg')||src.toLowerCase().includes('advocate')||src.toLowerCase().includes('progress')||src.toLowerCase().includes('chellman')||src.toLowerCase().includes('reviewer');h+=`<span class="card-tag ${hi?'rkg':'source'}">${src}</span>`;}});h+='</div>';}
       if(!isInactive){
@@ -755,7 +846,7 @@ function renderContent(){
     h+=`</div>`;
   }
 
-  h+=`<div class="version-note">📌 Version 2.15 — April 20, 2026 — State advocacy components added to 7 items · <span id="live-item-count">loading…</span> items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
+  h+=`<div class="version-note">📌 Version 2.17 — April 30, 2026 — Staff shortlist filter added (toggle in header) · <span id="live-item-count">loading…</span> items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
 
   document.getElementById('content').innerHTML=h;
 }
