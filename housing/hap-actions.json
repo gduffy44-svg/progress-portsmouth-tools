@@ -5,7 +5,7 @@
     "description": "Phase 1: Complete analysis of obsolete Office/Research and General Business zones. Phase 2: Rezone to mixed-use Gateway or similar zoning enabling residential uses.",
     "target": "",
     "metric": "Number of parcels rezoned; new housing units permitted in rezoned areas",
-    "sources": "HAP Narrative; Bill Bowen; 2016 Housing Committee; HC Work Plan; 2017 Master Plan Action 1.2.1",
+    "sources": "HAP Narrative; Bill Bowen; 2016 Housing Committee; HC Work Plan; 2017 Master Plan Action 1.2.1; Housing Committee April 23, 2026 minutes",
     "notes": "Section 10.686.30 of the Zoning Ordinance (as amended through Feb 17, 2026) establishes the Land Transfer Incentive Option within the GNOD. In lieu of building workforce units or paying in lieu, a developer may convey land to the City for below-market rate housing. Key mechanics: (1) conveyance requires City Council acceptance, not a Planning Board CUP; (2) minimum 1 contiguous acre of Developable Upland per 20 acres of GNOD development; (3) developer bears all costs including Phase I environmental, title, and closing; (4) Section 10.686.40 provides development rights banking when transfers exceed the minimum. City Council designates procurement, development form, and disposition of acquired parcels.",
     "is_new": false,
     "status": "complete",
@@ -20,7 +20,9 @@
       "Requires careful transition provisions for existing nonconforming businesses",
       "Infrastructure in these areas may not be sized for residential use without upgrades"
     ],
-    "id": "Z-1"
+    "id": "Z-1",
+    "staff_term": "long",
+    "staff_note": "Work is on-going, more to review."
   },
   {
     "category": "Zoning & Land Use",
@@ -51,7 +53,7 @@
     "description": "Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones. Align with recent NH state law changes enabling office-to-housing conversions.",
     "target": "",
     "metric": "Number of conversion applications and completed units",
-    "sources": "HAP Narrative; Bill Bowen; HC Work Plan (Stebbins Thomas)",
+    "sources": "HAP Narrative; Bill Bowen; HC Work Plan (Stebbins Thomas); Housing Committee April 23, 2026 minutes",
     "notes": "⚠ Compliance note (HB 631, eff. 7/1/26): State law mandates both multifamily on commercially zoned land and adaptive reuse conversion rights. Portsmouth's ordinance amendment must be in place before 7/1/26. See Z-25 and Z-29 for full compliance details.",
     "is_new": false,
     "status": "in-progress",
@@ -66,7 +68,9 @@
       "May reduce commercial tax base in some cases",
       "Not all commercial buildings are structurally suitable for residential conversion"
     ],
-    "id": "Z-3"
+    "id": "Z-3",
+    "staff_term": "short",
+    "staff_note": "More to review — a slow process to ensure compliance but need to get the language right on enabling the building of housing in formerly Commercial zones. Details: e.g. can municipalities define density? Need to get rid of leftover zoning."
   },
   {
     "category": "Zoning & Land Use",
@@ -97,7 +101,7 @@
     "description": "Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. Form-based standards ensure neighborhood compatibility. GIS analysis shows Portsmouth dedicates 85.8% of residential land (2,276 acres across R, SRA, SRB zones) exclusively to single-family homes while only 14.2% (375 acres in GRA/GRB/GRC) permits the multifamily types most residents can afford — a 6:1 disparity.",
     "target": "Ordinance adoption permitting 2-4 unit buildings in all residential zones",
     "metric": "Number of 2-4 unit permits issued; units produced by type",
-    "sources": "HAP Narrative; South Portland 2A; Burien D1; 2016 Housing Committee; 2017 Listens; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 3.2.2",
+    "sources": "HAP Narrative; South Portland 2A; Burien D1; 2016 Housing Committee; 2017 Listens; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 3.2.2; Housing Committee April 23, 2026 minutes",
     "notes": "DEPENDENCY: This item requires lot size reform (dimensional requirement updates) to proceed concurrently — missing middle allowances produce limited yield without companion dimensional changes that bring nonconforming parcels into compliance.\n\nANTI-SPECULATION PREREQUISITE: Ordinance drafting shall be preceded by a documented anti-speculation strategy endorsed by City Council. Land value capture is the preferred mechanism; equivalent approaches include land banking of target parcels ahead of upzoning, first-right-of-refusal provisions for nonprofit affordable developers on upzoned parcels, or transfer fees on short-hold resales of upzoned parcels. If a documented strategy is not endorsed by Council by the end of FY2027, the Planning Board shall report to Council on whether market conditions and parallel production targets justify proceeding without it. This prerequisite is a discipline on the reform, not a veto — the objective is to ensure that upzoning produces housing, not speculation.\n\nNote: SB 282 (eff. 9/13/25) permits residential buildings up to 4 floors above grade with a single stairway, pending state building code rules from the BCRB. When those rules are set, this meaningfully reduces construction costs for 3–4 story missing middle infill and should be factored into feasibility modeling (see PT-11).",
     "is_new": false,
     "status": "",
@@ -113,7 +117,9 @@
       "Land costs in Portsmouth may still make missing middle units expensive",
       "Design standards need to be clear enough to prevent poor-quality projects"
     ],
-    "id": "Z-5"
+    "id": "Z-5",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — again, why does the City need 5 residential zones? So much of the inventory in them is non-conforming. More units could be added by making adjustments in lot coverage and setback but question of public tolerance. 65 ADUs approved since 2017."
   },
   {
     "category": "Zoning & Land Use",
@@ -144,7 +150,7 @@
     "description": "Review and selectively increase building height limits in downtown, Gateway, and transit-proximate zones.",
     "target": "",
     "metric": "Zones with updated height limits; additional capacity created",
-    "sources": "HAP Narrative; 2017 Listens; 2017 Master Plan Action 3.2.2",
+    "sources": "HAP Narrative; 2017 Listens; 2017 Master Plan Action 3.2.2; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -159,7 +165,9 @@
       "Shadow, view, and wind impacts on adjacent properties",
       "Risk of setting precedent that leads to broader height increases over time"
     ],
-    "id": "Z-7"
+    "id": "Z-7",
+    "staff_term": "long",
+    "staff_note": "Preliminary public feedback at Apr 22 Master Plan meeting is they disliked taller buildings, but maybe on outskirts, e.g. Service Credit Union area on Rte 1. Height is a question of meeting the sweet spot in expense."
   },
   {
     "category": "Zoning & Land Use",
@@ -167,7 +175,7 @@
     "description": "Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones for infill development. GIS analysis provides zone-specific data: R Zone currently requires 5-acre minimums (proposed: 1 acre), SRA requires 1-acre minimums (proposed: 15,000 sf), SRB requires 15,000 sf (proposed: 7,500 sf). These reductions would bring the majority of currently nonconforming parcels into compliance.",
     "target": "",
     "metric": "Newly buildable parcels created by changes",
-    "sources": "HAP Narrative; Keene 3B; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 2.1.3",
+    "sources": "HAP Narrative; Keene 3B; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 2.1.3; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -182,7 +190,9 @@
       "Smaller lots may create stormwater, parking, and privacy concerns requiring updated design standards and performance requirements",
       "Without accompanying infrastructure analysis, reduced lot sizes in areas with marginal sewer or water capacity could create service constraints"
     ],
-    "id": "Z-8"
+    "id": "Z-8",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — \"After Master Plan update\" is to reflect consideration now so recommendations can be included when plan is finalizing at the end of 2026. Staff will feed good ideas into the Master Plan."
   },
   {
     "category": "Zoning & Land Use",
@@ -190,7 +200,7 @@
     "description": "Create zoning for cottage housing clusters: small detached units around shared open space, reduced lot-per-unit requirements.",
     "target": "",
     "metric": "Cottage housing projects permitted",
-    "sources": "HAP Narrative; Keene 4C",
+    "sources": "HAP Narrative; Keene 4C; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -205,7 +215,9 @@
       "Shared ownership and maintenance of common areas can create governance challenges",
       "Limited developer experience with this model in New Hampshire"
     ],
-    "id": "Z-9"
+    "id": "Z-9",
+    "staff_term": "short",
+    "staff_note": "Expand the Gateway Zone — look at examples in Keene where cottage also allows some infill in residential districts."
   },
   {
     "category": "Zoning & Land Use",
@@ -213,7 +225,7 @@
     "description": "Require or incentivize affordable units in developments above threshold size. Payment-in-lieu option funding Housing Trust Fund.",
     "target": "",
     "metric": "Affordable units produced; in-lieu fees collected",
-    "sources": "HAP Narrative; Keene 3C; South Portland",
+    "sources": "HAP Narrative; Keene 3C; South Portland; Housing Committee April 23, 2026 minutes",
     "notes": "LEGAL NOTE: New Hampshire operates under Dillon's Rule principles. Incentive-based inclusionary zoning (voluntary density bonus in exchange for affordable units, as in GNOD) is legally defensible. Mandatory inclusionary zoning has not been clearly authorized statewide and could face challenge under RSA 674 and state preemption doctrine.\n\nSTATE ADVOCACY COMPONENT: HB 631 (eff. 7/1/26) made Portsmouth's inclusionary zoning more important and more legally exposed at the same time — by mandating multi-family residential on commercially zoned land, HB 631 will generate substantially more residential development on parcels where Portsmouth's IZ requirements apply, increasing both the stakes and the incentive to test the legal question. Portsmouth should support state legislation explicitly authorizing mandatory inclusionary zoning within safe-harbor parameters (affordability thresholds, project-size minimums, density bonus structure, in-lieu fee caps). This would protect existing GNOD workforce housing provisions from legal challenge and enable defensible citywide mandatory IZ adoption. Parameter calibration is critical: too-high requirements suppress production (see cons list); well-calibrated parameters produce units as a condition of market-rate development. Coordinate with PC-5 for state-level advocacy.",
     "is_new": false,
     "status": "in-progress",
@@ -228,7 +240,9 @@
       "NH has no state enabling statute, creating potential legal vulnerability",
       "Small project thresholds can disproportionately burden smaller developers"
     ],
-    "id": "Z-10"
+    "id": "Z-10",
+    "staff_term": "short",
+    "staff_note": "Expand from the GNOD, more to review — need to get the balance right on trading fees and goals such as density to allow mix of workforce rents."
   },
   {
     "category": "Zoning & Land Use",
@@ -236,7 +250,7 @@
     "description": "Reform Portsmouth's existing form-based code districts to deregulate use allowances as originally intended by the FBC framework.",
     "target": "",
     "metric": "Pilot district adopted; development applications",
-    "sources": "HAP Narrative; Bill Bowen",
+    "sources": "HAP Narrative; Bill Bowen; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "early-stage",
@@ -251,7 +265,9 @@
       "Risk of unintended consequences from use deregulation in historic areas",
       "Some stakeholders may resist changes to a system they invested in creating"
     ],
-    "id": "Z-11"
+    "id": "Z-11",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — potential in the West End."
   },
   {
     "category": "Zoning & Land Use",
@@ -305,7 +321,7 @@
     "description": "Reform live/work unit regulations to expand access and reduce restrictions. Key reforms: allow non-resident workers to be employed in live/work units (currently banned), and expand to south end districts.",
     "target": "",
     "metric": "Live/work permits issued",
-    "sources": "2016 Master Plan (3.1.4); Housing Policy 2016-01 §III Master Plan Strategy 3.1.4; 2017 Master Plan Action 3.1.4",
+    "sources": "2016 Master Plan (3.1.4); Housing Policy 2016-01 §III Master Plan Strategy 3.1.4; 2017 Master Plan Action 3.1.4; Housing Committee April 23, 2026 minutes",
     "notes": "Much of the south end does not currently allow live-work units, despite the area's historic mixed-use character.",
     "is_new": false,
     "status": "",
@@ -320,7 +336,9 @@
       "Code compliance complexity — units must meet both residential and commercial standards",
       "Risk of units being used primarily as commercial space rather than housing"
     ],
-    "id": "Z-14"
+    "id": "Z-14",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — Arts & Culture Commission push for artist live/work spaces; funding for a consultant to explore was added to the FY27 CIP."
   },
   {
     "category": "Zoning & Land Use",
@@ -328,7 +346,7 @@
     "description": "Rezone and plan new residential neighborhoods: Portsmouth Green/McKennon's area, Kane development (Commerce Way), southwest quadrant (Heritage Way, currently Industrial). Include infrastructure and recreation.",
     "target": "",
     "metric": "Parcels rezoned; infrastructure plans adopted; units in pipeline",
-    "sources": "Bill Bowen; 2017 Master Plan Action 1.2.2; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026)",
+    "sources": "Bill Bowen; 2017 Master Plan Action 1.2.2; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026); Housing Committee April 23, 2026 minutes",
     "notes": "The draft Portsmouth Master Plan Update (Utile, March 2026) provides urban design frameworks for two of the three areas named above. Constitution Ave/Portsmouth Green (corresponds to Portsmouth Green/McKennon's): key strategies are to focus activity and development NW of Lafayette/Rt-1, establish a dual mixed-use core with NE-to-SW connectivity, connect to Community Campus and Greenway, and provide deliberate connections to lower-density residential uses to the SE. Outer Woodbury/Commerce Way (corresponds to Commerce Way/Kane): key strategies are to create cross-street connections unifying east and west sides of Woodbury Ave, calm traffic on Woodbury Ave, concentrate mixed-use near Woodbury Ave with multifamily set back, and strengthen Greenway connections. Note: the southwest quadrant (Heritage Way) is not identified as a Master Plan Neighborhood Center study area. Z-15's inclusion of that area reflects a broader planning ambition than the current Master Plan framework.",
     "is_new": false,
     "status": "",
@@ -343,7 +361,9 @@
       "Requires substantial infrastructure investment (roads, utilities, schools)",
       "Auto-dependent locations without transit access"
     ],
-    "id": "Z-15"
+    "id": "Z-15",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — consider smaller lot sizes? Add amenities such as a parking garage?"
   },
   {
     "category": "Zoning & Land Use",
@@ -466,7 +486,7 @@
     "description": "Full audit of zoning ordinance identifying provisions that constrain housing production. Prioritize amendments. GIS analysis quantifies the compliance crisis: 69.9% of parcels in single-family zones violate current zoning requirements.",
     "target": "",
     "metric": "Audit completed; constraining provisions identified and amended",
-    "sources": "HAP Narrative; Progress Tracker; Byron Matto GIS analysis (Jan 2026); Housing Policy 2016-01 §VI.2 Regulatory Audit; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026)",
+    "sources": "HAP Narrative; Progress Tracker; Byron Matto GIS analysis (Jan 2026); Housing Policy 2016-01 §VI.2 Regulatory Audit; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026); Housing Committee April 23, 2026 minutes",
     "notes": "Audit scope should include: (1) SB 283 (eff. ~Nov 2025) — Portsmouth ordinance must exclude below-grade areas from FAR calculations; affects feasibility for infill projects. (2) HB 457 (eff. 9/13/25) — ordinance must not restrict occupants below 2 per bedroom or impose familial/relationship-based occupancy rules; audit for any such provisions. (3) SB 284 parking cap (eff. 9/13/25) — see Z-4. (4) HB 577 ADU compliance — see Z-2, Z-36. (5) District consolidation — the draft Portsmouth Master Plan Update (Utile, March 2026) recommends streamlining and consolidating Portsmouth's zoning districts to improve conceptual clarity and reduce redundancy. The audit should identify consolidation candidates and produce a proposed simplified district structure as a named deliverable, alongside the amendment prioritization list.",
     "is_new": false,
     "status": "in-progress",
@@ -481,7 +501,9 @@
       "HOP 2.0 / RKG scope was narrower than expected; ensuring breadth is challenging",
       "Audit findings may overwhelm limited staff capacity to implement changes"
     ],
-    "id": "Z-21"
+    "id": "Z-21",
+    "staff_term": "long",
+    "staff_note": "Long-term — short-term need as foundation for the rest of the Housing Action Plan, but takes time."
   },
   {
     "category": "Zoning & Land Use",
@@ -743,7 +765,7 @@
     "target": "Phase 1: Council workshop presentation of fiscal and compliance data (2026). Phase 2: Draft zone-specific amendments with public input. Phase 3: Planning Board review and Council adoption.",
     "metric": "Parcels brought into zoning compliance per zone; net new housing units permitted in reformed zones; tax revenue per acre trend; lot splits and two-family conversions per year.",
     "notes": "SEQUENCING PREREQUISITE: Ordinance drafting for single-family zone reform shall be preceded by a documented anti-speculation strategy endorsed by City Council. Land value capture is the preferred mechanism; equivalent approaches (land banking, first-right-of-refusal for nonprofit affordable developers, short-hold transfer fees) satisfy this prerequisite if Council finds they address the speculation risk at scale. If no documented strategy is endorsed by end of FY2027, the Planning Board shall report to Council on whether to proceed, defer, or stage reform in zones where speculation risk is lowest (e.g., SRB staging in the draft Master Plan). The prerequisite reflects the HAP's recognition that upzoning without anti-speculation discipline captures value for existing owners rather than producing housing. It is a discipline on the reform, not a veto.\n\nSRB STAGING (draft Master Plan): The draft Portsmouth Master Plan Update (Utile, March 2026) analyzed the SRB district specifically and recommends a two-stage approach: Stage 1 — reduce minimum lot size from 15,000 sf to 7,500 sf and allow two-family use by-right (see Z-8 and Z-5); Stage 2 — allow small multifamily by-right (see Z-5). Supporting data from the Master Plan: 1,701 lots across 1,362 acres, average lot size 9,317 sf, 64% of lots currently nonconforming by size. The Master Plan identifies SRB as the highest-priority zone for reform given the scale of nonconformance and the relative political manageability of staged implementation.",
-    "sources": "Byron Matto GIS analysis (Jan 2026); NH State GIS database; 2017 Listens; 2017 Master Plan Action 2.1.3; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026)",
+    "sources": "Byron Matto GIS analysis (Jan 2026); NH State GIS database; 2017 Listens; 2017 Master Plan Action 2.1.3; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026); Housing Committee April 23, 2026 minutes",
     "is_new": true,
     "status": "",
     "status_detail": "",
@@ -757,7 +779,9 @@
       "Zone-specific proposals need significant refinement through public process",
       "Risk of speculative land acquisition driving up prices before reforms produce actual housing"
     ],
-    "id": "Z-33"
+    "id": "Z-33",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — bigger zones have a greater impact on SRA, would offer potential for greater density."
   },
   {
     "action": "Transfer of development rights",
@@ -809,7 +833,7 @@
     "description": "Three bills in the 2026 NH legislative session have direct implications for Portsmouth's ADU ordinance adopted February 17, 2026. Planning Department should review each bill against the adopted ordinance on an ongoing basis.",
     "target": "",
     "metric": "Planning Department review completed for each bill; formal city position taken before floor votes where conflict is identified",
-    "sources": "Progress Portsmouth; NH General Court 2026 session",
+    "sources": "Progress Portsmouth; NH General Court 2026 session; Housing Committee April 23, 2026 minutes",
     "notes": "Bills to monitor: HB1079, HB1540, HB1662.\n\n⚠ Compliance note: Review of the adopted ordinance (as amended through 5/5/25) against HB 577 (eff. 7/1/25) confirms non-compliance: CUP requirements remain for most DADU configurations; 30-day notice process for AP ADUs requires legal review; size limits and aesthetic standards need audit against new law's constraints. SB 284 (eff. 9/13/25) parking cap also requires ordinance amendment (see Z-4). HB 457 (eff. 9/13/25) prohibits occupancy restrictions based on familial/relationship status — Portsmouth ordinance should be audited for any such provisions (see Z-18, Z-35). SB 283 (eff. ~Nov 2025) requires below-grade areas excluded from FAR calculations — affects feasibility modeling (see Z-21, PT-11).",
     "is_new": true,
     "status": "in-progress",
@@ -824,7 +848,9 @@
       "HB1540 uniform standards could constrain locally tailored provisions",
       "Staff bandwidth for bill tracking competes with implementation priorities"
     ],
-    "id": "Z-36"
+    "id": "Z-36",
+    "staff_term": "short",
+    "staff_note": "Work is on-going — new ADU legislation means staff will review City ordinances to be sure they are in compliance. Staff are creating a new brochure to replace the lengthy handbook. Question about the ADU license renewal process and whether it can be simplified. The need is to ensure the rules on owner-occupied and not being used for short-term rentals. Inspections needed. Short-term, on-going monitoring."
   },
   {
     "category": "Zoning & Land Use",
@@ -1177,7 +1203,7 @@
     "description": "Establish a city-maintained library of pre-approved architectural designs for common residential building types including ADUs, duplexes, triplexes, small apartment buildings (up to 8 units), and cottage housing.",
     "target": "Library of at least 8 designs across at least 3 building types available, and expedited review track operational, within 24 months",
     "metric": "Number of templates available by building type; average permit review time for template applications vs. non-template applications",
-    "sources": "AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4",
+    "sources": "AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4; Housing Committee April 23, 2026 minutes",
     "notes": "This item subsumes the ADU pre-approved plan library referenced in item Z-2 (ADU ordinance enhancements) and expands its scope to all small residential building types.",
     "is_new": true,
     "status": "not-started",
@@ -1192,7 +1218,9 @@
       "Maintaining and updating templates as codes change requires ongoing staff attention",
       "May not serve developers with site-specific design requirements"
     ],
-    "id": "P-14"
+    "id": "P-14",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — interesting idea for first-time homebuyers to reduce engineering and architect expense. The Planning Board would be accustomed to seeing and understanding the plan. Less likely of interest where land is most expensive and housing would more likely be a custom design."
   },
   {
     "category": "Permitting & Process",
@@ -1315,7 +1343,7 @@
     "description": "Expand RSA 79-E tax relief to more areas and project types. Promote existing program.",
     "target": "",
     "metric": "RSA 79-E applications; investment leveraged",
-    "sources": "Feb 17 2026 Council; 2016 Master Plan",
+    "sources": "Feb 17 2026 Council; 2016 Master Plan; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "early-stage",
@@ -1330,7 +1358,9 @@
       "Benefits accrue to property owners who may not pass savings to tenants",
       "Program awareness is low — underutilized even where currently available"
     ],
-    "id": "I-4"
+    "id": "I-4",
+    "staff_term": "short",
+    "staff_note": "More to review — adopting 79-E where allowed is a high priority in the Housing Action Plan."
   },
   {
     "category": "Incentives & Financial Tools",
@@ -1499,7 +1529,7 @@
     "description": "Expand down payment assistance, closing cost support, and financial literacy programs.",
     "target": "",
     "metric": "First-time buyers assisted; average assistance amount; homeownership rate",
-    "sources": "Keene 1B; 2017 Listens; HC Work Plan; Housing Policy 2016-01 §III Master Plan Strategy 3.2.4; 2017 Master Plan Action 3.2.4",
+    "sources": "Keene 1B; 2017 Listens; HC Work Plan; Housing Policy 2016-01 §III Master Plan Strategy 3.2.4; 2017 Master Plan Action 3.2.4; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -1514,7 +1544,9 @@
       "Benefits are per-household — limited impact on overall affordability",
       "Student debt burden (40% of RKG survey respondents) may make buyers ineligible anyway"
     ],
-    "id": "I-12"
+    "id": "I-12",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — yes, as funds grow. How would CDBG apply?"
   },
   {
     "category": "Incentives & Financial Tools",
@@ -1641,7 +1673,7 @@
     "description": "Incentives combining historic preservation with housing production: streamlined historic review, tax credit stacking.",
     "target": "",
     "metric": "Historic buildings converted to housing; incentives utilized",
-    "sources": "2016 Master Plan; RSA 79-E; South Portland",
+    "sources": "2016 Master Plan; RSA 79-E; South Portland; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -1656,7 +1688,9 @@
       "Historic preservation standards can conflict with housing efficiency goals",
       "Tax credit stacking is complex and requires specialized development expertise"
     ],
-    "id": "I-18"
+    "id": "I-18",
+    "staff_term": "long",
+    "staff_note": "Explore recommendations based on 79-E."
   },
   {
     "category": "Incentives & Financial Tools",
@@ -1802,7 +1836,7 @@
     "description": "Revolving loans/grants for affordable and workforce projects. Prioritize projects leveraging other sources.",
     "target": "",
     "metric": "Loans/grants made; units produced; leverage ratio",
-    "sources": "HAP Narrative; Keene 3D",
+    "sources": "HAP Narrative; Keene 3D; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -1817,7 +1851,9 @@
       "Loan underwriting requires financial expertise on staff or committee",
       "Revolving loan repayment assumes projects generate enough revenue to repay"
     ],
-    "id": "HTF-3"
+    "id": "HTF-3",
+    "staff_term": "long",
+    "staff_note": "Need to get more funds into the trust. Potential use for Housing Trust Fund."
   },
   {
     "category": "Public Land & Property",
@@ -2078,7 +2114,7 @@
     "description": "Maintain an active, prioritized list of state legislative asks connected to HAP items that require state enabling. Brief state legislators representing Portsmouth (Senate: Kwoka; House delegation) at least twice per legislative session. Coordinate with Workforce Housing Coalition, NH Community Loan Fund, NH Housing, and municipal peers.",
     "target": "",
     "metric": "Legislative contacts; bills filed/supported; legislation enacted",
-    "sources": "HC Work Plan (PtL Goal 5; Kozak)",
+    "sources": "HC Work Plan (PtL Goal 5; Kozak); Housing Committee April 23, 2026 minutes",
     "notes": "CURRENT PRIORITY STATE-LEVEL ASKS (2026–2027 sessions):\n1. Inclusionary zoning safe-harbor authorization (Z-10)\n2. Local option real estate transfer fee for municipal housing trust funds (I-16)\n3. Shared equity homeownership property tax assessment clarification (I-22)\n4. Support HB 1662 (ADU loan guarantees) and HB 1079 (non-conforming structure ADU flexibility); monitor HB 1540 (Z-36, I-1)\n5. Parking benefit district enabling legislation (Z-4, IS-2)\n6. Research: land value capture enabling legislation (Z-5, Z-33) — medium-term\n\nThis list updates at minimum annually based on HAP progress, state legislative landscape, and identified gaps. It is Portsmouth's institutional memory for state-level work that municipal action alone cannot resolve.",
     "is_new": false,
     "status": "in-progress",
@@ -2093,7 +2129,9 @@
       "Advocacy requires sustained effort over multiple legislative sessions",
       "Some state mandates (like SB 284) create local implementation challenges"
     ],
-    "id": "PC-5"
+    "id": "PC-5",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — City's Legislative Subcommittee monitors and testifies on legislation including housing. Committee can review and recommend actions."
   },
   {
     "category": "Partnerships & Capacity",
@@ -2354,7 +2392,7 @@
     "description": "Emergency grants/loans for homeowners facing foreclosure, major repairs, or tax delinquency.",
     "target": "",
     "metric": "Homeowners assisted; home retention rate",
-    "sources": "Burien A5; 2017 Listens",
+    "sources": "Burien A5; 2017 Listens; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -2369,7 +2407,9 @@
       "Eligibility determination is sensitive — risk of fraud or misuse",
       "May delay inevitable outcomes for financially distressed homeowners"
     ],
-    "id": "PA-8"
+    "id": "PA-8",
+    "staff_term": "long",
+    "staff_note": "More to review — potential use for Housing Trust Fund."
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -2400,7 +2440,7 @@
     "description": "Proactively engage owners of federally subsidized housing approaching subsidy expiration. RKG (2022) identified 489 units in three Portsmouth properties as potentially at risk of subsidy expiration by 2040. These figures have not been verified with PHA. First step is direct PHA outreach to verify current subsidy status.",
     "target": "Zero net loss of subsidized units — baseline verification required before specific targets are set",
     "metric": "Subsidized units preserved; units at risk identified; recapitalization deals completed",
-    "sources": "RKG 2022 (NHPD data: 489 units at risk); South Portland 1A",
+    "sources": "RKG 2022 (NHPD data: 489 units at risk); South Portland 1A; Housing Committee April 23, 2026 minutes",
     "notes": "PROVISIONAL DATA: RKG 2022 unit counts (489 units: Osprey Landing 263 LIHTC, Wamesit Place 100 LIHTC, Keefe House 58 S8) are drawn from NHPD database and have not been verified with PHA.",
     "is_new": true,
     "status": "",
@@ -2415,7 +2455,9 @@
       "City has limited leverage over federal subsidy decisions",
       "Preservation financing is complex and competitive"
     ],
-    "id": "PA-10"
+    "id": "PA-10",
+    "staff_term": "long",
+    "staff_note": "Does PHA track expiring subsidies?"
   },
   {
     "category": "Preservation & Anti-Displacement",
@@ -2607,7 +2649,7 @@
     "description": "Create/enhance city website with housing resources: programs, applications, ADU guidance, data dashboard.",
     "target": "",
     "metric": "Portal launched; page visits; resource downloads",
-    "sources": "Keene 4D; HAP Narrative",
+    "sources": "Keene 4D; HAP Narrative; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "in-progress",
@@ -2622,7 +2664,9 @@
       "Static websites quickly become outdated without regular content updates",
       "Digital-only resources don't reach residents without internet access"
     ],
-    "id": "EO-2"
+    "id": "EO-2",
+    "staff_term": "short",
+    "staff_note": "Work is on-going — the goal is to make the City website more robust and to enable small homeowner projects."
   },
   {
     "category": "Education & Outreach",
@@ -3182,7 +3226,7 @@
     "description": "Model the theoretical and realistic housing production capacity under current zoning versus proposed zoning reforms. Analysis should show current by-right theoretical capacity, realistic capacity, reformed capacity, and the gap between reformed capacity and the RKG demand projection of 3,124 units.",
     "target": "Initial buildout model completed within 6 months of HAP adoption. Updated as zoning reforms are adopted.",
     "metric": "Theoretical vs. realistic unit capacity under current and reformed zoning; gap to 3,124-unit demand projection",
-    "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
+    "sources": "Reviewer feedback (2026); Progress Portsmouth (2026); Housing Committee April 23, 2026 minutes",
     "notes": "This is the analytical bridge between zoning reform proposals and production targets.",
     "is_new": true,
     "status": "",
@@ -3197,7 +3241,9 @@
       "Theoretical capacity numbers can be misleadingly large",
       "Parcel-level analysis may identify politically sensitive sites, creating opposition before reforms are even proposed"
     ],
-    "id": "PT-12"
+    "id": "PT-12",
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review — Matto started mapping different scenarios in GIS if zoning were to change and is willing to continue that modeling. Creates a visualization tool that makes it easier for the public to understand."
   },
   {
     "category": "Climate & Sustainability",
@@ -3251,7 +3297,7 @@
     "description": "Ensure new housing accounts for flood risk and sea level rise. Update flood maps and building standards.",
     "target": "",
     "metric": "Housing in updated flood zones; flood-resilient standards adopted",
-    "sources": "HC Work Plan (PtL Goal 4); Portsmouth Climate Action Plan; 2017 Master Plan Actions 5.1.3, 5.5.1",
+    "sources": "HC Work Plan (PtL Goal 4); Portsmouth Climate Action Plan; 2017 Master Plan Actions 5.1.3, 5.5.1; Housing Committee April 23, 2026 minutes",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -3266,7 +3312,9 @@
       "Higher flood resilience standards increase construction costs",
       "Climate adaptation requirements add regulatory complexity for developers"
     ],
-    "id": "CS-3"
+    "id": "CS-3",
+    "staff_term": "long",
+    "staff_note": "Part of 79-E, Coastal Resiliency — need to model CRIZ incentive to adjust for flooding, similar to Portsmouth solar incentive."
   },
   {
     "action": "HAP formal adoption and governance framework",
@@ -3275,7 +3323,7 @@
     "target": "Council adoption within 6 months of HAP completion. Implementation Committee established within 90 days of adoption.",
     "metric": "Formal adoption vote (yes/no); Implementation Committee formed and meeting (yes/no); HAP referenced in annual city goals (yes/no).",
     "notes": "Formal adoption and named implementation ownership provide the governance foundation for the remaining action items.",
-    "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
+    "sources": "Reviewer feedback (2026); Progress Portsmouth (2026); Housing Committee April 23, 2026 minutes",
     "is_new": true,
     "status": "",
     "status_detail": "",
@@ -3289,7 +3337,9 @@
       "Formal governance structure adds administrative overhead and meeting obligations",
       "Political risk if Council adopts the HAP but then visibly fails to implement it"
     ],
-    "id": "GA-1"
+    "id": "GA-1",
+    "staff_term": "short",
+    "staff_note": "Housing Action Plan — working with Committee to prepare a plan for City Council by July 2026. Planning Dept. staff of 4 as resources."
   },
   {
     "action": "HAP implementation accountability and reporting",
@@ -3321,7 +3371,7 @@
     "target": "Budget alignment process integrated into FY2028 budget cycle.",
     "metric": "HAP funding identified in annual budget (yes/no); percentage of HAP actions with dedicated funding; total annual HAP-related appropriation.",
     "notes": "This item ensures HAP implementation is reflected in the annual budget process and that associated costs are not absorbed as an unfunded load on existing staff.",
-    "sources": "Reviewer feedback (2026); Progress Portsmouth (2026)",
+    "sources": "Reviewer feedback (2026); Progress Portsmouth (2026); Housing Committee April 23, 2026 minutes",
     "is_new": true,
     "status": "",
     "status_detail": "",
@@ -3335,7 +3385,9 @@
       "Dedicated housing budget may be cut in lean years, undermining implementation continuity",
       "Budget requirement may make Council less willing to adopt the HAP in the first place"
     ],
-    "id": "GA-3"
+    "id": "GA-3",
+    "staff_term": "short",
+    "staff_note": "Included in the CIP — the budget planning starts early with the CIP. Want to make sure initiatives that could be included are and take account of any bonding needed."
   },
   {
     "id": "GA-4",
