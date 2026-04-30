@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAP Pathway Test — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #2d3e52;
+  --navy-dark: #1a2332;
+  --gold: #f4a261;
+  --gold-dark: #c8822a;
+  --teal: #3a7d6e;
+  --teal-dark: #2c5e54;
+  --coral: #e76f51;
+  --coral-dark: #b94e35;
+  --cream: #f8f4ee;
+  --ink: #1a2332;
+  --muted: rgba(26, 35, 50, 0.65);
+  --line: rgba(45, 62, 82, 0.12);
+  /* Muted brand tints — backgrounds */
+  --teal-tint: #eef5f3;
+  --gold-tint: #fbf3ea;
+  --coral-tint: #faeeea;
+  --navy-tint: #eef0f3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex; flex-direction: column;
+}
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; }
+
+/* ========== APP SHELL ========== */
+.shell {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* HEADER */
+.app-header {
+  background: var(--navy-dark);
+  color: #fff;
+  padding: 12px 24px;
+  border-bottom: 3px solid var(--gold);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.app-header-left {
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+}
+.app-header .brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px; color: #fff; text-decoration: none;
+}
+.app-header .title-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600;
+}
+.app-header .back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase;
+  color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 500;
+}
+.app-header .back-link:hover { color: var(--gold); }
+
+/* TAB BAR */
+.tabs {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex; gap: 0;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  flex-shrink: 0;
+}
+.tab {
+  padding: 14px 18px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--ink); opacity: 0.55;
+  border-bottom: 3px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 8px;
+}
+.tab:hover { color: var(--navy); opacity: 1; }
+.tab.active { color: var(--navy); opacity: 1; border-bottom-color: var(--gold); }
+.tab-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--navy); color: #fff;
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.tab.active .tab-num { background: var(--gold-dark); }
+
+/* MAIN */
+.main {
+  overflow: hidden; position: relative; background: var(--cream);
+}
+.panel {
+  position: absolute; inset: 0;
+  display: none; overflow: hidden;
+}
+.panel.active { display: flex; flex-direction: column; }
+
+/* ========== INTRO ========== */
+.intro {
+  flex: 1; overflow-y: auto;
+  padding: 32px 28px;
+  max-width: 880px; margin: 0 auto; width: 100%;
+}
+/* Pre-header pulled forward — added in v1.6 */
+.pre-header {
+  background: var(--navy-dark);
+  color: #fff;
+  padding: 18px 24px;
+  border-radius: 4px;
+  margin-bottom: 28px;
+  border-left: 5px solid var(--gold);
+  box-shadow: 0 2px 6px rgba(45,62,82,0.15);
+}
+.pre-header-text {
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.92);
+  font-weight: 400;
+  margin: 0;
+}
+.pre-header-text strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.intro-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-dark); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 14px;
+}
+.intro-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--gold-dark);
+}
+.intro h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 52px); line-height: 1.08;
+  margin-bottom: 22px; color: var(--navy);
+}
+.intro h1 em { font-style: italic; color: var(--gold-dark); }
+.intro-lede {
+  font-size: 20px; color: var(--ink);
+  margin-bottom: 32px; line-height: 1.55;
+  font-weight: 400;
+}
+
+.test-card {
+  background: var(--gold-tint);
+  border-left: 4px solid var(--gold);
+  padding: 24px 28px; border-radius: 3px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 3px rgba(45,62,82,0.06);
+}
+.test-card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-dark); font-weight: 700; margin-bottom: 12px;
+}
+.test-card-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px; line-height: 1.4;
+  color: var(--navy); font-style: italic;
+}
+
+/* ========== PATHWAY STRIP (compact) ========== */
+.pathway-strip {
+  background: #fff;
+  border-radius: 4px;
+  padding: 22px 26px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(45,62,82,0.08);
+  border-top: 4px solid var(--navy);
+}
+.pathway-strip-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-weight: 700;
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+
+.pathway-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+@media (max-width: 880px) {
+  .pathway-chips { grid-template-columns: 1fr; }
+}
+
+.pchip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 3px;
+  border-left: 5px solid;
+  position: relative;
+}
+.pchip.p1 { background: var(--teal-tint); border-left-color: var(--teal); }
+.pchip.p2 { background: var(--gold-tint); border-left-color: var(--gold-dark); }
+.pchip.p3 {
+  background: var(--coral-tint);
+  border-left-color: var(--coral);
+  border-left-style: dashed;
+}
+
+.pchip-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+.pchip.p1 .pchip-num { color: var(--teal); }
+.pchip.p2 .pchip-num { color: var(--gold-dark); }
+.pchip.p3 .pchip-num { color: var(--coral); }
+
+.pchip-name {
+  flex: 1;
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--navy);
+  min-width: 0;
+}
+
+.pchip-state-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.pchip-state-dot.active {
+  background: var(--teal);
+  box-shadow: 0 0 0 3px rgba(58,125,110,0.25);
+}
+.pchip-state-dot.partial {
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(244,162,97,0.30);
+}
+.pchip-state-dot.aspirational {
+  background: transparent;
+  border: 2px dashed var(--coral);
+  width: 14px;
+  height: 14px;
+}
+
+/* Legend row */
+.pathway-strip-legend {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.pathway-strip-legend .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.pathway-strip-legend .pchip-state-dot {
+  width: 9px;
+  height: 9px;
+}
+.pathway-strip-legend .pchip-state-dot.aspirational {
+  width: 10px;
+  height: 10px;
+}
+.pathway-strip-link {
+  margin-left: auto;
+  color: var(--gold-dark);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold-dark);
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+.pathway-strip-link:hover {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+
+.footnote {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.footnote a {
+  color: var(--gold-dark);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold-dark);
+  font-weight: 500;
+}
+.footnote a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+.counts-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; letter-spacing: 0.06em;
+  color: var(--navy);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.intro-rules {
+  background: var(--navy-tint);
+  padding: 22px 26px; border-radius: 3px;
+  margin-bottom: 28px;
+}
+.intro-rules h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--navy); font-weight: 700; margin-bottom: 14px;
+}
+.intro-rules ol { padding-left: 24px; font-size: 16px; line-height: 1.7; color: var(--ink); }
+.intro-rules ol li { margin-bottom: 8px; }
+.intro-rules ol li strong { color: var(--navy); font-weight: 600; }
+
+.intro-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--navy); color: #fff;
+  padding: 16px 30px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  border-radius: 3px;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.15s;
+}
+.btn-primary:hover { background: var(--navy-dark); transform: translateY(-1px); }
+.btn-secondary {
+  background: #fff; color: var(--navy);
+  padding: 16px 24px; border: 1.5px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 3px; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-secondary:hover { border-color: var(--navy); background: var(--cream); }
+
+.notice {
+  background: var(--gold-tint);
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px; border-radius: 2px;
+  font-size: 14px; line-height: 1.55;
+  margin-bottom: 24px; color: var(--ink);
+}
+.notice strong { color: var(--navy); }
+
+/* ========== TEST ========== */
+.test-shell {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  overflow: hidden;
+  min-height: 0;
+}
+@media (max-width: 880px) {
+  .test-shell { grid-template-columns: 1fr; }
+  .test-sidebar { display: none; }
+  .test-sidebar.mobile-open {
+    display: flex; position: absolute;
+    inset: 0; z-index: 50;
+    background: #fff;
+  }
+}
+
+/* Sidebar */
+.test-sidebar {
+  background: #fff;
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.sidebar-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.sidebar-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--navy); font-weight: 700; margin-bottom: 10px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.sidebar-close {
+  display: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: var(--navy);
+}
+@media (max-width: 880px) { .sidebar-close { display: inline; } }
+
+.sidebar-progress {
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.sidebar-progress-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px; color: var(--navy);
+}
+.sidebar-progress-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--ink); opacity: 0.6;
+}
+.sidebar-progress-bar {
+  height: 4px; background: rgba(45,62,82,0.10);
+  border-radius: 2px; margin-top: 8px; overflow: hidden;
+}
+.sidebar-progress-fill {
+  height: 100%; background: var(--gold);
+  width: 0; transition: width 0.3s;
+}
+
+/* Filters */
+/* Filters */
+.scope-toggle {
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.scope-btn {
+  flex: 1;
+  padding: 12px 14px;
+  background: #fff;
+  border: 0;
+  border-right: 1px solid var(--line);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  text-align: center;
+  line-height: 1.2;
+}
+.scope-btn:last-child { border-right: 0; }
+.scope-btn:hover:not(.active) { background: var(--cream); color: var(--navy); }
+.scope-btn.active {
+  background: var(--navy);
+  color: #fff;
+  border-right-color: var(--navy);
+}
+.scope-btn.active:last-child { border-right: 0; }
+.scope-btn .count {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+  line-height: 1;
+}
+.scope-btn.active .count { color: var(--gold); }
+.scope-btn.shortlist .count { color: var(--gold-dark); }
+.scope-btn.shortlist.active .count { color: var(--gold); }
+
+.sidebar-filters {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--cream);
+  flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.filter-input, .filter-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--ink);
+}
+.filter-input:focus, .filter-select:focus {
+  outline: none; border-color: var(--navy);
+}
+.filter-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.filter-jump {
+  width: 100%;
+  background: var(--navy); color: #fff;
+  padding: 9px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+.filter-jump:hover { background: var(--navy-dark); }
+.filter-jump:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.sidebar-list {
+  flex: 1; overflow-y: auto;
+  padding: 8px 8px 24px;
+}
+.list-section-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--navy); opacity: 0.65;
+  padding: 16px 12px 8px;
+  position: sticky; top: 0;
+  background: #fff;
+  z-index: 1;
+}
+.list-section-header:first-child { padding-top: 6px; }
+
+.item-row {
+  width: 100%; text-align: left;
+  padding: 11px 14px;
+  border-radius: 3px;
+  display: flex; gap: 10px; align-items: flex-start;
+  transition: background 0.12s;
+  border: 1px solid transparent;
+}
+.item-row:hover { background: var(--cream); }
+.item-row.active {
+  background: var(--cream); border-color: var(--navy);
+}
+.item-row-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  background: rgba(45,62,82,0.10); color: var(--navy);
+  padding: 3px 7px; border-radius: 2px;
+  flex-shrink: 0; letter-spacing: 0.04em;
+  min-width: 38px; text-align: center;
+}
+.item-row.scored .item-row-id { background: var(--gold-dark); color: #fff; }
+.item-row.retired .item-row-id { background: rgba(45,62,82,0.30); color: rgba(255,255,255,0.85); }
+.item-row-content { flex: 1; min-width: 0; }
+.item-row-title {
+  font-size: 14px; line-height: 1.4;
+  color: var(--ink);
+}
+.item-row.retired .item-row-title { color: var(--muted); text-decoration: line-through; }
+.item-row-marks {
+  display: flex; gap: 3px; margin-top: 5px;
+}
+.row-mark {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(45,62,82,0.15);
+}
+.row-mark.p1.on { background: var(--teal); }
+.row-mark.p2.on { background: var(--gold-dark); }
+.row-mark.p3.on { background: var(--coral); }
+.row-mark.weakens { box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px var(--coral-dark); }
+
+/* Shortlist & term badges */
+.item-row-shortlist {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.shortlist-badge {
+  background: var(--navy);
+  color: var(--gold);
+  padding: 3px 7px;
+  border-radius: 2px;
+}
+.term-badge {
+  padding: 3px 7px;
+  border-radius: 2px;
+}
+.term-badge.short {
+  background: var(--teal);
+  color: #fff;
+}
+.term-badge.long {
+  background: var(--gold-dark);
+  color: #fff;
+}
+
+/* Staff note panel on item card */
+.staff-note {
+  background: var(--navy-tint);
+  border-left: 4px solid var(--navy);
+  border-radius: 2px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+.staff-note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.staff-note-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-weight: 700;
+}
+.staff-note-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  opacity: 0.65;
+}
+.staff-note-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.list-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--muted); font-size: 13px;
+  font-style: italic;
+}
+
+/* Main test pane */
+.test-main {
+  overflow-y: auto;
+  padding: 24px 32px 40px;
+  position: relative;
+}
+@media (max-width: 880px) { .test-main { padding: 18px 18px 32px; } }
+
+.item-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 16px; gap: 10px;
+  flex-wrap: wrap;
+}
+.item-nav-btn {
+  background: #fff; color: var(--navy);
+  padding: 9px 16px; border: 1px solid var(--line);
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 700;
+  transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.item-nav-btn:hover:not(:disabled) {
+  border-color: var(--navy); background: var(--cream);
+}
+.item-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.item-nav-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.06em; color: var(--ink); opacity: 0.7; font-weight: 600;
+}
+
+.mobile-list-toggle {
+  display: none;
+  background: var(--navy); color: #fff;
+  padding: 9px 16px; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.04em;
+  text-transform: uppercase; font-weight: 700;
+}
+@media (max-width: 880px) { .mobile-list-toggle { display: inline-flex; } }
+
+.item-card {
+  background: #fff; border-left: 4px solid var(--navy);
+  padding: 22px 26px; border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(45,62,82,0.06);
+  margin-bottom: 20px;
+}
+.item-card.retired { border-left-color: var(--coral-dark); opacity: 0.85; }
+.item-meta {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.item-id-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 700;
+  background: var(--navy); color: #fff;
+  padding: 5px 11px; border-radius: 2px; letter-spacing: 0.04em;
+}
+.item-category, .item-status, .item-new {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 2px;
+}
+.item-category {
+  color: var(--gold-dark);
+  background: rgba(244,162,97,0.12);
+}
+.item-status { color: var(--muted); background: rgba(45,62,82,0.06); }
+.item-status.complete { color: var(--teal); background: rgba(58,125,110,0.12); }
+.item-status.in-progress { color: var(--gold-dark); background: rgba(244,162,97,0.15); }
+.item-status.early-stage { color: var(--gold-dark); background: rgba(244,162,97,0.10); }
+.item-status.not-started { color: var(--muted); background: rgba(45,62,82,0.08); }
+.item-status.retired { color: var(--coral-dark); background: rgba(231,111,81,0.12); }
+.item-new { color: #fff; background: var(--coral-dark); }
+.item-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px; line-height: 1.2;
+  color: var(--navy); margin-bottom: 12px;
+}
+.item-description {
+  font-size: 16px; line-height: 1.6; color: var(--ink);
+}
+
+.retired-banner {
+  background: rgba(231, 111, 81, 0.12);
+  border: 1px solid rgba(231, 111, 81, 0.35);
+  padding: 10px 14px; border-radius: 2px;
+  font-size: 13px; color: var(--coral-dark);
+  margin-bottom: 16px;
+}
+
+.test-prompt {
+  background: var(--gold-tint);
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px; border-radius: 2px;
+  margin-bottom: 20px;
+}
+.test-prompt-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-dark); font-weight: 700; margin-bottom: 5px;
+}
+.test-prompt-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px; font-style: italic;
+  color: var(--navy); line-height: 1.45;
+}
+
+.pathway-test {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px; margin-bottom: 18px;
+}
+.pathway-test-card {
+  background: #fff;
+  padding: 16px 18px; border-radius: 3px;
+  border: 1.5px solid var(--line);
+  border-top-width: 5px;
+}
+.pathway-test-card.p1 { border-top-color: var(--teal); background: var(--teal-tint); }
+.pathway-test-card.p2 { border-top-color: var(--gold-dark); background: var(--gold-tint); }
+.pathway-test-card.p3 { border-top-color: var(--coral); background: var(--coral-tint); }
+.ptc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 4px;
+}
+.pathway-test-card.p1 .ptc-label { color: var(--teal); }
+.pathway-test-card.p2 .ptc-label { color: var(--gold-dark); }
+.pathway-test-card.p3 .ptc-label { color: var(--coral); }
+.ptc-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px; color: var(--navy);
+  line-height: 1.25; margin-bottom: 12px;
+}
+.ptc-options { display: flex; gap: 6px; flex-wrap: wrap; }
+.ptc-btn {
+  flex: 1; min-width: 0;
+  padding: 9px 4px; border: 1.5px solid var(--line);
+  background: #fff; border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink);
+  transition: all 0.15s; text-align: center;
+}
+.ptc-btn:hover { border-color: var(--navy); color: var(--navy); }
+.ptc-btn.selected { background: var(--navy); color: #fff; border-color: var(--navy); }
+.pathway-test-card.p1 .ptc-btn.selected.strengthens { background: var(--teal); border-color: var(--teal); }
+.pathway-test-card.p2 .ptc-btn.selected.strengthens { background: var(--gold-dark); border-color: var(--gold-dark); }
+.pathway-test-card.p3 .ptc-btn.selected.strengthens { background: var(--coral); border-color: var(--coral); }
+.ptc-btn.selected.weakens { background: var(--coral-dark); border-color: var(--coral-dark); }
+.ptc-btn.selected.neutral { background: var(--muted); border-color: var(--muted); }
+
+.notes-block { margin-bottom: 20px; }
+.notes-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--navy); font-weight: 700; margin-bottom: 8px; display: block;
+  opacity: 0.7;
+}
+.notes-input {
+  width: 100%; min-height: 70px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--line); border-radius: 3px;
+  font-size: 15px; line-height: 1.55;
+  color: var(--ink); background: #fff; resize: vertical;
+}
+.notes-input:focus { outline: none; border-color: var(--navy); }
+
+/* ========== RESULTS ========== */
+.results {
+  flex: 1; overflow-y: auto;
+  padding: 28px 32px 48px;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+}
+@media (max-width: 880px) { .results { padding: 20px 18px 32px; } }
+
+.results-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-dark); margin-bottom: 12px; font-weight: 700;
+}
+.results h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px; line-height: 1.15;
+  color: var(--navy); margin-bottom: 24px;
+}
+.results-h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; color: var(--navy);
+  margin-bottom: 14px; margin-top: 32px;
+}
+.results-h3-sub {
+  font-size: 15px; color: var(--ink);
+  margin-bottom: 16px; max-width: 760px; line-height: 1.55;
+}
+
+.results-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px; margin-bottom: 8px;
+}
+.summary-stat {
+  background: #fff; padding: 18px 20px;
+  border-radius: 3px; border-top: 4px solid var(--navy);
+  box-shadow: 0 1px 3px rgba(45,62,82,0.06);
+}
+.summary-stat.p1 { border-top-color: var(--teal); background: var(--teal-tint); }
+.summary-stat.p2 { border-top-color: var(--gold-dark); background: var(--gold-tint); }
+.summary-stat.p3 { border-top-color: var(--coral); background: var(--coral-tint); }
+.summary-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--navy); font-weight: 700; margin-bottom: 6px; opacity: 0.75;
+}
+.summary-stat-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; color: var(--navy); line-height: 1;
+}
+.summary-stat-detail {
+  font-size: 13px; color: var(--ink); margin-top: 6px;
+}
+
+.results-filter-bar {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.results-filter-bar select {
+  padding: 9px 12px;
+  border: 1px solid var(--line); border-radius: 2px;
+  font-size: 13px; background: #fff; color: var(--ink);
+}
+
+.results-table {
+  background: #fff; border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(45,62,82,0.06);
+  margin-bottom: 24px;
+}
+.results-table-header,
+.results-table-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 80px 80px 80px;
+  gap: 12px; padding: 13px 18px;
+  align-items: center;
+}
+.results-table-header {
+  background: var(--navy); color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase;
+  font-weight: 700;
+}
+.results-table-row {
+  border-bottom: 1px solid var(--line);
+  cursor: pointer; transition: background 0.12s;
+}
+.results-table-row:last-child { border-bottom: 0; }
+.results-table-row:hover { background: var(--cream); }
+.results-row-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700; color: var(--navy);
+}
+.results-row-title { font-size: 14px; line-height: 1.4; color: var(--ink); }
+.results-row-title-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--ink); opacity: 0.6;
+  margin-top: 4px;
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;
+}
+.results-row-mark {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 4px 7px; border-radius: 2px;
+  display: inline-block;
+}
+.mark-strengthens { background: rgba(58,125,110,0.18); color: var(--teal-dark); }
+.mark-weakens { background: rgba(231,111,81,0.18); color: var(--coral-dark); }
+.mark-neutral { background: rgba(45,62,82,0.10); color: var(--muted); }
+.mark-empty { color: rgba(45,62,82,0.25); text-align: center; }
+
+@media (max-width: 720px) {
+  .results-table-header { display: none; }
+  .results-table-row { grid-template-columns: 1fr; gap: 6px; padding: 12px 14px; }
+  .results-table-row .results-row-mark {
+    text-align: left; display: inline-block; margin-right: 4px;
+  }
+  .results-row-marks-mobile { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+}
+
+.results-actions {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.action-btn {
+  background: #fff; border: 1.5px solid var(--line);
+  color: var(--navy); padding: 11px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-radius: 3px; transition: all 0.15s;
+}
+.action-btn:hover { border-color: var(--navy); background: var(--cream); }
+.action-btn.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+.action-btn.primary:hover { background: var(--navy-dark); }
+.action-btn.danger:hover { border-color: var(--coral-dark); color: var(--coral-dark); }
+
+.results-empty {
+  text-align: center; padding: 60px 20px;
+  color: var(--muted); font-style: italic;
+}
+
+/* FOOTER */
+.app-footer {
+  background: var(--navy-dark);
+  color: rgba(255,255,255,0.55);
+  padding: 10px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.06em;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; flex-wrap: wrap; flex-shrink: 0;
+}
+.app-footer .ai-disclosure { font-style: italic; }
+.app-footer .version { color: rgba(255,255,255,0.7); }
+.app-footer .save-status {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.kbd-hint {
+  position: absolute; bottom: 14px; right: 14px;
+  background: rgba(26,35,50,0.85); color: rgba(255,255,255,0.85);
+  padding: 6px 10px; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.04em;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.2s;
+}
+.kbd-hint.visible { opacity: 1; }
+@media (max-width: 880px) { .kbd-hint { display: none; } }
+
+.toast {
+  position: fixed; bottom: 60px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--navy-dark); color: #fff;
+  padding: 10px 18px; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.06em;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 100;
+  border-left: 3px solid var(--gold);
+}
+.toast.visible {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="app-header">
+    <div class="app-header-left">
+      <a href="https://www.progressportsmouth.com" class="brand">Progress Portsmouth</a>
+      <span class="title-tag">HAP Pathway Test · v1.9</span>
+    </div>
+    <a href="https://www.progressportsmouth.com" class="back-link">← progressportsmouth.com</a>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-panel="intro" role="tab" aria-selected="true">
+      <span class="tab-num">1</span>Pathways
+    </button>
+    <button class="tab" data-panel="test" role="tab" aria-selected="false">
+      <span class="tab-num">2</span>Run the test
+    </button>
+    <button class="tab" data-panel="results" role="tab" aria-selected="false">
+      <span class="tab-num">3</span>Results
+    </button>
+  </nav>
+
+  <main class="main">
+
+    <!-- INTRO / PATHWAYS -->
+    <section class="panel active" id="panel-intro" role="tabpanel">
+      <div class="intro">
+
+        <!-- Pre-header value prop -->
+        <div class="pre-header">
+          <p class="pre-header-text">
+            <strong>Score the HAP items you want to discuss</strong> — or just review the
+            City staff's 26 preliminary picks. Fast. Traceable. Yours.
+          </p>
+        </div>
+
+        <!-- Value prop -->
+        <div class="intro-eyebrow">A tool for the Housing Committee</div>
+        <h1>Quickly test each HAP item's <em>potential.</em></h1>
+        <p class="intro-lede">
+          A structured way to record your judgment on every Housing Action Plan item, capture your reasoning,
+          and export an aggregated view of where items concentrate, conflict, or reinforce each other.
+        </p>
+
+        <!-- The test sentence -->
+        <div class="test-card">
+          <div class="test-card-label">The test you'll apply to every item</div>
+          <p class="test-card-quote">
+            Does this item, by itself or in relation to others, contribute to creating optimal
+            conditions for the types of housing outcomes we want?
+          </p>
+        </div>
+
+        <!-- Compact pathway strip -->
+        <div class="pathway-strip">
+          <div class="pathway-strip-label">The test scores each item against three pathways</div>
+          <div class="pathway-chips">
+            <div class="pchip p1">
+              <span class="pchip-num">01</span>
+              <span class="pchip-name">Permanently Affordable Workforce Housing</span>
+              <span class="pchip-state-dot active" title="Active in Portsmouth"></span>
+            </div>
+            <div class="pchip p2">
+              <span class="pchip-num">02</span>
+              <span class="pchip-name">Resident-Led Gentle Density</span>
+              <span class="pchip-state-dot partial" title="Partially active"></span>
+            </div>
+            <div class="pchip p3">
+              <span class="pchip-num">03</span>
+              <span class="pchip-name">Neighborhood Builder Program</span>
+              <span class="pchip-state-dot aspirational" title="Aspirational — not yet built"></span>
+            </div>
+          </div>
+          <div class="pathway-strip-legend">
+            <span class="legend-item"><span class="pchip-state-dot active"></span>Active</span>
+            <span class="legend-item"><span class="pchip-state-dot partial"></span>Partial</span>
+            <span class="legend-item"><span class="pchip-state-dot aspirational"></span>Aspirational</span>
+            <a class="pathway-strip-link" href="pathways.html" target="_blank" rel="noopener">Learn more about the pathways →</a>
+          </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="intro-rules">
+          <h3>How to use this tool</h3>
+          <ol>
+            <li>Pick an item from the sidebar, or filter by category / status to focus the work.</li>
+            <li>For each pathway, choose <strong>Strengthens</strong>, <strong>Weakens</strong>, <strong>Neutral</strong>, or leave blank if not applicable.</li>
+            <li>Add a note when the judgment needs context. All scores and notes save automatically.</li>
+            <li>Visit Results to see where items concentrate, where gaps sit, and which items strengthen multiple pathways.</li>
+          </ol>
+        </div>
+
+        <div class="notice">
+          <strong>About persistence:</strong> Scores save automatically in this browser only.
+          Use the <em>Export</em> button on the Results tab to save your work outside the browser
+          before clearing site data. This tool is for committee work-in-progress; final triage
+          decisions belong in the recorded Recommendations Memos.
+        </div>
+
+        <div class="intro-actions">
+          <button class="btn-primary" id="startBtn">Start the test <span>→</span></button>
+          <button class="btn-secondary" id="resumeBtn" style="display:none;">Resume where you left off →</button>
+        </div>
+
+        <p class="footnote">
+          For the full ecosystem map — actors, tools, and challenges to the framework — see the
+          <a href="https://www.progressportsmouth.com" target="_blank" rel="noopener">Three Housing Ecosystems explainer</a>.
+          <span class="counts-tag"><span id="introItemCount">148</span> items · <span id="introCatCount">14</span> categories</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- TEST -->
+    <section class="panel" id="panel-test" role="tabpanel">
+      <div class="test-shell">
+
+        <aside class="test-sidebar" id="testSidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-title">
+              <span>HAP items</span>
+              <button class="sidebar-close" id="sidebarClose">Close ✕</button>
+            </div>
+            <div class="sidebar-progress">
+              <div class="sidebar-progress-num" id="progressText">0 / 0</div>
+              <span class="sidebar-progress-label">scored</span>
+            </div>
+            <div class="sidebar-progress-bar"><div class="sidebar-progress-fill" id="progressFill"></div></div>
+          </div>
+
+          <div class="scope-toggle" role="tablist" aria-label="Filter by item scope">
+            <button class="scope-btn active" data-scope="all" role="tab" aria-selected="true">
+              <span class="count" id="scopeAllCount">148</span>
+              <span>All HAP items</span>
+            </button>
+            <button class="scope-btn shortlist" data-scope="shortlist" role="tab" aria-selected="false">
+              <span class="count" id="scopeShortCount">26</span>
+              <span>City shortlist</span>
+            </button>
+          </div>
+
+          <div class="sidebar-filters">
+            <input type="text" class="filter-input" id="searchInput" placeholder="Search by ID or title…">
+            <div class="filter-row">
+              <select class="filter-select" id="categoryFilter">
+                <option value="">All categories</option>
+              </select>
+              <select class="filter-select" id="statusFilter">
+                <option value="">All statuses</option>
+                <option value="not-started">Not started</option>
+                <option value="early-stage">Early stage</option>
+                <option value="in-progress">In progress</option>
+                <option value="complete">Complete</option>
+                <option value="untriaged">Untriaged</option>
+                <option value="retired">Retired</option>
+              </select>
+            </div>
+            <div class="filter-row">
+              <select class="filter-select" id="scoreFilter">
+                <option value="">All scoring states</option>
+                <option value="unscored">Unscored only</option>
+                <option value="scored">Scored only</option>
+              </select>
+              <button class="filter-jump" id="jumpUnscoredBtn">Jump to next unscored ↓</button>
+            </div>
+          </div>
+
+          <div class="sidebar-list" id="sidebarList"></div>
+        </aside>
+
+        <div class="test-main" id="testMain">
+          <div class="item-nav">
+            <button class="mobile-list-toggle" id="mobileListToggle">☰ Items</button>
+            <button class="item-nav-btn" id="prevBtn">← Prev</button>
+            <span class="item-nav-counter" id="navCounter">— / —</span>
+            <button class="item-nav-btn" id="nextBtn">Next →</button>
+          </div>
+
+          <div id="itemContent"></div>
+
+          <div class="kbd-hint" id="kbdHint">← → navigate · 1·2·3 to score</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="panel" id="panel-results" role="tabpanel">
+      <div class="results">
+        <div class="results-eyebrow">Aggregate view</div>
+        <h2 id="resultsHeader">Where do scored items concentrate?</h2>
+        <div id="resultsContent">
+          <div class="results-empty">No items scored yet. Run the test first.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <span class="ai-disclosure">Created with AI assistance · human editorial control</span>
+    <span class="save-status" id="saveStatus"></span>
+    <span class="version">v1.9 · Apr 29 2026</span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// HAP_ITEMS — full live set from hap-actions.json
+// ============================================================
+const HAP_ITEMS = [{"id":"Z-1","category":"Zoning & Land Use","action":"Rezone outdated O/R and GB districts","description":"Phase 1: Complete analysis of obsolete Office/Research and General Business zones. Phase 2: Rezone to mixed-use Gateway or similar zoning enabling residential uses.","status":"complete","is_new":false},{"id":"Z-2","category":"Zoning & Land Use","action":"ADU ordinance enhancements (beyond state compliance)","description":"Go beyond minimum state-mandated ADU changes: simplify design standards, allow detached ADUs in all residential zones, reduce dimensional barriers. Launch public education campaign, ADU Navigator program, and pre-approved plan library.","status":"in-progress","is_new":false},{"id":"Z-3","category":"Zoning & Land Use","action":"Residential conversion ordinance","description":"Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones. Align with recent NH state law changes enabling office-to-housing conversions.","status":"in-progress","is_new":false},{"id":"Z-4","category":"Zoning & Land Use","action":"Parking requirement reform","description":"Phase 1: Comprehensive parking study for downtown/mixed-use zones. Phase 2: Implement parking maximums, shared parking, market-responsive standards. Consider separating on-site parking from development and creating developer contribution to municipal parking.","status":"in-progress","is_new":false},{"id":"Z-5","category":"Zoning & Land Use","action":"Missing middle housing allowances","description":"Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. Form-based standards ensure neighborhood compatibility. GIS analysis shows Portsmouth dedicates 85.8% of residential land (2,276 acres across R, SRA, SRB zones) exclusively to single-family homes while only 14.2% (375 acres in GRA/GRB/GRC) permits the multifamily types most residents can afford — a 6:1 disparity.","status":"untriaged","is_new":false},{"id":"Z-6","category":"Zoning & Land Use","action":"Density bonus program","description":"Offer increased density allowances for projects including affordable or workforce housing units. Define affordability thresholds (e.g., 80% AMI) and duration.","status":"in-progress","is_new":false},{"id":"Z-7","category":"Zoning & Land Use","action":"Height limit modernization","description":"Review and selectively increase building height limits in downtown, Gateway, and transit-proximate zones.","status":"untriaged","is_new":false},{"id":"Z-8","category":"Zoning & Land Use","action":"Lot size and dimensional requirement updates","description":"Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones for infill development. GIS analysis provides zone-specific data: R Zone currently requires 5-acre minimums (proposed: 1 acre), SRA requires 1-acre minimums (proposed: 15,000 sf), SRB requires 15,000 sf (proposed: 7,500 sf). These reductions would bring the majority of currently nonconforming parcels into compliance.","status":"untriaged","is_new":false},{"id":"Z-9","category":"Zoning & Land Use","action":"Cottage housing / cluster development provisions","description":"Create zoning for cottage housing clusters: small detached units around shared open space, reduced lot-per-unit requirements.","status":"untriaged","is_new":false},{"id":"Z-10","category":"Zoning & Land Use","action":"Inclusionary zoning with in-lieu fee option","description":"Require or incentivize affordable units in developments above threshold size. Payment-in-lieu option funding Housing Trust Fund.","status":"in-progress","is_new":false},{"id":"Z-11","category":"Zoning & Land Use","action":"Form-based code reform for use deregulation","description":"Reform Portsmouth's existing form-based code districts to deregulate use allowances as originally intended by the FBC framework.","status":"early-stage","is_new":false},{"id":"Z-12","category":"Zoning & Land Use","action":"Affordable housing overlay zone","description":"Create overlay zone(s) relaxing density, parking, and dimensional requirements for projects meeting affordability standards.","status":"in-progress","is_new":false},{"id":"Z-13","category":"Zoning & Land Use","action":"Expand manufactured home and modular housing zoning","description":"Phase 1: Review the Portsmouth Zoning Ordinance to establish the current baseline for manufactured and modular housing. Phase 2: Develop ordinance amendments to permit Cross-Mod and modular construction in appropriate residential districts beyond GA/MH.","status":"untriaged","is_new":false},{"id":"Z-14","category":"Zoning & Land Use","action":"Live/work unit zoning","description":"Reform live/work unit regulations to expand access and reduce restrictions. Key reforms: allow non-resident workers to be employed in live/work units (currently banned), and expand to south end districts.","status":"untriaged","is_new":false},{"id":"Z-15","category":"Zoning & Land Use","action":"Outlying neighborhood development","description":"Rezone and plan new residential neighborhoods: Portsmouth Green/McKennon's area, Kane development (Commerce Way), southwest quadrant (Heritage Way, currently Industrial). Include infrastructure and recreation.","status":"untriaged","is_new":false},{"id":"Z-16","category":"Zoning & Land Use","action":"Pease Tradeport housing exploration","description":"Engage PDA on housing feasibility for GBCC students, National Guard, and Pease employees. A prerequisite first step is formalizing a liaison between the City Council and the Pease Development Authority (PDA) Board.","status":"untriaged","is_new":false},{"id":"Z-17","category":"Zoning & Land Use","action":"Allow subdivision of existing larger houses","description":"Amend zoning to permit subdivision of larger single-family homes into multiple units with appropriate restrictions.","status":"untriaged","is_new":false},{"id":"Z-18","category":"Zoning & Land Use","action":"Facilitate room rental / home sharing","description":"Remove barriers to renting rooms in owner-occupied homes. Create home-sharing matching program (especially for seniors).","status":"untriaged","is_new":false},{"id":"Z-19","category":"Zoning & Land Use","action":"Seasonal worker housing provisions","description":"Create zoning for seasonal worker dormitories or group housing for hospitality/tourism employment. Allow under conditional use permit or as of right in certain districts.","status":"untriaged","is_new":false},{"id":"Z-20","category":"Zoning & Land Use","action":"Micro-unit allowances","description":"Review and reduce minimum unit size requirements. Encourage smaller, more affordable units.","status":"untriaged","is_new":false},{"id":"Z-21","category":"Zoning & Land Use","action":"Comprehensive zoning audit","description":"Full audit of zoning ordinance identifying provisions that constrain housing production. Prioritize amendments. GIS analysis quantifies the compliance crisis: 69.9% of parcels in single-family zones violate current zoning requirements.","status":"in-progress","is_new":false},{"id":"Z-22","category":"Zoning & Land Use","action":"Zone specifically for diverse housing","description":"Make diverse housing an explicit zoning purpose in targeted areas so it doesn't require variances or special exceptions.","status":"untriaged","is_new":false},{"id":"Z-23","category":"Zoning & Land Use","action":"TOD overlay near transit stops and corridors","description":"Explore transit-oriented development strategies for areas near transit stops and corridors. Portsmouth lacks a functional public transit system that would support traditional TODs. Reframe toward ensuring transit stops are co-located with areas of dense and affordable housing.","status":"untriaged","is_new":false},{"id":"Z-24","category":"Zoning & Land Use","action":"Short-term rental regulation","description":"Periodically review enforcement of current STR regulations and assess whether any gaps exist in long-term housing supply protection.","status":"complete","is_new":false},{"id":"Z-25","category":"Zoning & Land Use","action":"Allow multifamily in Office/Research zones","description":"Amend O/R zoning to allow residential as-of-right (not just conversion), potentially enabling new ground-up multifamily.","status":"early-stage","is_new":false},{"id":"Z-26","category":"Zoning & Land Use","action":"Reduce conditional use permits for housing","description":"Identify housing types currently requiring CUPs that could be allowed by-right with clear standards.","status":"in-progress","is_new":false},{"id":"Z-27","category":"Zoning & Land Use","action":"Industrial land reclassification study","description":"Study Industrial-zoned land (especially southwest quadrant) for housing suitability. Reclassify where industrial use is obsolete.","status":"untriaged","is_new":false},{"id":"Z-28","category":"Zoning & Land Use","action":"Mixed-income development standards","description":"Adopt zoning provisions requiring or incentivizing mixed-income developments across AMI bands (30%, 50%, 80%, 120%+).","status":"untriaged","is_new":false},{"id":"Z-29","category":"Zoning & Land Use","action":"Adaptive reuse ordinance streamlining","description":"Simplify permitting for conversion of historic or underutilized non-residential buildings to housing. Align with RSA 79-E.","status":"untriaged","is_new":false},{"id":"Z-30","category":"Zoning & Land Use","action":"Workforce housing ordinance (RSA 674:58-61)","description":"Adopt or strengthen local workforce housing ordinance consistent with NH RSA 674:58-61.","status":"early-stage","is_new":false},{"id":"Z-31","category":"Zoning & Land Use","action":"Senior housing zoning incentives","description":"Create zoning incentives for senior housing: relaxed parking, density bonuses, streamlined approval for age-restricted communities.","status":"untriaged","is_new":false},{"id":"Z-32","category":"Zoning & Land Use","action":"Family-sized unit zoning incentives","description":"Create zoning incentives encouraging 2-3 bedroom unit production in new multifamily. RKG documents increasing family households and unmet demand for larger units while pipeline skews toward 1BR/studio.","status":"untriaged","is_new":true},{"id":"Z-33","category":"Zoning & Land Use","action":"Single-family zone reform strategy (R, SRA, SRB)","description":"Comprehensive reform of Portsmouth's three single-family-only zones, which together represent 2,276 acres — 85.8% of all residential land.","status":"untriaged","is_new":true},{"id":"Z-34","category":"Zoning & Land Use","action":"Transfer of development rights","description":"Developer exchanges banking of green space for site-specific density bonus.","status":"untriaged","is_new":false},{"id":"Z-35","category":"Zoning & Land Use","action":"Revise co-living (Section 10.815) standards to reduce barriers to viable projects","description":"Portsmouth adopted co-living as a permitted use in May 2025 (Ordinance #06-2025), establishing Section 10.815 of the Zoning Ordinance. Current restrictions limit co-living to four zones (GB, G1, G2, CD4-L1) by Conditional Use Permit.","status":"untriaged","is_new":false},{"id":"Z-36","category":"Zoning & Land Use","action":"Monitor 2026 NH ADU legislation for conflicts with Portsmouth ordinance","description":"Three bills in the 2026 NH legislative session have direct implications for Portsmouth's ADU ordinance adopted February 17, 2026. Planning Department should review each bill against the adopted ordinance on an ongoing basis.","status":"in-progress","is_new":true},{"id":"Z-37","category":"Zoning & Land Use","action":"Housing target area designation with area-specific design standards","description":"Formally designate housing target areas with area-specific design standards and infrastructure priorities. The draft Portsmouth Master Plan Update (Utile, March 2026) identifies five Gateway Neighborhood Center study areas that should serve as the spatial organizing framework for this designation, replacing the 2016 Housing Policy's broader four-focus-area geography: (1) Outer Woodbury/Commerce Way; (2) West End; (3) Route 1 Gateway/Lafayette North; (4) Elwyn Crossing; (5) Constitution Ave/Portsmouth Green. Each study area has a developed urban design framework including key assets, issues, and design strategies produced through the Master Plan process.","status":"not-started","is_new":true},{"id":"Z-38","category":"Zoning & Land Use","action":"Entry-level ownership housing feasibility and production strategy","description":"Phase 1: Engage Portsmouth-area residential builders and housing economists to establish whether market-rate entry-level for-sale housing production is financially viable in Portsmouth's current land cost environment. Phase 2: If Phase 1 establishes a viable pathway, identify specific zones where small-lot single-family and attached townhouse development could be permitted by right.","status":"not-started","is_new":true},{"id":"P-1","category":"Permitting & Process","action":"Streamline site plan review for housing","description":"Reduce review timelines. Establish maximum review period targets. Expedited track for affordability projects.","status":"untriaged","is_new":false},{"id":"P-2","category":"Permitting & Process","action":"Administrative approval for ADUs","description":"Enable Planning Director approval with 30-day max review. Eliminate board hearings for compliant applications.","status":"in-progress","is_new":false},{"id":"P-3","category":"Permitting & Process","action":"Online permitting portal enhancement","description":"Improve digital permit system: status tracking, automated checks, online payment.","status":"untriaged","is_new":false},{"id":"P-4","category":"Permitting & Process","action":"Interdepartmental review coordination and concurrent review implementation","description":"Map the current review workflow for standard residential permit applications. Redesign the workflow to maximize concurrent departmental review where feasible. Establish baseline median review time by application type before implementation.","status":"untriaged","is_new":false},{"id":"P-5","category":"Permitting & Process","action":"Design guideline clarity","description":"Publish clear, objective design guidelines for the Character Districts and Gateway Neighborhoods Districts intended to substitute for open-ended discretionary design review for compliant applications in those districts. Provide applicant checklists. Objective standards that replace discretionary review reduce the unpredictability that deters infill investment and constrain the ability of board members to apply personal aesthetic preferences as approval criteria.","status":"untriaged","is_new":false},{"id":"P-6","category":"Permitting & Process","action":"Pre-application meetings","description":"Formalize optional pre-application conferences for housing projects to identify issues before formal submission.","status":"untriaged","is_new":false},{"id":"P-7","category":"Permitting & Process","action":"Variance streamlining for housing","description":"Review variance process for housing. Replace variance requirements with clear by-right standards where possible.","status":"untriaged","is_new":false},{"id":"P-8","category":"Permitting & Process","action":"Fee structure review","description":"Review all development-related fees. Reduce or waive fees for affordable/workforce projects.","status":"untriaged","is_new":false},{"id":"P-9","category":"Permitting & Process","action":"Staff training on housing priorities","description":"Regular training for planning, building, and public works staff on housing policy goals and streamlined processes.","status":"untriaged","is_new":false},{"id":"P-10","category":"Permitting & Process","action":"Housing Navigator / dedicated coordinator","description":"Identify or hire a person on city staff whose job is to understand state laws, financing, developer perspectives, and zoning for housing. Single point of contact.","status":"early-stage","is_new":false},{"id":"P-11","category":"Permitting & Process","action":"Planning department capacity and workflow assessment","description":"Evaluate planning department workflows to identify process efficiencies that would free professional planning staff to engage in proactive policy development, housing strategy implementation, and long-range planning.","status":"untriaged","is_new":true},{"id":"P-12","category":"Permitting & Process","action":"Permit review timeline audit and enforcement framework","description":"Phase 1: Conduct a baseline audit of current residential permit review timelines by application type. Simultaneously, commission a legal review of Portsmouth's authority to establish enforceable review deadlines. Phase 2: Based on findings, determine whether an enforceable shot clock mechanism is warranted.","status":"not-started","is_new":true},{"id":"P-13","category":"Permitting & Process","action":"Building code affordability and flexibility review","description":"Phase 1: Establish Portsmouth's current building code baseline — specifically, whether the city applies the IRC or IBC to 2–6 unit residential buildings, and whether any local amendments add cost to housing construction without documented justification. Phase 2: Identify specific provisions for amendment.","status":"not-started","is_new":true},{"id":"P-14","category":"Permitting & Process","action":"Pre-approved residential design template program","description":"Establish a city-maintained library of pre-approved architectural designs for common residential building types including ADUs, duplexes, triplexes, small apartment buildings (up to 8 units), and cottage housing.","status":"not-started","is_new":true},{"id":"P-15","category":"Permitting & Process","action":"Impact fee calibration by unit type and size","description":"Analyze whether Portsmouth's development impact fees are accurately calibrated to the marginal infrastructure demand attributable to different housing types and unit sizes.","status":"not-started","is_new":true},{"id":"P-16","category":"Permitting & Process","action":"Third-party plan review authorization — legal assessment and pilot framework","description":"Phase 1: Commission a legal review of Portsmouth's authority to authorize vetted private third-party plan reviewers to substitute for or supplement municipal staff review of residential building permit applications. Phase 2: If legal authority exists, develop a pilot framework.","status":"not-started","is_new":true},{"id":"I-1","category":"Incentives & Financial Tools","action":"ADU tax incentive program","description":"5-year property tax exemption for new ADU construction value. Affordability requirements for maximum benefit.","status":"untriaged","is_new":false},{"id":"I-2","category":"Incentives & Financial Tools","action":"Affordable housing fee waivers","description":"Waive building permit, impact, and planning review fees for projects with 25%+ affordable units.","status":"untriaged","is_new":false},{"id":"I-3","category":"Incentives & Financial Tools","action":"Expedited review for workforce housing","description":"Priority queue for projects targeting 80-120% AMI. 30-day turnaround guarantee.","status":"untriaged","is_new":false},{"id":"I-4","category":"Incentives & Financial Tools","action":"RSA 79-E tax relief expansion","description":"Expand RSA 79-E tax relief to more areas and project types. Promote existing program.","status":"early-stage","is_new":false},{"id":"I-5","category":"Incentives & Financial Tools","action":"TIF district expansion for housing","description":"Evaluate expanding Tax Increment Financing districts to support housing infrastructure.","status":"early-stage","is_new":false},{"id":"I-6","category":"Incentives & Financial Tools","action":"Infill development grants","description":"Small grants for infill housing on underutilized parcels.","status":"untriaged","is_new":false},{"id":"I-7","category":"Incentives & Financial Tools","action":"Tax credits and financing utilization","description":"Proactively identify and utilize LIHTC, Historic Tax Credits, CDFI financing, NHHFA programs. Educate developers.","status":"in-progress","is_new":false},{"id":"I-8","category":"Incentives & Financial Tools","action":"Senior property tax deferral / relief","description":"Expand property tax deferral or exemption programs for seniors on fixed incomes.","status":"untriaged","is_new":false},{"id":"I-9","category":"Incentives & Financial Tools","action":"MFTE / multifamily tax exemption exploration","description":"Research feasibility of multifamily property tax exemption program. New Hampshire does not currently have enabling legislation for municipal multifamily tax exemptions — state legislative authorization would be required.","status":"untriaged","is_new":false},{"id":"I-10","category":"Incentives & Financial Tools","action":"Employer housing contribution programs","description":"Develop model for employer-funded housing assistance: down payment assistance, rental subsidies, employer-built housing.","status":"untriaged","is_new":false},{"id":"I-11","category":"Incentives & Financial Tools","action":"Community Land Trust support","description":"Provide startup funding, technical assistance, or land for a Portsmouth Community Land Trust.","status":"retired","is_new":false},{"id":"I-12","category":"Incentives & Financial Tools","action":"First-time homebuyer program expansion","description":"Expand down payment assistance, closing cost support, and financial literacy programs.","status":"untriaged","is_new":false},{"id":"I-13","category":"Incentives & Financial Tools","action":"Renter assistance programs","description":"Develop or expand emergency rental assistance, security deposit assistance, and tenant legal aid.","status":"untriaged","is_new":false},{"id":"I-14","category":"Incentives & Financial Tools","action":"Rehabilitation loan/grant program","description":"Low-interest loans or grants for owner-occupants and small landlords to rehabilitate older housing stock.","status":"untriaged","is_new":false},{"id":"I-15","category":"Incentives & Financial Tools","action":"HomeTown housing program promotion","description":"Actively promote existing employer-assisted housing programs. Expand eligibility and outreach.","status":"untriaged","is_new":false},{"id":"I-16","category":"Incentives & Financial Tools","action":"Local option housing revenue authorization","description":"Pursue state legislative authorization for dedicated local option revenue streams for municipal housing trust funds. Primary vehicle: local option real estate transfer fee — voter-approved, capped at a modest percentage of sale price (e.g., 0.5%), dedicated to the Housing Trust Fund, modeled on Vermont's Housing for All surcharge and Massachusetts's Community Preservation Act. Secondary vehicle: local option rooms and meals supplement (historically referred to as 'pillow tax'). Both require state enabling legislation; neither is currently available to New Hampshire municipalities.","status":"untriaged","is_new":false},{"id":"I-17","category":"Incentives & Financial Tools","action":"Density bonus for accessible units","description":"Additional density bonuses for projects incorporating universal design and ADA-accessible units beyond minimum requirements.","status":"untriaged","is_new":false},{"id":"I-18","category":"Incentives & Financial Tools","action":"Historic preservation + housing incentives","description":"Incentives combining historic preservation with housing production: streamlined historic review, tax credit stacking.","status":"untriaged","is_new":false},{"id":"I-19","category":"Incentives & Financial Tools","action":"Accessibility retrofit incentive program","description":"Dedicated incentive program (grants, low-interest loans, tax relief) for accessibility retrofits in pre-1960 housing stock.","status":"untriaged","is_new":true},{"id":"I-20","category":"Incentives & Financial Tools","action":"Land value capture and anti-speculation strategy","description":"Develop a coordinated strategy to capture land value increases resulting from upzoning and public investment, and to prevent speculative land price escalation. Tools include strategic land banking, resale and affordability covenants, enhanced TIF districts, and monitoring of land transaction prices in areas where zoning changes are proposed.","status":"untriaged","is_new":true},{"id":"I-21","category":"Incentives & Financial Tools","action":"Home Town first-time homebuyer program — feasibility audit and structural review","description":"Conduct a structured audit of Portsmouth's Home Town program to assess whether its current design is functionally accessible in today's market. Several structural elements may render it inaccessible: FHA purchase price ceiling, insufficient assistance levels, $10,000 post-closing liquid asset cap, FHA condo approval requirements excluding 81% of new production, single-bank dependency.","status":"untriaged","is_new":true},{"id":"I-22","category":"Incentives & Financial Tools","action":"Shared equity and permanently affordable homeownership — partner identification and policy framework","description":"This item replaces and substantially expands item I-13 (Community Land Trust support). Phase 1: Engage potential operating partners — beginning with NH Community Loan Fund, Home For All, and Workforce Housing Coalition — to assess whether a shared equity homeownership program is viable. Phase 2: If a willing and capable partner is identified, develop a policy framework.","status":"not-started","is_new":true},{"id":"HTF-1","category":"Housing Trust Fund & Funding","action":"Housing Trust Fund: establish governance and criteria","description":"Establish clear deployment criteria. Create Housing Trust Fund Committee. Define eligible uses: gap financing, acquisition, predevelopment.","status":"complete","is_new":false},{"id":"HTF-2","category":"Housing Trust Fund & Funding","action":"Housing Trust Fund: identify and secure funding sources","description":"Identify sustainable streams: inclusionary in-lieu fees, ARPA, developer contributions, employer contributions, state grants.","status":"complete","is_new":false},{"id":"HTF-3","category":"Housing Trust Fund & Funding","action":"Housing Trust Fund: deploy for gap financing","description":"Revolving loans/grants for affordable and workforce projects. Prioritize projects leveraging other sources.","status":"untriaged","is_new":false},{"id":"PL-1","category":"Public Land & Property","action":"Public land inventory for housing","description":"Comprehensive inventory of city-owned and state-owned land and underutilized facilities. Assess housing suitability.","status":"untriaged","is_new":false},{"id":"PL-2","category":"Public Land & Property","action":"Public land RFPs for housing development","description":"Issue RFPs on suitable city-owned parcels. Require affordability commitments.","status":"in-progress","is_new":false},{"id":"PL-3","category":"Public Land & Property","action":"Sherburne School redevelopment support","description":"Expedite approvals for PHA's 127-unit project. Coordinate city infrastructure improvements.","status":"in-progress","is_new":false},{"id":"PL-4","category":"Public Land & Property","action":"Identify next PHA development site","description":"Work with PHA and housing nonprofits to identify next large-scale affordable housing site.","status":"untriaged","is_new":false},{"id":"PL-5","category":"Public Land & Property","action":"Municipal building repurposing assessment","description":"Evaluate municipal buildings being vacated or underutilized for housing conversion.","status":"untriaged","is_new":false},{"id":"PL-6","category":"Public Land & Property","action":"School property assessment for housing","description":"Coordinate with School Board to assess surplus school properties for housing potential.","status":"untriaged","is_new":false},{"id":"PL-7","category":"Public Land & Property","action":"Religious and institutional land inventory and housing partnership program","description":"Phase 1: Conduct an inventory of land parcels held by religious organizations, nonprofits, and educational institutions citywide. Phase 2: Reach out to willing landowners to discuss housing development interest.","status":"not-started","is_new":true},{"id":"PC-1","category":"Partnerships & Capacity","action":"Employer housing partnership roundtable","description":"Convene major employers (hospital, schools, hotels, Service Credit Union, Novocure, Lonza) on workforce housing.","status":"untriaged","is_new":false},{"id":"PC-2","category":"Partnerships & Capacity","action":"Nonprofit housing developer engagement","description":"Recruit and support nonprofit housing developers (NeighborWorks, CATCH, local CDCs).","status":"in-progress","is_new":false},{"id":"PC-3","category":"Partnerships & Capacity","action":"Regional housing coalition","description":"Form or join regional coalition with Dover, Rochester, Exeter, Kittery for shared strategies.","status":"untriaged","is_new":false},{"id":"PC-4","category":"Partnerships & Capacity","action":"Developer listening sessions","description":"Conduct listening sessions to understand development barriers. Invite for-profit and nonprofit developers.","status":"untriaged","is_new":false},{"id":"PC-5","category":"Partnerships & Capacity","action":"State-level housing policy advocacy","description":"Maintain an active, prioritized list of state legislative asks connected to HAP items that require state enabling. Brief state legislators representing Portsmouth (Senate: Kwoka; House delegation) at least twice per legislative session. Coordinate with Workforce Housing Coalition, NH Community Loan Fund, NH Housing, and municipal peers.","status":"in-progress","is_new":false},{"id":"PC-6","category":"Partnerships & Capacity","action":"UNH / academic partnership","description":"Partner with UNH planning program for research, data analysis, intern support.","status":"untriaged","is_new":false},{"id":"PC-7","category":"Partnerships & Capacity","action":"Housing foundation / community investment vehicle","description":"Explore creation of a Portsmouth housing foundation to attract private capital.","status":"untriaged","is_new":false},{"id":"PC-8","category":"Partnerships & Capacity","action":"PHA onsite services expansion","description":"Expand social services at PHA properties: mental health, job training, case management. RKG survey respondents specifically requested PHA onsite services.","status":"untriaged","is_new":true},{"id":"PC-9","category":"Partnerships & Capacity","action":"Cross Roads House / homelessness system partnership","description":"Formalize partnership with Cross Roads House and homeless services. Coordinate rapid rehousing with housing production.","status":"untriaged","is_new":true},{"id":"PA-1","category":"Preservation & Anti-Displacement","action":"NOAH tracking and preservation","description":"Track and preserve Naturally Occurring Affordable Housing (NOAH) properties. Develop a NOAH registry, monitoring system, and preservation fund with acquisition and rehabilitation tools.","status":"untriaged","is_new":false},{"id":"PA-2","category":"Preservation & Anti-Displacement","action":"Rental registration program","description":"Require registration of all rental units to track conditions, ownership, and pricing trends.","status":"untriaged","is_new":false},{"id":"PA-3","category":"Preservation & Anti-Displacement","action":"Tenant protection policies","description":"Adopt local tenant protections within NH legal authority: just cause notice periods, relocation assistance, source of income protections.","status":"untriaged","is_new":false},{"id":"PA-4","category":"Preservation & Anti-Displacement","action":"Condo conversion restrictions","description":"Require notice, right of first refusal, or affordability requirements when rental properties convert to condos.","status":"untriaged","is_new":false},{"id":"PA-5","category":"Preservation & Anti-Displacement","action":"Lead paint and code compliance program","description":"Proactive code enforcement targeting lead paint, fire safety, and habitability in older rental stock.","status":"untriaged","is_new":false},{"id":"PA-6","category":"Preservation & Anti-Displacement","action":"Anti-displacement monitoring and reporting","description":"Establish metrics tracking displacement: demographic changes, out-migration, rental price changes by neighborhood.","status":"untriaged","is_new":false},{"id":"PA-7","category":"Preservation & Anti-Displacement","action":"Tenant right to purchase","description":"When rental properties sell, provide tenants or designated organizations right of first offer/refusal.","status":"untriaged","is_new":false},{"id":"PA-8","category":"Preservation & Anti-Displacement","action":"Homeowner emergency assistance","description":"Emergency grants/loans for homeowners facing foreclosure, major repairs, or tax delinquency.","status":"untriaged","is_new":false},{"id":"PA-9","category":"Preservation & Anti-Displacement","action":"Short-term rental impact monitoring","description":"Track impact of STR conversions on long-term housing supply. Enforce registration.","status":"untriaged","is_new":false},{"id":"PA-10","category":"Preservation & Anti-Displacement","action":"Federally subsidized unit preservation strategy","description":"Proactively engage owners of federally subsidized housing approaching subsidy expiration. RKG (2022) identified 489 units in three Portsmouth properties as potentially at risk of subsidy expiration by 2040. These figures have not been verified with PHA. First step is direct PHA outreach to verify current subsidy status.","status":"untriaged","is_new":true},{"id":"PA-11","category":"Preservation & Anti-Displacement","action":"Pre-1960 housing stock condition assessment","description":"Systematic condition assessment of pre-1960 housing stock (61% of owner-occupied, 46% of rental). Identify properties needing critical repairs, accessibility upgrades, weatherization.","status":"untriaged","is_new":true},{"id":"SP-1","category":"Special Populations","action":"Senior housing continuum strategy","description":"Comprehensive strategy for senior housing: independent living, assisted living, memory care, aging-in-place support.","status":"untriaged","is_new":false},{"id":"SP-2","category":"Special Populations","action":"Transitional and supportive housing","description":"Support transitional housing with wraparound services for people exiting homelessness, recovery, or institutional settings. Include partnerships with HAVEN (domestic violence services).","status":"untriaged","is_new":false},{"id":"SP-3","category":"Special Populations","action":"Assisted living and memory care expansion","description":"Support assisted living and memory care affordable to moderate-income seniors.","status":"untriaged","is_new":false},{"id":"SP-4","category":"Special Populations","action":"Disability housing strategy","description":"Assess unmet housing needs for people with physical and cognitive disabilities. Support universal design.","status":"untriaged","is_new":false},{"id":"SP-5","category":"Special Populations","action":"Veteran housing outreach and assistance","description":"Veteran-specific housing assistance. RKG identifies 1,366 veterans at median household income of $43,669 (~50% AMI). Coordinate with Harbor Care NH and VA.","status":"untriaged","is_new":true},{"id":"SP-6","category":"Special Populations","action":"Student and young professional housing","description":"Address housing for younger millennials (25-34) being priced out. RKG documents net out-migration of this cohort. Partnerships with GBCC, UNH; micro-units and shared housing models.","status":"untriaged","is_new":true},{"id":"EO-1","category":"Education & Outreach","action":"Housing needs awareness campaign","description":"Ongoing public education on affordability challenges. Social media, forums, local press.","status":"untriaged","is_new":false},{"id":"EO-2","category":"Education & Outreach","action":"City housing resources portal","description":"Create/enhance city website with housing resources: programs, applications, ADU guidance, data dashboard.","status":"in-progress","is_new":false},{"id":"EO-3","category":"Education & Outreach","action":"Annual housing report to City Council","description":"Planning Department annual report on housing implementation, production vs. targets, affordability metrics.","status":"untriaged","is_new":false},{"id":"EO-4","category":"Education & Outreach","action":"Employer education on housing programs","description":"Educate employers on workforce housing challenges and available assistance programs.","status":"untriaged","is_new":false},{"id":"EO-5","category":"Education & Outreach","action":"Housing infographics and public communication","description":"Accessible infographics explaining housing programs. Recruit volunteer designers. Distribute via website, social media, events.","status":"untriaged","is_new":false},{"id":"EO-6","category":"Education & Outreach","action":"Fair housing education and enforcement","description":"Fair housing education for landlords, tenants, and real estate professionals. Monitor discrimination complaints.","status":"untriaged","is_new":false},{"id":"EO-7","category":"Education & Outreach","action":"Community engagement on housing policy","description":"Meaningful resident engagement: early/ongoing input, representative voices, accessible forums, plain-language materials.","status":"complete","is_new":false},{"id":"EO-8","category":"Education & Outreach","action":"Places to Live Dialogue continuation","description":"Continue and expand the Places to Live Dialogue community conversation model. Track the 11 dialogue goals.","status":"complete","is_new":false},{"id":"EO-9","category":"Education & Outreach","action":"Financial counseling and homebuyer preparation","description":"Financial counseling addressing homeownership barriers from RKG survey: student debt (40%), car loans (34%), medical costs (38%). Pre-purchase counseling, credit repair, debt management.","status":"untriaged","is_new":true},{"id":"EO-10","category":"Education & Outreach","action":"Land use board HAP orientation program","description":"Provide structured orientation for all land use board members — Planning Board, ZBA, HDC, TAC, and Conservation Commission — on the Housing Action Plan's goals, priorities, and their role in implementation.","status":"untriaged","is_new":true},{"id":"IS-1","category":"Infrastructure & Services","action":"Municipal infrastructure investment for housing areas","description":"Proactively plan and fund water, sewer, street, utility improvements in areas designated for housing growth.","status":"untriaged","is_new":false},{"id":"IS-2","category":"Infrastructure & Services","action":"Parking infrastructure solutions (downtown)","description":"Develop municipal parking solutions separate from individual sites. Structured parking, developer contributions, shared facilities.","status":"untriaged","is_new":false},{"id":"IS-3","category":"Infrastructure & Services","action":"Multimodal transportation investment","description":"Invest in transit, bike, and pedestrian infrastructure to reduce car dependence and support reduced parking requirements.","status":"untriaged","is_new":false},{"id":"IS-4","category":"Infrastructure & Services","action":"School capacity assessment for housing areas","description":"Document existing school capacity data by attendance zone and make it publicly accessible. Portsmouth has significant existing capacity, particularly in the downtown area (Little Harbor attendance zone).","status":"untriaged","is_new":false},{"id":"IS-5","category":"Infrastructure & Services","action":"Infrastructure capacity analysis for growth","description":"Determine growth capacity for specific critical systems: sewer treatment plant capacity, water supply, fire department response coverage, stormwater management capacity, and floodplain buildable acreage constraints. Map growth areas where infrastructure can support additional housing without major capital investment.","status":"untriaged","is_new":false},{"id":"PT-1","category":"Production Targets & Data","action":"Numerical housing production targets","description":"Establish specific annual and 5-year production targets for total units and by affordability level. Byron Matto's comprehensive GIS analysis provides the parcel-level foundation for this inventory.","status":"untriaged","is_new":false},{"id":"PT-2","category":"Production Targets & Data","action":"GIS housing site inventory","description":"Maintain GIS-based inventory of developable parcels, underutilized sites, and housing pipeline projects.","status":"untriaged","is_new":false},{"id":"PT-3","category":"Production Targets & Data","action":"Housing gap analysis updates","description":"Regular updates (every 2-3 years) to housing needs assessment and gap analysis.","status":"early-stage","is_new":false},{"id":"PT-4","category":"Production Targets & Data","action":"Housing data dashboard","description":"Public-facing dashboard tracking housing metrics: production, affordability, permits, vacancy, cost burden.","status":"untriaged","is_new":false},{"id":"PT-5","category":"Production Targets & Data","action":"AMI-calibrated production targets","description":"Production targets calibrated by AMI band. RKG projects 52% of demand from households at ≤80% AMI, 85% from 1-2 person households. Total demand: 3,124 units by 2030.","status":"untriaged","is_new":true},{"id":"PT-6","category":"Production Targets & Data","action":"Vacancy rate monitoring and target","description":"Establish healthy vacancy target (4-6%) and monitor. RKG documents 1.86% combined vacancy — well below functional market threshold.","status":"untriaged","is_new":true},{"id":"PT-7","category":"Production Targets & Data","action":"Vulnerable populations housing conditions survey","description":"Conduct primary research with Portsmouth's most housing-insecure residents: cost-burdened renters, seniors aging in place, people with disabilities, individuals experiencing or at risk of homelessness.","status":"untriaged","is_new":true},{"id":"PT-8","category":"Production Targets & Data","action":"Employer workforce housing impact survey","description":"Systematic survey of Portsmouth businesses and organizations quantifying recruitment and retention challenges attributable to housing costs.","status":"untriaged","is_new":true},{"id":"PT-9","category":"Production Targets & Data","action":"Rockingham County RHNA Portsmouth localization","description":"Adapt Rockingham County Regional Housing Needs Assessment findings to Portsmouth-specific context. Fills analytical gap between RKG's PHA-focused 2022 study and the RHNA's regional scope.","status":"untriaged","is_new":true},{"id":"PT-10","category":"Production Targets & Data","action":"Housing Utilization & Market Structure Monitoring","description":"Annual monitoring of housing utilization and ownership patterns — including non-primary residence share and ownership concentration trends — with policy review triggered if significant shifts affect effective housing supply.","status":"not-started","is_new":true},{"id":"PT-11","category":"Production Targets & Data","action":"Development feasibility and pro forma analysis (2026 market conditions)","description":"Commission or conduct updated development feasibility analysis reflecting 2026 market conditions. Analysis should include pro forma modeling for representative housing types under current cost and financing conditions, break-even rent and sale price estimates, and sensitivity analysis showing how feasibility changes under different incentive scenarios.","status":"untriaged","is_new":true},{"id":"PT-12","category":"Production Targets & Data","action":"Buildout capacity modeling (current vs. reformed zoning)","description":"Model the theoretical and realistic housing production capacity under current zoning versus proposed zoning reforms. Analysis should show current by-right theoretical capacity, realistic capacity, reformed capacity, and the gap between reformed capacity and the RKG demand projection of 3,124 units.","status":"untriaged","is_new":true},{"id":"CS-1","category":"Climate & Sustainability","action":"Climate resiliency requirements for new housing","description":"Integrate climate change into zoning and building requirements. Prioritize environmental sustainability.","status":"untriaged","is_new":false},{"id":"CS-2","category":"Climate & Sustainability","action":"Green retrofitting and energy efficiency","description":"Outreach on climate-conscious retrofitting. Collaborate on sustainable development approaches.","status":"untriaged","is_new":false},{"id":"CS-3","category":"Climate & Sustainability","action":"Flood resilience and climate adaptation","description":"Ensure new housing accounts for flood risk and sea level rise. Update flood maps and building standards.","status":"untriaged","is_new":false},{"id":"GA-1","category":"Governance & Accountability","action":"HAP formal adoption and governance framework","description":"Establish a formal adoption mechanism for the Housing Action Plan as a binding policy document. This includes: City Council resolution or ordinance formally adopting the HAP; designation of a lead department and responsible staff positions; establishment of a HAP Implementation Committee; and integration of HAP priorities into the city's annual goal-setting and strategic planning processes.","status":"untriaged","is_new":true},{"id":"GA-2","category":"Governance & Accountability","action":"HAP implementation accountability and reporting","description":"Establish a quarterly implementation dashboard and annual progress report to City Council tracking HAP action item status, housing production against targets, and resource deployment.","status":"untriaged","is_new":true},{"id":"GA-3","category":"Governance & Accountability","action":"HAP budget alignment requirement","description":"Require that the annual city budget process explicitly address HAP implementation funding. This includes: a dedicated HAP line item or program budget; a requirement that the City Manager's proposed budget identify which HAP actions are funded, partially funded, or unfunded; and a mechanism for the HAP Implementation Committee to submit budget recommendations.","status":"untriaged","is_new":true},{"id":"GA-4","category":"Governance & Accountability","action":"Forensic review of land use board decision patterns for housing applications (2021–2025)","description":"Commission a structured review of decisions by the Zoning Board of Adjustment, Historic District Commission, and Planning Board on housing applications over the prior four years to identify patterns in how each body exercises discretionary authority. The review examines three dimensions: (1) legal fidelity — whether denials were compelled by ordinance language or represented discretionary interpretations where approval was legally defensible under a fair reading of applicable standards; (2) Master Plan alignment — whether decisions reflect or contradict the housing production goals established in the adopted Master Plan, which the city's own zoning authority is legally grounded in; and (3) interpretive posture — whether boards apply the principle, established in Richmond Co. v. City of Concord (149 N.H. 312, 2003) and reinforced in Appeal of Town of Windham (2022), that the land use process is not adversarial and that boards have a constitutional obligation to work with applicants rather than treat ambiguity as grounds for denial. RSA 676:3,I (effective August 2022) requires specific written findings of fact to support any disapproval; the review will assess whether Portsmouth denials meet that standard. Four decisions across the review period have been identified where the record supports a credible legal defense of approval and will serve as anchor cases for the methodology.","status":"untriaged","is_new":true},{"id":"PL-8","category":"Public Land & Property","action":"GNOD land transfer pipeline management","description":"Establish a process for Housing Committee review of incoming GNOD land transfer offers (Section 10.686.30), including suitability assessment, Phase I coordination, and connection to nonprofit developer RFP process. Track accepted parcels and development rights credits (Section 10.686.40).","status":"not-started","is_new":true},{"id":"PC-10","category":"Partnerships & Civic Engagement","action":"PHA scattered-site project-based voucher program for private small multifamily","description":"Explore a Housing Assistance Payments (HAP) contract program in which Portsmouth Housing Authority attaches project-based vouchers to income-restricted units in privately-owned small multifamily properties (2–20 units). Landlords receive market-equivalent revenue; tenants pay income-appropriate rents; the city gains de facto affordable units without new construction. Frame as a preservation program targeting naturally occurring affordable housing at risk of market-rate conversion.","status":"not-started","is_new":true}];
+// ============================================================
+// PATHWAYS
+// ============================================================
+const CITY_SHORTLIST = {"Z-1":{"term":"short","staff_note":"Work is on-going -- the goal is to make the City website more robust and to enable small homeowner projects."},"Z-3":{"term":"short","staff_note":"More to review -- a slow process to ensure compliance but need to get the language right on enabling the building of housing in formerly Commercial zones. Details: e.g. can municipalities define density? Need to get rid of leftover zoning."},"Z-5":{"term":"long","staff_note":"After Master Plan update, more to review -- again, why does the City need 5 residential zones? So much of the inventory in them is non-conforming. More units could be added by making adjustments in lot coverage and setback but question of public tolerance. 65 ADUs approved since 2017."},"Z-7":{"term":"long","staff_note":"Preliminary public feedback at Apr 22 Master Plan meeting is they disliked taller buildings, but maybe on outskirts, eg Service Credit Union area on Rte 1. Height is a question of meeting the sweet spot in expense."},"Z-8":{"term":"long","staff_note":"\"After Master Plan update\" is to reflect consideration now so recommendations can be included when plan is finalizing at the end of 2026. Staff will feed good ideas into the Master Plan. More to review."},"Z-9":{"term":"short","staff_note":"Expand the Gateway Zone -- Look at examples in Keene where cottage also allows some infill in residential districts."},"Z-10":{"term":"short","staff_note":"Expand from the GNOD, more to review -- need to get the balance right on trading fees and goals such as density to allow mix of workforce rents."},"Z-11":{"term":"long","staff_note":"More to review -- adopting 79E where allowed is a high priority in the Housing Action Plan."},"Z-14":{"term":"long","staff_note":"After Master Plan update, more to review -- Arts & Culture Commission push for artist live/work spaces -- funding for a consultant to explore was added to the FY27 CIP."},"Z-15":{"term":"long","staff_note":"After Master Plan update, more to review -- consider smaller lot sizes? Add amenities such as a parking garage?"},"Z-21":{"term":"long","staff_note":"Long-term need as foundation for the rest of the Housing Action Plan -- but takes time. After Master Plan update, more to review."},"Z-33":{"term":"long","staff_note":"After Master Plan update, more to review -- bigger zones have a greater impact on SRA, would offer potential for greater density."},"Z-36":{"term":"short","staff_note":"Short-Term, on-going monitoring."},"I-4":{"term":"short","staff_note":"Short-Term -- Expand RSA 79-E tax relief to more areas and project types. Promote existing program."},"I-12":{"term":"long","staff_note":"After Master Plan update, more to review -- interesting idea for first-time to reduce engineering and architect expense. The Planning Board would be accustomed to seeing and understanding the plan. Less likely of interest where land is most expensive and housing would more likely be a custom design."},"I-18":{"term":"long","staff_note":"Explore recommendations based on 79-E."},"EO-2":{"term":"short","staff_note":"Work is on-going -- new ADU legislation means staff will review City ordinances to be sure they are in compliance. Staff are creating a new brochure to replace the lengthy handbook. Question about the ADU license renewal process and whether it can be simplified. The need is to ensure the rules on owner-occupied and not being used for short-term rentals. Inspections needed."},"P-14":{"term":"long","staff_note":"After Master Plan update, more to review."},"PC-5":{"term":"long","staff_note":"After Master Plan update, more to review -- City's Legislative Subcommittee monitors and testifies on legislation including housing. Committee can review and recommend actions."},"PA-8":{"term":"long","staff_note":"After Master Plan update, more to review -- yes, as funds grow. How would CDBG apply?"},"PA-10":{"term":"long","staff_note":"Does PHA track expiring subsidies?"},"HTF-3":{"term":"long","staff_note":"Need to get more funds into the trust."},"PT-12":{"term":"long","staff_note":"After Master Plan update, more to review -- Matto started mapping different scenarios in GIS if zoning were to change and is willing to continue that modeling. Creates a visualization tool that makes it easier for the public to understand."},"CS-3":{"term":"long","staff_note":"Part of 79-E, Coastal Resiliency -- need to model CRIZ incentive to adjust for flooding, similar to Portsmouth solar incentive."},"GA-1":{"term":"short","staff_note":"Housing Action Plan -- working with Committee to prepare a plan for City Council by July 2026. Planning Dept. staff of 4 as resources."},"GA-3":{"term":"short","staff_note":"Included in the CIP -- the budget planning starts early with the CIP. Want to make sure initiatives that could be included are and take account of any bonding needed."}};
+
+// Pathways framework
+const PATHWAYS = {
+  p1: { num: '01 · Workforce', name: 'Permanently Affordable Workforce Housing' },
+  p2: { num: '02 · Gentle Density', name: 'Resident-Led Gentle Density' },
+  p3: { num: '03 · Builder', name: 'Neighborhood Builder Program' }
+};
+
+// ============================================================
+// STATE & PERSISTENCE
+// ============================================================
+const STORAGE_KEY = 'pp-hap-pathway-test-v1';
+
+const state = {
+  currentId: null,
+  scores: {}, // { itemId: { p1, p2, p3, note } }
+  filter: { search: '', category: '', status: '', score: '' },
+  scope: 'all', // 'all' | 'shortlist'
+  panel: 'intro'
+};
+
+// Initialize empty scores
+HAP_ITEMS.forEach(item => {
+  state.scores[item.id] = { p1: null, p2: null, p3: null, note: '' };
+});
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const saved = JSON.parse(raw);
+    if (saved && saved.scores) {
+      Object.keys(saved.scores).forEach(id => {
+        if (state.scores[id]) state.scores[id] = saved.scores[id];
+      });
+      if (saved.currentId) state.currentId = saved.currentId;
+      if (saved.scope === 'all' || saved.scope === 'shortlist') state.scope = saved.scope;
+      return true;
+    }
+  } catch (e) { /* ignore corrupt state */ }
+  return false;
+}
+
+function persistState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      scores: state.scores,
+      currentId: state.currentId,
+      scope: state.scope,
+      savedAt: new Date().toISOString()
+    }));
+    showSaveStatus();
+  } catch (e) {
+    // localStorage may be disabled / full
+  }
+}
+
+let saveTimer = null;
+function showSaveStatus() {
+  const el = document.getElementById('saveStatus');
+  if (!el) return;
+  el.textContent = '✓ saved';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { el.textContent = ''; }, 1800);
+}
+
+// ============================================================
+// DOM REFS
+// ============================================================
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+const sidebarList = document.getElementById('sidebarList');
+const itemContent = document.getElementById('itemContent');
+const navCounter = document.getElementById('navCounter');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progressText');
+const progressFill = document.getElementById('progressFill');
+const startBtn = document.getElementById('startBtn');
+const resumeBtn = document.getElementById('resumeBtn');
+const resultsContent = document.getElementById('resultsContent');
+const resultsHeader = document.getElementById('resultsHeader');
+const mobileListToggle = document.getElementById('mobileListToggle');
+const sidebarClose = document.getElementById('sidebarClose');
+const testSidebar = document.getElementById('testSidebar');
+const kbdHint = document.getElementById('kbdHint');
+const searchInput = document.getElementById('searchInput');
+const categoryFilter = document.getElementById('categoryFilter');
+const statusFilter = document.getElementById('statusFilter');
+const scoreFilter = document.getElementById('scoreFilter');
+const jumpUnscoredBtn = document.getElementById('jumpUnscoredBtn');
+const introItemCount = document.getElementById('introItemCount');
+const introCatCount = document.getElementById('introCatCount');
+const toast = document.getElementById('toast');
+const scopeBtns = document.querySelectorAll('.scope-btn');
+const scopeAllCount = document.getElementById('scopeAllCount');
+const scopeShortCount = document.getElementById('scopeShortCount');
+
+// ============================================================
+// FILTER LOGIC
+// ============================================================
+function getFilteredItems() {
+  const s = state.filter;
+  const search = (s.search || '').toLowerCase().trim();
+  return HAP_ITEMS.filter(item => {
+    // Scope: shortlist limits to City shortlist items
+    if (state.scope === 'shortlist' && !CITY_SHORTLIST[item.id]) return false;
+    if (s.category && item.category !== s.category) return false;
+    if (s.status && item.status !== s.status) return false;
+    if (s.score) {
+      const sc = state.scores[item.id];
+      const scored = sc.p1 || sc.p2 || sc.p3;
+      if (s.score === 'scored' && !scored) return false;
+      if (s.score === 'unscored' && scored) return false;
+    }
+    if (search) {
+      const hay = (item.id + ' ' + item.action + ' ' + item.description).toLowerCase();
+      if (hay.indexOf(search) === -1) return false;
+    }
+    return true;
+  });
+}
+
+// ============================================================
+// PANEL SWITCHING
+// ============================================================
+function showPanel(name) {
+  state.panel = name;
+  panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+  tabs.forEach(t => {
+    const isActive = t.getAttribute('data-panel') === name;
+    t.classList.toggle('active', isActive);
+    t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  if (name === 'results') renderResults();
+  if (name === 'test') {
+    if (!state.currentId) state.currentId = HAP_ITEMS[0].id;
+    renderItem();
+    renderSidebar();
+  }
+}
+
+tabs.forEach(t => t.addEventListener('click', () => showPanel(t.getAttribute('data-panel'))));
+startBtn.addEventListener('click', () => {
+  state.currentId = HAP_ITEMS[0].id;
+  showPanel('test');
+});
+resumeBtn.addEventListener('click', () => showPanel('test'));
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+function renderSidebar() {
+  const filtered = getFilteredItems();
+  sidebarList.innerHTML = '';
+
+  if (filtered.length === 0) {
+    sidebarList.innerHTML = '<div class="list-empty">No items match the current filters.</div>';
+    updateProgress();
+    return;
+  }
+
+  // Group by category if no category filter; otherwise flat
+  if (state.filter.category) {
+    filtered.forEach(item => sidebarList.appendChild(buildItemRow(item)));
+  } else {
+    let lastCat = null;
+    filtered.forEach(item => {
+      if (item.category !== lastCat) {
+        const h = document.createElement('div');
+        h.className = 'list-section-header';
+        h.textContent = item.category;
+        sidebarList.appendChild(h);
+        lastCat = item.category;
+      }
+      sidebarList.appendChild(buildItemRow(item));
+    });
+  }
+
+  updateProgress();
+}
+
+function buildItemRow(item) {
+  const score = state.scores[item.id];
+  const scored = score.p1 || score.p2 || score.p3;
+  const onShortlist = !!CITY_SHORTLIST[item.id];
+  const term = onShortlist ? CITY_SHORTLIST[item.id].term : null;
+
+  const row = document.createElement('button');
+  const classes = ['item-row'];
+  if (item.id === state.currentId) classes.push('active');
+  if (scored) classes.push('scored');
+  if (item.status === 'retired') classes.push('retired');
+  row.className = classes.join(' ');
+  row.setAttribute('data-id', item.id);
+
+  let badgesHtml = '';
+  if (onShortlist) {
+    badgesHtml += '<div class="item-row-shortlist">';
+    badgesHtml += '<span class="shortlist-badge">★ Shortlist</span>';
+    if (term) {
+      badgesHtml += '<span class="term-badge ' + term + '">' + (term === 'short' ? 'Short-term' : 'Long-term') + '</span>';
+    }
+    badgesHtml += '</div>';
+  }
+
+  row.innerHTML =
+    '<span class="item-row-id">' + escapeHtml(item.id) + '</span>' +
+    '<span class="item-row-content">' +
+      '<span class="item-row-title">' + escapeHtml(item.action) + '</span>' +
+      '<div class="item-row-marks">' +
+        '<span class="row-mark p1' + (score.p1 ? ' on' : '') + (score.p1 === 'weakens' ? ' weakens' : '') + '"></span>' +
+        '<span class="row-mark p2' + (score.p2 ? ' on' : '') + (score.p2 === 'weakens' ? ' weakens' : '') + '"></span>' +
+        '<span class="row-mark p3' + (score.p3 ? ' on' : '') + (score.p3 === 'weakens' ? ' weakens' : '') + '"></span>' +
+      '</div>' +
+      badgesHtml +
+    '</span>';
+  row.addEventListener('click', () => {
+    state.currentId = item.id;
+    renderItem();
+    renderSidebar();
+    if (window.innerWidth < 880) testSidebar.classList.remove('mobile-open');
+  });
+  return row;
+}
+
+function updateProgress() {
+  // Denominator: in-scope items excluding retired
+  let scorable;
+  if (state.scope === 'shortlist') {
+    scorable = HAP_ITEMS.filter(i => CITY_SHORTLIST[i.id] && i.status !== 'retired');
+  } else {
+    scorable = HAP_ITEMS.filter(i => i.status !== 'retired');
+  }
+  const totalScored = scorable.filter(i => {
+    const s = state.scores[i.id];
+    return s.p1 || s.p2 || s.p3;
+  }).length;
+  progressText.textContent = totalScored + ' / ' + scorable.length;
+  progressFill.style.width = (scorable.length ? (totalScored / scorable.length * 100) : 0) + '%';
+  if (totalScored > 0 && resumeBtn) resumeBtn.style.display = 'inline-flex';
+}
+
+// ============================================================
+// ITEM RENDER
+// ============================================================
+function renderItem() {
+  const filtered = getFilteredItems();
+  // If currentId no longer matches, fall back
+  let item = HAP_ITEMS.find(i => i.id === state.currentId);
+  if (!item && filtered.length > 0) {
+    item = filtered[0];
+    state.currentId = item.id;
+  }
+  if (!item) {
+    itemContent.innerHTML = '<div class="results-empty">No items match. Adjust the filters in the sidebar.</div>';
+    navCounter.textContent = '0 / 0';
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+    return;
+  }
+
+  const score = state.scores[item.id];
+  const isRetired = item.status === 'retired';
+  const shortlistEntry = CITY_SHORTLIST[item.id];
+
+  let html = '<div class="item-card' + (isRetired ? ' retired' : '') + '">';
+  html += '<div class="item-meta">';
+  html += '<span class="item-id-badge">' + escapeHtml(item.id) + '</span>';
+  html += '<span class="item-category">' + escapeHtml(item.category) + '</span>';
+  html += '<span class="item-status ' + escapeHtml(item.status) + '">' + escapeHtml(formatStatus(item.status)) + '</span>';
+  if (item.is_new) html += '<span class="item-new">New</span>';
+  if (shortlistEntry) {
+    html += '<span class="shortlist-badge" style="font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:0.06em;">★ City Shortlist</span>';
+    const termLabel = shortlistEntry.term === 'short' ? 'Short-term' : 'Long-term';
+    html += '<span class="term-badge ' + shortlistEntry.term + '" style="font-family:JetBrains Mono,monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">' + termLabel + '</span>';
+  }
+  html += '</div>';
+  html += '<h2 class="item-title">' + escapeHtml(item.action) + '</h2>';
+  html += '<p class="item-description">' + escapeHtml(item.description) + '</p>';
+  html += '</div>';
+
+  if (isRetired) {
+    html += '<div class="retired-banner">This item is marked <strong>retired</strong> in hap-actions.json. Scoring is optional.</div>';
+  }
+
+  // Planning staff note (from April 23, 2026 minutes)
+  if (shortlistEntry && shortlistEntry.staff_note) {
+    html += '<div class="staff-note">';
+    html += '<div class="staff-note-header">';
+    html += '<span class="staff-note-label">Planning staff note</span>';
+    html += '<span class="staff-note-source">From April 23, 2026 Housing Committee minutes</span>';
+    html += '</div>';
+    html += '<div class="staff-note-text">' + escapeHtml(shortlistEntry.staff_note) + '</div>';
+    html += '</div>';
+  }
+
+  html += '<div class="test-prompt">';
+  html += '<div class="test-prompt-label">For each pathway, ask:</div>';
+  html += '<div class="test-prompt-text">Does this item contribute to creating optimal conditions for housing outcomes in this pathway?</div>';
+  html += '</div>';
+
+  html += '<div class="pathway-test">';
+  ['p1','p2','p3'].forEach(key => {
+    html += buildPathwayCard(key, PATHWAYS[key].num, PATHWAYS[key].name, score[key]);
+  });
+  html += '</div>';
+
+  html += '<div class="notes-block">';
+  html += '<label class="notes-label" for="noteInput">Note (optional)</label>';
+  html += '<textarea class="notes-input" id="noteInput" placeholder="Sequencing concerns? Conditional on other items? Add a note for the record.">' + escapeHtml(score.note || '') + '</textarea>';
+  html += '</div>';
+
+  itemContent.innerHTML = html;
+
+  // Wire pathway buttons
+  itemContent.querySelectorAll('.ptc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pathway = btn.getAttribute('data-pathway');
+      const value = btn.getAttribute('data-value');
+      if (state.scores[item.id][pathway] === value) {
+        state.scores[item.id][pathway] = null;
+      } else {
+        state.scores[item.id][pathway] = value;
+      }
+      persistState();
+      renderItem();
+      renderSidebar();
+    });
+  });
+
+  // Wire note input (debounced save)
+  const noteInput = document.getElementById('noteInput');
+  let noteTimer = null;
+  noteInput.addEventListener('input', e => {
+    state.scores[item.id].note = e.target.value;
+    clearTimeout(noteTimer);
+    noteTimer = setTimeout(persistState, 400);
+  });
+
+  // Update nav (within filtered set)
+  const idxInFiltered = filtered.findIndex(i => i.id === item.id);
+  navCounter.textContent = (idxInFiltered + 1) + ' / ' + filtered.length;
+  prevBtn.disabled = idxInFiltered <= 0;
+  nextBtn.disabled = idxInFiltered >= filtered.length - 1;
+
+  // Brief keyboard hint
+  kbdHint.classList.add('visible');
+  setTimeout(() => kbdHint.classList.remove('visible'), 2400);
+
+  // Scroll main pane to top so user always sees the new item
+  document.getElementById('testMain').scrollTop = 0;
+}
+
+function buildPathwayCard(key, num, name, currentValue) {
+  const opts = [
+    { v: 'strengthens', label: 'Strengthens' },
+    { v: 'weakens', label: 'Weakens' },
+    { v: 'neutral', label: 'Neutral' }
+  ];
+  let html = '<div class="pathway-test-card ' + key + '">';
+  html += '<div class="ptc-label">' + num + '</div>';
+  html += '<div class="ptc-name">' + escapeHtml(name) + '</div>';
+  html += '<div class="ptc-options">';
+  opts.forEach(o => {
+    const sel = currentValue === o.v ? ' selected ' + o.v : '';
+    html += '<button class="ptc-btn' + sel + '" data-pathway="' + key + '" data-value="' + o.v + '">' + o.label + '</button>';
+  });
+  html += '</div></div>';
+  return html;
+}
+
+function formatStatus(s) {
+  if (!s || s === 'untriaged') return 'untriaged';
+  return s.replace('-', ' ');
+}
+
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// ============================================================
+// NAV
+// ============================================================
+prevBtn.addEventListener('click', () => navItem(-1));
+nextBtn.addEventListener('click', () => navItem(+1));
+function navItem(direction) {
+  const filtered = getFilteredItems();
+  if (filtered.length === 0) return;
+  const idx = filtered.findIndex(i => i.id === state.currentId);
+  const newIdx = idx + direction;
+  if (newIdx >= 0 && newIdx < filtered.length) {
+    state.currentId = filtered[newIdx].id;
+    persistState();
+    renderItem();
+    renderSidebar();
+  }
+}
+
+mobileListToggle.addEventListener('click', () => testSidebar.classList.toggle('mobile-open'));
+if (sidebarClose) sidebarClose.addEventListener('click', () => testSidebar.classList.remove('mobile-open'));
+
+// Filters
+let searchTimer = null;
+searchInput.addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    state.filter.search = e.target.value;
+    renderSidebar();
+    renderItem();
+  }, 150);
+});
+categoryFilter.addEventListener('change', e => {
+  state.filter.category = e.target.value;
+  renderSidebar();
+  renderItem();
+});
+statusFilter.addEventListener('change', e => {
+  state.filter.status = e.target.value;
+  renderSidebar();
+  renderItem();
+});
+scoreFilter.addEventListener('change', e => {
+  state.filter.score = e.target.value;
+  renderSidebar();
+  renderItem();
+});
+
+// Scope toggle: All vs Shortlist
+scopeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const newScope = btn.getAttribute('data-scope');
+    if (newScope === state.scope) return;
+    state.scope = newScope;
+    scopeBtns.forEach(b => {
+      const active = b.getAttribute('data-scope') === newScope;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    // If currently selected item is no longer in scope, jump to first scoped item
+    const filtered = getFilteredItems();
+    if (filtered.length > 0 && !filtered.find(i => i.id === state.currentId)) {
+      state.currentId = filtered[0].id;
+    }
+    persistState();
+    renderSidebar();
+    renderItem();
+  });
+});
+
+// Jump to next unscored
+jumpUnscoredBtn.addEventListener('click', () => {
+  // Within current filter, find first unscored item after currentId
+  const filtered = getFilteredItems();
+  if (filtered.length === 0) return;
+  const startIdx = filtered.findIndex(i => i.id === state.currentId);
+  let foundIdx = -1;
+  // Search forward first
+  for (let off = 1; off <= filtered.length; off++) {
+    const idx = (startIdx + off) % filtered.length;
+    const item = filtered[idx];
+    if (item.status === 'retired') continue;
+    const sc = state.scores[item.id];
+    if (!sc.p1 && !sc.p2 && !sc.p3) {
+      foundIdx = idx;
+      break;
+    }
+  }
+  if (foundIdx === -1) {
+    showToast('All filtered items are scored.');
+    return;
+  }
+  state.currentId = filtered[foundIdx].id;
+  persistState();
+  renderItem();
+  renderSidebar();
+});
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (state.panel !== 'test') return;
+  if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+
+  if (e.key === 'ArrowLeft') { navItem(-1); }
+  else if (e.key === 'ArrowRight') { navItem(+1); }
+  else if (e.key === '1' || e.key === '2' || e.key === '3') {
+    const pathway = 'p' + e.key;
+    const item = HAP_ITEMS.find(i => i.id === state.currentId);
+    if (!item) return;
+    const cur = state.scores[item.id][pathway];
+    const order = [null, 'strengthens', 'weakens', 'neutral'];
+    state.scores[item.id][pathway] = order[(order.indexOf(cur) + 1) % order.length];
+    persistState();
+    renderItem();
+    renderSidebar();
+  }
+});
+
+// ============================================================
+// RESULTS
+// ============================================================
+let resultsFilter = { category: '', pathway: '' };
+
+function renderResults() {
+  const totalScored = Object.values(state.scores).filter(s => s.p1 || s.p2 || s.p3).length;
+
+  if (totalScored === 0) {
+    resultsContent.innerHTML = '<div class="results-empty">No items scored yet. Run the test first.</div>';
+    return;
+  }
+
+  // Tally per pathway
+  const tally = {
+    p1: { strengthens: 0, weakens: 0, neutral: 0 },
+    p2: { strengthens: 0, weakens: 0, neutral: 0 },
+    p3: { strengthens: 0, weakens: 0, neutral: 0 }
+  };
+  HAP_ITEMS.forEach(item => {
+    const s = state.scores[item.id];
+    ['p1','p2','p3'].forEach(p => {
+      if (s[p] === 'strengthens') tally[p].strengthens++;
+      else if (s[p] === 'weakens') tally[p].weakens++;
+      else if (s[p] === 'neutral') tally[p].neutral++;
+    });
+  });
+
+  // Cross-pathway items (strengthens 2+)
+  const crossItems = HAP_ITEMS.filter(item => {
+    const s = state.scores[item.id];
+    const c = ['p1','p2','p3'].filter(p => s[p] === 'strengthens').length;
+    return c >= 2;
+  });
+
+  let html = '';
+  html += '<div class="results-summary">';
+  html += '<div class="summary-stat"><div class="summary-stat-label">Items scored</div>';
+  html += '<div class="summary-stat-value">' + totalScored + '</div>';
+  html += '<div class="summary-stat-detail">of ' + HAP_ITEMS.filter(i => i.status !== 'retired').length + ' active items</div></div>';
+
+  ['p1','p2','p3'].forEach(p => {
+    html += '<div class="summary-stat ' + p + '">';
+    html += '<div class="summary-stat-label">' + PATHWAYS[p].num + '</div>';
+    html += '<div class="summary-stat-value">' + tally[p].strengthens + '</div>';
+    html += '<div class="summary-stat-detail">strengthens · ' + tally[p].weakens + ' weakens · ' + tally[p].neutral + ' neutral</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+
+  // Cross-pathway items
+  if (crossItems.length > 0) {
+    html += '<h3 class="results-h3">Items strengthening 2 or more pathways</h3>';
+    html += '<p class="results-h3-sub">High-leverage items — single actions that strengthen conditions across multiple pathways. ' + crossItems.length + ' identified.</p>';
+    html += renderResultsTable(crossItems, true);
+  }
+
+  // All scored items, with filters
+  html += '<h3 class="results-h3">All scored items</h3>';
+  html += '<div class="results-filter-bar">';
+  html += '<select id="resultsCategoryFilter"><option value="">All categories</option>';
+  const cats = Array.from(new Set(HAP_ITEMS.map(i => i.category))).sort();
+  cats.forEach(c => {
+    const sel = resultsFilter.category === c ? ' selected' : '';
+    html += '<option value="' + escapeHtml(c) + '"' + sel + '>' + escapeHtml(c) + '</option>';
+  });
+  html += '</select>';
+  html += '<select id="resultsPathwayFilter"><option value="">All scoring states</option>';
+  ['p1','p2','p3'].forEach(p => {
+    const sel = resultsFilter.pathway === p ? ' selected' : '';
+    html += '<option value="' + p + '"' + sel + '>Strengthens ' + PATHWAYS[p].num + '</option>';
+  });
+  ['p1-w','p2-w','p3-w'].forEach(p => {
+    const sel = resultsFilter.pathway === p ? ' selected' : '';
+    html += '<option value="' + p + '"' + sel + '>Weakens ' + PATHWAYS[p.charAt(0)+p.charAt(1)].num + '</option>';
+  });
+  html += '</select>';
+  html += '</div>';
+
+  const filteredScored = HAP_ITEMS.filter(item => {
+    const s = state.scores[item.id];
+    if (!s.p1 && !s.p2 && !s.p3) return false;
+    if (resultsFilter.category && item.category !== resultsFilter.category) return false;
+    if (resultsFilter.pathway) {
+      if (resultsFilter.pathway.endsWith('-w')) {
+        const p = resultsFilter.pathway.slice(0, 2);
+        if (s[p] !== 'weakens') return false;
+      } else {
+        if (s[resultsFilter.pathway] !== 'strengthens') return false;
+      }
+    }
+    return true;
+  });
+
+  if (filteredScored.length === 0) {
+    html += '<div class="results-empty" style="padding:30px;">No items match these filters.</div>';
+  } else {
+    html += renderResultsTable(filteredScored, false);
+  }
+
+  // Actions
+  html += '<div class="results-actions">';
+  html += '<button class="action-btn primary" id="exportBtn">Export as text</button>';
+  html += '<button class="action-btn" id="copyBtn">Copy summary</button>';
+  html += '<button class="action-btn danger" id="resetBtn">Reset all scores</button>';
+  html += '</div>';
+
+  resultsContent.innerHTML = html;
+
+  // Wire filters
+  const rcf = document.getElementById('resultsCategoryFilter');
+  const rpf = document.getElementById('resultsPathwayFilter');
+  if (rcf) rcf.addEventListener('change', e => { resultsFilter.category = e.target.value; renderResults(); });
+  if (rpf) rpf.addEventListener('change', e => { resultsFilter.pathway = e.target.value; renderResults(); });
+
+  // Wire actions
+  document.getElementById('exportBtn').addEventListener('click', exportResults);
+  document.getElementById('copyBtn').addEventListener('click', copyResults);
+  document.getElementById('resetBtn').addEventListener('click', resetAll);
+}
+
+function renderResultsTable(items, isHighlight) {
+  let html = '<div class="results-table">';
+  html += '<div class="results-table-header"><div>ID</div><div>Item</div><div>P1</div><div>P2</div><div>P3</div></div>';
+  items.forEach(item => {
+    const s = state.scores[item.id];
+    html += '<div class="results-table-row" data-jump-id="' + escapeHtml(item.id) + '">';
+    html += '<div class="results-row-id">' + escapeHtml(item.id) + '</div>';
+    html += '<div><div class="results-row-title">' + escapeHtml(item.action) + '</div>';
+    html += '<div class="results-row-title-meta">' + escapeHtml(item.category) + '</div></div>';
+    html += '<div>' + markCell(s.p1) + '</div>';
+    html += '<div>' + markCell(s.p2) + '</div>';
+    html += '<div>' + markCell(s.p3) + '</div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  // Wire jump-back
+  setTimeout(() => {
+    document.querySelectorAll('.results-table-row[data-jump-id]').forEach(r => {
+      r.addEventListener('click', () => {
+        state.currentId = r.getAttribute('data-jump-id');
+        persistState();
+        showPanel('test');
+      });
+    });
+  }, 0);
+  return html;
+}
+
+function markCell(value) {
+  if (value === 'strengthens') return '<span class="results-row-mark mark-strengthens">Str</span>';
+  if (value === 'weakens') return '<span class="results-row-mark mark-weakens">Weak</span>';
+  if (value === 'neutral') return '<span class="results-row-mark mark-neutral">Neut</span>';
+  return '<span class="mark-empty">—</span>';
+}
+
+function buildExportText() {
+  const lines = [];
+  lines.push('HAP PATHWAY TEST · RESULTS');
+  lines.push('Generated: ' + new Date().toISOString().split('T')[0]);
+  lines.push('Source: hap-actions.json (' + HAP_ITEMS.length + ' items)');
+  lines.push('Scope at export: ' + (state.scope === 'shortlist' ? 'City shortlist (' + Object.keys(CITY_SHORTLIST).length + ' items)' : 'All HAP items'));
+  lines.push('');
+  lines.push('PATHWAYS');
+  lines.push('  P1 = ' + PATHWAYS.p1.name);
+  lines.push('  P2 = ' + PATHWAYS.p2.name);
+  lines.push('  P3 = ' + PATHWAYS.p3.name);
+  lines.push('');
+
+  const tally = { p1: {s:0,w:0,n:0}, p2: {s:0,w:0,n:0}, p3: {s:0,w:0,n:0} };
+  HAP_ITEMS.forEach(item => {
+    const s = state.scores[item.id];
+    ['p1','p2','p3'].forEach(p => {
+      if (s[p] === 'strengthens') tally[p].s++;
+      else if (s[p] === 'weakens') tally[p].w++;
+      else if (s[p] === 'neutral') tally[p].n++;
+    });
+  });
+  lines.push('AGGREGATE (all scored items)');
+  ['p1','p2','p3'].forEach(p => {
+    lines.push('  ' + p.toUpperCase() + ': ' + tally[p].s + ' strengthens · ' + tally[p].w + ' weakens · ' + tally[p].n + ' neutral');
+  });
+  lines.push('');
+  lines.push('SCORED ITEMS');
+  lines.push('');
+
+  HAP_ITEMS.forEach(item => {
+    const s = state.scores[item.id];
+    if (!s.p1 && !s.p2 && !s.p3 && !s.note) return;
+    const tag = CITY_SHORTLIST[item.id] ? ' [CITY ' + CITY_SHORTLIST[item.id].term.toUpperCase() + '-TERM]' : '';
+    lines.push('[' + item.id + ']' + tag + ' ' + item.action);
+    lines.push('  Category: ' + item.category);
+    lines.push('  P1: ' + (s.p1 || '-') + '  ·  P2: ' + (s.p2 || '-') + '  ·  P3: ' + (s.p3 || '-'));
+    if (s.note) lines.push('  Note: ' + s.note);
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+function exportResults() {
+  const txt = buildExportText();
+  const blob = new Blob([txt], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'hap-pathway-test-results.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Exported as hap-pathway-test-results.txt');
+}
+
+function copyResults() {
+  const txt = buildExportText();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(
+      () => showToast('Summary copied to clipboard.'),
+      () => fallbackCopy(txt)
+    );
+  } else {
+    fallbackCopy(txt);
+  }
+}
+
+function fallbackCopy(txt) {
+  const ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); showToast('Summary copied.'); }
+  catch (e) { showToast('Copy failed. Use Export instead.'); }
+  document.body.removeChild(ta);
+}
+
+function resetAll() {
+  if (!confirm('Reset all scores and notes? This cannot be undone.')) return;
+  HAP_ITEMS.forEach(item => {
+    state.scores[item.id] = { p1: null, p2: null, p3: null, note: '' };
+  });
+  state.currentId = HAP_ITEMS[0].id;
+  persistState();
+  renderResults();
+  renderSidebar();
+  showToast('All scores cleared.');
+}
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('visible');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => toast.classList.remove('visible'), 2400);
+}
+
+// ============================================================
+// POPULATE FILTERS
+// ============================================================
+const allCategories = Array.from(new Set(HAP_ITEMS.map(i => i.category))).sort();
+allCategories.forEach(c => {
+  const opt = document.createElement('option');
+  opt.value = c; opt.textContent = c;
+  categoryFilter.appendChild(opt);
+});
+
+// Intro counts
+introItemCount.textContent = HAP_ITEMS.length;
+introCatCount.textContent = allCategories.length;
+
+// Scope counts (live)
+const allScorableCount = HAP_ITEMS.filter(i => i.status !== 'retired').length;
+const shortlistCount = Object.keys(CITY_SHORTLIST).length;
+scopeAllCount.textContent = allScorableCount;
+scopeShortCount.textContent = shortlistCount;
+
+// ============================================================
+// INITIALIZE
+// ============================================================
+const restored = loadState();
+if (!state.currentId) state.currentId = HAP_ITEMS[0].id;
+
+// Reflect restored scope on buttons
+scopeBtns.forEach(b => {
+  const active = b.getAttribute('data-scope') === state.scope;
+  b.classList.toggle('active', active);
+  b.setAttribute('aria-selected', active ? 'true' : 'false');
+});
+
+if (restored) {
+  const totalScored = Object.values(state.scores).filter(s => s.p1 || s.p2 || s.p3).length;
+  if (totalScored > 0) {
+    resumeBtn.style.display = 'inline-flex';
+  }
+}
+updateProgress();
+</script>
+
+</body>
+</html>
