@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "title": "Proposed Additions to the Portsmouth Housing Action Plan",
+    "version": "v1.0",
+    "version_date": "April 30, 2026",
+    "status": "Proposed — for Housing Committee and Planning Department review",
+    "source": "External expert input, Tom Morgan, AICP (April 30, 2026)",
+    "intake_protocol": "Progress Portsmouth received unsolicited expert input from a credentialed planner residing in another NH community. Proposed items below were triaged by Progress Portsmouth and drafted in the standard hap-actions.json format for Housing Committee chairs (Councilor John Tabor, Asst. Mayor Joanna Kelley) and Planning Department (Director Peter Britz, Stefanie Casella, Izak Gilbo) to review. If accepted, items would be assigned permanent IDs and merged into the canonical Housing Action Plan (hap-actions.json). If declined, the file remains as a record of the input and the decision.",
+    "review_questions": [
+      "Should the proposed item be incorporated into the Housing Action Plan as drafted?",
+      "Should the proposed item be incorporated with modifications? (Specify.)",
+      "Should the proposed item be declined, and on what basis?",
+      "If accepted, what canonical ID should the item receive?"
+    ]
+  },
+  "proposed_items": [
+    {
+      "category": "Preservation & Anti-Displacement",
+      "action": "Resident Owned Communities (ROC) preservation and expansion strategy",
+      "description": "Phase 1: Inventory manufactured housing parks and resident-owned cooperatives in and adjacent to Portsmouth, working with the NH Community Loan Fund. Phase 2: Adopt zoning provisions that recognize manufactured housing on owned land as a permitted residential type in appropriate zones. Phase 3: Establish a city policy supporting resident purchase of manufactured housing parks when owners list them for sale, including a right-of-first-refusal mechanism modeled on NH RSA 205-A or equivalent local authorization. Phase 4: Coordinate with the Housing Trust Fund to provide gap financing for resident cooperative formation when ROC-USA or NH Community Loan Fund underwriting falls short.",
+      "target": "Preserve all existing manufactured housing units in and adjacent to Portsmouth as permanently affordable through resident ownership. Identify potential conversion sites within the Seacoast region.",
+      "metric": "Number of ROC units preserved or created; number of manufactured housing parks converted to resident ownership; capital deployed through Housing Trust Fund gap financing for ROC formation.",
+      "sources": "Tom Morgan, AICP (April 30, 2026); NH Community Loan Fund — list of NH Resident Owned Communities (https://communityloanfund.org/resources/list-of-nh-resident-owned-communities); NH RSA 205-A; Seabrook ROC precedent (292 units across multiple cooperatives); Woodbury Cooperative",
+      "notes": "ROCs are a distinct production and preservation pathway with their own legal vehicle, capital source, and policy levers. The cooperative member equity + ROC-USA financing model differs structurally from both market-rate ownership and rental-affordable production. Tom Morgan offered to facilitate a tour of the Woodbury Cooperative for the Housing Committee. Seabrook's ROC inventory (~292 owner-occupied units) is the closest large-scale Seacoast precedent. NH Community Loan Fund is the technical assistance and financing intermediary. Consider whether existing manufactured housing parcels in or near Portsmouth (if any) face conversion pressure that a ROC strategy could intercept.",
+      "is_new": true,
+      "status": "",
+      "status_detail": "",
+      "pros": [
+        "Preserves existing affordable units that are at risk of conversion to market-rate or non-residential uses when parks are sold.",
+        "Creates a permanent affordability mechanism through cooperative ownership rather than time-limited subsidy.",
+        "Builds household wealth for moderate-income owners through equity in the cooperative.",
+        "Activates a production pathway that does not require new construction or land acquisition by the city."
+      ],
+      "cons": [
+        "Portsmouth's manufactured housing inventory is limited; the strategy may yield few in-city units and require regional coordination.",
+        "Right-of-first-refusal mechanisms require enabling state legislation or careful local authorization and may face owner opposition.",
+        "ROC formation is staff- and capital-intensive; success depends on willing cooperatives and financing alignment."
+      ],
+      "id": "PROP-1"
+    },
+    {
+      "category": "Incentives & Financial Tools",
+      "action": "Federal Historic Preservation Tax Credit utilization strategy (amendment to I-18)",
+      "description": "This item amends and operationalizes the existing I-18 (Historic preservation + housing incentives). Phase 1: Identify all Portsmouth properties currently listed on the National Register of Historic Places or eligible for listing that have housing redevelopment potential. Phase 2: Establish a city protocol for supporting Federal Historic Preservation Tax Credit applications, including pre-application consultation, alignment of local historic district review with National Park Service Standards for Rehabilitation, and coordination with the NH Division of Historical Resources. Phase 3: Pair the federal credit with local tools (RSA 79-E where applicable, Housing Trust Fund gap financing, density bonuses for retained historic structures) to make adaptive reuse projects pencil. Phase 4: Document and learn from the Franklin Block experience — what city processes, applicant communications, or staff capacity gaps caused that project to falter, and what changes would prevent recurrence.",
+      "target": "Activate the Federal Historic Preservation Tax Credit as a primary capital tool for adaptive reuse housing projects on eligible Portsmouth properties.",
+      "metric": "Number of Portsmouth historic preservation tax credit applications submitted; number approved; housing units produced through federally-credited rehab; total federal credit value captured.",
+      "sources": "Tom Morgan, AICP (April 30, 2026); National Park Service Federal Historic Preservation Tax Incentives program; NH Division of Historical Resources; precedents — Newmarket mill rehabilitations, Saco mill conversions, Hilltop School (Somersworth); Portsmouth Franklin Block (cautionary precedent)",
+      "notes": "The Federal Historic Preservation Tax Credit (20% of qualified rehabilitation expenses for income-producing properties listed on the National Register) is a substantial capital source for adaptive reuse projects. New Hampshire and Maine have multiple successful precedents in mill and institutional building conversions. Portsmouth has attempted to use the credit (Franklin Block) but the project encountered procedural difficulties; the cause — whether application errors, communication gaps, or local review misalignment — should be documented before assuming the tool itself was the problem. This item is structured as an amendment to I-18 rather than a standalone item because I-18 already names historic preservation + housing as a category; this amendment makes the principal federal tool explicit and operational.",
+      "is_new": true,
+      "status": "",
+      "status_detail": "",
+      "pros": [
+        "Activates a substantial federal capital source (20% credit on qualified rehab expenses) without requiring new local appropriations.",
+        "Strong regional precedents (Newmarket, Saco, Somersworth) demonstrate feasibility for buildings of comparable scale and condition to Portsmouth's historic stock.",
+        "Pairs cleanly with state RSA 79-E and local Housing Trust Fund gap financing, creating a stackable capital structure.",
+        "Encourages adaptive reuse over demolition, addressing Portsmouth's historic preservation and housing production goals simultaneously."
+      ],
+      "cons": [
+        "Requires applicant-side technical capacity (historic tax credit specialists, qualified rehabilitation accounting) that not all Portsmouth property owners have.",
+        "National Park Service Standards for Rehabilitation can constrain design flexibility, particularly for affordability-driven projects with thin margins.",
+        "City staff capacity for pre-application consultation and review coordination is a limiting factor; the Franklin Block precedent suggests this gap is real."
+      ],
+      "id": "PROP-2"
+    },
+    {
+      "category": "Zoning & Land Use",
+      "action": "Cottage cluster facilitation — Cottages at Dover precedent and reference (amendment to Z-9)",
+      "description": "This item is a reference and notes addition to the existing Z-9 (Cottage housing / cluster development provisions). It does not propose new zoning text. It adds the Cottages at Dover, NH project as a documented precedent for how a New Hampshire municipality facilitated a successful cottage cluster development, and identifies project principals Maggie and John Randolph as available technical references for the Housing Committee. The Dover facilitation model reportedly involved active municipal engagement with developer, designer, and prospective residents during entitlement; documenting what Dover did would inform Portsmouth's Z-9 implementation as it expands from the GNOD to other zones.",
+      "target": "Document the Cottages at Dover facilitation model and apply transferable elements to Portsmouth's Z-9 implementation.",
+      "metric": "Documentation of Dover facilitation steps; Z-9 implementation guidance updated to reflect transferable practices; number of cottage cluster applications received in Portsmouth.",
+      "sources": "Tom Morgan, AICP (April 30, 2026); Cottages at Dover, NH project (Maggie and John Randolph, principals); City of Dover Planning Department",
+      "notes": "This addition is not a standalone HAP item but a notes amendment to Z-9. Tom Morgan recommends a tour of the Cottages at Dover and offered to facilitate introductions to the Randolphs. Dover's process is the closest NH precedent for cottage cluster facilitation and is worth understanding before Portsmouth's Z-9 expansion proceeds. Question for Planning staff: has the Department already been in contact with Dover Planning regarding their cottage cluster experience?",
+      "is_new": true,
+      "status": "",
+      "status_detail": "",
+      "pros": [
+        "Provides a documented NH precedent for the Z-9 implementation team to reference.",
+        "Identifies named technical resources (the Randolphs, Dover Planning staff) available for direct consultation.",
+        "Adds context to Z-9 without creating a new line-item or competing with existing language."
+      ],
+      "cons": [
+        "Dover's market dynamics and parcel patterns differ from Portsmouth's; not all facilitation elements will transfer.",
+        "If the Cottages at Dover experience involved significant municipal subsidies or staff time, the Portsmouth equivalent may exceed what staff capacity allows."
+      ],
+      "id": "PROP-3"
+    },
+    {
+      "category": "Climate & Sustainability",
+      "action": "Floodplain overlay zone map accuracy review and refresh",
+      "description": "Phase 1: Compare the maps used in Portsmouth's 2019 floodplain overlay zone adoption with the current FEMA Flood Insurance Rate Maps (FIRMs) and any subsequent updates. Phase 2: Identify parcels where the overlay restricts buildable area based on map data that may be outdated, inaccurate, or superseded. Phase 3: Where map accuracy issues are found, initiate a process to update the overlay using current FEMA data, including public notification of affected property owners in advance of any further amendment, and incorporation of any newer flood modeling (sea-level rise projections, current Piscataqua River dynamics). Phase 4: If the original 2019 adoption is found to have notification or process deficiencies, document those for the public record and inform any future overlay amendments accordingly.",
+      "target": "Ensure the floodplain overlay zone reflects current and accurate flood hazard data, with adequate property owner notification on any amendment.",
+      "metric": "Number of parcels where overlay-restricted area changes following review; documentation of map source comparison; record of property owner notification process for any amendment.",
+      "sources": "Tom Morgan, AICP (April 30, 2026); Portsmouth Zoning Ordinance, Floodplain Overlay District; FEMA Flood Insurance Rate Maps; NH Coastal Adaptation Workgroup",
+      "notes": "External input (Tom Morgan) raised concerns that the 2019 floodplain overlay was adopted without the use of accurate maps and that property owners were notified only after adoption. These specific characterizations should be verified with City Clerk records, Planning Department files, and the original adoption documentation before the item proceeds. Independent of Tom Morgan's specific characterization, the underlying technical question — whether the 2019 overlay reflects current FEMA data and whether the maps in use accurately depict current and projected flood hazards — is a legitimate one with implications for buildable area citywide and for the city's coastal resilience planning. The item should be framed as a technical map review with public-process implications, not as a critique of the 2019 adoption.",
+      "is_new": true,
+      "status": "",
+      "status_detail": "",
+      "pros": [
+        "Aligns regulatory restrictions with current and accurate flood hazard data, supporting both housing production on incorrectly restricted parcels and appropriate restriction on parcels where flood risk has increased.",
+        "Addresses a procedural concern raised in public input regarding the 2019 adoption notification process.",
+        "Creates a documented refresh cadence for the overlay, supporting the city's broader coastal resilience and Climate Action Plan goals.",
+        "Integrates with CS-3 (Flood resilience and climate adaptation) and the CRIZ 79-E coastal resilience incentive zone work."
+      ],
+      "cons": [
+        "Reopening the 2019 overlay invites political contestation from property owners with stakes in either direction.",
+        "Map review is technical work that may exceed Planning Department staff capacity without consultant support.",
+        "If the review confirms the 2019 maps were accurate, the item produces no buildable-area gains; if it finds inaccuracies, the amendment process is itself substantial."
+      ],
+      "id": "PROP-4"
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposed HAP Additions — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2d3e52; --navy-dark:#1a2332;
+  --gold:#f4a261; --gold-dark:#c8822a;
+  --teal:#3a7d6e; --teal-dark:#2c5e54; --teal-tint:#eef5f3;
+  --coral:#e76f51; --coral-dark:#b94e35;
+  --cream:#f8f4ee;
+  --slate:#4a5562;
+  --ink:#3a4554;
+  --line:rgba(45,62,82,0.14);
+  --transition:all 0.18s ease;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Source Sans 3',sans-serif;color:var(--ink);background:var(--cream);line-height:1.55;}
+
+/* Header */
+.site-header{background:var(--navy-dark);color:rgba(255,255,255,0.92);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-bottom:3px solid var(--gold);}
+.site-header a{color:rgba(255,255,255,0.78);text-decoration:none;font-size:0.86rem;transition:var(--transition);}
+.site-header a:hover{color:#fff;}
+.header-left{display:flex;align-items:center;gap:14px;}
+.back-link{font-family:'Source Sans 3',sans-serif;font-weight:600;}
+.module-tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);background:rgba(244,162,97,0.10);padding:4px 10px;border-radius:3px;border:1px solid rgba(244,162,97,0.35);}
+
+/* Pre-header context bar */
+.pre-header{background:var(--navy);color:rgba(255,255,255,0.92);padding:18px 28px;border-left:4px solid var(--gold);}
+.pre-header-content{max-width:1100px;margin:0 auto;}
+.pre-header h1{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.6vw,30px);line-height:1.18;color:#fff;margin:0 0 8px 0;font-weight:400;}
+.pre-header .subtitle{font-size:0.95rem;line-height:1.5;color:rgba(255,255,255,0.85);}
+
+/* Status banner */
+.status-banner{background:rgba(244,162,97,0.10);border:1px solid rgba(244,162,97,0.4);border-left:5px solid var(--gold);border-radius:4px;padding:18px 22px;margin:24px auto;max-width:1100px;}
+.status-banner-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:8px;}
+.status-banner h2{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin:0 0 8px 0;font-weight:400;}
+.status-banner p{font-size:0.95rem;color:var(--ink);margin:0;line-height:1.55;}
+.status-banner .meta-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:18px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;padding-top:14px;border-top:1px solid rgba(244,162,97,0.30);}
+
+/* Container */
+.container{max-width:1100px;margin:0 auto;padding:0 28px 60px;}
+
+/* Intake protocol section */
+.intake-section{background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px 28px;margin-bottom:32px;}
+.intake-section h2{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);margin:0 0 14px 0;font-weight:400;}
+.intake-section p{font-size:0.93rem;color:var(--ink);margin:0 0 14px 0;line-height:1.6;}
+.intake-section ol{margin:14px 0 0 0;padding-left:22px;font-size:0.93rem;color:var(--ink);}
+.intake-section ol li{margin-bottom:8px;line-height:1.55;}
+.intake-source{background:var(--cream);border-left:3px solid var(--slate);padding:12px 16px;margin-top:18px;font-size:0.88rem;color:var(--slate);font-style:italic;}
+
+/* Items count */
+.items-header{display:flex;align-items:baseline;gap:14px;margin:32px 0 14px;flex-wrap:wrap;}
+.items-header h2{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--navy);margin:0;font-weight:400;}
+.items-header .count{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;background:rgba(244,162,97,0.12);padding:4px 12px;border-radius:3px;}
+
+/* Item cards */
+.item-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:4px;padding:24px 28px;margin-bottom:20px;}
+
+.item-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+.item-id{font-family:'JetBrains Mono',monospace;font-size:0.78rem;letter-spacing:0.10em;font-weight:700;color:var(--gold-dark);background:rgba(244,162,97,0.12);padding:3px 10px;border-radius:3px;}
+.item-cat{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:600;}
+.item-proposed-tag{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:var(--coral-dark);padding:3px 9px;border-radius:3px;font-weight:700;}
+
+.item-action{font-family:'DM Serif Display',serif;font-size:1.42rem;color:var(--navy);line-height:1.22;margin:6px 0 16px 0;font-weight:400;}
+
+.field{margin-bottom:14px;}
+.field-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:5px;}
+.field-value{font-size:0.93rem;line-height:1.6;color:var(--ink);}
+
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+@media(max-width:680px){.pros-cons{grid-template-columns:1fr;}}
+.pros-col,.cons-col{border-radius:4px;padding:14px 16px;}
+.pros-col{background:#eef5f3;border:1px solid #c8dfd5;}
+.cons-col{background:#fcf2ee;border:1px solid #e8c6b9;}
+.pc-header{font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:8px;}
+.pros-col .pc-header{color:var(--teal-dark);}
+.cons-col .pc-header{color:var(--coral-dark);}
+.pros-col ul,.cons-col ul{margin:0;padding-left:18px;font-size:0.88rem;line-height:1.55;color:var(--ink);}
+.pros-col li,.cons-col li{margin-bottom:6px;}
+
+.notes-box{background:var(--cream);border:1px solid #e6dccb;border-left:3px solid var(--gold);border-radius:3px;padding:12px 16px;margin-top:6px;font-size:0.88rem;line-height:1.6;color:var(--ink);}
+
+.sources-line{font-size:0.84rem;color:var(--slate);margin-top:6px;line-height:1.55;}
+.sources-line a{color:var(--gold-dark);text-decoration:none;border-bottom:1px dotted var(--gold-dark);}
+.sources-line a:hover{color:var(--navy);border-bottom-color:var(--navy);}
+
+/* AI disclosure + footer */
+.ai-disclosure{font-size:0.78rem;color:var(--slate);font-style:italic;text-align:center;margin:40px 0 12px;padding:0 28px;line-height:1.55;}
+.footer{text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);padding-bottom:28px;}
+.footer a{color:var(--gold-dark);text-decoration:none;}
+.footer a:hover{color:var(--navy);}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <a class="back-link" href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  </div>
+  <div class="header-left">
+    <a href="hap-explorer.html">HAP Explorer →</a>
+    <span class="module-tag">Proposed Additions</span>
+  </div>
+</header>
+
+<div class="pre-header">
+  <div class="pre-header-content">
+    <h1>Proposed Additions to the Housing Action Plan</h1>
+    <div class="subtitle">External expert input, drafted in standard Housing Action Plan format for Housing Committee and Planning Department review. Not yet incorporated into the canonical plan.</div>
+  </div>
+</div>
+
+<div class="status-banner">
+  <div class="status-banner-eyebrow">Review status</div>
+  <h2>For review by Housing Committee chairs and Planning Department</h2>
+  <p>The four items below are drafted in the standard Housing Action Plan item format but live outside the canonical <code>hap-actions.json</code> file. They will be incorporated only on direction from Councilor John Tabor, Asst. Mayor Joanna Kelley, and the Planning Department. If accepted, items will be assigned permanent IDs and merged into the canonical plan. If declined, this file remains as a record of the input and the decision.</p>
+  <div class="meta-row">
+    <span>Version 1.0</span>
+    <span>April 30, 2026</span>
+    <span>4 proposed items</span>
+    <span>148 canonical items unchanged</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="intake-section">
+    <h2>Intake protocol</h2>
+    <p>Progress Portsmouth received unsolicited expert input from a credentialed planner residing in another New Hampshire community. The input addressed multiple aspects of the Housing Action Plan and surrounding municipal policy. Progress Portsmouth triaged the input through three lenses:</p>
+    <ol>
+      <li><strong>Substantive policy or technical contributions</strong> that translate cleanly into action items or amendments — included below.</li>
+      <li><strong>Contested policy positions</strong> that deserve consideration but cannot be silently absorbed into the plan — recorded but not drafted as items.</li>
+      <li><strong>Personnel or process critiques</strong> that fall outside the scope of the action plan — referred to the appropriate body or recorded for context.</li>
+    </ol>
+    <p style="margin-top:16px;">The four items below resulted from the first lens. Any of them may be accepted as drafted, accepted with modifications, or declined. The review questions at the end of this page guide the committee and Planning Department's response.</p>
+    <div class="intake-source">
+      <strong>Source of input:</strong> Tom Morgan, AICP — credentialed planner, resident of another New Hampshire community. Input received April 30, 2026.
+    </div>
+  </section>
+
+  <div class="items-header">
+    <h2>Proposed items</h2>
+    <span class="count">4 items · drafted in canonical format</span>
+  </div>
+
+  <div id="items-container"></div>
+
+  <section class="intake-section" style="margin-top:32px;">
+    <h2>Review questions</h2>
+    <p>For each proposed item, the Housing Committee and Planning Department are asked to consider:</p>
+    <ol>
+      <li>Should the proposed item be incorporated into the Housing Action Plan as drafted?</li>
+      <li>Should the proposed item be incorporated with modifications? If so, what modifications?</li>
+      <li>Should the proposed item be declined, and on what basis?</li>
+      <li>If accepted, what canonical ID should the item receive within the existing category structure?</li>
+    </ol>
+  </section>
+
+</div>
+
+<p class="ai-disclosure">Created with AI assistance in research and information design, with human editorial control.</p>
+<div class="footer">
+  Progress Portsmouth · <a href="https://progressportsmouth.com">progressportsmouth.com</a> · v1.0 · April 30, 2026
+</div>
+
+<script>
+const DATA_URL = 'hap-proposed-additions.json';
+
+function escapeHtml(s){
+  if(s==null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function linkify(text){
+  if(!text) return '';
+  // Convert http(s) URLs to clickable links
+  return escapeHtml(text).replace(/(https?:\/\/[^\s)]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+}
+
+function renderItem(item){
+  let h = `<div class="item-card">`;
+  h += `<div class="item-head">`;
+  h += `<span class="item-id">${escapeHtml(item.id)}</span>`;
+  h += `<span class="item-cat">${escapeHtml(item.category)}</span>`;
+  h += `<span class="item-proposed-tag">Proposed</span>`;
+  h += `</div>`;
+  h += `<h3 class="item-action">${escapeHtml(item.action)}</h3>`;
+
+  if(item.description){
+    h += `<div class="field"><div class="field-label">Description</div><div class="field-value">${escapeHtml(item.description)}</div></div>`;
+  }
+  if(item.target){
+    h += `<div class="field"><div class="field-label">Target</div><div class="field-value">${escapeHtml(item.target)}</div></div>`;
+  }
+  if(item.metric){
+    h += `<div class="field"><div class="field-label">Metric</div><div class="field-value">${escapeHtml(item.metric)}</div></div>`;
+  }
+
+  if((item.pros && item.pros.length) || (item.cons && item.cons.length)){
+    h += `<div class="pros-cons">`;
+    h += `<div class="pros-col"><div class="pc-header">✓ Pros</div><ul>`;
+    (item.pros||[]).forEach(p => { h += `<li>${escapeHtml(p)}</li>`; });
+    h += `</ul></div>`;
+    h += `<div class="cons-col"><div class="pc-header">⚠ Cons</div><ul>`;
+    (item.cons||[]).forEach(c => { h += `<li>${escapeHtml(c)}</li>`; });
+    h += `</ul></div>`;
+    h += `</div>`;
+  }
+
+  if(item.notes){
+    h += `<div class="field"><div class="field-label">Notes</div><div class="notes-box">${escapeHtml(item.notes)}</div></div>`;
+  }
+  if(item.sources){
+    h += `<div class="field"><div class="field-label">Sources</div><div class="sources-line">${linkify(item.sources)}</div></div>`;
+  }
+
+  h += `</div>`;
+  return h;
+}
+
+async function load(){
+  try{
+    const res = await fetch(DATA_URL, {cache:'no-store'});
+    if(!res.ok) throw new Error('Fetch failed: '+res.status);
+    const data = await res.json();
+    const items = data.proposed_items || [];
+    const container = document.getElementById('items-container');
+    container.innerHTML = items.map(renderItem).join('');
+  } catch(err){
+    document.getElementById('items-container').innerHTML =
+      '<div class="item-card"><h3 class="item-action">Could not load proposed items</h3><p style="color:var(--slate)">' + escapeHtml(err.message) + '</p></div>';
+  }
+}
+load();
+</script>
+
+</body>
+</html>
