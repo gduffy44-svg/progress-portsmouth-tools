@@ -617,6 +617,14 @@
       .tab .lbl { font-size: 9.5px; }
       .helpstrip { padding: 9px 18px; font-size: 10.5px; }
       .helpstrip .helpstrip-link { font-size: 10.5px; }
+      /* tighter cards on phones */
+      .card { padding: 16px 16px; margin-bottom: 10px; }
+      .card h3 { font-size: 17px; margin-bottom: 6px; }
+      .card p { font-size: 14.5px; line-height: 1.45; margin-bottom: 8px; }
+      .panel-context { font-size: 14px; }
+      .income { font-size: 12px; line-height: 1.7; padding: 10px 12px; }
+      .cta { font-size: 13.5px; padding-top: 8px; }
+      .caveat { font-size: 13px; }
     }
 
     @media (max-width: 380px) {
@@ -684,12 +692,12 @@
     <div class="panel-header">
       <div class="panel-eyebrow">Tier 01 — Highest impact</div>
       <h2 class="panel-title">If energy bills are challenging your budget</h2>
-      <p class="panel-context">Two programs, big savings. Income limits are higher than most people expect — check before assuming you don't qualify.</p>
+      <p class="panel-context">Two big-dollar levers. Income limits are higher than most people expect.</p>
     </div>
 
     <article class="card">
       <h3>Apply for the Electric Assistance Program</h3>
-      <p>A discount of <strong>up to 86%</strong> on the first 750 kWh of your monthly Eversource bill. Year-round. Not a loan.</p>
+      <p><strong>Up to 86% off</strong> the first 750 kWh of your monthly Eversource bill. Year-round. Not a loan.</p>
       <ul class="income">
         <li><span class="size">Family of 1</span><span class="amt">≤ $47,604</span></li>
         <li><span class="size">Family of 2</span><span class="amt">≤ $62,252</span></li>
@@ -698,21 +706,21 @@
         <li><span class="size">Family of 5</span><span class="amt">≤ $106,195</span></li>
       </ul>
       <div class="cta">
-        Apply through <strong>Community Action Partnership (CAPHR)</strong><br>
+        <strong>Community Action Partnership (CAPHR)</strong><br>
         4 Cutts St, Portsmouth · <a href="tel:6034363896">(603) 436-3896</a>
       </div>
-      <p class="caveat">Discount applies whether your supplier is Portsmouth Community Power, Eversource default, or a third-party supplier. Renters and homeowners both qualify.</p>
+      <p class="caveat">Renters and homeowners both qualify. Works with any supplier.</p>
     </article>
 
     <article class="card">
       <h3>Free NH Saves home energy audit</h3>
-      <p>An auditor visits your home, installs LEDs, weatherstripping, and smart strips on the spot, and identifies rebate-eligible upgrades like insulation and heat pumps.</p>
-      <p>Funded by the System Benefits Charge already on your monthly utility bill — you've already paid for it.</p>
-      <p><strong>Renters:</strong> ask your landlord. NH Saves often covers most of the upgrade cost, so many landlords will agree.</p>
+      <p>Auditor visits, installs LEDs, weatherstripping, and smart strips on the spot. Identifies rebate-eligible upgrades like insulation and heat pumps.</p>
+      <p>Already paid for through your bill's System Benefits Charge.</p>
+      <p><strong>Renters:</strong> ask your landlord — most upgrade costs are covered.</p>
       <div class="cta">
-        Learn more · <a href="https://nhsaves.com" target="_blank" rel="noopener">nhsaves.com</a>
+        <a href="https://nhsaves.com" target="_blank" rel="noopener">nhsaves.com</a>
       </div>
-      <p class="caveat">Income-eligible households can have weatherization upgrades fully covered through the Home Energy Assistance program. Eligibility differs from EAP — the agency will check both at the same appointment.</p>
+      <p class="caveat">Lower-income households can get weatherization fully covered. Different eligibility than EAP — the agency checks both.</p>
     </article>
   </section>
 
@@ -721,31 +729,33 @@
     <div class="panel-header">
       <div class="panel-eyebrow">Tier 02 — Medium impact</div>
       <h2 class="panel-title">For every Portsmouth household</h2>
-      <p class="panel-context">Three actions that work regardless of income or housing situation.</p>
+      <p class="panel-context">Three actions for any income or housing situation.</p>
     </div>
 
     <article class="card">
       <h3>Check your electricity supply rate</h3>
-      <p>Eversource <em>delivers</em> your power; a separate supplier sets the per-kWh rate — the bigger half of your bill. Switching is free, takes minutes, and never interrupts service.</p>
-      <p>Portsmouth residents are defaulted into <strong>Portsmouth Community Power</strong>. Through <strong>July 31, 2026</strong>, the CPCNH default rate is <span class="stat">14.663¢/kWh</span> — currently higher than Eversource's <span class="stat">11.3¢/kWh</span>. The City Energy Advisory Committee notes that opting out to Eversource saves the average 650-kWh-per-month household about <strong>$22/month</strong> for this rate period.</p>
-      <p>Customers can move between Eversource and Community Power without penalty, and rates reset Feb 1 and Aug 1 — worth comparing each cycle. Community Power's enduring value is local control over the energy mix and the ability to "opt up" to higher-renewable tiers, not a guaranteed lower rate.</p>
+      <p>Right now (through July 31, 2026), <strong>opting out of Community Power saves the average household ~$22/month</strong>:</p>
+      <ul class="income">
+        <li><span class="size">Eversource default</span><span class="amt">11.3¢/kWh</span></li>
+        <li><span class="size">Community Power</span><span class="amt">14.663¢/kWh</span></li>
+      </ul>
+      <p>No penalty to switch. Rates reset Feb 1 and Aug 1 — recheck each cycle.</p>
       <div class="cta">
-        Opt in/out · <a href="https://www.communitypowernh.gov/portsmouth" target="_blank" rel="noopener">communitypowernh.gov/portsmouth</a><br>
-        Or call <a href="tel:18666037697">1-866-603-7697</a><br>
-        Licensed third-party suppliers · <a href="https://www.energy.nh.gov" target="_blank" rel="noopener">energy.nh.gov</a>
+        Switch · <a href="https://www.communitypowernh.gov/portsmouth" target="_blank" rel="noopener">communitypowernh.gov</a> or <a href="tel:18666037697">1-866-603-7697</a>
       </div>
+      <p class="caveat">Community Power's value is local control and renewable-mix choice, not a guaranteed lower rate.</p>
     </article>
 
     <article class="card">
       <h3>Tune up your AC before summer</h3>
-      <p>According to DOE, a clogged filter alone can drive electricity use up by <strong>5–15%</strong>. A spring tune-up addresses additional inefficiencies — refrigerant levels, dirty coils, duct leaks — that compound the loss. Schedule the inspection in late spring before contractors get booked.</p>
-      <p>Can't afford a tune-up? The two highest-impact DIY steps are: change the filter (~$15) and clear leaves and debris from the outdoor compressor unit so air flows through.</p>
+      <p>A clogged filter alone drives electricity use up <strong>5–15%</strong> (DOE). A spring tune-up catches refrigerant, coil, and duct issues that compound the loss.</p>
+      <p>Can't afford a tune-up? Two free DIY wins: change the filter (~$15) and clear leaves from the outdoor unit.</p>
     </article>
 
     <article class="card">
-      <h3>Set the thermostat at 78°F when home</h3>
-      <p>Each degree above 72°F saves about <strong>3% on cooling cost</strong>. Set higher when out.</p>
-      <p>If 78°F feels too warm, a ceiling fan can make a room feel about 4°F cooler at a fraction of the electricity. Run fans only when the room is occupied — fans cool people, not air.</p>
+      <h3>Set the thermostat to 78°F</h3>
+      <p>Each degree above 72°F saves about <strong>3% on cooling</strong>. Push it higher when you're out.</p>
+      <p>Too warm? A ceiling fan adds ~4°F of perceived cooling. Turn fans off when you leave the room — fans cool people, not air.</p>
     </article>
   </section>
 
@@ -802,7 +812,7 @@
       <li>
         <strong>Community Action Partnership (CAPHR)</strong>
         <a href="tel:6034363896">(603) 436-3896</a>
-        <span class="desc">4 Cutts St, Portsmouth · Fuel Assistance, EAP, Weatherization, and Neighbor Helping Neighbor (last-resort fund for households who don't qualify for LIHEAP). Formed by the merger of Rockingham Community Action and Southern NH Services.</span>
+        <span class="desc">4 Cutts St, Portsmouth · EAP, Fuel Assistance, Weatherization, Neighbor Helping Neighbor.</span>
       </li>
       <li>
         <strong>211 NH</strong>
@@ -828,8 +838,9 @@
   </div>
 
   <details class="version">
-    <summary>Version 1.2 · May 2026</summary>
+    <summary>Version 1.3 · May 2026</summary>
     <ul class="versionlog">
+      <li>v1.3 — May 2026 — Mobile readability pass. Cut prose ~50% across all four tier panels. Reformatted Tier 02 supply-rate card as a rate-comparison list (Eversource vs. Community Power) with the $22/month savings as the lead. Reduced card padding and line-height on screens ≤540px. Tightened panel context lines and emergency-contact descriptions. No factual changes from v1.2.</li>
       <li>v1.2 — May 2026 — Fact-check corrections following multi-reviewer audit. (1) Tier 02 supply-rate card rewritten to reflect current CPCNH vs. Eversource rates (14.663¢ vs. 11.3¢ through July 31, 2026), citing City Energy Advisory Committee guidance on opt-out savings. (2) EAP discount range corrected from "up to 76%" to "up to 86%" per current NH Department of Energy figures. (3) Agency name updated from "Rockingham Community Action" to "Community Action Partnership (CAPHR)" — RCA merged with Southern NH Services in 2011, rebranded as CAPHR October 2024. (4) HVAC efficiency claim softened from "20–30% more electricity" to DOE-supported "5–15%" for filter alone, with separate mention of tune-up addressing additional inefficiencies. (5) Weatherization caveat dropped specific dollar figure and clarified that NHSaves Home Energy Assistance eligibility differs from EAP. (6) Specified "ceiling fan" for the 4°F figure. Added City of Portsmouth press release to sources list.</li>
       <li>v1.1 — May 2026 — Added "Why bills keep climbing" context block in the endmatter, citing EIA forecast and structural drivers (data center demand, grid costs, global energy market disruptions). Positioned after the action tiers so it provides background without gating the action content.</li>
       <li>v1.0 — May 2026 — Initial release. Tier-ranked savings actions for Portsmouth electric bills, with persistent help banner for households behind on a bill.</li>
