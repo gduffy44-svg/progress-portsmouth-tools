@@ -134,9 +134,10 @@
       font-family: 'DM Serif Display', serif;
       font-weight: 400;
       font-style: italic;
-      font-size: 15.5px;
-      color: var(--ink-soft);
+      font-size: 17px;
+      color: var(--ink);
       max-width: 50ch;
+      margin-top: 10px;
     }
 
     /* ───── context callout (why bills are rising) ───── */
@@ -184,13 +185,15 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 10px 24px;
-      background: var(--paper-deep);
-      border-bottom: 1px solid var(--rule);
+      padding: 12px 24px;
+      background: #fef0eb;
+      border-top: 1px solid rgba(231, 111, 81, 0.25);
+      border-bottom: 2px solid var(--coral);
       font-family: 'JetBrains Mono', monospace;
       font-size: 11.5px;
       letter-spacing: 0.04em;
-      color: var(--ink-soft);
+      color: var(--ink);
+      font-weight: 500;
     }
     .helpstrip .label {
       display: flex;
@@ -254,22 +257,23 @@
       min-width: max-content;
       background: transparent;
       border: none;
-      border-bottom: 3px solid transparent;
-      padding: 14px 10px 12px;
+      border-bottom: 4px solid transparent;
+      padding: 14px 10px 10px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 10.5px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink-mute);
+      color: var(--ink-soft);
       cursor: pointer;
-      transition: color 0.15s ease, border-color 0.15s ease;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
       line-height: 1.2;
+      font-weight: 500;
     }
-    .tab:hover { color: var(--ink-soft); }
+    .tab:hover { color: var(--ink); background: rgba(45, 62, 82, 0.04); }
     .tab .num {
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
@@ -279,8 +283,9 @@
       line-height: 1;
     }
     .tab[aria-selected="true"] {
-      color: var(--teal);
+      color: var(--ink);
       border-bottom-color: var(--teal);
+      background: rgba(58, 125, 110, 0.10);
     }
     .tab[aria-selected="true"] .num {
       color: var(--teal);
@@ -338,6 +343,7 @@
     .card {
       background: var(--paper-card);
       border: 1px solid var(--rule-soft);
+      border-left: 3px solid var(--navy);
       padding: 20px 22px;
       margin-bottom: 14px;
     }
@@ -387,15 +393,21 @@
 
     .cta {
       margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--rule);
+      padding: 10px 12px;
+      background: rgba(58, 125, 110, 0.06);
+      border-left: 2px solid var(--teal);
       font-size: 14px;
       line-height: 1.55;
     }
     .cta a {
       font-family: 'JetBrains Mono', monospace;
       font-size: 13.5px;
+      color: var(--teal);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
+    .cta a:hover { color: var(--navy-dark); }
 
     .caveat {
       font-style: italic;
@@ -437,26 +449,31 @@
     .helpgrid li {
       padding: 16px 18px;
       background: var(--paper-card);
-      border-left: 3px solid var(--coral);
+      border: 1px solid var(--rule-soft);
+      border-left: 4px solid var(--coral);
       font-size: 14.5px;
       line-height: 1.5;
     }
     .helpgrid strong {
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
-      font-size: 17px;
+      font-size: 18px;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       color: var(--ink);
     }
     .helpgrid a {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--coral);
       display: inline-block;
-      margin: 2px 0;
+      margin: 2px 0 4px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
-    .helpgrid .desc { color: var(--ink-soft); margin-top: 4px; display: block; }
+    .helpgrid a:hover { color: var(--navy-dark); }
+    .helpgrid .desc { color: var(--ink-soft); margin-top: 4px; display: block; font-size: 13.5px; }
 
     /* ───── footer bar ───── */
     .footbar {
@@ -612,19 +629,26 @@
       .footbar { padding: 16px 18px; }
       details.sources { padding: 14px 18px 20px; }
       details.version { padding: 12px 18px 14px; }
-      .tab { padding: 12px 8px 10px; }
-      .tab .num { font-size: 16px; }
-      .tab .lbl { font-size: 9.5px; }
-      .helpstrip { padding: 9px 18px; font-size: 10.5px; }
-      .helpstrip .helpstrip-link { font-size: 10.5px; }
-      /* tighter cards on phones */
-      .card { padding: 16px 16px; margin-bottom: 10px; }
+      .tab { padding: 12px 8px 8px; border-bottom-width: 4px; }
+      .tab .num { font-size: 18px; font-weight: 600; }
+      .tab .lbl { font-size: 9.5px; font-weight: 500; }
+      .helpstrip { padding: 11px 18px; font-size: 11px; }
+      .helpstrip .helpstrip-link { font-size: 11px; }
+      /* tighter cards on phones with shadow lift */
+      .card {
+        padding: 16px 16px;
+        margin-bottom: 12px;
+        box-shadow: 0 1px 3px rgba(45, 62, 82, 0.08);
+        border-left-width: 4px;
+      }
       .card h3 { font-size: 17px; margin-bottom: 6px; }
       .card p { font-size: 14.5px; line-height: 1.45; margin-bottom: 8px; }
+      .panel-title { font-size: 23px; }
       .panel-context { font-size: 14px; }
       .income { font-size: 12px; line-height: 1.7; padding: 10px 12px; }
       .cta { font-size: 13.5px; padding-top: 8px; }
       .caveat { font-size: 13px; }
+      .helpgrid li { box-shadow: 0 1px 3px rgba(45, 62, 82, 0.08); }
     }
 
     @media (max-width: 380px) {
@@ -838,8 +862,9 @@
   </div>
 
   <details class="version">
-    <summary>Version 1.3 · May 2026</summary>
+    <summary>Version 1.4 · May 2026</summary>
     <ul class="versionlog">
+      <li>v1.4 — May 2026 — Mobile contrast pass. Stronger help banner (coral fill + thicker bottom rule). Active tab gets a teal fill plus thicker border. All cards now have a tier-colored left rule (navy default, teal for Tier 01, coral for Tier 04). Cards lift off the page with a subtle shadow on phones. CTA blocks reformatted as tinted left-rule call-outs with underlined teal links. Tier 04 phone numbers enlarged to 16px, bolded, and made coral to match the urgency cue. Lede color darkened from soft-ink to full ink for top-of-page punch.</li>
       <li>v1.3 — May 2026 — Mobile readability pass. Cut prose ~50% across all four tier panels. Reformatted Tier 02 supply-rate card as a rate-comparison list (Eversource vs. Community Power) with the $22/month savings as the lead. Reduced card padding and line-height on screens ≤540px. Tightened panel context lines and emergency-contact descriptions. No factual changes from v1.2.</li>
       <li>v1.2 — May 2026 — Fact-check corrections following multi-reviewer audit. (1) Tier 02 supply-rate card rewritten to reflect current CPCNH vs. Eversource rates (14.663¢ vs. 11.3¢ through July 31, 2026), citing City Energy Advisory Committee guidance on opt-out savings. (2) EAP discount range corrected from "up to 76%" to "up to 86%" per current NH Department of Energy figures. (3) Agency name updated from "Rockingham Community Action" to "Community Action Partnership (CAPHR)" — RCA merged with Southern NH Services in 2011, rebranded as CAPHR October 2024. (4) HVAC efficiency claim softened from "20–30% more electricity" to DOE-supported "5–15%" for filter alone, with separate mention of tune-up addressing additional inefficiencies. (5) Weatherization caveat dropped specific dollar figure and clarified that NHSaves Home Energy Assistance eligibility differs from EAP. (6) Specified "ceiling fan" for the 4°F figure. Added City of Portsmouth press release to sources list.</li>
       <li>v1.1 — May 2026 — Added "Why bills keep climbing" context block in the endmatter, citing EIA forecast and structural drivers (data center demand, grid costs, global energy market disruptions). Positioned after the action tiers so it provides background without gating the action content.</li>
