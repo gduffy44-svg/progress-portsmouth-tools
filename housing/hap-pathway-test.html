@@ -381,6 +381,53 @@ input, select, textarea { font-family: inherit; }
 }
 .btn-secondary:hover { border-color: var(--navy); background: var(--cream); }
 
+.btn-small{padding:8px 14px;font-size:0.82rem;}
+
+.results-header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:18px;flex-wrap:wrap;}
+.results-header-row h2{margin:0;}
+.results-actions{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* B-style three statements */
+.b-statements{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.b-statement{background:#fff;border-radius:6px;padding:18px 22px;border-left:4px solid;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;}
+.b-s1{border-left-color:var(--teal);}
+.b-s2{border-left-color:var(--gold);}
+.b-s3{border-left-color:var(--coral);}
+.b-num{font-family:'DM Serif Display',serif;font-size:2rem;line-height:1;font-weight:400;width:46px;text-align:right;}
+.b-s1 .b-num{color:var(--teal);}
+.b-s2 .b-num{color:var(--gold-dark);}
+.b-s3 .b-num{color:var(--coral-dark);}
+.b-body .b-name{font-family:'DM Serif Display',serif;font-size:1.12rem;line-height:1.2;color:var(--navy);margin:0 0 6px;font-weight:400;}
+.b-body .b-desc{font-size:0.92rem;line-height:1.5;color:var(--ink);margin:0 0 8px;}
+.b-state{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:3px;}
+.b-s1 .b-state{color:var(--teal-dark);background:var(--teal-tint);}
+.b-s2 .b-state{color:var(--gold-dark);background:var(--gold-tint);}
+.b-s3 .b-state{color:var(--coral-dark);background:var(--coral-tint);}
+.b-dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
+.b-s1 .b-dot{background:var(--teal);}
+.b-s2 .b-dot{background:var(--gold);}
+.b-s3 .b-dot{background:var(--coral);outline:1.5px dashed var(--coral);outline-offset:1px;}
+.b-statements-footer{padding-left:62px;margin-top:4px;}
+.b-statements-footer a{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;color:var(--gold-dark);text-decoration:none;border-bottom:1px dotted var(--gold-dark);}
+.b-statements-footer a:hover{color:var(--navy);border-bottom-color:var(--navy);}
+@media(max-width:560px){
+  .b-statement{grid-template-columns:1fr;gap:4px;}
+  .b-num{text-align:left;width:auto;}
+  .b-statements-footer{padding-left:0;}
+}
+
+@media print {
+  body{background:#fff;}
+  .topbar,.tabs,.filters,.sidebar,.app-footer,#panel-intro,#panel-test,.results-actions,.print-skip{display:none !important;}
+  .panel#panel-results{display:block !important;}
+  main,.app-main{display:block !important;padding:0;margin:0;}
+  .results{padding:0;}
+  .results-header-row{flex-direction:column;}
+  h2,h3{break-after:avoid;}
+  .results-table-row{break-inside:avoid;}
+  @page{margin:0.6in;}
+}
+
 .notice {
   background: var(--gold-tint);
   border-left: 3px solid var(--gold);
@@ -1029,6 +1076,8 @@ input, select, textarea { font-family: inherit; }
   opacity: 1; transform: translateX(-50%) translateY(0);
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
 
@@ -1060,75 +1109,44 @@ input, select, textarea { font-family: inherit; }
     <section class="panel active" id="panel-intro" role="tabpanel">
       <div class="intro">
 
-        <!-- Pre-header value prop -->
-        <div class="pre-header">
-          <p class="pre-header-text">
-            <strong>Score the HAP items you want to discuss</strong> — or just review the
-            City staff's 26 preliminary picks. Fast. Traceable. Yours.
-          </p>
-        </div>
-
-        <!-- Value prop -->
-        <div class="intro-eyebrow">A tool for the Housing Committee</div>
-        <h1>Quickly test each HAP item's <em>potential.</em></h1>
+        <div class="intro-eyebrow">A practical test for HAP triage</div>
+        <h1>Someone has to fund and build it.</h1>
         <p class="intro-lede">
-          A structured way to record your judgment on every Housing Action Plan item, capture your reasoning,
-          and export an aggregated view of where items concentrate, conflict, or reinforce each other.
+          It's worth stating the obvious: for every desired outcome the Housing Committee identifies, someone has to fund and build a project. Otherwise nothing changes.
+        </p>
+        <p class="intro-lede" style="margin-top:10px;">
+          Here's a simple test you can apply against any item in the HAP that will help you assign priority.
         </p>
 
-        <!-- The test sentence -->
-        <div class="test-card">
-          <div class="test-card-label">The test you'll apply to every item</div>
-          <p class="test-card-quote">
-            Does this item, by itself or in relation to others, contribute to creating optimal
-            conditions for the types of housing outcomes we want?
-          </p>
-        </div>
-
-        <!-- Compact pathway strip -->
-        <div class="pathway-strip">
-          <div class="pathway-strip-label">The test scores each item against three pathways</div>
-          <div class="pathway-chips">
-            <div class="pchip p1">
-              <span class="pchip-num">01</span>
-              <span class="pchip-name">Permanently Affordable Workforce Housing</span>
-              <span class="pchip-state-dot active" title="Active in Portsmouth"></span>
-            </div>
-            <div class="pchip p2">
-              <span class="pchip-num">02</span>
-              <span class="pchip-name">Resident-Led Gentle Density</span>
-              <span class="pchip-state-dot partial" title="Partially active"></span>
-            </div>
-            <div class="pchip p3">
-              <span class="pchip-num">03</span>
-              <span class="pchip-name">Neighborhood Builder Program</span>
-              <span class="pchip-state-dot aspirational" title="Aspirational — not yet built"></span>
+        <!-- Three statements -->
+        <div class="b-statements">
+          <div class="b-statement b-s1">
+            <div class="b-num">01</div>
+            <div class="b-body">
+              <div class="b-name">Permanently Affordable Workforce Housing</div>
+              <div class="b-desc">Mission-driven nonprofits build income-restricted multifamily with public, philanthropic, and LIHTC capital.</div>
+              <span class="b-state"><span class="b-dot"></span>Active in Portsmouth</span>
             </div>
           </div>
-          <div class="pathway-strip-legend">
-            <span class="legend-item"><span class="pchip-state-dot active"></span>Active</span>
-            <span class="legend-item"><span class="pchip-state-dot partial"></span>Partial</span>
-            <span class="legend-item"><span class="pchip-state-dot aspirational"></span>Aspirational</span>
-            <a class="pathway-strip-link" href="housing-pathways.html" target="_blank" rel="noopener">Learn more about the pathways →</a>
+          <div class="b-statement b-s2">
+            <div class="b-num">02</div>
+            <div class="b-body">
+              <div class="b-name">Resident-Led Gentle Density</div>
+              <div class="b-desc">Owner-occupants build ADUs and small conversions with personal savings and state ADU program capital.</div>
+              <span class="b-state"><span class="b-dot"></span>Partially active</span>
+            </div>
           </div>
-        </div>
-
-        <!-- Instructions -->
-        <div class="intro-rules">
-          <h3>How to use this tool</h3>
-          <ol>
-            <li>Pick an item from the sidebar, or filter by category / status to focus the work.</li>
-            <li>For each pathway, choose <strong>Strengthens</strong>, <strong>Weakens</strong>, <strong>Neutral</strong>, or leave blank if not applicable.</li>
-            <li>Add a note when the judgment needs context. All scores and notes save automatically.</li>
-            <li>Visit Results to see where items concentrate, where gaps sit, and which items strengthen multiple pathways.</li>
-          </ol>
-        </div>
-
-        <div class="notice">
-          <strong>About persistence:</strong> Scores save automatically in this browser only.
-          Use the <em>Export</em> button on the Results tab to save your work outside the browser
-          before clearing site data. This tool is for committee work-in-progress; final triage
-          decisions belong in the recorded Recommendations Memos.
+          <div class="b-statement b-s3">
+            <div class="b-num">03</div>
+            <div class="b-body">
+              <div class="b-name">Neighborhood Builder Program</div>
+              <div class="b-desc">Local small-scale investors build missing-middle infill with private and community capital.</div>
+              <span class="b-state"><span class="b-dot"></span>Aspirational — not yet built</span>
+            </div>
+          </div>
+          <div class="b-statements-footer">
+            <a href="housing-pathways.html" target="_blank" rel="noopener">Pathways explainer →</a>
+          </div>
         </div>
 
         <div class="intro-actions">
@@ -1137,8 +1155,7 @@ input, select, textarea { font-family: inherit; }
         </div>
 
         <p class="footnote">
-          For the full ecosystem map — actors, tools, and challenges to the framework — see the
-          <a href="https://www.progressportsmouth.com" target="_blank" rel="noopener">Three Housing Ecosystems explainer</a>.
+          Scores save automatically in this browser. Use <em>Download PDF</em> on the Results tab to save outside the browser.
           <span class="counts-tag"><span id="introItemCount">148</span> items · <span id="introCatCount">14</span> categories</span>
         </p>
       </div>
@@ -1221,7 +1238,14 @@ input, select, textarea { font-family: inherit; }
     <section class="panel" id="panel-results" role="tabpanel">
       <div class="results">
         <div class="results-eyebrow">Aggregate view</div>
-        <h2 id="resultsHeader">Where do scored items concentrate?</h2>
+        <div class="results-header-row">
+          <h2 id="resultsHeader">Where do scored items concentrate?</h2>
+          <div class="results-actions" id="resultsActions" style="display:none;">
+            <button class="btn-secondary btn-small" id="printResultsBtn" title="Print this page (use 'Save as PDF' in the print dialog for a file)">🖨 Print</button>
+            <button class="btn-secondary btn-small" id="downloadPdfBtn" title="Download a PDF of these results">⬇ Download PDF</button>
+            <button class="btn-secondary btn-small" id="copyResultsBtn" title="Copy results as text for paste">⧉ Copy text</button>
+          </div>
+        </div>
         <div id="resultsContent">
           <div class="results-empty">No items scored yet. Run the test first.</div>
         </div>
@@ -1760,11 +1784,14 @@ let resultsFilter = { category: '', pathway: '' };
 
 function renderResults() {
   const totalScored = Object.values(state.scores).filter(s => s.p1 || s.p2 || s.p3).length;
+  const actionsBar = document.getElementById('resultsActions');
 
   if (totalScored === 0) {
     resultsContent.innerHTML = '<div class="results-empty">No items scored yet. Run the test first.</div>';
+    if (actionsBar) actionsBar.style.display = 'none';
     return;
   }
+  if (actionsBar) actionsBar.style.display = 'flex';
 
   // Tally per pathway
   const tally = {
@@ -1989,6 +2016,115 @@ function fallbackCopy(txt) {
   document.body.removeChild(ta);
 }
 
+function printResults() {
+  // Switch to results tab if not already there, then print
+  const resultsTab = document.querySelector('[data-panel="results"]');
+  if (resultsTab) resultsTab.click();
+  setTimeout(() => window.print(), 100);
+}
+
+function downloadPdf() {
+  if (typeof window.jspdf === 'undefined') {
+    showToast('PDF library not loaded. Try the Print button.');
+    return;
+  }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit:'pt', format:'letter' });
+  const PAGE_W = doc.internal.pageSize.getWidth();
+  const MARGIN = 48;
+
+  // Compute tally
+  const tally = { p1:{s:0,w:0,n:0}, p2:{s:0,w:0,n:0}, p3:{s:0,w:0,n:0} };
+  HAP_ITEMS.forEach(item => {
+    const s = state.scores[item.id];
+    ['p1','p2','p3'].forEach(p => {
+      if (s[p] === 'strengthens') tally[p].s++;
+      else if (s[p] === 'weakens') tally[p].w++;
+      else if (s[p] === 'neutral') tally[p].n++;
+    });
+  });
+  const totalScored = Object.values(state.scores).filter(s => s.p1 || s.p2 || s.p3).length;
+
+  // Header
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(18);
+  doc.setTextColor(45,62,82);
+  doc.text('HAP Pathway Test — Results', MARGIN, 70);
+
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(10);
+  doc.setTextColor(74,85,98);
+  const dateStr = new Date().toLocaleString();
+  doc.text('Generated ' + dateStr, MARGIN, 88);
+  doc.text('Scope: ' + (state.scope === 'shortlist' ? 'City staff shortlist (26 items)' : 'All HAP items') + ' · ' + totalScored + ' scored', MARGIN, 102);
+
+  // Pathway tally summary
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(11);
+  doc.setTextColor(45,62,82);
+  doc.text('Pathway tally', MARGIN, 132);
+
+  doc.setFont('helvetica','normal');
+  doc.setFontSize(10);
+  doc.setTextColor(74,85,98);
+  let y = 150;
+  const labels = {
+    p1:'01 Permanently Affordable Workforce Housing',
+    p2:'02 Resident-Led Gentle Density',
+    p3:'03 Neighborhood Builder Program'
+  };
+  ['p1','p2','p3'].forEach(p => {
+    doc.text(labels[p], MARGIN, y);
+    doc.text(tally[p].s + ' strengthens · ' + tally[p].w + ' weakens · ' + tally[p].n + ' neutral', MARGIN + 290, y);
+    y += 16;
+  });
+
+  // Scored items table
+  const rows = [];
+  HAP_ITEMS.forEach(item => {
+    const s = state.scores[item.id];
+    if (!s.p1 && !s.p2 && !s.p3 && !s.note) return;
+    const sym = v => v === 'strengthens' ? '+' : v === 'weakens' ? '−' : v === 'neutral' ? '○' : '';
+    const tag = CITY_SHORTLIST[item.id] ? '[' + CITY_SHORTLIST[item.id].term.toUpperCase().slice(0,1) + ']' : '';
+    rows.push([
+      item.id + (tag ? ' ' + tag : ''),
+      item.action + (s.note ? '\nNote: ' + s.note : ''),
+      sym(s.p1),
+      sym(s.p2),
+      sym(s.p3)
+    ]);
+  });
+
+  if (rows.length > 0) {
+    doc.autoTable({
+      startY: y + 14,
+      head: [['ID','Item','P1','P2','P3']],
+      body: rows,
+      headStyles: { fillColor:[45,62,82], textColor:[255,255,255], fontSize:9 },
+      bodyStyles: { fontSize:9, valign:'top' },
+      columnStyles: {
+        0: { cellWidth: 60 },
+        1: { cellWidth: 'auto' },
+        2: { cellWidth: 28, halign:'center' },
+        3: { cellWidth: 28, halign:'center' },
+        4: { cellWidth: 28, halign:'center' }
+      },
+      margin: { left: MARGIN, right: MARGIN },
+      didDrawPage: function(data) {
+        // Footer
+        const pageH = doc.internal.pageSize.getHeight();
+        doc.setFontSize(8);
+        doc.setTextColor(120,125,135);
+        doc.text('Progress Portsmouth · HAP Pathway Test · progressportsmouth.com', MARGIN, pageH - 24);
+        doc.text('Page ' + doc.internal.getNumberOfPages(), PAGE_W - MARGIN - 40, pageH - 24);
+      }
+    });
+  }
+
+  doc.save('hap-pathway-test-results.pdf');
+  showToast('Downloaded hap-pathway-test-results.pdf');
+}
+
 function resetAll() {
   if (!confirm('Reset all scores and notes? This cannot be undone.')) return;
   HAP_ITEMS.forEach(item => {
@@ -2048,6 +2184,28 @@ if (restored) {
   }
 }
 updateProgress();
+
+// Wire up persistent results-action buttons (top of results panel)
+const printResultsBtn = document.getElementById('printResultsBtn');
+const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+const copyResultsBtnTop = document.getElementById('copyResultsBtn');
+if (printResultsBtn) printResultsBtn.addEventListener('click', printResults);
+if (downloadPdfBtn) downloadPdfBtn.addEventListener('click', downloadPdf);
+if (copyResultsBtnTop) copyResultsBtnTop.addEventListener('click', copyResults);
+
+// Deep-link from explainer: #test → Test tab, #results → Results tab
+function handleHashRoute() {
+  const h = (window.location.hash || '').toLowerCase();
+  if (h === '#test') {
+    const tabBtn = document.querySelector('[data-panel="test"]');
+    if (tabBtn) tabBtn.click();
+  } else if (h === '#results') {
+    const tabBtn = document.querySelector('[data-panel="results"]');
+    if (tabBtn) tabBtn.click();
+  }
+}
+handleHashRoute();
+window.addEventListener('hashchange', handleHashRoute);
 </script>
 
 </body>
