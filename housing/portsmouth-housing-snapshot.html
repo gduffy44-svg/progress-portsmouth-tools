@@ -1252,21 +1252,21 @@ main {
 //  Then git commit and push. Everything below renders automatically.
 // ══════════════════════════════════════════════════════════════
 const SNAPSHOT_DATA = {
-  updated: "April 14, 2026",
-  updated_iso: "2026-04-14",
+  updated: "May 1, 2026",
+  updated_iso: "2026-05-01",
 
   rental: {
     units: [
-      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32,  scarce: false },
-      { type: "1-Bedroom", median: 2600, min: 1290, max: 3820, count: 45,  scarce: false },
-      { type: "2-Bedroom", median: 3100, min: 1690, max: 4795, count: 52,  scarce: false },
-      { type: "3-Bedroom", median: 3500, min: 2400, max: 4500, count: 17,  scarce: true  }
+      { type: "Studio",    median: 2300, min: 1599, max: 3295, count: 22,  scarce: false },
+      { type: "1-Bedroom", median: 2560, min: 1725, max: 3899, count: 50,  scarce: false },
+      { type: "2-Bedroom", median: 3100, min: 1910, max: 5000, count: 45,  scarce: false },
+      { type: "3-Bedroom", median: 4250, min: 3200, max: 5500, count: 16,  scarce: true  }
     ],
     insights: [
       {
         icon: "🚫",
         title: "Families are locked out",
-        body: "Only ~17 three-bedroom apartments available in the entire city. Even at median family income ($140k), you're paying exactly 30% of gross. There is no margin.",
+        body: "Only ~16 three-bedroom apartments listed in ZIP 03801. At the $4,250 median, a family would need $170,000/year to stay under the 30% affordability threshold — well above Portsmouth's median family income.",
         type: "coral"
       },
       {
@@ -1277,14 +1277,14 @@ const SNAPSHOT_DATA = {
       },
       {
         icon: "📉",
-        title: "151 total units for 22,000 residents",
-        body: "Across all bedroom sizes, roughly 151 units are available in Portsmouth right now. The math is simple: not enough housing at any price point.",
+        title: "133 total units for 22,000 residents",
+        body: "Across all bedroom sizes, roughly 133 rentals are listed in ZIP 03801 right now (Zillow). The math is simple: not enough housing at any price point.",
         type: "teal"
       },
       {
         icon: "📈",
-        title: "Rents rose across all types in March",
-        body: "Medians are up since early March: studios +$200, 1BRs +$200, 2BRs +$300. The 2BR top end has reached $4,795.",
+        title: "Three-bedroom top end exceeds $5,500",
+        body: "The 3-bedroom market starts at $3,200 and runs past $5,500 — and luxury 3BRs in 03801 list as high as $7,643/mo. Top-end pressure on family-sized units is intensifying.",
         type: "navy"
       }
     ]
