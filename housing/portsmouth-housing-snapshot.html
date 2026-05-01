@@ -1290,7 +1290,7 @@ const SNAPSHOT_DATA = {
     ]
   },
 
-  meetings: {    context: "HAP triage is underway. The Housing Committee has a July 2026 deadline to deliver prioritization recommendations to Council. The Master Plan Open House (April 22) has come and gone — focus now shifts to the FY27 budget cycle (May) and how Master Plan recommendations land in the Planning Board's housing chapter review.",
+  meetings: {    context: "HAP triage is underway with a July 2026 deadline. The April 22 Master Plan Open House has come and gone; focus now shifts to the FY27 budget cycle (May 11–18) and the May 21 Planning Board, the first PB meeting after the Open House. All dates below verified from the City Municipal Meetings Calendar as of May 1, 2026.",
     periods: [
       {
         label: "📅 Coming up — May 2026",
@@ -1299,10 +1299,24 @@ const SNAPSHOT_DATA = {
             day_num: "4",
             day_name: "MON",
             board: "City Council",
-            meta: "Council Chambers · 7:00 PM · Per regular schedule",
+            meta: "Council Chambers · 7:00 PM · Confirmed",
             flags: [],
-            note: "First Council meeting of the month. Watch for any HAP process updates or budget-related housing announcements.",
-            links: [],
+            note: "Watch for any Housing Action Plan process updates or budget framing ahead of the FY27 budget work sessions later this month.",
+            links: [
+              { label: "📄 May 4 Agenda &amp; Materials", url: "https://files.portsmouthnh.gov/agendas/2026/City%20Council/FINAL%20City%20Council%20Meeting%20Materials%205_4_2026.pdf" }
+            ],
+            highlight: false
+          },
+          {
+            day_num: "6",
+            day_name: "WED",
+            board: "Historic District Commission",
+            meta: "Council Chambers · 6:30 PM · Confirmed",
+            flags: [],
+            note: "Public hearings on 112 Mechanic St, 333 State St, 325 Marcy St, and 195 Washington St; work sessions on 126 State St, 325 Marcy St, and 501 Islington St.",
+            links: [
+              { label: "📄 HDC Agenda", url: "https://files.portsmouthnh.gov/agendas/2026/HDC/May+06%2C+2026/05-06-26_HDC_ag_REV.pdf" }
+            ],
             highlight: false
           },
           {
@@ -1311,29 +1325,39 @@ const SNAPSHOT_DATA = {
             board: "City Council Budget Work Session — General Fund",
             meta: "Council Chambers · 6:00 PM · With public comment",
             flags: ["FY27 Budget"],
-            note: "Watch whether Housing Action Plan coordination costs appear in the General Government budget and at what level.",
+            note: "General Government, Fire, Police, and School Department budgets. Watch whether Housing Action Plan coordination costs appear in the General Government budget and at what level.",
             links: [],
             highlight: false
           },
           {
             day_num: "13",
             day_name: "WED",
-            board: "Budget Work Session — Enterprise &amp; Special Revenue",
-            meta: "Council Chambers · 6:00 PM",
+            board: "City Council Budget Work Session — Enterprise &amp; Special Revenue",
+            meta: "Council Chambers · 6:00 PM · With public comment",
             flags: ["FY27 Budget"],
-            note: "Parking fund is relevant to housing — parking reform reduces per-unit housing costs.",
+            note: "Water/Sewer, Parking, and Stormwater Department budgets. Parking fund is relevant to housing — parking reform reduces per-unit housing costs.",
             links: [],
             highlight: false
           },
           {
             day_num: "18",
             day_name: "MON",
-            board: "City Council — Budget Public Hearing",
-            meta: "Council Chambers · 7:00 PM",
+            board: "City Council — Opening of Budget Public Hearing",
+            meta: "Council Chambers · 7:00 PM · Confirmed",
             flags: ["Budget Public Hearing"],
-            note: "Public comment opportunity on the FY27 budget. If Housing Action Plan coordination is underfunded or omitted, this is the formal public comment window.",
+            note: "Opens the formal public comment window on the FY27 budget. If Housing Action Plan coordination is underfunded or omitted, this is the place to say so on the record.",
             links: [],
             highlight: true
+          },
+          {
+            day_num: "19",
+            day_name: "TUE",
+            board: "Board of Adjustment",
+            meta: "Council Chambers · 7:00 PM · Confirmed",
+            flags: [],
+            note: "Agenda not yet posted. ZBA decisions remain a structural pressure point in housing production — variance and special exception cases here often involve residential conversions and density questions.",
+            links: [],
+            highlight: false
           },
           {
             day_num: "21",
@@ -1341,37 +1365,27 @@ const SNAPSHOT_DATA = {
             board: "Planning Board",
             meta: "Council Chambers · 7:00 PM · Confirmed",
             flags: ["HAP", "Master Plan"],
-            note: "First Planning Board meeting after the Master Plan Open House. Watch for signals on how draft Master Plan housing recommendations are being integrated with the HAP triage process.",
+            note: "First Planning Board meeting after the April 22 Master Plan Open House. Watch for signals on how draft Master Plan housing recommendations are being integrated with the HAP triage process.",
             links: [
               { label: "📄 Planning Board Schedule", url: "https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" }
             ],
             highlight: true
+          },
+          {
+            day_num: "27",
+            day_name: "WED",
+            board: "City Council Work Session — Continuation of Budget Review",
+            meta: "Council Chambers · 6:00 PM · Confirmed",
+            flags: ["FY27 Budget"],
+            note: "Follow-up work session if budget items remain unresolved after the May 18 public hearing.",
+            links: [],
+            highlight: false
           }
         ]
       },
       {
         label: "📅 June–July 2026",
         items: [
-          {
-            day_num: "1",
-            day_name: "JUN",
-            board: "City Council",
-            meta: "Council Chambers · 7:00 PM · Per regular schedule",
-            flags: [],
-            note: "First Council meeting of June. FY27 budget adoption typically occurs in early-to-mid June.",
-            links: [],
-            highlight: false
-          },
-          {
-            day_num: "18",
-            day_name: "JUN",
-            board: "Planning Board",
-            meta: "Council Chambers · 7:00 PM · Per regular schedule",
-            flags: ["HAP", "Master Plan"],
-            note: "Mid-June Planning Board falls in the final stretch of HAP triage before the July deadline.",
-            links: [],
-            highlight: false
-          },
           {
             day_num: "TBD",
             day_name: "",
@@ -1398,7 +1412,7 @@ const SNAPSHOT_DATA = {
   },
 
   media: {
-    period: "Feb 10 – May 1, 2026",
+    period: "Feb 10 – Apr 14, 2026",
     stats: [
       { val: "19", label: "Stories this period" },
       { val: "5",  label: "Outlets covering housing" },
@@ -1469,8 +1483,8 @@ const SNAPSHOT_DATA = {
     ],
     pattern: {
       covered: "Development pipeline projects, opinion and advocacy columns (now 6 of 19 stories — rising), market price records, HAP process updates, and now opposition framing via local-control arguments. The Mandelbaum op-ed signals organized political resistance is moving into the public arena.",
-      missing: "The April 22 Master Plan Open House drew community engagement but generated no housing-focused follow-up coverage in the two weeks after — a notable silence given the event's role as the last practical window for embedding HAP priorities in the Master Plan housing chapter. The HAP triage process itself remains uncovered: no journalist has reported on how the Housing Committee will work through 146 items by July. The land-transfer affordability mechanism in GNOD, displacement and NOAH loss, and state AHF funding cuts also remain uncovered.",
-      takeaway: "The post-Open House coverage gap matters. Master Plan recommendations are now being refined into a final draft without sustained press attention on the housing chapter. Advocates working the Planning Board's May 21 meeting and the FY27 budget cycle should treat the next three weeks as a window in which the local-control counter-narrative (Mandelbaum) has more uncontested visibility than the housing-production case."
+      missing: "The HAP triage process itself has zero coverage — no journalist has reported on how the Housing Committee will work through 148 items by July. The land-transfer affordability mechanism in GNOD, displacement and NOAH loss, and state AHF funding cuts remain uncovered.",
+      takeaway: "The Mandelbaum op-ed is the most strategically significant recent story. The local-control counter-narrative is now active in print. Advocates need a clear response ready for the April 22 open house and HAP triage sessions: what local control has produced (85.8% single-family zoning, 17 three-bedroom apartments available citywide) versus what state accountability would produce."
     }
   }
 };
