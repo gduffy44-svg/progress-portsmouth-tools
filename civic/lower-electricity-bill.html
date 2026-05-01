@@ -32,15 +32,15 @@
       --coral:       #e76f51;
       --cream:       #f8f4ee;
 
-      /* derived neutrals */
+      /* derived neutrals — pushed harder for mobile contrast */
       --paper:       #f8f4ee;
       --paper-deep:  #efe8da;
       --paper-card:  #ffffff;
-      --ink:         #2d3e52;     /* primary — ~12:1 on cream */
-      --ink-soft:    #3a4d63;     /* body paragraphs — ~7.5:1 on cream */
-      --ink-mute:    #5a6b80;     /* tertiary metadata — ~4.7:1 on cream (AA) */
-      --rule:        rgba(45, 62, 82, 0.18);
-      --rule-soft:   rgba(45, 62, 82, 0.10);
+      --ink:         #1a2332;     /* navy-dark — maximum contrast */
+      --ink-soft:    #2d3e52;     /* navy — body paragraphs */
+      --ink-mute:    #4a5a6e;     /* still readable, for metadata */
+      --rule:        rgba(45, 62, 82, 0.22);
+      --rule-soft:   rgba(45, 62, 82, 0.14);
 
       /* civic engagement role mapping
          tier 01 (priority)   → teal
@@ -55,7 +55,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -120,10 +120,11 @@
     h1 {
       font-family: 'DM Serif Display', Georgia, serif;
       font-weight: 400;
-      font-size: clamp(28px, 6vw, 40px);
-      line-height: 1;
+      font-size: clamp(36px, 8vw, 52px);
+      line-height: 0.98;
       letter-spacing: -0.025em;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      color: var(--ink);
     }
     h1 em {
       font-style: italic;
@@ -131,13 +132,13 @@
     }
 
     .lede {
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Source Sans 3', sans-serif;
       font-weight: 400;
-      font-style: italic;
-      font-size: 17px;
-      color: var(--ink);
+      font-size: 19px;
+      color: var(--ink-soft);
       max-width: 50ch;
-      margin-top: 10px;
+      margin-top: 14px;
+      line-height: 1.4;
     }
 
     /* ───── context callout (why bills are rising) ───── */
@@ -185,15 +186,15 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 12px 24px;
-      background: #fef0eb;
-      border-top: 1px solid rgba(231, 111, 81, 0.25);
-      border-bottom: 2px solid var(--coral);
+      padding: 14px 24px;
+      background: #fde6dd;
+      border-top: 2px solid var(--coral);
+      border-bottom: 3px solid var(--coral);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
+      font-size: 13px;
       letter-spacing: 0.04em;
       color: var(--ink);
-      font-weight: 500;
+      font-weight: 600;
     }
     .helpstrip .label {
       display: flex;
@@ -203,8 +204,8 @@
     .helpstrip .label::before {
       content: '';
       display: inline-block;
-      width: 7px;
-      height: 7px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: var(--coral);
       flex-shrink: 0;
@@ -216,14 +217,14 @@
     }
     .helpstrip .helpstrip-link {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
+      font-size: 13px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--coral);
       text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid var(--coral);
-      padding-bottom: 1px;
+      font-weight: 700;
+      border-bottom: 2px solid var(--coral);
+      padding-bottom: 2px;
       flex-shrink: 0;
       transition: opacity 0.15s ease;
       background: none;
@@ -277,7 +278,7 @@
     .tab .num {
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 22px;
       letter-spacing: 0;
       color: var(--ink-mute);
       line-height: 1;
@@ -313,30 +314,32 @@
 
     .panel-eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px;
-      letter-spacing: 0.14em;
+      font-size: 12px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--ink-mute);
-      margin-bottom: 8px;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+      font-weight: 600;
     }
 
     .panel-title {
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
-      font-size: clamp(22px, 4.4vw, 28px);
+      font-size: clamp(28px, 5vw, 36px);
       line-height: 1.1;
-      letter-spacing: -0.015em;
-      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--ink);
     }
 
     .panel--priority .panel-title { color: var(--teal); }
 
     .panel-context {
-      font-family: 'DM Serif Display', serif;
-      font-style: italic;
-      font-size: 15.5px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 17px;
       color: var(--ink-soft);
       max-width: 48ch;
+      line-height: 1.45;
     }
 
     /* ───── action card ───── */
@@ -355,125 +358,133 @@
     .card h3 {
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
-      font-size: 19px;
+      font-size: 22px;
       line-height: 1.2;
       letter-spacing: -0.01em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      color: var(--ink);
     }
 
     .panel--priority .card h3 { color: var(--teal); }
 
     .card p {
-      font-size: 15px;
+      font-size: 17px;
       color: var(--ink-soft);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      line-height: 1.5;
     }
     .card p:last-child { margin-bottom: 0; }
-    .card p strong { color: var(--ink); font-weight: 600; }
+    .card p strong { color: var(--ink); font-weight: 700; }
     .panel--priority .card p strong { color: var(--teal); }
 
     /* income table */
     .income {
       list-style: none;
-      margin: 10px 0;
-      padding: 12px 14px;
+      margin: 14px 0;
+      padding: 14px 16px;
       background: var(--paper-deep);
-      border-left: 3px solid var(--teal);
+      border-left: 4px solid var(--teal);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
-      line-height: 1.85;
+      font-size: 15px;
+      line-height: 2;
     }
     .income li {
       display: flex;
       justify-content: space-between;
       gap: 12px;
     }
-    .income .size { color: var(--ink-soft); }
-    .income .amt { color: var(--ink); font-weight: 500; }
+    .income .size { color: var(--ink-soft); font-weight: 500; }
+    .income .amt { color: var(--ink); font-weight: 700; }
 
     .cta {
-      margin-top: 12px;
-      padding: 10px 12px;
-      background: rgba(58, 125, 110, 0.06);
-      border-left: 2px solid var(--teal);
-      font-size: 14px;
-      line-height: 1.55;
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: rgba(58, 125, 110, 0.10);
+      border-left: 4px solid var(--teal);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 500;
     }
     .cta a {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13.5px;
+      font-size: 15px;
       color: var(--teal);
-      font-weight: 500;
+      font-weight: 700;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 2px;
     }
     .cta a:hover { color: var(--navy-dark); }
 
     .caveat {
       font-style: italic;
-      font-size: 13.5px;
-      color: var(--ink-mute);
-      margin-top: 8px;
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-top: 12px;
+      line-height: 1.45;
     }
 
     /* ───── tier 3: tight grid ───── */
     .quickgrid {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
-      background: var(--rule-soft);
-      border: 1px solid var(--rule-soft);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
     }
     .quickgrid li {
       background: var(--paper-card);
-      padding: 16px 16px;
-      font-size: 14.5px;
-      line-height: 1.4;
+      padding: 18px 18px;
+      font-size: 16px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      border-left: 3px solid var(--navy);
     }
     .quickgrid strong {
       display: block;
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 19px;
       color: var(--navy);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     /* ───── tier 4: contact list ───── */
     .helpgrid {
       list-style: none;
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
     .helpgrid li {
-      padding: 16px 18px;
+      padding: 18px 20px;
       background: var(--paper-card);
       border: 1px solid var(--rule-soft);
-      border-left: 4px solid var(--coral);
-      font-size: 14.5px;
+      border-left: 5px solid var(--coral);
+      font-size: 16px;
       line-height: 1.5;
     }
     .helpgrid strong {
       font-family: 'DM Serif Display', serif;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 22px;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--ink);
     }
     .helpgrid a {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 19px;
+      font-weight: 700;
       color: var(--coral);
       display: inline-block;
-      margin: 2px 0 4px;
+      margin: 4px 0 6px;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 2px;
     }
     .helpgrid a:hover { color: var(--navy-dark); }
-    .helpgrid .desc { color: var(--ink-soft); margin-top: 4px; display: block; font-size: 13.5px; }
+    .helpgrid .desc { color: var(--ink-soft); margin-top: 6px; display: block; font-size: 15px; line-height: 1.45; }
 
     /* ───── footer bar ───── */
     .footbar {
@@ -623,32 +634,39 @@
 
     @media (max-width: 540px) {
       .topnav { padding: 10px 18px 8px; }
-      .masthead { padding: 20px 18px 14px; }
+      .masthead { padding: 22px 18px 18px; }
       .context { padding: 16px 18px; }
       .panel { padding: 22px 18px 28px; }
       .footbar { padding: 16px 18px; }
       details.sources { padding: 14px 18px 20px; }
       details.version { padding: 12px 18px 14px; }
-      .tab { padding: 12px 8px 8px; border-bottom-width: 4px; }
-      .tab .num { font-size: 18px; font-weight: 600; }
-      .tab .lbl { font-size: 9.5px; font-weight: 500; }
-      .helpstrip { padding: 11px 18px; font-size: 11px; }
-      .helpstrip .helpstrip-link { font-size: 11px; }
-      /* tighter cards on phones with shadow lift */
+      .tab { padding: 14px 8px 10px; border-bottom-width: 4px; }
+      .tab .num { font-size: 22px; font-weight: 600; }
+      .tab .lbl { font-size: 10px; font-weight: 600; }
+      .helpstrip { padding: 13px 18px; font-size: 12.5px; }
+      .helpstrip .helpstrip-link { font-size: 12.5px; }
+      /* cards: more padding so they breathe; bigger text overall */
       .card {
-        padding: 16px 16px;
-        margin-bottom: 12px;
+        padding: 18px 18px;
+        margin-bottom: 14px;
         box-shadow: 0 1px 3px rgba(45, 62, 82, 0.08);
-        border-left-width: 4px;
+        border-left-width: 5px;
       }
-      .card h3 { font-size: 17px; margin-bottom: 6px; }
-      .card p { font-size: 14.5px; line-height: 1.45; margin-bottom: 8px; }
-      .panel-title { font-size: 23px; }
-      .panel-context { font-size: 14px; }
-      .income { font-size: 12px; line-height: 1.7; padding: 10px 12px; }
-      .cta { font-size: 13.5px; padding-top: 8px; }
-      .caveat { font-size: 13px; }
-      .helpgrid li { box-shadow: 0 1px 3px rgba(45, 62, 82, 0.08); }
+      .card h3 { font-size: 21px; margin-bottom: 8px; }
+      .card p { font-size: 16.5px; line-height: 1.5; margin-bottom: 10px; }
+      .panel-title { font-size: 28px; }
+      .panel-context { font-size: 16px; }
+      .panel-eyebrow { font-size: 11.5px; }
+      .income { font-size: 14.5px; line-height: 2; padding: 14px 16px; }
+      .cta { font-size: 15.5px; padding: 12px 14px; }
+      .cta a { font-size: 14.5px; }
+      .caveat { font-size: 14.5px; }
+      .helpgrid li { box-shadow: 0 1px 3px rgba(45, 62, 82, 0.08); padding: 18px 18px; }
+      .helpgrid strong { font-size: 21px; }
+      .helpgrid a { font-size: 19px; }
+      .helpgrid .desc { font-size: 14.5px; }
+      .quickgrid li { font-size: 15.5px; padding: 16px 16px; }
+      .quickgrid strong { font-size: 18px; }
     }
 
     @media (max-width: 380px) {
@@ -862,8 +880,9 @@
   </div>
 
   <details class="version">
-    <summary>Version 1.4 · May 2026</summary>
+    <summary>Version 1.5 · May 2026</summary>
     <ul class="versionlog">
+      <li>v1.5 — May 2026 — Big-and-bold pass for mobile readability. Base font 17→18px. H1 up to 36–52px range. Card headings 19→22px. Card body 15→17px. Income/rate tables 12.5→15px. CTAs 13.5→16px with bolder, underlined links. Tier 04 phone numbers 16→19px. Tab numbers 18→22px. Help banner type 11.5→13px, all weight bumped to 600/700. Ink tokens darkened to navy-dark (#1a2332) for max contrast. Lede dropped italic for a more direct read. Cards now have 4–5px tier-colored left rules.</li>
       <li>v1.4 — May 2026 — Mobile contrast pass. Stronger help banner (coral fill + thicker bottom rule). Active tab gets a teal fill plus thicker border. All cards now have a tier-colored left rule (navy default, teal for Tier 01, coral for Tier 04). Cards lift off the page with a subtle shadow on phones. CTA blocks reformatted as tinted left-rule call-outs with underlined teal links. Tier 04 phone numbers enlarged to 16px, bolded, and made coral to match the urgency cue. Lede color darkened from soft-ink to full ink for top-of-page punch.</li>
       <li>v1.3 — May 2026 — Mobile readability pass. Cut prose ~50% across all four tier panels. Reformatted Tier 02 supply-rate card as a rate-comparison list (Eversource vs. Community Power) with the $22/month savings as the lead. Reduced card padding and line-height on screens ≤540px. Tightened panel context lines and emergency-contact descriptions. No factual changes from v1.2.</li>
       <li>v1.2 — May 2026 — Fact-check corrections following multi-reviewer audit. (1) Tier 02 supply-rate card rewritten to reflect current CPCNH vs. Eversource rates (14.663¢ vs. 11.3¢ through July 31, 2026), citing City Energy Advisory Committee guidance on opt-out savings. (2) EAP discount range corrected from "up to 76%" to "up to 86%" per current NH Department of Energy figures. (3) Agency name updated from "Rockingham Community Action" to "Community Action Partnership (CAPHR)" — RCA merged with Southern NH Services in 2011, rebranded as CAPHR October 2024. (4) HVAC efficiency claim softened from "20–30% more electricity" to DOE-supported "5–15%" for filter alone, with separate mention of tune-up addressing additional inefficiencies. (5) Weatherization caveat dropped specific dollar figure and clarified that NHSaves Home Energy Assistance eligibility differs from EAP. (6) Specified "ceiling fan" for the 4°F figure. Added City of Portsmouth press release to sources list.</li>
