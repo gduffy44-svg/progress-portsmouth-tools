@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalyzing Local Housing Reform — A Course for Civic Advocates | Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #2d3e52;
+    --navy-dark: #1a2332;
+    --gold: #f4a261;
+    --gold-dark: #c8822a;
+    --teal: #3a7d6e;
+    --coral: #e76f51;
+    --cream: #f8f4ee;
+    --cream-dark: #efe8db;
+    --ink: #1a2332;
+    --ink-soft: #4a5568;
+    --serif: "DM Serif Display", Georgia, serif;
+    --sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "JetBrains Mono", "Courier New", monospace;
+    --sidebar-w: 300px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .app { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,.85);
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .sb-top { padding: 0 22px 18px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .sb-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(255,255,255,.65); text-decoration: none;
+    letter-spacing: .04em; text-transform: uppercase;
+    transition: color .2s; margin-bottom: 18px;
+  }
+  .sb-back:hover { color: var(--gold); }
+  .sb-title-block { display: block; cursor: pointer; }
+  .sb-title-block:hover .sb-title { color: var(--gold); }
+  .sb-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px; font-weight: 500;
+  }
+  .sb-title {
+    font-family: var(--serif); font-size: 22px;
+    line-height: 1.15; color: white; margin-bottom: 10px;
+    letter-spacing: -.005em; transition: color .2s;
+  }
+  .sb-version {
+    font-family: var(--mono); font-size: 10px;
+    color: rgba(255,255,255,.55); letter-spacing: .04em;
+  }
+
+  .sb-section { padding: 22px 22px 8px; }
+  .sb-section-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: rgba(255,255,255,.55); margin-bottom: 12px; font-weight: 500;
+  }
+  .path-pills { display: flex; flex-direction: column; gap: 6px; }
+  .path-pill {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.78);
+    padding: 9px 12px; border-radius: 4px;
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    cursor: pointer; text-align: left; transition: all .2s;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .path-pill:hover { background: rgba(255,255,255,.1); color: white; }
+  .path-pill.active {
+    background: var(--gold); color: var(--navy-dark);
+    border-color: var(--gold); font-weight: 600;
+  }
+  .path-pill .pill-time {
+    font-family: var(--mono); font-size: 11px; opacity: .7;
+  }
+  .path-pill.active .pill-time { opacity: .85; }
+
+  .sb-modules { padding: 4px 12px 24px; flex: 1; }
+  .sb-modules ol { list-style: none; }
+  .sb-mod {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; color: rgba(255,255,255,.72);
+    text-decoration: none; border-radius: 4px; cursor: pointer;
+    transition: all .15s; font-size: 13.5px; line-height: 1.35;
+    border-left: 2px solid transparent; margin-bottom: 1px;
+  }
+  .sb-mod:hover { background: rgba(255,255,255,.05); color: rgba(255,255,255,.95); }
+  .sb-mod.active {
+    background: rgba(244, 162, 97, .1); color: white;
+    border-left-color: var(--gold);
+  }
+  .sb-mod-num {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(255,255,255,.5); font-weight: 500;
+    min-width: 22px; margin-top: 1px; letter-spacing: .03em;
+  }
+  .sb-mod.active .sb-mod-num { color: var(--gold); }
+  .sb-mod-title { flex: 1; }
+  .sb-mod-time {
+    font-family: var(--mono); font-size: 10px;
+    color: rgba(255,255,255,.4); margin-top: 2px;
+  }
+  .sb-mod.active .sb-mod-time { color: rgba(255,255,255,.6); }
+  .sb-divider { height: 1px; background: rgba(255,255,255,.08); margin: 10px 12px; }
+
+  .sb-footer {
+    padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.08);
+    font-family: var(--mono); font-size: 10px;
+    color: rgba(255,255,255,.55); letter-spacing: .03em; line-height: 1.6;
+  }
+  .sb-footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .sb-footer a:hover { color: var(--gold); }
+  .rev-toggle {
+    background: none; border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.65); padding: 4px 8px; border-radius: 3px;
+    font-family: var(--mono); font-size: 10px; cursor: pointer;
+    margin-top: 6px; transition: all .2s;
+  }
+  .rev-toggle:hover { border-color: var(--gold); color: var(--gold); }
+  .rev-history {
+    display: none; margin-top: 8px; padding: 10px;
+    background: rgba(255,255,255,.04);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 3px 3px 0;
+    font-size: 10.5px; line-height: 1.5;
+    color: rgba(255,255,255,.65);
+  }
+  .rev-history.open { display: block; }
+
+  /* ============ CONTENT ============ */
+  .content { padding: 48px 64px 80px; max-width: 800px; width: 100%; }
+
+  .mobile-bar {
+    display: none; background: var(--navy-dark); color: white;
+    padding: 14px 18px; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .mobile-bar .mb-title {
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: .05em; color: rgba(255,255,255,.85);
+  }
+  .menu-btn {
+    background: none; border: 1px solid rgba(255,255,255,.25);
+    color: white; padding: 6px 12px; border-radius: 3px;
+    font-family: var(--mono); font-size: 11px; cursor: pointer;
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* OVERVIEW */
+  .overview-hero { margin-bottom: 40px; }
+  .overview-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold-dark); font-weight: 600; margin-bottom: 14px;
+  }
+  .overview-title {
+    font-family: var(--serif); font-size: clamp(34px, 4.5vw, 48px);
+    line-height: 1.05; color: var(--navy-dark);
+    letter-spacing: -.01em; margin-bottom: 18px;
+  }
+  .overview-deck { font-size: 18px; color: var(--ink-soft); line-height: 1.55; max-width: 640px; }
+  .overview-meta {
+    margin-top: 24px; display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-soft); letter-spacing: .04em; text-transform: uppercase;
+  }
+  .overview-meta strong { color: var(--navy); font-weight: 600; }
+
+  .overview-section-label {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--ink-soft); margin: 48px 0 16px;
+    font-weight: 600; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(45, 62, 82, .15);
+  }
+
+  .module-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .mod-card {
+    background: white; border: 1px solid rgba(45, 62, 82, .12);
+    padding: 20px 22px; border-radius: 5px;
+    cursor: pointer; transition: all .2s; text-align: left;
+    font-family: var(--sans); border-left: 3px solid var(--navy);
+  }
+  .mod-card:hover {
+    border-color: var(--gold); border-left-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(45, 62, 82, .08);
+  }
+  .mod-card-top {
+    display: flex; justify-content: space-between;
+    align-items: baseline; margin-bottom: 10px;
+  }
+  .mod-card-num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gold-dark); font-weight: 600; letter-spacing: .12em;
+  }
+  .mod-card-time { font-family: var(--mono); font-size: 10px; color: var(--ink-soft); }
+  .mod-card-title {
+    font-family: var(--serif); font-size: 19px;
+    color: var(--navy-dark); line-height: 1.2;
+    margin-bottom: 8px; letter-spacing: -.005em;
+  }
+  .mod-card-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.45; }
+  .mod-card-closing { border-left-color: var(--coral); }
+  .mod-card-closing:hover { border-color: var(--coral); border-left-color: var(--coral); }
+
+  /* MODULE */
+  .mod-progress {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(45, 62, 82, .12);
+  }
+  .mod-progress strong { color: var(--gold-dark); font-weight: 600; }
+  .mod-h1 {
+    font-family: var(--serif); font-size: clamp(30px, 4vw, 42px);
+    color: var(--navy-dark); line-height: 1.05;
+    letter-spacing: -.005em; margin-bottom: 28px;
+  }
+  .mod-body h3 {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--navy); margin: 36px 0 12px; line-height: 1.25;
+  }
+  .mod-body h4 {
+    font-family: var(--sans); font-weight: 600; font-size: 16px;
+    color: var(--navy); margin: 24px 0 8px;
+  }
+  .mod-body p { margin-bottom: 18px; color: var(--ink); }
+  .mod-body ul, .mod-body ol { margin: 14px 0 22px 24px; padding-left: 4px; }
+  .mod-body li { margin-bottom: 10px; line-height: 1.55; }
+  .mod-body li::marker { color: var(--gold-dark); }
+  .mod-body strong { color: var(--navy-dark); font-weight: 600; }
+  .mod-body em { color: var(--ink-soft); }
+
+  /* PANELS */
+  .quick-read {
+    background: linear-gradient(135deg, rgba(231, 111, 81, .1), rgba(231, 111, 81, .04));
+    border-left: 3px solid var(--coral);
+    padding: 18px 22px; margin: 22px 0; border-radius: 0 4px 4px 0;
+  }
+  .quick-read .qr-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--coral); font-weight: 600; margin-bottom: 6px;
+  }
+  .quick-read p {
+    margin-bottom: 0; font-size: 16px; color: var(--ink); font-weight: 500;
+  }
+
+  .exercise {
+    background: rgba(58, 125, 110, .05);
+    border-left: 3px solid var(--teal);
+    padding: 22px 26px; margin: 28px 0; border-radius: 0 4px 4px 0;
+  }
+  .exercise .ex-label {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 10px;
+  }
+  .exercise h4 { margin-top: 0; color: var(--teal); font-size: 17px; }
+  .exercise ul, .exercise ol { margin-bottom: 0; }
+  .exercise li::marker { color: var(--teal); }
+
+  .trap {
+    background: rgba(244, 162, 97, .08);
+    border-left: 3px solid var(--gold-dark);
+    padding: 16px 22px; margin: 22px 0;
+    border-radius: 0 4px 4px 0; font-size: 15px;
+  }
+  .trap .trap-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--gold-dark); font-weight: 600; margin-bottom: 6px;
+  }
+  .trap p { margin-bottom: 0; }
+
+  .portsmouth-note {
+    background: var(--cream-dark);
+    border: 1px solid rgba(45, 62, 82, .1);
+    padding: 18px 22px; margin: 22px 0;
+    border-radius: 4px; font-size: 15px; color: var(--ink-soft);
+  }
+  .portsmouth-note .pn-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--navy); font-weight: 600; margin-bottom: 6px;
+  }
+  .portsmouth-note p { margin-bottom: 0; color: var(--ink-soft); }
+  .portsmouth-note strong { color: var(--navy); }
+
+  /* LANE VISIBILITY */
+  body[data-path="quick"] .lane-3hr,
+  body[data-path="quick"] .lane-3wk { display: none; }
+  body[data-path="standard"] .lane-3wk { display: none; }
+
+  .position-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+  .position-card {
+    background: white; border: 1px solid rgba(45, 62, 82, .12);
+    padding: 20px; border-radius: 4px; border-top: 3px solid var(--navy);
+  }
+  .position-card:nth-child(2) { border-top-color: var(--teal); }
+  .position-card:nth-child(3) { border-top-color: var(--coral); }
+  .position-card h4 {
+    font-family: var(--serif); font-size: 18px;
+    margin: 0 0 10px; color: var(--navy-dark); font-weight: 400;
+  }
+  .position-card p {
+    font-size: 14px; line-height: 1.5;
+    color: var(--ink-soft); margin-bottom: 12px;
+  }
+  .position-card .pc-label {
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: .1em;
+    color: var(--gold-dark); margin-top: 12px;
+    margin-bottom: 4px; font-weight: 600;
+  }
+  .position-card .pc-detail {
+    font-size: 13px; line-height: 1.45;
+    color: var(--ink); margin-bottom: 10px;
+  }
+
+  /* PAGER */
+  .mod-pager {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin-top: 56px; padding-top: 28px;
+    border-top: 1px solid rgba(45, 62, 82, .15);
+  }
+  .pager-btn {
+    background: white; border: 1px solid rgba(45, 62, 82, .15);
+    padding: 16px 20px; border-radius: 4px;
+    cursor: pointer; text-align: left; transition: all .2s;
+    font-family: var(--sans); color: var(--ink);
+  }
+  .pager-btn:hover {
+    border-color: var(--gold); transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(45, 62, 82, .06);
+  }
+  .pager-btn.next { text-align: right; }
+  .pager-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 4px; font-weight: 600;
+  }
+  .pager-title {
+    font-family: var(--serif); font-size: 17px;
+    color: var(--navy-dark); line-height: 1.2;
+  }
+
+  .ai-line {
+    margin-top: 48px; padding-top: 20px;
+    border-top: 1px solid rgba(45, 62, 82, .1);
+    font-size: 12px; color: var(--ink-soft);
+    font-style: italic; line-height: 1.5;
+  }
+
+  /* TRANSLATE */
+  .translate-intro {
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+    color: white;
+    padding: 28px 32px;
+    border-radius: 6px;
+    margin-bottom: 32px;
+  }
+  .translate-intro h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 36px);
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    letter-spacing: -.005em;
+  }
+  .translate-intro p {
+    color: rgba(255,255,255,.78);
+    line-height: 1.55;
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+
+  .fingerprint {
+    background: var(--cream-dark);
+    border: 1px solid rgba(45, 62, 82, .12);
+    border-left: 3px solid var(--gold);
+    padding: 18px 22px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 36px;
+  }
+  .fingerprint .fp-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .fingerprint .fp-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 6px 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .fingerprint .fp-row dt {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding-top: 1px;
+  }
+  .fingerprint .fp-row dd { color: var(--ink); }
+  .fingerprint .fp-row dd strong { color: var(--navy-dark); }
+
+  .question-block { margin-bottom: 24px; }
+  .q-label {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--navy-dark);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .q-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .q-pill {
+    background: white;
+    border: 1.5px solid rgba(45, 62, 82, .18);
+    color: var(--ink);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .q-pill:hover { border-color: var(--navy); }
+  .q-pill.selected {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+
+  .reset-btn {
+    background: none;
+    border: 1px solid rgba(45, 62, 82, .25);
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: all .2s;
+  }
+  .reset-btn:hover { border-color: var(--coral); color: var(--coral); }
+
+  .results-divider {
+    margin: 36px 0 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(45, 62, 82, .15);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  .results-empty {
+    background: rgba(45, 62, 82, .04);
+    border: 1px dashed rgba(45, 62, 82, .2);
+    padding: 24px;
+    border-radius: 4px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .result-summary {
+    background: white;
+    border: 1px solid rgba(45, 62, 82, .12);
+    padding: 18px 22px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .result-summary strong { color: var(--navy-dark); }
+  .result-summary .summary-tag {
+    display: inline-block;
+    background: var(--cream-dark);
+    color: var(--navy);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin: 0 3px;
+    letter-spacing: .02em;
+  }
+
+  .note-group {
+    margin-bottom: 22px;
+    padding: 16px 20px;
+    background: white;
+    border: 1px solid rgba(45, 62, 82, .1);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+  .note-group.match { border-left-color: var(--gold); }
+  .note-group h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .note-group.match h4 { color: var(--gold-dark); }
+  .note-group h4 .note-mod-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--navy-dark);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    margin-left: 8px;
+  }
+  .note-group ul { margin: 4px 0 0 20px; padding: 0; }
+  .note-group li {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .note-group li:last-child { margin-bottom: 0; }
+  .note-group li::marker { color: var(--teal); }
+  .note-group.match li::marker { color: var(--gold-dark); }
+
+  .jump-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold-dark);
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border-bottom: 1px dotted rgba(200, 130, 42, .4);
+    padding-bottom: 1px;
+  }
+  .jump-link:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .mobile-bar { display: flex; }
+    .sidebar {
+      position: fixed; top: 0; left: -100%;
+      width: 280px; height: 100vh; z-index: 200;
+      transition: left .25s; box-shadow: 8px 0 24px rgba(0,0,0,.2);
+    }
+    .sidebar.open { left: 0; }
+    .sb-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.5); z-index: 150;
+    }
+    .sb-overlay.open { display: block; }
+    .content { padding: 32px 24px 60px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .position-grid { grid-template-columns: 1fr; }
+    .mod-pager { grid-template-columns: 1fr; }
+    .pager-btn.next { text-align: left; }
+  }
+  @media (max-width: 640px) {
+    .mobile-bar { position: static; }
+    .content { padding: 24px 18px 48px; }
+    .overview-title { font-size: 28px; }
+    .mod-h1 { font-size: 26px; }
+    .mod-body h3 { font-size: 19px; }
+    body { font-size: 16px; }
+    .fingerprint .fp-row { grid-template-columns: 1fr; gap: 2px; }
+    .fingerprint .fp-row dt { padding-top: 8px; }
+  }
+</style>
+</head>
+<body data-path="standard">
+
+<div class="mobile-bar">
+  <span class="mb-title">Catalyzing Local Housing Reform</span>
+  <button class="menu-btn" id="menubtn">Menu</button>
+</div>
+
+<div class="sb-overlay" id="sboverlay"></div>
+
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-top">
+      <a href="https://progressportsmouth.com" class="sb-back">← Progress Portsmouth</a>
+      <a class="sb-title-block" data-target="overview">
+        <div class="sb-eyebrow">Course for civic advocates</div>
+        <div class="sb-title">Catalyzing Local Housing Reform</div>
+        <div class="sb-version">Field Guide v1.2 · May 2026</div>
+      </a>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Path</div>
+      <div class="path-pills" id="path-pills">
+        <button class="path-pill" data-path="quick">Skim<span class="pill-time">~10 min</span></button>
+        <button class="path-pill active" data-path="standard">Read<span class="pill-time">~45 min</span></button>
+        <button class="path-pill" data-path="deep">Work through<span class="pill-time">~3 hrs</span></button>
+      </div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-label">Reference</div>
+      <a class="sb-mod" data-target="translate" style="margin: 0 -10px;">
+        <span class="sb-mod-num" style="color: var(--coral)">⟐</span>
+        <span class="sb-mod-title">Translate to your community<div class="sb-mod-time">Adapt the course to your city</div></span>
+      </a>
+    </div>
+
+    <nav class="sb-modules">
+      <div class="sb-section-label" style="padding: 12px 12px 8px">Contents</div>
+      <ol id="mod-list">
+        <a class="sb-mod active" data-target="overview">
+          <span class="sb-mod-num">·</span>
+          <span class="sb-mod-title">Course overview<div class="sb-mod-time">Where to start</div></span>
+        </a>
+        <div class="sb-divider"></div>
+        <a class="sb-mod" data-target="m1"><span class="sb-mod-num">01</span><span class="sb-mod-title">Orientation<div class="sb-mod-time">~4 min</div></span></a>
+        <a class="sb-mod" data-target="m2"><span class="sb-mod-num">02</span><span class="sb-mod-title">Diagnose your community<div class="sb-mod-time">~6 min</div></span></a>
+        <a class="sb-mod" data-target="m3"><span class="sb-mod-num">03</span><span class="sb-mod-title">Position yourself<div class="sb-mod-time">~7 min</div></span></a>
+        <a class="sb-mod" data-target="m4"><span class="sb-mod-num">04</span><span class="sb-mod-title">Build credibility first<div class="sb-mod-time">~5 min</div></span></a>
+        <a class="sb-mod" data-target="m5"><span class="sb-mod-num">05</span><span class="sb-mod-title">Map the ecosystem<div class="sb-mod-time">~6 min</div></span></a>
+        <a class="sb-mod" data-target="m6"><span class="sb-mod-num">06</span><span class="sb-mod-title">Build civic infrastructure<div class="sb-mod-time">~6 min</div></span></a>
+        <a class="sb-mod" data-target="m7"><span class="sb-mod-num">07</span><span class="sb-mod-title">Work through officials<div class="sb-mod-time">~5 min</div></span></a>
+        <a class="sb-mod" data-target="m8"><span class="sb-mod-num">08</span><span class="sb-mod-title">Plan the handoff<div class="sb-mod-time">~4 min</div></span></a>
+        <div class="sb-divider"></div>
+        <a class="sb-mod" data-target="close"><span class="sb-mod-num">·</span><span class="sb-mod-title">What this doesn't teach<div class="sb-mod-time">~3 min</div></span></a>
+      </ol>
+    </nav>
+
+    <div class="sb-footer">
+      <div><a href="./learning-library.html">← Learning Library</a></div>
+      <button class="rev-toggle" id="revtoggle">Revision history</button>
+      <div class="rev-history" id="revhist">
+        <div><strong>v1.2 · May 7, 2026</strong> — Added "Translate to your community" diagnostic. Standalone reference view with five-question structural assessment generating per-module adaptation notes. Added explicit Portsmouth structural fingerprint (population, form of government, representation, region, readiness). Linked from overview deck and Module 01.</div>
+        <div style="margin-top:6px"><strong>v1.1 · May 7, 2026</strong> — Restructured to single-module-per-view layout with sidebar navigation. Content unchanged from v1.0.</div>
+        <div style="margin-top:6px"><strong>v1.0 · May 7, 2026</strong> — Initial release. Eight modules plus closing.</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- OVERVIEW -->
+    <section class="view active" id="view-overview">
+      <div class="overview-hero">
+        <div class="overview-eyebrow">A course for civic housing advocates</div>
+        <h1 class="overview-title">Catalyzing Local Housing Reform</h1>
+        <p class="overview-deck">A field-tested approach from Progress Portsmouth — written for advocates in other communities trying to move their cities from rhetoric to a serious housing reform agenda. Most of what worked in Portsmouth was contingent. The method is replicable. The outcomes are not.<br><br>Before reading: use the <a data-target="translate" style="color: var(--coral); cursor: pointer; border-bottom: 1px dotted var(--coral); text-decoration: none;">Translate to your community</a> diagnostic in the sidebar. The course is grounded in a specific small New England city; the diagnostic flags which modules will need adaptation for yours.</p>
+        <div class="overview-meta">
+          <span><strong>8 modules</strong> + closing</span>
+          <span><strong>Three paths</strong> by time available</span>
+          <span><strong>Source:</strong> Portsmouth, NH · 2024–2026</span>
+        </div>
+      </div>
+
+      <div class="overview-section-label">Modules — pick one to begin</div>
+      <div class="module-grid">
+
+        <button class="mod-card" data-target="m1">
+          <div class="mod-card-top"><span class="mod-card-num">Module 01</span><span class="mod-card-time">~4 min</span></div>
+          <div class="mod-card-title">Orientation</div>
+          <div class="mod-card-desc">What this course is and isn't. The contingencies. Three learner paths.</div>
+        </button>
+
+        <button class="mod-card" data-target="m2">
+          <div class="mod-card-top"><span class="mod-card-num">Module 02</span><span class="mod-card-time">~6 min</span></div>
+          <div class="mod-card-title">Diagnose your community</div>
+          <div class="mod-card-desc">Three diagnostic questions and four common patterns. Honest readiness assessment.</div>
+        </button>
+
+        <button class="mod-card" data-target="m3">
+          <div class="mod-card-top"><span class="mod-card-num">Module 03</span><span class="mod-card-time">~7 min</span></div>
+          <div class="mod-card-title">Position yourself</div>
+          <div class="mod-card-desc">Outside resource, adjacent partner, or inside role. Pick deliberately.</div>
+        </button>
+
+        <button class="mod-card" data-target="m4">
+          <div class="mod-card-top"><span class="mod-card-num">Module 04</span><span class="mod-card-time">~5 min</span></div>
+          <div class="mod-card-title">Build credibility first</div>
+          <div class="mod-card-desc">Evidence, neutrality, reliability. Earn the right to be heard.</div>
+        </button>
+
+        <button class="mod-card" data-target="m5">
+          <div class="mod-card-top"><span class="mod-card-num">Module 05</span><span class="mod-card-time">~6 min</span></div>
+          <div class="mod-card-title">Map the ecosystem</div>
+          <div class="mod-card-desc">Most of the people who shape outcomes aren't elected. Know all of them.</div>
+        </button>
+
+        <button class="mod-card" data-target="m6">
+          <div class="mod-card-top"><span class="mod-card-num">Module 06</span><span class="mod-card-time">~6 min</span></div>
+          <div class="mod-card-title">Build civic infrastructure</div>
+          <div class="mod-card-desc">Tools and data that outlast you. Op-eds expire; trackers persist.</div>
+        </button>
+
+        <button class="mod-card" data-target="m7">
+          <div class="mod-card-top"><span class="mod-card-num">Module 07</span><span class="mod-card-time">~5 min</span></div>
+          <div class="mod-card-title">Work through officials</div>
+          <div class="mod-card-desc">Direction, not parallel action. Available, not embedded. Credit goes to officials.</div>
+        </button>
+
+        <button class="mod-card" data-target="m8">
+          <div class="mod-card-top"><span class="mod-card-num">Module 08</span><span class="mod-card-time">~4 min</span></div>
+          <div class="mod-card-title">Plan the handoff</div>
+          <div class="mod-card-desc">The end state of good advocacy is the advocate becoming unnecessary.</div>
+        </button>
+
+        <button class="mod-card mod-card-closing" data-target="close" style="grid-column: 1 / -1">
+          <div class="mod-card-top"><span class="mod-card-num" style="color: var(--coral)">Closing</span><span class="mod-card-time">~3 min</span></div>
+          <div class="mod-card-title">What this course doesn't teach</div>
+          <div class="mod-card-desc">Honest scope-setting. What you'll need to learn elsewhere.</div>
+        </button>
+
+      </div>
+
+      <div class="ai-line">Created with AI assistance in research and information design, with human editorial control.</div>
+    </section>
+
+    <!-- TRANSLATE -->
+    <section class="view" id="view-translate">
+      <div class="translate-intro">
+        <h1>Translate to your community</h1>
+        <p>The course is grounded in one specific city. Tell us about yours — five quick questions — and we'll show which modules apply directly and which need adaptation. The diagnostic doesn't prescribe; it just flags structural mismatches honestly.</p>
+      </div>
+
+      <div class="fingerprint">
+        <div class="fp-label">Portsmouth's structural fingerprint</div>
+        <dl class="fp-row">
+          <dt>Population</dt><dd><strong>~22,000</strong></dd>
+          <dt>Form</dt><dd><strong>Council-Manager</strong> · professional manager + elected council</dd>
+          <dt>Representation</dt><dd><strong>At-large</strong> · 9-member council, mayor elected from within council</dd>
+          <dt>Region</dt><dd><strong>New England</strong> · New Hampshire, RSA-based municipal authority</dd>
+          <dt>Readiness</dt><dd><strong>Activated → in motion</strong> · 2024–2026 arc</dd>
+        </dl>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">1. What is your community's form of government?</span>
+        <div class="q-pills" data-q="gov">
+          <button class="q-pill" data-val="cm">Council-Manager</button>
+          <button class="q-pill" data-val="mayor">Mayor-Council (strong mayor)</button>
+          <button class="q-pill" data-val="townmtg">Town Meeting</button>
+          <button class="q-pill" data-val="commission">Commission</button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">2. How are your elected officials chosen?</span>
+        <div class="q-pills" data-q="rep">
+          <button class="q-pill" data-val="atlarge">At-large (city-wide)</button>
+          <button class="q-pill" data-val="district">District / ward-based</button>
+          <button class="q-pill" data-val="mixed">Mixed</button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">3. What's your population?</span>
+        <div class="q-pills" data-q="pop">
+          <button class="q-pill" data-val="small">Under 25,000</button>
+          <button class="q-pill" data-val="mid">25,000–100,000</button>
+          <button class="q-pill" data-val="large">100,000–500,000</button>
+          <button class="q-pill" data-val="major">Over 500,000</button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">4. What's your state or region?</span>
+        <div class="q-pills" data-q="region">
+          <button class="q-pill" data-val="newengland">New England</button>
+          <button class="q-pill" data-val="midatlantic">Mid-Atlantic / Northeast</button>
+          <button class="q-pill" data-val="midwest">Midwest</button>
+          <button class="q-pill" data-val="south">South</button>
+          <button class="q-pill" data-val="westca">California</button>
+          <button class="q-pill" data-val="westother">Pacific NW (OR/WA)</button>
+          <button class="q-pill" data-val="mountain">Mountain West / Plains</button>
+          <button class="q-pill" data-val="other">Other / international</button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">5. What's your community's current readiness? (See Module 02 for definitions.)</span>
+        <div class="q-pills" data-q="read">
+          <button class="q-pill" data-val="stuck">Activated and stuck</button>
+          <button class="q-pill" data-val="champ">Champion without urgency</button>
+          <button class="q-pill" data-val="capacity">Capacity gap</button>
+          <button class="q-pill" data-val="locked">Locked</button>
+          <button class="q-pill" data-val="motion">Already in motion</button>
+        </div>
+        <button class="reset-btn" id="resetbtn">Reset answers</button>
+      </div>
+
+      <div class="results-divider">Reading this course in your community</div>
+      <div id="result-output">
+        <div class="results-empty">Pick options above to see how this course translates to your community.</div>
+      </div>
+    </section>
+
+    <!-- MODULE 1 -->
+    <section class="view" id="view-m1">
+      <div class="mod-progress"><span><strong>Module 01</strong> of 08</span><span>~4 min</span></div>
+      <h1 class="mod-h1">Orientation: read this first</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>This course teaches you how to read your own community and build a method that fits it. It does not teach you to copy Portsmouth.</p>
+        </div>
+        <p class="lane-3hr">Before working through the modules, take five minutes with the <a data-target="translate" style="color: var(--coral); cursor: pointer; border-bottom: 1px dotted var(--coral);">Translate to your community</a> diagnostic. Portsmouth is a small New England city — population ~22,000, Council-Manager government, at-large representation. None of those are universal. The diagnostic flags which modules will need adaptation for your community before you read them.</p>
+        <p class="lane-3hr">This course distills how Progress Portsmouth — a small civic group with no formal authority — helped Portsmouth, NH adopt a comprehensive Housing Action Plan. It is written for advocates in other communities trying to do similar work.</p>
+        <p class="lane-3hr">Most of what worked in Portsmouth was contingent. A specific Zoning Board denial of a micro-unit project created a public opening. Two members of City Council were willing to champion housing reform. City staff were operational partners, not adversaries. The two Progress Portsmouth founders had complementary skills — civic strategy and parcel-level GIS analysis. None of that is replicable on demand.</p>
+        <p class="lane-3hr">What <em>is</em> transferable is a posture and a sequence: how to recognize an opening, how to build credibility before influence, how to position outside the formal structure while staying adjacent to it, and how to build civic infrastructure that a city can absorb.</p>
+        <h3 class="lane-3hr">Three paths through this material</h3>
+        <ul class="lane-3hr">
+          <li><strong>Skim (~10 min)</strong> — civic-minded resident with limited time. Read only the orange "Quick read" panels. Use the path picker in the sidebar to filter.</li>
+          <li><strong>Read (~45 min)</strong> — existing advocacy group leveling up. Read everything. Use the green diagnostic exercises if helpful.</li>
+          <li><strong>Work through (~3 hrs)</strong> — solo organizer starting from zero. One module per workday, complete the exercises, then revisit.</li>
+        </ul>
+        <div class="exercise lane-3wk">
+          <div class="ex-label">Before you start</div>
+          <h4>Write down, in two sentences, what you actually want.</h4>
+          <p>"More housing" is not specific enough. "A city-adopted set of zoning amendments that legalize multi-family by right in three districts within 24 months" is. The clearer your target, the easier the rest of this course is to apply. Revisit and revise this sentence at the end of each module.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 2 -->
+    <section class="view" id="view-m2">
+      <div class="mod-progress"><span><strong>Module 02</strong> of 08</span><span>~6 min</span></div>
+      <h1 class="mod-h1">Diagnose your community</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>There's a difference between "we should do something" and "this community can do something right now." Tell the truth about which one you're in.</p>
+        </div>
+        <p class="lane-3hr">Before you decide what to do, figure out where you are. Many advocates skip this step and end up running campaigns their community can't yet support. The work then fails for reasons that look like opposition but are actually about timing and readiness.</p>
+        <h3 class="lane-3hr">Three diagnostic questions</h3>
+        <ol class="lane-3hr">
+          <li>Is there a recent specific event — a denied project, a contentious zoning vote, a public statement from an elected official, a news story — that has put housing on the local agenda?</li>
+          <li>Is there at least one elected official who has signaled openness to reform, ideally publicly?</li>
+          <li>Are city staff (planning, building, assessing) reachable as professionals — or is the relationship adversarial?</li>
+        </ol>
+        <p class="lane-3hr">If you answered no to two or more, your work is foundation-laying, not reform-pushing. Pretending otherwise produces frustration.</p>
+        <h3 class="lane-3hr">Common patterns</h3>
+        <ul class="lane-3hr">
+          <li><strong>Activated and stuck.</strong> Events have created urgency but no champion exists. Your work is champion identification.</li>
+          <li><strong>Champion without urgency.</strong> A friendly councilor exists but housing isn't on the agenda. Your work is visibility — making the problem legible.</li>
+          <li><strong>Capacity gap.</strong> Both exist but staff are overwhelmed. Your value is reducing their workload, not adding to it.</li>
+          <li><strong>Locked.</strong> None of the three are present. Your work is base-building, not reform-pushing. This is a multi-year posture.</li>
+        </ul>
+        <div class="portsmouth-note lane-3hr">
+          <div class="pn-label">Portsmouth context</div>
+          <p>Portsmouth was "activated and stuck" until early 2025: a Zoning Board denial of a micro-unit project had created public attention, but no formal champion had emerged. The pivotal move was Progress Portsmouth approaching individual councilors with parcel-level data and a draft framework, which gave at least one councilor enough material to take the issue up publicly. <strong>Without the prior denial, the same outreach would likely have produced polite acknowledgment and nothing else.</strong></p>
+        </div>
+        <div class="exercise lane-3wk">
+          <div class="ex-label">Diagnostic</div>
+          <h4>Answer these in writing</h4>
+          <ol>
+            <li>Name the most recent housing-relevant public event in your community. If you can't name one in the last 12 months, the agenda isn't yet activated.</li>
+            <li>Name one elected official who has spoken publicly about housing in the last 12 months. If you can't, you don't yet have a champion candidate.</li>
+            <li>Name one professional staff member (planning, assessing, code) you could reach by email tomorrow. If you can't, build that relationship before anything else.</li>
+          </ol>
+          <p>Whichever blank you find first is your starting point — not the policy reform you wanted to push.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 3 -->
+    <section class="view" id="view-m3">
+      <div class="mod-progress"><span><strong>Module 03</strong> of 08</span><span>~7 min</span></div>
+      <h1 class="mod-h1">Position yourself</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>Pick your lane on purpose. The wrong position will block you regardless of how good your work is.</p>
+        </div>
+        <p class="lane-3hr">There are three positions a housing advocate can take. They are not interchangeable, and most advocates default into a position rather than choose one.</p>
+        <div class="position-grid lane-3hr">
+          <div class="position-card">
+            <h4>Outside resource</h4>
+            <p>Unaffiliated with the city. No formal authority. Works at the direction of elected officials.</p>
+            <div class="pc-label">Best for</div>
+            <div class="pc-detail">Producing rigorous analysis a city can absorb without political baggage.</div>
+            <div class="pc-label">Cost</div>
+            <div class="pc-detail">Slow to build credibility. No permanent seat. Every piece of access has to be re-earned.</div>
+          </div>
+          <div class="position-card">
+            <h4>Adjacent partner</h4>
+            <p>Formal organization (often 501(c)(3) or (c)(4)). Participates in formal processes.</p>
+            <div class="pc-label">Best for</div>
+            <div class="pc-detail">Sustained public-facing advocacy, fundraising, multi-year campaigns.</div>
+            <div class="pc-label">Cost</div>
+            <div class="pc-detail">Board, IRS, donor constraints. Can't easily change direction once a strategy is set.</div>
+          </div>
+          <div class="position-card">
+            <h4>Inside role</h4>
+            <p>Commission member, candidate, council member. Holds formal authority.</p>
+            <div class="pc-label">Best for</div>
+            <div class="pc-detail">Direct influence on votes and process design.</div>
+            <div class="pc-label">Cost</div>
+            <div class="pc-detail">Bound by procedure and politics. Loses freedom to reframe issues publicly.</div>
+          </div>
+        </div>
+        <p class="lane-3hr">Most advocates default to "adjacent partner" because that's what civic groups usually look like, then wonder why they can't move fast or speak frankly. Most advocates avoid "outside resource" because it sounds insubstantial — but that's exactly why it can be useful. An outside resource is harder to dismiss as a faction; the analysis stands or falls on its own merits.</p>
+        <div class="trap lane-3hr">
+          <div class="trap-label">Trap</div>
+          <p>Trying to occupy two positions at once. An advocate who is also on the planning board confuses both their colleagues and the public. Pick one position; if you change, change deliberately and announce it.</p>
+        </div>
+        <div class="exercise lane-3wk">
+          <div class="ex-label">Choose</div>
+          <h4>Which position fits your situation?</h4>
+          <ol>
+            <li>Which of your skills is hardest to replace? (Analysis, organizing, public speaking, relationships, fundraising.) Different positions reward different strengths.</li>
+            <li>What's your time horizon? Outside resource and inside role both require multi-year commitment. Adjacent partner can work shorter-term.</li>
+            <li>How much constraint can you tolerate? An adjacent partner with a board has the most. An outside resource has the least.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 4 -->
+    <section class="view" id="view-m4">
+      <div class="mod-progress"><span><strong>Module 04</strong> of 08</span><span>~5 min</span></div>
+      <h1 class="mod-h1">Build credibility before influence</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>Earn the right to be heard before you ask to be heard. Six months of credible work first; access second.</p>
+        </div>
+        <p class="lane-3hr">The temptation is to skip this step. Don't. Credibility for housing advocates comes from three sources, and access without these three exposes the gaps rather than producing influence.</p>
+        <h3 class="lane-3hr">The three sources</h3>
+        <ul class="lane-3hr">
+          <li><strong>Evidence.</strong> Data, analysis, parcel-level work, fiscal modeling, citations. Numbers that withstand scrutiny — and that you can defend when challenged in a public meeting.</li>
+          <li><strong>Neutrality of presentation.</strong> Framing that an opponent could read without finding strawmen or loaded language. This does not mean you have no position. It means your work product can be trusted by people who disagree with your conclusions.</li>
+          <li><strong>Reliability.</strong> Showing up to meetings, finishing what you said you'd finish, declining to overclaim. Boring and underrated.</li>
+        </ul>
+        <p class="lane-3hr">Your first six months should produce one credible artifact — a rigorous analysis, a clean data tool, a useful map — before you ask for anything. Skip this step and you'll be classified as another loud advocate. Once classified that way, reclassification is expensive.</p>
+        <div class="trap lane-3hr">
+          <div class="trap-label">Honesty trap</div>
+          <p>"Neutral framing" is not the same as "no position." If you genuinely have no position, you're a researcher, not an advocate. If you have a position, design your work so the analysis is independent of your conclusions — then say what you think. The two products serve different purposes; don't blend them in a single document.</p>
+        </div>
+        <div class="portsmouth-note lane-3hr">
+          <div class="pn-label">Portsmouth context</div>
+          <p>Progress Portsmouth's first credibility-building artifact was a parcel-by-parcel yield analysis of the city's residential zones — what the existing zoning permits, what alternative zoning would permit, and where the gap is largest. It took months. It was deliberately published with no policy recommendations attached. The recommendations came separately, later, after the analysis itself had been read and used by people across the political spectrum.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 5 -->
+    <section class="view" id="view-m5">
+      <div class="mod-progress"><span><strong>Module 05</strong> of 08</span><span>~6 min</span></div>
+      <h1 class="mod-h1">Map the ecosystem</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>Know everyone who can help or block. Most of them aren't elected.</p>
+        </div>
+        <p class="lane-3hr">Most advocates over-focus on elected officials and under-focus on everyone else who actually shapes outcomes. The full ecosystem usually includes:</p>
+        <ul class="lane-3hr">
+          <li><strong>Elected officials.</strong> Vary in housing literacy and willingness. Identify champions, fence-sitters, and opponents — and accept that the list will change with each election.</li>
+          <li><strong>Professional staff.</strong> Planning, building, assessing, legal. Their workload is often the binding constraint on what's possible. They outlast officials.</li>
+          <li><strong>Local developers.</strong> Full range from small infill builders to large mixed-use developers. Their lived experience of your zoning is data you don't have.</li>
+          <li><strong>Nonprofit housing developers.</strong> Different incentives than for-profit. Potential project partners for affordable units. Often statewide or regional in scope.</li>
+          <li><strong>State housing finance agencies and coalitions.</strong> Funding, technical assistance, statewide policy context. Free expertise that advocates routinely ignore.</li>
+          <li><strong>Regional workforce or housing coalitions.</strong> Convening power, network access, sometimes deployment infrastructure for materials you produce.</li>
+          <li><strong>Existing residents and neighborhoods.</strong> Including those who oppose reform. Understanding their concerns is required, not optional.</li>
+        </ul>
+        <p class="lane-3hr">For each, ask: <strong>What do they want? What do they fear? What do they know that I don't?</strong> If you can't answer those three questions for a stakeholder, you don't yet understand them.</p>
+        <h3 class="lane-3hr">Common mistakes</h3>
+        <ul class="lane-3hr">
+          <li><strong>Treating opponents as a monolith.</strong> Most opposition is driven by specific concerns — parking, neighborhood character, a specific project, distrust of process — that are addressable individually. The composite "they" doesn't exist.</li>
+          <li><strong>Skipping staff.</strong> A planning director who thinks your work is honest will quietly include you for years. A planning director who thinks you're sloppy will quietly exclude you for years. The relationship is asymmetric.</li>
+          <li><strong>Romanticizing developers.</strong> Most are running businesses; some align with your goals and some don't. Both can be useful. Neither is your friend in the way an organizer might want them to be.</li>
+          <li><strong>Underusing state agencies.</strong> State housing finance agencies routinely offer free presentations, data, and technical assistance that advocates spend months trying to produce themselves.</li>
+        </ul>
+        <div class="exercise lane-3wk">
+          <div class="ex-label">Exercise</div>
+          <h4>Build a stakeholder map</h4>
+          <p>List every actor in the ecosystem above for your community. For each, write one sentence answering each of the three questions: what they want, what they fear, what they know. If a row is blank, that's a research task — not a guess to fill in.</p>
+          <p>Update this map quarterly. People change positions; your understanding goes stale faster than you think.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 6 -->
+    <section class="view" id="view-m6">
+      <div class="mod-progress"><span><strong>Module 06</strong> of 08</span><span>~6 min</span></div>
+      <h1 class="mod-h1">Build civic infrastructure</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>Make things that outlast you. Op-eds and rallies have a shelf life of days. Tools and data persist.</p>
+        </div>
+        <p class="lane-3hr">Most housing advocacy produces ephemeral outputs: op-eds, public testimony, social posts, rallies, comment letters. They have a shelf life of days. They are useful in the moment but they don't compound.</p>
+        <p class="lane-3hr">Civic infrastructure is different. It is tools, data sources, and educational materials that persist and can eventually be absorbed by the city. Examples from Progress Portsmouth:</p>
+        <ul class="lane-3hr">
+          <li>A parcel yield analysis showing how many units could be added under different zoning scenarios</li>
+          <li>A learning library of explainers on local zoning, state housing law, and reform options</li>
+          <li>A public Housing Action Plan tracker that lets anyone see what's been adopted and what's pending</li>
+          <li>Periodic housing market snapshots</li>
+        </ul>
+        <p class="lane-3hr">Why this matters: at some point your group will get tired, disagree internally, or pivot. If your output was 50 op-eds, none of it survives that moment. If your output was a tracking tool the city now maintains, the work outlives the group.</p>
+        <h3 class="lane-3hr">Standards for civic infrastructure</h3>
+        <ul class="lane-3hr">
+          <li>Useful to people who disagree with you</li>
+          <li>Free of advocacy framing in the artifact itself (the framing is in your separate advocacy products)</li>
+          <li>Maintainable by people other than you</li>
+          <li>Eventually transferable to the city or another permanent home</li>
+        </ul>
+        <div class="trap lane-3hr">
+          <div class="trap-label">Trap</div>
+          <p>Building tools to feel productive without checking whether anyone uses them. Before you build, find one specific person — a councilor, a staff member, a developer — who will use a draft version, and keep showing them iterations. If no one is asking for it, the artifact is probably for you, not for them.</p>
+        </div>
+        <div class="portsmouth-note lane-3hr">
+          <div class="pn-label">Portsmouth context</div>
+          <p>The Housing Action Plan Explorer began as a working document Progress Portsmouth used internally to organize policy items. Iterations happened in public meetings — councilors and staff would see the tool, request a feature, and the request would be in the next version a week later. <strong>Tools built this way get used. Tools built without that feedback loop usually don't.</strong></p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 7 -->
+    <section class="view" id="view-m7">
+      <div class="mod-progress"><span><strong>Module 07</strong> of 08</span><span>~5 min</span></div>
+      <h1 class="mod-h1">Work through officials, not parallel to them</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>Once it's adopted, it's theirs. Act accordingly.</p>
+        </div>
+        <p class="lane-3hr">Once you have a champion and the issue is on the agenda, the question changes: how do you work with elected officials without becoming their staff or their opponent?</p>
+        <h3 class="lane-3hr">Three principles</h3>
+        <h4 class="lane-3hr">Direction, not parallel action.</h4>
+        <p class="lane-3hr">Once an elected body has taken up an issue, your work should support what they're doing — not run a separate process that competes with theirs. Parallel processes are usually read as criticism even when they're not intended that way. If a Housing Committee is doing triage, do not publish your own triage.</p>
+        <h4 class="lane-3hr">Outside resource means available, not embedded.</h4>
+        <p class="lane-3hr">You attend meetings as a non-voting resource. You answer questions when asked. You don't draft policy unless asked. The line between "helpful outside expert" and "uncompensated staff" is thin and worth maintaining — embedded advocates lose the independence that made them useful in the first place.</p>
+        <h4 class="lane-3hr">Public credit goes to officials, not you.</h4>
+        <p class="lane-3hr">Anything you build that is adopted should be credited to the body that adopted it. Your name on a successful reform is a short-term win and a long-term cost — it converts policy into a partisan artifact that can be reversed by the next election.</p>
+        <div class="trap lane-3hr">
+          <div class="trap-label">Trap</div>
+          <p>Resentment about not getting credit. The work is the credit. If you need public attribution to feel the effort was worth it, your motivation will eventually misalign with the work.</p>
+        </div>
+        <div class="exercise lane-3wk">
+          <div class="ex-label">Reflect</div>
+          <h4>Test yourself</h4>
+          <p>If your group's most important achievement this year were credited entirely to the City Council, with your name nowhere on it, would you still be glad it happened? If the honest answer is no, you have a position-and-motivation alignment problem to work on before you have an advocacy problem.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- MODULE 8 -->
+    <section class="view" id="view-m8">
+      <div class="mod-progress"><span><strong>Module 08</strong> of 08</span><span>~4 min</span></div>
+      <h1 class="mod-h1">Plan the handoff</h1>
+      <div class="mod-body">
+        <div class="quick-read">
+          <div class="qr-label">Quick read</div>
+          <p>Build for a successor you haven't met. The end state of good advocacy is the advocate becoming unnecessary.</p>
+        </div>
+        <p class="lane-3hr">Housing advocacy that depends on one person or one small group is fragile. Reform that survives requires institutional ownership — meaning the tools, the data, the relationships, and the maintenance routines exist outside your group.</p>
+        <h3 class="lane-3hr">Practical handoff steps</h3>
+        <ul class="lane-3hr">
+          <li><strong>Document everything in formats the city can edit.</strong> Avoid proprietary tools or skills only you have. If your tracker is a custom system only one person knows how to update, it's a liability dressed up as an asset.</li>
+          <li><strong>Identify a staff or committee owner before transferring anything.</strong> "We'd like to give this to the city" is a polite gesture; "Director X has agreed to take this on" is a transfer.</li>
+          <li><strong>Resolve security and authorization issues before handoff.</strong> Your tools probably have shortcuts that work because you trust yourself; the city can't operate that way. Audit credentials, hard-coded passwords, and any access patterns that depend on you specifically.</li>
+          <li><strong>Plan for your departure as if it could happen unexpectedly.</strong> It might. Illness, burnout, relocation, disagreement — any of these can end an advocacy group's run with no warning.</li>
+        </ul>
+        <div class="trap lane-3hr">
+          <div class="trap-label">Trap</div>
+          <p>Hero narrative. The temptation to be the indispensable expert is strong and corrosive. It produces fragile reform, dependent successors, and eventually burnout. Resist it from the start, not at the end.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="view" id="view-close">
+      <div class="mod-progress"><span><strong>Closing</strong></span><span>~3 min</span></div>
+      <h1 class="mod-h1">What this course doesn't teach</h1>
+      <div class="mod-body">
+        <p>It is worth being explicit about scope, because this course is sometimes mistaken for a complete advocacy curriculum. It is not.</p>
+        <p>This course doesn't teach:</p>
+        <ul>
+          <li><strong>How to organize protests or run pressure campaigns.</strong> Those are different methods with different premises and different ethics. They can complement the approach in this course; they're not substitutes for it.</li>
+          <li><strong>How to build a 501(c)(3) or (c)(4).</strong> If you're going that route, this course is incomplete — you need governance, finance, and compliance content beyond its scope.</li>
+          <li><strong>How to win electoral races.</strong> Different skill set, different timeline, different ethics around partisanship.</li>
+          <li><strong>How to handle hostile city governments.</strong> Portsmouth's was receptive. If yours is not, your sequence and tools will need to be different — possibly starting with the "Locked" pattern in Module 02 and building from there over years.</li>
+        </ul>
+        <p>It does teach: how a small civic group with no formal authority can help its community produce a serious, comprehensive housing reform document — and how to do it without burning relationships or building a fragile structure.</p>
+        <p>The method is replicable. The outcomes are not guaranteed. Anyone who promises you both is selling something.</p>
+        <div class="exercise lane-3wk">
+          <div class="ex-label">Final exercise</div>
+          <h4>Revisit your two-sentence target from Module 01</h4>
+          <p>Now that you've worked through the course, rewrite it. Is the timeline realistic given your community's diagnostic? Is the position you've chosen consistent with the target? Is there a credibility-building artifact you should produce in the first six months? Specific is better than ambitious.</p>
+        </div>
+      </div>
+      <div class="mod-pager"></div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const SEQUENCE = ['m1','m2','m3','m4','m5','m6','m7','m8','close'];
+  const TITLES = {
+    'overview': 'Course overview',
+    'translate': 'Translate to your community',
+    'm1': 'Orientation',
+    'm2': 'Diagnose your community',
+    'm3': 'Position yourself',
+    'm4': 'Build credibility first',
+    'm5': 'Map the ecosystem',
+    'm6': 'Build civic infrastructure',
+    'm7': 'Work through officials',
+    'm8': 'Plan the handoff',
+    'close': "What this doesn't teach"
+  };
+
+  const VALID_TARGETS = ['overview', 'translate', ...SEQUENCE];
+
+  // Diagnostic state and notes for "Translate to your community"
+  const DIAG = { gov: null, rep: null, pop: null, region: null, read: null };
+
+  const NOTES = [
+    // Government form
+    { mod: 'overall', tag: 'gov-cm', match: true, text: "Council-Manager (matches Portsmouth). The course's assumptions about professional staff continuity and council-as-policy-body apply directly." },
+    { mod: 'm3', tag: 'gov-mayor', text: "Strong-mayor systems shift the access map. Your primary entry point is the mayor's office and senior appointees — not the council. The 'outside resource' position still works but routes through different actors." },
+    { mod: 'm5', tag: 'gov-mayor', text: "In strong-mayor cities, the Planning Director often serves at the mayor's pleasure. The 'staff outlast officials' rule weakens — track who is appointed vs. civil service before relying on staff continuity." },
+    { mod: 'm7', tag: 'gov-mayor', text: "'Working through officials' usually means working through one office. Faster when aligned, blocked when not. There's no committee structure to triangulate around." },
+    { mod: 'm2', tag: 'gov-townmtg', text: "Town Meeting changes the diagnostic. There's no continuous 'agenda' — your unit of work is the warrant article and its supporters. Activation can build and dissipate within a single annual cycle." },
+    { mod: 'm6', tag: 'gov-townmtg', text: "Civic infrastructure must function on an annual rhythm. Tools that update continuously may not match how your community processes information." },
+    { mod: 'm7', tag: 'gov-townmtg', text: "'Officials' includes the Select Board AND the citizens who sponsor warrant articles. The latter group is often who you're really collaborating with." },
+    { mod: 'm3', tag: 'gov-commission', text: "Commission form is rare and unusual. Each commissioner is also a department executive — your access patterns won't match any of the three positions in the course cleanly. Treat the framework as a starting point, not a fit." },
+
+    // Representation
+    { mod: 'overall', tag: 'rep-atlarge', match: true, text: "At-large representation (matches Portsmouth). City-wide elections mean champions and opponents are accountable to the whole population. Geographic stakeholder mapping is less important." },
+    { mod: 'm2', tag: 'rep-district', text: "District-based representation: your community may be 'activated' in some districts and 'locked' in others. Apply the diagnostic district-by-district, not citywide." },
+    { mod: 'm5', tag: 'rep-district', text: "Stakeholder map needs a geographic layer. Each district has its own activated and inactive constituencies, and your champion likely represents only some of them." },
+    { mod: 'm7', tag: 'rep-district', text: "Champion identification narrows. You usually need 1–2 district representatives where the local politics already favors reform, plus a path to enough additional votes for adoption." },
+    { mod: 'm5', tag: 'rep-mixed', text: "Mixed at-large/district means two political logics in the same body. At-large members may have city-wide reform perspectives; district members may face hyperlocal opposition. Map both groups separately." },
+
+    // Population
+    { mod: 'overall', tag: 'pop-small', match: true, text: "Population under 25,000 (matches Portsmouth). Personal relationships dominate. You can know every councilor, most senior staff, and most active developers by name. The course's relationship-by-relationship work fits directly." },
+    { mod: 'm4', tag: 'pop-mid', text: "Personal relationships are still possible but selective — you can't know everyone the way small-city advocates can. Pick your priority relationships deliberately." },
+    { mod: 'm5', tag: 'pop-mid', text: "Your stakeholder ecosystem includes institutional actors (chambers of commerce, neighborhood associations, business improvement districts) that may not exist or matter at small-city scale." },
+    { mod: 'm2', tag: 'pop-large', text: "Communities of 100K–500K are not monolithic. Apply the diagnostic at the neighborhood or district level, not just citywide. The 'activated' parts of your city may be very different from the 'locked' parts." },
+    { mod: 'm4', tag: 'pop-large', text: "One credibility-building artifact won't reach everyone. Plan for multiple audiences — downtown business, residential neighborhoods, council, staff — that need different framings of the same analysis." },
+    { mod: 'm6', tag: 'pop-large', text: "Civic infrastructure has to be media-legible. A tool only councilors and staff use is too narrow at this scale — the public also needs an entry point." },
+    { mod: 'm3', tag: 'pop-major', text: "Major metros (>500K) make the 'outside resource' position much harder to sustain. The Portsmouth model assumes you can be present at every relevant meeting; at this scale, you can't. Institutional advocacy (formal nonprofit, paid staff) may be required for sustained engagement." },
+    { mod: 'm5', tag: 'pop-major', text: "Personal relationships with decision-makers are limited at major-metro scale. Mass communication and coalition-building become primary methods, with personal access reserved for a small number of key players." },
+    { mod: 'm7', tag: 'pop-major', text: "Working through officials usually requires intermediaries at this scale — staff, lobbyists, formal coalitions. Direct access is rare and won't scale across the work the course assumes." },
+
+    // Region
+    { mod: 'overall', tag: 'region-newengland', match: true, text: "New England (matches Portsmouth's region). Civic culture, town-meeting traditions, and state housing law context are similar across the region — though specific RSA references in the case examples are New Hampshire-specific." },
+    { mod: 'm4', tag: 'region-midatlantic', text: "Mid-Atlantic / Northeast: state enabling legislation differs significantly from New Hampshire's. Verify what local zoning power your municipality actually has before designing reform proposals." },
+    { mod: 'm4', tag: 'region-midwest', text: "Midwest: home-rule vs. Dillon-rule status varies by state. Some give municipalities broad authority; others require state legislative action for many zoning changes. Check yours before assuming local discretion." },
+    { mod: 'm4', tag: 'region-south', text: "Southern states vary widely on home-rule and on local-government structure. Texas, Florida, North Carolina, and Georgia each have substantially different municipal authority frameworks. Translate enabling-legislation references carefully." },
+    { mod: 'm4', tag: 'region-westca', text: "California: state preemption (SB 9, SB 35, AB 2011, ADU laws) has shifted many former local-advocacy targets to state-determined outcomes. Your reform agenda may look more like accelerating state-mandated changes than persuading local officials of new ones." },
+    { mod: 'm7', tag: 'region-westca', text: "California local officials operate within heavy state constraints, which reshapes what they can plausibly resist or champion. The 'champion' calculus assumes more local discretion than California permits." },
+    { mod: 'm4', tag: 'region-westother', text: "Pacific Northwest (OR, WA): statewide growth-management frameworks create a different policy frame. Portsmouth-style local zoning advocacy may need to be paired with state-level participation." },
+    { mod: 'm4', tag: 'region-mountain', text: "Mountain West / Plains: lower-density baselines and different growth politics shift which arguments work. The 'workforce housing' framing that lands in New England may need different language in your region." },
+    { mod: 'overall', tag: 'region-other', text: "Outside the US: the course's posture and sequence (credibility, ecosystem, civic infrastructure, handoff) transfer broadly, but governmental mechanics differ substantially. Translate liberally; the specific case examples are illustrative only." },
+
+    // Readiness
+    { mod: 'm2', tag: 'read-stuck', match: true, text: "'Activated and stuck' is exactly Portsmouth's starting point in 2024–2025. The full course applies. Module 02's pattern description matches your situation." },
+    { mod: 'm4', tag: 'read-champ', text: "'Champion without urgency': skip ahead to credibility-building (Module 04) and visibility tools (Module 06). Your champion needs material that lets them surface the issue publicly without feeling exposed." },
+    { mod: 'm4', tag: 'read-capacity', text: "'Capacity gap': your value is reducing staff workload, not adding to it. Modules 04 and 06 apply directly, but the artifact you build must be one staff can absorb without rework. Don't bring problems; bring drafts." },
+    { mod: 'm2', tag: 'read-locked', text: "'Locked' is the hardest starting point. The course is mostly aspirational right now. Module 02's pattern description is honest about this. Focus on Module 04 (long-horizon credibility) and base-building outside the course's framework." },
+    { mod: 'm7', tag: 'read-motion', text: "'Already in motion' means Modules 07 and 08 are most relevant — you're past diagnostic and credibility into operational and handoff territory. Modules 02–04 may be retrospective at this point." }
+  ];
+
+  const MOD_TITLES = {
+    'overall': 'Overall fit',
+    'm1': 'Module 01 · Orientation',
+    'm2': 'Module 02 · Diagnose your community',
+    'm3': 'Module 03 · Position yourself',
+    'm4': 'Module 04 · Build credibility first',
+    'm5': 'Module 05 · Map the ecosystem',
+    'm6': 'Module 06 · Build civic infrastructure',
+    'm7': 'Module 07 · Work through officials',
+    'm8': 'Module 08 · Plan the handoff',
+    'close': "Closing · What this doesn't teach"
+  };
+
+  function computeTags() {
+    const tags = [];
+    if (DIAG.gov) tags.push('gov-' + DIAG.gov);
+    if (DIAG.rep) tags.push('rep-' + DIAG.rep);
+    if (DIAG.pop) tags.push('pop-' + DIAG.pop);
+    if (DIAG.region) tags.push('region-' + DIAG.region);
+    if (DIAG.read) tags.push('read-' + DIAG.read);
+    return tags;
+  }
+
+  function renderTranslate() {
+    const out = document.getElementById('result-output');
+    if (!out) return;
+    const answered = Object.values(DIAG).filter(v => v !== null).length;
+    if (answered === 0) {
+      out.innerHTML = '<div class="results-empty">Pick options above to see how this course translates to your community.</div>';
+      return;
+    }
+
+    const tags = computeTags();
+    const matched = NOTES.filter(n => tags.includes(n.tag));
+
+    // Group by module
+    const grouped = {};
+    matched.forEach(n => {
+      if (!grouped[n.mod]) grouped[n.mod] = [];
+      grouped[n.mod].push(n);
+    });
+
+    // Build summary
+    const profile = [];
+    if (DIAG.gov) profile.push({ cm: 'Council-Manager', mayor: 'Strong-mayor', townmtg: 'Town Meeting', commission: 'Commission' }[DIAG.gov]);
+    if (DIAG.rep) profile.push({ atlarge: 'at-large', district: 'district-based', mixed: 'mixed representation' }[DIAG.rep]);
+    if (DIAG.pop) profile.push({ small: '<25K', mid: '25K–100K', large: '100K–500K', major: '>500K' }[DIAG.pop]);
+    if (DIAG.region) profile.push({ newengland: 'New England', midatlantic: 'Mid-Atlantic', midwest: 'Midwest', south: 'South', westca: 'California', westother: 'Pacific NW', mountain: 'Mountain West', other: 'Other/intl.' }[DIAG.region]);
+
+    let mismatchCount = 0;
+    if (DIAG.gov && DIAG.gov !== 'cm') mismatchCount++;
+    if (DIAG.rep && DIAG.rep !== 'atlarge') mismatchCount++;
+    if (DIAG.pop && DIAG.pop !== 'small') mismatchCount++;
+    if (DIAG.region && DIAG.region !== 'newengland') mismatchCount++;
+
+    const dimensionsAnswered = ['gov','rep','pop','region'].filter(k => DIAG[k] !== null).length;
+
+    let summaryText;
+    if (dimensionsAnswered < 4) {
+      summaryText = '<strong>Partial profile.</strong> Answer remaining structural questions for a complete translation.';
+    } else if (mismatchCount === 0) {
+      summaryText = '<strong>Your community structurally resembles Portsmouth.</strong> The course applies with minimal adaptation. Watch only for state-specific legal references.';
+    } else if (mismatchCount === 1) {
+      summaryText = '<strong>Your community differs from Portsmouth on 1 dimension.</strong> Most modules apply directly. The notes below flag where adaptation is needed.';
+    } else {
+      summaryText = '<strong>Your community differs from Portsmouth on ' + mismatchCount + ' dimensions.</strong> The course\'s posture and sequence still apply, but several modules need adaptation. Read the notes below before working through.';
+    }
+
+    let html = '<div class="result-summary">' + summaryText;
+    if (profile.length) {
+      html += '<br><br>Your profile: ' + profile.map(p => '<span class="summary-tag">' + p + '</span>').join(' ');
+    }
+    html += '</div>';
+
+    // Render module groups in canonical order
+    const modOrder = ['overall', 'm1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'close'];
+    modOrder.forEach(mod => {
+      if (!grouped[mod]) return;
+      const allMatch = grouped[mod].every(n => n.match);
+      html += '<div class="note-group' + (allMatch ? ' match' : '') + '">';
+      html += '<h4>' + (allMatch ? 'Match' : 'Adapt') + '<span class="note-mod-title">' + MOD_TITLES[mod] + '</span></h4>';
+      html += '<ul>';
+      grouped[mod].forEach(n => { html += '<li>' + n.text + '</li>'; });
+      html += '</ul>';
+      if (mod !== 'overall') {
+        html += '<a class="jump-link" data-target="' + mod + '">Open ' + mod.toUpperCase() + ' →</a>';
+      }
+      html += '</div>';
+    });
+
+    out.innerHTML = html;
+  }
+
+  function resetDiag() {
+    Object.keys(DIAG).forEach(k => DIAG[k] = null);
+    document.querySelectorAll('.q-pill').forEach(p => p.classList.remove('selected'));
+    renderTranslate();
+  }
+
+  function switchTo(target) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const view = document.getElementById('view-' + target);
+    if (view) view.classList.add('active');
+
+    document.querySelectorAll('.sb-mod').forEach(m => m.classList.remove('active'));
+    const sbMod = document.querySelector('.sb-mod[data-target="' + target + '"]');
+    if (sbMod) sbMod.classList.add('active');
+
+    if (SEQUENCE.includes(target)) buildPager(target);
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sboverlay').classList.remove('open');
+
+    if (history.replaceState) history.replaceState(null, '', '#' + target);
+  }
+
+  function buildPager(current) {
+    const idx = SEQUENCE.indexOf(current);
+    const pager = document.querySelector('#view-' + current + ' .mod-pager');
+    if (!pager) return;
+
+    const prev = idx > 0 ? SEQUENCE[idx - 1] : 'overview';
+    const next = idx < SEQUENCE.length - 1 ? SEQUENCE[idx + 1] : null;
+
+    let html = '';
+    html += '<button class="pager-btn prev" data-target="' + prev + '"><div class="pager-label">← Previous</div><div class="pager-title">' + TITLES[prev] + '</div></button>';
+    if (next) {
+      html += '<button class="pager-btn next" data-target="' + next + '"><div class="pager-label">Next →</div><div class="pager-title">' + TITLES[next] + '</div></button>';
+    } else {
+      html += '<button class="pager-btn next" data-target="overview"><div class="pager-label">Done →</div><div class="pager-title">Back to overview</div></button>';
+    }
+    pager.innerHTML = html;
+  }
+
+  document.addEventListener('click', function(e) {
+    // Diagnostic pills
+    const qpill = e.target.closest('.q-pill');
+    if (qpill) {
+      const group = qpill.closest('.q-pills');
+      const q = group.getAttribute('data-q');
+      const v = qpill.getAttribute('data-val');
+      DIAG[q] = v;
+      group.querySelectorAll('.q-pill').forEach(p => p.classList.remove('selected'));
+      qpill.classList.add('selected');
+      renderTranslate();
+      return;
+    }
+
+    if (e.target.closest('#resetbtn')) {
+      resetDiag();
+      return;
+    }
+
+    const target = e.target.closest('[data-target]');
+    if (target) {
+      e.preventDefault();
+      switchTo(target.getAttribute('data-target'));
+      return;
+    }
+
+    const pill = e.target.closest('.path-pill');
+    if (pill) {
+      const path = pill.getAttribute('data-path');
+      document.body.setAttribute('data-path', path);
+      document.querySelectorAll('.path-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      return;
+    }
+
+    if (e.target.closest('#menubtn')) {
+      document.getElementById('sidebar').classList.add('open');
+      document.getElementById('sboverlay').classList.add('open');
+      return;
+    }
+    if (e.target.closest('#sboverlay')) {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('sboverlay').classList.remove('open');
+      return;
+    }
+
+    if (e.target.closest('#revtoggle')) {
+      const hist = document.getElementById('revhist');
+      const isOpen = hist.classList.toggle('open');
+      e.target.closest('#revtoggle').textContent = isOpen ? 'Hide' : 'Revision history';
+      return;
+    }
+  });
+
+  (function() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && VALID_TARGETS.includes(hash)) {
+      switchTo(hash);
+    }
+  })();
+</script>
+
+</body>
+</html>
