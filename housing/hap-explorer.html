@@ -212,6 +212,8 @@ body{font-family:'Source Sans 3',-apple-system,sans-serif;background:var(--cream
 .cmt-banner .cb-meta{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;}
 .cmt-banner .cb-clear{background:none;border:1px solid rgba(45,62,82,0.25);border-radius:18px;padding:4px 12px;font-size:0.74rem;cursor:pointer;color:var(--navy);transition:var(--transition);white-space:nowrap;}
 .cmt-banner .cb-clear:hover{background:rgba(45,62,82,0.06);border-color:var(--navy);}
+.cmt-banner .cb-summary-link{font-size:0.78rem;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(58,125,110,0.4);padding-bottom:1px;white-space:nowrap;font-weight:600;transition:var(--transition);}
+.cmt-banner .cb-summary-link:hover{color:var(--navy);border-bottom-color:var(--navy);}
 .vote-section-header{display:flex;align-items:baseline;gap:14px;margin:24px 0 12px;padding:10px 14px;background:rgba(58,125,110,0.06);border-left:4px solid var(--teal);border-radius:6px;}
 .vote-section-header .vsh-label{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--navy);font-weight:400;}
 .vote-section-header .vsh-count{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);font-weight:700;}
@@ -745,7 +747,7 @@ function renderContent(){
   // Committee picks banner (only when filter active)
   if(committeeActive){
     const totalCmt=DATA.filter(d=>d.committee_priority).length;
-    h+=`<div class="cmt-banner"><span class="cb-icon">●</span><span class="cb-text">Showing <strong>${filtered.length} of ${totalCmt}</strong> Housing Committee priority items <span class="cb-meta">· HC straw poll · May 21, 2026</span></span><button class="cb-clear" onclick="toggleCommittee()">Clear committee filter ✕</button></div>`;
+    h+=`<div class="cmt-banner"><span class="cb-icon">●</span><span class="cb-text">Showing <strong>${filtered.length} of ${totalCmt}</strong> Housing Committee priority items <span class="cb-meta">· HC straw poll · May 21, 2026</span></span><a class="cb-summary-link" href="meeting-notes/2026-05-21-summary.md" target="_blank" rel="noopener">View full meeting summary →</a><button class="cb-clear" onclick="toggleCommittee()">Clear committee filter ✕</button></div>`;
   }
 
   const hasYield=filtered.some(item=>EVALUATIONS[slugify(item.action)]&&EVALUATIONS[slugify(item.action)].yieldType);
