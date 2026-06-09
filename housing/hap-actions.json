@@ -5,7 +5,7 @@
     "description": "Phase 1: Complete analysis of obsolete Office/Research and General Business zones. Phase 2: Rezone to mixed-use Gateway or similar zoning enabling residential uses.",
     "target": "",
     "metric": "Number of parcels rezoned; new housing units permitted in rezoned areas",
-    "sources": "HAP Narrative; Bill Bowen; 2016 Housing Committee; HC Work Plan; 2017 Master Plan Action 1.2.1; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "HAP Narrative; Bill Bowen; 2016 Housing Committee; HC Work Plan; 2017 Master Plan Action 1.2.1; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "Section 10.686.30 of the Zoning Ordinance (as amended through Feb 17, 2026) establishes the Land Transfer Incentive Option within the GNOD. In lieu of building workforce units or paying in lieu, a developer may convey land to the City for below-market rate housing. Key mechanics: (1) conveyance requires City Council acceptance, not a Planning Board CUP; (2) minimum 1 contiguous acre of Developable Upland per 20 acres of GNOD development; (3) developer bears all costs including Phase I environmental, title, and closing; (4) Section 10.686.40 provides development rights banking when transfers exceed the minimum. City Council designates procurement, development form, and disposition of acquired parcels.",
     "is_new": false,
     "status": "in-progress",
@@ -24,12 +24,9 @@
     "staff_term": "long",
     "staff_note": "Work is on-going, more to review.",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 2,
-      "members": [
-        "Moreau",
-        "Stebbins-Thomas"
-      ]
+      "votes": 3,
+      "rank": 3,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -61,7 +58,7 @@
     "description": "Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones. Align with recent NH state law changes enabling office-to-housing conversions.",
     "target": "",
     "metric": "Number of conversion applications and completed units",
-    "sources": "HAP Narrative; Bill Bowen; HC Work Plan (Stebbins Thomas); Housing Committee April 23, 2026 minutes",
+    "sources": "HAP Narrative; Bill Bowen; HC Work Plan (Stebbins Thomas); Housing Committee April 23, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "\u26a0 Compliance note (HB 631, eff. 7/1/26): State law mandates both multifamily on commercially zoned land and adaptive reuse conversion rights. Portsmouth's ordinance amendment must be in place before 7/1/26. See Z-25 and Z-29 for full compliance details.",
     "is_new": false,
     "status": "in-progress",
@@ -78,7 +75,12 @@
     ],
     "id": "Z-3",
     "staff_term": "short",
-    "staff_note": "More to review \u2014 a slow process to ensure compliance but need to get the language right on enabling the building of housing in formerly Commercial zones. Details: e.g. can municipalities define density? Need to get rid of leftover zoning."
+    "staff_note": "More to review \u2014 a slow process to ensure compliance but need to get the language right on enabling the building of housing in formerly Commercial zones. Details: e.g. can municipalities define density? Need to get rid of leftover zoning.",
+    "committee_priority": {
+      "votes": 2,
+      "rank": 4,
+      "source": "Housing Committee Ranking List, May 2026"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -109,7 +111,7 @@
     "description": "Allow duplexes, triplexes, fourplexes by-right in single-family zones with clear dimensional standards. Form-based standards ensure neighborhood compatibility. GIS analysis shows Portsmouth dedicates 85.8% of residential land (2,276 acres across R, SRA, SRB zones) exclusively to single-family homes while only 14.2% (375 acres in GRA/GRB/GRC) permits the multifamily types most residents can afford \u2014 a 6:1 disparity.",
     "target": "Ordinance adoption permitting 2-4 unit buildings in all residential zones",
     "metric": "Number of 2-4 unit permits issued; units produced by type",
-    "sources": "HAP Narrative; South Portland 2A; Burien D1; 2016 Housing Committee; 2017 Listens; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 3.2.2; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "HAP Narrative; South Portland 2A; Burien D1; 2016 Housing Committee; 2017 Listens; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 3.2.2; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "DEPENDENCY: This item requires lot size reform (dimensional requirement updates) to proceed concurrently \u2014 missing middle allowances produce limited yield without companion dimensional changes that bring nonconforming parcels into compliance.\n\nANTI-SPECULATION PREREQUISITE: Ordinance drafting shall be preceded by a documented anti-speculation strategy endorsed by City Council. Land value capture is the preferred mechanism; equivalent approaches include land banking of target parcels ahead of upzoning, first-right-of-refusal provisions for nonprofit affordable developers on upzoned parcels, or transfer fees on short-hold resales of upzoned parcels. If a documented strategy is not endorsed by Council by the end of FY2027, the Planning Board shall report to Council on whether market conditions and parallel production targets justify proceeding without it. This prerequisite is a discipline on the reform, not a veto \u2014 the objective is to ensure that upzoning produces housing, not speculation.\n\nNote: SB 282 (eff. 9/13/25) permits residential buildings up to 4 floors above grade with a single stairway, pending state building code rules from the BCRB. When those rules are set, this meaningfully reduces construction costs for 3\u20134 story missing middle infill and should be factored into feasibility modeling (see PT-11).",
     "is_new": false,
     "status": "",
@@ -129,14 +131,9 @@
     "staff_term": "long",
     "staff_note": "After Master Plan update, more to review \u2014 again, why does the City need 5 residential zones? So much of the inventory in them is non-conforming. More units could be added by making adjustments in lot coverage and setback but question of public tolerance. 65 ADUs approved since 2017.",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 4,
-      "members": [
-        "Chag",
-        "Kelley",
-        "Matto",
-        "Weinrieb"
-      ]
+      "votes": 3,
+      "rank": 3,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -193,7 +190,7 @@
     "description": "Reduce minimum lot sizes, frontage requirements, and setbacks in targeted zones for infill development. GIS analysis provides zone-specific data: R Zone currently requires 5-acre minimums (proposed: 1 acre), SRA requires 1-acre minimums (proposed: 15,000 sf), SRB requires 15,000 sf (proposed: 7,500 sf). These reductions would bring the majority of currently nonconforming parcels into compliance.",
     "target": "",
     "metric": "Newly buildable parcels created by changes",
-    "sources": "HAP Narrative; Keene 3B; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 2.1.3; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "HAP Narrative; Keene 3B; Byron Matto GIS analysis (Jan 2026); 2017 Master Plan Action 2.1.3; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -212,11 +209,9 @@
     "staff_term": "long",
     "staff_note": "After Master Plan update, more to review \u2014 \"After Master Plan update\" is to reflect consideration now so recommendations can be included when plan is finalizing at the end of 2026. Staff will feed good ideas into the Master Plan.",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 1,
-      "members": [
-        "Kelley"
-      ]
+      "votes": 2,
+      "rank": 4,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -225,7 +220,7 @@
     "description": "Create zoning for cottage housing clusters: small detached units around shared open space, reduced lot-per-unit requirements.",
     "target": "",
     "metric": "Cottage housing projects permitted",
-    "sources": "HAP Narrative; Keene 4C; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "HAP Narrative; Keene 4C; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -242,14 +237,11 @@
     ],
     "id": "Z-9",
     "staff_term": "short",
-    "staff_note": "Expand the Gateway Zone \u2014 look at examples in Keene where cottage also allows some infill in residential districts.",
+    "staff_note": "Currently in existing Gateway - review standards",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
       "votes": 2,
-      "members": [
-        "Kelley",
-        "Samonas"
-      ]
+      "rank": 4,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -275,16 +267,7 @@
     ],
     "id": "Z-10",
     "staff_term": "short",
-    "staff_note": "Expand from the GNOD, more to review \u2014 need to get the balance right on trading fees and goals such as density to allow mix of workforce rents.",
-    "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 3,
-      "members": [
-        "Loane",
-        "Moreau",
-        "Weinrieb"
-      ]
-    }
+    "staff_note": "Expand from the GNOD, more to review \u2014 need to get the balance right on trading fees and goals such as density to allow mix of workforce rents."
   },
   {
     "category": "Zoning & Land Use",
@@ -340,7 +323,7 @@
     "description": "Phase 1: Review the Portsmouth Zoning Ordinance to establish the current baseline for manufactured and modular housing. Phase 2: Develop ordinance amendments to permit Cross-Mod and modular construction in appropriate residential districts beyond GA/MH.",
     "target": "Phase 1 review and staff readiness assessment completed within 9 months; Phase 2 ordinance amendments presented to Planning Board within 18 months",
     "metric": "Number of zoning provisions identified as barriers to off-site construction; Council action on ordinance amendments",
-    "sources": "Bill Bowen; South Portland 2G; The Little Book of Low-Cost, High-Impact Housing Solutions (Ivory Innovations, October 2025), Chapter 6; Housing Committee May 21, 2026 minutes",
+    "sources": "Bill Bowen; South Portland 2G; The Little Book of Low-Cost, High-Impact Housing Solutions (Ivory Innovations, October 2025), Chapter 6; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "Manufactured homes are currently defined in the zoning ordinance only within the floodplain management section (Article 8). The term 'modular construction' does not appear in the adopted zoning ordinance as of May 5, 2025.",
     "is_new": false,
     "status": "",
@@ -357,12 +340,12 @@
     ],
     "id": "Z-13",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
       "votes": 1,
-      "members": [
-        "Anderson"
-      ]
-    }
+      "rank": 5,
+      "source": "Housing Committee Ranking List, May 2026"
+    },
+    "staff_term": "long",
+    "staff_note": "After Master Plan update, more to review"
   },
   {
     "category": "Zoning & Land Use",
@@ -443,7 +426,7 @@
     "description": "Amend zoning to permit subdivision of larger single-family homes into multiple units with appropriate restrictions.",
     "target": "",
     "metric": "Subdivision permits; units created",
-    "sources": "Bill Bowen; Keene 2A; Byron Matto GIS analysis (Jan 2026); 2017 Listens; Housing Committee May 21, 2026 minutes",
+    "sources": "Bill Bowen; Keene 2A; Byron Matto GIS analysis (Jan 2026); 2017 Listens; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "Many larger homes were historically multifamily and were subsequently converted to single-family use. Re-conversion to multifamily is one implementation pathway for this item.",
     "is_new": false,
     "status": "",
@@ -460,14 +443,12 @@
     ],
     "id": "Z-17",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 3,
-      "members": [
-        "Anderson",
-        "Chag",
-        "Stebbins-Thomas"
-      ]
-    }
+      "votes": 2,
+      "rank": 4,
+      "source": "Housing Committee Ranking List, May 2026"
+    },
+    "staff_term": "long",
+    "staff_note": "Was referred to Planning Board, opted to wait until after Master Plan complete"
   },
   {
     "category": "Zoning & Land Use",
@@ -475,11 +456,11 @@
     "description": "Remove barriers to renting rooms in owner-occupied homes. Create home-sharing matching program (especially for seniors).",
     "target": "",
     "metric": "Program enrollment; matches made",
-    "sources": "Bill Bowen; Keene 2B",
+    "sources": "Bill Bowen; Keene 2B; Housing Committee Ranking List, May 2026",
     "notes": "",
     "is_new": false,
-    "status": "",
-    "status_detail": "",
+    "status": "complete",
+    "status_detail": "Staff position (Housing Committee Ranking List, May 2026): Removed from active list. Room rentals within an owner-occupied dwelling are already permitted under the existing zoning ordinance and are not separately regulated by the City. No ordinance reform action is required.",
     "pros": [
       "Uses existing housing stock with zero construction cost",
       "Particularly beneficial for seniors who want to age in place with rental income or companionship",
@@ -498,11 +479,11 @@
     "description": "Create zoning for seasonal worker dormitories or group housing for hospitality/tourism employment. Allow under conditional use permit or as of right in certain districts.",
     "target": "",
     "metric": "Seasonal housing beds created",
-    "sources": "Bill Bowen; Housing Committee May 21, 2026 minutes",
+    "sources": "Bill Bowen; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "Implementation consideration: accommodating seasonal worker housing through CUP or by-right permissions within existing districts may be preferable to creating a new zone.",
     "is_new": false,
-    "status": "",
-    "status_detail": "",
+    "status": "complete",
+    "status_detail": "Staff position (Housing Committee Ranking List, May 2026): Existing in ordinance \u2014 the co-living ordinance (Section 10.815, adopted May 2025) addresses this housing type. No separate seasonal-worker-housing action is required.",
     "pros": [
       "Addresses a documented need in Portsmouth's hospitality and tourism sectors",
       "Can be implemented through CUP or by-right in existing districts without new zoning",
@@ -513,14 +494,7 @@
       "Seasonal vacancy creates underutilized buildings for part of the year",
       "Quality and safety standards for group housing need careful definition"
     ],
-    "id": "Z-19",
-    "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 1,
-      "members": [
-        "Anderson"
-      ]
-    }
+    "id": "Z-19"
   },
   {
     "category": "Zoning & Land Use",
@@ -547,11 +521,11 @@
   },
   {
     "category": "Zoning & Land Use",
-    "action": "Comprehensive zoning audit",
+    "action": "Comprehensive zoning ordinance update",
     "description": "Full audit of zoning ordinance identifying provisions that constrain housing production. Prioritize amendments. GIS analysis quantifies the compliance crisis: 69.9% of parcels in single-family zones violate current zoning requirements.",
     "target": "",
     "metric": "Audit completed; constraining provisions identified and amended",
-    "sources": "HAP Narrative; Progress Tracker; Byron Matto GIS analysis (Jan 2026); Housing Policy 2016-01 \u00a7VI.2 Regulatory Audit; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026); Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "HAP Narrative; Progress Tracker; Byron Matto GIS analysis (Jan 2026); Housing Policy 2016-01 \u00a7VI.2 Regulatory Audit; Portsmouth Master Plan Update, Draft Framework (Utile/City of Portsmouth, March 2026); Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "Audit scope should include: (1) SB 283 (eff. ~Nov 2025) \u2014 Portsmouth ordinance must exclude below-grade areas from FAR calculations; affects feasibility for infill projects. (2) HB 457 (eff. 9/13/25) \u2014 ordinance must not restrict occupants below 2 per bedroom or impose familial/relationship-based occupancy rules; audit for any such provisions. (3) SB 284 parking cap (eff. 9/13/25) \u2014 see Z-4. (4) HB 577 ADU compliance \u2014 see Z-2, Z-36. (5) District consolidation \u2014 the draft Portsmouth Master Plan Update (Utile, March 2026) recommends streamlining and consolidating Portsmouth's zoning districts to improve conceptual clarity and reduce redundancy. The audit should identify consolidation candidates and produce a proposed simplified district structure as a named deliverable, alongside the amendment prioritization list.",
     "is_new": false,
     "status": "in-progress",
@@ -568,14 +542,11 @@
     ],
     "id": "Z-21",
     "staff_term": "long",
-    "staff_note": "Long-term \u2014 short-term need as foundation for the rest of the Housing Action Plan, but takes time.",
+    "staff_note": "After Master Plan update, more to review",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 2,
-      "members": [
-        "Loane",
-        "Weinrieb"
-      ]
+      "votes": 5,
+      "rank": 2,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -854,14 +825,7 @@
     ],
     "id": "Z-33",
     "staff_term": "long",
-    "staff_note": "After Master Plan update, more to review \u2014 bigger zones have a greater impact on SRA, would offer potential for greater density.",
-    "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 1,
-      "members": [
-        "Matto"
-      ]
-    }
+    "staff_note": "After Master Plan update, more to review \u2014 bigger zones have a greater impact on SRA, would offer potential for greater density."
   },
   {
     "action": "Transfer of development rights",
@@ -1423,7 +1387,7 @@
     "description": "Expand RSA 79-E tax relief to more areas and project types. Promote existing program.",
     "target": "",
     "metric": "RSA 79-E applications; investment leveraged",
-    "sources": "Feb 17 2026 Council; 2016 Master Plan; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "Feb 17 2026 Council; 2016 Master Plan; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "",
     "is_new": false,
     "status": "early-stage",
@@ -1442,18 +1406,9 @@
     "staff_term": "short",
     "staff_note": "More to review \u2014 adopting 79-E where allowed is a high priority in the Housing Action Plan.",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
       "votes": 8,
-      "members": [
-        "Chag",
-        "Loane",
-        "Matto",
-        "McDonald",
-        "Migirditch",
-        "Moreau",
-        "Samonas",
-        "Stebbins-Thomas"
-      ]
+      "rank": 1,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -1947,17 +1902,7 @@
     ],
     "id": "HTF-3",
     "staff_term": "long",
-    "staff_note": "Need to get more funds into the trust. Potential use for Housing Trust Fund.",
-    "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 4,
-      "members": [
-        "Chag",
-        "Matto",
-        "McDonald",
-        "Migirditch"
-      ]
-    }
+    "staff_note": "Need to get more funds into the trust. Potential use for Housing Trust Fund."
   },
   {
     "category": "Public Land & Property",
@@ -2544,7 +2489,7 @@
     "description": "Proactively engage owners of federally subsidized housing approaching subsidy expiration. RKG (2022) identified 489 units in three Portsmouth properties as potentially at risk of subsidy expiration by 2040. These figures have not been verified with PHA. First step is direct PHA outreach to verify current subsidy status.",
     "target": "Zero net loss of subsidized units \u2014 baseline verification required before specific targets are set",
     "metric": "Subsidized units preserved; units at risk identified; recapitalization deals completed",
-    "sources": "RKG 2022 (NHPD data: 489 units at risk); South Portland 1A; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "RKG 2022 (NHPD data: 489 units at risk); South Portland 1A; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026",
     "notes": "PROVISIONAL DATA: RKG 2022 unit counts (489 units: Osprey Landing 263 LIHTC, Wamesit Place 100 LIHTC, Keefe House 58 S8) are drawn from NHPD database and have not been verified with PHA.",
     "is_new": true,
     "status": "",
@@ -2563,11 +2508,9 @@
     "staff_term": "long",
     "staff_note": "Does PHA track expiring subsidies?",
     "committee_priority": {
-      "meeting_date": "2026-05-21",
       "votes": 1,
-      "members": [
-        "Migirditch"
-      ]
+      "rank": 5,
+      "source": "Housing Committee Ranking List, May 2026"
     }
   },
   {
@@ -2599,7 +2542,7 @@
     "description": "Comprehensive strategy for senior housing: independent living, assisted living, memory care, aging-in-place support.",
     "target": "",
     "metric": "Senior housing units by type; waiting list reduction; aging-in-place supports",
-    "sources": "HC Work Plan (Loane); Keene 4C; 2016 Master Plan; RKG 2022; 2017 Master Plan Action 3.2.3",
+    "sources": "HC Work Plan (Loane); Keene 4C; 2016 Master Plan; RKG 2022; 2017 Master Plan Action 3.2.3; Housing Committee Ranking List, May 2026",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -2614,7 +2557,12 @@
       "Market already provides some senior housing options \u2014 public role unclear for all segments",
       "Assisted living and memory care are primarily private-sector products"
     ],
-    "id": "SP-1"
+    "id": "SP-1",
+    "committee_priority": {
+      "votes": 1,
+      "rank": 5,
+      "source": "Housing Committee Ranking List, May 2026"
+    }
   },
   {
     "category": "Special Populations",
@@ -2622,7 +2570,7 @@
     "description": "Support transitional housing with wraparound services for people exiting homelessness, recovery, or institutional settings. Include partnerships with HAVEN (domestic violence services).",
     "target": "",
     "metric": "Transitional units created; residents served; permanent housing transition rate",
-    "sources": "Keene 1B; Burien A4; HC Work Plan; 2017 Master Plan Action 3.2.3",
+    "sources": "Keene 1B; Burien A4; HC Work Plan; 2017 Master Plan Action 3.2.3; Housing Committee Ranking List, May 2026",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -2637,7 +2585,9 @@
       "Siting can face significant neighborhood opposition (NIMBYism)",
       "Ongoing service provision requires partnerships with social service agencies"
     ],
-    "id": "SP-2"
+    "id": "SP-2",
+    "staff_term": "short",
+    "staff_note": "Review ordinance for where allowed and consider expanding into other districts"
   },
   {
     "category": "Special Populations",
@@ -2777,14 +2727,7 @@
     ],
     "id": "EO-2",
     "staff_term": "short",
-    "staff_note": "Work is on-going \u2014 the goal is to make the City website more robust and to enable small homeowner projects.",
-    "committee_priority": {
-      "meeting_date": "2026-05-21",
-      "votes": 1,
-      "members": [
-        "McDonald"
-      ]
-    }
+    "staff_note": "Work is on-going \u2014 the goal is to make the City website more robust and to enable small homeowner projects."
   },
   {
     "category": "Education & Outreach",
