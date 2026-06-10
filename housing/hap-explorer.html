@@ -388,7 +388,7 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
     </div>
     <div class="header-row-bottom">
       <div class="header-toolbar shortlist-toggle-group">
-        <button class="shortlist-toggle-btn" id="shortlistToggle" onclick="toggleShortlist()" title="Show only the 26 items on the City Planning staff shortlist (Apr 23, 2026)"><span class="sl-star">★</span> Staff shortlist <span class="sl-count">26</span></button>
+        <button class="shortlist-toggle-btn" id="shortlistToggle" onclick="toggleShortlist()" title="Show only items with staff classification (term + note) — Apr 23, 2026 shortlist plus later staff assignments"><span class="sl-star">★</span> Staff shortlist <span class="sl-count">26</span></button>
         <button class="cmt-toggle-btn" id="committeeToggle" onclick="toggleCommittee()" title="Show only items ranked on the Housing Committee Ranking List (synthesis of May 21 straw poll + later signals)"><span class="cmt-icon">●</span> Committee picks <span class="cmt-count">11</span></button>
         <button class="show-all-btn" id="showAllBtn" onclick="clearAllFilters()" title="Reset all filters and show all 148 action items"><span class="sa-x">✕</span> Show all 148 items</button>
       </div>
@@ -606,9 +606,17 @@ async function init() {
   // Set initial shortlist toggle state from persisted value
   const slBtn=document.getElementById('shortlistToggle');
   if(slBtn) slBtn.classList.toggle('active',shortlistActive);
+  // Enforce mutual exclusion on load (if localStorage has both)
+  if(shortlistActive && committeeActive){
+    committeeActive=false;
+    try{localStorage.setItem('hap-explorer-committee','false');}catch(e){}
+  }
   const cmtBtn=document.getElementById('committeeToggle');
   if(cmtBtn) cmtBtn.classList.toggle('active',committeeActive);
-  // Update committee button count from live data
+  // Update Staff shortlist + Committee picks button counts from live data
+  const slCount=DATA.filter(d=>d.staff_term).length;
+  const slCountEl=document.querySelector('#shortlistToggle .sl-count');
+  if(slCountEl) slCountEl.textContent=slCount;
   const cmtCount=DATA.filter(d=>d.committee_priority).length;
   const cmtCountEl=document.querySelector('#committeeToggle .cmt-count');
   if(cmtCountEl) cmtCountEl.textContent=cmtCount;
@@ -678,6 +686,12 @@ function updateShowAllVisibility(){
 
 function toggleShortlist(){
   shortlistActive=!shortlistActive;
+  // Mutually exclusive: activating shortlist deactivates committee
+  if(shortlistActive && committeeActive){
+    committeeActive=false;
+    try{localStorage.setItem('hap-explorer-committee','false');}catch(e){}
+    document.getElementById('committeeToggle').classList.remove('active');
+  }
   try{localStorage.setItem('hap-explorer-shortlist',shortlistActive?'true':'false');}catch(e){}
   document.getElementById('shortlistToggle').classList.toggle('active',shortlistActive);
   updateShowAllVisibility();
@@ -687,6 +701,12 @@ function toggleShortlist(){
 
 function toggleCommittee(){
   committeeActive=!committeeActive;
+  // Mutually exclusive: activating committee deactivates shortlist
+  if(committeeActive && shortlistActive){
+    shortlistActive=false;
+    try{localStorage.setItem('hap-explorer-shortlist','false');}catch(e){}
+    document.getElementById('shortlistToggle').classList.remove('active');
+  }
   try{localStorage.setItem('hap-explorer-committee',committeeActive?'true':'false');}catch(e){}
   document.getElementById('committeeToggle').classList.toggle('active',committeeActive);
   updateShowAllVisibility();
