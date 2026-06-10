@@ -388,7 +388,7 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
     </div>
     <div class="header-row-bottom">
       <div class="header-toolbar shortlist-toggle-group">
-        <button class="shortlist-toggle-btn" id="shortlistToggle" onclick="toggleShortlist()" title="Show only items with staff classification (term + note) — Apr 23, 2026 shortlist plus later staff assignments"><span class="sl-star">★</span> Staff shortlist <span class="sl-count">26</span></button>
+        <button class="shortlist-toggle-btn" id="shortlistToggle" onclick="toggleShortlist()" title="Show only items with staff classification (term + note) — Apr 23, 2026 shortlist plus later staff assignments"><span class="sl-star">★</span> Staff shortlist <span class="sl-count">29</span></button>
         <button class="cmt-toggle-btn" id="committeeToggle" onclick="toggleCommittee()" title="Show only items ranked on the Housing Committee Ranking List (synthesis of May 21 straw poll + later signals)"><span class="cmt-icon">●</span> Committee picks <span class="cmt-count">11</span></button>
         <button class="show-all-btn" id="showAllBtn" onclick="clearAllFilters()" title="Reset all filters and show all 148 action items"><span class="sa-x">✕</span> Show all 148 items</button>
       </div>
@@ -795,7 +795,7 @@ function renderContent(){
     const totalShort=DATA.filter(d=>d.staff_term==='short').length;
     const totalLong=DATA.filter(d=>d.staff_term==='long').length;
     const totalShortlist=totalShort+totalLong;
-    h+=`<div class="shortlist-banner"><span class="sb-icon">★</span><span class="sb-text">Showing <strong>${filtered.length} of ${totalShortlist}</strong> staff-shortlisted items <span class="sb-meta">· City Planning staff shortlist · Apr 23, 2026</span></span><button class="sb-clear" onclick="toggleShortlist()">Clear staff filter ✕</button></div>`;
+    h+=`<div class="shortlist-banner"><span class="sb-icon">★</span><span class="sb-text">Showing <strong>${filtered.length} of ${totalShortlist}</strong> staff-shortlisted items <span class="sb-meta">· City Planning staff shortlist · Apr 23, 2026 + later additions</span></span><button class="sb-clear" onclick="toggleShortlist()">Clear staff filter ✕</button></div>`;
   }
   // Committee picks banner (only when filter active)
   if(committeeActive){
@@ -883,7 +883,7 @@ function renderContent(){
         if(item.staff_note){
           const tCls=item.staff_term==='short'?'sn-term-short':'sn-term-long';
           const tLbl=item.staff_term==='short'?'Short-term':'Long-term';
-          h+=`<div class="staff-note-box"><div class="sn-header"><span class="sn-label">Planning Staff Comment · Apr 23, 2026</span><span class="sn-term ${tCls}">${tLbl}</span></div><div class="sn-text">${item.staff_note}</div></div>`;
+          h+=`<div class="staff-note-box"><div class="sn-header"><span class="sn-label">Planning Staff Comment</span><span class="sn-term ${tCls}">${tLbl}</span></div><div class="sn-text">${item.staff_note}</div></div>`;
         }
         if(item.committee_priority){
           const cp=item.committee_priority;
