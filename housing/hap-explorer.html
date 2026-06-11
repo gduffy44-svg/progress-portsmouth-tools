@@ -230,6 +230,61 @@ body{font-family:'Source Sans 3',-apple-system,sans-serif;background:var(--cream
 .cmt-priority-box .cp-rank-badge{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;padding:3px 11px;background:rgba(255,255,255,0.7);border:1px solid rgba(58,125,110,0.25);border-radius:11px;color:var(--navy);font-weight:600;}
 .cmt-priority-box .cp-rank-badge .cp-rank-num{font-family:'JetBrains Mono',monospace;color:var(--teal);font-weight:700;}
 .cmt-priority-box .cp-source{font-size:0.74rem;color:var(--slate);font-style:italic;}
+/* === MEETINGS VIEW === */
+.meetings-view{padding:8px 0;}
+.meetings-source-note{background:rgba(244,162,97,0.08);border-left:4px solid var(--gold);border-radius:6px;padding:14px 18px;margin-bottom:24px;font-size:0.86rem;color:var(--slate);line-height:1.6;}
+.meetings-source-note strong{color:var(--navy);}
+.meetings-source-note .msn-title{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;display:block;margin-bottom:6px;}
+.meetings-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:28px;}
+.meetings-stat{background:#fff;border:1px solid rgba(45,62,82,0.10);border-radius:8px;padding:14px 16px;text-align:center;}
+.meetings-stat .ms-num{display:block;font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--navy);line-height:1;margin-bottom:6px;}
+.meetings-stat .ms-label{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);font-weight:700;}
+.meetings-stat.accent .ms-num{color:var(--teal);}
+.meetings-timeline{background:#fff;border:1px solid rgba(45,62,82,0.10);border-radius:8px;padding:18px 22px;margin-bottom:28px;}
+.meetings-timeline .mt-title{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);font-weight:700;margin-bottom:14px;}
+.mt-track{display:flex;align-items:center;gap:0;overflow-x:auto;padding:8px 0;}
+.mt-node{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;min-width:120px;position:relative;}
+.mt-node .mt-dot{width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid #fff;box-shadow:0 0 0 2px var(--teal);margin-bottom:8px;}
+.mt-node.predates .mt-dot{background:var(--slate);box-shadow:0 0 0 2px var(--slate);}
+.mt-node.upcoming .mt-dot{background:#fff;border:3px solid var(--gold);box-shadow:0 0 0 2px var(--gold);}
+.mt-node .mt-date{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--navy);font-weight:700;text-align:center;}
+.mt-node .mt-label{font-size:0.72rem;color:var(--slate);text-align:center;margin-top:3px;max-width:130px;line-height:1.3;}
+.mt-edge{flex:1 1 auto;min-width:30px;height:2px;background:rgba(58,125,110,0.35);position:relative;margin-bottom:34px;}
+.mt-edge.upcoming{background:repeating-linear-gradient(90deg,var(--gold) 0 6px,transparent 6px 12px);}
+.mt-edge .mt-interim{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--cream);border:1px solid var(--gold);color:var(--gold-dark);border-radius:10px;padding:1px 8px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:700;white-space:nowrap;}
+.meetings-section-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin:32px 0 14px;}
+.meeting-card{background:#fff;border:1px solid rgba(45,62,82,0.10);border-radius:8px;padding:20px 22px;margin-bottom:18px;border-left:4px solid var(--teal);}
+.meeting-card.upcoming{border-left-color:var(--gold);background:rgba(244,162,97,0.04);}
+.meeting-card .mc-header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.meeting-card .mc-date{font-family:'JetBrains Mono',monospace;font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);font-weight:700;}
+.meeting-card.upcoming .mc-date{color:var(--gold-dark);}
+.meeting-card .mc-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--navy);flex:1;}
+.meeting-card .mc-attend{font-size:0.84rem;color:var(--slate);margin-bottom:12px;line-height:1.6;}
+.meeting-card .mc-attend strong{color:var(--navy);font-weight:600;}
+.meeting-card .mc-decisions{margin:14px 0;}
+.meeting-card .mc-decision{border-left:2px solid rgba(58,125,110,0.25);padding-left:12px;margin-bottom:12px;}
+.meeting-card .mc-decision-label{font-size:0.92rem;color:var(--navy);line-height:1.5;margin-bottom:6px;}
+.meeting-card .mc-decision-items{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
+.mc-item-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.72rem;padding:2px 8px;border-radius:11px;background:rgba(45,62,82,0.06);color:var(--navy);border:1px solid rgba(45,62,82,0.15);cursor:pointer;text-decoration:none;transition:var(--transition);}
+.mc-item-tag:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
+.mc-item-tag.complete{background:rgba(58,125,110,0.12);}
+.mc-item-tag.retired{background:rgba(45,62,82,0.04);color:#aaa;text-decoration:line-through;}
+.meeting-card .mc-footer{margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:0.82rem;}
+.meeting-card .mc-summary-link{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(58,125,110,0.4);font-weight:600;}
+.meeting-card .mc-summary-link:hover{color:var(--navy);border-bottom-color:var(--navy);}
+.meeting-card .mc-next{color:var(--slate);font-style:italic;}
+.interim-card{background:rgba(244,162,97,0.05);border:1px dashed var(--gold);border-radius:8px;padding:14px 18px;margin:14px 0 14px 24px;}
+.interim-card .ic-date{font-family:'JetBrains Mono',monospace;font-size:0.70rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:4px;}
+.interim-card .ic-label{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--navy);margin-bottom:6px;}
+.interim-card .ic-details{font-size:0.86rem;color:var(--slate);line-height:1.55;margin-bottom:8px;}
+.forgotten-panel{background:rgba(231,111,81,0.05);border:1px solid rgba(231,111,81,0.25);border-left:4px solid var(--coral);border-radius:8px;padding:18px 22px;margin-top:24px;}
+.forgotten-panel .fp-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);margin-bottom:6px;}
+.forgotten-panel .fp-desc{font-size:0.86rem;color:var(--slate);line-height:1.55;margin-bottom:12px;font-style:italic;}
+.forgotten-panel .fp-items{display:flex;flex-wrap:wrap;gap:6px;}
+.forgotten-panel .fp-empty{font-size:0.86rem;color:var(--slate);font-style:italic;}
+.header-toolbar .view-btn.view-btn-meetings{background:rgba(58,125,110,0.22);border-color:rgba(58,125,110,0.55);color:rgba(166,217,202,0.95);font-weight:600;}
+.header-toolbar .view-btn.view-btn-meetings:hover{background:rgba(58,125,110,0.35);color:#fff;border-color:var(--teal);}
+.header-toolbar .view-btn.view-btn-meetings.active{background:var(--teal);border-color:var(--teal);color:#fff;}
 
 .term-section-header{display:flex;align-items:center;gap:12px;margin:28px 0 14px;padding:10px 0 10px;border-bottom:2px solid var(--gold);}
 .term-section-header:first-child{margin-top:8px;}
@@ -411,6 +466,7 @@ body .data-table tr.status-deferred-row td{background:#f5f5f5;color:#aaa;}
           <button class="view-btn active" data-view="cards" onclick="setView('cards')">&#9783; Cards</button>
           <button class="view-btn" data-view="table" onclick="setView('table')">&#9776; Table</button>
           <button class="view-btn" data-view="yield" onclick="setView('yield')">&#9670; Yield</button>
+          <button class="view-btn view-btn-meetings" data-view="meetings" onclick="setView('meetings')" title="HC Progress Tracker — meeting-by-meeting view with timeline, decisions, forgotten items">&#8987; HC Progress Tracker</button>
         </div>
       </div>
     </div>
@@ -584,6 +640,7 @@ const STATUS_DETAIL_LABELS = {
 };
 
 let activeCategory='all', searchQuery='', currentView='cards', statusFilter='all', yieldSortActive=false;
+let MEETINGS = null;
 let shortlistActive=false;
 let committeeActive=false;
 try{shortlistActive=localStorage.getItem('hap-explorer-shortlist')==='true';}catch(e){}
@@ -591,13 +648,16 @@ try{committeeActive=localStorage.getItem('hap-explorer-committee')==='true';}cat
 
 async function loadData() {
   try {
-    const [aR,gR,eR] = await Promise.all([fetch('hap-actions.json'),fetch('hap-glossary.json'),fetch('hap-evaluations.json')]);
+    const [aR,gR,eR,mR] = await Promise.all([fetch('hap-actions.json'),fetch('hap-glossary.json'),fetch('hap-evaluations.json'),fetch('hc-meetings.json')]);
     if (!aR.ok) throw new Error('actions '+aR.status);
     if (!gR.ok) throw new Error('glossary '+gR.status);
     DATA = await aR.json();
     const g = await gR.json();
     GLOSSARY = g && typeof g==='object' ? g : {};
     if (eR.ok) { const e=await eR.json(); if(Array.isArray(e)) e.forEach(x=>{ EVALUATIONS[x.id]=x; }); }
+    if (mR && mR.ok) {
+      try { MEETINGS = await mR.json(); } catch(err) { MEETINGS = null; console.warn("hc-meetings.json parse error", err); }
+    }
   } catch(e) { console.error(e); DATA=[]; GLOSSARY={}; }
 }
 
@@ -728,6 +788,182 @@ function clearAllFilters(){
 
 function setCategory(c){activeCategory=c;renderSidebar();renderContent();}
 function setView(v){currentView=v;document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===v));renderContent();}
+
+// === Meetings view rendering ===
+function renderMeetingsView() {
+  if (!MEETINGS) {
+    return `<div class="no-results"><div class="icon">⌛</div><div>Meeting data is unavailable. Confirm hc-meetings.json is deployed alongside the Explorer.</div></div>`;
+  }
+  const meta = MEETINGS.tracker_meta || {};
+  const meetings = (MEETINGS.meetings || []).slice();
+  const interim = MEETINGS.interim_activity || [];
+
+  meetings.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+  const itemById = {};
+  DATA.forEach(i => { itemById[i.id] = i; });
+
+  // Forgotten items: mentioned in a meeting AND no committee_priority AND status empty/not-started
+  const mentionedIds = new Set();
+  meetings.forEach(m => {
+    (m.decisions || []).forEach(d => {
+      (d.items || []).forEach(id => mentionedIds.add(id));
+    });
+  });
+  const forgottenIds = [];
+  mentionedIds.forEach(id => {
+    const item = itemById[id];
+    if (!item) return;
+    const hasCP = !!item.committee_priority;
+    const s = item.status || "";
+    const inactive = (s === "" || s === "not-started");
+    if (!hasCP && inactive) forgottenIds.push(id);
+  });
+  forgottenIds.sort();
+
+  // Stats
+  const meetingsHeld = meetings.filter(m => m.type !== "upcoming").length;
+  const cpCount = DATA.filter(d => d.committee_priority).length;
+  const closedRecently = ["Z-18","Z-19"].filter(id => itemById[id] && itemById[id].status === "complete").length;
+  const reopened = ["Z-1"].filter(id => itemById[id] && itemById[id].status === "in-progress").length;
+
+  let h = `<div class="meetings-view">`;
+
+  if (meta.source_note) {
+    h += `<div class="meetings-source-note">
+      <span class="msn-title">About this tracker</span>
+      <strong>${meta.audience || "Housing Committee members and staff"}.</strong> ${meta.source_note}
+    </div>`;
+  }
+
+  h += `<div class="meetings-stats">
+    <div class="meetings-stat"><span class="ms-num">${meetingsHeld}</span><span class="ms-label">Meetings Held</span></div>
+    <div class="meetings-stat accent"><span class="ms-num">${cpCount}</span><span class="ms-label">Items Prioritized</span></div>
+    <div class="meetings-stat"><span class="ms-num">${closedRecently}</span><span class="ms-label">Items Closed</span></div>
+    <div class="meetings-stat"><span class="ms-num">${reopened}</span><span class="ms-label">Items Reopened</span></div>
+    <div class="meetings-stat"><span class="ms-num">${forgottenIds.length}</span><span class="ms-label">Raised No Action</span></div>
+  </div>`;
+
+  // Timeline: oldest left → newest right
+  const timelineMeetings = meetings.slice().reverse();
+  h += `<div class="meetings-timeline"><div class="mt-title">Timeline</div><div class="mt-track">`;
+  timelineMeetings.forEach((m, idx) => {
+    const cls = m.type === "upcoming" ? "upcoming" : "";
+    const titleParts = (m.title || "").split("—");
+    const labelShort = titleParts.length > 1 ? titleParts[1].trim().slice(0, 36) : "";
+    h += `<div class="mt-node ${cls}"><div class="mt-dot"></div><div class="mt-date">${m.date || ""}</div><div class="mt-label">${labelShort}</div></div>`;
+    if (idx < timelineMeetings.length - 1) {
+      const nextDate = timelineMeetings[idx + 1].date;
+      const interimBetween = interim.filter(i => i.between && i.between[0] === m.date && i.between[1] === nextDate);
+      const isUpcomingEdge = timelineMeetings[idx + 1].type === "upcoming";
+      const edgeCls = isUpcomingEdge ? "mt-edge upcoming" : "mt-edge";
+      let interimHtml = "";
+      interimBetween.forEach(ia => {
+        const safeLabel = (ia.label || "").replace(/"/g, "&quot;");
+        interimHtml += `<span class="mt-interim" title="${safeLabel}">⚙ ${ia.date.slice(5)}</span>`;
+      });
+      h += `<div class="${edgeCls}">${interimHtml}</div>`;
+    }
+  });
+  h += `</div></div>`;
+
+  // Per-meeting cards (newest first)
+  h += `<h2 class="meetings-section-title">Meetings (newest first)</h2>`;
+  meetings.forEach((m, idx) => {
+    const cls = m.type === "upcoming" ? "upcoming" : "";
+    h += `<div class="meeting-card ${cls}">`;
+    h += `<div class="mc-header"><span class="mc-date">${m.date || ""}</span><span class="mc-title">${m.title || ""}</span></div>`;
+
+    if (m.attendance) {
+      const a = m.attendance;
+      const present = (a.present || []).length;
+      const excused = (a.excused || []).length;
+      const staff = (a.staff || []).join(", ");
+      h += `<div class="mc-attend"><strong>Present:</strong> ${present} members · <strong>Excused:</strong> ${excused} · <strong>Staff:</strong> ${staff || "none recorded"}</div>`;
+    } else if (m.summary) {
+      h += `<div class="mc-attend">${m.summary}</div>`;
+    }
+
+    if ((m.decisions || []).length) {
+      h += `<div class="mc-decisions">`;
+      m.decisions.forEach(d => {
+        h += `<div class="mc-decision"><div class="mc-decision-label">${d.label || ""}</div>`;
+        if ((d.items || []).length) {
+          h += `<div class="mc-decision-items">`;
+          d.items.forEach(id => {
+            const item = itemById[id];
+            const itemCls = item ? (item.status === "complete" ? "complete" : (item.status === "retired" ? "retired" : "")) : "";
+            const titleText = item ? `${item.action} — status: ${item.status || "(no status)"}` : "unknown item";
+            const safeTitle = titleText.replace(/"/g, "&quot;");
+            h += `<a class="mc-item-tag ${itemCls}" href="#" onclick="filterToItem('${id}');return false;" title="${safeTitle}">${id}</a>`;
+          });
+          h += `</div>`;
+        }
+        h += `</div>`;
+      });
+      h += `</div>`;
+    }
+
+    const footers = [];
+    if (m.summary_url) footers.push(`<a class="mc-summary-link" href="${m.summary_url}" target="_blank" rel="noopener">View full meeting summary →</a>`);
+    if (m.next_meeting) footers.push(`<span class="mc-next">Next meeting scheduled: ${m.next_meeting}</span>`);
+    if (footers.length) h += `<div class="mc-footer">${footers.join("")}</div>`;
+
+    h += `</div>`;
+
+    // Interim activity that falls between this meeting and the next one in display order
+    if (idx < meetings.length - 1) {
+      const prevDateInList = meetings[idx + 1].date;
+      const interimBetween = interim.filter(i => i.between && i.between.includes(m.date) && i.between.includes(prevDateInList));
+      interimBetween.forEach(ia => {
+        let itemTagsHtml = "";
+        (ia.items || []).forEach(id => {
+          const item = itemById[id];
+          const itemCls = item ? (item.status === "complete" ? "complete" : (item.status === "retired" ? "retired" : "")) : "";
+          itemTagsHtml += `<a class="mc-item-tag ${itemCls}" href="#" onclick="filterToItem('${id}');return false;">${id}</a>`;
+        });
+        h += `<div class="interim-card">
+          <div class="ic-date">Interim activity · ${ia.date}</div>
+          <div class="ic-label">${ia.label || ""}</div>
+          ${ia.details ? `<div class="ic-details">${ia.details}</div>` : ""}
+          ${itemTagsHtml ? `<div class="mc-decision-items">${itemTagsHtml}</div>` : ""}
+        </div>`;
+      });
+    }
+  });
+
+  // Forgotten items panel
+  h += `<div class="forgotten-panel">`;
+  h += `<h3 class="fp-title">Items raised but with no subsequent action</h3>`;
+  h += `<div class="fp-desc">Items mentioned in a Housing Committee meeting that currently have no committee_priority and a status of "not started." Surfaces what the committee touched but did not move forward. Excludes items that have been closed or otherwise acted on.</div>`;
+  if (forgottenIds.length) {
+    h += `<div class="fp-items">`;
+    forgottenIds.forEach(id => {
+      const item = itemById[id];
+      const titleText = item ? `${item.action} — status: ${item.status || "(no status)"}` : "unknown item";
+      const safeTitle = titleText.replace(/"/g, "&quot;");
+      h += `<a class="mc-item-tag" href="#" onclick="filterToItem('${id}');return false;" title="${safeTitle}">${id}</a>`;
+    });
+    h += `</div>`;
+  } else {
+    h += `<div class="fp-empty">None — every item raised in a meeting has had subsequent action.</div>`;
+  }
+  h += `</div>`;
+
+  h += `</div>`;
+  return h;
+}
+
+// Click an item tag → switch to Cards view, filter to that item ID
+function filterToItem(itemId) {
+  currentView = "cards";
+  searchQuery = itemId.toLowerCase();
+  const si = document.getElementById("searchInput");
+  if (si) si.value = itemId;
+  document.querySelectorAll(".view-btn").forEach(b => b.classList.toggle("active", b.dataset.view === "cards"));
+  renderContent();
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
 function setStatusFilter(f){
   statusFilter=f;
   document.querySelectorAll('.status-filter-btn').forEach(b=>{
@@ -755,10 +991,20 @@ function renderContent(){
   let h='';
 
   // Revision banner
-  h+=`<div class="revision-banner"><span class="rev-date">Version 2.20.1 — Jun 9, 2026</span><br>
-  <div class="rev-content" id="revContent"><strong>Revision history:</strong> v2.20.1 (Jun 9, 2026): Same-day patch series fixing four bugs in v2.20. (1) Show all reset button contrast was unreadable — text was navy on the navy header; restyled to white outline (rgba 255,255,255,.45 border, .85 text) per brand legibility canon. (2) Staff shortlist badge was hardcoded to "26" but the actual count is 29 after v2.19 added staff_term to Z-13, Z-17, SP-2; badge now computed from live data on page load. (3) Filters were independently stackable, intersecting to confusing results when both active; toggles now mutually exclusive — clicking one deactivates the other; Show all button still serves as the universal reset. (4) Per-card staff comment label "Planning Staff Comment · Apr 23, 2026" mis-attributed three items (Z-13, Z-17, SP-2) whose staff_note came from the May 2026 Ranking PDF, not the Apr 23 minutes; date dropped from label, source attribution carried by per-item sources field + Resources panel. (5) Shortlist banner footer "Apr 23, 2026" updated to "Apr 23, 2026 + later additions" to signal the list is no longer a frozen snapshot. (6) Static sl-count badge value in HTML source updated 26 → 29 to match live data (eliminates flash-of-stale-content on slow JS load). No JSON changes; 148 items total. v2.20 (Jun 9, 2026): UX refinements. Added "Show all 148 items" reset button in header — appears only when one or both filters are active, single click clears all filters and returns to default view. Revision history reordered to reverse-chronological (newest first) per standard changelog convention; all prior entries preserved with no edits. No content changes to action items. v2.19 (Jun 9, 2026): Housing Committee Ranking List (working draft, May 2026) integrated, replacing the May 21 straw poll as the canonical committee_priority record. Schema change: committee_priority block restructured from {meeting_date, votes, members[]} to {votes, rank, source}. The May 21 attribution data is preserved in the meeting summary markdown (meeting-notes/2026-05-21-summary.md) as historical record. 11 items now carry committee_priority: I-4 (8 votes, rank 1), Z-21 (5, rank 2), Z-1 (3, rank 3), Z-5 (3, rank 3), Z-3 (2, rank 4), Z-8 (2, rank 4), Z-9 (2, rank 4), Z-17 (2, rank 4), Z-13 (1, rank 5), PA-10 (1, rank 5), SP-1 (1, rank 5). Five items lose committee_priority — they appeared in the lower (unscored) block of the ranking list: HTF-3, Z-10, Z-19, Z-33, EO-2. Two items gain committee_priority for the first time: Z-3 and SP-1. Z-21 retitled "Comprehensive zoning audit" → "Comprehensive zoning ordinance update" per staff annotation. Z-18 (room rental) status → complete with rationale: already permitted under existing zoning ordinance, not separately regulated. Z-19 (seasonal worker housing) status → complete with rationale: covered by co-living ordinance (Section 10.815, adopted May 2025). New staff_term and staff_note set on Z-13 (long), Z-17 (long), SP-2 (short). Z-9 staff_note updated from "Expand the Gateway Zone" to "Currently in existing Gateway - review standards" — substantive scope shift. Z-21 staff_note aligned to ranking list ("After Master Plan update, more to review"). Per-card committee priority box now shows Rank #N alongside votes, with source line replacing the member pills. Committee picks count badge updates 14 → 11. 148 items total. v2.18 (May 27, 2026): May 21, 2026 Housing Committee minutes integrated. New field <code>committee_priority</code> (meeting_date, votes, members) added to 14 action items reflecting member straw-poll priorities: I-4 (8 votes), HTF-3 (4), Z-5 (4), Z-10 (3), Z-17 (3), Z-1 (2), Z-9 (2), Z-21 (2), Z-33 (1), EO-2 (1), PA-10 (1), Z-13 (1), Z-19 (1), Z-8 (1). New Committee picks filter — teal-accented toggle in header parallel to Staff shortlist; when active, Cards view regroups items into vote tiers (Strong consensus 3+ / Shared priority 2 / Single mention 1) with category shown as an inline tag. Both filters can stack; sidebar category counts respect both. I-4 status_detail extended with Moreau's RSA 674 legal framing (Portsmouth lacks authority for tax relief outside solar/elderly/veterans/disabled) and Stith's "79-E bucket" structural framing grouping I-4, I-18, and CS-3. I-18 and CS-3 notes extended with the same bucketing context. Z-21 status_detail extended with Stith's May 21 confirmation that the zoning audit is now underway and serves as anchor of a structural "Zoning Audit bucket." Z-1 status reopened: complete → in-progress, status_detail extended to clarify GNOD (2024) was first phase only; Moreau and Stebbins-Thomas placed further rezoning of remaining outdated O/R and GB parcels in their top three priorities. Sources field appended on all 16 affected items. Resources panel entry added for the May 21 minutes with link to the full meeting summary markdown in the repo. 148 items total. v2.17 (Apr 30, 2026): Added Staff shortlist filter — gold-accented toggle button in header revealing only the 26 items on the City Planning staff shortlist (Apr 23, 2026 minutes). When active, content area shows a banner with item count and source date, sidebar category counts recalculate to reflect the shortlist subset (categories with zero shortlisted items are hidden), and Cards view regroups items into Short-term and Long-term sections (instead of by category) with category shown as an inline tag on each card. Filter state persists across page loads via localStorage. Filter works alongside existing category, status, and search filters. Table and Yield views also respect the filter while retaining category grouping. 148 items total. v2.16 (Apr 30, 2026): Planning staff comments from the April 23, 2026 Housing Committee minutes integrated into 26 shortlisted action items. New fields added: staff_term ('short' or 'long') and staff_note (verbatim staff comment). 8 items flagged short-term (GA-1, GA-3, I-4, EO-2, Z-3, Z-9, Z-10, Z-36) and 18 long-term (Z-1, Z-5, Z-7, Z-8, Z-11, Z-14, Z-15, Z-21, Z-33, P-14, I-12, I-18, HTF-3, PC-5, PA-8, PA-10, PT-12, CS-3). Comments rendered in distinct slate-bordered panel on item cards with term badge. Sources field appended for all 26 items. Resources panel entry added for the minutes. Search index updated to include staff_note. 148 items total. v2.15 (Apr 20, 2026): State advocacy revisions — 7 items updated to strengthen state-level policy asks. Z-5 and Z-33 anti-speculation prerequisite reframed with land value capture as preferred mechanism, equivalents (land banking, first-right-of-refusal, short-hold transfer fees) named, and FY2027 Planning Board report trigger added to prevent prerequisite from becoming a circuit breaker on zoning reform. Z-10 state advocacy component added linking HB 631 (eff. 7/1/26) to increased legal exposure of Portsmouth's GNOD inclusionary zoning, framing IZ safe-harbor authorization as protective rather than speculative. I-1 2026 state bill context added (HB 1662 ADU loan guarantees). I-16 renamed from "Pillow tax / local option tax for housing" to "Local option housing revenue authorization"; description rewritten with real estate transfer fee as primary vehicle (Vermont/Massachusetts precedents) and pillow tax as secondary. I-22 state advocacy component added (shared equity property tax assessment clarification + NHHFA QAP priority). PC-5 rewritten as operational prioritized list of six state-level asks with HAP item cross-references. 148 items total. v2.14 (Apr 12, 2026): Added PC-10 — PHA scattered-site project-based voucher program for private small multifamily. Item count in footer now auto-calculated from live JSON — no manual update required when items are added or removed. 148 items total. v2.13 (Apr 12, 2026): Added PL-8 — GNOD land transfer pipeline management (Section 10.686.30/10.686.40). Updated notes on Z-1, Z-6, PL-1, PL-2, PL-4 to document GNOD land transfer mechanics, City Council approval requirement, 1-acre-per-20-acres ratio, and development rights banking. 147 items total. v2.12 (Apr 6, 2026): Pre-handover data audit — Z-11 status corrected from complete to early-stage (FBC use deregulation not initiated); notes fields neutralized across 11 items (Z-14, Z-17, Z-19, Z-23, Z-24, P-11, EO-10, GA-1, GA-2, GA-3, GA-4) to remove advocacy framing, editorial judgments, and politically charged language. 146 items total. v2.11 (Mar 30, 2026): Resources panel updated with PP affordable housing finance explainer (capital stack, operating gap, local toolkit — based on POAH/Rodger Brown call). 146 items total. v2.10 (Mar 29, 2026): Added GA-4 — forensic review of land use board decision patterns for housing applications (2021–2025), covering ZBA, Historic District Commission, and Planning Board. Item examines legal fidelity, Master Plan alignment, and duty-to-assist interpretive posture across all three boards; cites Richmond Co. v. City of Concord (2003), Appeal of Town of Windham (2022), RSA 672:1 III-e, and RSA 676:3,I written findings requirement. Resources panel updated with NH case law and NHMA sources. 146 items total. v2.9 (Mar 28, 2026): Five items updated to reflect draft Portsmouth Master Plan Update (Utile/City of Portsmouth, March 2026) — Z-37 description revised to reference all five Gateway Neighborhood Center study areas (replacing 2016 Housing Policy geography); Z-15 notes populated with Master Plan urban design frameworks for Portsmouth Green and Commerce Way areas; Z-33 notes updated with Master Plan SRB two-stage staging recommendation (cross-referencing Z-8 and Z-5); P-5 description strengthened to specify substitution of open-ended discretionary design review with objective standards in Gateway and Character districts; Z-21 notes updated to name district consolidation as a deliverable of the zoning audit. Source attribution and Resources panel entry added for draft Master Plan Update. 145 items total. v2.8 (Mar 27, 2026): Added 2025 state law compliance flags (HB 577/631, SB 284/283/282, HB 457) to Z-2, Z-3, Z-4, Z-5, Z-21, Z-25, Z-29, Z-36; added 2017 Master Plan source attributions to 26 items spanning all major categories; added Master Plan relationship panel and Resources panel to Explorer header. v2.7 (Mar 26) stable category-prefixed IDs added to all 145 items (Z-1 through GA-3); retired and out-of-scope items now greyed and struck through; deferred status added to vocabulary; IDs displayed on all cards, table view, and yield view. v2.6 (Mar 24) three-source gap analysis complete: added items 138–145 from AEI/Housing Supply Accelerator and Ivory Innovations source review (permit review timeline audit, building code review, pre-approved design templates, institutional land inventory, impact fee calibration, entry-level ownership strategy, shared equity homeownership framework, third-party plan review); expanded items 13 and 37 to absorb new research; retired item 54 (superseded by item 144); cross-references added to items 2 and 34. Total items: 145. v2.3 (Mar 12) 2016 Housing Policy integration: source attribution added to 14 existing items tracing to City Council Housing Policy 2016-01 (Perkins, Dec 2016) and its Master Plan Strategy attachment; 1 new item added (Zoning &amp; Land Use) for housing target area designation with area-specific design standards per §III.3. Total items: 136. v2.2 (Mar 8) sequencing and provisional data revisions: 5 evaluation items updated — land value capture, missing middle, and single-family zone reform designated pre-triage-priority with explicit sequencing prerequisites; housing utilization monitoring elevated to pre-triage-priority; federally subsidized unit preservation strategy reframed as verification-first with PROVISIONAL DATA flag on RKG 2022 NHPD unit counts pending PHA confirmation. v2.1 (Mar 6) 2026 NH legislative session analysis: RSA 79-E item updated to reflect HB1103 passing House Housing Committee 17-0 with amendment on March 3, expanding 79-E credits to wider property types; new item added tracking HB1079, HB1540, and HB1662 for conflicts with Portsmouth's February 17, 2026 ADU ordinance. Total items: 135. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added. v1.3 (Feb 17) pros/cons analysis added for all items. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.1 (Feb 10) status audit adding 3 items to 122. v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022.
+  h+=`<div class="revision-banner"><span class="rev-date">Version 2.21 — Jun 11, 2026</span><br>
+  <div class="rev-content" id="revContent"><strong>Revision history:</strong> v2.21 (Jun 11, 2026): HC Progress Tracker added as new Meetings view in the Explorer toolbar (4th view button alongside Cards/Table/Yield), teal-accented to signal committee-related content distinct from action-item views. Meeting-centric layout serves HC members and Planning Department staff. Components: (1) Source-attribution note clarifying that City Clerk minutes are authoritative, markdown summaries in /meeting-notes/ are working syntheses by Progress Portsmouth, and the Housing Committee Ranking List is itself a draft. (2) Quick-scan stats: meetings held, items prioritized, items closed, items reopened, items raised but no action. (3) Horizontal timeline with interim-activity markers (e.g., Jun 9 Ranking List release). (4) Per-meeting cards (newest first) with attendance, decisions grouped by type, and clickable item-ID tags that switch to Cards view filtered to that item. (5) Interim activity cards rendered between meetings. (6) Forgotten Items panel — items mentioned in a meeting but without committee_priority and status empty/not-started. New data file hc-meetings.json (added in Commit A) holds tracker_meta, meetings array, and interim_activity array; grows by one entry per meeting. Currently covers Apr 23 (full meeting — Tabor accomplishments, five-issue framing, 79-E discussion, staff shortlist presentation, top-3/top-10 process agreement, public comment), May 21 (full meeting — straw poll + 79-E bucket framing), Jun 11 (upcoming). 148 items total. v2.20.1 (Jun 9, 2026): Same-day patch series fixing four bugs in v2.20. (1) Show all reset button contrast was unreadable — text was navy on the navy header; restyled to white outline (rgba 255,255,255,.45 border, .85 text) per brand legibility canon. (2) Staff shortlist badge was hardcoded to "26" but the actual count is 29 after v2.19 added staff_term to Z-13, Z-17, SP-2; badge now computed from live data on page load. (3) Filters were independently stackable, intersecting to confusing results when both active; toggles now mutually exclusive — clicking one deactivates the other; Show all button still serves as the universal reset. (4) Per-card staff comment label "Planning Staff Comment · Apr 23, 2026" mis-attributed three items (Z-13, Z-17, SP-2) whose staff_note came from the May 2026 Ranking PDF, not the Apr 23 minutes; date dropped from label, source attribution carried by per-item sources field + Resources panel. (5) Shortlist banner footer "Apr 23, 2026" updated to "Apr 23, 2026 + later additions" to signal the list is no longer a frozen snapshot. (6) Static sl-count badge value in HTML source updated 26 → 29 to match live data (eliminates flash-of-stale-content on slow JS load). No JSON changes; 148 items total. v2.20 (Jun 9, 2026): UX refinements. Added "Show all 148 items" reset button in header — appears only when one or both filters are active, single click clears all filters and returns to default view. Revision history reordered to reverse-chronological (newest first) per standard changelog convention; all prior entries preserved with no edits. No content changes to action items. v2.19 (Jun 9, 2026): Housing Committee Ranking List (working draft, May 2026) integrated, replacing the May 21 straw poll as the canonical committee_priority record. Schema change: committee_priority block restructured from {meeting_date, votes, members[]} to {votes, rank, source}. The May 21 attribution data is preserved in the meeting summary markdown (meeting-notes/2026-05-21-summary.md) as historical record. 11 items now carry committee_priority: I-4 (8 votes, rank 1), Z-21 (5, rank 2), Z-1 (3, rank 3), Z-5 (3, rank 3), Z-3 (2, rank 4), Z-8 (2, rank 4), Z-9 (2, rank 4), Z-17 (2, rank 4), Z-13 (1, rank 5), PA-10 (1, rank 5), SP-1 (1, rank 5). Five items lose committee_priority — they appeared in the lower (unscored) block of the ranking list: HTF-3, Z-10, Z-19, Z-33, EO-2. Two items gain committee_priority for the first time: Z-3 and SP-1. Z-21 retitled "Comprehensive zoning audit" → "Comprehensive zoning ordinance update" per staff annotation. Z-18 (room rental) status → complete with rationale: already permitted under existing zoning ordinance, not separately regulated. Z-19 (seasonal worker housing) status → complete with rationale: covered by co-living ordinance (Section 10.815, adopted May 2025). New staff_term and staff_note set on Z-13 (long), Z-17 (long), SP-2 (short). Z-9 staff_note updated from "Expand the Gateway Zone" to "Currently in existing Gateway - review standards" — substantive scope shift. Z-21 staff_note aligned to ranking list ("After Master Plan update, more to review"). Per-card committee priority box now shows Rank #N alongside votes, with source line replacing the member pills. Committee picks count badge updates 14 → 11. 148 items total. v2.18 (May 27, 2026): May 21, 2026 Housing Committee minutes integrated. New field <code>committee_priority</code> (meeting_date, votes, members) added to 14 action items reflecting member straw-poll priorities: I-4 (8 votes), HTF-3 (4), Z-5 (4), Z-10 (3), Z-17 (3), Z-1 (2), Z-9 (2), Z-21 (2), Z-33 (1), EO-2 (1), PA-10 (1), Z-13 (1), Z-19 (1), Z-8 (1). New Committee picks filter — teal-accented toggle in header parallel to Staff shortlist; when active, Cards view regroups items into vote tiers (Strong consensus 3+ / Shared priority 2 / Single mention 1) with category shown as an inline tag. Both filters can stack; sidebar category counts respect both. I-4 status_detail extended with Moreau's RSA 674 legal framing (Portsmouth lacks authority for tax relief outside solar/elderly/veterans/disabled) and Stith's "79-E bucket" structural framing grouping I-4, I-18, and CS-3. I-18 and CS-3 notes extended with the same bucketing context. Z-21 status_detail extended with Stith's May 21 confirmation that the zoning audit is now underway and serves as anchor of a structural "Zoning Audit bucket." Z-1 status reopened: complete → in-progress, status_detail extended to clarify GNOD (2024) was first phase only; Moreau and Stebbins-Thomas placed further rezoning of remaining outdated O/R and GB parcels in their top three priorities. Sources field appended on all 16 affected items. Resources panel entry added for the May 21 minutes with link to the full meeting summary markdown in the repo. 148 items total. v2.17 (Apr 30, 2026): Added Staff shortlist filter — gold-accented toggle button in header revealing only the 26 items on the City Planning staff shortlist (Apr 23, 2026 minutes). When active, content area shows a banner with item count and source date, sidebar category counts recalculate to reflect the shortlist subset (categories with zero shortlisted items are hidden), and Cards view regroups items into Short-term and Long-term sections (instead of by category) with category shown as an inline tag on each card. Filter state persists across page loads via localStorage. Filter works alongside existing category, status, and search filters. Table and Yield views also respect the filter while retaining category grouping. 148 items total. v2.16 (Apr 30, 2026): Planning staff comments from the April 23, 2026 Housing Committee minutes integrated into 26 shortlisted action items. New fields added: staff_term ('short' or 'long') and staff_note (verbatim staff comment). 8 items flagged short-term (GA-1, GA-3, I-4, EO-2, Z-3, Z-9, Z-10, Z-36) and 18 long-term (Z-1, Z-5, Z-7, Z-8, Z-11, Z-14, Z-15, Z-21, Z-33, P-14, I-12, I-18, HTF-3, PC-5, PA-8, PA-10, PT-12, CS-3). Comments rendered in distinct slate-bordered panel on item cards with term badge. Sources field appended for all 26 items. Resources panel entry added for the minutes. Search index updated to include staff_note. 148 items total. v2.15 (Apr 20, 2026): State advocacy revisions — 7 items updated to strengthen state-level policy asks. Z-5 and Z-33 anti-speculation prerequisite reframed with land value capture as preferred mechanism, equivalents (land banking, first-right-of-refusal, short-hold transfer fees) named, and FY2027 Planning Board report trigger added to prevent prerequisite from becoming a circuit breaker on zoning reform. Z-10 state advocacy component added linking HB 631 (eff. 7/1/26) to increased legal exposure of Portsmouth's GNOD inclusionary zoning, framing IZ safe-harbor authorization as protective rather than speculative. I-1 2026 state bill context added (HB 1662 ADU loan guarantees). I-16 renamed from "Pillow tax / local option tax for housing" to "Local option housing revenue authorization"; description rewritten with real estate transfer fee as primary vehicle (Vermont/Massachusetts precedents) and pillow tax as secondary. I-22 state advocacy component added (shared equity property tax assessment clarification + NHHFA QAP priority). PC-5 rewritten as operational prioritized list of six state-level asks with HAP item cross-references. 148 items total. v2.14 (Apr 12, 2026): Added PC-10 — PHA scattered-site project-based voucher program for private small multifamily. Item count in footer now auto-calculated from live JSON — no manual update required when items are added or removed. 148 items total. v2.13 (Apr 12, 2026): Added PL-8 — GNOD land transfer pipeline management (Section 10.686.30/10.686.40). Updated notes on Z-1, Z-6, PL-1, PL-2, PL-4 to document GNOD land transfer mechanics, City Council approval requirement, 1-acre-per-20-acres ratio, and development rights banking. 147 items total. v2.12 (Apr 6, 2026): Pre-handover data audit — Z-11 status corrected from complete to early-stage (FBC use deregulation not initiated); notes fields neutralized across 11 items (Z-14, Z-17, Z-19, Z-23, Z-24, P-11, EO-10, GA-1, GA-2, GA-3, GA-4) to remove advocacy framing, editorial judgments, and politically charged language. 146 items total. v2.11 (Mar 30, 2026): Resources panel updated with PP affordable housing finance explainer (capital stack, operating gap, local toolkit — based on POAH/Rodger Brown call). 146 items total. v2.10 (Mar 29, 2026): Added GA-4 — forensic review of land use board decision patterns for housing applications (2021–2025), covering ZBA, Historic District Commission, and Planning Board. Item examines legal fidelity, Master Plan alignment, and duty-to-assist interpretive posture across all three boards; cites Richmond Co. v. City of Concord (2003), Appeal of Town of Windham (2022), RSA 672:1 III-e, and RSA 676:3,I written findings requirement. Resources panel updated with NH case law and NHMA sources. 146 items total. v2.9 (Mar 28, 2026): Five items updated to reflect draft Portsmouth Master Plan Update (Utile/City of Portsmouth, March 2026) — Z-37 description revised to reference all five Gateway Neighborhood Center study areas (replacing 2016 Housing Policy geography); Z-15 notes populated with Master Plan urban design frameworks for Portsmouth Green and Commerce Way areas; Z-33 notes updated with Master Plan SRB two-stage staging recommendation (cross-referencing Z-8 and Z-5); P-5 description strengthened to specify substitution of open-ended discretionary design review with objective standards in Gateway and Character districts; Z-21 notes updated to name district consolidation as a deliverable of the zoning audit. Source attribution and Resources panel entry added for draft Master Plan Update. 145 items total. v2.8 (Mar 27, 2026): Added 2025 state law compliance flags (HB 577/631, SB 284/283/282, HB 457) to Z-2, Z-3, Z-4, Z-5, Z-21, Z-25, Z-29, Z-36; added 2017 Master Plan source attributions to 26 items spanning all major categories; added Master Plan relationship panel and Resources panel to Explorer header. v2.7 (Mar 26) stable category-prefixed IDs added to all 145 items (Z-1 through GA-3); retired and out-of-scope items now greyed and struck through; deferred status added to vocabulary; IDs displayed on all cards, table view, and yield view. v2.6 (Mar 24) three-source gap analysis complete: added items 138–145 from AEI/Housing Supply Accelerator and Ivory Innovations source review (permit review timeline audit, building code review, pre-approved design templates, institutional land inventory, impact fee calibration, entry-level ownership strategy, shared equity homeownership framework, third-party plan review); expanded items 13 and 37 to absorb new research; retired item 54 (superseded by item 144); cross-references added to items 2 and 34. Total items: 145. v2.3 (Mar 12) 2016 Housing Policy integration: source attribution added to 14 existing items tracing to City Council Housing Policy 2016-01 (Perkins, Dec 2016) and its Master Plan Strategy attachment; 1 new item added (Zoning &amp; Land Use) for housing target area designation with area-specific design standards per §III.3. Total items: 136. v2.2 (Mar 8) sequencing and provisional data revisions: 5 evaluation items updated — land value capture, missing middle, and single-family zone reform designated pre-triage-priority with explicit sequencing prerequisites; housing utilization monitoring elevated to pre-triage-priority; federally subsidized unit preservation strategy reframed as verification-first with PROVISIONAL DATA flag on RKG 2022 NHPD unit counts pending PHA confirmation. v2.1 (Mar 6) 2026 NH legislative session analysis: RSA 79-E item updated to reflect HB1103 passing House Housing Committee 17-0 with amendment on March 3, expanding 79-E credits to wider property types; new item added tracking HB1079, HB1540, and HB1662 for conflicts with Portsmouth's February 17, 2026 ADU ordinance. Total items: 135. v2 (Feb 18-20) reviewer feedback integration, Byron Matto GIS zoning analysis, 7 new action items (governance framework, accountability reporting, budget alignment, land value capture, pro forma feasibility, buildout capacity modeling, single-family zone reform strategy), 20+ item-level revisions addressing legal accuracy, enforcement nuance, fiscal data, and strategic gaps. Glossary added. v1.3 (Feb 17) pros/cons analysis added for all items. v1.2 (Feb 14) colleague zoning feedback integration, 2 new items to 124, implementation status for 28 active items. v1.1 (Feb 10) status audit adding 3 items to 122. v1.0 (Feb 8) initial 119 items from comparable plans, Blue Ribbon Committee, Planning Board, Places to Live Dialogue, and RKG 2022.
   <div class="ai-note">This module was developed with AI assistance. Claude by Anthropic served as the primary AI model for data structuring, analysis, pros/cons generation, and HTML development. All content reflects Progress Portsmouth's research, policy positions, and editorial judgment — AI tools were used to accelerate production, not to substitute for local knowledge or advocacy strategy.</div></div>
   <button class="rev-toggle" id="revToggle" onclick="const c=document.getElementById('revContent');const t=document.getElementById('revToggle');c.classList.toggle('expanded');t.textContent=c.classList.contains('expanded')?'Read less \u25b4':'Read more \u25be';">Read more ▾</button></div>`;
+
+  // === MEETINGS VIEW: handles its own content + version note, then returns ===
+  if (currentView === "meetings") {
+    h += renderMeetingsView();
+    h += `<div class="version-note">📌 Version 2.21 — Jun 11, 2026 — HC Progress Tracker (Meetings view) added · <span id="live-item-count">loading…</span> items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
+    document.getElementById("content").innerHTML = h;
+    const ic = document.getElementById("live-item-count");
+    if (ic) ic.textContent = DATA.length;
+    return;
+  }
 
   // Workload summary (suppressed when shortlist or committee active — replaced by banner)
   if(!shortlistActive && !committeeActive && activeCategory==='all'&&!searchQuery&&statusFilter==='all'){
@@ -973,7 +1219,7 @@ function renderContent(){
     h+=`</div>`;
   }
 
-  h+=`<div class="version-note">📌 Version 2.20.1 — Jun 9, 2026 — Same-day patches: contrast, dynamic staff count, mutex filters, per-card attribution · <span id="live-item-count">loading…</span> items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
+  h+=`<div class="version-note">📌 Version 2.21 — Jun 11, 2026 — HC Progress Tracker (Meetings view) added · <span id="live-item-count">loading…</span> items total<br>Prepared by <a href="https://www.progressportsmouth.com" target="_blank">Progress Portsmouth</a> with AI assistance from Anthropic (Claude)</div>`;
 
   document.getElementById('content').innerHTML=h;
 }
