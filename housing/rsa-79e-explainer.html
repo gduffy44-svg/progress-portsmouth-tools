@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Community Revitalization Tax Relief · A Path to Stay in Portsmouth · Progress Portsmouth</title>
-<meta name="description" content="New Hampshire's RSA 79-E lets homeowners add ADUs and convert to small multi-family while temporarily abating the property tax on the improved value. A guide to all five programs under the Community Revitalization Tax Relief Incentive, with eligibility tools for homeowners and developers.">
+<title>Portsmouth Building Reinvestment Program (RSA 79-E) · A Guide for Homeowners, Developers &amp; Nonprofits · Progress Portsmouth</title>
+<meta name="description" content="The proposed Portsmouth Building Reinvestment Program would adopt New Hampshire's RSA 79-E Community Revitalization Tax Relief Incentive locally — temporary property tax abatement for homeowners adding ADUs, small developers converting buildings to multi-family, and builders of workforce housing. An interactive guide to all five programs under the statute.">
 <link rel="canonical" href="https://progress-portsmouth-tools.vercel.app/housing/rsa-79e-explainer.html">
-<!-- v2.3 — April 2026 — see revision history in footer -->
+<!-- v2.5 — June 2026 — see revision history in footer -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -257,6 +257,7 @@
   .badge-gold { background: rgba(200,130,42,.1); color: var(--gold-dark); }
   .badge-coral { background: rgba(231,111,81,.1); color: var(--coral); }
   .badge-slate { background: rgba(100,116,139,.1); color: var(--slate); }
+  .badge-navy { background: rgba(45,62,82,.08); color: var(--navy-mid); }
 
   .program-card h3 {
     font-family: 'DM Serif Display', serif;
@@ -925,12 +926,12 @@
 <!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-kicker">Community Revitalization Tax Relief · RSA 79-E</div>
-    <h1>A path to stay in Portsmouth —<br><em>and help someone else do the same</em></h1>
-    <p class="hero-sub">New Hampshire law lets homeowners renovate aging properties, add ADUs, and convert to small multi-family — while temporarily abating the property tax on the improved value. If Portsmouth adopts it, that's a meaningful path to staying in the city while contributing to its housing supply. Developers rehabilitating larger commercial properties can access the same tool. Here's how both work.</p>
+    <div class="hero-kicker">Proposed · Portsmouth Building Reinvestment Program · RSA 79-E</div>
+    <h1>Understanding the proposed<br><em>Portsmouth Building Reinvestment Program</em></h1>
+    <p class="hero-sub">"Portsmouth Building Reinvestment Program" is a proposed local name for the city's adoption of RSA 79-E, New Hampshire's Community Revitalization Tax Relief Incentive. The statute lets the city temporarily abate the property tax on improvement value — for homeowners renovating older homes or adding ADUs, small developers converting buildings to multi-family of up to 4 units, and developers of workforce and affordable housing. This guide explains all five programs under the statute and who each one serves.</p>
     <div class="hero-note">
       <span>⚠</span>
-      <span><strong>Important:</strong> RSA 79-E is enabling legislation — municipalities choose whether to adopt it. Portsmouth has not yet adopted any program. This guide explains what current law allows. References to pending legislation (HB 1103) describe a bill that passed the NH House on March 11, 2026 but has not yet been enacted into law.</span>
+      <span><strong>Status:</strong> RSA 79-E is enabling legislation — Portsmouth has not yet adopted any program, and the program name above is proposed, not city policy. Separately, HB 1103, which amends several 79-E programs, passed both chambers of the legislature (House concurred with the Senate amendment on May 21, 2026) and awaits the governor's signature; if signed, it takes effect 60 days after passage. Provisions HB 1103 would change are marked throughout this guide.</span>
     </div>
   </div>
 </div>
@@ -946,6 +947,9 @@
     </div>
     <div class="audience-tab" role="tab" data-panel="developers" onclick="switchTab(this,'developers')">
       <span class="tab-icon">🏗</span><span class="tab-long"> Developers</span><span class="tab-short"> Developers</span>
+    </div>
+    <div class="audience-tab" role="tab" data-panel="nonprofits" onclick="switchTab(this,'nonprofits')">
+      <span class="tab-icon">🤝</span><span class="tab-long"> Nonprofits &amp; Affordability</span><span class="tab-short"> Nonprofits</span>
     </div>
   </div>
 </nav>
@@ -1021,8 +1025,8 @@
 
       <div class="program-card" onclick="showDetail('ocz')">
         <div class="card-badge badge-coral">Conversion</div>
-        <h3>Office Conversion Zones</h3>
-        <p>Office (and potentially other commercial/industrial) buildings converted to residential use in a city-designated zone.</p>
+        <h3>Office Conversion Zones <span class="tag-new">HB 1103</span></h3>
+        <p>Office buildings converted to residential in a city-designated zone. HB 1103 (awaiting signature) renames these Residential Conversion Zones and extends them to commercial and industrial buildings.</p>
         <div class="card-years">
           <div class="years-num">15</div>
           <div class="years-label">years max<br><small style="font-size:11px;color:#94a3b8">same framework</small></div>
@@ -1031,16 +1035,16 @@
 
       <div class="program-card" onclick="showDetail('hoz')">
         <div class="card-badge badge-slate">Opportunity</div>
-        <h3>Housing Opportunity Zones</h3>
-        <p>New construction or improvement in designated areas, with a mandatory affordability component. Only Conway, NH has adopted one.</p>
+        <h3>Housing Opportunity Zones <span class="tag-new">HB 1103</span></h3>
+        <p>New construction or improvement in designated areas. Current law mandates an affordability mix and caps relief at 10 years; HB 1103 (awaiting signature) would let municipalities set their own criteria, with up to 15 years for workforce housing.</p>
         <div class="card-years">
           <div class="years-num">10</div>
-          <div class="years-label">years max<br><small style="font-size:11px;color:#94a3b8">from Certificate of Occupancy</small></div>
+          <div class="years-label">years max, current law<br><small style="font-size:11px;color:#94a3b8">HB 1103: 7 or 15</small></div>
         </div>
       </div>
 
       <div class="program-card" onclick="showDetail('criz')">
-        <div class="card-badge" style="background:rgba(58,125,110,.1);color:#2d6b5e;">Coastal</div>
+        <div class="card-badge badge-navy">Coastal</div>
         <h3>Coastal Resilience Incentive Zone</h3>
         <p>For coastal municipalities — Portsmouth-specific. Tax relief tied to flood resilience improvements: elevation, drainage, and natural feature restoration.</p>
         <div class="card-years">
@@ -1167,8 +1171,8 @@
     <div id="detail-ocz" class="detail-section" style="display:none;">
       <div class="detail-header">
         <div class="detail-header-text">
-          <h2>Office Conversion Zones</h2>
-          <p>City designates an area where conversion of office (and broadly defined commercial) space to residential use is incentivized through tax relief. (RSA 79-E:4-d, eff. July 2024; scheduled repeal Jan. 1, 2035)</p>
+          <h2>Office Conversion Zones <span class="tag-new">HB 1103: Residential Conversion Zones</span></h2>
+          <p>City designates an area where conversion of office space to residential use is incentivized through tax relief. (RSA 79-E:4-d, eff. July 2024; scheduled repeal Jan. 1, 2035)</p>
         </div>
         <div class="detail-years-badge">
           <span class="num">15</span>
@@ -1183,12 +1187,13 @@
             <li class="req-item req-yes">✓ Owners of qualifying buildings apply for relief</li>
             <li class="req-item req-yes">✓ Relief tied to converting space to residential use (whole or in part)</li>
             <li class="req-item req-yes">✓ "Office use" is defined broadly — includes businesses, professions, nonprofits, government entities, co-working spaces</li>
-            <li class="req-item req-no">✗ Scheduled repeal: January 1, 2035 (RSA 79-E:4-d)</li>
+            <li class="req-item req-cond">~ HB 1103 (awaiting signature) adds commercial and industrial buildings, with those uses defined per RSA 72:80</li>
+            <li class="req-item req-no">✗ Scheduled repeal: January 1, 2035 (RSA 79-E:4-d) — not altered by HB 1103</li>
             <li class="req-item req-cond">~ Once per 20 years per property</li>
           </ul>
         </div>
         <div class="covenant-box">
-          <p><strong>Note on HB 1103 (2026 session):</strong> A bill to broaden RSA 79-E passed the NH House on March 11, 2026 and now moves to the Senate. The bill as described would expand municipalities' ability to use community revitalization tax relief on a wider variety of properties. The exact scope of the House-passed amendment is not yet public in final form — the prior presentation description of specific changes (renaming to "Residential Conversion Zones," 7/11-year HOZ restructuring) may not reflect the version that passed. This page will be updated when the bill is enacted. <strong>HB 1103 is not yet law.</strong></p>
+          <p><strong>HB 1103 update (passed both chambers; awaiting governor's signature):</strong> The final bill, as adopted by both bodies on May 21, 2026, renames Office Conversion Zones to <strong>Residential Conversion Zones</strong> and expands qualifying structures to buildings in office, <strong>commercial, or industrial</strong> use — in whole or in part — converted to residential use, with "commercial use" and "industrial use" defined per RSA 72:80. Municipalities may establish criteria for the public benefits, goals, and measures that determine eligibility within a designated zone. The once-per-20-years limit is retained, and the scheduled January 1, 2035 repeal is not addressed by the bill. If signed, the act takes effect 60 days after passage.</p>
         </div>
       </div>
     </div>
@@ -1196,38 +1201,48 @@
     <div id="detail-hoz" class="detail-section" style="display:none;">
       <div class="detail-header">
         <div class="detail-header-text">
-          <h2>Housing Opportunity Zones (HOZ)</h2>
-          <p>New construction or neighborhood improvement in a city-designated zone, with a mandatory affordability component. Conway, NH was the first municipality to adopt one (2024). (RSA 79-E:4-c, eff. Apr. 2022)</p>
+          <h2>Housing Opportunity Zones (HOZ) <span class="tag-new">HB 1103</span></h2>
+          <p>New construction or neighborhood improvement in a city-designated zone. Conway, NH was the first municipality to adopt one (2024). (RSA 79-E:4-c, eff. Apr. 2022)</p>
         </div>
         <div class="detail-years-badge">
           <span class="num">10</span>
-          <span class="lbl">years max</span>
+          <span class="lbl">yrs, current law</span>
         </div>
       </div>
       <div class="detail-body">
         <div class="year-builder">
-          <div class="year-builder-title">Relief period under current law</div>
+          <div class="year-builder-title">Relief period — current law vs. HB 1103</div>
           <div class="year-rows">
             <div class="year-row base">
               <div class="yr-count">10</div>
               <div class="plus"></div>
-              <div class="yr-label">Base maximum <small>Relief begins upon issuance of Certificate of Occupancy — not at approval or groundbreaking</small></div>
+              <div class="yr-label">Current law maximum <small>Relief begins upon issuance of Certificate of Occupancy — not at approval or groundbreaking</small></div>
             </div>
             <div class="year-row bonus">
               <div class="yr-count">4</div>
               <div class="plus">+</div>
               <div class="yr-label">Historic preservation bonus <small>If qualifying structure is on National or State Register; Conway has adopted this extension</small></div>
             </div>
+            <div class="year-row bonus">
+              <div class="yr-count">7</div>
+              <div class="plus"></div>
+              <div class="yr-label">HB 1103 (awaiting signature): no workforce housing <small>Maximum relief if the project creates no workforce housing as defined by RSA 674:58</small></div>
+            </div>
+            <div class="year-row bonus">
+              <div class="yr-count">15</div>
+              <div class="plus"></div>
+              <div class="yr-label">HB 1103 (awaiting signature): workforce housing created <small>Maximum relief if the project creates workforce housing (RSA 674:58) — the longest new-construction relief in the statute</small></div>
+            </div>
           </div>
         </div>
         <div class="requirements">
-          <div class="req-title">Current law requirements (RSA 79-E:4-c)</div>
+          <div class="req-title">Requirements (RSA 79-E:4-c)</div>
           <ul class="req-list">
             <li class="req-item req-yes">✓ City-designated HOZ area</li>
-            <li class="req-item req-yes">✓ ≥⅓ of units for households at ≤80% AMI</li>
             <li class="req-item req-yes">✓ New construction or neighborhood improvement</li>
-            <li class="req-item req-cond">~ Alternative income mixes under RSA 204-C:57, IV also acceptable</li>
-            <li class="req-item req-cond">~ HB 1103 (passed NH House Mar. 11, 2026; pending Senate) may modify affordability requirements — not yet law</li>
+            <li class="req-item req-cond">~ Current law: ≥⅓ of units for households at ≤80% AMI, or alternative income mixes under RSA 204-C:57, IV</li>
+            <li class="req-item req-cond">~ HB 1103 (awaiting signature) strikes that mandate; municipalities may instead establish their own criteria for public benefits, goals, and measures promoting housing affordability</li>
+            <li class="req-item req-cond">~ HB 1103: relief would begin at Certificate of Occupancy or completion of construction of new housing units</li>
           </ul>
         </div>
       </div>
@@ -1291,7 +1306,7 @@
             <td class="feature-col">Property type</td>
             <td>Any underutilized structure</td>
             <td>Residential 1–4 units</td>
-            <td>Office, business, nonprofit, co-working → residential conversion</td>
+            <td>Office, business, nonprofit, co-working → residential conversion. HB 1103: adds commercial &amp; industrial (RSA 72:80)</td>
             <td>Any residential</td>
             <td>Any structure in resilience zone</td>
           </tr>
@@ -1324,7 +1339,7 @@
             <td class="no-cell">Not defined in law</td>
             <td class="no-cell">Not required</td>
             <td class="no-cell">Not required</td>
-            <td class="cond-cell">≥⅓ units ≤80% AMI (current law)</td>
+            <td class="cond-cell">Current law: ≥⅓ units ≤80% AMI. HB 1103: municipality sets criteria</td>
             <td class="no-cell">N/A — resilience focus</td>
           </tr>
           <tr>
@@ -1340,7 +1355,7 @@
             <td>Up to 15 years (stacked)</td>
             <td>Up to 15 years</td>
             <td>Up to 15 years</td>
-            <td>Up to 10 years (from CO)</td>
+            <td>Current law: 10 yrs. HB 1103: 7 yrs, or 15 yrs with workforce housing</td>
             <td>Up to 15 years</td>
           </tr>
           <tr>
@@ -1348,7 +1363,7 @@
             <td>On completion of rehab</td>
             <td>On completion of rehab</td>
             <td>On completion of conversion</td>
-            <td class="yes-cell">At Certificate of Occupancy</td>
+            <td class="yes-cell">At CO. HB 1103: CO or completion of new units</td>
             <td>On completion of measures</td>
           </tr>
           <tr>
@@ -1379,12 +1394,13 @@
             <td class="feature-col">Scheduled repeal</td>
             <td class="no-cell">None</td>
             <td class="no-cell">None</td>
-            <td class="cond-cell">January 1, 2035</td>
+            <td class="cond-cell">January 1, 2035 (not altered by HB 1103)</td>
             <td class="no-cell">None</td>
             <td class="no-cell">None</td>
           </tr>
         </tbody>
       </table>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.5;">"HB 1103" entries reflect the version adopted by both chambers May 21, 2026; the bill awaits the governor's signature and is not yet law.</p>
     </div>
 
     <!-- Limitations -->
@@ -1402,6 +1418,29 @@
       </ul>
     </div>
 
+    <!-- Zoning prerequisite section (v2.5) -->
+    <div class="section-label mt-32">The other half of the equation</div>
+    <h2 class="section-title" style="font-size:22px;margin-bottom:12px;">Tax relief is not a use permit</h2>
+    <p class="section-intro" style="margin-bottom:20px;">RSA 79-E abates the tax on improvements. It grants no right to build them. Every project these programs might reward must independently comply with Portsmouth's zoning ordinance — and where zoning does not allow the underlying use, the incentive is worth nothing.</p>
+
+    <div class="mechanics-grid">
+      <div class="mech-card">
+        <div class="mech-label">For homeowners</div>
+        <div class="mech-headline">An ADU or conversion must first be a permitted use.</div>
+        <p>An RPR Zone can reward adding an ADU or converting to a 2–4 unit building — but only where the zoning ordinance allows that ADU or conversion on the lot in question. The abatement follows the permit; it never substitutes for one.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-label">For conversions</div>
+        <div class="mech-headline">A conversion zone does not change use or dimensional rules.</div>
+        <p>Designating a conversion zone makes commercial-to-residential projects eligible for tax relief within it. The underlying district still governs whether residential use, density, parking, and dimensions permit the conversion at all.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-label">For adoption sequencing</div>
+        <div class="mech-headline">Zoning capacity and tax incentives are complements.</div>
+        <p>Adopting these programs where zoning prohibits the target projects produces applications that cannot be approved; expanding zoning capacity without addressing feasibility produces permissions that go unused. The two move together or barely move at all.</p>
+      </div>
+    </div>
+
     <!-- Glossary (v2.4) -->
     <div class="glossary-wrap">
       <h3>Key terms</h3>
@@ -1417,7 +1456,7 @@
         </div>
         <div class="gloss-item">
           <dt>AMI (Area Median Income)</dt>
-          <dd>HUD-published income threshold for a metro area, adjusted by household size. 80% AMI is the workforce-housing benchmark in HOZ; 60% AMI typically defines affordable housing.</dd>
+          <dd>HUD-published income threshold for a metro area, adjusted by household size. 80% AMI is the workforce-housing benchmark in current HOZ law; 60% AMI typically defines affordable housing.</dd>
         </div>
         <div class="gloss-item">
           <dt>But-for test</dt>
@@ -1425,7 +1464,7 @@
         </div>
         <div class="gloss-item">
           <dt>Certificate of Occupancy (CO)</dt>
-          <dd>Municipal sign-off that a completed building is fit for occupancy. In HOZ, the relief period begins at CO issuance rather than during construction.</dd>
+          <dd>Municipal sign-off that a completed building is fit for occupancy. In HOZ, the relief period begins at CO issuance — or, under HB 1103, at CO or completion of construction of new housing units.</dd>
         </div>
         <div class="gloss-item">
           <dt>Covenant</dt>
@@ -1441,7 +1480,7 @@
         </div>
         <div class="gloss-item">
           <dt>Qualifying structure</dt>
-          <dd>Under traditional 79-E, a structure in a designated district that is underutilized or in disrepair. Definitions vary by program — RPR requires 40+ years old and ≤4 units; OCZ requires office/commercial use being converted to residential.</dd>
+          <dd>Under traditional 79-E, a structure in a designated district that is underutilized or in disrepair. Definitions vary by program — RPR requires 40+ years old and ≤4 units; conversion zones require office (or, under HB 1103, commercial/industrial) use being converted to residential.</dd>
         </div>
         <div class="gloss-item">
           <dt>Substantial rehabilitation</dt>
@@ -1450,6 +1489,10 @@
         <div class="gloss-item">
           <dt>Tax relief period</dt>
           <dd>The finite number of years during which abatement applies, set by the governing body within statutory caps (RSA 79-E:5). Relief begins upon completion of rehabilitation — or, for HOZ, upon issuance of Certificate of Occupancy.</dd>
+        </div>
+        <div class="gloss-item">
+          <dt>Workforce housing (RSA 674:58)</dt>
+          <dd>The statutory definition HB 1103 uses to set the HOZ relief ceiling: up to 15 years if workforce housing is created, up to 7 if not. Distinct from the locally defined affordability criteria a municipality may adopt for its zone.</dd>
         </div>
         <div class="gloss-item">
           <dt>Enabling legislation</dt>
@@ -1552,6 +1595,7 @@
         <li>Tax savings estimates are illustrative. Your actual tax rate, assessed value, and relief years may differ significantly.</li>
         <li>The RPR Zone requires the city to designate specific areas — your neighborhood may or may not be included.</li>
         <li>The relief applies to the increase in assessed value only. You continue paying taxes on the pre-renovation assessed value throughout the relief period.</li>
+        <li>Zoning comes first: an ADU or unit conversion must be permitted on your lot under the zoning ordinance before any tax relief is relevant.</li>
       </ul>
     </div>
 
@@ -1742,10 +1786,58 @@
         <li>Projects receiving more than 50% of construction costs from non-repayable state or federal grants do not qualify for 79-E relief (RSA 79-E:14). Verify grant sources before applying.</li>
         <li>Relief begins at completion of rehabilitation — not at approval or during construction. Projects do not receive tax relief during the construction period itself.</li>
         <li>Adaptive reuse in Portsmouth's constrained market typically costs more than new construction. Verify that the tax relief materially improves your pro forma before relying on it as a deal-maker.</li>
+        <li>HB 1103 (awaiting governor's signature) would make Housing Opportunity Zones the strongest new-construction path: up to 15 years of relief where workforce housing (RSA 674:58) is created, with affordability criteria set locally rather than by the ⅓-at-80%-AMI statutory mandate.</li>
       </ul>
     </div>
 
   </section><!-- /developers -->
+
+
+  <!-- ══ NONPROFITS PANEL (v2.5) ══ -->
+  <section class="panel" id="panel-nonprofits">
+
+    <div class="section-label">For Nonprofit &amp; Mission-Driven Developers</div>
+    <h2 class="section-title">Where the program helps — and where it doesn't</h2>
+    <p class="section-intro">RSA 79-E was built around tax-paying property owners: its entire value is relief from property tax on improvement value. For nonprofit and mission-driven developers of permanently affordable housing, that makes it a situational tool — genuinely useful in some capital structures and nearly irrelevant in others. The honest map is below.</p>
+
+    <div class="mechanics-grid">
+      <div class="mech-card">
+        <div class="mech-label">Where it helps</div>
+        <div class="mech-headline">Tax-paying projects with thin early-year cash flow.</div>
+        <p>Where a mission developer pays full property taxes — mixed-income buildings, workforce rentals without a PILOT, NOAH acquisition-rehab — abating the tax on improvement value directly improves early operating budgets, when debt service pressure is highest.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-label">The HOZ opening</div>
+        <div class="mech-headline">HB 1103 would make HOZ the strongest new-construction path.</div>
+        <p>If signed, HB 1103 allows up to 15 years of relief where workforce housing (RSA 674:58) is created — the longest new-construction relief in the statute — with affordability criteria set by the municipality rather than the current ⅓-at-80%-AMI mandate. A Portsmouth HOZ ordinance could be written around the income tiers mission developers actually serve.</p>
+      </div>
+      <div class="mech-card butfor">
+        <div class="mech-label">The grant exclusion</div>
+        <div class="mech-headline">RSA 79-E:14 can disqualify grant-heavy capital stacks.</div>
+        <p>No relief is available where more than 50% of construction costs come from non-repayable state or federal grants. Deeply affordable projects often carry the most grant-dependent stacks in housing. Tax-credit equity is not structured as a grant, but layered capital grants can cross the threshold — eligibility must be verified against the actual sources-and-uses with counsel before 79-E is assumed in a pro forma.</p>
+      </div>
+      <div class="mech-card butfor">
+        <div class="mech-label">The PILOT overlap</div>
+        <div class="mech-headline">An abatement adds little where a PILOT already applies.</div>
+        <p>Affordable projects are often structured with payment-in-lieu-of-taxes agreements that already reduce the property tax burden. A 79-E abatement and a PILOT address the same line item; which instrument applies, and whether they can coexist for a given project, is a structuring question to resolve before applying.</p>
+      </div>
+    </div>
+
+    <div class="covenant-box">
+      <p><strong>The permanence mismatch:</strong> 79-E relief is temporary by design, and the foregone tax is never recovered — but the relief ends. Permanent affordability comes from deed restrictions, regulatory agreements, and financing covenants, not from a tax abatement. The 79-E:8 covenant can be required to run up to twice the relief period, which is a meaningful affordability term, but it is not a perpetuity instrument. For permanently affordable projects, 79-E is at most a financing assist layered under the documents that actually secure permanence.</p>
+    </div>
+
+    <div class="limitation-box">
+      <h3>Before assuming 79-E in an affordable pro forma</h3>
+      <ul class="limitation-list">
+        <li>Confirm the project will owe property tax on improvement value at all — exempt or PILOT-structured projects may gain little or nothing from an abatement.</li>
+        <li>Run the RSA 79-E:14 test against the full sources-and-uses: more than 50% of construction costs from non-repayable state or federal grants means no relief.</li>
+        <li>Portsmouth has adopted none of these programs yet, and any HOZ criteria would be set in the city's adopting ordinance — the terms that matter most to mission developers do not exist until the Council writes them.</li>
+        <li>HB 1103 awaits the governor's signature; the 15-year workforce ceiling and locally set criteria are not law until it is signed, and take effect 60 days after passage.</li>
+      </ul>
+    </div>
+
+  </section><!-- /nonprofits -->
 
 </main>
 
@@ -1760,12 +1852,24 @@
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
       <div>
         <span style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Revision History</span>
-        <span style="font-size:12px;color:rgba(255,255,255,.4);margin-left:10px;">v2.4 — April 18, 2026</span>
+        <span style="font-size:12px;color:rgba(255,255,255,.4);margin-left:10px;">v2.5 — June 11, 2026</span>
       </div>
       <button onclick="document.getElementById('rev-detail').style.display=document.getElementById('rev-detail').style.display==='none'?'block':'none';this.textContent=this.textContent==='Show details'?'Hide details':'Show details';"
         style="background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);font-size:12px;padding:3px 10px;border-radius:3px;cursor:pointer;font-family:'Source Sans 3',sans-serif;">Show details</button>
     </div>
     <div id="rev-detail" style="display:none;margin-top:12px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.8;">
+      <strong style="color:rgba(255,255,255,.8);">v2.5 · June 11, 2026 · Program name, HB 1103 final bill, nonprofit track, zoning section</strong><br>
+      Changes:
+      <ul style="margin:8px 0 8px 20px;display:flex;flex-direction:column;gap:4px;">
+        <li>Applied proposed local program name — "Portsmouth Building Reinvestment Program (RSA 79-E)" — to title, metadata, and hero; statutory program names unchanged; name marked as proposed pending Housing Committee and City Council action</li>
+        <li>Updated HB 1103 status throughout: passed both chambers (House concurred with Senate amendment 2026-1717s on May 21, 2026); awaiting governor's signature; effective 60 days after passage if signed</li>
+        <li>HOZ updated to the final bill: ⅓-at-80%-AMI mandate struck in favor of municipally defined criteria; relief begins at Certificate of Occupancy or completion of construction of new housing units; up to 7 years without workforce housing or up to 15 years where workforce housing (RSA 674:58) is created — supersedes the 7/11-year structure described in the March 2026 NH Housing presentation</li>
+        <li>Office Conversion Zones updated to the final bill: renamed Residential Conversion Zones; expanded to commercial and industrial conversions (RSA 72:80 definitions); once-per-20-years limit retained; January 1, 2035 scheduled repeal unaffected</li>
+        <li>Added "Nonprofits &amp; Affordability" audience tab covering where 79-E fits mission-driven development, the RSA 79-E:14 grant exclusion, PILOT overlap, and the permanence mismatch</li>
+        <li>Added "Tax relief is not a use permit" section on zoning prerequisites; added zoning reminder to homeowner considerations</li>
+        <li>Added workforce housing (RSA 674:58) glossary entry; updated CO and qualifying-structure entries for HB 1103</li>
+        <li>Fixed stale version comment in document head (read v2.3 while footer read v2.4); replaced off-spec CRIZ badge color with brand navy badge class</li>
+      </ul>
       <strong style="color:rgba(255,255,255,.8);">v2.4 · April 18, 2026 · Terminology and mechanics primer</strong><br>
       Corrections and additions:
       <ul style="margin:8px 0 8px 20px;display:flex;flex-direction:column;gap:4px;">
@@ -1903,7 +2007,7 @@ function computeResResult() {
     programs.push({
       icon: '🏗',
       name: 'Housing Opportunity Zone (only option for new construction)',
-      desc: 'New construction on vacant land qualifies only for a HOZ — if Portsmouth designates one. Current law requires ≥⅓ of units at ≤80% AMI. Relief begins at Certificate of Occupancy.',
+      desc: 'New construction on vacant land qualifies only for a HOZ — if Portsmouth designates one. Current law requires ≥⅓ of units at ≤80% AMI and caps relief at 10 years from Certificate of Occupancy. HB 1103 (awaiting signature) would let the city set its own criteria, with up to 15 years where workforce housing is created.',
       years: 10
     });
     eligible = 'maybe';
@@ -1992,7 +2096,7 @@ function computeDevResult() {
     programs.push({
       icon: '🏗',
       name: 'Housing Opportunity Zone',
-      desc: 'New construction qualifies only for an HOZ — if Portsmouth designates one. Current law requires ≥⅓ of units at ≤80% AMI. Relief begins at Certificate of Occupancy.',
+      desc: 'New construction qualifies only for an HOZ — if Portsmouth designates one. Current law requires ≥⅓ of units at ≤80% AMI and caps relief at 10 years from Certificate of Occupancy. HB 1103 (awaiting signature) would let the city set its own criteria, with up to 15 years where workforce housing (RSA 674:58) is created.',
       years: 10
     });
     eligible = 'maybe';
@@ -2015,8 +2119,8 @@ function computeDevResult() {
     if (devloc === 'office' && type === 'adaptive') {
       programs.push({
         icon: '🏢',
-        name: 'Office Conversion Zone',
-        desc: 'If the city designates this area as a conversion zone, commercial-to-residential conversion qualifies for relief.',
+        name: 'Office Conversion Zone (HB 1103: Residential Conversion Zone)',
+        desc: 'If the city designates this area as a conversion zone, office-to-residential conversion qualifies for relief. HB 1103 (awaiting signature) extends eligibility to commercial and industrial buildings.',
         years: 15
       });
     }
