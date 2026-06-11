@@ -1,0 +1,241 @@
+{
+  "tracker_meta": {
+    "title": "Housing Committee Progress Tracker",
+    "subtitle": "Meeting-by-meeting record of Housing Committee work toward the July 2026 Housing Action Plan recommendation to City Council",
+    "audience": "Housing Committee members and Planning Department staff",
+    "maintained_by": "Progress Portsmouth (Gerry Duffy)",
+    "source_note": "This tracker is a working synthesis. Authoritative records are the official meeting minutes filed with the City Clerk. Markdown summaries in the /meeting-notes/ folder are working summaries prepared by Progress Portsmouth from the meeting recordings and draft minutes \u2014 they condense discussion and capture decisions but are not the official record. The Housing Committee Ranking List (working draft, May 2026) is a Planning Department document combining the Apr 23 staff shortlist with the May 21 straw poll and later signals; it is itself a draft, not yet adopted. Verify against the official minutes before relying on any decision recorded here."
+  },
+  "meetings": [
+    {
+      "date": "2026-04-23",
+      "title": "Apr 23, 2026 \u2014 First meeting; HAP framing & staff shortlist presented",
+      "type": "full-meeting",
+      "attendance": {
+        "present": [
+          "Tabor (co-chair)",
+          "Moreau",
+          "Stebbins-Thomas",
+          "Migirditch",
+          "Anderson",
+          "Matto",
+          "McDonald",
+          "Chag",
+          "Weinrieb"
+        ],
+        "excused": [
+          "Kelley (co-chair)",
+          "Loane",
+          "Samonas",
+          "McGrath-Levesque"
+        ],
+        "staff": [
+          "Britz",
+          "Casella",
+          "Gilbo"
+        ]
+      },
+      "decisions": [
+        {
+          "type": "review_prior_year",
+          "label": "Tabor reviewed prior-year accomplishments: Sherburne School RFP (PHA selected), City property walks for housing parcels, Housing Trust Fund creation ($500K balance), first GNOD off Commerce Way, Land Use Board Commercial-to-Mixed-Use rezoning",
+          "items": [
+            "HTF-3",
+            "Z-1"
+          ]
+        },
+        {
+          "type": "tabor_five_issues",
+          "label": "Tabor identified five key issues the HAP should address: (1) Permitting to relieve land use board friction, (2) Incentives and financial tools to fund the Housing Trust, (3) City-owned land opportunities (e.g., City Hall lower lot), (4) Partnerships and capacity, (5) Education and outreach with data collection on best practices (Housing NH)",
+          "items": [
+            "HTF-3"
+          ]
+        },
+        {
+          "type": "rsa_79e_discussion",
+          "label": "Committee discussed at length what opportunities the new 79-E might offer. Notes that 79-E does not apply to older properties that might be kept as workforce housing with an incentive to do so. Committee suggested a work session to create an income-restricted structure to present to Council. Next step: discuss with Legal and Tax Assessor.",
+          "items": [
+            "I-4",
+            "CS-3"
+          ]
+        },
+        {
+          "type": "staff_classification",
+          "label": "Britz presented Planning Department staff rationale for selecting 26 feasible action items from the 147-item Progress Portsmouth list, classified short-term / long-term with staff comments",
+          "items": [
+            "GA-1",
+            "GA-3",
+            "I-4",
+            "EO-2",
+            "Z-3",
+            "Z-9",
+            "Z-10",
+            "Z-36",
+            "Z-1",
+            "Z-5",
+            "Z-7",
+            "Z-8",
+            "Z-11",
+            "Z-14",
+            "Z-15",
+            "Z-21",
+            "Z-33",
+            "P-14",
+            "I-12",
+            "I-18",
+            "HTF-3",
+            "PC-5",
+            "PA-8",
+            "PA-10",
+            "PT-12",
+            "CS-3"
+          ]
+        },
+        {
+          "type": "process_agreement",
+          "label": "Committee agreed each member would bring their 'top 3' and 'top 10' from the staff shortlist \u2014 plus any items from the original 147-item plan that should also be prioritized \u2014 for discussion at the May 21 meeting",
+          "items": []
+        },
+        {
+          "type": "public_comment",
+          "label": "Public Comment \u2014 Gerry Duffy (Progress Portsmouth): (1) PP has a 'tough to build' explainer at progressportsmouth.com/tough-to-build; (2) recommended getting more input from those most affected by the workforce housing shortage, who tend not to attend public meetings",
+          "items": []
+        }
+      ],
+      "summary_url": "meeting-notes/2026-04-23-summary.md",
+      "next_meeting": "2026-05-21"
+    },
+    {
+      "date": "2026-05-21",
+      "title": "May 21, 2026 \u2014 Member straw poll & 79-E bucket framing",
+      "type": "full-meeting",
+      "attendance": {
+        "present": [
+          "Kelley (co-chair)",
+          "Moreau",
+          "Matto",
+          "McDonald",
+          "Chag",
+          "Migirditch",
+          "Samonas",
+          "Anderson",
+          "Loane",
+          "Weinrieb"
+        ],
+        "excused": [
+          "Tabor (co-chair)",
+          "McGrath-Levesque",
+          "Stebbins-Thomas"
+        ],
+        "staff": [
+          "Britz",
+          "Casella",
+          "Gilbo"
+        ]
+      },
+      "decisions": [
+        {
+          "type": "straw_poll",
+          "label": "Member straw poll on top three priorities \u2014 each member identified personal priorities from the full 147-item Progress Portsmouth list",
+          "items": [
+            "I-4",
+            "HTF-3",
+            "Z-5",
+            "Z-10",
+            "Z-17",
+            "Z-1",
+            "Z-9",
+            "Z-21",
+            "Z-33",
+            "EO-2",
+            "PA-10",
+            "Z-13",
+            "Z-19",
+            "Z-8"
+          ]
+        },
+        {
+          "type": "structural",
+          "label": "Stith introduced '79-E bucket' (anchor I-4) and 'Zoning Audit bucket' (anchor Z-21) as structural framing for organizing related items",
+          "items": [
+            "I-4",
+            "I-18",
+            "CS-3",
+            "Z-21"
+          ]
+        },
+        {
+          "type": "legal",
+          "label": "Moreau clarified Portsmouth lacks municipal authority for tax relief outside RSA 674 categories (solar, elderly, veterans, disabled); RSA 79-E identified as a viable creative interpretation",
+          "items": [
+            "I-4"
+          ]
+        },
+        {
+          "type": "anderson_supplement",
+          "label": "Anderson flagged 10 additional items from the full Progress Portsmouth list as warranting inclusion (stated 12, listed 10 \u2014 two not identified)",
+          "items": [
+            "Z-15",
+            "Z-12",
+            "Z-13",
+            "Z-17",
+            "Z-18",
+            "Z-19",
+            "P-8",
+            "I-1",
+            "I-2",
+            "I-3"
+          ]
+        },
+        {
+          "type": "procedural",
+          "label": "Recurring meeting time confirmed: second Thursday of the month, 5:30 pm. Stith confirmed Zoning Audit (Z-21) now underway, will feed both the Housing Action Plan and the Master Plan.",
+          "items": [
+            "Z-21"
+          ]
+        },
+        {
+          "type": "samonas_meta",
+          "label": "Samonas raised three meta points: (1) completed items shouldn't be listed as priorities, (2) Plan should focus on best use of available land (only 2% available), (3) Plan should address audiences with no current inventory match (older couples downsizing, etc.)",
+          "items": []
+        }
+      ],
+      "summary_url": "meeting-notes/2026-05-21-summary.md",
+      "next_meeting": "2026-06-11"
+    },
+    {
+      "date": "2026-06-11",
+      "title": "June 11, 2026 \u2014 Scheduled",
+      "type": "upcoming",
+      "summary": "Next regular Housing Committee meeting. Recurring second-Thursday slot at 5:30 pm.",
+      "summary_url": null,
+      "decisions": []
+    }
+  ],
+  "interim_activity": [
+    {
+      "date": "2026-06-09",
+      "between": [
+        "2026-05-21",
+        "2026-06-11"
+      ],
+      "label": "Housing Committee Ranking List released",
+      "details": "Working draft (Planning Department, May 2026) synthesizing May 21 straw poll with later signals. Replaces the May 21 raw straw poll as the canonical committee_priority record. Schema change: committee_priority now {votes, rank, source}. 11 items scored with explicit ranks. Z-21 retitled 'Comprehensive zoning audit' \u2192 'Comprehensive zoning ordinance update.' Z-18 (room rental) and Z-19 (seasonal worker housing) marked complete \u2014 already addressed by existing ordinances. New staff_term assignments on Z-13, Z-17, SP-2.",
+      "items": [
+        "I-4",
+        "Z-21",
+        "Z-1",
+        "Z-5",
+        "Z-3",
+        "Z-9",
+        "Z-8",
+        "Z-17",
+        "Z-13",
+        "PA-10",
+        "SP-1",
+        "Z-18",
+        "Z-19"
+      ]
+    }
+  ]
+}
