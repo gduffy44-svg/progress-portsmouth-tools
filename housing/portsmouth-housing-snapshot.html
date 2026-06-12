@@ -1120,7 +1120,7 @@ main {
     </div>
     <div class="masthead-right">
       <div class="masthead-date">Last updated</div>
-      <div class="masthead-date-val" id="display-date">June 8, 2026</div>
+      <div class="masthead-date-val" id="display-date">June 12, 2026</div>
       <div class="freshness-badge fresh" id="freshness-badge">✓ Updated today</div>
     </div>
   </div>
@@ -1142,7 +1142,7 @@ main {
       <div class="section-hdr-text">
         <div class="section-hdr-label">Section 1 of 3 · Rental Market</div>
         <div class="section-hdr-title">What it actually costs to rent in Portsmouth</div>
-        <div class="section-hdr-meta" id="market-meta">Current listings · ZIP 03801 · Market-rate only · Updated March 28, 2026</div>
+        <div class="section-hdr-meta" id="market-meta">Current listings · ZIP 03801 · Market-rate only · Updated June 12, 2026</div>
       </div>
     </div>
 
@@ -1197,12 +1197,12 @@ main {
       <div class="section-hdr-text">
         <div class="section-hdr-label">Section 2 of 3 · Upcoming Meetings</div>
         <div class="section-hdr-title">Housing hearings, committee sessions &amp; votes</div>
-        <div class="section-hdr-meta" id="meetings-meta">Planning Board · ZBA · HDC · Housing Committee · City Council · Updated June 8, 2026</div>
+        <div class="section-hdr-meta" id="meetings-meta">Planning Board · ZBA · HDC · Housing Committee · City Council · Updated June 12, 2026</div>
       </div>
     </div>
 
     <div class="meetings-context">
-      <strong>FY27 budget adoption is tonight.</strong> The Housing Action Plan delivery deadline is roughly seven weeks away (July 2026). At least two HAP public input hearings are required before Council adoption — dates not yet announced. Watch the FY27 budget for any line items affecting Planning Department capacity (now absorbing former Housing Navigator functions).
+      <strong>The Housing Action Plan deadline is roughly six weeks away (July 2026).</strong> The Housing Committee met June 11 to continue its prioritization work. At least two HAP public input hearings are required before Council adoption — dates not yet announced. Council held its FY27 budget adoption meeting June 8; the new fiscal year begins July 1, the same day HB 631 (multifamily by right on commercial land) takes effect statewide.
     </div>
 
     <div id="meetings-list"><!-- Populated by JS --></div>
@@ -1222,7 +1222,7 @@ main {
       <div class="section-hdr-text">
         <div class="section-hdr-label">Section 3 of 3 · Media Coverage</div>
         <div class="section-hdr-title">What's being covered — and what isn't</div>
-        <div class="section-hdr-meta" id="media-meta">Seacoast Online · NHPR · Portsmouth Herald · InDepthNH · Updated June 8, 2026</div>
+        <div class="section-hdr-meta" id="media-meta">Seacoast Online · NHPR · Portsmouth Herald · Boston Globe · Updated June 12, 2026</div>
       </div>
     </div>
 
@@ -1252,122 +1252,85 @@ main {
 //  Then git commit and push. Everything below renders automatically.
 // ══════════════════════════════════════════════════════════════
 const SNAPSHOT_DATA = {
-  updated: "June 8, 2026",
-  updated_iso: "2026-06-08",
+  updated: "June 12, 2026",
+  updated_iso: "2026-06-12",
 
   rental: {
     units: [
-      { type: "Studio",    median: 2300, min: 1260, max: 3295, count: 32, scarce: false },
-      { type: "1-Bedroom", median: 2450, min: 1290, max: 3820, count: 47, scarce: false },
-      { type: "2-Bedroom", median: 3050, min: 1680, max: 4795, count: 41, scarce: false },
-      { type: "3-Bedroom", median: 3800, min: 2400, max: 4500, count: 17, scarce: true  }
+      { type: "Studio",    median: 1950, min: 1847, max: 3295, count: 32, scarce: false },
+      { type: "1-Bedroom", median: 2520, min: 1858, max: 3820, count: 47, scarce: false },
+      { type: "2-Bedroom", median: 3050, min: 1910, max: 4950, count: 41, scarce: false },
+      { type: "3-Bedroom", median: 3625, min: 2800, max: 6550, count: 17, scarce: true  }
     ],
     insights: [
       {
         icon: "🚫",
         title: "Families are still locked out",
-        body: "Only 17 three-bedroom apartments listed in ZIP 03801. At the $3,800 median, a family would need roughly $152,000/year to stay under the 30% affordability threshold — far above Portsmouth's median family income.",
+        body: "Only 17 three-bedroom apartments listed in ZIP 03801. At the $3,625 median, a family needs roughly $145,000/year to stay under the 30% affordability threshold — far above Portsmouth's median household income of ~$106,000.",
         type: "coral"
       },
       {
         icon: "💸",
-        title: "Studios still require six figures",
-        body: "Median studio rent of $2,300/mo requires roughly $92,000/year at the 30% threshold. The smallest units remain out of reach for most service workers, early-career professionals, and single-income households.",
+        title: "Market-rate under $2,000 has nearly vanished",
+        body: "Outside two older complexes (Sagamore Court, Arbor View), almost no market-rate listing falls below $2,000/mo — the sub-$2,000 tier is now essentially income-restricted stock. Even the $1,950 median studio requires roughly $78,000/year at the 30% threshold.",
         type: "gold"
       },
       {
         icon: "📉",
-        title: "137 total units for 22,000 residents",
-        body: "Across all bedroom sizes, roughly 137 rentals are listed in ZIP 03801 (ApartmentHomeLiving, verified late March 2026). Apartments.com's unit-level count for the same ZIP runs higher at 217 because it counts individual vacancies in larger complexes. Either way, supply on the market remains structurally thin.",
+        title: "139 total listings for 22,000 residents",
+        body: "Roughly 139 rentals are listed in ZIP 03801 (ApartmentHomeLiving); Apartments.com's unit-level count runs higher at 217 because it counts individual vacancies in larger complexes. Either way, supply on the market remains structurally thin.",
         type: "teal"
       },
       {
         icon: "📈",
-        title: "1-bedroom rent growth has flattened",
-        body: "Apartments.com reports the Portsmouth average 1-bedroom rent up just 0.7% year-over-year. After 2022–2024's rapid escalation, growth has slowed — but the affordability gap created during that period has not closed.",
+        title: "Rents have plateaued — at a high level",
+        body: "Apartments.com reports average 1-bedroom rent up just 0.7% year-over-year, and new complexes (West End Yards, Veridian, Sage) are offering 1–2 months free. Competition is emerging at the top of the market, but the affordability gap created during 2022–2024 has not closed.",
         type: "navy"
       }
     ]
   },
 
   meetings: {
-    context: "FY27 budget adoption is tonight (June 8). The Housing Action Plan delivery deadline is roughly seven weeks away. At least two HAP public input hearings are required before Council adoption — dates not yet announced. All meetings below verified from the City Municipal Meetings Calendar as of June 8, 2026.",
+    context: "The Housing Action Plan deadline is roughly six weeks away (July 2026). The Housing Committee met June 11 to continue its prioritization work. At least two HAP public input hearings are required before Council adoption — dates not yet announced. Council held its FY27 budget adoption meeting June 8. Note: this field is informational only; the rendered context box is the hardcoded div in the HTML body.",
     periods: [
       {
-        label: "📅 This week — June 8–10, 2026",
+        label: "📅 Next week — June 15–18, 2026",
         items: [
           {
-            day_num: "8",
+            day_num: "15",
             day_name: "MON",
-            board: "City Council — FY27 Budget Adoption",
-            meta: "Council Chambers / Zoom · 7:00 PM · Confirmed",
-            flags: ["Budget Public Hearing", "FY27 Budget"],
-            note: "Continuation of the budget public hearing and adoption of the FY27 budget. FY27 begins the year of Housing Action Plan implementation. Worth watching line items affecting Planning Department capacity (now absorbing former Housing Navigator functions) and any housing-related capital projects.",
-            links: [
-              { label: "📄 Final Packet — June 8", url: "https://files.portsmouthnh.gov/agendas/2026/City%20Council/FINAL%20Packet%2006.08.26.pdf" }
-            ],
-            highlight: true
-          },
-          {
-            day_num: "9",
-            day_name: "TUE",
-            board: "Technical Advisory Committee — Work Session",
-            meta: "Conference Room A, City Hall · 2:00 PM · Confirmed",
+            board: "City Council — Regular Meeting (expected)",
+            meta: "Council Chambers / Zoom · 7:00 PM · Typical cadence — not yet on city calendar",
             flags: [],
-            note: "TAC reviews subdivision and site plans before Planning Board referral. Early signal on any housing applications in pre-review.",
+            note: "Council typically meets the 1st and 3rd Monday. The June 15 agenda has not been posted to the municipal calendar — verify before attending. First regular meeting since the June 8 FY27 budget adoption session.",
             links: [
-              { label: "📄 TAC Agenda", url: "https://files.portsmouthnh.gov/agendas/2026/TAC/6-9-2026+WS/6-9-2026_tac_ws_ag.pdf" }
+              { label: "📄 City Council page", url: "https://www.portsmouthnh.gov/citycouncil" }
             ],
             highlight: false
           },
-          {
-            day_num: "10",
-            day_name: "WED",
-            board: "Portsmouth Housing Authority Board of Commissioners",
-            meta: "Margeson Apartments, 245 Middle St · 2:00 PM · Confirmed",
-            flags: [],
-            note: "PHA board meetings track progress on the Christ Episcopal Church / Lafayette Road workforce housing project and other authority-led developments.",
-            links: [
-              { label: "📄 PHA Agenda", url: "https://files.portsmouthnh.gov/agendas/2026/PHA/06.2026%20PHA%20Board%20Agenda.pdf" }
-            ],
-            highlight: false
-          },
-          {
-            day_num: "10",
-            day_name: "WED",
-            board: "Conservation Commission",
-            meta: "Council Chambers · 4:00 PM · Confirmed",
-            flags: [],
-            note: "Includes 218 Griffin Road Wetlands Conditional Use Permit review. WCUP decisions can determine what is developable on infill lots near wetland buffers.",
-            links: [
-              { label: "📄 ConComm Agenda", url: "https://files.portsmouthnh.gov/agendas/2026/Conservation+Commission/June/6-10-26_CC_ag.pdf" }
-            ],
-            highlight: false
-          }
-        ]
-      },
-      {
-        label: "📅 Expected later this month — agendas not yet posted",
-        items: [
           {
             day_num: "16",
             day_name: "TUE",
             board: "Zoning Board of Adjustment",
-            meta: "Council Chambers · 7:00 PM · Typical cadence",
-            flags: [],
-            note: "ZBA typically meets the 3rd Tuesday. Last archived meeting was May 19. Variance and special exception decisions remain a structural pressure point in housing production — particularly residential conversions and density questions.",
-            links: [],
-            highlight: false
+            meta: "Council Chambers · 7:00 PM · Confirmed — agenda &amp; packet posted",
+            flags: ["High Priority"],
+            note: "Heavy variance docket: 43 Austin St, 221 Woodbury Ave, 407 The Hill #6-16, 46 Aldrich Rd, 911 Sagamore Ave, 1010 US Route 1 Bypass, 500 Maplewood Ave, 72 Mirona Rd, and 306 South St. Two cases postponed (34 Harvest Way, 315 Banfield Rd). A docket this size is itself a data point — each variance is a case where the ordinance and what owners actually want to build diverge.",
+            links: [
+              { label: "📄 ZBA Agenda", url: "https://files.cityofportsmouth.com/agendas/2026/Zoning+Board+of+Adjustment/06-16-2026+Meeting/6-16-2026+BOA+AG.pdf" },
+              { label: "📄 Meeting Packet", url: "https://files.cityofportsmouth.com/agendas/2026/Zoning+Board+of+Adjustment/06-16-2026+Meeting/6-16-2026+BOA+Packet.pdf" }
+            ],
+            highlight: true
           },
           {
             day_num: "18",
             day_name: "THU",
-            board: "Planning Board",
-            meta: "Council Chambers · 7:00 PM · Typical cadence",
-            flags: [],
-            note: "Planning Board typically meets the 3rd Thursday. Agenda not yet posted to the city calendar. Verify before the meeting.",
+            board: "Planning Board + HDC Joint Work Session",
+            meta: "Council Chambers · Work session 6:00 PM · Regular meeting 7:00 PM · Confirmed",
+            flags: ["Master Plan"],
+            note: "The Planning Board holds a joint work session with the Historic District Commission from 6–7 PM before its regular meeting — worth watching for how the two boards are coordinating ahead of Master Plan zoning recommendations. Regular agenda includes Wetland CUPs at 0 Borthwick Ave and 1 Franklin Dr (New Franklin School), an extension request at 806 US Route 1 Bypass, and draft revisions to the Planning Board Rules of Procedure. 150 Portsmouth Blvd withdrawn; 94 Langdon St / 98 Cornwall St postponement requested.",
             links: [
-              { label: "📄 Planning Board Schedule", url: "https://www.portsmouthnh.gov/planportsmouth/meetings-schedule" }
+              { label: "📄 PB Agenda", url: "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/6-18-2026+Meeting/6-18-2026_pb_ag.pdf" },
+              { label: "📄 Meeting Packet", url: "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/6-18-2026+Meeting/6-18-2026_pb_packet.pdf" }
             ],
             highlight: false
           }
@@ -1382,7 +1345,7 @@ const SNAPSHOT_DATA = {
             board: "Housing Action Plan Public Input Hearings (2 required)",
             meta: "Location to be announced by Planning Department",
             flags: ["High Priority"],
-            note: "The February 17 resolution requires at least two public hearings before the Housing Action Plan is finalized. Dates not yet announced. These are the primary opportunities for the public to shape what the plan contains.",
+            note: "The February 17 resolution requires at least two public hearings before the Housing Action Plan is finalized. Dates not yet announced. With the July deadline roughly six weeks out, expect these to be scheduled soon — they are the primary opportunities for the public to shape what the plan contains.",
             links: [],
             highlight: true
           },
@@ -1402,14 +1365,34 @@ const SNAPSHOT_DATA = {
   },
 
   media: {
-    period: "May 1 – June 8, 2026",
+    period: "May 1 – June 12, 2026",
     stats: [
-      { val: "4",  label: "Stories this period" },
-      { val: "2",  label: "Outlets covering housing" },
-      { val: "0",  label: "Opinion / column pieces" },
+      { val: "6",  label: "Stories this period" },
+      { val: "4",  label: "Outlets covering housing" },
+      { val: "1",  label: "Below-market groundbreaking" },
       { val: "1",  label: "HAP implementation stories" }
     ],
     highlights: [
+      {
+        date: "June 9, 2026",
+        outlet: "NHPR / Portsmouth Herald",
+        headline: "Portsmouth mixed-use development at church to serve 'sacred good'",
+        url: "https://www.nhpr.org/nh-news/2026-06-09/portsmouth-mixed-use-housing-at-church-to-serve-sacred-good",
+        paywalled: false,
+        tags: ["Workforce housing", "Groundbreaking"],
+        advocacy: "The period's concrete supply-side win: 44 below-market units actually breaking ground, led by the Portsmouth Housing Authority. This is the project formerly tracked as Christ Episcopal Church / Lafayette Road. A rare free-to-read story — link it widely while the coverage window is open.",
+        summary: "Officials broke ground June 8 on the redevelopment of the Christ Episcopal Church property on Route 1. The project creates 44 below-market-rate apartments, seven transitional housing units and a new headquarters for HAVEN, plus continued worship space for the congregation. Republished by NHPR through the Granite State News Collaborative."
+      },
+      {
+        date: "June 9, 2026",
+        outlet: "Boston Globe",
+        headline: "Partners break ground for 'rare and hopeful' multi-use redevelopment of N.H. church's land",
+        url: "https://www.bostonglobe.com/2026/06/09/metro/nh-christ-episcopal-church-redevelopment-portsmouth/",
+        paywalled: true,
+        tags: ["Regional attention", "Workforce housing"],
+        advocacy: "Boston-market coverage of a Portsmouth workforce housing project is unusual — third-party validation that the model (faith institution land + housing authority + nonprofit partners) is regionally notable. Useful citation when making the case for institutional land partnerships elsewhere in the city.",
+        summary: "The Globe covers the same June 8 groundbreaking on the 3.5-acre Christ Episcopal Church property: 44 units of workforce housing, an early childhood education center serving up to 71 children, and HAVEN's new headquarters with transitional housing. The Portsmouth Housing Authority expects the residential units complete in late summer 2027; HAVEN targets initial occupancy in roughly one year."
+      },
       {
         date: "May 29, 2026",
         outlet: "SeacoastOnline / Portsmouth Herald",
@@ -1417,7 +1400,7 @@ const SNAPSHOT_DATA = {
         url: "https://www.seacoastonline.com/story/news/local/2026/05/29/portsmouth-two-building-housing-project-rejected-181-hill-street/90274442007/",
         paywalled: true,
         tags: ["Project denial", "Zoning"],
-        advocacy: "The most strategically significant story of the period. If an 18-unit infill project cannot clear the CD4-L1 zone — nominally designed to accommodate small-scale multi-family — the zone's effective capacity is meaningfully less than its nominal capacity. Worth tracking whether the developer revises, appeals to the state Housing Appeals Board, or walks away.",
+        advocacy: "A strategically significant story. If an 18-unit infill project cannot clear the CD4-L1 zone — nominally designed to accommodate small-scale multi-family — the zone's effective capacity is meaningfully less than its nominal capacity. Worth tracking whether the developer revises, appeals to the state Housing Appeals Board, or walks away.",
         summary: "The 181 Hill Street project (also addressed as 339–319 Hanover Street), designed by Portsmouth Architects, was originally presented to the Planning Board in January 2026 as an 18-unit single-building concept on a CD4-L1 lot (37,224 gross square feet, 39'-6\" tall, 37 parking spaces). It evolved into a two-building proposal and was rejected."
       },
       {
@@ -1452,9 +1435,9 @@ const SNAPSHOT_DATA = {
       }
     ],
     pattern: {
-      covered: "Project rejection at 181 Hill Street, market-rate construction pipeline (video tour), regional Affordable Housing Week proclamations, and Housing Committee economic framing. Two SeacoastOnline stories ran within 24 days of each other — one describing a 'crisis,' one a 'construction boom.'",
-      missing: "The HAP triage process itself remains uncovered — no journalist has reported on how the Housing Committee is working through 148 items by July. The rationale for the 181 Hill Street rejection is paywalled and not surfacing in public discussion. The two May SeacoastOnline narratives (crisis / boom) are not being put in dialogue.",
-      takeaway: "The 181 Hill Street rejection is the period's most useful evidence for PP advocacy: a concrete case study of the CD4-L1 zone failing to deliver what it nominally allows. The May 4 and May 28 SeacoastOnline stories — same outlet, same city, opposite framings, 24 days apart — are an opportunity. Most readers will only see one. Putting them in deliberate dialogue is the kind of analytic move PP can make that the local press is not making."
+      covered: "The June 8 groundbreaking at the Christ Episcopal Church property drew three outlets, including the Boston Globe. Earlier in the period: the 181 Hill Street rejection, a market-rate construction pipeline video, regional Affordable Housing Week proclamations, and Housing Committee economic framing.",
+      missing: "The HAP triage process itself remains uncovered — no journalist has reported on how the Housing Committee is working through the action items by July, including its June 11 session. The rationale for the 181 Hill Street rejection is paywalled and not surfacing in public discussion. The crisis/boom narratives from May are not being put in dialogue.",
+      takeaway: "Within 11 days, Portsmouth saw a denial of an 18-unit infill project (May 29 coverage) and a groundbreaking for 44 below-market units (June 8). The contrast is the period's clearest evidence for PP's core argument: below-market supply gets built where institutional sponsorship and zoning alignment exist, and stalls where projects depend on discretionary approval. No outlet has drawn that line — PP can."
     }
   }
 };
