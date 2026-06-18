@@ -329,6 +329,18 @@
         "Z-18",
         "Z-19"
       ]
+    },
+    {
+      "date": "2026-06-22",
+      "between": [
+        "2026-06-11",
+        "2026-07-09"
+      ],
+      "label": "Councilor Cook motion \u2014 pre-approved ADU plans (Council Item 15B)",
+      "details": "Councilor Kate Cook moved that Planning & Sustainability, with the Housing Committee and Planning Board, review pre-approved ADU plans used by other communities (Cook memo cites Mariposa County CA, Eugene OR, and Massachusetts ADU Design Challenge) to determine whether Portsmouth could adopt three or four for local use. Council-track action, parallel to HC work; narrows the first concrete slice of P-14's broader template-library scope to ADUs only.",
+      "items": [
+        "P-14"
+      ]
     }
   ]
 }

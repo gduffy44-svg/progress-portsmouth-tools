@@ -1247,11 +1247,11 @@
     "description": "Establish a city-maintained library of pre-approved architectural designs for common residential building types including ADUs, duplexes, triplexes, small apartment buildings (up to 8 units), and cottage housing.",
     "target": "Library of at least 8 designs across at least 3 building types available, and expedited review track operational, within 24 months",
     "metric": "Number of templates available by building type; average permit review time for template applications vs. non-template applications",
-    "sources": "AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4; Housing Committee April 23, 2026 minutes",
+    "sources": "AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4; Housing Committee April 23, 2026 minutes; Portsmouth City Council Agenda Item 15B, June 22, 2026 (Cook memo on pre-approved ADU plans)",
     "notes": "This item subsumes the ADU pre-approved plan library referenced in item Z-2 (ADU ordinance enhancements) and expands its scope to all small residential building types.",
     "is_new": true,
     "status": "not-started",
-    "status_detail": "",
+    "status_detail": "Council motion pending (June 22, 2026): Councilor Kate Cook moved that the Planning & Sustainability Department, in collaboration with the Housing Committee and Planning Board, review pre-approved ADU plans used by other communities to determine whether Portsmouth could adopt three or four for local use. Per Cook's memo, the aim is to let homeowners with adequate space build an ADU on a simple permit, without hiring an architect, when no variance or Historic District review is triggered. Memo cites Mariposa County CA, Eugene OR, and the State of Massachusetts ADU Design Challenge as reference precedents. This narrows the first concrete slice of P-14's broader scope (which also covers duplexes, triplexes, small apartments, and cottage housing) to ADUs only. Council-track action, parallel to Housing Committee work.",
     "pros": [
       "Reduces design and permitting cost for small-scale developers and homeowners",
       "Standardizes review, reducing staff time and inconsistent outcomes across reviewers",
