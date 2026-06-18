@@ -205,9 +205,102 @@
     },
     {
       "date": "2026-06-11",
-      "title": "June 11, 2026 \u2014 Scheduled",
+      "title": "Jun 11, 2026 \u2014 RSA 79-E package framing & implementation walk-through",
+      "type": "full-meeting",
+      "attendance": {
+        "present": [
+          "Tabor (co-chair)",
+          "Stebbins-Thomas",
+          "Samonas",
+          "Weinrieb",
+          "Loane",
+          "McDonald"
+        ],
+        "excused": [
+          "Kelley (co-chair)",
+          "Anderson",
+          "McGrath-Levesque",
+          "Migirditch"
+        ],
+        "staff": [
+          "Britz",
+          "Casella"
+        ]
+      },
+      "minutes_status": "Official minutes from the Planning Department are pending. This entry was compiled from the meeting audio transcript and is a working synthesis only \u2014 verify against the official record once filed with the City Clerk.",
+      "decisions": [
+        {
+          "type": "procedural_quorum",
+          "label": "Roll call confirmed 6 of 13 members present (Tabor, Stebbins-Thomas, Samonas, Weinrieb, Loane, McDonald). Quorum threshold is 7; meeting proceeded under quorum with the understanding that substantive recommendations would be re-ratified at the July 9 meeting with full quorum.",
+          "items": []
+        },
+        {
+          "type": "motion_79e_package",
+          "label": "Committee converged on a citywide RSA 79-E package directing staff to develop a draft consisting of three sub-types: (a) Housing Opportunity Zones citywide; (b) office conversion citywide; (c) rehabilitation of dilapidated buildings citywide. Coastal resiliency was discussed and dropped on optics grounds (\"$4 million house on the water getting a tax break\"). Motion made below quorum; staff to bring a draft to the July 9 meeting.",
+          "items": [
+            "I-4",
+            "CS-3"
+          ]
+        },
+        {
+          "type": "affordability_design_questions",
+          "label": "Open design questions raised for the 79-E package, to be resolved before the July recommendation: (1) AMI standard \u2014 RSA sets 80% as ceiling but municipality has discretion; Portsmouth historically used 100-110% (West End Yards, Sage); (2) affordable share \u2014 RSA requires one-third of units affordable in HOZ projects; municipality can adjust; (3) \"but-for\" test interpretation \u2014 Council will decide case-by-case; (4) HOZ does not supersede underlying zoning, so non-conforming uses still require variances. ADU experience cited as cautionary precedent \u2014 tripled applications but few units built.",
+          "items": [
+            "I-4"
+          ]
+        },
+        {
+          "type": "post_master_plan_deferrals",
+          "label": "Items confirmed as post-Master-Plan work \u2014 Master Plan expected late fall 2026, comprehensive zoning consultant to be hired afterward with HAP-defined scope: comprehensive zoning ordinance update (Z-21), expand multifamily zoning (Z-5), lot size and dimensional updates (Z-8), residential conversion (Z-3 \u2014 Planning Board previously deferred). Stebbins-Thomas raised whether the consultant should be from outside Rockingham Planning Commission to avoid local bias.",
+          "items": [
+            "Z-21",
+            "Z-5",
+            "Z-8",
+            "Z-3"
+          ]
+        },
+        {
+          "type": "short_term_items",
+          "label": "Items confirmed for short-term action: continue rezoning outdated O/R and GB districts (Z-1); expand in-lieu fee option from current Gateway-only scope to other districts (Z-10, 1-3 month timeframe); review cottage-housing cluster requirements within existing Gateway zone (Z-9).",
+          "items": [
+            "Z-1",
+            "Z-10",
+            "Z-9"
+          ]
+        },
+        {
+          "type": "live_work_funding",
+          "label": "Tabor reported that in a recent late Council session, Council moved the live/work artist-space study funding from CIP to the Housing Trust Fund; pending trustee sign-off on fit within trust purposes. Study consultant already lined up; funds expected available July 1.",
+          "items": [
+            "Z-14"
+          ]
+        },
+        {
+          "type": "items_not_advanced",
+          "label": "Items discussed but not advanced into the 79-E package: workforce housing ordinance strengthening (could be folded into zoning ordinance update); affordable housing overlays (duplicative of other in-progress work \u2014 \"trying to simplify our zoning, more overlays just forward\"); affordable housing fee waivers (Samonas raised consistency question between 25% threshold and 33% HOZ threshold, deferred); permitting expedite (held up by statutory notice periods, no clear solution proposed); senior property tax deferral expansion (program already exists with age tiers and income/asset caps \u2014 review only).",
+          "items": []
+        },
+        {
+          "type": "staff_directive",
+          "label": "Britz (Planning Director) confirmed staff will develop a draft 79-E package and HAP framework for the July 9 meeting to forward to Council. Tabor asked members to provide implementation strategies and timeframe inputs as they walked through each item.",
+          "items": []
+        },
+        {
+          "type": "public_comment",
+          "label": "Public Comment \u2014 Gerry Duffy (Progress Portsmouth): outlined the citywide 79-E approach citing Conway's precedent (whole town except downtown and flood zones); argued granular targets are more durable than a single citywide unit goal \u2014 e.g., double annual ADU production, target 5 multifamily conversions per year, initiate 2-3 large-scale projects before the current Council term ends; noted city cannot make affordable housing happen but can create a zoning + incentive package that makes investment math work; mentioned that two young developers within the city have recently expressed interest in small multifamily projects.",
+          "items": [
+            "I-4"
+          ]
+        }
+      ],
+      "summary_url": "meeting-notes/2026-06-11-summary.md",
+      "next_meeting": "2026-07-09"
+    },
+    {
+      "date": "2026-07-09",
+      "title": "Jul 9, 2026 \u2014 Scheduled",
       "type": "upcoming",
-      "summary": "Next regular Housing Committee meeting. Recurring second-Thursday slot at 5:30 pm.",
+      "summary": "Next regular Housing Committee meeting (second Thursday). Staff to bring draft RSA 79-E package for review. Re-ratification of the Jun 11 motion expected with quorum.",
       "summary_url": null,
       "decisions": []
     }
