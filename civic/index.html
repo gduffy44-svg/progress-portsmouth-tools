@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portsmouth at the Crossroads · 1977–78</title>
+<meta name="description" content="A 1977–78 civic record of Portsmouth, New Hampshire, arguing about its own future — seven Herald essays, six public meetings, and the people who spoke. Presented by Progress Portsmouth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PORTSMOUTH AT THE CROSSROADS — compass navigator
+   Palette: nautical chart. Ink ground, chart-buff paper,
+   NOAA chart magenta accent, sounding blue, instrument brass.
+   ============================================================ */
+:root{
+  --ink:#10242E;          /* deep harbor — hero/compass ground */
+  --ink-2:#173541;        /* raised ink */
+  --ink-line:#2C4A56;     /* hairlines on ink */
+  --paper:#ECE4D2;        /* chart buff — reading ground */
+  --paper-2:#E3D8C0;      /* chart land tint */
+  --paper-line:#CDBF9F;   /* rules on paper */
+  --magenta:#C0356F;      /* chart magenta — the accent */
+  --magenta-deep:#9A2756;
+  --sounding:#5E8499;     /* chart water blue — secondary */
+  --brass:#B8924A;        /* instrument brass */
+  --brass-2:#D8B66E;
+  --on-ink:#EFE7D6;       /* text on ink */
+  --on-ink-dim:#9FB3BB;
+  --on-paper:#22323A;     /* text on paper */
+  --on-paper-dim:#6A6354;
+  --ff-display:"Fraunces",Georgia,serif;
+  --ff-body:"Newsreader",Georgia,serif;
+  --ff-ui:"Public Sans",system-ui,sans-serif;
+  --maxw:760px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--ink);
+  color:var(--on-ink);
+  font-family:var(--ff-body);
+  font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;margin:0}
+a{color:var(--magenta)}
+:focus-visible{outline:2.5px solid var(--brass-2);outline-offset:3px;border-radius:2px}
+
+.ui{font-family:var(--ff-ui)}
+.eyebrow{font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:600}
+
+/* ---------- view machinery ---------- */
+.view{display:none;min-height:100svh;min-height:100vh}
+.view.active{display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+/* ============================================================
+   HOME — the compass hub
+   ============================================================ */
+#v-home{
+  position:relative;
+  display:flex;flex-direction:column;
+  align-items:center;
+  padding:34px 18px 54px;
+  background:
+    radial-gradient(120% 80% at 50% -10%, var(--ink-2) 0%, var(--ink) 55%);
+}
+.map-veil{
+  position:absolute;inset:0;
+  background-size:cover;background-position:50% 22%;
+  opacity:.10;
+  filter:grayscale(.2) sepia(.3) contrast(.95);
+  mix-blend-mode:luminosity;
+  pointer-events:none;z-index:0;
+  -webkit-mask-image:radial-gradient(130% 90% at 50% 24%,#000 30%,transparent 78%);
+          mask-image:radial-gradient(130% 90% at 50% 24%,#000 30%,transparent 78%);
+}
+.home-in{position:relative;z-index:1;width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center}
+
+.masthead{text-align:center;margin-bottom:6px}
+.masthead .org{color:var(--brass-2);margin-bottom:14px;display:flex;gap:9px;align-items:center;justify-content:center}
+.masthead .org::before,.masthead .org::after{content:"";height:1px;width:26px;background:var(--brass)}
+.masthead h1{
+  font-family:var(--ff-display);
+  font-weight:900;
+  font-optical-sizing:auto;
+  font-size:clamp(40px,13vw,72px);
+  line-height:.92;
+  letter-spacing:-.015em;
+  margin:0;color:var(--on-ink);
+}
+.masthead h1 .crux{color:var(--magenta);font-style:italic;font-weight:600}
+.masthead .sub{
+  font-family:var(--ff-body);font-style:italic;
+  color:var(--on-ink-dim);font-size:clamp(15px,4.4vw,19px);
+  margin:12px 0 0;
+}
+.masthead .stamp{
+  margin:16px auto 0;display:inline-block;
+  font-family:var(--ff-ui);font-weight:700;letter-spacing:.04em;
+  font-size:12px;color:var(--brass-2);
+  border:1.5px solid var(--brass);border-radius:999px;
+  padding:5px 14px;
+}
+
+/* compass */
+.compass-stage{
+  position:relative;width:min(86vw,420px);aspect-ratio:1/1;margin:22px auto 8px;
+}
+.compass-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.needle{transform-box:fill-box;transform-origin:center;transition:transform .85s var(--ease)}
+@media (prefers-reduced-motion:reduce){.needle{transition:none}}
+
+.bearing{
+  position:absolute;z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  padding:7px 9px;border-radius:10px;
+  transition:transform .2s var(--ease);
+}
+.bearing:hover{transform:scale(1.05)}
+.bearing:active{transform:scale(.97)}
+.bearing .b-card{font-family:var(--ff-ui);font-weight:700;letter-spacing:.04em;font-size:15px;color:var(--on-ink)}
+.bearing .b-count{font-family:var(--ff-ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-ink-dim)}
+.bearing .b-rose{font-family:var(--ff-display);font-style:italic;font-size:13px;color:var(--brass-2);margin-bottom:1px}
+.bearing.is-target .b-card{color:var(--magenta)}
+.b-N{top:-6px;left:50%;transform:translateX(-50%)}
+.b-N:hover{transform:translateX(-50%) scale(1.05)}
+.b-E{right:-10px;top:50%;transform:translateY(-50%)}
+.b-E:hover{transform:translateY(-50%) scale(1.05)}
+.b-S{bottom:-6px;left:50%;transform:translateX(-50%)}
+.b-S:hover{transform:translateX(-50%) scale(1.05)}
+.b-W{left:-10px;top:50%;transform:translateY(-50%)}
+.b-W:hover{transform:translateY(-50%) scale(1.05)}
+
+.compass-hub{
+  position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:38%;height:38%;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(circle at 50% 35%,var(--ink-2),var(--ink));
+  border:1.5px solid var(--brass);
+}
+.compass-hub .hub-k{font-family:var(--ff-ui);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--on-ink-dim)}
+.compass-hub .hub-yr{font-family:var(--ff-display);font-weight:900;font-size:clamp(20px,8vw,30px);line-height:1;color:var(--brass-2)}
+
+.helper{font-family:var(--ff-ui);font-size:13px;letter-spacing:.02em;color:var(--on-ink-dim);text-align:center;margin:4px 0 0}
+
+/* tensions — the thematic spine */
+.spine{width:100%;max-width:560px;margin:40px auto 0;border-top:1px solid var(--ink-line);padding-top:24px}
+.spine h2{font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;color:var(--brass-2);text-align:center;margin:0 0 4px}
+.spine .spine-dek{font-family:var(--ff-body);font-style:italic;color:var(--on-ink-dim);text-align:center;font-size:15px;margin:0 0 20px}
+.tension{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--ink-line)}
+.tension:last-child{border-bottom:none}
+.tension .pole{font-family:var(--ff-body);font-size:16px;line-height:1.25}
+.tension .pole.a{text-align:right}
+.tension .pole.b{text-align:left;color:var(--on-ink-dim)}
+.tension .vs{
+  font-family:var(--ff-ui);font-size:10px;font-weight:700;letter-spacing:.1em;
+  color:var(--ink);background:var(--brass-2);border-radius:999px;
+  width:30px;height:18px;display:flex;align-items:center;justify-content:center;
+}
+.tension .topic{grid-column:1/-1;font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--sounding);text-align:center;margin-top:3px}
+
+.colophon{margin:38px auto 0;text-align:center;font-family:var(--ff-ui);font-size:11.5px;line-height:1.7;letter-spacing:.02em;color:var(--on-ink-dim);max-width:460px}
+
+/* ============================================================
+   INDEX VIEWS (essays / meetings / voices / project)
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:12px;
+  padding:12px 18px;
+  background:color-mix(in srgb,var(--ink) 86%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--ink-line);
+}
+.topbar.on-paper{
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  border-bottom:1px solid var(--paper-line);
+  color:var(--on-paper);
+}
+.back{display:inline-flex;align-items:center;gap:7px;font-family:var(--ff-ui);font-weight:600;font-size:14px;letter-spacing:.01em}
+.back .arrow{font-size:17px;line-height:1}
+.topbar .here{font-family:var(--ff-ui);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-ink-dim);margin-left:auto}
+.topbar.on-paper .here{color:var(--on-paper-dim)}
+
+.index-head{padding:38px 0 8px;text-align:center}
+.index-head .eyebrow{color:var(--brass-2)}
+.index-head h2{font-family:var(--ff-display);font-weight:900;font-size:clamp(30px,9vw,46px);line-height:1;margin:10px 0 8px;color:var(--on-ink)}
+.index-head p{font-family:var(--ff-body);font-style:italic;color:var(--on-ink-dim);max-width:460px;margin:0 auto;font-size:16px}
+
+.list{padding:18px 0 60px}
+.entry{
+  display:block;width:100%;text-align:left;
+  padding:20px 4px;border-bottom:1px solid var(--ink-line);
+  transition:padding-left .25s var(--ease);
+}
+.entry:hover{padding-left:12px}
+.entry .e-date{font-family:var(--ff-ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sounding);margin-bottom:7px}
+.entry .e-title{font-family:var(--ff-display);font-weight:600;font-size:clamp(20px,5.6vw,26px);line-height:1.12;color:var(--on-ink);margin-bottom:6px}
+.entry .e-by{font-family:var(--ff-body);font-style:italic;font-size:15px;color:var(--on-ink-dim)}
+.entry .e-by strong{font-style:normal;font-weight:500;color:var(--on-ink)}
+
+/* voices grid */
+.voices{padding:20px 0 64px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.voice{
+  text-align:left;padding:16px 15px;border-radius:12px;
+  background:var(--ink-2);border:1px solid var(--ink-line);
+  transition:transform .18s var(--ease),border-color .18s;
+}
+.voice:hover{transform:translateY(-3px);border-color:var(--brass)}
+.voice .v-name{font-family:var(--ff-display);font-weight:600;font-size:18px;line-height:1.1;color:var(--on-ink);margin-bottom:6px}
+.voice .v-role{font-family:var(--ff-ui);font-size:11.5px;line-height:1.4;color:var(--on-ink-dim)}
+.voice .v-tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px}
+.v-tag{font-family:var(--ff-ui);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-2);border:1px solid var(--brass);border-radius:999px;padding:2px 7px}
+.group-label{grid-column:1/-1;font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:700;color:var(--sounding);margin:14px 0 2px}
+.group-label:first-child{margin-top:0}
+
+/* ============================================================
+   READING VIEW — chart paper
+   ============================================================ */
+#v-read{background:var(--paper);color:var(--on-paper)}
+.read-body{max-width:var(--maxw);margin:0 auto;padding:30px 22px 90px}
+.read-kicker{font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;font-weight:600;color:var(--magenta-deep)}
+.read-title{font-family:var(--ff-display);font-weight:900;font-optical-sizing:auto;font-size:clamp(30px,8vw,50px);line-height:1.02;letter-spacing:-.01em;margin:12px 0 14px;color:#1a2a30}
+.read-by{font-family:var(--ff-body);font-style:italic;font-size:17px;color:var(--on-paper-dim);padding-bottom:22px;margin-bottom:6px;border-bottom:2px solid var(--paper-line)}
+.read-by strong{font-style:normal;font-weight:600;color:var(--on-paper)}
+.read-body p{margin:0 0 1.05em;font-size:19px;line-height:1.66}
+.read-body p.lead-cap::first-letter{
+  font-family:var(--ff-display);font-weight:900;float:left;
+  font-size:3.5em;line-height:.78;padding:6px 10px 0 0;color:var(--magenta);
+}
+.read-body h3{font-family:var(--ff-ui);font-weight:700;letter-spacing:.01em;font-size:15px;text-transform:uppercase;letter-spacing:.1em;color:var(--magenta-deep);margin:2em 0 .6em}
+.editor-note{font-family:var(--ff-body);font-style:italic;font-size:16px;color:var(--on-paper-dim);background:var(--paper-2);border-left:3px solid var(--brass);padding:14px 18px;margin:0 0 1.2em;border-radius:0 8px 8px 0}
+.pullquote{font-family:var(--ff-display);font-weight:400;font-style:italic;font-size:clamp(22px,5.5vw,30px);line-height:1.22;color:var(--magenta-deep);margin:1.3em 0;padding-left:20px;border-left:3px solid var(--magenta)}
+.callout{background:var(--ink);color:var(--on-ink);border-radius:12px;padding:20px 22px;margin:1.4em 0}
+.callout .c-label{font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:700;color:var(--brass-2);margin-bottom:8px}
+.callout p{font-size:17px;margin:0 0 .6em;color:var(--on-ink)}
+.callout p:last-child{margin-bottom:0}
+.read-body ul{padding-left:1.1em;margin:0 0 1.2em}
+.read-body li{margin:.3em 0;font-size:17.5px}
+.bio{background:var(--paper-2);border:1px solid var(--paper-line);border-radius:12px;padding:20px 22px;margin:1.4em 0}
+.bio .bio-h{font-family:var(--ff-display);font-weight:600;font-size:21px;margin:0 0 8px}
+.bio p{font-size:16px;margin:0 0 .6em}
+figure{margin:1.6em 0}
+figure img{width:100%;height:auto;border-radius:8px;filter:sepia(.18) contrast(1.02)}
+figcaption{font-family:var(--ff-ui);font-size:12.5px;line-height:1.5;color:var(--on-paper-dim);margin-top:9px}
+figcaption .credit{display:block;font-size:11px;letter-spacing:.04em;color:var(--sounding);margin-top:2px}
+
+/* footer nav within reading */
+.read-tail{max-width:var(--maxw);margin:0 auto;padding:0 22px 80px}
+.read-tail .return{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--ff-ui);font-weight:600;font-size:14px;
+  color:var(--magenta-deep);border:1.5px solid var(--magenta);
+  border-radius:999px;padding:10px 20px;
+}
+.read-tail .return:hover{background:var(--magenta);color:var(--paper)}
+
+/* ============================================================
+   VOICE MODAL
+   ============================================================ */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(8,18,23,.6);backdrop-filter:blur(3px);display:none;align-items:flex-end;justify-content:center}
+.scrim.open{display:flex}
+.sheet{
+  width:100%;max-width:560px;max-height:86svh;max-height:86vh;overflow:auto;
+  background:var(--paper);color:var(--on-paper);
+  border-radius:18px 18px 0 0;padding:26px 24px 40px;
+  box-shadow:0 -10px 40px rgba(0,0,0,.4);
+  animation:rise .32s var(--ease);
+}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+@keyframes rise{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@media(min-width:620px){.scrim{align-items:center}.sheet{border-radius:18px}}
+.sheet .s-close{position:absolute}
+.sheet-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:4px}
+.sheet h3{font-family:var(--ff-display);font-weight:900;font-size:clamp(24px,6vw,32px);line-height:1.02;margin:0}
+.sheet .x{font-family:var(--ff-ui);font-size:24px;line-height:1;color:var(--on-paper-dim);padding:2px 6px}
+.sheet .s-role{font-family:var(--ff-ui);font-size:13px;letter-spacing:.02em;color:var(--magenta-deep);margin:6px 0 16px;font-weight:600}
+.sheet .s-bio{font-family:var(--ff-body);font-size:16.5px;line-height:1.6}
+.sheet .s-bio p{margin:0 0 .7em}
+.sheet .s-appears{margin-top:20px;border-top:1px solid var(--paper-line);padding-top:16px}
+.sheet .s-appears .sa-k{font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.14em;font-size:10.5px;font-weight:700;color:var(--sounding);margin-bottom:10px}
+.sheet .sa-link{display:block;text-align:left;width:100%;font-family:var(--ff-body);font-size:16px;padding:9px 0;border-bottom:1px solid var(--paper-line);color:var(--on-paper)}
+.sheet .sa-link:hover{color:var(--magenta-deep)}
+.sheet .sa-link .sa-date{font-family:var(--ff-ui);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-paper-dim);display:block;margin-bottom:1px}
+
+/* enter animation for views */
+.view.active>*{animation:fade .5s var(--ease) both}
+@media (prefers-reduced-motion:reduce){.view.active>*{animation:none}}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="sheet-name"><div class="sheet" id="sheet"></div></div>
+
+<script src="cr_data.js"></script>
+<script>
+(function(){
+  "use strict";
+  var CR=window.CR, META=CR.meta, ROSE=window.ROSE, HERO=window.HERO_MAP;
+  var app=document.getElementById('app');
+  var scrim=document.getElementById('scrim'), sheet=document.getElementById('sheet');
+
+  function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+  function byId(id){return CR.sections.filter(function(s){return s.id===id;})[0];}
+  function personById(id){return CR.cast.people.filter(function(p){return p.id===id;})[0];}
+
+  // group sections by bearing
+  var GROUPS={
+    project:CR.sections.filter(function(s){return s.kind==='front';}),
+    essays: CR.sections.filter(function(s){return s.kind==='essay';}),
+    meetings:CR.sections.filter(function(s){return s.kind==='meeting';})
+  };
+  var BEAR={
+    project:{card:'N',rose:'Origin',label:'The Project',count:GROUPS.project.length+' documents',
+      dek:'How the record came to be — the project, its directors, and who made it possible.'},
+    essays:{card:'E',rose:'Argument',label:'The Essays',count:GROUPS.essays.length+' essays',
+      dek:'Seven citizens argued the town\u2019s future in the Portsmouth Herald, week by week, in early 1977.'},
+    meetings:{card:'S',rose:'Assembly',label:'The Meetings',count:GROUPS.meetings.length+' meetings',
+      dek:'Six public forums where the town gathered to talk back — tourism, money, history, and who decides.'},
+    voices:{card:'W',rose:'People',label:'The Voices',count:CR.cast.people.length+' people',
+      dek:'Everyone who wrote, organized, or spoke on the record — and where to find them.'}
+  };
+
+  /* ---------------- compass SVG ---------------- */
+  function compassSVG(){
+    var ticks='';
+    for(var i=0;i<72;i++){
+      var a=i*5, maj=(a%90===0), mid=(a%45===0);
+      var r1=maj?70:(mid?74:77), r2=82;
+      var rad=(a-90)*Math.PI/180;
+      var x1=100+r1*Math.cos(rad), y1=100+r1*Math.sin(rad);
+      var x2=100+r2*Math.cos(rad), y2=100+r2*Math.sin(rad);
+      ticks+='<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="'+(maj?'var(--brass-2)':'var(--ink-line)')+'" stroke-width="'+(maj?2:1)+'"/>';
+    }
+    // 8-point star (rose)
+    function star(outer,inner,rot,fill,op){
+      var pts=[];for(var k=0;k<8;k++){var ang=(k*45+rot-90)*Math.PI/180;var r=(k%2===0)?outer:inner;pts.push((100+r*Math.cos(ang)).toFixed(1)+','+(100+r*Math.sin(ang)).toFixed(1));}
+      return '<polygon points="'+pts.join(' ')+'" fill="'+fill+'" opacity="'+op+'"/>';
+    }
+    return ''+
+    '<svg viewBox="0 0 200 200" aria-hidden="true">'+
+      '<circle cx="100" cy="100" r="88" fill="none" stroke="var(--brass)" stroke-width="1.5" opacity=".6"/>'+
+      '<circle cx="100" cy="100" r="82" fill="none" stroke="var(--ink-line)" stroke-width="1"/>'+
+      ticks+
+      star(58,16,22.5,'var(--ink-line)',.55)+   /* inter-cardinal points, recessed */
+      star(66,14,0,'var(--brass)',.30)+          /* cardinal star body */
+      // north half accented magenta
+      '<polygon points="100,34 86,100 100,100" fill="var(--magenta)"/>'+
+      '<polygon points="100,34 114,100 100,100" fill="var(--magenta-deep)"/>'+
+      '<circle cx="100" cy="100" r="9" fill="var(--ink)" stroke="var(--brass-2)" stroke-width="1.5"/>'+
+      // rotating needle
+      '<g class="needle" id="needle">'+
+        '<polygon points="100,40 95,100 105,100" fill="var(--magenta)"/>'+
+        '<polygon points="100,160 95,100 105,100" fill="var(--on-ink-dim)"/>'+
+        '<circle cx="100" cy="100" r="4.5" fill="var(--brass-2)"/>'+
+      '</g>'+
+    '</svg>';
+  }
+  var NEEDLE_DEG={project:0,essays:90,meetings:180,voices:270};
+
+  /* ---------------- HOME ---------------- */
+  function buildHome(){
+    var v=el('section','view active');v.id='v-home';
+    var veil=el('div','map-veil');if(HERO)veil.style.backgroundImage='url('+HERO+')';
+    v.appendChild(veil);
+
+    var inn=el('div','home-in');
+
+    var mast=el('div','masthead');
+    mast.innerHTML=
+      '<div class="org eyebrow">'+META.org+'</div>'+
+      '<h1>Portsmouth at<br>the <span class="crux">Crossroads</span></h1>'+
+      '<p class="sub">'+META.subtitle+'</p>'+
+      '<div class="stamp">'+META.heraldRange+'</div>';
+    inn.appendChild(mast);
+
+    // compass
+    var stage=el('div','compass-stage');
+    stage.innerHTML=compassSVG();
+    var hub=el('div','compass-hub');
+    hub.innerHTML='<div class="hub-k">Report</div><div class="hub-yr">1978</div><div class="hub-k">est. 1977</div>';
+    stage.appendChild(hub);
+
+    ['project','essays','meetings','voices'].forEach(function(key){
+      var b=BEAR[key];
+      var btn=el('button','bearing b-'+b.card);
+      btn.id='bear-'+key;
+      btn.setAttribute('aria-label','Set course to '+b.label+', '+b.count);
+      btn.innerHTML='<span class="b-rose">'+b.card+'</span><span class="b-card">'+b.label+'</span><span class="b-count">'+b.count+'</span>';
+      btn.addEventListener('click',function(){setCourse(key);});
+      stage.appendChild(btn);
+    });
+    inn.appendChild(stage);
+    inn.appendChild(el('p','helper','Set a course — choose a heading'));
+
+    // tensions spine
+    var spine=el('div','spine');
+    spine.innerHTML='<h2>What the town argued about</h2><p class="spine-dek">Five tensions ran through every essay and every meeting. They are not yet settled.</p>';
+    META.tensions.forEach(function(t){
+      var row=el('div','tension');
+      row.innerHTML='<span class="pole a">'+t.a+'</span><span class="vs">vs</span><span class="pole b">'+t.b+'</span><span class="topic">'+t.topic+'</span>';
+      spine.appendChild(row);
+    });
+    inn.appendChild(spine);
+
+    var colo=el('div','colophon');
+    colo.innerHTML='Originally published '+META.published+' by the '+META.org+', with support from the '+META.funder+'. '+META.copies+'<br>Re&euml;dited for the web by '+META.host+'. The arguments are nearly fifty years old; the crossroads is still here.';
+    inn.appendChild(colo);
+
+    v.appendChild(inn);
+    return v;
+  }
+
+  var _pendingCourse=null;
+  function setCourse(key){
+    // mark target, swing needle, then route after the swing
+    document.querySelectorAll('.bearing').forEach(function(b){b.classList.remove('is-target');});
+    var btn=document.getElementById('bear-'+key);if(btn)btn.classList.add('is-target');
+    var needle=document.getElementById('needle');
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(needle&&!reduce){
+      needle.style.transform='rotate('+NEEDLE_DEG[key]+'deg)';
+      clearTimeout(_pendingCourse);
+      _pendingCourse=setTimeout(function(){go(key==='voices'?'voices':key);},620);
+    }else{
+      go(key==='voices'?'voices':key);
+    }
+  }
+
+  /* ---------------- INDEX (project/essays/meetings) ---------------- */
+  function buildIndex(key){
+    var b=BEAR[key], list=GROUPS[key];
+    var v=el('section','view');v.id='v-'+key;
+    v.appendChild(topbar(b.label));
+    var w=el('div','wrap');
+    var head=el('div','index-head');
+    head.innerHTML='<div class="eyebrow">Heading '+b.card+' &middot; '+b.count+'</div><h2>'+b.label+'</h2><p>'+b.dek+'</p>';
+    w.appendChild(head);
+    var ul=el('div','list');
+    list.forEach(function(s){
+      var btn=el('button','entry');
+      btn.innerHTML=
+        '<div class="e-date">'+s.kicker+'</div>'+
+        '<div class="e-title">'+s.title+'</div>'+
+        (s.by&&s.by!=='-'?'<div class="e-by">'+s.by+'</div>':'');
+      btn.addEventListener('click',function(){go('read/'+s.id);});
+      ul.appendChild(btn);
+    });
+    w.appendChild(ul);
+    v.appendChild(w);
+    return v;
+  }
+
+  /* ---------------- VOICES ---------------- */
+  function buildVoices(){
+    var v=el('section','view');v.id='v-voices';
+    v.appendChild(topbar('The Voices'));
+    var w=el('div','wrap');
+    var head=el('div','index-head');
+    head.innerHTML='<div class="eyebrow">Heading W &middot; '+CR.cast.people.length+' people</div><h2>The Voices</h2><p>'+BEAR.voices.dek+'</p>';
+    w.appendChild(head);
+    var grid=el('div','voices');
+    CR.cast.groups.forEach(function(g){
+      grid.appendChild(el('div','group-label',g.label));
+      CR.cast.people.filter(function(p){return p.group===g.key;}).forEach(function(p){
+        var btn=el('button','voice');
+        btn.innerHTML='<div class="v-name">'+p.name+'</div><div class="v-role">'+p.role+'</div>'+
+          (p.tags&&p.tags.length?'<div class="v-tags">'+p.tags.map(function(t){return '<span class="v-tag">'+t+'</span>';}).join('')+'</div>':'');
+        btn.addEventListener('click',function(){openPerson(p.id);});
+        grid.appendChild(btn);
+      });
+    });
+    w.appendChild(grid);
+    v.appendChild(w);
+    return v;
+  }
+
+  /* ---------------- READING ---------------- */
+  function buildRead(id){
+    var s=byId(id);if(!s)return null;
+    var v=el('section','view');v.id='v-read';
+    v.appendChild(topbar(s.kicker.replace(/&middot;.*/,'').trim()||'Reading',true));
+    var body=el('article','read-body');
+    var headHtml='<div class="read-kicker">'+s.kicker+'</div><h1 class="read-title">'+s.title+'</h1>';
+    if(s.by&&s.by!=='-')headHtml+='<div class="read-by">'+s.by+'</div>';
+    body.innerHTML=headHtml;
+    var firstP=true;
+    s.blocks.forEach(function(bk){
+      if(bk.t==='p'){var p=el('p',firstP&&s.kind==='essay'?'lead-cap':null,bk.text);firstP=false;body.appendChild(p);}
+      else if(bk.t==='h'){body.appendChild(el('h3',null,bk.text));}
+      else if(bk.t==='editor'){body.appendChild(el('div','editor-note',bk.text));}
+      else if(bk.t==='quote'){body.appendChild(el('blockquote','pullquote',bk.text));}
+      else if(bk.t==='list'){var ul=el('ul');(bk.items||[]).forEach(function(it){ul.appendChild(el('li',null,it));});body.appendChild(ul);}
+      else if(bk.t==='callout'){
+        if((bk.label&&bk.label.trim())||(bk.paras&&bk.paras.length)){
+          var c=el('div','callout');if(bk.label&&bk.label.trim())c.appendChild(el('div','c-label',bk.label));
+          (bk.paras||[]).forEach(function(pp){c.appendChild(el('p',null,pp));});body.appendChild(c);
+        }
+      }
+      else if(bk.t==='bio'){var bi=el('div','bio');if(bk.h)bi.appendChild(el('div','bio-h',bk.h));(bk.paras||[]).forEach(function(pp){bi.appendChild(el('p',null,pp));});body.appendChild(bi);}
+      else if(bk.t==='figure'){
+        var f=el('figure');var img=el('img');img.src=bk.src;img.alt=bk.caption||'';img.loading='lazy';f.appendChild(img);
+        var cap=bk.caption||'';if(bk.credit)cap+='<span class="credit">'+bk.credit+'</span>';
+        if(cap)f.appendChild(el('figcaption',null,cap));
+        body.appendChild(f);
+      }
+    });
+    v.appendChild(body);
+    var tail=el('div','read-tail');
+    var back=el('button','return','<span>&#9650;</span> Back to the compass');
+    back.addEventListener('click',function(){go('');});
+    tail.appendChild(back);
+    v.appendChild(tail);
+    return v;
+  }
+
+  function topbar(here,paper){
+    var bar=el('header','topbar'+(paper?' on-paper':''));
+    var back=el('button','back','<span class="arrow">&#8592;</span> Compass');
+    back.addEventListener('click',function(){go('');});
+    bar.appendChild(back);
+    bar.appendChild(el('span','here',here));
+    return bar;
+  }
+
+  /* ---------------- person modal ---------------- */
+  function openPerson(id){
+    var p=personById(id);if(!p)return;
+    var appears=(p.appears||[]).map(function(sid){return byId(sid);}).filter(Boolean);
+    var html='<div class="sheet-top"><h3 id="sheet-name">'+p.name+'</h3><button class="x" aria-label="Close">&times;</button></div>'+
+      '<div class="s-role">'+p.role+'</div>'+
+      '<div class="s-bio">'+(p.bio?'<p>'+p.bio.split('\n').join('</p><p>')+'</p>':'<p>Listed in the record of the project.</p>')+'</div>';
+    if(appears.length){
+      html+='<div class="s-appears"><div class="sa-k">Appears in</div>';
+      appears.forEach(function(s){
+        html+='<button class="sa-link" data-sid="'+s.id+'"><span class="sa-date">'+s.kicker.replace(/<[^>]+>/g,'')+'</span>'+s.title+'</button>';
+      });
+      html+='</div>';
+    }
+    sheet.innerHTML=html;
+    sheet.querySelector('.x').addEventListener('click',closeSheet);
+    sheet.querySelectorAll('.sa-link').forEach(function(b){
+      b.addEventListener('click',function(){closeSheet();go('read/'+b.getAttribute('data-sid'));});
+    });
+    scrim.classList.add('open');
+    document.body.style.overflow='hidden';
+    sheet.querySelector('.x').focus();
+  }
+  function closeSheet(){scrim.classList.remove('open');document.body.style.overflow='';}
+  scrim.addEventListener('click',function(e){if(e.target===scrim)closeSheet();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet();});
+
+  /* ---------------- router ---------------- */
+  function go(route){location.hash=route?('#/'+route):'#/';}
+  function render(){
+    var hash=location.hash.replace(/^#\/?/,'');
+    var view;
+    if(hash.indexOf('read/')===0){view=buildRead(hash.slice(5));}
+    else if(hash==='essays'){view=buildIndex('essays');}
+    else if(hash==='meetings'){view=buildIndex('meetings');}
+    else if(hash==='project'){view=buildIndex('project');}
+    else if(hash==='voices'){view=buildVoices();}
+    if(!view){view=buildHome();}
+    app.innerHTML='';app.appendChild(view);
+    window.scrollTo(0,0);
+    closeSheet();
+    // if returning home, settle needle to north
+    if(view.id==='v-home'){var n=document.getElementById('needle');if(n)n.style.transform='rotate(0deg)';}
+  }
+  window.addEventListener('hashchange',render);
+  render();
+})();
+</script>
+</body>
+</html>
