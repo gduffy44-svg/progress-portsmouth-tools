@@ -685,6 +685,7 @@ window.ROSE="images/img02.png";
     else if(hash==='project'){view=buildIndex('project');}
     else if(hash==='voices'){view=buildVoices();}
     if(!view){view=buildHome();}
+    view.classList.add('active');
     app.innerHTML='';app.appendChild(view);
     window.scrollTo(0,0);
     closeSheet();
