@@ -355,7 +355,7 @@ figcaption{font-size:13px}
   .home-in{
     max-width:1140px;display:grid;
     grid-template-columns:1.05fr .95fr;
-    grid-template-areas:"mark mark" "mast compass" "bridge bridge" "helper helper" "bearings bearings" "spine spine" "colophon colophon";
+    grid-template-areas:"mark mark" "mast compass" "prov prov" "bridge bridge" "helper helper" "bearings bearings" "spine spine" "colophon colophon";
     column-gap:56px;row-gap:6px;align-items:center;
   }
   .pp-mark{grid-area:mark;justify-content:flex-start;font-size:13px;margin-bottom:10px}
@@ -366,6 +366,7 @@ figcaption{font-size:13px}
   .masthead .sub{font-size:23px;margin-top:18px}
   .masthead .stamp{font-size:14px;margin-top:22px}
   .compass-stage{grid-area:compass;width:min(34vw,440px);margin:0 auto}
+  .provenance{grid-area:prov;margin:18px auto 0}
   .bridge{grid-area:bridge;max-width:720px;margin:30px auto 6px;padding:24px 32px 22px}
   .bridge-eyebrow{font-size:12px;margin-bottom:18px}
   .bd-yr{font-size:40px}
@@ -471,6 +472,16 @@ figcaption{font-size:13px}
   .poles{grid-template-columns:1fr 1fr;gap:22px}
   .t-h2{flex-direction:row;justify-content:center;gap:14px;font-size:40px}
   .vc-quote{font-size:19px}
+}
+/* provenance / transparency */
+.provenance{max-width:480px;margin:22px auto 0;text-align:center;font-family:var(--ff-body);font-size:14.5px;line-height:1.6;color:var(--on-ink-dim)}
+.provenance .prov-k{display:block;font-family:var(--ff-ui);text-transform:uppercase;letter-spacing:.18em;font-weight:700;font-size:10.5px;color:var(--brass-2);margin-bottom:6px}
+.provenance em{font-style:italic}
+.t-provenance{max-width:680px;margin:14px auto 0;text-align:center;font-family:var(--ff-ui);font-size:12px;line-height:1.55;letter-spacing:.01em;color:var(--on-ink-dim)}
+.en-tag{display:block;font-family:var(--ff-ui);font-style:normal;text-transform:uppercase;letter-spacing:.12em;font-size:9.5px;font-weight:700;color:var(--brass);margin-bottom:7px}
+@media(min-width:880px){
+  .provenance{font-size:15.5px;max-width:560px}
+  .t-provenance{font-size:12.5px}
 }
 </style>
 </head>
@@ -639,6 +650,11 @@ window.CR_TENSION_DETAIL={
       '<div class="stamp">'+META.heraldRange+'</div>';
     inn.appendChild(mast);
 
+    var prov=el('div','provenance');
+    prov.innerHTML='<span class="prov-k">What you&rsquo;re reading</span>'+
+      'The 1978 report reproduced in full &mdash; seven <em>Herald</em> essays and six public-meeting summaries, word for word. The compass navigation, the five tensions drawn out below, the short notes on each voice, and the links to today&rsquo;s planning are added by Progress Portsmouth.';
+    inn.appendChild(prov);
+
     var bridge=el('div','bridge');
     bridge.innerHTML=
       '<div class="bridge-eyebrow">Then &amp; Now</div>'+
@@ -771,7 +787,7 @@ window.CR_TENSION_DETAIL={
     s.blocks.forEach(function(bk){
       if(bk.t==='p'){var p=el('p',firstP&&s.kind==='essay'?'lead-cap':null,bk.text);firstP=false;body.appendChild(p);}
       else if(bk.t==='h'){body.appendChild(el('h3',null,bk.text));}
-      else if(bk.t==='editor'){body.appendChild(el('div','editor-note',bk.text));}
+      else if(bk.t==='editor'){var en=el('div','editor-note');en.innerHTML='<span class="en-tag">Portsmouth Herald &middot; original 1977 note</span>'+bk.text;body.appendChild(en);}
       else if(bk.t==='quote'){body.appendChild(el('blockquote','pullquote',bk.text));}
       else if(bk.t==='list'){var ul=el('ul');(bk.items||[]).forEach(function(it){ul.appendChild(el('li',null,it));});body.appendChild(ul);}
       else if(bk.t==='callout'){
@@ -829,6 +845,10 @@ window.CR_TENSION_DETAIL={
       '<h2 class="t-h2"><span class="t-pole-a">'+t.a+'</span><span class="t-amp">&#8596;</span><span class="t-pole-b">'+t.b+'</span></h2>'+
       '<p>'+d.intro+'</p>';
     w.appendChild(head);
+
+    var tprov=el('p','t-provenance');
+    tprov.innerHTML='Quotations below are from the 1977 record. Sorting the voices into two sides &mdash; and the connections drawn between them &mdash; are Progress Portsmouth&rsquo;s.';
+    w.appendChild(tprov);
 
     var cols=el('div','poles');
     [['a',t.a,d.A],['b',t.b,d.B]].forEach(function(pair){
