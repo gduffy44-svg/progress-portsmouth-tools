@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PP Response — What the Housing Action Plan still needs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#2d3e52; --navy-dark:#1a2332; --gold:#f4a261; --gold-dark:#c8822a;
+    --teal:#3a7d6e; --coral:#e76f51; --cream:#f8f4ee; --muted:#556472;
+    --border:rgba(45,62,82,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Source Sans 3',Helvetica,Arial,sans-serif;color:var(--navy);background:#eef2f5;line-height:1.55;font-size:16px;}
+  .sheet{max-width:840px;margin:22px auto;background:#fff;box-shadow:0 2px 22px rgba(26,35,50,0.12);border-radius:12px;overflow:hidden;}
+  .pad{padding:30px 40px;}
+  .label{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;}
+  a{color:var(--gold-dark);}
+
+  .topnav{background:var(--navy-dark);padding:9px 40px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.05em;}
+  .topnav a{color:rgba(255,255,255,0.75);text-decoration:none;}
+  .topnav a:hover{color:var(--gold);}
+
+  header{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,#34506a 100%);color:#fff;padding:30px 40px 26px;}
+  header .kicker{color:var(--gold);font-size:0.7rem;margin-bottom:11px;}
+  header h1{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(1.55rem,4vw,2.15rem);line-height:1.12;margin:0 0 15px;}
+  .meta{border-top:1px solid rgba(255,255,255,0.18);padding-top:13px;font-size:0.85rem;color:rgba(255,255,255,0.82);}
+  .meta div{margin-bottom:3px;}
+  .meta span{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--gold);display:inline-block;min-width:42px;}
+
+  /* ===== BOLD HERO: 5 requirements ===== */
+  .hero{background:var(--navy-dark);color:#fff;padding:30px 40px 34px;}
+  .hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .hero h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.12;margin:0 0 6px;color:#fff;border:none;padding:0;}
+  .hero .sub{color:rgba(255,255,255,0.7);font-size:0.98rem;margin:0 0 22px;max-width:620px;}
+  .reqs{display:flex;flex-direction:column;gap:0;}
+  .req{display:grid;grid-template-columns:58px 1fr;gap:0 18px;align-items:start;padding:16px 0;border-top:1px solid rgba(255,255,255,0.13);}
+  .req:first-child{border-top:none;padding-top:4px;}
+  .req .n{font-family:'DM Serif Display',Georgia,serif;font-size:2.5rem;line-height:0.9;color:var(--gold);}
+  .req:nth-child(2) .n{color:var(--coral);}
+  .req:nth-child(3) .n{color:#5fb0a0;}
+  .req:nth-child(4) .n{color:var(--gold);}
+  .req:nth-child(5) .n{color:var(--coral);}
+  .req .rt{font-family:'DM Serif Display',Georgia,serif;font-size:1.28rem;line-height:1.15;color:#fff;margin:0 0 4px;}
+  .req .rx{font-size:0.92rem;color:rgba(255,255,255,0.72);margin:0;}
+  .req .rx b{color:#fff;font-weight:600;}
+
+  /* civic-origin callout */
+  .origin{background:rgba(244,162,97,0.13);border-left:4px solid var(--gold);border-radius:8px;padding:16px 20px;margin:0 0 4px;}
+  .origin .label{color:var(--gold-dark);font-size:0.64rem;display:block;margin-bottom:7px;}
+  .origin p{margin:0;font-size:0.97rem;color:#5a4222;line-height:1.5;}
+  .origin strong{color:#3d2c14;}
+
+  h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:1.3rem;color:var(--navy);margin:28px 0 12px;padding-top:22px;border-top:1px solid var(--border);}
+  h2 .tag{font-family:'JetBrains Mono',monospace;font-size:0.58rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;vertical-align:middle;padding:3px 8px;border-radius:20px;margin-left:8px;}
+  .tag.keep{background:rgba(58,125,110,0.14);color:var(--teal);}
+  .tag.close{background:rgba(231,111,81,0.14);color:var(--coral);}
+
+  .keep-list{list-style:none;padding:0;margin:0;}
+  .keep-list li{position:relative;padding:7px 0 7px 30px;font-size:0.95rem;border-bottom:1px solid var(--border);}
+  .keep-list li:last-child{border-bottom:none;}
+  .keep-list li::before{content:"\2713";position:absolute;left:2px;top:7px;color:var(--teal);font-weight:700;}
+  .keep-list strong{color:var(--navy);}
+
+  .gap{border:1px solid var(--border);border-left:4px solid var(--coral);border-radius:9px;padding:15px 18px;margin-bottom:12px;background:#fff;}
+  .gap .gnum{font-family:'JetBrains Mono',monospace;font-size:0.62rem;font-weight:700;color:var(--coral);letter-spacing:0.05em;}
+  .gap h3{font-size:1.03rem;color:var(--navy);margin:3px 0 5px;}
+  .gap p{margin:0;font-size:0.92rem;color:#3a4a5c;}
+  .gap p .why{color:var(--muted);}
+
+  .also{margin-top:6px;}
+  .also .row{display:grid;grid-template-columns:150px 1fr;gap:4px 16px;padding:11px 0;border-top:1px solid var(--border);}
+  .also .row:first-child{border-top:none;}
+  .also .rk{font-weight:700;color:var(--navy);font-size:0.93rem;}
+  .also .rd{font-size:0.89rem;color:#3a4a5c;}
+
+  .note{background:var(--cream);border-radius:9px;padding:14px 18px;margin-bottom:10px;}
+  .note .nl{font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold-dark);display:block;margin-bottom:4px;}
+  .note p{margin:0;font-size:0.92rem;}
+  .fix{background:rgba(244,162,97,0.12);border-left:3px solid var(--gold-dark);border-radius:8px;padding:14px 18px;}
+  .fix .nl{color:var(--gold-dark);}
+
+  footer{background:var(--navy-dark);color:rgba(255,255,255,0.7);padding:20px 40px;font-size:0.82rem;}
+  footer>div{margin-bottom:9px;}
+  footer a{color:var(--gold);}
+  .ai{font-style:italic;color:rgba(255,255,255,0.55);}
+  .rev{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.55);}
+  .rev-toggle{background:none;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);font-family:'JetBrains Mono',monospace;font-size:0.64rem;padding:3px 9px;border-radius:5px;cursor:pointer;margin-left:8px;}
+  #revMore{display:none;margin-top:8px;color:rgba(255,255,255,0.6);font-size:0.78rem;line-height:1.5;}
+  #revMore.open{display:block;}
+
+  .gap p.how{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--border);font-size:0.9rem;color:#3a4a5c;line-height:1.5;}
+  .gap p.how strong{color:var(--teal);}
+
+  @media (max-width:640px){
+    body{font-size:15px;}
+    .sheet{margin:0;border-radius:0;box-shadow:none;}
+    .pad{padding:20px 18px;}
+    header,.hero{padding:22px 18px;}
+    .topnav,footer{padding-left:18px;padding-right:18px;}
+    header h1{font-size:1.5rem;}
+    .meta span{min-width:38px;}
+    .tldr{padding:16px 18px;}
+    .hero h2{font-size:1.35rem;}
+    .req{grid-template-columns:40px 1fr;gap:0 13px;padding:15px 0;}
+    .req .n{font-size:1.9rem;}
+    .req .rt{font-size:1.12rem;}
+    .gap{padding:14px 15px;}
+    .also .row{grid-template-columns:1fr;gap:3px;padding:12px 0;}
+    h2{font-size:1.2rem;}
+  }
+  @media (max-width:380px){
+    .pad{padding:18px 14px;}
+    header,.hero{padding:20px 14px;}
+    .topnav,footer{padding-left:14px;padding-right:14px;}
+    .req{grid-template-columns:34px 1fr;gap:0 11px;}
+    .req .n{font-size:1.6rem;}
+    .req .rt{font-size:1.05rem;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <nav class="topnav"><a href="https://www.progressportsmouth.com">&larr; Progress Portsmouth</a></nav>
+
+  <header>
+    <div class="kicker label">Progress Portsmouth &middot; response to the draft</div>
+    <h1>What the Housing Action Plan still needs to be complete</h1>
+    <div class="meta">
+      <div><span>To</span> Housing Committee co-chairs &amp; members; Planning &amp; Sustainability staff</div>
+      <div><span>From</span> Gerry Duffy, Progress Portsmouth</div>
+      <div><span>Re</span> The July 9 draft plan &amp; June 30 implementation matrix</div>
+    </div>
+  </header>
+
+  <!-- ===== BOLD HERO ===== -->
+  <div class="hero">
+    <div class="eyebrow">The short version &mdash; five requirements</div>
+    <h2>The draft has the right spine. Five things still stand between it and a plan Council can adopt.</h2>
+    <p class="sub">79-E is correctly at the top, with coherent zoning under it and a matrix that assigns leads and timeframes. What&rsquo;s missing isn&rsquo;t on the list &mdash; it&rsquo;s the pieces the list leaves implicit.</p>
+    <div class="reqs">
+      <div class="req"><div class="n">1</div><div><p class="rt">Pair the tax relief with by-right zoning.</p><p class="rx">79-E only works on projects the zoning already allows. <b>Give the incentive something to attach to.</b></p></div></div>
+      <div class="req"><div class="n">2</div><div><p class="rt">Put city land &mdash; and 2&ndash;3 initiated projects &mdash; on the page.</p><p class="rx">Land is the binding constraint on affordable housing. <b>Studying is not initiating.</b></p></div></div>
+      <div class="req"><div class="n">3</div><div><p class="rt">Set measurable targets &mdash; ranges and percent increases.</p><p class="rx">A plan you can&rsquo;t measure is a plan you can&rsquo;t defend. <b>Numbers are not optional.</b></p></div></div>
+      <div class="req"><div class="n">4</div><div><p class="rt">Name the affordability standard.</p><p class="rx">&ldquo;Below market&rdquo; left undefined is a promise no one can keep. <b>The 79-E expansion makes this your choice to make.</b></p></div></div>
+      <div class="req"><div class="n">5</div><div><p class="rt">Bring renters to the table.</p><p class="rx">Half the city rents, and the plan is largely written for them. <b>They are not yet in the room.</b></p></div></div>
+    </div>
+  </div>
+
+  <div class="pad">
+
+    <div class="origin">
+      <span class="label">Worth stating in the plan itself</span>
+      <p>This plan did not start inside City Hall. It exists because residents and civic advocates spent years making the case that housing is Portsmouth&rsquo;s defining challenge &mdash; and the Council directed a plan in response. <strong>That civic origin is the plan&rsquo;s mandate, and its accountability.</strong> The clearest way to honor it is to finish the plan for the people it was written for &mdash; which is why requirement 5 matters as much as the rest.</p>
+    </div>
+
+    <h2>Keep this <span class="tag keep">what the draft gets right</span></h2>
+    <ul class="keep-list">
+      <li><strong>79-E is correctly #1, framed citywide.</strong> The three criteria &mdash; citywide Housing Opportunity Zone, office/commercial conversion, rehabilitation &mdash; are the right core.</li>
+      <li><strong>Near-term sequencing is realistic.</strong> Conversion, in-lieu fee, fee waivers, expedited permitting, and the OR/GB rezone in the 0&ndash;6 month band give early, visible wins.</li>
+      <li><strong>The matrix format is the right instrument.</strong> Lead / timeframe / metric / milestone is what turns direction into implementation.</li>
+      <li><strong>Scope discipline is acknowledged.</strong> Handing the master-plan-dependent items to the consultant is the correct call.</li>
+      <li><strong>Preservation and the workforce ordinance are on the list.</strong> Both belong.</li>
+      <li><strong>It draws on peer precedent.</strong> The plan incorporates the most relevant elements of housing initiatives from regional peer communities, rather than starting from scratch.</li>
+    </ul>
+
+    <h2>The requirements, in detail <span class="tag close">close before Council</span></h2>
+
+    <div class="gap">
+      <span class="gnum">Requirement 1 &middot; load-bearing</span>
+      <h3>Pair the 79-E overlay with the one by-right zoning change it needs</h3>
+      <p>Tax relief lowers the cost of a project the zoning already permits; it does nothing for a project the zoning forbids. Name a narrow by-right change &mdash; conversion of existing structures to 2&ndash;3 units in SRA/SRB, with dimensional relief &mdash; as a near-term companion to the 79-E ordinance. <span class="why">The ADU experience is the evidence: the rule change tripled applications but produced few units, because enabling a use isn&rsquo;t the same as making it pencil.</span></p>
+    </div>
+
+    <div class="gap">
+      <span class="gnum">Requirement 2 &middot; load-bearing</span>
+      <h3>Put city land in the plan &mdash; and commit to initiating projects on it</h3>
+      <p>The matrix has no action to dispose of, ground-lease, or contribute city-owned land, and no commitment to initiate anything &mdash; it is almost entirely &ldquo;review / recommend / amend.&rdquo; For permanently-affordable housing, land cost is the binding constraint. Add a disposition framework, and commit to putting 2&ndash;3 identified sites out to mission-driven developers via RFP, with a timeframe. <span class="why">&ldquo;The market decides where it will work&rdquo; is true, but left alone it becomes a reason to do nothing.</span></p>
+    </div>
+
+    <div class="gap">
+      <span class="gnum">Requirement 3 &middot; essential</span>
+      <h3>Set measurable targets &mdash; and don&rsquo;t flinch from the numbers</h3>
+      <p>There may be reluctance to commit to figures. But without ranges or percent increases, there is no way to tell whether the plan is working, and no way to defend it to Council or the public. Set targets the plan can be held to &mdash; e.g. double annual ADU output, a set number of conversions per year, 2&ndash;3 larger projects initiated before the term ends. <span class="why">Measurable goals are what separate a plan that is adopted from a plan that is implemented.</span></p>
+    </div>
+
+    <div class="gap">
+      <span class="gnum">Requirement 4</span>
+      <h3>Name the affordability standard, deliberately</h3>
+      <p>The plan says &ldquo;below market&rdquo; but never defines it &mdash; the known weakness of traditional 79-E. The 79-E expansion turns that silence into a choice: Portsmouth can set its own standard rather than defaulting to 80% AMI. Set the share, AMI level, and covenant term to what actually pencils (West End Yards and Sage used 100&ndash;110%). <span class="why">Confirm the enrolled-bill relief-period terms before the plan cites specifics.</span></p>
+    </div>
+
+    <div class="gap">
+      <span class="gnum">Requirement 5</span>
+      <h3>Bring renters &mdash; half the city &mdash; to the table</h3>
+      <p>Most of the plan&rsquo;s desired outcomes are aimed at rental housing. Yet renters, who are roughly half of Portsmouth&rsquo;s households and the intended beneficiaries, have not been engaged and have no presence at the table. A plan written largely for renters, without renters, carries a legitimacy gap. <span class="why">Before it goes to Council, the process needs a deliberate step to reach and include them &mdash; not a box-check hearing, but real engagement.</span></p>
+      <p class="how"><strong>Ways to reach them fast:</strong> a short online survey (five questions, one QR code) pushed through the property managers of the larger rental communities and posted in building lobbies and laundromats; a targeted mailing to the non-owner-occupied parcels the Assessor can already identify; one evening or virtual listening session, with childcare, rather than a daytime hearing renters can&rsquo;t attend; and partners who already reach renters &mdash; the Housing Authority, major employers whose workforce rents, and local nonprofits. Most of this can be stood up in days, not weeks.</p>
+    </div>
+
+    <h2>Also close these</h2>
+    <div class="also">
+      <div class="row"><div class="rk">Capacity &ne; affordability</div><div class="rd">Most of the matrix is zoning capacity. In our market &mdash; small, land-capped, a regional demand sink &mdash; new market-rate supply won&rsquo;t lower price levels. Don&rsquo;t present density as affordability; distinguish the two tracks so Council adopts each for what it delivers.</div></div>
+      <div class="row"><div class="rk">Elevate preservation</div><div class="rd">Preserving existing below-market units is the fastest, cheapest affordability move &mdash; cheaper per unit than building new. It currently sits low; move it into the top tier, paired with the Housing Trust Fund.</div></div>
+      <div class="row"><div class="rk">Split the tracks</div><div class="rd">Visibly separate the fast 79-E package (moves now, under the city&rsquo;s own authority) from the slow master-plan rezone (handed to the consultant, with the plan setting the consultant&rsquo;s scope). Don&rsquo;t let the comprehensive rezone hold the tax-relief package hostage.</div></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="rev">Version 1.2 &middot; Jul 6, 2026
+      <button class="rev-toggle" id="revToggle" type="button">Notes &#9662;</button>
+      <div id="revMore">Progress Portsmouth&rsquo;s response to the July 9 draft Housing Action Plan and June 30 implementation matrix, following the June 11 Housing Committee meeting. Offered as an outside resource; the decisions are the committee&rsquo;s. v1.2 (Jul 6, 2026): removed the procedural-notes and Housing Navigator sections; added a peer-precedent credit; expanded the renter requirement with concrete fast-outreach tactics; further mobile optimization. v1.1 (Jun 15, 2026): reframed summary as five requirements; added renter-representation requirement and civic-origin note; strengthened the metrics case; corrected the Housing Navigator reference. v1.0 (Jun 15, 2026): initial response module.</div>
+    </div>
+    <div class="ai">Created with AI assistance in research and information design, with human editorial control.</div>
+    <div><a href="https://www.progressportsmouth.com">&larr; progressportsmouth.com</a></div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('revToggle').addEventListener('click', function(){
+    var m = document.getElementById('revMore');
+    m.classList.toggle('open');
+    this.innerHTML = m.classList.contains('open') ? 'Notes \u25b4' : 'Notes \u25be';
+  });
+</script>
+
+</body>
+</html>
