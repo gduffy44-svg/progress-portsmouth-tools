@@ -214,24 +214,28 @@
           "Samonas",
           "Weinrieb",
           "Loane",
-          "McDonald"
+          "Moreau"
         ],
         "excused": [
           "Kelley (co-chair)",
-          "Anderson",
           "McGrath-Levesque",
-          "Migirditch"
+          "Migirditch",
+          "Anderson",
+          "Matto",
+          "McDonald",
+          "Chag"
         ],
         "staff": [
           "Britz",
-          "Casella"
+          "Casella",
+          "Gilbo"
         ]
       },
-      "minutes_status": "City Planning Department draft meeting notes are now available (received June 2026) and have been reconciled against this transcript-based entry. One attendance discrepancy is unresolved: the audio transcript records Angus McDonald present and speaking, while the Planning Department notes list McDonald as excused and Beth Moreau present. Both records show six members present and no quorum. Attendance below is left as transcribed pending verification against the meeting recording. Final City Clerk minutes may still follow.",
+      "minutes_status": "City Planning Department draft meeting notes are now available and have been reconciled against this entry. Attendance has been corrected to the official record: Angus McDonald was absent and Beth Moreau attended (the audio transcript's automatic speaker labels were incorrect). As a result the ADU cautionary comment previously attributed to McDonald is no longer attributed to him in the working summary, pending identification of the actual speaker. Six members present; no quorum. Final City Clerk minutes may still follow.",
       "decisions": [
         {
           "type": "procedural_quorum",
-          "label": "Roll call confirmed 6 of 13 members present (Tabor, Stebbins-Thomas, Samonas, Weinrieb, Loane, McDonald). Quorum threshold is 7; meeting proceeded under quorum with the understanding that substantive recommendations would be re-ratified at the July 9 meeting with full quorum.",
+          "label": "Roll call confirmed 6 of 13 members present (Tabor, Stebbins-Thomas, Samonas, Weinrieb, Loane, Moreau). Quorum threshold is 7; meeting proceeded under quorum with the understanding that substantive recommendations would be re-ratified at the July 9 meeting with full quorum.",
           "items": []
         },
         {
