@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The ROAD to Housing Act &amp; Portsmouth — Progress Portsmouth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #2d3e52; --navy-dark: #1a2332; --gold: #f4a261; --gold-dark: #c8822a;
+  --teal: #3a7d6e; --coral: #e76f51; --cream: #f8f4ee; --text: #1a2332;
+  --muted: #556472; --border: rgba(0,0,0,.09);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+/* HEADER */
+.site-header { background: var(--navy-dark); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 52px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,.07); }
+.site-header a { color: rgba(255,255,255,.65); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; transition: color .2s; }
+.site-header a:hover { color: var(--gold); }
+
+/* HERO */
+.hero { background: var(--navy); padding: 3.5rem 2rem 3rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(244,162,97,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(244,162,97,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+.hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
+.eyebrow-rule { width: 28px; height: 2px; background: var(--gold-dark); flex-shrink: 0; }
+.eyebrow-text { font-family: 'JetBrains Mono', monospace; font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 4.5vw, 3rem); color: #fff; line-height: 1.12; margin-bottom: 1rem; letter-spacing: -.01em; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-desc { font-size: 1.02rem; color: rgba(255,255,255,.72); max-width: 620px; line-height: 1.7; margin-bottom: 1.5rem; }
+.status-strip { display: inline-flex; align-items: center; gap: .6rem; background: rgba(58,125,110,.22); border: 1px solid rgba(58,125,110,.55); border-radius: 6px; padding: .55rem .9rem; flex-wrap: wrap; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #6fd3bd; flex-shrink: 0; }
+.status-strip span { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .06em; color: rgba(255,255,255,.85); }
+.hero-votes { margin-top: 1.25rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.vote-stat { display: flex; flex-direction: column; gap: .1rem; }
+.vote-stat .v-val { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: #fff; line-height: 1.1; }
+.vote-stat .v-label { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+
+/* MAIN */
+.main { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: 1.55rem; color: var(--navy); margin-bottom: .4rem; }
+.section-sub { font-size: .95rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 680px; }
+
+/* SHORT VERSION */
+.short-version { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05); padding: 1.75rem 2rem; margin-bottom: 2.75rem; border-left: 4px solid var(--gold-dark); }
+.short-version .sv-label { font-family: 'JetBrains Mono', monospace; font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: .75rem; }
+.short-version p { font-size: 1rem; line-height: 1.75; margin-bottom: .85rem; }
+.short-version p:last-child { margin-bottom: 0; }
+
+/* WHAT IT IS NOT */
+.not-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2.75rem; }
+.not-card { background: rgba(45,62,82,.05); border: 1px solid rgba(45,62,82,.12); border-radius: 8px; padding: 1.1rem 1.25rem; }
+.not-card .nc-title { font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--coral); margin-bottom: .4rem; }
+.not-card p { font-size: .9rem; color: var(--text); line-height: 1.6; }
+
+/* FILTER */
+.filter-bar { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.filter-label { font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: .25rem; }
+.filter-btn { padding: .35rem .85rem; border: 1.5px solid rgba(45,62,82,.22); background: transparent; color: var(--muted); font-family: 'Source Sans 3', sans-serif; font-size: .82rem; font-weight: 600; border-radius: 20px; cursor: pointer; transition: all .18s; white-space: nowrap; }
+.filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+.filter-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.filter-btn:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 2px; }
+
+/* LEGEND */
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.75rem; padding: .85rem 1.1rem; background: #fff; border-radius: 8px; border: 1px solid var(--border); }
+.legend-item { display: flex; align-items: center; gap: .45rem; font-size: .78rem; color: var(--muted); }
+.badge { font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 3px; white-space: nowrap; }
+.b-effect  { background: rgba(58,125,110,.14); color: var(--teal); border: 1px solid rgba(58,125,110,.3); }
+.b-rules   { background: rgba(45,62,82,.1); color: var(--navy); border: 1px solid rgba(45,62,82,.25); }
+.b-funding { background: rgba(231,111,81,.12); color: #c5593d; border: 1px solid rgba(231,111,81,.3); }
+.b-mandate { background: rgba(200,130,42,.14); color: var(--gold-dark); border: 1px solid rgba(200,130,42,.35); }
+
+/* PROVISION CARDS */
+.prov-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 3rem; }
+.prov-card { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05); display: flex; flex-direction: column; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.prov-card:hover { transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,.07), 0 10px 28px rgba(0,0,0,.09); }
+.prov-card.hidden { display: none; }
+.pc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; padding: 1.1rem 1.25rem .35rem; }
+.pc-title { font-family: 'DM Serif Display', serif; font-size: 1.08rem; color: var(--navy); line-height: 1.3; }
+.pc-body { padding: .35rem 1.25rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
+.pc-body p { font-size: .9rem; color: var(--text); line-height: 1.65; margin-bottom: .85rem; }
+.pc-aud { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .85rem; }
+.aud-tag { font-family: 'JetBrains Mono', monospace; font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; padding: .18rem .45rem; border-radius: 3px; background: rgba(45,62,82,.07); color: var(--muted); }
+.pc-angle { margin-top: auto; background: linear-gradient(135deg, #1a2332 0%, #2d3e52 100%); border-radius: 7px; padding: .85rem 1rem; }
+.pc-angle .pa-label { font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .35rem; }
+.pc-angle p { font-size: .875rem; color: rgba(255,255,255,.82); line-height: 1.6; margin: 0; }
+
+/* TIMELINE */
+.timeline { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05); padding: 1.75rem 2rem; margin-bottom: 3rem; }
+.tl-row { display: grid; grid-template-columns: 170px 1fr; gap: 1.25rem; padding: .9rem 0; border-bottom: 1px solid var(--border); }
+.tl-row:last-child { border-bottom: none; }
+.tl-when { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gold-dark); padding-top: .15rem; }
+.tl-what { font-size: .9rem; line-height: 1.65; }
+
+/* SOURCES */
+.sources { background: rgba(45,62,82,.05); border: 1px solid rgba(45,62,82,.12); border-radius: 10px; padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+.sources h2 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: .75rem; }
+.sources ul { list-style: none; }
+.sources li { font-size: .85rem; padding: .3rem 0; line-height: 1.55; }
+.sources a { color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(58,125,110,.3); }
+.sources a:hover { color: #2d6358; border-color: var(--teal); }
+
+/* FOOTER */
+.page-footer { background: var(--navy-dark); color: rgba(255,255,255,.65); padding: 2.5rem 2rem; }
+.footer-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 2rem; }
+.fb-label { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: .5rem; }
+.page-footer p { font-size: .85rem; line-height: 1.6; }
+.page-footer a { color: rgba(244,162,97,.85); text-decoration: none; }
+.page-footer a:hover { color: var(--gold); }
+.footer-ai { grid-column: 1/-1; font-size: .75rem; color: rgba(255,255,255,.55); font-style: italic; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.06); margin-top: .5rem; }
+.revision-toggle { background: none; border: none; color: rgba(244,162,97,.75); font-size: .75rem; cursor: pointer; padding: 0; margin-top: .4rem; font-family: 'JetBrains Mono', monospace; letter-spacing: .04em; }
+.revision-notes { display: none; margin-top: .5rem; font-size: .75rem; color: rgba(255,255,255,.55); line-height: 1.65; }
+.revision-notes.open { display: block; }
+
+@media (max-width: 900px) {
+  .prov-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .site-header { position: static; padding: 0 1rem; }
+  .hero { padding: 2.5rem 1.25rem 2.25rem; }
+  .main { padding: 2rem 1rem 3rem; }
+  .not-grid { grid-template-columns: 1fr; }
+  .tl-row { grid-template-columns: 1fr; gap: .25rem; }
+  .short-version, .timeline { padding: 1.25rem 1.25rem; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .hero-votes { gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://progressportsmouth.com">← Progress Portsmouth</a>
+  <a href="./learning-library.html">← Library</a>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><div class="eyebrow-rule"></div><span class="eyebrow-text">Federal Policy · Plain-Language Explainer</span></div>
+    <h1>The 21st Century ROAD to Housing Act —<br><em>and what it could mean for Portsmouth</em></h1>
+    <p class="hero-desc">Congress has passed the most comprehensive federal housing legislation in decades. This module explains what the law actually does in plain language, and maps each provision that plausibly touches Portsmouth — including what has to happen in Washington and at City Hall before any of it matters here.</p>
+    <div class="status-strip"><span class="status-dot"></span><span>Became law July 11, 2026 — enacted without presidential signature after the 10-day constitutional window expired</span></div>
+    <div class="hero-votes">
+      <div class="vote-stat"><span class="v-val">85–5</span><span class="v-label">Senate · June 22, 2026</span></div>
+      <div class="vote-stat"><span class="v-val">358–32</span><span class="v-label">House · June 23, 2026</span></div>
+      <div class="vote-stat"><span class="v-val">40+</span><span class="v-label">Provisions in final bill</span></div>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+
+  <div class="short-version">
+    <div class="sv-label">The short version</div>
+    <p>The 21st Century ROAD to Housing Act is a bipartisan package of more than 40 provisions aimed at increasing housing supply and lowering long-run costs. It works almost entirely through <strong>incentives, pilot programs, and federal program reforms</strong> — grants for communities that build more housing, streamlined environmental reviews, easier financing for manufactured and modular homes, and a first-ever restriction on large institutional investors buying single-family homes.</p>
+    <p>For Portsmouth, the most consequential pieces run through the <strong>Community Development Block Grant (CDBG) program</strong>, because Portsmouth is a CDBG entitlement city — it receives CDBG funds directly from HUD every year. Several provisions attach new requirements, new flexibility, and new risk/reward to that status.</p>
+    <p>One honest framing up front: <strong>laws don't build homes.</strong> Most of the new grant programs still need Congress to appropriate money in a future budget bill, and HUD — which has been assigned at least 35 new programs, rules, and studies with no new staffing funds — will need 12–24 months to stand much of this up.</p>
+  </div>
+
+  <h2 class="section-title">What this law is not</h2>
+  <p class="section-sub">Setting expectations matters as much as explaining the provisions. Four things the law does not do:</p>
+  <div class="not-grid">
+    <div class="not-card"><div class="nc-title">It does not override local zoning</div><p>The law expressly disclaims any federal authority over local land-use decisions. HUD will publish best-practice zoning frameworks, but cannot penalize a community for declining to adopt them. Portsmouth's zoning choices remain Portsmouth's.</p></div>
+    <div class="not-card"><div class="nc-title">It does not deliver money immediately</div><p>Headline programs like the Innovation Fund and Whole Home Repairs pilot are <em>authorized</em> but not yet <em>funded</em>. Congress must appropriate the dollars in a future spending bill before communities can apply.</p></div>
+    <div class="not-card"><div class="nc-title">It does not touch mortgage rates</div><p>Nothing in the law changes interest rates, which are driven by the bond market and Federal Reserve policy. The affordability effects, where they come, arrive through supply and financing reforms over years, not months.</p></div>
+    <div class="not-card"><div class="nc-title">It does not force investors to sell</div><p>The institutional-investor restriction bars entities owning 350+ single-family homes from buying more new ones — but does not require them to sell existing holdings, and carves out build-to-rent development.</p></div>
+  </div>
+
+  <h2 class="section-title">The provisions, mapped to Portsmouth</h2>
+  <p class="section-sub">Each card explains one provision in plain language, then states the specific Portsmouth connection. Badges show implementation status — where things stand between statute and reality.</p>
+
+  <div class="filter-bar">
+    <span class="filter-label">Show provisions for:</span>
+    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCards('cityhall', this)">City Hall</button>
+    <button class="filter-btn" onclick="filterCards('homeowners', this)">Homeowners</button>
+    <button class="filter-btn" onclick="filterCards('renters', this)">Renters</button>
+    <button class="filter-btn" onclick="filterCards('builders', this)">Builders &amp; Nonprofits</button>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="badge b-mandate">Mandate</span> New requirement on Portsmouth</div>
+    <div class="legend-item"><span class="badge b-effect">In effect</span> Statutory change, operative now or soon</div>
+    <div class="legend-item"><span class="badge b-rules">Needs HUD rules</span> Requires federal rulemaking or guidance first</div>
+    <div class="legend-item"><span class="badge b-funding">Needs funding</span> Authorized, but Congress must still appropriate money</div>
+  </div>
+
+  <div class="prov-grid" id="provGrid">
+
+    <div class="prov-card" data-aud="cityhall builders">
+      <div class="pc-top"><h3 class="pc-title">Public database of city-owned land</h3><span class="badge b-mandate">Mandate</span></div>
+      <div class="pc-body">
+        <p>Every CDBG grantee must publish a searchable, publicly accessible online database of undeveloped land parcels the jurisdiction owns. CDBG funds may be used to build and maintain it.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>This is the one provision that directly obligates Portsmouth. As a CDBG entitlement city, Portsmouth will need to inventory and publish its undeveloped holdings. City land disposition has been the central constraint on nonprofit-scale housing here — a required public inventory makes that conversation concrete and visible.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall">
+      <div class="pc-top"><h3 class="pc-title">CDBG funding tied to housing production</h3><span class="badge b-rules">Needs HUD rules</span></div>
+      <div class="pc-body">
+        <p>The "Build Now" provision links some entitlement communities' annual CDBG allocations to housing outcomes: bonuses for accelerated production, and reductions (up to roughly 10%) for communities whose housing growth lags peers. It targets communities with high housing costs and low vacancy.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth fits the targeted profile — high costs, low vacancy — almost exactly. This cuts both ways: documented production gains could increase Portsmouth's CDBG grant, while lagging production could reduce it. It puts a modest federal price tag on inaction for the first time.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall builders">
+      <div class="pc-top"><h3 class="pc-title">CDBG can now fund new construction</h3><span class="badge b-effect">In effect</span></div>
+      <div class="pc-body">
+        <p>New construction of affordable housing becomes an eligible CDBG activity — historically it largely was not, which pushed CDBG dollars toward rehabilitation and services instead of building.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth's annual CDBG allocation gains a new use: it can now be stacked into the capital budget of an affordable construction project — alongside the Housing Trust Fund and city land — rather than being limited to rehab and program support.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall builders homeowners">
+      <div class="pc-top"><h3 class="pc-title">Grants for pre-approved plans &amp; pattern books</h3><span class="badge b-funding">Needs funding</span></div>
+      <div class="pc-body">
+        <p>The Accelerating Home Building Act authorizes competitive HUD grants to help local governments adopt pre-reviewed building designs — "pattern books" — that qualify for faster permitting.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Homeowners</span><span class="aud-tag">Builders</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth is already moving in this direction: a June 2026 Council motion directed exploration of pre-approved ADU plans. If Congress funds this program, Portsmouth would have a federal grant source for exactly that work instead of carrying the cost alone.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall builders">
+      <div class="pc-top"><h3 class="pc-title">The Innovation Fund</h3><span class="badge b-funding">Needs funding</span></div>
+      <div class="pc-body">
+        <p>A new competitive grant program rewarding communities that demonstrably increase housing supply, including mixed-income "attainable housing." Authorized at roughly $200 million per year for fiscal years 2027–2031, sunsetting seven years after enactment. It cannot be used to mandate or preempt local zoning.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>A future revenue possibility, not a present one — Congress must appropriate the money first. If funded, communities that can document supply gains will compete well. Portsmouth's ability to show measurable production (and to measure it credibly) becomes the qualifying credential.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall builders">
+      <div class="pc-top"><h3 class="pc-title">Streamlined environmental reviews</h3><span class="badge b-rules">Needs HUD rules</span></div>
+      <div class="pc-body">
+        <p>Multiple provisions right-size federal environmental (NEPA) review for housing: small and infill projects may be exempted or fast-tracked, and HUD gains authority to designate federally funded housing as streamlined "special projects."</p>
+        <div class="pc-aud"><span class="aud-tag">Builders</span><span class="aud-tag">Nonprofits</span><span class="aud-tag">City Hall</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Any Portsmouth project using federal money — LIHTC deals, HOME funds, CDBG-assisted construction — currently absorbs NEPA review time and cost. Faster reviews shave months off exactly the kind of nonprofit-partnered projects Portsmouth is trying to initiate on city land.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall">
+      <div class="pc-top"><h3 class="pc-title">Federal zoning best-practice frameworks</h3><span class="badge b-rules">Needs HUD rules</span></div>
+      <div class="pc-body">
+        <p>HUD, advised by a group including local officials, will publish model frameworks and best practices for state and local zoning and land-use policy. Adoption is entirely voluntary — HUD is expressly barred from penalizing communities that decline.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Timing is the story. Portsmouth's Master Plan update lands in early 2027, with a comprehensive zoning rewrite to follow. Federal model codes arriving in that same window give the rewrite a vetted, national reference point — useful cover and useful content.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall builders">
+      <div class="pc-top"><h3 class="pc-title">Single-stair building guidelines</h3><span class="badge b-rules">Needs HUD rules</span></div>
+      <div class="pc-body">
+        <p>HUD will publish guidelines for "point-access block" buildings — apartment buildings served by a single internal stairway, up to six stories — a code change that can make small-lot multifamily infill cheaper to build. Competitive pilot grants may follow.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Builders</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth's downtown-adjacent lots are small and expensive; double-stair requirements make modest apartment buildings hard to pencil on them. Federal guidelines give the city a technical basis for considering single-stair allowances in the zoning rewrite — a building-code conversation, not just a zoning one.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="homeowners">
+      <div class="pc-top"><h3 class="pc-title">FHA financing for ADUs</h3><span class="badge b-rules">Needs HUD rules</span></div>
+      <div class="pc-body">
+        <p>Construction of accessory dwelling units becomes an acceptable use for FHA-insured property improvement loans, and FHA-insured manufactured housing loan limits increase.</p>
+        <div class="pc-aud"><span class="aud-tag">Homeowners</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Financing, not zoning, is often the binding constraint for a homeowner considering an ADU. A federally insured loan product for ADU construction addresses the practical question — how does an ordinary household pay for this — that local pre-approved plans alone cannot answer.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="homeowners renters">
+      <div class="pc-top"><h3 class="pc-title">Whole Home Repairs pilot</h3><span class="badge b-funding">Needs funding</span></div>
+      <div class="pc-body">
+        <p>A HUD pilot supporting state and local programs that give homeowners and small landlords grants or forgivable loans for repairs and modifications — keeping older homes habitable and older residents housed.</p>
+        <div class="pc-aud"><span class="aud-tag">Homeowners</span><span class="aud-tag">Renters</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Much of Portsmouth's naturally affordable stock is old housing held by longtime owners and small landlords. Repair support is a preservation tool — it keeps existing units in service, which matters in a market where replacement units come in at far higher rents. Contingent on future appropriations.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="renters">
+      <div class="pc-top"><h3 class="pc-title">Housing Choice Voucher streamlining</h3><span class="badge b-effect">In effect</span></div>
+      <div class="pc-body">
+        <p>Landlords can request advance unit inspections before a voucher tenant applies, reducing the delay that discourages many landlords from accepting vouchers at all.</p>
+        <div class="pc-aud"><span class="aud-tag">Renters</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>In a tight rental market, voucher holders lose units to unassisted applicants during the inspection wait. Anything that shortens that window modestly improves voucher usability in Portsmouth, where the vacancy rate leaves no slack.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="homeowners renters">
+      <div class="pc-top"><h3 class="pc-title">Institutional investor purchase restriction</h3><span class="badge b-effect">In effect</span></div>
+      <div class="pc-body">
+        <p>Entities owning 350 or more single-family homes are barred from purchasing additional new ones, with exceptions including build-to-rent communities. Existing holdings are untouched. HUD will stand up a renter outreach resource for tenants of investor-owned homes.</p>
+        <div class="pc-aud"><span class="aud-tag">Homeowners</span><span class="aud-tag">Renters</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Candidly: limited local effect. Large institutional investors own a small share of single-family rentals nationally (~3%) and are not a major presence in Portsmouth, where most rentals belong to small local landlords. This provision matters more in Sun Belt metros than on the Seacoast.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="builders homeowners">
+      <div class="pc-top"><h3 class="pc-title">Manufactured &amp; modular housing reforms</h3><span class="badge b-effect">In effect</span></div>
+      <div class="pc-body">
+        <p>The law removes the requirement that manufactured homes be built on a permanent chassis, directs FHA to reduce barriers to modular housing financing, and modernizes manufactured-home loan standards.</p>
+        <div class="pc-aud"><span class="aud-tag">Builders</span><span class="aud-tag">Homeowners</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Factory-built housing is one of the few paths to lower per-unit construction cost, and financing friction has been a real barrier. The near-term Portsmouth relevance is indirect — through regional builders and ADU fabricators — but cost reductions in factory-built units eventually reach infill and ADU projects here.</p></div>
+      </div>
+    </div>
+
+    <div class="prov-card" data-aud="cityhall builders">
+      <div class="pc-top"><h3 class="pc-title">HOME program reauthorized &amp; reformed</h3><span class="badge b-effect">In effect</span></div>
+      <div class="pc-body">
+        <p>The HOME Investment Partnerships Program — a core federal source of gap funding for affordable housing — is reauthorized with administrative reforms, including broader flexibility to use funds for housing-related infrastructure.</p>
+        <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>HOME funds (which reach Portsmouth-area projects through the state and regional consortia) are a standard layer in the capital stack of nonprofit affordable developments. A stabilized, more flexible HOME program improves the financing environment for the larger projects Portsmouth hopes to see on city-controlled land.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">A realistic timeline</h2>
+  <p class="section-sub">What has to happen, in what order, before provisions become dollars or units.</p>
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-when">July 2026</div><div class="tl-what">Law takes effect. Statutory changes (CDBG new-construction eligibility, investor restriction, manufactured housing definition, HOME reauthorization) are operative, though agencies must update program rules to administer them.</div></div>
+    <div class="tl-row"><div class="tl-when">2026–2027</div><div class="tl-what">HUD begins rulemaking and guidance on at least 35 assigned tasks — zoning frameworks, single-stair guidelines, NEPA streamlining, the public land database requirement — with no new staffing appropriation. Analysts expect 12–24 months for most implementation.</div></div>
+    <div class="tl-row"><div class="tl-when">FY 2027 budget</div><div class="tl-what">First test of whether Congress funds the authorized-but-unfunded programs: the Innovation Fund, Whole Home Repairs, pre-approved plans grants, planning grants, and the RESIDE vacant-building conversion pilot. Authorization without appropriation produces nothing.</div></div>
+    <div class="tl-row"><div class="tl-when">2027 · Portsmouth</div><div class="tl-what">The window where federal and local timelines intersect: Master Plan adoption, the comprehensive zoning rewrite, and the city's compliance with the public land database requirement all land as HUD guidance comes online.</div></div>
+  </div>
+
+  <div class="sources">
+    <h2>Sources</h2>
+    <ul>
+      <li>Bipartisan Policy Center — <a href="https://bipartisanpolicy.org/issue-brief/inside-the-deal-whats-in-the-final-21st-century-road-to-housing-act/" target="_blank" rel="noopener">Inside the Deal: What's in the Final 21st Century ROAD to Housing Act</a> (June 2026)</li>
+      <li>House Financial Services Committee — <a href="https://financialservices.house.gov/uploadedfiles/2026-06-22-_fsc_sxs_-_21st_century_road_housing.pdf" target="_blank" rel="noopener">Section-by-Section Summary of the Final Bill</a> (June 22, 2026)</li>
+      <li>National League of Cities — <a href="https://www.nlc.org/article/2026/07/02/ten-things-for-local-leaders-to-know-about-the-21st-century-road-to-housing-act/" target="_blank" rel="noopener">10 Things for Local Leaders to Know</a> (July 2, 2026)</li>
+      <li>Urban Institute — <a href="https://www.urban.org/urban-wire/congress-has-finally-passed-major-housing-reform-real-work-starts-now" target="_blank" rel="noopener">Congress Has Finally Passed Major Housing Reform. The Real Work Starts Now.</a> (June 2026)</li>
+      <li>Congressional Research Service — <a href="https://www.congress.gov/crs-product/R48732" target="_blank" rel="noopener">ROAD to Housing Act of 2025 (R48732)</a></li>
+      <li>NPR — <a href="https://www.npr.org/2026/07/10/nx-s1-5885027/housing-bill-without-trump-signature" target="_blank" rel="noopener">Largest housing affordability bill in decades becomes law without president's signature</a> (July 11, 2026)</li>
+      <li>CBS News — <a href="https://www.cbsnews.com/news/housing-bill-becomes-law-trump-sign/" target="_blank" rel="noopener">Bipartisan housing bill automatically becomes law</a> (July 11, 2026)</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="fb-label">Module</div>
+      <p>The ROAD to Housing Act &amp; Portsmouth<br><strong style="color:rgba(255,255,255,.75);">Version 1.0</strong> · July 11, 2026</p>
+      <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
+      <div class="revision-notes">v1.0 (July 11, 2026) — Initial release, published the day the 21st Century ROAD to Housing Act became law without presidential signature. 14 provision cards mapped to Portsmouth with audience filters and implementation-status badges. Grant-program figures reflect authorizations only; appropriations pending.</div>
+    </div>
+    <div>
+      <div class="fb-label">Organization</div>
+      <p>Progress Portsmouth<br><a href="https://progressportsmouth.com">progressportsmouth.com</a></p>
+    </div>
+    <div>
+      <div class="fb-label">Context</div>
+      <p>Part of the Housing Policy Reference Library. Prepared as an outside resource supporting Portsmouth's Housing Action Plan process.</p>
+    </div>
+    <p class="footer-ai">Created with AI assistance in research and information design, with human editorial control.</p>
+  </div>
+</footer>
+
+<script>
+function filterCards(aud, btn) {
+  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+  btn.classList.add("active");
+  document.querySelectorAll(".prov-card").forEach(function(card) {
+    if (aud === "all") {
+      card.classList.remove("hidden");
+    } else {
+      var auds = card.getAttribute("data-aud") || "";
+      card.classList.toggle("hidden", auds.indexOf(aud) === -1);
+    }
+  });
+}
+</script>
+</body>
+</html>
