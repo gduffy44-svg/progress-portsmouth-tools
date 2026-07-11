@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSA 79-E — How NH Communities Adopt It, and the Shape of an Ordinance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#2d3e52; --navy-dark:#1a2332; --gold:#f4a261; --gold-dark:#c8822a;
+    --teal:#3a7d6e; --coral:#e76f51; --cream:#f8f4ee; --muted:#556472;
+    --border:rgba(45,62,82,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Source Sans 3',Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.6;font-size:16px;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+  a{color:var(--gold-dark);}
+  .label{font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;}
+
+  /* header */
+  header{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 55%,#34506a 100%);color:#fff;padding:38px 0 32px;}
+  header .kicker{color:var(--gold);margin-bottom:12px;}
+  header h1{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(1.7rem,4.4vw,2.5rem);line-height:1.12;margin:0 0 12px;}
+  header p{font-size:1.02rem;color:rgba(255,255,255,0.82);max-width:680px;margin:0;}
+
+  /* illustrative banner */
+  .illus{background:rgba(231,111,81,0.10);border-top:3px solid var(--coral);border-bottom:1px solid rgba(231,111,81,0.25);}
+  .illus .wrap{padding-top:16px;padding-bottom:16px;}
+  .illus .label{color:var(--coral);display:block;margin-bottom:5px;}
+  .illus p{margin:0;font-size:0.95rem;color:#5a3528;}
+  .illus strong{color:#7d3a26;}
+
+  section{padding:30px 0;}
+  section.alt{background:var(--cream);}
+  h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:clamp(1.35rem,3.2vw,1.8rem);color:var(--navy);margin:0 0 6px;}
+  .sec-kicker{color:var(--teal);margin-bottom:14px;}
+  .lead{font-size:1.02rem;color:var(--navy);max-width:760px;margin:0 0 22px;}
+  p{margin:0 0 14px;}
+  .muted{color:var(--muted);}
+
+  /* comparison table */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;}
+  table.cmp{border-collapse:collapse;width:100%;min-width:720px;font-size:0.88rem;background:#fff;}
+  table.cmp th,table.cmp td{padding:11px 13px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);}
+  table.cmp thead th{background:var(--navy);color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:700;position:sticky;top:0;}
+  table.cmp thead th:first-child{background:var(--navy-dark);}
+  table.cmp tbody th{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--navy);font-weight:700;background:rgba(45,62,82,0.04);white-space:nowrap;}
+  table.cmp tbody tr:nth-child(even) td,table.cmp tbody tr:nth-child(even) th{background:rgba(45,62,82,0.02);}
+  table.cmp tbody tr:nth-child(even) th{background:rgba(45,62,82,0.06);}
+  table.cmp .fit{color:var(--teal);font-style:italic;}
+  .scroll-hint{font-size:0.78rem;color:var(--muted);margin:8px 2px 0;}
+
+  /* decision axes */
+  .axes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:8px;}
+  .axis{background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:14px 16px;}
+  .axis .label{color:var(--gold-dark);display:block;margin-bottom:6px;}
+  .axis p{font-size:0.92rem;margin:0;}
+
+  /* skeleton */
+  .skeleton{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .sk-row{padding:16px 18px;border-bottom:1px solid var(--border);}
+  .sk-row:last-child{border-bottom:none;}
+  .sk-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:700;color:var(--teal);letter-spacing:0.06em;}
+  .sk-title{font-weight:700;font-size:1.02rem;color:var(--navy);margin:2px 0 4px;}
+  .sk-body{font-size:0.93rem;color:var(--navy);margin:0 0 8px;}
+  .ph{display:block;background:rgba(244,162,97,0.13);border:1px dashed var(--gold-dark);border-radius:6px;padding:9px 12px;font-size:0.88rem;color:#7a5410;margin-top:6px;}
+  .ph .label{color:var(--gold-dark);display:block;margin-bottom:3px;}
+  .stat-note{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:6px;}
+
+  /* watch box */
+  .watch{background:var(--navy-dark);color:#fff;border-radius:10px;padding:20px 22px;}
+  .watch .label{color:var(--gold);display:block;margin-bottom:8px;}
+  .watch h3{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:1.2rem;margin:0 0 8px;color:#fff;}
+  .watch p{color:rgba(255,255,255,0.82);font-size:0.94rem;margin:0 0 10px;}
+  .watch p:last-child{margin-bottom:0;}
+  .watch strong{color:#fff;}
+
+  /* help */
+  .help{background:rgba(58,125,110,0.08);border:1px solid rgba(58,125,110,0.3);border-radius:10px;padding:18px 20px;}
+  .help .label{color:var(--teal);display:block;margin-bottom:8px;}
+  .help ul{margin:0;padding-left:20px;}
+  .help li{margin-bottom:6px;font-size:0.95rem;}
+
+  /* footer */
+  footer{background:var(--navy-dark);color:rgba(255,255,255,0.7);padding:26px 0;font-size:0.84rem;}
+  footer .wrap > div{margin-bottom:10px;}
+  footer a{color:var(--gold);}
+  footer .ai{font-style:italic;color:rgba(255,255,255,0.55);}
+  footer .sources{color:rgba(255,255,255,0.6);font-size:0.8rem;}
+  .rev{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,0.55);}
+  .rev-toggle{background:none;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);font-family:'JetBrains Mono',monospace;font-size:0.68rem;padding:3px 9px;border-radius:5px;cursor:pointer;margin-top:6px;}
+  #revMore{display:none;margin-top:8px;color:rgba(255,255,255,0.6);font-size:0.8rem;}
+  #revMore.open{display:block;}
+
+  @media (max-width:640px){
+    body{font-size:15px;}
+    section{padding:24px 0;}
+    header{padding:30px 0 26px;}
+    .axes{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker label">Progress Portsmouth &middot; research brief</div>
+    <h1>RSA 79-E: how other NH communities adopt it &mdash; and the shape of an ordinance</h1>
+    <p>A side-by-side look at the four ways New Hampshire municipalities have put the Community Revitalization Tax Relief Incentive to work, and an illustrative skeleton of what a local adoption actually contains.</p>
+  </div>
+</header>
+
+<div class="illus">
+  <div class="wrap">
+    <span class="label">Preliminary &amp; illustrative</span>
+    <p><strong>This is research and a structural template to inform the Housing Committee&rsquo;s choices &mdash; not proposed Portsmouth policy and not legal text.</strong> Every figure below reflects the current statute and other communities&rsquo; adopted programs; the skeleton&rsquo;s bracketed items are decisions for the committee, staff, and city legal to make. NH Housing is the state&rsquo;s educator on 79-E, and city staff draft ordinances &mdash; this is meant to help that work, not substitute for it.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-kicker label">Part 1 &middot; The four models</div>
+    <h2>One statute, four ways to use it</h2>
+    <p class="lead">RSA 79-E lets a municipality grant temporary property-tax relief to owners who reinvest in qualifying buildings, in exchange for a public benefit secured by a covenant. Since 2006 it has grown from a downtown-rehabilitation tool into four distinct programs a community can adopt. About 70 NH municipalities have adopted the traditional version; only Conway has adopted a Housing Opportunity Zone; only Keene, Newport, and Derry have adopted Residential Property Revitalization zones.</p>
+
+    <div class="table-scroll">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th>Decision</th>
+            <th>Traditional 79-E</th>
+            <th>Residential Property Revitalization (RPR)</th>
+            <th>Conversion Zone (office &rarr; residential)</th>
+            <th>Housing Opportunity Zone (HOZ)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Where it applies</th>
+            <td>Downtowns, village centers, central/neighborhood business districts the governing body designates.</td>
+            <td>Any designated residential zone &mdash; <em>not</em> limited to downtown or village center.</td>
+            <td>An area the governing body designates for housing redevelopment of commercial/office buildings.</td>
+            <td>A zone the governing body designates; can target existing neighborhoods or new-construction areas.</td>
+          </tr>
+          <tr>
+            <th>Eligible structures</th>
+            <td>Qualifying (generally older) commercial / mixed-use buildings undergoing substantial rehabilitation.</td>
+            <td>Residential structures at least 40 years old, up to 4 units. ADUs can qualify.</td>
+            <td>Office/commercial buildings converted to housing. (HB 1103 would broaden to other commercial/industrial.)</td>
+            <td>Multi-family housing; usable for rehabilitation or new construction.</td>
+          </tr>
+          <tr>
+            <th>Qualifying activity</th>
+            <td>Substantial rehabilitation that returns a building to productive use.</td>
+            <td>Improving the quality, condition, or use of an existing dwelling; conversions; ADUs.</td>
+            <td>Converting non-residential space into dwelling units.</td>
+            <td>Creating multi-family units, including ground-up construction.</td>
+          </tr>
+          <tr>
+            <th>Affordability requirement</th>
+            <td>None defined by statute &mdash; &ldquo;affordable&rdquo; is left vague (a known weakness).</td>
+            <td>None required; tool is about reuse and condition, not income limits.</td>
+            <td>None required by the conversion mechanism itself.</td>
+            <td>1/3 of units at or below 80% AMI (or an alternative income mix). <span class="muted">HB 1103 would let the municipality set its own standard.</span></td>
+          </tr>
+          <tr>
+            <th>Relief duration</th>
+            <td>Base up to 5 yrs (substantial rehab); add-ons available (e.g. +2 new units, +4 affordable units, +4 historic register), 15-yr maximum.</td>
+            <td>Same schedule as traditional 79-E; no property may receive relief more than once in a 20-year period.</td>
+            <td>Up to 10 years, beginning at certificate of occupancy.</td>
+            <td>Up to 10 years from CO. <span class="muted">HB 1103 would set distinct terms for projects with vs. without workforce housing.</span></td>
+          </tr>
+          <tr>
+            <th>Public benefit (covenant)</th>
+            <td colspan="4">All four require a covenant securing at least one statutory public benefit: economic vitality; cultural or historic significance; preservation of existing building stock; development of municipal centers; or housing in urban/town centers. Covenant term runs up to twice the relief period (RSA 79-E:8).</td>
+          </tr>
+          <tr>
+            <th>Best suited to</th>
+            <td class="fit">Reviving older downtown/mixed-use buildings.</td>
+            <td class="fit">Citywide conversions, right-sizing, and ADUs in older homes.</td>
+            <td class="fit">Turning underused commercial/office stock into housing.</td>
+            <td class="fit">New multi-family with a built-in affordability share.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="scroll-hint">&#8596; Scroll the table sideways on a phone to see all four models.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-kicker label">Part 1 &middot; continued</div>
+    <h2>The decisions these force for Portsmouth</h2>
+    <p class="lead">Read across the table and the same handful of choices recur. A Portsmouth adoption is really a set of answers to these:</p>
+    <div class="axes">
+      <div class="axis"><span class="label">1 &middot; Geography</span><p>Downtown only, or citywide? Traditional 79-E is downtown-bound; RPR and HOZ are not. Portsmouth could combine more than one program to cover both.</p></div>
+      <div class="axis"><span class="label">2 &middot; What activity</span><p>Rehab of existing buildings, conversion of commercial space, small-home conversions/ADUs, or new multi-family &mdash; each maps to a different model.</p></div>
+      <div class="axis"><span class="label">3 &middot; Affordability standard</span><p>The pivotal choice. Traditional/RPR/conversion require none; only HOZ does. If below-market units are the goal, the standard has to be written in deliberately.</p></div>
+      <div class="axis"><span class="label">4 &middot; Relief duration</span><p>How many years, by activity type, up to the statutory caps &mdash; the lever that determines how much tax is forgone and for how long.</p></div>
+      <div class="axis"><span class="label">5 &middot; Public benefit</span><p>Which statutory benefit(s) the covenant secures, and how specifically they&rsquo;re defined for Portsmouth.</p></div>
+      <div class="axis"><span class="label">6 &middot; The but-for test</span><p>How the city will assess whether a project genuinely needs the relief to proceed &mdash; the safeguard against forgoing tax on projects that would happen anyway.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-kicker label">Part 2 &middot; The anatomy</div>
+    <h2>Illustrative skeleton of a 79-E adoption</h2>
+    <p class="lead">This is the structure an adoption document takes. It is deliberately empty where real choices live: <strong>every bracketed item is a policy decision for the committee, staff, and city legal &mdash; shown as a placeholder, not a recommendation.</strong> Seeing the anatomy is the point; the content is the city&rsquo;s to write.</p>
+
+    <div class="skeleton">
+      <div class="sk-row">
+        <span class="sk-num">&sect; 1</span>
+        <div class="sk-title">Authority &amp; purpose</div>
+        <p class="sk-body">States that the city adopts the program under RSA 79-E and why &mdash; the local conditions and goals the program serves.</p>
+        <span class="ph"><span class="label">Choice</span>[Statement of purpose &mdash; e.g. reuse of older buildings, downtown vitality, housing creation. Tie to Master Plan / Housing Action Plan goals.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 2</span>
+        <div class="sk-title">Program model(s) adopted</div>
+        <p class="sk-body">Which of the four programs the city is enacting &mdash; one or several.</p>
+        <span class="ph"><span class="label">Choice</span>[Traditional 79-E &nbsp;/&nbsp; RPR zone &nbsp;/&nbsp; Conversion zone &nbsp;/&nbsp; Housing Opportunity Zone &mdash; select and combine.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 3</span>
+        <div class="sk-title">District designation</div>
+        <p class="sk-body">The geographic area(s) where relief is available, by reference to a map or district boundaries.</p>
+        <span class="ph"><span class="label">Choice</span>[Boundaries / districts &mdash; e.g. downtown core, specific neighborhoods, commercial corridors, or citywide for an RPR program.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 4</span>
+        <div class="sk-title">Eligible structures &amp; qualifying activity</div>
+        <p class="sk-body">Which buildings qualify and what work counts (rehabilitation, conversion, new construction).</p>
+        <span class="ph"><span class="label">Choice</span>[Structure type, age threshold, unit cap; whether new construction qualifies; ADU eligibility.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 5</span>
+        <div class="sk-title">Affordability standard (if any)</div>
+        <p class="sk-body">Whether a share of units must be income-restricted, at what level, and for how long.</p>
+        <span class="ph"><span class="label">Choice</span>[None, or e.g. a defined share at or below a stated AMI; restriction term. The single most consequential choice if below-market units are the goal.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 6</span>
+        <div class="sk-title">Duration of tax relief</div>
+        <p class="sk-body">Years of relief, which may vary by activity type, within the statutory maximums.</p>
+        <span class="ph"><span class="label">Choice</span>[Years by category, up to the RSA 79-E caps &mdash; base rehab, additional years for new units / affordable units / historic register.]</span>
+        <p class="stat-note">Statutory ceiling: up to 15 years total for traditional 79-E; up to 10 years for HOZ / conversion zones.</p>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 7</span>
+        <div class="sk-title">Required public benefit</div>
+        <p class="sk-body">Which statutory public benefit(s) the project must deliver, secured by covenant.</p>
+        <span class="ph"><span class="label">Choice</span>[One or more of: economic vitality; cultural/historic significance; preservation of building stock; development of municipal centers; housing in urban/town centers &mdash; defined for Portsmouth.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 8</span>
+        <div class="sk-title">Application &amp; review process</div>
+        <p class="sk-body">Who applies, to whom, on what timeline, and which body decides.</p>
+        <span class="ph"><span class="label">Choice</span>[Application contents and fee; reviewing department(s); governing-body hearing and decision timeline; template documents.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 9</span>
+        <div class="sk-title">Granting finding &amp; the &ldquo;but-for&rdquo; test</div>
+        <p class="sk-body">The findings the governing body must make before granting &mdash; including that relief is needed for the project to proceed.</p>
+        <span class="ph"><span class="label">Choice</span>[How the city assesses financial need / but-for; what evidence an applicant must show. A known administrative challenge &mdash; worth a defined method.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 10</span>
+        <div class="sk-title">Tax relief covenant</div>
+        <p class="sk-body">The recorded covenant binding the property to the public benefit for a set term.</p>
+        <span class="ph"><span class="label">Choice</span>[Covenant duration &mdash; up to twice the relief period per RSA 79-E:8 &mdash; and the obligations it secures.]</span>
+      </div>
+      <div class="sk-row">
+        <span class="sk-num">&sect; 11</span>
+        <div class="sk-title">Administration, reporting &amp; review</div>
+        <p class="sk-body">Staff capacity, oversight, and a date to review how the program is working.</p>
+        <span class="ph"><span class="label">Choice</span>[Administering department; annual reporting; sunset or review date. NH Housing flags staff capacity as a common adoption challenge.]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="watch">
+      <span class="label">On the horizon &middot; verify before relying on it</span>
+      <h3>HB 1103 would widen the toolbox &mdash; but it isn&rsquo;t law yet</h3>
+      <p>A 2026 bill, HB 1103, would expand 79-E by letting municipalities <strong>define affordability themselves</strong>, apply the tool to <strong>a wider range of property types</strong>, and use it for <strong>new construction</strong> &mdash; and would broaden &ldquo;office conversion&rdquo; zones into broader residential conversion zones.</p>
+      <p>As of this writing it has moved through House committee but has <strong>not been enacted</strong>, and its final terms (including relief durations) are not settled. Treat its provisions as anticipated, not current &mdash; and confirm status before any adoption relies on them.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="help">
+      <span class="label">What Progress Portsmouth can do with this</span>
+      <ul>
+        <li>Pull the actual adopted ordinance language from Conway (HOZ), the RPR towns (Keene, Newport, Derry), and a traditional adopter, side by side, as a starting library for staff.</li>
+        <li>Map each decision above against the items already in the Action Plan Explorer, so the committee sees where 79-E choices connect to the rest of the plan.</li>
+        <li>Build a worked &ldquo;but-for&rdquo; and tax-relief example on a real project type, to show what a grant actually costs the city and delivers in return.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="rev">Version 0.1 (preliminary draft) &middot; Jun 15, 2026
+      <button class="rev-toggle" id="revToggle" type="button">About this draft &#9662;</button>
+      <div id="revMore">Prepared as a discussion aid for the Housing Committee. Figures reflect the current RSA 79-E statute and NH Housing&rsquo;s March 2026 Municipal Guide; adopted-program details from Conway, Keene, Newport, Derry, and traditional adopters. HB 1103 status current as of Jun 15, 2026 and subject to change. Not legal text; not a Progress Portsmouth policy recommendation.</div>
+    </div>
+    <div class="ai">Created with AI assistance in research and information design, with human editorial control.</div>
+    <div class="sources">Sources: RSA 79-E; NH Housing, Municipal Guide to RSA 79-E (March 2026); adopted programs in Conway, Keene, Newport, Derry, and traditional 79-E municipalities; NH General Court / LegiScan for HB 1103 status.</div>
+    <div><a href="https://www.progressportsmouth.com">&larr; progressportsmouth.com</a></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('revToggle').addEventListener('click', function(){
+    var m = document.getElementById('revMore');
+    m.classList.toggle('open');
+    this.innerHTML = m.classList.contains('open') ? 'About this draft \u25b4' : 'About this draft \u25be';
+  });
+</script>
+
+</body>
+</html>
