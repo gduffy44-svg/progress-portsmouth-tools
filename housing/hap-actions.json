@@ -1247,7 +1247,7 @@
     "description": "Establish a city-maintained library of pre-approved architectural designs for common residential building types including ADUs, duplexes, triplexes, small apartment buildings (up to 8 units), and cottage housing.",
     "target": "Library of at least 8 designs across at least 3 building types available, and expedited review track operational, within 24 months",
     "metric": "Number of templates available by building type; average permit review time for template applications vs. non-template applications",
-    "sources": "AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4; Housing Committee April 23, 2026 minutes; Portsmouth City Council Agenda Item 15B, June 22, 2026 (Cook memo on pre-approved ADU plans)",
+    "sources": "AEI State Housing Supply Legislation Update (March 2026); Housing Supply Accelerator Playbook Strategies 4.1, 5.1, 10.3, 10.4; Housing Committee April 23, 2026 minutes; Portsmouth City Council Agenda Item 15B, June 22, 2026 (Cook memo on pre-approved ADU plans); 21st Century ROAD to Housing Act (2026)",
     "notes": "This item subsumes the ADU pre-approved plan library referenced in item Z-2 (ADU ordinance enhancements) and expands its scope to all small residential building types.",
     "is_new": true,
     "status": "not-started",
@@ -1264,7 +1264,12 @@
     ],
     "id": "P-14",
     "staff_term": "long",
-    "staff_note": "After Master Plan update, more to review — interesting idea for first-time homebuyers to reduce engineering and architect expense. The Planning Board would be accustomed to seeing and understanding the plan. Less likely of interest where land is most expensive and housing would more likely be a custom design."
+    "staff_note": "After Master Plan update, more to review — interesting idea for first-time homebuyers to reduce engineering and architect expense. The Planning Board would be accustomed to seeing and understanding the plan. Less likely of interest where land is most expensive and housing would more likely be a custom design.",
+    "federal_ref": {
+      "law": "21st Century ROAD to Housing Act",
+      "enacted": "2026-07-11",
+      "note": "The 21st Century ROAD to Housing Act (2026) authorizes HUD grants for pre-approved building designs and pattern books — a potential future funding source for this work, contingent on appropriations."
+    }
   },
   {
     "category": "Permitting & Process",
@@ -1626,7 +1631,7 @@
     "description": "Low-interest loans or grants for owner-occupants and small landlords to rehabilitate older housing stock.",
     "target": "",
     "metric": "Rehab loans/grants awarded; units improved; code violations resolved",
-    "sources": "Keene 2A; South Portland 1A; 2017 Listens; Housing Policy 2016-01 §III Master Plan Strategy 3.1.2; 2017 Master Plan Action 3.1.2",
+    "sources": "Keene 2A; South Portland 1A; 2017 Listens; Housing Policy 2016-01 §III Master Plan Strategy 3.1.2; 2017 Master Plan Action 3.1.2; 21st Century ROAD to Housing Act (2026)",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -1641,7 +1646,12 @@
       "Benefits individual properties rather than systemic improvement",
       "Program administration and property inspection costs"
     ],
-    "id": "I-14"
+    "id": "I-14",
+    "federal_ref": {
+      "law": "21st Century ROAD to Housing Act",
+      "enacted": "2026-07-11",
+      "note": "New construction of affordable housing is now a CDBG-eligible activity under the 21st Century ROAD to Housing Act (2026), broadening this item's toolkit beyond rehabilitation."
+    }
   },
   {
     "category": "Incentives & Financial Tools",
@@ -1885,7 +1895,7 @@
     "description": "Revolving loans/grants for affordable and workforce projects. Prioritize projects leveraging other sources.",
     "target": "",
     "metric": "Loans/grants made; units produced; leverage ratio",
-    "sources": "HAP Narrative; Keene 3D; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes",
+    "sources": "HAP Narrative; Keene 3D; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; 21st Century ROAD to Housing Act (2026)",
     "notes": "",
     "is_new": false,
     "status": "",
@@ -1902,7 +1912,12 @@
     ],
     "id": "HTF-3",
     "staff_term": "long",
-    "staff_note": "Need to get more funds into the trust. Potential use for Housing Trust Fund."
+    "staff_note": "Need to get more funds into the trust. Potential use for Housing Trust Fund.",
+    "federal_ref": {
+      "law": "21st Century ROAD to Housing Act",
+      "enacted": "2026-07-11",
+      "note": "New construction of affordable housing is now CDBG-eligible under the 21st Century ROAD to Housing Act (2026); CDBG funds may accordingly be combined with Housing Trust Fund resources in project capital budgets, expanding the leverage this item measures."
+    }
   },
   {
     "category": "Public Land & Property",
@@ -1910,7 +1925,7 @@
     "description": "Comprehensive inventory of city-owned and state-owned land and underutilized facilities. Assess housing suitability.",
     "target": "",
     "metric": "Inventory completed; parcels identified as housing-suitable",
-    "sources": "HAP Narrative; Bill Bowen; Keene 3A; Burien B4",
+    "sources": "HAP Narrative; Bill Bowen; Keene 3A; Burien B4; 21st Century ROAD to Housing Act (2026)",
     "notes": "Inventory should account for two distinct land pipelines: (1) city-owned and state-owned parcels (traditional scope); and (2) privately-owned GNOD parcels where the land transfer mechanism (Section 10.686.30) may bring land into public control. GNOD transfers, once accepted by City Council, are designated primarily for below-market rate housing. Tracking potential GNOD transfer sites alongside city-owned parcels gives the Housing Committee a more complete picture of the land available for affordable housing development.",
     "is_new": false,
     "status": "",
@@ -1925,7 +1940,12 @@
       "Land disposition is politically sensitive — competing interests for public parcels",
       "Inventory alone doesn't produce housing — it's a planning step, not an action"
     ],
-    "id": "PL-1"
+    "id": "PL-1",
+    "federal_ref": {
+      "law": "21st Century ROAD to Housing Act",
+      "enacted": "2026-07-11",
+      "note": "The 21st Century ROAD to Housing Act (2026) requires CDBG grantees to publish a searchable, publicly accessible database of undeveloped city-owned land; this item's inventory work satisfies that requirement, and CDBG funds are eligible to support it."
+    }
   },
   {
     "category": "Public Land & Property",

@@ -88,6 +88,9 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 .pc-angle { margin-top: auto; background: linear-gradient(135deg, #1a2332 0%, #2d3e52 100%); border-radius: 7px; padding: .85rem 1rem; }
 .pc-angle .pa-label { font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .35rem; }
 .pc-angle p { font-size: .875rem; color: rgba(255,255,255,.82); line-height: 1.6; margin: 0; }
+.hap-links { margin-top: .65rem; display: flex; gap: .45rem; flex-wrap: wrap; }
+.hap-link { font-family: 'JetBrains Mono', monospace; font-size: .62rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid rgba(244,162,97,.45); border-radius: 3px; padding: .22rem .55rem; transition: all .18s; }
+.hap-link:hover { background: rgba(244,162,97,.15); border-color: var(--gold); }
 
 /* TIMELINE */
 .timeline { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05); padding: 1.75rem 2rem; margin-bottom: 3rem; }
@@ -160,11 +163,11 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 
   <div class="filter-bar">
     <span class="filter-label">Show provisions for:</span>
-    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
-    <button class="filter-btn" onclick="filterCards('cityhall', this)">City Hall</button>
-    <button class="filter-btn" onclick="filterCards('homeowners', this)">Homeowners</button>
-    <button class="filter-btn" onclick="filterCards('renters', this)">Renters</button>
-    <button class="filter-btn" onclick="filterCards('builders', this)">Builders &amp; Nonprofits</button>
+    <button class="filter-btn active" aria-pressed="true" onclick="filterCards('all', this)">All</button>
+    <button class="filter-btn" aria-pressed="false" onclick="filterCards('cityhall', this)">City Hall</button>
+    <button class="filter-btn" aria-pressed="false" onclick="filterCards('homeowners', this)">Homeowners</button>
+    <button class="filter-btn" aria-pressed="false" onclick="filterCards('renters', this)">Renters</button>
+    <button class="filter-btn" aria-pressed="false" onclick="filterCards('builders', this)">Builders &amp; Nonprofits</button>
   </div>
 
   <div class="legend">
@@ -181,7 +184,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
       <div class="pc-body">
         <p>Every CDBG grantee must publish a searchable, publicly accessible online database of undeveloped land parcels the jurisdiction owns. CDBG funds may be used to build and maintain it.</p>
         <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
-        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>This is the one provision that directly obligates Portsmouth. As a CDBG entitlement city, Portsmouth will need to inventory and publish its undeveloped holdings. City land disposition has been the central constraint on nonprofit-scale housing here — a required public inventory makes that conversation concrete and visible.</p></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>This is the one provision that directly obligates Portsmouth. As a CDBG entitlement city, Portsmouth will need to inventory and publish its undeveloped holdings. City land disposition has been the central constraint on nonprofit-scale housing here — a required public inventory makes that conversation concrete and visible.</p><div class="hap-links"><a class="hap-link" href="./hap-explorer.html#PL-1" target="_blank" rel="noopener">HAP PL-1 →</a></div></div>
       </div>
     </div>
 
@@ -199,7 +202,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
       <div class="pc-body">
         <p>New construction of affordable housing becomes an eligible CDBG activity — historically it largely was not, which pushed CDBG dollars toward rehabilitation and services instead of building.</p>
         <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
-        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth's annual CDBG allocation gains a new use: it can now be stacked into the capital budget of an affordable construction project — alongside the Housing Trust Fund and city land — rather than being limited to rehab and program support.</p></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth's annual CDBG allocation gains a new use: it can now be stacked into the capital budget of an affordable construction project — alongside the Housing Trust Fund and city land — rather than being limited to rehab and program support.</p><div class="hap-links"><a class="hap-link" href="./hap-explorer.html#I-14" target="_blank" rel="noopener">HAP I-14 →</a><a class="hap-link" href="./hap-explorer.html#HTF-3" target="_blank" rel="noopener">HAP HTF-3 →</a></div></div>
       </div>
     </div>
 
@@ -208,7 +211,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
       <div class="pc-body">
         <p>The Accelerating Home Building Act authorizes competitive HUD grants to help local governments adopt pre-reviewed building designs — "pattern books" — that qualify for faster permitting.</p>
         <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Homeowners</span><span class="aud-tag">Builders</span></div>
-        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth is already moving in this direction: a June 2026 Council motion directed exploration of pre-approved ADU plans. If Congress funds this program, Portsmouth would have a federal grant source for exactly that work instead of carrying the cost alone.</p></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>Portsmouth is already moving in this direction: a June 2026 Council motion directed exploration of pre-approved ADU plans. If Congress funds this program, Portsmouth would have a federal grant source for exactly that work instead of carrying the cost alone.</p><div class="hap-links"><a class="hap-link" href="./hap-explorer.html#P-14" target="_blank" rel="noopener">HAP P-14 →</a></div></div>
       </div>
     </div>
 
@@ -298,7 +301,7 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
       <div class="pc-body">
         <p>The HOME Investment Partnerships Program — a core federal source of gap funding for affordable housing — is reauthorized with administrative reforms, including broader flexibility to use funds for housing-related infrastructure.</p>
         <div class="pc-aud"><span class="aud-tag">City Hall</span><span class="aud-tag">Nonprofits</span></div>
-        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>HOME funds (which reach Portsmouth-area projects through the state and regional consortia) are a standard layer in the capital stack of nonprofit affordable developments. A stabilized, more flexible HOME program improves the financing environment for the larger projects Portsmouth hopes to see on city-controlled land.</p></div>
+        <div class="pc-angle"><div class="pa-label">Portsmouth angle</div><p>HOME funds (which reach Portsmouth-area projects through New Hampshire Housing, the statewide HOME grantee) are a standard layer in the capital stack of nonprofit affordable developments. A stabilized, more flexible HOME program improves the financing environment for the larger projects Portsmouth hopes to see on city-controlled land.</p></div>
       </div>
     </div>
 
@@ -341,9 +344,9 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
   <div class="footer-inner">
     <div>
       <div class="fb-label">Module</div>
-      <p>The ROAD to Housing Act &amp; Portsmouth<br><strong style="color:rgba(255,255,255,.75);">Version 1.1</strong> · July 11, 2026</p>
+      <p>The ROAD to Housing Act &amp; Portsmouth<br><strong style="color:rgba(255,255,255,.75);">Version 1.2</strong> · July 13, 2026</p>
       <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
-      <div class="revision-notes">v1.1 (July 11, 2026) — Restructured for reader priority: provision explorer moved directly below the hero; "The short version" folded into a one-paragraph section intro; "What this law is not" compressed and moved below the provision grid. No provision content changed.<br>v1.0 (July 11, 2026) — Initial release, published the day the 21st Century ROAD to Housing Act became law without presidential signature. 14 provision cards mapped to Portsmouth with audience filters and implementation-status badges. Grant-program figures reflect authorizations only; appropriations pending.</div>
+      <div class="revision-notes">v1.2 (July 13, 2026) — Housing Action Plan cross-links added: the three provision cards mapped to HAP items now carry deep-link chips into the HAP Explorer (PL-1 on the land database card; I-14 and HTF-3 on the CDBG construction card; P-14 on the pre-approved plans card), matching the federal_ref integration in Explorer v2.23. Accessibility: filter buttons now expose aria-pressed state.<br>v1.1.1 (July 11, 2026) — HOME card correction: New Hampshire’s HOME recipients are New Hampshire Housing, Manchester, and Nashua (per Housing Action NH federal program guide); Portsmouth-area projects access HOME via the statewide allocation, not regional consortia. Wording corrected.<br>v1.1 (July 11, 2026) — Restructured for reader priority: provision explorer moved directly below the hero; "The short version" folded into a one-paragraph section intro; "What this law is not" compressed and moved below the provision grid. No provision content changed.<br>v1.0 (July 11, 2026) — Initial release, published the day the 21st Century ROAD to Housing Act became law without presidential signature. 14 provision cards mapped to Portsmouth with audience filters and implementation-status badges. Grant-program figures reflect authorizations only; appropriations pending.</div>
     </div>
     <div>
       <div class="fb-label">Organization</div>
@@ -359,8 +362,9 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
 
 <script>
 function filterCards(aud, btn) {
-  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
   btn.classList.add("active");
+  btn.setAttribute("aria-pressed", "true");
   document.querySelectorAll(".prov-card").forEach(function(card) {
     if (aud === "all") {
       card.classList.remove("hidden");
