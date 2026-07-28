@@ -67,6 +67,19 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .comp-item h4{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:.25rem;line-height:1.3;}
 .comp-item p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.45;}
 .comp-hap{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.4);margin-top:.3rem;}
+.comp-timeline{margin-top:.9rem;border-top:1px solid rgba(255,255,255,.12);padding-top:.9rem;}
+.ct-head{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#f4a09a;margin-bottom:.5rem;}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;}
+.ct-col{background:rgba(255,255,255,.05);border-radius:6px;padding:.7rem .9rem;}
+.ct-col.now{border-left:3px solid var(--teal);}
+.ct-col.next{border-left:3px solid var(--coral);}
+.ct-date{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem;}
+.ct-col.now .ct-date{color:#6ecfb8;}
+.ct-col.next .ct-date{color:#f4a09a;}
+.ct-col ul{list-style:none;margin:0;padding:0;}
+.ct-col li{font-size:.75rem;color:rgba(255,255,255,.68);line-height:1.45;padding-left:.7rem;position:relative;margin-bottom:.28rem;}
+.ct-col li::before{content:'\2022';position:absolute;left:0;color:rgba(255,255,255,.3);}
+@media(max-width:640px){.ct-grid{grid-template-columns:1fr;}}
 
 /* ZONE TABLE */
 .zone-section{margin-bottom:2.5rem;}
@@ -181,7 +194,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <div class="eyebrow-rule"></div>
-      <span class="eyebrow-text">Housing Action Plan &#8212; Context Module 09 &#183; Zoning Reference</span>
+      <span class="eyebrow-text">Housing Action Plan &#8212; Triage Module 10 &#183; Zoning Reference</span>
     </div>
     <h1>Portsmouth Zoning:<br><em>The Triage Reference</em></h1>
     <p class="hero-sub">A compact reference for Housing Committee members evaluating the 38 zoning items in the Housing Action Plan &#8212; zone structure, approval pathways, compliance deadlines, and every Z-item grouped by mechanism.</p>
@@ -234,15 +247,43 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
       <div class="comp-item comp-active">
         <div class="comp-tag">&#9654; In progress</div>
         <h4>Parking cap (SB 284)</h4>
-        <p>Effective Sept 13, 2025 (RSA 674:16, VII). Caps residential parking at 1 space/unit &#8212; but developments of 10+ units and workforce studios/1-BRs under 1,000 sf may still require up to 1.5. Portsmouth&#8217;s minimums (up to 2/unit) exceed the cap and must be amended.</p>
+        <p>Effective Sept 13, 2025 (RSA 674:16, VII). Caps residential parking at 1 space/unit, <strong>with no exceptions</strong> — the former 1.5 allowances for 10+ unit developments and workforce studios/1-BRs were struck by SB 284. Portsmouth&#8217;s minimums (up to 2/unit) exceed the cap and must be amended. Ch. 329 adds a bar on requiring garaged spaces, eff. Sept 13, 2026.</p>
         <div class="comp-hap">Z-4 &#183; Z-21</div>
       </div>
       <div class="comp-item comp-deadline">
-        <div class="comp-tag">&#9650; Deadline July 1, 2026</div>
-        <h4>Commercial conversions + multifamily in commercial zones (HB 631)</h4>
-        <p>State will require multifamily allowed on commercially zoned land and automatic setback/height exemptions for adaptive reuse. Portsmouth must amend before July 1, 2026.</p>
-        <div class="comp-hap">Z-3 &#183; Z-25 &#183; Z-29</div>
+        <div class="comp-tag">&#9650; In force &#183; second stage Sept 13</div>
+        <h4>Multifamily in commercial zones (HB 631 &rarr; Ch. 319 &rarr; Ch. 329)</h4>
+        <p>Ch. 319 has been in force since July 1, 2026: Portsmouth <em>shall allow</em> multi-family dwelling units on commercially zoned land subject to an infrastructure test. Ch. 329 tightens this on Sept 13. The ordinance is superseded to the extent it conflicts, whether or not it is amended.</p>
+        <div class="comp-hap">Z-3 &#183; Z-25 &#183; Z-29 &#183; Z-39 &#183; Z-40</div>
       </div>
+    </div>
+    <div class="comp-timeline">
+      <div class="ct-head">Two chapters, two clocks &#8212; both signed July 15, 2026</div>
+      <div class="ct-grid">
+        <div class="ct-col now">
+          <div class="ct-date">In force now &#183; Ch. 319 (HB 1010) &#183; July 1, 2026</div>
+          <ul>
+            <li>Municipalities <strong>shall allow</strong> multi-family dwelling units on commercially zoned land where infrastructure is adequate (RSA 674:80, I)</li>
+            <li>Planning board may require traffic study, water and sewer connection proof; may deny only on the grounds in II — including an abutting well owner showing their well cannot meet existing demand</li>
+            <li>Applicant may supply inadequate infrastructure rather than be denied</li>
+            <li>Ground-floor retail authority retained (IV); industrial-zone restriction retained (III)</li>
+            <li><strong>Adaptive reuse exemption</strong> from setback, height, frontage available now (V)</li>
+          </ul>
+        </div>
+        <div class="ct-col next">
+          <div class="ct-date">Sept 13, 2026 &#183; Ch. 329 (HB 1588) &#183; not yet in force</div>
+          <ul>
+            <li>Multifamily <strong>allowed as a matter of right</strong>; no additional requirements unless expressly authorized — &ldquo;by right&rdquo; is not in current law until this date</li>
+            <li>Frontage, setback, height may not differ from what commercial development gets in the same district</li>
+            <li>Nonconforming structures may be converted where the envelope is not further violated</li>
+            <li><strong>Attorney&rsquo;s fees</strong> recoverable on improper denial</li>
+            <li>No garaged parking space may be required</li>
+            <li><strong>The adaptive reuse exemption at left is repealed</strong> and replaced by dimensional parity</li>
+            <li>Special assessment districts authorized (RSA 162-X)</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.7rem;line-height:1.5;">Scope limit on both: the mandate reaches only <strong>structures containing more than 2 dwelling units</strong> (RSA 674:43, I). Duplexes are outside it, and because the test is per structure rather than per project, cottage courts and similar small-building forms may be outside it too. Portsmouth retains full authority over those types.</p>
     </div>
   </div>
 
@@ -343,8 +384,9 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
           <td>Office Research</td>
           <td><span class="zone-share share-small">Moderate</span><br>3-acre min.</td>
           <td>
-            <span class="housing-pill pill-no">Residential: currently prohibited</span>
-            <span class="housing-pill pill-compliance" style="background:#fde8e4;color:var(--coral);">HB 631 mandates change by Jul 2026</span>
+            <span class="housing-pill pill-no">Ordinance text: residential prohibited</span>
+            <span class="housing-pill pill-compliance" style="background:#e0efe9;color:var(--teal);">Superseded — RSA 674:80 in force since Jul 1, 2026</span>
+            <span class="housing-pill pill-compliance" style="background:#fde8e4;color:var(--coral);">By right + fee-shifting Sept 13</span>
           </td>
           <td class="zone-hap-items">Z-1, Z-3, Z-25, Z-29</td>
         </tr>
@@ -353,14 +395,18 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
           <td>Business / General Business</td>
           <td><span class="zone-share share-med">Moderate</span><br>Highway corridors</td>
           <td>
-            <span class="housing-pill pill-cup">Residential: CUP in B</span>
+            <span class="housing-pill pill-cup">Ordinance text: CUP in B</span>
             <span class="housing-pill pill-no">GB: residential limited</span>
-            <span class="housing-pill pill-compliance" style="background:#fde8e4;color:var(--coral);">HB 631 expands rights Jul 2026</span>
+            <span class="housing-pill pill-compliance" style="background:#e0efe9;color:var(--teal);">Superseded — RSA 674:80 in force since Jul 1, 2026</span>
+            <span class="housing-pill pill-compliance" style="background:#fde8e4;color:var(--coral);">CUP likely unenforceable Sept 13</span>
           </td>
           <td class="zone-hap-items">Z-3, Z-25, Z-29, Z-35</td>
         </tr>
       </tbody>
     </table>
+    <div style="background:#fff;border:1px solid var(--warm-gray);border-left:3px solid var(--coral);border-radius:0 6px 6px 0;padding:.85rem 1.1rem;margin-top:.8rem;">
+      <p style="font-size:.74rem;color:var(--text);line-height:1.55;"><strong>This matrix does not show the commercial districts (OR, B, GB), and that is now the gap that matters.</strong> Multi-family dwelling units on commercially zoned land are governed by RSA 674:80, not by the local pathway shown above: the mandate has been in force since July 1, 2026 and becomes by-right with fee-shifting on September 13, 2026. Two caveats carry into this table as well — the statute reaches only structures with more than 2 dwelling units, so the <em>2-family / duplex</em> row is unaffected by state law everywhere; and because the test is per structure, the <em>cottage / cluster</em> and <em>coliving</em> rows may fall outside it regardless of unit count. Portsmouth retains full authority over all three.</p>
+    </div>
     <p style="font-size:.72rem;color:var(--muted);margin-top:.6rem;font-style:italic;">&#9878; Simplified for triage orientation. Confirm specific parcel rules with the Planning Department or the <a href="./zoning-ordinance-public.html" style="color:var(--gold-dark);">plain English guide</a>.</p>
   </div>
 
@@ -472,13 +518,13 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   <div class="footer-inner">
     <div class="footer-block">
       <div class="fb-label">Document</div>
-      <p>Portsmouth Zoning &#8212; HAP Triage Reference<br><strong style="color:rgba(255,255,255,.7);">Version 1.1</strong> &#183; June 2026</p>
+      <p>Portsmouth Zoning &#8212; HAP Triage Reference<br><strong style="color:rgba(255,255,255,.7);">Version 1.2</strong> &#183; July 2026</p>
       <button class="rev-toggle" onclick="var n=this.nextElementSibling;n.classList.toggle('open');this.textContent=n.classList.contains('open')?'Revision notes \u2191':'Revision notes \u2193'">Revision notes &#8595;</button>
-      <div class="rev-notes">v1.1 (June 2026) &#8212; Accuracy + data sync. Corrected the Official Ordinance link to ZoningOrd-260217; fixed the ADU ordinance-update date (Feb 2026, not March); clarified the SB 284 parking cap exceptions (developments of 10+ units and workforce studios/1-BRs under 1,000 sf may require up to 1.5). Synced Z-item statuses to live hap-actions.json (148 items total): Z-1 set to in-progress (GNOD was phase 1 only), Z-11 to early-stage, Z-18 and Z-19 to complete; Z-21 renamed to match the HAP action name.<br>v1.0 (April 2026) &#8212; Initial release. Built for Housing Committee triage support. Zone data drawn from Portsmouth Zoning Ordinance as amended Feb 17, 2026. HAP item data from hap-actions.json (146 items, verified April 2026). Compliance deadlines reflect HB 577, SB 284, HB 631 as enacted.</div>
+      <div class="rev-notes">v1.2 (July 28, 2026) &#8212; NH commercial-zone preemption integrated: Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026, both approved July 15. Ch. 319 took effect July 1, 2026 at 12:01 a.m.; Ch. 329&#8217;s zoning provisions take effect September 13, 2026 under its section 7 contingency. The HB 631 compliance card, which read as a July 1 deadline in the future tense, is replaced by a two-clock timeline showing what is in force now against what arrives September 13. <strong>Correction:</strong> the v1.1 note describing SB 284 as permitting up to 1.5 spaces for 10+ unit developments and workforce studios/1-BRs was wrong — that was pre-2025 law which SB 284 struck, and it survived only in the bill as introduced before being removed by House amendment in April 2025. The cap is one space per unit with no exceptions. Zone table: OR and B/GB rows reflect that the ordinance text is superseded, not pending. New note under the approval matrix explains why the commercial districts are absent from it and flags the more-than-2-dwelling-unit threshold (RSA 674:43, I) that leaves duplexes, cottage courts, and coliving outside the state mandate. Z-item notes rewritten for Z-3, Z-4, Z-21, Z-25, Z-29. Module eyebrow corrected from &#8220;Context Module 09&#8221; to &#8220;Triage Module 10&#8221; to match the Library index after its v2.4 renumbering. HAP item count 148 &#8594; 154.<br>v1.1 (June 2026) &#8212; Accuracy + data sync. Corrected the Official Ordinance link to ZoningOrd-260217; fixed the ADU ordinance-update date (Feb 2026, not March); clarified the SB 284 parking cap exceptions (developments of 10+ units and workforce studios/1-BRs under 1,000 sf may require up to 1.5). Synced Z-item statuses to live hap-actions.json (148 items total): Z-1 set to in-progress (GNOD was phase 1 only), Z-11 to early-stage, Z-18 and Z-19 to complete; Z-21 renamed to match the HAP action name.<br>v1.0 (April 2026) &#8212; Initial release. Built for Housing Committee triage support. Zone data drawn from Portsmouth Zoning Ordinance as amended Feb 17, 2026. HAP item data from hap-actions.json (146 items, verified April 2026). Compliance deadlines reflect HB 577, SB 284, HB 631 as enacted.</div>
     </div>
     <div class="footer-block">
       <div class="fb-label">Sources</div>
-      <p>Portsmouth Zoning Ordinance (Feb 17, 2026) &#183; Progress Portsmouth Housing Action Plan data &#183; NH RSA 674 &#183; HB 577, SB 284, HB 631 (2025 session)</p>
+      <p>Portsmouth Zoning Ordinance (Feb 17, 2026) &#183; Progress Portsmouth Housing Action Plan data &#183; NH RSA 674:80, 674:43, 674:16 &#183; HB 577, SB 284, HB 631 (2025) &#183; Ch. 319 (HB 1010) and Ch. 329 (HB 1588), Laws of 2026</p>
     </div>
     <div class="footer-block">
       <div class="fb-label">Organization</div>
@@ -492,11 +538,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 var items = [
   // COMPLIANCE
   {id:'Z-2',title:'ADU ordinance enhancements (beyond state compliance)',status:'in-progress',group:'compliance',desc:'HB 577 (July 2025) and Portsmouth\'s February 2026 ordinance update established by-right ADUs statewide and locally. Z-2 now addresses enhancements beyond the baseline: dimensional optimization, design guidance, and ensuring the ordinance is fully calibrated — not merely compliant.',note:''},
-  {id:'Z-3',title:'Residential conversion ordinance',status:'in-progress',group:'compliance',desc:'Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones.',note:'⚠ DEADLINE: HB 631 (eff. July 1, 2026) mandates multifamily on commercially zoned land and adaptive reuse conversion rights. Portsmouth ordinance must be amended before July 1, 2026.'},
-  {id:'Z-4',title:'Parking requirement reform',status:'in-progress',group:'compliance',desc:'Comprehensive parking reform: maximums, shared parking, and market-responsive standards. Phase 1 study in progress.',note:'⚠ SB 284 (eff. Sept 13, 2025; RSA 674:16, VII) caps residential parking at 1 space/unit, with exceptions allowing up to 1.5 for developments of 10+ units and for workforce studios/1-BRs under 1,000 sf. Portsmouth minimums (up to 2/unit) exceed the cap for most residential — amendment is time-sensitive.'},
-  {id:'Z-21',title:'Comprehensive zoning ordinance update',status:'in-progress',group:'compliance',desc:'Full audit of the zoning ordinance identifying provisions that constrain housing production. GIS analysis shows 69.9% of single-family zone parcels violate current dimensional standards.',note:'Audit scope includes SB 283 (FAR calculation change), HB 457 (occupancy standards), and SB 284 (parking cap) compliance checks. Running the audit in parallel with reform items is the logical sequencing.'},
-  {id:'Z-25',title:'Allow multifamily in Office/Research zones',status:'early-stage',group:'compliance',desc:'Amend O/R zoning to allow residential as-of-right — not just conversion from existing buildings.',note:'⚠ DEADLINE: HB 631 (eff. July 1, 2026) mandates municipalities allow multifamily on commercially zoned land where infrastructure exists. Currently prohibited in Portsmouth O/R zones.'},
-  {id:'Z-29',title:'Adaptive reuse ordinance streamlining',status:'',group:'compliance',desc:'Simplify permitting for conversion of historic or underutilized non-residential buildings to housing. Align with RSA 79-E.',note:'⚠ DEADLINE: HB 631 (eff. July 1, 2026) will require automatic exemptions from setbacks, height, and frontage for existing buildings converted to residential through adaptive reuse, provided building meets fire/life safety codes.'},
+  {id:'Z-3',title:'Residential conversion ordinance',status:'in-progress',group:'compliance',desc:'Permit and streamline commercial-to-residential conversions in Mixed Use and Gateway zones.',note:'⚠ IN FORCE: Ch. 319 (eff. July 1, 2026) mandates multifamily on commercially zoned land; the adaptive reuse dimensional exemption is available NOW and is repealed by Ch. 329 on Sept 13, 2026, replaced by dimensional parity plus a nonconforming-structure conversion right. A conversion that vests before Sept 13 keeps the current exemption. Reaches only structures with more than 2 dwelling units.'},
+  {id:'Z-4',title:'Parking requirement reform',status:'in-progress',group:'compliance',desc:'Comprehensive parking reform: maximums, shared parking, and market-responsive standards. Phase 1 study in progress.',note:'⚠ SB 284 (eff. Sept 13, 2025; RSA 674:16, VII) caps residential parking at 1 space/unit with NO exceptions — the 1.5 allowances for 10+ unit developments and workforce studios/1-BRs were pre-2025 law that SB 284 struck, and were removed from the bill by House amendment in April 2025. Portsmouth minimums (up to 2/unit) exceed the cap — amendment is overdue. Ch. 329 §1 adds a bar on requiring garaged spaces, eff. Sept 13, 2026.'},
+  {id:'Z-21',title:'Comprehensive zoning ordinance update',status:'in-progress',group:'compliance',desc:'Full audit of the zoning ordinance identifying provisions that constrain housing production. GIS analysis shows 69.9% of single-family zone parcels violate current dimensional standards.',note:'Audit scope includes SB 283 (FAR calculation change), HB 457 (occupancy standards), SB 284 (parking cap), and now Ch. 319 and Ch. 329 of 2026 — the largest preemption event on the list. Ch. 329 limits municipal authority over multifamily in commercial districts to frontage, setbacks, and height at commercial parity. See Z-39.'},
+  {id:'Z-25',title:'Allow multifamily in Office/Research zones',status:'early-stage',group:'compliance',desc:'Amend O/R zoning to allow residential as-of-right — not just conversion from existing buildings.',note:'⚠ IN FORCE: Ch. 319 (eff. July 1, 2026 at 12:01 a.m.) requires municipalities to allow multifamily on commercially zoned land where infrastructure is adequate. Portsmouth’s O/R prohibition is superseded to that extent. Two corrections to this item’s scope: the mandate reaches ALL commercial districts, not only O/R; and "by right" arrives Sept 13, 2026 via Ch. 329, not July 1.'},
+  {id:'Z-29',title:'Adaptive reuse ordinance streamlining',status:'',group:'compliance',desc:'Simplify permitting for conversion of historic or underutilized non-residential buildings to housing. Align with RSA 79-E.',note:'⚠ LIVE NOW, REPEALED SEPT 13: the setback/height/frontage exemption for adaptive reuse conversions is current law under RSA 674:80, V (Ch. 319). Ch. 329 §6 strikes it on Sept 13, 2026 and substitutes dimensional parity with commercial development plus a separate nonconforming-conversion right. Different in kind — the current provision exempts the applicant; the replacement caps the city.'},
   {id:'Z-36',title:'Monitor 2026 NH ADU legislation for conflicts',status:'in-progress',group:'compliance',desc:'Track pending NH bills (HB1079, HB1540, HB1662) that could conflict with Portsmouth\'s existing ADU ordinance.',note:'Ongoing monitoring item. No action required until bill outcomes are known.'},
 
   // DIMENSIONAL

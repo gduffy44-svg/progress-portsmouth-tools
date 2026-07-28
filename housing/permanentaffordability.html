@@ -37,6 +37,8 @@
   .dillon-item .di-head{font-size:.78rem;font-weight:700;margin-bottom:.3rem;}
   .dillon-item .di-head.no{color:var(--coral);}
   .dillon-item .di-head.yes{color:var(--teal);}
+  .dillon-item .di-head.pending{color:var(--gold);}
+  .dillon-item.flagged{border:1px solid rgba(244,162,97,.45);}
   .dillon-item p{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.45;}
 
   /* TOOL CARDS */
@@ -146,15 +148,15 @@
       </div>
       <div class="dillon-item">
         <div class="di-head yes">✓ Available</div>
-        <p>Voluntary incentive programs: density bonuses, fee waivers, and expedited review in exchange for affordability commitments</p>
+        <p>Voluntary incentive programs: density bonuses, fee waivers, and expedited review in exchange for affordability commitments. <strong>Residential districts only after September 13, 2026</strong> — see the flagged item below.</p>
       </div>
       <div class="dillon-item">
         <div class="di-head yes">✓ Available</div>
         <p>City land disposition policy: conveying surplus city land via ground lease or at below-market value with deed restrictions</p>
       </div>
-      <div class="dillon-item">
-        <div class="di-head yes">✓ Available</div>
-        <p>GNOD land transfer (Section 10.686.30): privately-owned parcels conveyed to the City by GNOD developers at no city cost, then designated for below-market housing — a second land pipeline that doesn't depend on city-owned parcels</p>
+      <div class="dillon-item flagged">
+        <div class="di-head pending">⚠ Contingent — under review</div>
+        <p>GNOD land transfer (Section 10.686.30): privately-owned parcels conveyed to the City by GNOD developers at no city cost, then designated for below-market housing. <strong>The consideration for this transfer is the GNOD density bonus, and GNOD sits on commercially zoned land.</strong> From September 13, 2026, RSA 674:80 as amended by Chapter 329 bars municipalities from enforcing requirements beyond frontage, setbacks, and height on multi-family dwelling units in commercial districts. If the overlay&rsquo;s unit caps are unenforceable, the bonus has nothing to trade and this pipeline may not refill. A written City Attorney determination is needed. Do not treat as available until it issues.</p>
       </div>
       <div class="dillon-item">
         <div class="di-head yes">✓ Available</div>
@@ -212,6 +214,7 @@
       </div>
       <div class="tool-card-body">
         <p>The city voluntarily offers additional height, density, or reduced fees in exchange for a developer voluntarily including affordable units. Because participation is voluntary, this is not mandatory inclusionary zoning — and is permissible under Dillon's Rule.</p>
+        <div class="tool-attr" style="border-left:3px solid var(--gold);padding-left:.7rem;"><div class="ta-label" style="color:var(--gold-dark);">Commercial districts — September 13, 2026</div><div class="ta-val">A density bonus is only worth what the base cap makes it worth. From that date, RSA 674:80 as amended by Chapter 329 permits municipalities to regulate only frontage, setbacks, and height on multi-family dwelling units in commercial districts, and only at parity with commercial development. Where the base density cap is unenforceable, there is nothing left to bonus. The tool remains fully available in residential districts, where no state preemption applies.</div></div>
         <div class="tool-attr"><div class="ta-label">How affordability is preserved</div><div class="ta-val">Affordability covenant recorded at time of permitting, tied to the density benefit received. Duration is negotiable but typically 30–40 years minimum.</div></div>
         <div class="tool-attr"><div class="ta-label">Limitation</div><div class="ta-val">Incentive must be calibrated to actually offset the revenue lost from affordable units — otherwise developers simply won't participate.</div></div>
         <span class="tool-cite">HAP item Z-6 (Density Bonus Program) · I-17 (Density Bonus for Accessible Units)</span>
@@ -256,7 +259,7 @@
         <div class="cr-cell"><span class="dot dot-partial"></span>Term of covenant (typically 30–40 yrs)</div>
         <div class="cr-cell"><span class="dot dot-partial"></span>Moderate — voluntary participation</div>
         <div class="cr-cell"><span class="dot dot-yes"></span>Low — zoning tool, no direct subsidy</div>
-        <div class="cr-cell"><span class="dot dot-yes"></span>Permissible; requires calibration</div>
+        <div class="cr-cell"><span class="dot dot-partial"></span>Residential districts only after Sep 13, 2026</div>
       </div>
       <div class="compare-row" style="background:#fde8e4;">
         <div class="cr-label" style="color:var(--coral);">Mandatory inclusionary</div>
@@ -297,7 +300,7 @@
   </div>
 
   <div class="concept-box" style="border-color:var(--teal);margin-bottom:0;">
-    <p><strong>For triage:</strong> When a HAP item promises "permanent affordability," check the mechanism. Term-limited covenants expire. Density bonuses require voluntary participation and calibration. The only truly durable tools are ground leases and CLT structures — and both require the city to either own land or acquire it. Public land inventory and RFP policy (PL-1, PL-2) is therefore a prerequisite for any serious permanent affordability strategy. A second land pathway also exists: the GNOD land transfer mechanism (Section 10.686.30, HAP item Z-1/PL-8) allows privately-owned parcels to enter the public housing pipeline at no city acquisition cost — but land alone does not resolve the operating gap. State AHF funding remains the binding constraint regardless of how land is acquired.</p>
+    <p><strong>For triage:</strong> When a HAP item promises "permanent affordability," check the mechanism. Term-limited covenants expire. Density bonuses require voluntary participation and calibration. The only truly durable tools are ground leases and CLT structures — and both require the city to either own land or acquire it. Public land inventory and RFP policy (PL-1, PL-2) is therefore a prerequisite for any serious permanent affordability strategy. A second land pathway has existed alongside it: the GNOD land transfer mechanism (Section 10.686.30, HAP item Z-1/PL-8), which allows privately-owned parcels to enter the public housing pipeline at no city acquisition cost — but that mechanism is now contingent on whether the GNOD density bonus survives RSA 674:80 as amended by Chapter 329 on September 13, 2026, and should not be counted on until the City Attorney determination issues. Land alone does not resolve the operating gap in any event. State AHF funding remains the binding constraint regardless of how land is acquired. The broader lesson of the 2026 preemption is worth stating plainly: tools that operate by <em>contract and covenant</em> — ground leases, CLT structures, resale covenants, disposition agreements — are unaffected by state limits on zoning conditions. That is now the durable half of this toolkit.</p>
   </div>
 </main>
 
@@ -305,9 +308,9 @@
   <div class="footer-meta">
     <div class="footer-block">
       <div class="meta-label">Document</div>
-      <p>Permanent Affordability Tools<br><strong>Version 1.1</strong> · April 2026</p>
+      <p>Permanent Affordability Tools<br><strong>Version 1.2</strong> · July 2026</p>
       <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
-      <div class="revision-notes">v1.1 (April 2026) — Added GNOD land transfer (Section 10.686.30 / HAP items Z-1, PL-8) as a second available land pathway alongside city-owned land disposition. Updated triage note to reference GNOD mechanism and Brown's operating gap caveat. HAP item count updated to 148.<br>v1.0 (April 2026) — Initial release. Legal analysis based on NH Dillon's Rule framework and RSA 674:60. HAP item codes should be verified against the adopted Housing Action Plan (Feb. 17, 2026). POAH partnership reference reflects ongoing conversations, not a committed arrangement.</div>
+      <div class="revision-notes">v1.2 (July 28, 2026) — NH commercial-zone preemption. Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026, both approved July 15; Ch. 319 effective July 1, Ch. 329’s zoning provisions effective September 13. The GNOD land transfer entry moves from “available” to “contingent”: its consideration is the GNOD density bonus, GNOD sits on commercially zoned land, and from September 13 municipalities may not enforce requirements beyond frontage, setbacks, and height on multi-family dwelling units there. Density bonus tool card and comparison row qualified to residential districts pending a City Attorney determination. Triage note updated, and the contract-and-covenant point added — ground leases, CLT structures, and resale covenants are unaffected by limits on zoning conditions, which makes them the durable half of this toolkit. <strong>Correction carried from v1.0:</strong> the Housing Action Plan was <em>mandated</em> by unanimous Council vote on February 17, 2026, not adopted; it remains unadopted as of this revision.<br>v1.1 (April 2026) — Added GNOD land transfer (Section 10.686.30 / HAP items Z-1, PL-8) as a second available land pathway alongside city-owned land disposition. Updated triage note to reference GNOD mechanism and Brown's operating gap caveat. HAP item count updated to 148.<br>v1.0 (April 2026) — Initial release. Legal analysis based on NH Dillon's Rule framework and RSA 674:60. HAP item codes should be verified against the Housing Action Plan dataset. (Note: the v1.0 text described the plan as adopted on Feb. 17, 2026; the Council action that date was a mandate to produce the plan. Corrected in v1.2.) POAH partnership reference reflects ongoing conversations, not a committed arrangement.</div>
     </div>
     <div class="footer-block">
       <div class="meta-label">Source</div>
