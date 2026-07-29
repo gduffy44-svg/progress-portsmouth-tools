@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════════
+  OPERATOR NOTE — refresh cadence: every 4 weeks.
+  When the freshness badge reads OVERDUE (28+ days), do both:
+    1. Run the snapshot routine (rental composite, meetings from BOTH
+       planportsmouth/meetings-schedule and the Council calendar,
+       verified media only). Update SNAPSHOT_DATA below.
+    2. Update SNAPSHOT_DATA.basis — sources actually used, anything
+       excluded and why, how counts were derived. If the recipe changed,
+       say so there. An undocumented cycle is not a usable data point.
+    3. python3 tools/extract-snapshot-history.py  — appends this cycle
+       to the internal audit history and flags short intervals.
+  The series starts 2026-07-29. Cycles before that have unknown
+  provenance and must not be charted as a trend.
+  ════════════════════════════════════════════════════════════════
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1074,6 +1090,72 @@ main {
   letter-spacing: .02em;
 }
 
+/* ── METHODOLOGY / BASIS BLOCK ── */
+.basis-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.basis-wrap summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.basis-wrap summary::-webkit-details-marker { display: none; }
+.basis-wrap summary:hover { color: var(--navy); }
+.basis-wrap summary .chev { color: var(--gold-dark); font-size: 13px; }
+.basis-body {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.basis-row { margin-bottom: 14px; }
+.basis-row:last-child { margin-bottom: 0; }
+.basis-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 5px;
+}
+.basis-text { font-size: 14px; color: #3a4a5c; line-height: 1.6; }
+.basis-list { font-size: 14px; color: #3a4a5c; line-height: 1.6; padding-left: 18px; }
+.basis-list li { margin-bottom: 5px; }
+.basis-srcs { display: flex; flex-wrap: wrap; gap: 5px; }
+.basis-src {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  background: rgba(58,125,110,.08);
+  color: #2f6358;
+  border: 1px solid rgba(58,125,110,.18);
+  border-radius: 3px;
+  padding: 3px 7px;
+}
+.freshness-badge.overdue { background: rgba(231,111,81,.3); color: #ffb59d; }
+.stale-banner {
+  background: rgba(231,111,81,.1);
+  border-bottom: 1px solid rgba(231,111,81,.3);
+  padding: 10px 28px;
+  font-size: 14px;
+  color: #8c3d26;
+  display: none;
+}
+.stale-banner strong { color: #6f2f1c; }
+
 /* ── PRINT ── */
 @media print {
   .nav, .section-nav, .calc-presets, .page-footer { display: none; }
@@ -1126,6 +1208,7 @@ main {
   </div>
 </div>
 <div class="gold-rule"></div>
+<div class="stale-banner" id="stale-banner"></div>
 
 <div class="section-nav">
   <a class="section-pill s1" href="#market">📊 Rental Market</a>
@@ -1183,6 +1266,8 @@ main {
     </div>
 
     <!-- INSIGHTS -->
+    <div id="basis-block"><!-- Populated by JS from SNAPSHOT_DATA.basis --></div>
+
     <div class="insights-grid" id="insights-grid">
       <!-- Populated by JS from SNAPSHOT_DATA -->
     </div>
@@ -1265,6 +1350,35 @@ const SNAPSHOT_DATA = {
   //   ApartmentHomeLiving 03801 on 07/25/2026. 1BR and 2BR are the residual of the 144-listing
   //   03801 total, split using PadMapper's observed 1BR:2BR ratio (14:20). That derivation is
   //   disclosed on the page in the inventory insight.
+  // Provenance for this cycle. Update every refresh — an undocumented
+  // cycle cannot be used as a data point later.
+  basis: {
+    recipe_frozen: "2026-07-29",
+    method: "Cross-source composite. Per-type median = central value across the sources below; min/max = observed listing range.",
+    sources_used: [
+      "ApartmentHomeLiving ZIP 03801 (07/25/2026)",
+      "ApartmentHomeLiving city (05/02/2026)",
+      "RentCafe/Yardi (02/21/2026 — buildings of 50+ units only)",
+      "PadMapper (current)",
+      "Zumper (July 2026)",
+      "Zillow Rental Manager (current)",
+      "HotPads (current)",
+      "Apartments.com (citywide average and listing count only)",
+      "Apartment List (current)",
+      "Rent.com",
+      "Point2Homes"
+    ],
+    excluded: [
+      "Apartments.com per-bedroom rent-market-trends figures — that page still serves April 2025 data and would pull the composite back roughly 15 months.",
+      "RentCafe/Yardi three-bedroom figure — its 50+-unit universe reports three-bedrooms cheaper than two-bedrooms, which is not a real market condition."
+    ],
+    count_basis: "ZIP 03801. Studio (31) and three-bedroom (18) are directly reported by ApartmentHomeLiving on 07/25/2026. One- and two-bedroom are the residual of the 144-listing 03801 total, split on PadMapper's observed 14:20 ratio — derived, not observed.",
+    known_limits: [
+      "The three-bedroom median rests on a single listings-based source with 18 listings.",
+      "Cycles before 2026-07-29 recorded no methodology and are not comparable to this one. Do not chart this figure against them."
+    ]
+  },
+
   rental: {
     units: [
       { type: "Studio",    median: 2050, min: 1260, max: 3895, count: 31, scarce: false },
@@ -1466,9 +1580,25 @@ function computeFreshness() {
   } else if (days <= 21) {
     badge.textContent = `⏱ ${days} days ago`;
     badge.className = 'freshness-badge stale';
-  } else {
+  } else if (days < 28) {
     badge.textContent = `⚠ ${days} days ago`;
     badge.className = 'freshness-badge old';
+  } else {
+    badge.textContent = `⚠ ${days} days — refresh overdue`;
+    badge.className = 'freshness-badge overdue';
+    const banner = document.getElementById('stale-banner');
+    if (banner) {
+      banner.style.display = 'block';
+      banner.innerHTML = `<strong>This snapshot is ${days} days old.</strong> ` +
+        `Rental figures and meeting dates were last verified on ${SNAPSHOT_DATA.updated} ` +
+        `and may no longer reflect current listings or the posted calendar.`;
+    }
+    console.warn(
+      `[snapshot] ${days} days since last refresh — 4-week cadence exceeded.\n` +
+      `1. Run the snapshot routine and update SNAPSHOT_DATA.\n` +
+      `2. Update SNAPSHOT_DATA.basis with sources used, exclusions, and count derivation.\n` +
+      `3. python3 tools/extract-snapshot-history.py`
+    );
   }
 }
 
@@ -1537,6 +1667,37 @@ function calcAffordability() {
       <div class="calc-result-market" style="margin-top:4px">Median: $${u.median.toLocaleString()}/mo</div>
     </div>`;
   }).join('');
+}
+
+// ── BASIS / METHODOLOGY ──────────────────────────────────────
+function renderBasis() {
+  const el = document.getElementById('basis-block');
+  if (!el) return;
+  const b = SNAPSHOT_DATA.basis;
+  if (!b) {
+    el.innerHTML = `<div class="basis-wrap"><div class="basis-body" style="border-top:none">` +
+      `<div class="basis-label">Methodology</div>` +
+      `<div class="basis-text">No methodology was recorded for this cycle. ` +
+      `Treat these figures as provisional and not comparable to other cycles.</div></div></div>`;
+    return;
+  }
+  const block = (label, html) => html
+    ? `<div class="basis-row"><div class="basis-label">${label}</div>${html}</div>` : '';
+  const list = arr => (arr && arr.length)
+    ? `<ul class="basis-list">${arr.map(x => `<li>${x}</li>`).join('')}</ul>` : '';
+
+  el.innerHTML = `
+    <details class="basis-wrap">
+      <summary><span>How these figures were produced</span><span class="chev">▾</span></summary>
+      <div class="basis-body">
+        ${block('Method', `<div class="basis-text">${b.method || ''}</div>`)}
+        ${block('Sources used', (b.sources_used||[]).length
+          ? `<div class="basis-srcs">${b.sources_used.map(x => `<span class="basis-src">${x}</span>`).join('')}</div>` : '')}
+        ${block('Excluded, and why', list(b.excluded))}
+        ${block('Listing counts', `<div class="basis-text">${b.count_basis || ''}</div>`)}
+        ${block('Known limits', list(b.known_limits))}
+      </div>
+    </details>`;
 }
 
 // ── MARKET META ──────────────────────────────────────────────
@@ -1650,6 +1811,7 @@ computeFreshness();
 renderUnitStats();
 renderInventoryBars();
 renderInsights();
+renderBasis();
 updateMeta();
 renderMeetings();
 renderMedia();
