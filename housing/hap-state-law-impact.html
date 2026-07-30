@@ -65,26 +65,34 @@
            font-size:16px;line-height:1.58;color:rgba(255,255,255,.86);}
   .tl-note strong{color:#fff;}
   /* ---------- recency note ---------- */
-  .recent{background:#f8f4ee;border-left:4px solid #c8822a;padding:20px 24px;margin:0 0 22px;font-size:16px;line-height:1.62;}
-  .recent .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;letter-spacing:1.2px;
-               text-transform:uppercase;color:#c8822a;font-weight:700;margin-bottom:10px;}
-  .seq{margin:16px 0;border-top:1px solid #e4dcd0;}
-  .seq-row{display:grid;grid-template-columns:96px 92px 1fr;gap:12px;align-items:baseline;
-           padding:9px 0;border-bottom:1px solid #e4dcd0;}
-  .seq-d{font-family:'JetBrains Mono',Consolas,monospace;font-size:14px;font-weight:700;color:#1a2332;white-space:nowrap;}
-  .seq-who{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;font-weight:700;letter-spacing:.6px;
-           text-transform:uppercase;padding:4px 8px;border-radius:3px;text-align:center;white-space:nowrap;}
-  .seq-who.state{background:#fde8e4;color:#a83a18;}
-  .seq-who.city{background:#fbeedd;color:#8f5c13;}
-  .seq-x{font-size:15.5px;line-height:1.5;}
-
+  .recent{background:#f8f4ee;border-left:5px solid #c8822a;padding:22px 26px;margin:0 0 22px;
+          font-size:16.5px;line-height:1.58;}
+  .recent .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:14px;letter-spacing:1.6px;
+               text-transform:uppercase;color:#a06818;font-weight:700;margin-bottom:8px;}
+  .recent .hd{font-family:'DM Serif Display',Georgia,serif;font-size:23px;line-height:1.24;
+              color:#1a2332;margin-bottom:12px;}
+  .recent p{margin-bottom:0;}
+  .seq{margin:16px 0;border-top:1px solid #ddd4c6;}
+  .seq-row{display:grid;grid-template-columns:92px 84px 1fr;gap:14px;align-items:baseline;
+           padding:7px 0;border-bottom:1px solid #ddd4c6;}
+  .seq-d{font-family:'JetBrains Mono',Consolas,monospace;font-size:14.5px;font-weight:700;
+         color:#1a2332;white-space:nowrap;}
+  .seq-who{font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;font-weight:700;letter-spacing:.7px;
+           text-transform:uppercase;padding:3px 7px;border-radius:3px;text-align:center;white-space:nowrap;}
+  .seq-who.state{background:#f7d9d1;color:#8f2f11;}
+  .seq-who.city{background:#f6e2c4;color:#7a4d0c;}
+  .seq-x{font-size:15.5px;line-height:1.45;}
+  .seq-row.hi .seq-d{color:#8f2f11;}
+  .punch{margin-top:16px;padding-top:14px;border-top:2px solid #ddd4c6;font-size:16.5px;line-height:1.55;}
+  .punch b{color:#1a2332;}
   /* ---------- boxes ---------- */
   .box{background:#f8f4ee;border-left:4px solid #e76f51;padding:22px 26px;margin:0 0 24px;}
-  .box .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;letter-spacing:1.2px;
-            text-transform:uppercase;color:#a83a18;font-weight:700;margin-bottom:12px;}
+  .box{border-left-width:5px;}
+  .box .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:14px;letter-spacing:1.6px;
+            text-transform:uppercase;color:#a83a18;font-weight:700;margin-bottom:13px;}
   .box ol{margin:0 0 0 21px;} .box li{font-size:17px;line-height:1.58;margin-bottom:12px;}
   .box li:last-child{margin-bottom:0;}
-  .key{background:#f8f4ee;border-left:4px solid #c8822a;padding:16px 22px;margin:18px 0;font-size:16px;line-height:1.6;}
+  .key{background:#f8f4ee;border-left:5px solid #c8822a;padding:16px 22px;margin:18px 0;font-size:16px;line-height:1.6;}
   .legend{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 4px;font-size:14.5px;}
   .legend div{flex:1 1 230px;background:#f8f4ee;border-radius:5px;padding:11px 14px;line-height:1.45;}
   ol.narr{margin:0 0 16px 21px;} ol.narr li{margin-bottom:12px;font-size:16.5px;line-height:1.58;}
@@ -170,15 +178,16 @@
 
   <div class="recent">
     <div class="lab">How new this is</div>
-    Both bills were still in Committee of Conference on <strong>June 4</strong> &mdash; the House adopted the second conference report by <strong>185&ndash;171</strong>, a fourteen-vote margin. What follows is the drafting sequence against the legislative one:
+    <div class="hd">The final text did not exist while this plan was being written</div>
+    <p>Both bills were still in Committee of Conference on <strong>June 4</strong>. The House adopted the final report <strong>185&ndash;171</strong> &mdash; a fourteen-vote margin.</p>
     <div class="seq">
-      <div class="seq-row"><div class="seq-d">JUN 4</div><div class="seq-who state">State</div><div class="seq-x">Committee of Conference reports adopted &mdash; final text of both bills settled</div></div>
-      <div class="seq-row"><div class="seq-d">JUN 30</div><div class="seq-who city">City</div><div class="seq-x">Housing Committee finalises the priority matrix</div></div>
+      <div class="seq-row"><div class="seq-d">JUN 4</div><div class="seq-who state">State</div><div class="seq-x">Conference reports adopted &mdash; final text settled</div></div>
+      <div class="seq-row"><div class="seq-d">JUN 30</div><div class="seq-who city">City</div><div class="seq-x">Priority matrix finalised</div></div>
       <div class="seq-row"><div class="seq-d">JUL 9</div><div class="seq-who city">City</div><div class="seq-x">Narrative draft completed</div></div>
-      <div class="seq-row"><div class="seq-d">JUL 13</div><div class="seq-who city">City</div><div class="seq-x">Committee presents the plan to the City Council</div></div>
-      <div class="seq-row"><div class="seq-d">JUL 15</div><div class="seq-who state">State</div><div class="seq-x">Governor signs both bills into law</div></div>
+      <div class="seq-row hi"><div class="seq-d">JUL 13</div><div class="seq-who city">City</div><div class="seq-x">Plan presented to the City Council</div></div>
+      <div class="seq-row hi"><div class="seq-d">JUL 15</div><div class="seq-who state">State</div><div class="seq-x">Governor signs both bills into law</div></div>
     </div>
-    The plan reached the Council <strong>two days before the Governor signed</strong>. The first law&rsquo;s effective date was then set retroactively to July 1, so it bound Portsmouth for a fortnight before it was signed at all. Nobody drafting this plan in June was working from final text &mdash; there wasn&rsquo;t any. That is why this note exists, and it is the reason none of what follows is a criticism of the drafting.
+    <div class="punch">The plan reached the Council <b>two days before the Governor signed</b>. Chapter 319 was then backdated to July 1, binding Portsmouth for a fortnight before signature. <b>Nobody drafting in June had final text.</b> Nothing below is a criticism of the drafting.</div>
   </div>
 
   <div class="box">
