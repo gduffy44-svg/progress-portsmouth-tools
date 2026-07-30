@@ -191,8 +191,8 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
   <!-- FILTER BAR -->
   <div class="filter-bar">
     <span class="filter-label">Jump to:</span>
-    <button class="filter-btn active" onclick="filterSections('all',this)">All <span class="filter-count">15</span></button>
-    <button class="filter-btn f-triage" onclick="filterSections('triage',this)">🎯 Triage <span class="filter-count">10</span></button>
+    <button class="filter-btn active" onclick="filterSections('all',this)">All <span class="filter-count">16</span></button>
+    <button class="filter-btn f-triage" onclick="filterSections('triage',this)">🎯 Triage <span class="filter-count">11</span></button>
     <button class="filter-btn f-zoning" onclick="filterSections('zoning',this)">📐 Zoning Foundation <span class="filter-count">1</span></button>
     <button class="filter-btn f-economics" onclick="filterSections('economics',this)">📊 Economics &amp; Finance <span class="filter-count">2</span></button>
     <button class="filter-btn f-context" onclick="filterSections('context',this)">📚 Background &amp; Context <span class="filter-count">3</span></button>
@@ -372,6 +372,39 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
           <p class="card-question">Zone structure, approval pathways, compliance deadlines, and all 38 Z-items grouped by mechanism.</p>
           <div class="card-tags"><span class="card-tag">38 Z-items</span><span class="card-tag">Compliance flags</span><span class="card-tag">Approval matrix</span></div>
           <a class="card-link" href="./zoning-ordinance-triage.html" target="_blank">Open module <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+
+      <!-- M16: State Law Impact -->
+      <div class="module-card cat-triage" data-cat="triage">
+        <div class="card-visual">
+          <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="120" fill="#1a2332"/>
+            <text x="16" y="26" font-family="monospace" font-size="7" fill="rgba(244,162,97,.75)">THE PLAN</text>
+            <rect x="60" y="32" width="46" height="20" fill="rgba(244,162,97,.22)" rx="2"/>
+            <text x="83" y="45" font-family="monospace" font-size="7" fill="rgba(244,162,97,.95)" text-anchor="middle">JUL 13</text>
+            <rect x="112" y="32" width="46" height="20" fill="rgba(244,162,97,.5)" rx="2"/>
+            <text x="135" y="45" font-family="monospace" font-size="7" fill="#fff" text-anchor="middle">AUG 20</text>
+            <rect x="232" y="32" width="52" height="20" fill="rgba(244,162,97,.22)" rx="2"/>
+            <text x="258" y="45" font-family="monospace" font-size="7" fill="rgba(244,162,97,.95)" text-anchor="middle">HEARINGS</text>
+            <line x1="16" y1="60" x2="284" y2="60" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+            <text x="16" y="80" font-family="monospace" font-size="7" fill="rgba(231,111,81,.8)">STATE LAW</text>
+            <rect x="60" y="68" width="46" height="20" fill="rgba(231,111,81,.28)" rx="2"/>
+            <text x="83" y="81" font-family="monospace" font-size="7" fill="rgba(240,128,106,.95)" text-anchor="middle">JUL 1</text>
+            <rect x="176" y="68" width="46" height="20" fill="rgba(231,111,81,.62)" rx="2"/>
+            <text x="199" y="81" font-family="monospace" font-size="7" fill="#fff" text-anchor="middle">SEP 13</text>
+            <line x1="158" y1="42" x2="176" y2="78" stroke="rgba(244,162,97,.55)" stroke-width="1" stroke-dasharray="2,2"/>
+            <text x="150" y="107" font-family="monospace" font-size="6.5" fill="rgba(244,162,97,.85)" text-anchor="middle">24 DAYS BETWEEN REVIEW AND THE LAW CHANGING</text>
+          </svg>
+        </div>
+        <div class="card-top"><span class="card-cat">Triage</span><span class="card-num">Module 16</span></div>
+        <div class="card-body">
+          <h2 class="card-title">What Two New State Laws Change in the Housing Action Plan</h2>
+          <div class="card-when">Current &mdash; before the August 20 Planning Board review</div>
+          <p class="card-question">The nineteen published actions assessed against Chapters 319 and 329 of 2026. Three are superseded by state law, eight constrained to residential districts, eight untouched. Five gaps.</p>
+          <div class="card-tags"><span class="card-tag">19 actions</span><span class="card-tag">Sept 13 deadline</span><span class="card-tag">Aug 20 review</span></div>
+          <a class="card-link" href="./hap-state-law-impact.html" target="_blank">Open module <span class="arrow">&rarr;</span></a>
         </div>
       </div>
 
@@ -723,11 +756,13 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
       <div class="phase-path pp-3">
         <div class="phase-path-label"><span>Before Phase 3 — Sequencing</span></div>
         <div class="path-flow">
-          <a class="path-step" href="./dependencies.html" target="_blank"><span class="path-step-num">1</span><span class="path-step-name">Item Dependencies</span></a>
+          <a class="path-step" href="./hap-state-law-impact.html" target="_blank"><span class="path-step-num">1</span><span class="path-step-name">State Law Impact</span></a>
           <span class="path-arrow">→</span>
-          <a class="path-step" href="./hap-to-ordinance.html" target="_blank"><span class="path-step-num">2</span><span class="path-step-name">From HAP to Ordinance</span></a>
+          <a class="path-step" href="./dependencies.html" target="_blank"><span class="path-step-num">2</span><span class="path-step-name">Item Dependencies</span></a>
           <span class="path-arrow">→</span>
-          <a class="path-step" href="./permanentaffordability.html" target="_blank"><span class="path-step-num">3</span><span class="path-step-name">Permanent Affordability</span></a>
+          <a class="path-step" href="./hap-to-ordinance.html" target="_blank"><span class="path-step-num">3</span><span class="path-step-name">From HAP to Ordinance</span></a>
+          <span class="path-arrow">→</span>
+          <a class="path-step" href="./permanentaffordability.html" target="_blank"><span class="path-step-num">4</span><span class="path-step-name">Permanent Affordability</span></a>
         </div>
       </div>
 
@@ -740,9 +775,9 @@ body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color
   <div class="footer-inner">
     <div>
       <div class="fb-label">Resource</div>
-      <p>Housing Policy Reference Library<br><strong style="color:rgba(255,255,255,.7);">Version 2.6</strong> · July 2026</p>
+      <p>Housing Policy Reference Library<br><strong style="color:rgba(255,255,255,.7);">Version 2.7</strong> · July 2026</p>
       <button class="revision-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Revision notes ↑':'Revision notes ↓'">Revision notes ↓</button>
-      <div class="revision-notes">v2.6 (July 28, 2026) — HAP item count updated 148 → 154 across the hero stat, the Capital Flow Scoring Tool card, and its tag. The six new items track the New Hampshire commercial-zone preemption — Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026 — and are Z-39, Z-40, P-17, I-23, GA-5, and GA-6. Module content updated in the same pass across Modules 01, 02, 08, 10, 12, 14 and the plain-language zoning guide; see each module’s own revision note. No change to module numbering or count.<br>v2.5 (July 13, 2026) — Module 16 (PP Response to the July 9 Draft Plan) removed from the library index; the file remains published in the repo. Counts updated to 15 modules (Context 3, which also evens the Background &amp; Context grid at one full row). Module numbering 01–15 unchanged and contiguous.<br>v2.4 (July 11, 2026) — 79-E Adoption Guide relocated directly after the 79-E explainer in the Triage grid and renumbered Module 04; former Modules 04–14 renumbered 05–15 (PP Response remains Module 16). Earlier revision entries retain the numbering in effect when written.<br>v2.3 (July 11, 2026) — Added Module 15: RSA 79-E Adoption Guide (Triage; companion to Module 03) and Module 16: PP Response to the July 9 Draft Plan (Background &amp; Context) — both previously published but off-index. Counts updated to 16 modules (Triage 10, Context 4).<br>v2.2 (July 11, 2026) — Added Module 14: The ROAD to Housing Act &amp; Portsmouth (Background &amp; Context), published the day the federal law took effect. Counts updated to 14 modules (Context 3). Footer context language corrected: the Housing Action Plan was mandated by Council on February 17, 2026, not adopted.<br>v2.1 (April 2026) — Restructured around triage phases. M02 (Missing Middle), M03 (79-E), M08 (Housing Finance) moved to Triage section. "Incentives &amp; Context" renamed "Background &amp; Context." Scoring Tool reframed as post-session documentation. Phase-based reading paths replace linear suggested path. Filter updated to 4 sections (Triage 9, Zoning 1, Economics 2, Context 2).<br>v2.0 (April 2026) — Four category sections, gold triage banner, tool card, section navigation.<br>v1.x (March–April 2026) — Progressive additions of Modules 01–13.</div>
+      <div class="revision-notes">v2.7 (July 30, 2026) — New Module 16, <em>What Two New State Laws Change in the Housing Action Plan</em>: a line-by-line pass through the nineteen actions published by Planning &amp; Sustainability in July 2026, assessed against Chapter 319 (HB 1010) and Chapter 329 (HB 1588). Three actions are superseded by state law, eight constrained to residential districts, eight unaffected, and five gaps identified. Keyed to the August 20 Planning Board review and the September 13 effective date. Filed under Triage and added as the first step of the Sequencing reading path, ahead of Item Dependencies — the schedule question now governs the sequencing question. Module count 15 → 16; Triage 10 → 11.<br>v2.6 (July 28, 2026) — HAP item count updated 148 → 154 across the hero stat, the Capital Flow Scoring Tool card, and its tag. The six new items track the New Hampshire commercial-zone preemption — Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026 — and are Z-39, Z-40, P-17, I-23, GA-5, and GA-6. Module content updated in the same pass across Modules 01, 02, 08, 10, 12, 14 and the plain-language zoning guide; see each module’s own revision note. No change to module numbering or count.<br>v2.5 (July 13, 2026) — Module 16 (PP Response to the July 9 Draft Plan) removed from the library index; the file remains published in the repo. Counts updated to 15 modules (Context 3, which also evens the Background &amp; Context grid at one full row). Module numbering 01–15 unchanged and contiguous.<br>v2.4 (July 11, 2026) — 79-E Adoption Guide relocated directly after the 79-E explainer in the Triage grid and renumbered Module 04; former Modules 04–14 renumbered 05–15 (PP Response remains Module 16). Earlier revision entries retain the numbering in effect when written.<br>v2.3 (July 11, 2026) — Added Module 15: RSA 79-E Adoption Guide (Triage; companion to Module 03) and Module 16: PP Response to the July 9 Draft Plan (Background &amp; Context) — both previously published but off-index. Counts updated to 16 modules (Triage 10, Context 4).<br>v2.2 (July 11, 2026) — Added Module 14: The ROAD to Housing Act &amp; Portsmouth (Background &amp; Context), published the day the federal law took effect. Counts updated to 14 modules (Context 3). Footer context language corrected: the Housing Action Plan was mandated by Council on February 17, 2026, not adopted.<br>v2.1 (April 2026) — Restructured around triage phases. M02 (Missing Middle), M03 (79-E), M08 (Housing Finance) moved to Triage section. "Incentives &amp; Context" renamed "Background &amp; Context." Scoring Tool reframed as post-session documentation. Phase-based reading paths replace linear suggested path. Filter updated to 4 sections (Triage 9, Zoning 1, Economics 2, Context 2).<br>v2.0 (April 2026) — Four category sections, gold triage banner, tool card, section navigation.<br>v1.x (March–April 2026) — Progressive additions of Modules 01–13.</div>
     </div>
     <div>
       <div class="fb-label">Organization</div>
