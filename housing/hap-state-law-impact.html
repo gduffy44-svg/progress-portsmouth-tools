@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What two new state laws change in the Housing Action Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#f8f4ee;font-family:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+       color:#2d3e52;font-size:16px;line-height:1.62;padding:30px 16px 60px;}
+  .wrap{max-width:1080px;margin:0 auto;background:#fff;border:1px solid #e4dcd0;padding:42px 48px 46px;}
+
+  .eyebrow{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;letter-spacing:1.4px;
+           text-transform:uppercase;color:#c8822a;font-weight:700;margin-bottom:16px;line-height:1.5;}
+  h1{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.18;color:#1a2332;font-weight:400;margin-bottom:14px;}
+  .lede{font-size:19px;line-height:1.55;color:#2d3e52;margin-bottom:22px;}
+  .rule{border-bottom:3px solid #f4a261;margin-bottom:28px;}
+  h2{font-family:'DM Serif Display',Georgia,serif;font-size:24px;color:#1a2332;font-weight:400;
+     line-height:1.28;margin:38px 0 6px;padding-left:13px;border-left:4px solid #2d3e52;}
+  h2 .h2sub{display:block;font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;letter-spacing:1px;
+            text-transform:uppercase;color:#7d7568;font-weight:700;padding-top:5px;}
+  p{margin-bottom:16px;}
+
+  /* ---------- tables ---------- */
+  table{width:100%;border-collapse:collapse;margin:16px 0 6px;}
+  th{background:#2d3e52;color:#fff;font-size:14px;font-weight:700;text-align:left;padding:11px 13px;border:1px solid #2d3e52;}
+  td{font-size:15.5px;line-height:1.56;padding:12px 13px;border:1px solid #e4dcd0;vertical-align:top;}
+  tr:nth-child(even) td{background:#f7f4ef;}
+  .n{font-family:'JetBrains Mono',Consolas,monospace;font-size:15px;font-weight:700;color:#6b6459;}
+  .tag{display:inline-block;font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;letter-spacing:.5px;
+       text-transform:uppercase;font-weight:700;padding:4px 8px;border-radius:3px;white-space:nowrap;}
+  .t-sup{background:#fde8e4;color:#a83a18;} .t-con{background:#fbeedd;color:#8f5c13;}
+  .t-loc{background:#e0efe9;color:#275a50;} .t-new{background:#e3e8ee;color:#2d3e52;}
+
+  /* ---------- timeline ---------- */
+  .tl{background:#1a2332;border-radius:8px;padding:22px 26px 20px;margin:22px 0 22px;}
+  .tl-h{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;letter-spacing:1.2px;
+        text-transform:uppercase;color:#f4a261;font-weight:700;margin-bottom:16px;}
+  .tl-g{display:grid;grid-template-columns:86px repeat(5,1fr);
+        grid-template-rows:auto auto auto auto;gap:0 9px;align-items:stretch;}
+  .tl-lane{font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;letter-spacing:.7px;
+           text-transform:uppercase;font-weight:700;align-self:center;line-height:1.35;}
+  .tl-lane.p{color:#f4a261;grid-column:1;grid-row:1;} .tl-lane.l{color:#f0806a;grid-column:1;grid-row:3;}
+  .tl-c{border-radius:6px;padding:12px 13px;min-height:100%;}
+  .tl-c .dt{font-family:'JetBrains Mono',Consolas,monospace;font-size:13px;font-weight:700;
+            letter-spacing:.04em;margin-bottom:6px;}
+  .tl-c .who{display:none;font-family:'JetBrains Mono',Consolas,monospace;font-size:10.5px;font-weight:700;
+             letter-spacing:.7px;text-transform:uppercase;padding:3px 7px;border-radius:3px;margin-left:9px;
+             vertical-align:1px;}
+  .tl-c .tx{font-size:14.5px;line-height:1.48;color:rgba(255,255,255,.84);}
+  .tl-c.p{background:rgba(244,162,97,.13);border-top:2px solid rgba(244,162,97,.55);grid-row:1;}
+  .tl-c.p .dt{color:#f4a261;} .tl-c.p .who{background:rgba(244,162,97,.22);color:#f7b97f;}
+  .tl-c.p.now{background:rgba(244,162,97,.26);border-top:3px solid #f4a261;}
+  .tl-c.p.now .tx{color:#fff;}
+  .tl-c.l{background:rgba(231,111,81,.15);border-bottom:2px solid rgba(231,111,81,.6);grid-row:3;}
+  .tl-c.l .dt{color:#f49380;} .tl-c.l .who{background:rgba(231,111,81,.24);color:#f6a795;}
+  .tl-c.l.now{background:rgba(231,111,81,.28);border-bottom:3px solid #e76f51;}
+  .tl-c.l.now .tx{color:#fff;}
+  .c2{grid-column:2;} .c3{grid-column:3;} .c4{grid-column:4;} .c5{grid-column:5;} .c6{grid-column:6;}
+  .tl-axis{grid-column:1/-1;grid-row:2;border-top:1px solid rgba(255,255,255,.2);margin:12px 0;}
+  .tl-gap{grid-column:1/-1;grid-row:4;font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;
+          letter-spacing:.7px;text-transform:uppercase;color:#f4a261;text-align:center;padding:12px 0 0;line-height:1.55;}
+  .tl-note{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);
+           font-size:16px;line-height:1.58;color:rgba(255,255,255,.86);}
+  .tl-note strong{color:#fff;}
+  /* ---------- recency note ---------- */
+  .recent{background:#f8f4ee;border-left:4px solid #c8822a;padding:20px 24px;margin:0 0 22px;font-size:16px;line-height:1.62;}
+  .recent .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;letter-spacing:1.2px;
+               text-transform:uppercase;color:#c8822a;font-weight:700;margin-bottom:10px;}
+  .seq{margin:16px 0;border-top:1px solid #e4dcd0;}
+  .seq-row{display:grid;grid-template-columns:96px 92px 1fr;gap:12px;align-items:baseline;
+           padding:9px 0;border-bottom:1px solid #e4dcd0;}
+  .seq-d{font-family:'JetBrains Mono',Consolas,monospace;font-size:14px;font-weight:700;color:#1a2332;white-space:nowrap;}
+  .seq-who{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;font-weight:700;letter-spacing:.6px;
+           text-transform:uppercase;padding:4px 8px;border-radius:3px;text-align:center;white-space:nowrap;}
+  .seq-who.state{background:#fde8e4;color:#a83a18;}
+  .seq-who.city{background:#fbeedd;color:#8f5c13;}
+  .seq-x{font-size:15.5px;line-height:1.5;}
+
+  /* ---------- boxes ---------- */
+  .box{background:#f8f4ee;border-left:4px solid #e76f51;padding:22px 26px;margin:0 0 24px;}
+  .box .lab{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;letter-spacing:1.2px;
+            text-transform:uppercase;color:#a83a18;font-weight:700;margin-bottom:12px;}
+  .box ol{margin:0 0 0 21px;} .box li{font-size:17px;line-height:1.58;margin-bottom:12px;}
+  .box li:last-child{margin-bottom:0;}
+  .key{background:#f8f4ee;border-left:4px solid #c8822a;padding:16px 22px;margin:18px 0;font-size:16px;line-height:1.6;}
+  .legend{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 4px;font-size:14.5px;}
+  .legend div{flex:1 1 230px;background:#f8f4ee;border-radius:5px;padding:11px 14px;line-height:1.45;}
+  ol.narr{margin:0 0 16px 21px;} ol.narr li{margin-bottom:12px;font-size:16.5px;line-height:1.58;}
+  .backnav{margin-bottom:20px;}
+  .backnav a{font-family:'JetBrains Mono',Consolas,monospace;font-size:13px;font-weight:700;letter-spacing:.5px;
+             color:#2d3e52;text-decoration:none;border-bottom:2px solid #f4a261;padding-bottom:2px;}
+  .backnav a:hover{color:#c8822a;}
+  .verline{font-family:'JetBrains Mono',Consolas,monospace;font-size:13.5px;font-weight:700;
+           color:#2d3e52;margin-bottom:8px;font-style:normal;}
+  .revtoggle{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;font-weight:700;letter-spacing:.6px;
+             text-transform:uppercase;color:#c8822a;background:none;border:none;padding:0;cursor:pointer;
+             text-decoration:underline;text-underline-offset:3px;font-style:normal;}
+  .revtoggle:hover{color:#a06818;}
+  .revbody{display:none;margin-top:12px;padding-left:14px;border-left:3px solid #e4dcd0;
+           font-size:14px;line-height:1.62;color:#6b6459;font-style:normal;}
+  .revbody.open{display:block;}
+  .revbody b{color:#2d3e52;}
+  footer{border-top:1px solid #e4dcd0;margin-top:36px;padding-top:18px;font-size:14px;color:#7d7568;font-style:italic;line-height:1.6;}
+
+  @media print{
+    body{background:#fff;padding:0;font-size:11pt;} .wrap{border:none;padding:0;max-width:100%;}
+    h2{page-break-after:avoid;} tr{page-break-inside:avoid;} .recent,.box,.tl{page-break-inside:avoid;}
+    .tl{background:#fff;border:1px solid #c9c2b6;} .tl-h{color:#a06818;}
+    .tl-c .tx{color:#2d3e52!important;} .tl-c .tx strong{color:#1a2332!important;}
+    .tl-c.p{background:#fdf3e8;} .tl-c.p.now{background:#f9e4cb;}
+    .tl-c.l{background:#fdeee9;} .tl-c.l.now{background:#f9d9d0;}
+    .tl-c.p .dt,.tl-lane.p{color:#a06818;} .tl-c.l .dt,.tl-lane.l{color:#a83a18;}
+    .tl-axis{border-top-color:#c9c2b6;} .tl-gap{color:#a06818;}
+    .tl-note{color:#2d3e52;border-top-color:#c9c2b6;} .tl-note strong{color:#1a2332;}
+    .recent{background:#faf7f2;} .backnav,.revtoggle{display:none;} .revbody{display:block!important;}
+  }
+  @media(max-width:820px){
+    .wrap{padding:26px 20px;} h1{font-size:28px;} .lede{font-size:17px;}
+    .tl{padding:18px 18px 16px;}
+    .tl-g{grid-template-columns:1fr;grid-template-rows:none;gap:9px;}
+    .tl-lane,.tl-axis{display:none;}
+    .tl-c,.tl-c.p,.tl-c.l{grid-column:1!important;grid-row:auto!important;min-height:0;}
+    .tl-c.p{border-top:none;border-left:4px solid #f4a261;}
+    .tl-c.l{border-bottom:none;border-left:4px solid #e76f51;}
+    .tl-c.p.now{border-left:6px solid #f4a261;} .tl-c.l.now{border-left:6px solid #e76f51;}
+    .tl-c .who{display:inline-block;}
+    .tl-gap{grid-column:1!important;grid-row:auto!important;padding:6px 0 0;font-size:11.5px;}
+    .seq-row{grid-template-columns:84px 88px 1fr;gap:9px;}
+    td,th{font-size:14.5px;padding:10px;}
+    .box li{font-size:16px;} ol.narr li{font-size:15.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="backnav"><a href="https://www.progressportsmouth.com">&larr; Progress Portsmouth</a></div>
+  <div class="eyebrow">Progress Portsmouth &middot; for Planning &amp; Sustainability, the Housing Committee and the Planning Board</div>
+  <h1>What two new state laws change in the Housing Action Plan</h1>
+
+  <p class="lede">New Hampshire now governs housing on Portsmouth&rsquo;s commercially zoned land. One law took effect July 1; the second lands September 13 &mdash; after the Planning Board&rsquo;s August 20 review and during the public hearing window. <strong>Eight of the plan&rsquo;s nineteen actions are unaffected. Eleven need attention, most of them only a narrowing of scope.</strong></p>
+  <div class="rule"></div>
+
+  <div class="tl">
+    <div class="tl-h">The two schedules</div>
+    <div class="tl-g">
+
+      <div class="tl-lane p">The<br>plan</div>
+      <div class="tl-lane l">State<br>law</div>
+
+      <div class="tl-c l c2"><div class="dt">JUL 1<span class="who">State law</span></div><div class="tx">Portsmouth must allow apartments on commercially zoned land where infrastructure supports it</div></div>
+
+      <div class="tl-c p c3"><div class="dt">JUL 13<span class="who">The plan</span></div><div class="tx">Council refers the plan to the Planning Board</div></div>
+
+      <div class="tl-c p now c4"><div class="dt">AUG 20<span class="who">The plan</span></div><div class="tx">Planning Board reviews the recommendations</div></div>
+
+      <div class="tl-c l now c5"><div class="dt">SEP 13<span class="who">State law</span></div><div class="tx">Those apartments become <strong style="color:#fff;">by right</strong>. Only frontage, setback and height may be regulated, and wrongful denial carries legal fees</div></div>
+
+      <div class="tl-c p c6"><div class="dt">SEPTEMBER<span class="who">The plan</span></div><div class="tx">Two public hearings</div></div>
+
+      <div class="tl-axis"></div>
+      <div class="tl-gap">&larr;&nbsp; the plan&rsquo;s last scheduled review sits 24 days before the law changes &nbsp;&rarr;</div>
+    </div>
+    <div class="tl-note">
+      <strong>The law changes between the Planning Board&rsquo;s review and the public hearings.</strong> Corrections made in August are a drafting pass. The same corrections made in late September happen in public, at a hearing, on the record.
+    </div>
+  </div>
+
+  <div class="recent">
+    <div class="lab">How new this is</div>
+    Both bills were still in Committee of Conference on <strong>June 4</strong> &mdash; the House adopted the second conference report by <strong>185&ndash;171</strong>, a fourteen-vote margin. What follows is the drafting sequence against the legislative one:
+    <div class="seq">
+      <div class="seq-row"><div class="seq-d">JUN 4</div><div class="seq-who state">State</div><div class="seq-x">Committee of Conference reports adopted &mdash; final text of both bills settled</div></div>
+      <div class="seq-row"><div class="seq-d">JUN 30</div><div class="seq-who city">City</div><div class="seq-x">Housing Committee finalises the priority matrix</div></div>
+      <div class="seq-row"><div class="seq-d">JUL 9</div><div class="seq-who city">City</div><div class="seq-x">Narrative draft completed</div></div>
+      <div class="seq-row"><div class="seq-d">JUL 13</div><div class="seq-who city">City</div><div class="seq-x">Committee presents the plan to the City Council</div></div>
+      <div class="seq-row"><div class="seq-d">JUL 15</div><div class="seq-who state">State</div><div class="seq-x">Governor signs both bills into law</div></div>
+    </div>
+    The plan reached the Council <strong>two days before the Governor signed</strong>. The first law&rsquo;s effective date was then set retroactively to July 1, so it bound Portsmouth for a fortnight before it was signed at all. Nobody drafting this plan in June was working from final text &mdash; there wasn&rsquo;t any. That is why this note exists, and it is the reason none of what follows is a criticism of the drafting.
+  </div>
+
+  <div class="box">
+    <div class="lab">If you read nothing else</div>
+    <ol>
+      <li><strong>Three actions describe work the state has already done.</strong> Priorities 3 and 7, and the Form-Based Code item. Restating them as conformance is more accurate &mdash; and a stronger position, since the City is implementing law rather than proposing a contested change.</li>
+      <li><strong>Two actions in drafting right now need their scope set before September 13.</strong> Priority 3 (conversions) and Priority 5 (in-lieu fee), both on 0&ndash;6 month timeframes. The in-lieu fee cannot be required in commercial districts after that date.</li>
+      <li><strong>Priority 7 contains a trap.</strong> RSA 674:80 protects <em>commercially zoned</em> land. Rezoning OR or GB parcels into a residential designation would move them <em>out</em> of the mandate &mdash; reducing what is allowed by right, not expanding it.</li>
+      <li><strong>The plan never mentions the statute.</strong> One paragraph in Zoning Changes fixes it. Published in July 2026 without it, the plan reads as having been written before the laws passed.</li>
+    </ol>
+  </div>
+
+  <div class="key"><strong>The one limit that governs everything below:</strong> both laws reach only &ldquo;multi-family dwelling units&rdquo; as defined in RSA 674:43, I &mdash; structures containing <strong>more than 2 dwelling units</strong>, on commercially zoned land. Duplexes are outside. Because the test is per structure rather than per project, cottage courts and similar forms may be outside too. Everything in residential districts remains entirely Portsmouth&rsquo;s call.</div>
+
+  <div class="legend">
+    <div><span class="tag t-sup">Superseded</span> &nbsp;State law already does this. Work becomes conformance.</div>
+    <div><span class="tag t-con">Constrained</span> &nbsp;Still available, but narrower &mdash; usually residential districts only.</div>
+    <div><span class="tag t-loc">Local</span> &nbsp;Outside the mandate. No change needed.</div>
+    <div><span class="tag t-new">Gap</span> &nbsp;Not in the plan. Recommended.</div>
+  </div>
+
+  <h2>Priority actions<span class="h2sub">1&ndash;7</span></h2>
+  <table>
+    <tr><th style="width:32px;">#</th><th style="width:22%;">Action</th><th style="width:92px;">Status</th><th>What to do</th></tr>
+
+    <tr><td class="n">1</td><td>Expand RSA 79-E tax relief</td><td><span class="tag t-loc">Local</span></td>
+    <td><strong>No change.</strong> 79-E works by owner application and recorded covenant, not zoning condition &mdash; which is why it survives preemption. Worth saying so in the narrative: contract-based tools remain fully available where zoning conditions no longer are. Separately, confirm 79-E&rsquo;s own 2026 amendments before drafting the zone criteria.</td></tr>
+
+    <tr><td class="n">2</td><td>Comprehensive zoning review</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Split it.</strong> The 1&ndash;2 year timeframe cannot carry the commercial-district conformance work, which has a September 13 deadline. Run that as an urgent separate pass; leave the general review on schedule.</td></tr>
+
+    <tr><td class="n">3</td><td>Allow commercial-to-residential conversions</td><td><span class="tag t-sup">Superseded</span></td>
+    <td><strong>Restate as conformance.</strong> Required by state law since July 1. Also flag for applicants: the adaptive reuse exemption from setback, height and frontage is live now and <em>repealed</em> September 13. A project that vests before then keeps it.</td></tr>
+
+    <tr><td class="n">4</td><td>Cottage housing and clustered small-lot</td><td><span class="tag t-loc">Local</span></td>
+    <td><strong>No change.</strong> These forms spread units across small structures, so they fall outside the more-than-2-units test. Reaches housing the state mandate does not.</td></tr>
+
+    <tr><td class="n">5</td><td>In-lieu fee program</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Scope to residential districts.</strong> An in-lieu obligation is consideration for a density bonus; where unit caps are unenforceable there is nothing to trade, and a mandatory obligation is itself barred. On a 0&ndash;6 month timeframe, so this decision is live now.</td></tr>
+
+    <tr><td class="n">6</td><td>Continue nonprofit fee waivers</td><td><span class="tag t-loc">Local</span></td>
+    <td><strong>No change.</strong> Waivers are incentives, not requirements, and work in every district. If the broader targeted waiver program from the June 30 matrix was dropped rather than folded in, note that it worked identically on both sides of the preemption line.</td></tr>
+
+    <tr><td class="n">7</td><td>Rezone Office Research and General Business districts</td><td><span class="tag t-sup">Superseded</span></td>
+    <td><strong>Check before amending the map.</strong> Housing is already permitted there by state law. And rezoning these parcels to a <em>residential</em> designation would move them out of RSA 674:80 protection, reducing by-right entitlement. If the goal is mixed-use form rather than residential permission, say so in the action and test the effect parcel by parcel.</td></tr>
+  </table>
+
+  <h2>Additional actions<span class="h2sub">the remaining twelve</span></h2>
+  <table>
+    <tr><th style="width:24%;">Action</th><th style="width:92px;">Status</th><th>What to do</th></tr>
+
+    <tr><td>Expand multi-family zoning</td><td><span class="tag t-loc">Local</span></td>
+    <td><strong>No change &mdash; and now the most consequential action in the plan.</strong> The state mandate does nothing for the 85.8% of residential land in single-family districts. This is the action that reaches the rest of the city.</td></tr>
+
+    <tr><td>Review dimensional zoning standards</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Commercial districts capped.</strong> From September 13, frontage, setback and height for multifamily may not differ from what commercial development gets in the same district, and nothing else may be imposed. Residential districts unaffected.</td></tr>
+
+    <tr><td>Convert single-family homes into multiple units</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Resolve the scope question first.</strong> Two units is outside the statute and stays local. Three or more may be reached by the new nonconforming-conversion right (effective September 13) &mdash; but whether that applies citywide or only in commercial districts is unresolved. See the Gaps table.</td></tr>
+
+    <tr><td>Deploy and expand the Housing Trust Fund</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Re-model the revenue.</strong> If in-lieu fees cannot be required in commercial districts, projected inflow falls. Worth checking before deployment criteria are set.</td></tr>
+
+    <tr><td>Homebuyer assistance programs</td><td><span class="tag t-loc">Local</span></td><td><strong>No change.</strong></td></tr>
+
+    <tr><td>Plan outlying areas for residential growth</td><td><span class="tag t-loc">Local</span></td><td><strong>No change.</strong></td></tr>
+
+    <tr><td>Simplify the Form-Based Code</td><td><span class="tag t-sup">Superseded</span></td>
+    <td><strong>Move it up.</strong> The most exposed action in the plan. Articles 5A and 5B regulate building type, fa&ccedil;ade type, lot line buildout, story counts, glazing. In commercial districts those are plausibly barred &ldquo;additional requirements&rdquo; from September 13, with attorney&rsquo;s fees available to an applicant who sues. Simplification there is compliance, not preference &mdash; and 1&ndash;2 years does not match the exposure.</td></tr>
+
+    <tr><td>Adjust building height requirements</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Parity rule applies.</strong> In commercial districts, residential height must match commercial. Raise both together or neither.</td></tr>
+
+    <tr><td>Allow live/work units</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Threshold matters.</strong> A live/work building on commercial land with more than 2 dwelling units falls under RSA 674:80. Below that, and in residential districts, fully local.</td></tr>
+
+    <tr><td>Preserve existing below market-rate housing</td><td><span class="tag t-loc">Local</span></td>
+    <td><strong>No change &mdash; and structurally durable.</strong> Covenants, ground leases and deed restrictions are contractual, not zoning conditions. State limits on zoning do not reach them.</td></tr>
+
+    <tr><td>Create more senior housing</td><td><span class="tag t-loc">Local</span></td>
+    <td><strong>No change.</strong> Senior projects of 3+ units on commercial land benefit from the mandate like any other multifamily.</td></tr>
+
+    <tr><td>Strengthen the workforce housing ordinance</td><td><span class="tag t-con">Constrained</span></td>
+    <td><strong>Draft as incentive, not mandate.</strong> RSA 674:58&ndash;61 requires reasonable and realistic <em>opportunity</em> &mdash; a duty not to exclude. Compliance on that basis is fine. A set-aside imposed in a commercial district is barred from September 13.</td></tr>
+  </table>
+
+  <h2>Gaps<span class="h2sub">not in the plan &middot; two were in the June 30 matrix and came out</span></h2>
+  <table>
+    <tr><th style="width:24%;">Suggested action</th><th style="width:92px;">Status</th><th>Why</th></tr>
+
+    <tr><td>Objective infrastructure standards in site plan regulations</td><td><span class="tag t-new">Gap</span></td>
+    <td>Infrastructure is now the <em>only</em> ground for denying multifamily on commercial land &mdash; traffic and pedestrian safety, water, wastewater. From September 13 a denial that cannot be sustained on those grounds carries attorney&rsquo;s fees. Published thresholds by district are what make the remaining discretion defensible. This is the successor to the expedited permitting action that came out of the June 30 matrix; with that gone, the plan has no permitting-process item at all. Adoptable by the Planning Board without Council action.</td></tr>
+
+    <tr><td>Conform commercial-district dimensional standards</td><td><span class="tag t-new">Gap</span></td>
+    <td>After September 13, any standard exceeding commercial parity is unenforceable <em>and</em> fee-generating. Setting them deliberately in August beats discovering them in litigation.</td></tr>
+
+    <tr><td>ADU compliance</td><td><span class="tag t-new">Gap</span></td>
+    <td>The June 30 matrix carried an ADU action; the published list does not. Two live obligations now have no home: the statewide one-space-per-unit cap, which the ordinance still exceeds, and the bar on requiring garaged spaces from September 13.</td></tr>
+
+    <tr><td>Special Assessment Districts (RSA 162-X)</td><td><span class="tag t-new">Gap</span></td>
+    <td>The one new financing tool from the 2026 session. Bonds for roads, water, sewer, stormwater and parking improvements, repaid solely by assessments on benefited properties; 60 percent owner agreement; up to 20 years. Simpler than TIF &mdash; no increment analysis, no state approval. Addresses the constraint that is now the only denial ground.</td></tr>
+
+    <tr><td>Determination on the nonconforming-conversion right</td><td><span class="tag t-new">Gap</span></td>
+    <td>Does RSA 674:80, VI apply citywide or only in commercial districts? With roughly 70% of single-family-zone parcels dimensionally nonconforming, a citywide reading opens a conversion pathway no action anticipates. A legal opinion, not a study &mdash; and it determines how the conversion action above gets drafted.</td></tr>
+  </table>
+
+  <h2>Three notes on the narrative<span class="h2sub">plan text, not the matrix</span></h2>
+  <ol class="narr">
+    <li><strong>Add a paragraph on state law to Zoning Changes.</strong> RSA 674:80 appears nowhere in the plan, nor does HB 631 or either 2026 chapter. This strengthens the plan rather than weakening it &mdash; several priorities are now backed by state mandate rather than dependent on local consensus.</li>
+    <li><strong>Check the parking sentence.</strong> Zoning Changes lists &ldquo;modifications to off-street parking requirements&rdquo; among barriers addressed. The statewide cap is one space per unit <em>with no exceptions</em> &mdash; the 1.5-space allowances were removed by House amendment in April 2025. If the ordinance still exceeds that for any residential unit, the provision is unenforceable today.</li>
+    <li><strong>Give the zoning rewrite a preemption screen.</strong> The Master Plan Integration section scopes the rewrite to follow Master Plan adoption. Any consultant scope drafted now should reflect that a meaningful share of the commercial-district work is no longer discretionary. A natural item for the Planning Board on August 20, since the Board holds the Master Plan under RSA 674:1.</li>
+  </ol>
+
+  <p style="font-size:13.5px;">Progress Portsmouth can supply the chaptered text of either law, a side-by-side of the current and September 13 versions of RSA 674:80, or draft language for any of the gaps above.</p>
+
+  <footer>
+    <div class="verline">Version 1.0 &middot; July 28, 2026</div>
+    <button class="revtoggle" id="revtoggle" type="button">Revision notes</button>
+    <div class="revbody" id="revbody">
+      <b>v1.0 (July 28, 2026)</b> &mdash; Initial release. Keyed to the Housing Action Plan draft published by Planning &amp; Sustainability in July 2026: seven priority actions and twelve additional implementation actions, presented to the City Council on July 13 and referred to the Planning Board for its August 20 meeting. Assessed against Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026, working from the chaptered final versions rather than press summaries &mdash; the two chapters carry different effective dates and have been reported together elsewhere. Three actions are identified as superseded by state law, eight as constrained to residential districts, eight as unaffected, and five gaps are proposed. Two of those gaps correspond to actions that appeared in the June 30 priority matrix and are not in the published list.
+    </div>
+    <div style="margin-top:14px;">
+    Progress Portsmouth &middot; <a href="https://www.progressportsmouth.com" style="color:#7d7568;">progressportsmouth.com</a><br>
+    Keyed to the Housing Action Plan draft published by Planning &amp; Sustainability, July 2026 &mdash; seven priority actions and twelve additional actions, presented to the City Council July 13 and referred to the Planning Board.<br>
+    The two laws: Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026, both approved July 15, 2026. Sources: chaptered final versions, NH General Court; RSA 674:80; RSA 674:16, VII; RSA 674:43, I; RSA 674:58&ndash;61; RSA 162-X; SB 284 (2025).<br>
+    Created with AI assistance in research and information design, with human editorial control.
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("revtoggle");
+  var body = document.getElementById("revbody");
+  if (!btn || !body) { return; }
+  btn.addEventListener("click", function () {
+    var open = body.classList.toggle("open");
+    btn.textContent = open ? "Hide revision notes" : "Revision notes";
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  btn.setAttribute("aria-controls", "revbody");
+  btn.setAttribute("aria-expanded", "false");
+})();
+</script>
+</body>
+</html>
