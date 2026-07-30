@@ -107,6 +107,18 @@
         font-size:16px;line-height:1.6;}
   ol.q{margin:14px 0 0 21px;} ol.q li{font-size:16px;line-height:1.56;margin-bottom:11px;}
   ol.q li:last-child{margin-bottom:0;}
+  /* ---------- the two laws, identified ---------- */
+  .laws{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 26px;}
+  .law{flex:1 1 300px;background:#f8f4ee;border-left:5px solid #2d3e52;padding:17px 20px;}
+  .law .ch{font-family:'JetBrains Mono',Consolas,monospace;font-size:14px;font-weight:700;
+           letter-spacing:1.1px;color:#1a2332;display:block;}
+  .law .bill{font-family:'JetBrains Mono',Consolas,monospace;font-size:12.5px;color:#6b6459;
+             display:block;padding:3px 0 9px;}
+  .law .tx{font-size:15.5px;line-height:1.55;color:#33404f;}
+  .law .eff{display:block;margin-top:9px;font-family:'JetBrains Mono',Consolas,monospace;
+            font-size:13px;font-weight:700;color:#8f5c13;}
+  .law.b2{border-left-color:#c8822a;} .law.b2 .eff{color:#a83a18;}
+  .laws-note{font-size:15.5px;line-height:1.6;margin:-10px 0 26px;color:#33404f;}
   .legend{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0 4px;font-size:14.5px;}
   .legend div{flex:1 1 230px;background:#f8f4ee;border-radius:5px;padding:11px 14px;line-height:1.45;}
   ol.narr{margin:0 0 16px 21px;} ol.narr li{margin-bottom:12px;font-size:16.5px;line-height:1.58;}
@@ -137,11 +149,13 @@
     .tl-axis{border-top-color:#c9c2b6;} .tl-gap{color:#a06818;}
     .tl-note{color:#2d3e52;border-top-color:#c9c2b6;} .tl-note strong{color:#1a2332;}
     .reason{background:#f4f8f6;} .gate{background:#faf7f2;}
+    .law{background:#faf7f2;} .laws{display:block;} .law{margin-bottom:12px;}
     .recent{background:#faf7f2;} .backnav,.revtoggle{display:none;} .revbody{display:block!important;}
   }
   @media(max-width:820px){
     .wrap{padding:26px 20px;} h1{font-size:28px;} .lede{font-size:17px;}
     .reason{padding:16px 18px;} .gate{padding:14px 16px;} ol.q li{font-size:15.5px;}
+    .law{padding:14px 16px;} .law .tx{font-size:15px;} .laws-note{font-size:15px;}
     .tl{padding:18px 18px 16px;}
     .tl-g{grid-template-columns:1fr;grid-template-rows:none;gap:9px;}
     .tl-lane,.tl-axis{display:none;}
@@ -168,6 +182,23 @@
   <p class="lede">New Hampshire now governs housing on Portsmouth&rsquo;s commercially zoned land. One law took effect July 1; the second lands September 13 &mdash; after the Planning Board&rsquo;s August 20 review and during the public hearing window. <strong>Eight of the plan&rsquo;s nineteen actions are unaffected. Eleven need attention, most of them only a narrowing of scope.</strong></p>
   <div class="rule"></div>
 
+  <div class="laws">
+    <div class="law">
+      <span class="ch">Chapter 319</span>
+      <span class="bill">HB 1010 &middot; approved July 15, 2026</span>
+      <span class="tx">Municipalities shall allow multi-family dwelling units on commercially zoned land where infrastructure is adequate. A planning board may require a traffic study and proof of water and sewer connection, and may deny only on the grounds the section lists.</span>
+      <span class="eff">In force since July 1, 2026 &mdash; retroactive</span>
+    </div>
+    <div class="law b2">
+      <span class="ch">Chapter 329</span>
+      <span class="bill">HB 1588 &middot; approved July 15, 2026</span>
+      <span class="tx">Makes that housing by right. Frontage, setback and height may still be regulated, but no other requirement may be enforced unless the section expressly authorises it, and an improper denial carries attorney&rsquo;s fees.</span>
+      <span class="eff">Zoning provisions take effect September 13, 2026</span>
+    </div>
+  </div>
+
+  <p class="laws-note">Both amend the same provision, RSA 674:80, which is why they are read together throughout this document. Chapter 319 sets the obligation; Chapter 329 sets the terms on which it must be honoured. Where the text below refers to a chapter by number, it means one of these two.</p>
+
   <div class="tl">
     <div class="tl-h">The two schedules</div>
     <div class="tl-g">
@@ -175,13 +206,13 @@
       <div class="tl-lane p">The<br>plan</div>
       <div class="tl-lane l">State<br>law</div>
 
-      <div class="tl-c l c2"><div class="dt">JUL 1<span class="who">State law</span></div><div class="tx">Portsmouth must allow apartments on commercially zoned land where infrastructure supports it</div></div>
+      <div class="tl-c l c2"><div class="dt">JUL 1<span class="who">State law &middot; Ch. 319</span></div><div class="tx">Portsmouth must allow apartments on commercially zoned land where infrastructure supports it</div></div>
 
       <div class="tl-c p c3"><div class="dt">JUL 13<span class="who">The plan</span></div><div class="tx">Council refers the plan to the Planning Board</div></div>
 
       <div class="tl-c p now c4"><div class="dt">AUG 20<span class="who">The plan</span></div><div class="tx">Planning Board reviews the recommendations</div></div>
 
-      <div class="tl-c l now c5"><div class="dt">SEP 13<span class="who">State law</span></div><div class="tx">Those apartments become <strong style="color:#fff;">by right</strong>. Only frontage, setback and height may be regulated, and wrongful denial carries legal fees</div></div>
+      <div class="tl-c l now c5"><div class="dt">SEP 13<span class="who">State law &middot; Ch. 329</span></div><div class="tx">Those apartments become <strong style="color:#fff;">by right</strong>. Only frontage, setback and height may be regulated, and wrongful denial carries legal fees</div></div>
 
       <div class="tl-c p c6"><div class="dt">SEPTEMBER<span class="who">The plan</span></div><div class="tx">Two public hearings</div></div>
 
@@ -395,10 +426,10 @@
   <p style="font-size:13.5px;">Progress Portsmouth can supply the chaptered text of either law, a side-by-side of the current and September 13 versions of RSA 674:80, or draft language for any of the gaps above.</p>
 
   <footer>
-    <div class="verline">Version 1.3 &middot; July 30, 2026</div>
+    <div class="verline">Version 1.4 &middot; July 30, 2026</div>
     <button class="revtoggle" id="revtoggle" type="button">Revision notes</button>
     <div class="revbody" id="revbody">
-      <b>v1.3 (July 30, 2026)</b> &mdash; Checked against the draft published on the City&rsquo;s Housing Action Plan page and corrected. The action inventory holds: seven priority actions and twelve additional actions, titles and leads matching, with the Planning Board date confirmed as August 20. Priority 7 is corrected. The previous entry advised saying in the action that the goal is mixed-use form rather than residential permission; the published action already proposes designations allowing mixed-use and residential development, so that advice was answering a question the plan had asked. The row now states the actual exposure, which is that the choice of designation determines whether these parcels stay inside RSA 674:80, and ties it to the gating question at the end of the document rather than leaving the two to be connected by the reader. The first narrative note is made precise: the plan does invoke state law once, generically, in describing the ADU amendments, though it names no statute anywhere. The worked example gains an opening paragraph noting that the plan credits the Gateway districts and the overlay in its own Zoning Changes section, which is why the districts question is not academic. A gap is added for co-living, cited in the plan as a recent addition and permitted only by conditional use permit, which meets the same by-right question where the districts qualify and the structure exceeds two units.<br><br>      <b>v1.2 (July 30, 2026)</b> &mdash; States the assumption the document rests on, and adds a worked example. The scope callout, previously a single limit on building type, now carries two. The first is the more-than-two-units test as before. The second names which Portsmouth districts this document treats as commercially zoned: those the ordinance itself groups as Business and Industrial in Section 10.410. The Gateway Neighborhood Mixed Use Districts are named as unresolved rather than assumed either way, since Section 10.410 groups them separately as Mixed Use while Article 5B provides them with commercial building and development-site types; the Mixed Residential and Character Districts are declared out of scope. No finding changed. What changed is that the findings now state what they depend on, which was previously implicit throughout. A closing section sets the Article 5B dimensional standards beside their commercial comparators in the same districts, with a section number on every figure, describes the GNOD bonus tiers, and puts eight questions to the City Attorney beneath a single gating question. Height is shown to match; coverage, open space and building length do not; dwelling units per building has no commercial comparator. Inside the overlay the coverage comparison does not arise, the overlay figures being the more permissive. That section is labelled reasoning rather than finding, given its own colour, and placed last so the verifiable material is not read through it. Ordinance added to the source line.<br><br>      <b>v1.1 (July 30, 2026)</b> — Readability pass, no change to findings. The recency block gained a serif headline stating its argument directly — the final text of both laws did not exist while the plan was being written — in place of a mono caption that read as a label rather than a heading. Its closing paragraph now leads with the two-day gap between the plan reaching the Council and the Governor signing, rather than carrying it as a subordinate clause; the July 13 and July 15 dates are highlighted so that gap reads without prose. STATE and CITY chips darkened for contrast against their fills. In both action tables the lead-in imperative was promoted from an inline bold phrase to a block-level line above its explanation, and split into two weights: the eleven rows requiring action in navy, the eight reading &ldquo;No change&rdquo; in muted grey, so the column can be scanned for work rather than read in full. Callout labels raised to 14px and left borders to 5px throughout.<br><br>
+      <b>v1.4 (July 30, 2026)</b> &mdash; Names the two laws. Through v1.3 the document referred to &ldquo;two new state laws&rdquo; in the lede and then used the chapter numbers without ever having introduced them: Chapter 319 first appeared roughly fifteen thousand characters in, Chapter 329 not until twice that, and the bill numbers only in the source line at the foot. A reader meeting &ldquo;Chapter 319&rdquo; in the drafting-sequence passage had nothing to attach it to, and the library card and homepage both referred to the chapters by names this document never established. An identification block now sits directly beneath the lede, giving each law its chapter number, bill number, approval date, what it does and when it takes effect, followed by a line noting that both amend RSA 674:80 and that any bare chapter reference below means one of these two. The two state-law rows in the schedule comparison are labelled Ch. 319 and Ch. 329 so the timeline and the block reinforce each other. No finding or figure changed.<br><br>      <b>v1.3 (July 30, 2026)</b> &mdash; Checked against the draft published on the City&rsquo;s Housing Action Plan page and corrected. The action inventory holds: seven priority actions and twelve additional actions, titles and leads matching, with the Planning Board date confirmed as August 20. Priority 7 is corrected. The previous entry advised saying in the action that the goal is mixed-use form rather than residential permission; the published action already proposes designations allowing mixed-use and residential development, so that advice was answering a question the plan had asked. The row now states the actual exposure, which is that the choice of designation determines whether these parcels stay inside RSA 674:80, and ties it to the gating question at the end of the document rather than leaving the two to be connected by the reader. The first narrative note is made precise: the plan does invoke state law once, generically, in describing the ADU amendments, though it names no statute anywhere. The worked example gains an opening paragraph noting that the plan credits the Gateway districts and the overlay in its own Zoning Changes section, which is why the districts question is not academic. A gap is added for co-living, cited in the plan as a recent addition and permitted only by conditional use permit, which meets the same by-right question where the districts qualify and the structure exceeds two units.<br><br>      <b>v1.2 (July 30, 2026)</b> &mdash; States the assumption the document rests on, and adds a worked example. The scope callout, previously a single limit on building type, now carries two. The first is the more-than-two-units test as before. The second names which Portsmouth districts this document treats as commercially zoned: those the ordinance itself groups as Business and Industrial in Section 10.410. The Gateway Neighborhood Mixed Use Districts are named as unresolved rather than assumed either way, since Section 10.410 groups them separately as Mixed Use while Article 5B provides them with commercial building and development-site types; the Mixed Residential and Character Districts are declared out of scope. No finding changed. What changed is that the findings now state what they depend on, which was previously implicit throughout. A closing section sets the Article 5B dimensional standards beside their commercial comparators in the same districts, with a section number on every figure, describes the GNOD bonus tiers, and puts eight questions to the City Attorney beneath a single gating question. Height is shown to match; coverage, open space and building length do not; dwelling units per building has no commercial comparator. Inside the overlay the coverage comparison does not arise, the overlay figures being the more permissive. That section is labelled reasoning rather than finding, given its own colour, and placed last so the verifiable material is not read through it. Ordinance added to the source line.<br><br>      <b>v1.1 (July 30, 2026)</b> — Readability pass, no change to findings. The recency block gained a serif headline stating its argument directly — the final text of both laws did not exist while the plan was being written — in place of a mono caption that read as a label rather than a heading. Its closing paragraph now leads with the two-day gap between the plan reaching the Council and the Governor signing, rather than carrying it as a subordinate clause; the July 13 and July 15 dates are highlighted so that gap reads without prose. STATE and CITY chips darkened for contrast against their fills. In both action tables the lead-in imperative was promoted from an inline bold phrase to a block-level line above its explanation, and split into two weights: the eleven rows requiring action in navy, the eight reading &ldquo;No change&rdquo; in muted grey, so the column can be scanned for work rather than read in full. Callout labels raised to 14px and left borders to 5px throughout.<br><br>
       <b>v1.0 (July 28, 2026)</b> &mdash; Initial release. Keyed to the Housing Action Plan draft published by Planning &amp; Sustainability in July 2026: seven priority actions and twelve additional implementation actions, presented to the City Council on July 13 and referred to the Planning Board for its August 20 meeting. Assessed against Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026, working from the chaptered final versions rather than press summaries &mdash; the two chapters carry different effective dates and have been reported together elsewhere. Three actions are identified as superseded by state law, eight as constrained to residential districts, eight as unaffected, and five gaps are proposed. Two of those gaps correspond to actions that appeared in the June 30 priority matrix and are not in the published list.
     </div>
     <div style="margin-top:14px;">
