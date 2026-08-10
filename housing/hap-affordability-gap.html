@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permanent Affordability in the Housing Action Plan — Progress Portsmouth</title>
+<meta name="description" content="The published July 2026 draft Housing Action Plan, tested against a single question: which actions produce a unit still affordable in twenty years?">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2d3e52; --navy-dark:#1a2332; --navy-deep:#0f1a2e;
+  --gold:#f4a261; --gold-dark:#c8822a;
+  --teal:#3a7d6e; --coral:#e76f51;
+  --cream:#f8f4ee; --white:#ffffff;
+  --slate:#5c6b7a; --border:#e2dcd2;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cream);color:var(--navy-dark);line-height:1.65;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.2;}
+.mono{font-family:'JetBrains Mono',monospace;}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+/* ---------- nav ---------- */
+.topnav{background:var(--navy-dark);padding:12px 0;}
+.topnav .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.topnav a{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.04em;color:rgba(255,255,255,.72);text-decoration:none;padding:4px 0;}
+.topnav a:hover{color:var(--gold);}
+
+/* ---------- header ---------- */
+header.hero{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy-dark) 45%,var(--navy) 100%);color:var(--white);padding:52px 0 44px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:16px;}
+header.hero h1{font-size:2.5rem;margin-bottom:18px;}
+header.hero .lede{font-size:1.12rem;color:rgba(255,255,255,.82);max-width:44em;}
+.hero-meta{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.2);font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:rgba(255,255,255,.68);line-height:1.9;}
+
+/* ---------- headline stat ---------- */
+.headline{background:var(--navy);color:var(--white);padding:40px 0;}
+.headline-inner{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;}
+.bignum{font-family:'DM Serif Display',Georgia,serif;font-size:4.6rem;line-height:1;color:var(--gold);white-space:nowrap;}
+.headline p{font-size:1.06rem;color:rgba(255,255,255,.85);}
+.headline strong{color:var(--white);}
+
+/* ---------- sections ---------- */
+section{padding:46px 0;border-bottom:1px solid var(--border);}
+section:last-of-type{border-bottom:none;}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:10px;}
+section h2{font-size:1.85rem;margin-bottom:14px;color:var(--navy-dark);}
+section h3{font-size:1.25rem;margin:28px 0 10px;color:var(--navy-dark);}
+section p{margin-bottom:14px;max-width:46em;}
+section p.wide{max-width:none;}
+
+/* ---------- timeline ---------- */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:26px 0 8px;}
+.tl{background:var(--white);border-top:3px solid var(--border);padding:14px 14px 16px;}
+.tl.now{border-top-color:var(--gold);}
+.tl.next{border-top-color:var(--coral);}
+.tl .d{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gold-dark);letter-spacing:0.05em;margin-bottom:6px;}
+.tl .t{font-size:0.95rem;font-weight:600;line-height:1.35;}
+.tl .s{font-size:0.85rem;color:var(--slate);margin-top:5px;line-height:1.45;}
+
+/* ---------- filter bar ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 18px;}
+.fbtn{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.04em;padding:8px 14px;border:1px solid var(--border);background:var(--white);color:var(--navy);border-radius:3px;cursor:pointer;transition:all .15s;}
+.fbtn:hover{border-color:var(--gold-dark);}
+.fbtn.on{background:var(--navy);border-color:var(--navy);color:var(--white);font-weight:600;}
+
+/* ---------- action test table ---------- */
+.atable{width:100%;border-collapse:collapse;background:var(--white);font-size:0.95rem;}
+.atable th{background:var(--navy);color:var(--white);font-weight:700;text-align:left;padding:11px 13px;font-size:0.82rem;letter-spacing:0.03em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+.atable td{padding:11px 13px;border-bottom:1px solid var(--border);vertical-align:top;}
+.atable tbody tr:nth-child(even){background:#F7F4EF;}
+.atable tr.hide{display:none;}
+.atable .act{font-weight:600;}
+.atable .tier{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--slate);display:block;margin-top:3px;letter-spacing:0.04em;}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.67rem;letter-spacing:0.05em;padding:3px 8px;border-radius:3px;white-space:nowrap;font-weight:600;}
+.p-yes{background:rgba(58,125,110,.14);color:#2b5f54;border:1px solid rgba(58,125,110,.4);}
+.p-maybe{background:rgba(244,162,97,.18);color:#8a5615;border:1px solid rgba(200,130,42,.45);}
+.p-no{background:#eeeae4;color:var(--slate);border:1px solid var(--border);}
+.why{font-size:0.87rem;color:var(--slate);line-height:1.5;}
+
+/* ---------- requirement cards ---------- */
+.reqs{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+.req{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--coral);border-radius:3px;overflow:hidden;}
+.req.partial{border-left-color:var(--gold);}
+.req.met{border-left-color:var(--teal);}
+.req-head{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;cursor:pointer;}
+.req-head:hover{background:#FBF9F6;}
+.req-n{font-family:'JetBrains Mono',monospace;font-size:1.15rem;font-weight:600;color:var(--gold-dark);line-height:1.3;min-width:1.2em;}
+.req-t{flex:1;}
+.req-t h4{font-family:'Source Sans 3',sans-serif;font-size:1.02rem;font-weight:700;margin-bottom:5px;line-height:1.35;}
+.verdict{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.05em;font-weight:600;}
+.v-no{color:var(--coral);}
+.v-partial{color:var(--gold-dark);}
+.v-met{color:var(--teal);}
+.chev{color:var(--slate);font-size:0.85rem;padding-top:3px;}
+.req-body{display:none;padding:0 18px 18px 18px;border-top:1px solid var(--border);}
+.req.open .req-body{display:block;}
+.req-body p{font-size:0.95rem;margin:14px 0 0;max-width:none;}
+.req-body ul{margin:10px 0 0 20px;font-size:0.94rem;}
+.req-body li{margin-bottom:7px;}
+
+/* ---------- callouts ---------- */
+.quote{border-left:4px solid var(--gold);background:var(--white);padding:16px 20px;margin:20px 0;font-size:0.98rem;}
+.quote .src{display:block;margin-top:9px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--slate);letter-spacing:0.04em;}
+.note{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--teal);padding:18px 20px;margin:20px 0;}
+.note h4{font-family:'Source Sans 3',sans-serif;font-size:0.98rem;font-weight:700;margin-bottom:8px;}
+.note p{font-size:0.94rem;margin-bottom:8px;max-width:none;}
+.note p:last-child{margin-bottom:0;}
+.metricstrip{background:var(--navy-dark);color:rgba(255,255,255,.78);padding:18px 20px;margin:20px 0;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.85;border-radius:3px;}
+.metricstrip b{color:var(--gold);display:block;margin-bottom:8px;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;}
+
+/* ---------- asks ---------- */
+.asks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px;}
+.ask{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);padding:18px 20px;}
+.ask .lbl{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:8px;}
+.ask h4{font-family:'Source Sans 3',sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.35;}
+.ask p{font-size:0.92rem;margin:0;max-width:none;color:var(--slate);}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy-dark);color:rgba(255,255,255,.72);padding:40px 0 32px;font-size:0.88rem;}
+footer h4{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+footer p{margin-bottom:12px;max-width:none;}
+footer a{color:var(--gold);}
+.rev{margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);font-size:0.8rem;color:rgba(255,255,255,.66);line-height:1.7;}
+.foot-rule{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,.6);}
+
+/* ---------- mobile ---------- */
+@media (max-width:640px){
+  .wrap{padding:0 16px;}
+  header.hero{padding:34px 0 30px;}
+  header.hero h1{font-size:1.72rem;}
+  header.hero .lede{font-size:1rem;}
+  section{padding:32px 0;}
+  section h2{font-size:1.42rem;}
+  .headline-inner{grid-template-columns:1fr;gap:14px;}
+  .bignum{font-size:3.2rem;}
+  .timeline{grid-template-columns:1fr;gap:8px;}
+  .asks{grid-template-columns:1fr;}
+  .atable{font-size:0.88rem;}
+  .atable th,.atable td{padding:9px 10px;}
+  .atable thead{display:none;}
+  .atable tbody tr{display:block;border-bottom:2px solid var(--border);padding:10px 0;}
+  .atable tbody tr:nth-child(even){background:transparent;}
+  .atable td{display:block;border-bottom:none;padding:3px 10px;}
+  .metricstrip{font-size:0.72rem;}
+  .req-head{padding:14px 15px;}
+  .req-body{padding:0 15px 15px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a href="https://www.progressportsmouth.com">&larr; Progress Portsmouth</a>
+    <a href="./learning-library.html">&larr; Library</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Progress Portsmouth &middot; Housing Action Plan analysis</div>
+    <h1>What the plan does — and doesn't do — for permanently affordable housing</h1>
+    <p class="lede">The City published its draft Housing Action Plan in July: nineteen actions, seven of them priorities. This is that plan tested against one question, using the City's own published documents.</p>
+    <div class="hero-meta">
+      Prepared for the September public hearings &middot; August 10, 2026<br>
+      Sources: the published July 2026 draft Housing Action Plan and the Housing Action Plan Table (2026.07), both verified live August 10, 2026<br>
+      The plan is not adopted. Nothing here is a criticism of the drafting.
+    </div>
+  </div>
+</header>
+
+<div class="headline">
+  <div class="wrap headline-inner">
+    <div class="bignum">2&thinsp;/&thinsp;19</div>
+    <div>
+      <p>Ask of each action: <strong>does this, on its own, produce a unit that is still affordable in twenty years?</strong> Two of the nineteen do. One is the Housing Trust Fund, which carries no dollar target and no named revenue source. The other is preservation of existing below market-rate housing, which sits in the additional list at "Ongoing," ranked below live/work units.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">01 &middot; Where the plan stands</div>
+    <h2>Three decision points remain</h2>
+    <p>The Housing Committee presented its recommendations to the City Council on July 13. Council referred the matter to the Planning Board. The public hearings in September are the main opportunity for residents to shape the text before it goes back to Council.</p>
+    <div class="timeline">
+      <div class="tl"><div class="d">JUL 13 &middot; done</div><div class="t">Council referral</div><div class="s">Committee recommendations presented; referred to the Planning Board.</div></div>
+      <div class="tl now"><div class="d">AUG 20 &middot; now</div><div class="t">Planning Board review</div><div class="s">Land-use review of the draft.</div></div>
+      <div class="tl next"><div class="d">SEPTEMBER &middot; next</div><div class="t">Two public hearings</div><div class="s">The main chance to change the text.</div></div>
+      <div class="tl"><div class="d">AFTER &middot; ahead</div><div class="t">Council adoption</div><div class="s">Master Plan update follows in roughly six months.</div></div>
+    </div>
+    <div class="note">
+      <h4>One document does most of the work here</h4>
+      <p>The City's web page carries the nineteen actions in narrative form. The companion <em>Housing Action Plan Table</em> carries four columns the web page omits: Key Implementation Steps, Lead, <strong>Metrics</strong>, and <strong>Milestone</strong>. Almost everything below turns on the Metrics column, because that is where a plan either commits to an outcome or declines to.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">02 &middot; The test</div>
+    <h2>Which actions produce lasting affordability?</h2>
+    <p>Most of the nineteen actions expand <em>capacity</em> — they make it legal to build more housing. Capacity is worth having and Portsmouth needs it. But capacity and affordability are different products, and the plan's own narrative treats them as one. Below, each action is scored on whether it, by itself, creates or protects a unit that remains affordable in twenty years.</p>
+    <div class="filters" id="filters">
+      <button class="fbtn on" data-f="all" type="button">All 19</button>
+      <button class="fbtn" data-f="yes" type="button">Lasting affordability</button>
+      <button class="fbtn" data-f="maybe" type="button">Depends on design</button>
+      <button class="fbtn" data-f="no" type="button">Capacity or compliance</button>
+    </div>
+    <table class="atable" id="atable">
+      <thead><tr><th style="width:34%">Action</th><th style="width:20%">Verdict</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr data-v="no"><td class="act">Expand RSA 79-E tax relief<span class="tier">Priority 1 &middot; 0&ndash;9 mo</span></td><td><span class="pill p-no">Capacity / subsidy</span></td><td class="why">Time-limited tax relief. The published action attaches no affordability condition, no AMI band, and no covenant term. Metric: "Projects." Milestone: "Program used."</td></tr>
+        <tr data-v="no"><td class="act">Comprehensive zoning review<span class="tier">Priority 2 &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Regulatory barrier removal. Necessary groundwork; produces no unit directly.</td></tr>
+        <tr data-v="no"><td class="act">Commercial-to-residential conversions<span class="tier">Priority 3 &middot; 0&ndash;6 mo</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Capacity, and now largely required by state law rather than chosen locally.</td></tr>
+        <tr data-v="no"><td class="act">Cottage and clustered small-lot housing<span class="tier">Priority 4 &middot; 6&ndash;12 mo</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Adds housing types. Smaller units are cheaper units, but nothing holds the price.</td></tr>
+        <tr data-v="maybe"><td class="act">In-lieu fee program<span class="tier">Priority 5 &middot; 0&ndash;6 mo</span></td><td><span class="pill p-maybe">Indirect &middot; unresolved</span></td><td class="why">Routes money to the Housing Trust Fund, which can produce lasting affordability. But a payment in lieu presupposes an on-site obligation, and the plan does not state what that obligation is or rests on. See section 3.</td></tr>
+        <tr data-v="no"><td class="act">Waive fees for nonprofit below market-rate projects<span class="tier">Priority 6 &middot; ongoing</span></td><td><span class="pill p-no">Marginal</span></td><td class="why">Real and worth continuing, but municipal fees are a small share of an affordable project's capital stack.</td></tr>
+        <tr data-v="no"><td class="act">Rezone Office Research and General Business<span class="tier">Priority 7 &middot; 0&ndash;6 mo</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Opens land to housing. Nothing attaches an affordability requirement to what gets built.</td></tr>
+        <tr data-v="no"><td class="act">Expand multi-family zoning<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">The plan's most consequential capacity move, and entirely the City's own call. Still capacity.</td></tr>
+        <tr data-v="no"><td class="act">Review dimensional standards<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Lot sizes, frontage, setbacks. Metric: "Conforming lots."</td></tr>
+        <tr data-v="no"><td class="act">Single-family to multi-unit conversion<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">A strong capacity tool sitting on a slow clock. See requirement 1.</td></tr>
+        <tr data-v="yes"><td class="act">Deploy and expand the Housing Trust Fund<span class="tier">Additional &middot; ongoing</span></td><td><span class="pill p-yes">Lasting &mdash; if funded</span></td><td class="why">The plan's primary instrument for producing permanently affordable units. No dollar target, no named recurring revenue source, and its one new revenue mechanism is Priority 5.</td></tr>
+        <tr data-v="maybe"><td class="act">Homebuyer assistance programs<span class="tier">Additional &middot; 1&ndash;3 yr</span></td><td><span class="pill p-maybe">Depends on design</span></td><td class="why">Whether this creates lasting affordability turns entirely on resale covenant terms. None are named.</td></tr>
+        <tr data-v="no"><td class="act">Plan outlying areas for growth<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Future growth areas, dependent on the Master Plan.</td></tr>
+        <tr data-v="no"><td class="act">Simplify the Form-Based Code<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">Listed with the milestone "More below market rate housing," but the action itself is a usability rewrite with no affordability mechanism.</td></tr>
+        <tr data-v="no"><td class="act">Adjust building height requirements<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">More density where appropriate. Metric: "Units."</td></tr>
+        <tr data-v="no"><td class="act">Allow live/work units<span class="tier">Additional &middot; 1&ndash;2 yr</span></td><td><span class="pill p-no">Capacity</span></td><td class="why">A housing type. Currently ranked above preservation.</td></tr>
+        <tr data-v="yes"><td class="act">Preserve existing below market-rate housing<span class="tier">Additional &middot; ongoing</span></td><td><span class="pill p-yes">Lasting</span></td><td class="why">Extending covenants on units that already exist is the cheapest lasting affordability available per dollar. Metric: "Units." Milestone: "No loss." Sits in the additional list.</td></tr>
+        <tr data-v="maybe"><td class="act">Create more senior housing<span class="tier">Additional &middot; 2&ndash;5 yr</span></td><td><span class="pill p-maybe">Depends on design</span></td><td class="why">Described as a programs-and-services review. Whether any resulting units are income-restricted is not stated.</td></tr>
+        <tr data-v="no"><td class="act">Strengthen the workforce housing ordinance<span class="tier">Additional &middot; 1 yr</span></td><td><span class="pill p-no">Compliance</span></td><td class="why">RSA 674:58&ndash;61 is a duty not to exclude, not a production program. The table's own metric confirms it: "Adopted amendments to be consistent with RSA." Compliance produces no units.</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <h4>Why this matters for the hearings</h4>
+      <p>A plan can be adopted with all nineteen actions intact and still contain no mechanism that guarantees a lasting affordable unit. That is not a hidden flaw &mdash; it is visible in the City's own table, in the Metrics column. It is also fixable with text, before adoption, at no cost to the City.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">03 &middot; Three structural findings</div>
+    <h2>What the table shows on close reading</h2>
+
+    <h3>The metrics columns contain no numbers</h3>
+    <p>The Metrics and Milestone columns exist &mdash; the structure is right. What they contain are units of measurement rather than targets. "Units" is not a metric; a number of units by a date is a metric. There is no baseline anywhere in the plan, so even a filled-in metric could not show change.</p>
+    <div class="metricstrip">
+      <b>The complete Metrics column, all nineteen actions</b>
+      Projects &middot; Zoning amendments to remove barriers &middot; Amendments to allow conversions &middot; Zoning district changes to permit small clustered housing &middot; Identify amendments to Zoning Ordinance and Fee Schedule &middot; Below market rate housing projects by nonprofit entities &middot; Revise zoning map &middot; Zoning Ordinance and Zoning Map amendments &middot; Conforming lots &middot; Units &middot; Units funded &middot; Programs created &middot; Zoning Map amendments &middot; Zoning Ordinance amendments &middot; Units &middot; Units &middot; Units &middot; Available Programs and Services &middot; Adopted amendments to be consistent with RSA
+    </div>
+    <p>Six of the nineteen milestones read as some version of "Amended Zoning Ordinance" or "Amended Zoning Map" &mdash; that is, the milestone for amending the ordinance is an amended ordinance.</p>
+
+    <h3>"Below market rate" is never defined</h3>
+    <p>The phrase appears throughout the narrative and the table. No AMI band, no share of units, no covenant term is named anywhere. That silence has a specific consequence for Priority 1: the City's largest discretionary housing subsidy would be adopted without stating what, if anything, a recipient must deliver in return.</p>
+    <p>This is a live choice rather than an oversight. The 2026 amendments to RSA 79-E (Chapter 212, Laws of 2026) broaden municipal discretion over the terms on which relief is granted. Portsmouth's own recent projects &mdash; West End Yards and Sage &mdash; were built at roughly 100&ndash;110% of area median income, not the 80% often assumed. Which standard applies is Portsmouth's decision to make, and declining to write it down is itself a decision.</p>
+
+    <h3>The in-lieu fee has an unanswered question underneath it</h3>
+    <p>Priority 5 establishes a fee paid "in place of on-site unit provision." A payment in lieu presupposes an obligation to be in lieu of &mdash; and the plan does not say what that obligation is or what authorises it. There are three possibilities and they have very different revenue consequences:</p>
+    <ul style="margin:0 0 14px 20px;font-size:0.95rem;">
+      <li style="margin-bottom:6px;">Tied to a <strong>voluntary</strong> density or height bonus &mdash; in which case the fee is optional and priced by the developer.</li>
+      <li style="margin-bottom:6px;">Tied to the <strong>workforce housing ordinance</strong> &mdash; which is a duty not to exclude and creates no set-aside to buy out of.</li>
+      <li>Tied to a <strong>mandatory set-aside</strong> &mdash; which raises a municipal authority question that belongs with the City Attorney before drafting.</li>
+    </ul>
+    <p>This matters because Priority 5 is the plan's only new revenue mechanism for the Housing Trust Fund, and the Trust Fund is one of only two actions in the plan that can produce lasting affordability. This should be posed to the City Attorney as a question, not asserted as a defect.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">04 &middot; Scorecard</div>
+    <h2>Five requirements, as they stand in the published draft</h2>
+    <p>In July, Progress Portsmouth put five requirements to the Housing Committee co-chairs and Planning staff. Here is where each one sits in the published text. Tap any row for detail.</p>
+    <div class="reqs" id="reqs">
+
+      <div class="req">
+        <div class="req-head"><div class="req-n">1</div><div class="req-t"><h4>Pair the tax relief with by-right zoning</h4><span class="verdict v-no">NOT ADDRESSED AS ASKED</span></div><div class="chev">&#9662;</div></div>
+        <div class="req-body">
+          <p>Tax relief lowers the cost of a project the zoning already permits. It does nothing for a project the zoning forbids. The ask was a narrow companion change on the same clock as the 79-E ordinance.</p>
+          <p>In the published draft, Priority 1 runs 0&ndash;9 months. The one discretionary residential change that would give it something to attach to &mdash; conversion of large single-family homes into multiple units &mdash; sits in the additional list at 1&ndash;2 years, with no dimensional relief and no use of the phrase "by right." The commercial conversion action moves fast, but that is now largely state-mandated.</p>
+          <p>The ADU experience is the relevant evidence and it is not addressed anywhere in the draft: the rule change tripled applications and produced few units, because permitting a use is not the same as making it pencil.</p>
+        </div>
+      </div>
+
+      <div class="req">
+        <div class="req-head"><div class="req-n">2</div><div class="req-t"><h4>Put city land in the plan, and commit to initiating projects</h4><span class="verdict v-no">NOT ADDRESSED</span></div><div class="chev">&#9662;</div></div>
+        <div class="req-body">
+          <p>Across all nineteen actions, all Key Implementation Steps, and the full narrative, there is no action to inventory, dispose of, ground-lease, or contribute city-owned land, and no commitment to initiate any project on any site.</p>
+          <p>The verbs across the matrix are <em>review, recommend, amend, identify, continue, track, launch</em>. The single instance of "Allocate funds" appears under the Housing Trust Fund action, with no amount and no source.</p>
+          <p>Land cost is the binding constraint on permanently affordable housing everywhere, and especially in a small, land-capped city. This is the largest gap between what was asked and what the plan contains &mdash; and it is worth noting that these actions are largely Council and City Manager decisions rather than Planning Department ones.</p>
+        </div>
+      </div>
+
+      <div class="req">
+        <div class="req-head"><div class="req-n">3</div><div class="req-t"><h4>Set measurable targets</h4><span class="verdict v-partial">STRUCTURE YES, NUMBERS NO</span></div><div class="chev">&#9662;</div></div>
+        <div class="req-body">
+          <p>The columns are there. This is the easiest of the five to close, because nothing needs to be added to the table's shape &mdash; only filled in.</p>
+          <p>See the full Metrics column in section 3. Without a baseline and a number, there is no way to tell whether the plan is working, and no way to defend it to Council or the public in two years.</p>
+        </div>
+      </div>
+
+      <div class="req">
+        <div class="req-head"><div class="req-n">4</div><div class="req-t"><h4>Name the affordability standard</h4><span class="verdict v-no">NOT ADDRESSED</span></div><div class="chev">&#9662;</div></div>
+        <div class="req-body">
+          <p>"Below market rate" is used throughout and defined nowhere. Priority 1 carries no affordability condition of any kind; Priority 5 has no formula; the workforce housing action names a statutory compliance floor rather than a local standard.</p>
+          <p>The single most consequential text change available before adoption is one sentence in Priority 1 requiring that the enabling ordinance state an affordability share, an AMI level, and a covenant term. Note that this does not require anyone to agree on <em>which</em> numbers &mdash; only that numbers exist.</p>
+        </div>
+      </div>
+
+      <div class="req">
+        <div class="req-head"><div class="req-n">5</div><div class="req-t"><h4>Bring renters &mdash; half the city &mdash; to the table</h4><span class="verdict v-no">NOT ADDRESSED</span></div><div class="chev">&#9662;</div></div>
+        <div class="req-body">
+          <p>No engagement action appears in the matrix. Most of the plan's desired outcomes concern rental housing, and renters are roughly half of Portsmouth's households.</p>
+          <p>The participation section of the plan's own page reads, live as of August 10, 2026:</p>
+          <div class="quote"><span class="mono">[[LINK or embed a comment card Microsoft Form]]</span><span class="src">City of Portsmouth &middot; Housing Action Plan page &middot; verified Aug 10, 2026</span></div>
+          <p>The comment mechanism has not yet been built. This is stated as an observation, not a complaint &mdash; it is straightforward to fix and worth fixing before September.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">05 &middot; Credit where due</div>
+    <h2>What the draft got right</h2>
+    <p>A gap analysis that lists only gaps is not usable. Four things in the published draft deserve to survive to adoption intact.</p>
+    <ul style="margin:0 0 16px 20px;font-size:0.98rem;max-width:46em;">
+      <li style="margin-bottom:10px;"><strong>The civic origin is acknowledged in the text.</strong> The narrative states that residents and community advocates produced research, analytical tools, and a proposed framework of actions, that this work informed the Council's February 2026 direction, and that much of it is reflected in the actions that follow. This was asked for and granted.</li>
+      <li style="margin-bottom:10px;"><strong>The tracks are visibly split.</strong> The 79-E package moves under the City's own authority at 0&ndash;9 months; the comprehensive rezone sits with the consultant at 1&ndash;2 years. The tax-relief package is not held hostage to the Master Plan.</li>
+      <li style="margin-bottom:10px;"><strong>The matrix format is the right instrument.</strong> Lead, Timeframe, Metrics and Milestone is what turns direction into implementation. The structure is sound; only the content is thin.</li>
+      <li><strong>Preservation and the workforce ordinance are on the list at all.</strong> Both belong there. The argument is about ranking and framing, not inclusion.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-num">06 &middot; September</div>
+    <h2>Four text changes worth asking for</h2>
+    <p>Each of these is a change to words, not to budgets. None commits the City to a dollar. All four can be made before adoption.</p>
+    <div class="asks">
+      <div class="ask"><div class="lbl">Priority 1 &middot; tax relief</div><h4>Require that the 79-E ordinance state an affordability standard</h4><p>A share of units, an AMI level, and a covenant term, set by Council in the enabling ordinance. The requirement that a number exist is separable from agreeing on the number.</p></div>
+      <div class="ask"><div class="lbl">Priority 5 &middot; in-lieu fee</div><h4>State the legal basis for the in-lieu obligation</h4><p>Ask that the plan pose the authority question to the City Attorney before drafting, and note the September 13 limitation on commercially zoned land.</p></div>
+      <div class="ask"><div class="lbl">Additional list</div><h4>Move preservation into the priority tier</h4><p>Extending covenants on existing below market-rate units is the cheapest lasting affordability the City can buy. It currently ranks below live/work units.</p></div>
+      <div class="ask"><div class="lbl">Whole table</div><h4>Put a number and a baseline in every Metrics cell</h4><p>The column already exists. Adoption without figures means no way to assess the plan in two years.</p></div>
+    </div>
+    <div class="note" style="border-top-color:var(--coral);">
+      <h4>One framing point worth making on the record</h4>
+      <p>The workforce housing action is a compliance item, not a production item. RSA 674:58&ndash;61 establishes a duty not to exclude workforce housing; satisfying it produces no units. If the plan is adopted without saying so, the workforce housing question can be treated as handled when it has not been addressed.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h4>Sources and limits</h4>
+    <p>Assessed against the published July 2026 draft Housing Action Plan and the Housing Action Plan Table (2026.07), City of Portsmouth Planning &amp; Sustainability, both verified live August 10, 2026; and the Progress Portsmouth response to the July 9 draft plan and June 30 implementation matrix.</p>
+    <p><strong style="color:rgba(255,255,255,.88);">Not defensible, and disclosed:</strong> The characterisation of what a mandatory inclusionary set-aside requires under New Hampshire municipal authority is a general reading, not a City Attorney opinion; Priority 5 is raised here as a question, not asserted as a defect. The description of the 2026 RSA 79-E amendments broadening municipal discretion over affordability terms should be confirmed against the chaptered text before being relied on. The reach of the 2026 commercial-zone laws in Portsmouth depends on an unresolved question about which districts count as commercially zoned land, which is with the City Attorney.</p>
+    <p>The Housing Action Plan is a draft. The City Council mandated its production in February 2026; formal adoption requires Planning Board input and a Council vote. Progress Portsmouth works at the Housing Committee's direction as an outside resource; the decisions are the committee's and the Council's.</p>
+    <div class="rev">
+      <strong style="color:rgba(255,255,255,.85);">Revision history:</strong> v1.0 (Aug 10, 2026): Initial publication. Scores the five Progress Portsmouth requirements against the published July 2026 draft; adds the nineteen-action permanence test built from the Metrics and Milestone columns of the 2026.07 action table; adds the in-lieu fee authority question and the workforce-ordinance framing point. Prepared for the September public hearings.
+    </div>
+    <div class="foot-rule">
+      Progress Portsmouth &middot; Created with AI assistance in research and information design, with human editorial control.<br>
+      <a href="https://www.progressportsmouth.com">progressportsmouth.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("click", function (e) {
+  var fb = e.target.closest(".fbtn");
+  if (fb) {
+    var f = fb.getAttribute("data-f");
+    var btns = document.querySelectorAll("#filters .fbtn");
+    for (var i = 0; i < btns.length; i++) { btns[i].classList.remove("on"); }
+    fb.classList.add("on");
+    var rows = document.querySelectorAll("#atable tbody tr");
+    for (var j = 0; j < rows.length; j++) {
+      var show = (f === "all") || (rows[j].getAttribute("data-v") === f);
+      rows[j].classList.toggle("hide", !show);
+    }
+    return;
+  }
+  var rh = e.target.closest(".req-head");
+  if (rh) {
+    var card = rh.parentNode;
+    var wasOpen = card.classList.contains("open");
+    card.classList.toggle("open", !wasOpen);
+    var chev = rh.querySelector(".chev");
+    if (chev) { chev.innerHTML = wasOpen ? "\u25BE" : "\u25B4"; }
+  }
+});
+</script>
+
+</body>
+</html>
