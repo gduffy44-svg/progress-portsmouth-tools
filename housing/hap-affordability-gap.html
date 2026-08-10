@@ -92,6 +92,14 @@ section p{margin-bottom:14px;max-width:46em;}
 .tf-facts li:before{content:"\2014";position:absolute;left:0;color:var(--gold-dark);}
 .tf-facts li:last-child{margin-bottom:0;}
 
+/* commitments */
+.commits{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0 0;}
+.commit{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--teal);padding:20px 22px;display:flex;gap:18px;align-items:flex-start;}
+.cnum{font-family:'DM Serif Display',Georgia,serif;font-size:2.6rem;line-height:1;color:var(--teal);white-space:nowrap;}
+.cbody h4{font-family:'Source Sans 3',sans-serif;font-size:1.02rem;font-weight:700;margin-bottom:8px;line-height:1.3;}
+.cbody p{font-size:0.93rem;margin:0 0 8px;max-width:none;}
+.cbody .cmeta{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;color:var(--slate);margin:0;}
+
 /* public action */
 .act-block{background:var(--navy-dark);color:#fff;padding:44px 0;}
 .act-block .eyebrow{margin-bottom:12px;}
@@ -192,6 +200,9 @@ footer a{color:var(--gold);}
   .timeline{grid-template-columns:1fr;gap:8px;}
   .asks{grid-template-columns:1fr;}
   .ctas{grid-template-columns:1fr;}
+  .commits{grid-template-columns:1fr;}
+  .commit{flex-direction:column;gap:8px;padding:16px 18px;}
+  .cnum{font-size:2.1rem;}
   .angles{grid-template-columns:1fr;}
   .act-block{padding:30px 0;}
   .act-block h2{font-size:1.45rem;}
@@ -224,7 +235,7 @@ footer a{color:var(--gold);}
   <div class="wrap">
     <div class="eyebrow">Progress Portsmouth &middot; Housing Action Plan</div>
     <h1>The plan builds capacity. Nothing in it holds the price.</h1>
-    <p class="lede">Portsmouth's draft Housing Action Plan is nineteen actions of real work, and most of it should be adopted. But run every action past one question &mdash; <strong>does this produce a home still affordable in twenty years?</strong> &mdash; and two survive.</p>
+    <p class="lede">Portsmouth's draft Housing Action Plan is nineteen actions of real work, and most of it should be adopted. But run every action past one question &mdash; <strong>does this produce a home still affordable in twenty years?</strong> &mdash; and two survive. Meanwhile the City's own best housing work, roughly 170 permanently affordable homes already committed, is not in the plan at all.</p>
     <div class="hero-meta">
       Prepared for the September public hearings &middot; August 10, 2026<br>
       Assessed against the City's published July 2026 draft and its action table, verified August 10, 2026<br>
@@ -294,7 +305,8 @@ footer a{color:var(--gold);}
     <div class="wrap">
       <div class="tf">
         <h3>The one tool that could work is holding about $480,000</h3>
-        <p>Portsmouth did something most New Hampshire cities have not: it built a dedicated vehicle for below market-rate housing. The Council established the Below Market Rate Housing Trust Fund in 2025 on the joint recommendation of the Housing Blue Ribbon Committee and the Trustees of the Trust Funds, with the Legal Department drafting terms deliberately flexible enough to partner with public, nonprofit, and private developers. It was seeded with $250,000 from the City and matched by $250,000 from a private developer. That is real work by people who took the problem seriously, and the structure they built is sound.</p>
+        <p>Portsmouth did something most New Hampshire cities have not: it built a dedicated vehicle for below market-rate housing. The Council established the Below Market Rate Housing Trust Fund in 2025 on the joint recommendation of the Housing Blue Ribbon Committee and the Trustees of the Trust Funds, with the Legal Department drafting terms deliberately flexible enough to partner with public, nonprofit, and private developers. That is real work by people who took the problem seriously, and the structure they built is sound.</p>
+        <p>Where the money came from matters, though. The inaugural $500,000 &mdash; $250,000 from the City, $250,000 from The Kane Company &mdash; was a term of the <strong>February 2025 settlement of the McIntyre lawsuits</strong>, an agreement the City announced as resolving the litigation with no monetary damages for either party. The fund was capitalised by the resolution of a lawsuit. That is not a revenue model anyone can repeat on purpose.</p>
         <p>The issue is scale, and it is not close.</p>
         <div class="bars">
           <div class="bar-row">
@@ -309,12 +321,45 @@ footer a{color:var(--gold);}
         <p>The whole fund is roughly half the price of one house.</p>
         <ul class="tf-facts">
           <li>Both founding contributions were <strong>one-time</strong>. The fund is designed to receive donations, grants and contributions &mdash; there is no recurring revenue source attached to it.</li>
-          <li>Its first disbursement, authorised by Council in June 2026, was <strong>$65,000 for an Artist Live/Work Studio Study</strong> &mdash; about one-eighth of the fund, spent on a study rather than on homes.</li>
+          <li>Its first disbursement, authorised by Council in June 2026, was <strong>$65,000 for an Artist Live/Work Studio Study</strong>. Progress Portsmouth has not established whether this is predevelopment work tied to a specific project, and takes no position on the expenditure.</li>
           <li>The Housing Action Plan lists "Deploy and expand the City's Housing Trust Fund" as an ongoing action with the metric "Units funded." It names no dollar target and no source of new money.</li>
         </ul>
         <p style="margin-top:16px;"><strong>The real question is not the balance &mdash; it is the pipe.</strong> A fund of this size with a recurring annual revenue stream becomes a serious instrument within a decade. A fund of any size without one gets spent once and is gone. The plan proposes to "expand" the fund without saying where the money comes from.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:8px;">
+  <div class="wrap">
+    <div class="sec-num">The part that changes the picture</div>
+    <h2>Portsmouth is already building permanently affordable homes. The plan does not mention it.</h2>
+    <p>The nineteen actions contain no commitment to put city land toward housing. That reads as though Portsmouth has not done this work. It has &mdash; twice, in the last eighteen months, and at real scale. Neither appears anywhere in the Housing Action Plan.</p>
+
+    <div class="commits">
+      <div class="commit">
+        <div class="cnum">90</div>
+        <div class="cbody">
+          <h4>Sherburne School &mdash; permanently affordable units</h4>
+          <p>The City issued a request for qualifications explicitly for the "creation of permanent below market rate housing" on the five-acre, city-owned former school at 35 Sherburne Road, and the Council awarded the redevelopment to the Portsmouth Housing Authority. The project is described by the NH Community Development Finance Authority as ninety permanently affordable homes serving more than two hundred residents.</p>
+          <p class="cmeta">City-owned land &middot; nonprofit sponsor &middot; Council-awarded &middot; in predevelopment</p>
+        </div>
+      </div>
+      <div class="commit">
+        <div class="cnum">80+</div>
+        <div class="cbody">
+          <h4>Kane land gift &mdash; permanent below market-rate units</h4>
+          <p>Under the February 2025 McIntyre settlement, The Kane Company committed to donate land within the Gateway Neighborhood Overlay District to the City for the development of at least eighty permanent, below-market-rate homes, co-located in a broader mixed-use development. The same settlement amended the Zoning Ordinance and Map to create an overlay that requires permanent below market-rate housing.</p>
+          <p class="cmeta">Donated land &middot; settlement obligation &middot; overlay requirement &middot; not yet delivered</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull" style="background:var(--teal);">
+      <p>Roughly <strong style="color:#fff;">170 permanently affordable homes</strong> are already committed. Portsmouth's plan for housing does not name them, does not track them, and contains nothing that would produce a third one.</p>
+    </div>
+
+    <p style="margin-top:22px;">This cuts two ways, and both are worth saying at a hearing. The plan <em>understates</em> what the City has accomplished &mdash; staff and Council deserve credit for two land-based deals that most New Hampshire cities never attempt. And it means the mechanism that produced Portsmouth's only permanently affordable housing exists nowhere in the document meant to be Portsmouth's housing roadmap. Sherburne came from city-owned land and a nonprofit partner. The Kane units came from a settlement. Neither came from the nineteen actions, and nothing in the nineteen actions would produce another.</p>
   </div>
 </section>
 
@@ -328,6 +373,7 @@ footer a{color:var(--gold);}
       <div class="ask"><div class="lbl">Priority 5 &middot; in-lieu fee</div><h4>State what the fee is paid in lieu of</h4><p>Ask that the authority question go to the City Attorney before drafting. This is the plan's only new revenue for the Trust Fund.</p></div>
       <div class="ask"><div class="lbl">Additional list</div><h4>Move preservation into the priority tier</h4><p>Protecting existing below market-rate homes is the cheapest lasting affordability the City can buy. It currently ranks below live/work units.</p></div>
       <div class="ask"><div class="lbl">Whole table</div><h4>Put a number and a baseline in every metrics cell</h4><p>The column already exists and contains no figures. Adoption without them means no way to assess the plan in two years.</p></div>
+      <div class="ask" style="border-top-color:var(--teal);grid-column:1 / -1;"><div class="lbl" style="color:var(--teal);">New action</div><h4>Name Sherburne and the Kane land gift in the plan, and add an action to repeat them</h4><p>Both are city commitments to permanently affordable housing and neither appears in the document. Adding them gives the plan a track record to point to &mdash; and adding a standing action to identify and convey further city-controlled sites gives it a way to produce the next ninety homes rather than waiting for another lawsuit to settle.</p></div>
     </div>
   </div>
 </section>
@@ -365,7 +411,7 @@ footer a{color:var(--gold);}
       </div>
       <div class="angle">
         <div class="an">Angle 2 &middot; the money</div>
-        <p>Note that the Below Market Rate Housing Trust Fund holds about $480,000 &mdash; roughly half of one Seacoast house &mdash; with no recurring revenue. Ask the Council to identify a recurring source before adopting a plan that relies on the fund.</p>
+        <p>Note that the Below Market Rate Housing Trust Fund holds about $480,000 &mdash; roughly half of one Seacoast house &mdash; and was capitalised by a lawsuit settlement, not a revenue stream. Ask the Council to identify a recurring source before adopting a plan that relies on the fund.</p>
       </div>
       <div class="angle">
         <div class="an">Angle 3 &middot; the numbers</div>
@@ -374,6 +420,10 @@ footer a{color:var(--gold);}
       <div class="angle">
         <div class="an">Angle 4 &middot; what already exists</div>
         <p>Protecting below market-rate homes the city already has is cheaper than building new ones. Ask that preservation be moved from the additional list into the priority tier.</p>
+      </div>
+      <div class="angle">
+        <div class="an">Angle 5 &middot; credit and repetition</div>
+        <p>Sherburne School and the Kane land gift together represent roughly 170 permanently affordable homes, and neither is named in the plan. Ask that both be added, and that the plan include a standing action to identify further city-controlled sites.
       </div>
     </div>
 
@@ -468,6 +518,7 @@ footer a{color:var(--gold);}
           <div class="req-body">
             <p>Across all nineteen actions, all Key Implementation Steps, and the full narrative, there is no action to inventory, dispose of, ground-lease, or contribute city-owned land, and no commitment to initiate any project on any site.</p>
             <p>The verbs across the matrix are <em>review, recommend, amend, identify, continue, track, launch</em>. The single instance of "Allocate funds" appears under the Housing Trust Fund action, with no amount and no source.</p>
+            <p><strong>Important correction to how this reads.</strong> The absence is in the plan, not in the City's record. Portsmouth has done land-based affordable housing twice in eighteen months &mdash; the Sherburne School award to the Portsmouth Housing Authority on city-owned land, and the Kane land gift in the Gateway Neighborhood Overlay District under the McIntyre settlement. Together those are roughly 170 permanently affordable homes. The finding is not that the City has failed to act; it is that the City's most effective housing work sits outside its housing plan, unnamed and unrepeatable.</p>
             <p>Land cost is the binding constraint on permanently affordable housing everywhere, and especially in a small, land-capped city. Worth noting that these are largely Council and City Manager decisions rather than Planning Department ones.</p>
           </div>
         </div>
@@ -524,11 +575,11 @@ footer a{color:var(--gold);}
   <div class="wrap">
     <h4>Sources and limits</h4>
     <p>Assessed against the published July 2026 draft Housing Action Plan and the Housing Action Plan Table (2026.07), City of Portsmouth Planning &amp; Sustainability, both verified live August 10, 2026; and the Progress Portsmouth response to the July 9 draft plan and June 30 implementation matrix.</p>
-    <p><strong style="color:rgba(255,255,255,.88);">Trust Fund figures:</strong> Establishment, governance, and the two founding contributions of $250,000 each from the City and SoBow Square, LLC are from the City of Portsmouth's Below Market Rate Housing Trust Fund page. The $65,000 release for the Artist Live/Work Studio Study is from the City Council packet of June 22, 2026. The approximate $480,000 current balance is as reported to Progress Portsmouth and should be confirmed against the Trustees of the Trust Funds' current statement before being cited in testimony. The comparison figure &mdash; a median single-family sale price of $942,500 across thirteen Seacoast communities in May 2026, and $862,500 for the first five months of 2026 &mdash; is from the Seacoast Board of Realtors. Note that Portsmouth also maintains a separate and older Portsmouth Housing Endowment Trust Fund, created in 1993, which funds the HomeTown first-time homebuyer program; the plan's references to a "Housing Trust Fund" do not distinguish between the two.</p>
+    <p><strong style="color:rgba(255,255,255,.88);">Trust Fund and commitment figures:</strong> The inaugural $500,000, contributed in equal halves by the City and The Kane Company, and the gift of land within the Gateway Neighborhood Overlay District for at least eighty permanent below market-rate homes, are both terms of the McIntyre lawsuit settlement announced by the City on February 12, 2025. Fund governance is from the City's Below Market Rate Housing Trust Fund page. The $65,000 release for the Artist Live/Work Studio Study is from the City Council packet of June 22, 2026; Progress Portsmouth has not established what project, if any, it supports and takes no position on it. The approximate $480,000 balance is as reported to Progress Portsmouth and should be confirmed against the Trustees of the Trust Funds' current statement before being cited in testimony. Sherburne School: the request for qualifications sought the creation of permanent below market-rate housing on the city-owned property at 35 Sherburne Road; the Council awarded redevelopment to the Portsmouth Housing Authority; the figure of ninety permanently affordable homes serving more than two hundred residents is the NH Community Development Finance Authority's description of the project. Unit counts reported in press coverage of the phased design vary; ninety is used here as the sponsor-side figure and the project remains in predevelopment. The comparison figure &mdash; a median single-family sale price of $942,500 across thirteen Seacoast communities in May 2026 &mdash; is from the Seacoast Board of Realtors. Portsmouth also maintains a separate and older Portsmouth Housing Endowment Trust Fund, created in 1993, funding the HomeTown first-time homebuyer program; the plan's references to a "Housing Trust Fund" do not distinguish between the two.</p>
     <p><strong style="color:rgba(255,255,255,.88);">Not defensible, and disclosed:</strong> The characterisation of what a mandatory inclusionary set-aside requires under New Hampshire municipal authority is a general reading, not a City Attorney opinion; Priority 5 is raised as a question, not asserted as a defect. The description of the 2026 RSA 79-E amendments broadening municipal discretion over affordability terms should be confirmed against the chaptered text before being relied on. The reach of the 2026 commercial-zone laws in Portsmouth depends on an unresolved question about which districts count as commercially zoned land, which is with the City Attorney. The three "could" verdicts are judgments about design choices not yet made, not findings about the text.</p>
     <p>The Housing Action Plan is a draft. The City Council mandated its production in February 2026; formal adoption requires Planning Board input and a Council vote. Progress Portsmouth works at the Housing Committee's direction as an outside resource; the decisions are the committee's and the Council's.</p>
     <div class="rev">
-      <strong style="color:rgba(255,255,255,.85);">Revision history:</strong> v1.2 (Aug 10, 2026): Two additions to the argument layer. A Below Market Rate Housing Trust Fund panel credits the fund's creation and structure, then sets its approximate $480,000 balance against the May 2026 median Seacoast single-family sale price, and reframes the problem from balance to recurring revenue &mdash; a fund without a pipe is spent once. Founding contributions, governance, and the June 2026 disbursement for the Artist Live/Work Studio Study added with sources. A public action block added ahead of the layer boundary, carrying contact routes to the City Council, Housing Committee and Planning Board, and four deliberately distinct message angles rather than a single template, so that messages sent are not identical. Footer gains a Trust Fund sources note, including that the balance figure is unconfirmed against the Trustees' current statement and that Portsmouth maintains a second, older housing trust fund the plan does not distinguish from this one. v1.1 (Aug 10, 2026): Restructured into two layers. The argument &mdash; what the plan does well, the missing ingredient, the nineteen-action test, and the four text changes &mdash; now stands alone on load; the evidence layer sits behind a single boundary and opens on request. Verdict scale changed from three descriptive tiers to Yes / Could / No, and the tally is stated up front as 2 / 3 / 14; the three "could" actions are identified as the ones the four asks would convert. Row filters removed &mdash; the full column of verdicts is the finding, and filtering hid it. Language shifted from "units" to "homes" outside direct quotations from the City's table. v1.0 (Aug 10, 2026): Initial publication. Scores the five Progress Portsmouth requirements against the published July 2026 draft; adds the nineteen-action permanence test built from the Metrics and Milestone columns of the 2026.07 action table; adds the in-lieu fee authority question and the workforce-ordinance framing point. Prepared for the September public hearings.
+      <strong style="color:rgba(255,255,255,.85);">Revision history:</strong> v1.3 (Aug 10, 2026): Two corrections and one substantial addition, following verification against the City's own record. First, the Trust Fund's provenance is corrected: the inaugural $500,000 was a term of the February 2025 McIntyre lawsuit settlement rather than an ordinary contribution, which strengthens rather than weakens the point about recurring revenue &mdash; a fund capitalised by the resolution of litigation has no repeatable source. Second, the characterisation of the $65,000 Artist Live/Work Studio Study as spending on a study rather than homes has been withdrawn; Progress Portsmouth could not establish what project it supports, and the module now states that and takes no position. Third, and most substantially, a new section records two permanent-affordability commitments the plan omits entirely: the Sherburne School award to the Portsmouth Housing Authority on city-owned land, described by NH CDFA as ninety permanently affordable homes, and the Kane land gift in the Gateway Neighborhood Overlay District for at least eighty permanent below market-rate homes. Requirement 2 in the evidence layer is corrected accordingly &mdash; the absence is in the plan, not in the City's record, and the finding is restated as the City's most effective housing work sitting outside its housing plan. A fifth ask and a fifth message angle added, both directed at naming those commitments in the plan and adding a standing action to repeat them. v1.2 (Aug 10, 2026): Two additions to the argument layer. A Below Market Rate Housing Trust Fund panel credits the fund's creation and structure, then sets its approximate $480,000 balance against the May 2026 median Seacoast single-family sale price, and reframes the problem from balance to recurring revenue &mdash; a fund without a pipe is spent once. Founding contributions, governance, and the June 2026 disbursement for the Artist Live/Work Studio Study added with sources. A public action block added ahead of the layer boundary, carrying contact routes to the City Council, Housing Committee and Planning Board, and four deliberately distinct message angles rather than a single template, so that messages sent are not identical. Footer gains a Trust Fund sources note, including that the balance figure is unconfirmed against the Trustees' current statement and that Portsmouth maintains a second, older housing trust fund the plan does not distinguish from this one. v1.1 (Aug 10, 2026): Restructured into two layers. The argument &mdash; what the plan does well, the missing ingredient, the nineteen-action test, and the four text changes &mdash; now stands alone on load; the evidence layer sits behind a single boundary and opens on request. Verdict scale changed from three descriptive tiers to Yes / Could / No, and the tally is stated up front as 2 / 3 / 14; the three "could" actions are identified as the ones the four asks would convert. Row filters removed &mdash; the full column of verdicts is the finding, and filtering hid it. Language shifted from "units" to "homes" outside direct quotations from the City's table. v1.0 (Aug 10, 2026): Initial publication. Scores the five Progress Portsmouth requirements against the published July 2026 draft; adds the nineteen-action permanence test built from the Metrics and Milestone columns of the 2026.07 action table; adds the in-lieu fee authority question and the workforce-ordinance framing point. Prepared for the September public hearings.
     </div>
     <div class="foot-rule">
       Progress Portsmouth &middot; Created with AI assistance in research and information design, with human editorial control.<br>
