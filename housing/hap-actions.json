@@ -27,6 +27,12 @@
       "votes": 3,
       "rank": 3,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "priority",
+      "rank": 7,
+      "published_title": "Rezone Office Research / General Business districts",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -80,6 +86,12 @@
       "votes": 2,
       "rank": 4,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "priority",
+      "rank": 3,
+      "published_title": "Commercial-to-residential conversions",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -134,6 +146,12 @@
       "votes": 3,
       "rank": 3,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Expand multi-family zoning",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -182,7 +200,13 @@
     ],
     "id": "Z-7",
     "staff_term": "long",
-    "staff_note": "Preliminary public feedback at Apr 22 Master Plan meeting is they disliked taller buildings, but maybe on outskirts, e.g. Service Credit Union area on Rte 1. Height is a question of meeting the sweet spot in expense."
+    "staff_note": "Preliminary public feedback at Apr 22 Master Plan meeting is they disliked taller buildings, but maybe on outskirts, e.g. Service Credit Union area on Rte 1. Height is a question of meeting the sweet spot in expense.",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Adjust building height requirements",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -212,6 +236,12 @@
       "votes": 2,
       "rank": 4,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Review dimensional standards",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -242,6 +272,12 @@
       "votes": 2,
       "rank": 4,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "priority",
+      "rank": 4,
+      "published_title": "Cottage and clustered small-lot housing",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -250,7 +286,7 @@
     "description": "Require or incentivize affordable units in developments above threshold size. Payment-in-lieu option funding Housing Trust Fund.",
     "target": "",
     "metric": "Affordable units produced; in-lieu fees collected",
-    "sources": "HAP Narrative; Keene 3C; South Portland; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee June 11, 2026 (Planning Dept draft notes); Housing Action Plan Draft (July 9, 2026); Implementation Matrix (June 30, 2026). Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026.",
+    "sources": "HAP Narrative; Keene 3C; South Portland; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee June 11, 2026 (Planning Dept draft notes); Housing Action Plan Draft (July 9, 2026); Implementation Matrix (June 30, 2026). Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026.; Housing Committee Meeting Packet, Sept 10, 2026 (City of Portsmouth) — includes the draft Housing Opportunity Zone ordinance and the RKG Associates Workforce Housing Evaluation (Aug 31, 2025)",
     "notes": "LEGAL NOTE: New Hampshire operates under Dillon's Rule principles. Incentive-based inclusionary zoning (voluntary density bonus in exchange for affordable units, as in GNOD) is legally defensible. Mandatory inclusionary zoning has not been clearly authorized statewide and could face challenge under RSA 674 and state preemption doctrine.\n\nSTATE ADVOCACY COMPONENT: HB 631 (eff. 7/1/26) made Portsmouth's inclusionary zoning more important and more legally exposed at the same time — by mandating multi-family residential on commercially zoned land, HB 631 will generate substantially more residential development on parcels where Portsmouth's IZ requirements apply, increasing both the stakes and the incentive to test the legal question. Portsmouth should support state legislation explicitly authorizing mandatory inclusionary zoning within safe-harbor parameters (affordability thresholds, project-size minimums, density bonus structure, in-lieu fee caps). This would protect existing GNOD workforce housing provisions from legal challenge and enable defensible citywide mandatory IZ adoption. Parameter calibration is critical: too-high requirements suppress production (see cons list); well-calibrated parameters produce units as a condition of market-rate development. Coordinate with PC-5 for state-level advocacy.\n\n⚠ STATE LAW UPDATE (Ch. 319 / Ch. 329, Laws of 2026): PREEMPTION UPDATE: the tension this item's state-advocacy note describes has been resolved against Portsmouth in commercial districts. Ch. 329 §6 bars municipalities from enforcing requirements beyond those expressly authorized by RSA 674:80, and mandatory workforce set-asides are not among them. Effective September 13, 2026. The June 11 direction to expand the in-lieu option to other districts by text amendment needs a preemption screen before drafting: expansion into residential districts is unaffected; expansion into commercial districts is the one direction now foreclosed. The safe-harbor advocacy ask in PC-5 must now be framed to survive RSA 674:80, IV–V specifically, not Dillon's Rule generally.",
     "is_new": false,
     "status": "in-progress",
@@ -267,7 +303,13 @@
     ],
     "id": "Z-10",
     "staff_term": "short",
-    "staff_note": "Expand from the GNOD, more to review — need to get the balance right on trading fees and goals such as density to allow mix of workforce rents."
+    "staff_note": "Expand from the GNOD, more to review — need to get the balance right on trading fees and goals such as density to allow mix of workforce rents.",
+    "published_draft": {
+      "tier": "priority",
+      "rank": 5,
+      "published_title": "In-lieu fee program",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -292,7 +334,13 @@
     ],
     "id": "Z-11",
     "staff_term": "long",
-    "staff_note": "After Master Plan update, more to review — potential in the West End."
+    "staff_note": "After Master Plan update, more to review — potential in the West End.",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Simplify the Form-Based Code",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -300,7 +348,7 @@
     "description": "Create overlay zone(s) relaxing density, parking, and dimensional requirements for projects meeting affordability standards.",
     "target": "",
     "metric": "Projects permitted under overlay; affordable units produced",
-    "sources": "South Portland; 2016 Housing Committee; 2017 Master Plan Actions 3.2.1, 3.2.2 Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026.",
+    "sources": "South Portland; 2016 Housing Committee; 2017 Master Plan Actions 3.2.1, 3.2.2 Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026.; Housing Committee Meeting Packet, Sept 10, 2026 (City of Portsmouth) — includes the draft Housing Opportunity Zone ordinance and the RKG Associates Workforce Housing Evaluation (Aug 31, 2025)",
     "notes": "\n\n⚠ STATE LAW UPDATE (Ch. 319 / Ch. 329, Laws of 2026): Relies on relaxing density, parking, and dimensional requirements as the incentive. In commercial districts all three are already relaxed by statute as of September 13, 2026, leaving the overlay no incentive to offer there. Residual value is in residential districts.",
     "is_new": false,
     "status": "in-progress",
@@ -315,7 +363,13 @@
       "Effectiveness depends on where overlays are mapped — wrong locations yield no projects",
       "May concentrate affordable housing in specific areas rather than distributing citywide"
     ],
-    "id": "Z-12"
+    "id": "Z-12",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Strengthen the workforce housing ordinance",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -370,7 +424,13 @@
     ],
     "id": "Z-14",
     "staff_term": "long",
-    "staff_note": "After Master Plan update, more to review — Arts & Culture Commission push for artist live/work spaces; funding for a consultant to explore was added to the FY27 CIP."
+    "staff_note": "After Master Plan update, more to review — Arts & Culture Commission push for artist live/work spaces; funding for a consultant to explore was added to the FY27 CIP.",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Live/work units",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -395,7 +455,13 @@
     ],
     "id": "Z-15",
     "staff_term": "long",
-    "staff_note": "After Master Plan update, more to review — consider smaller lot sizes? Add amenities such as a parking garage?"
+    "staff_note": "After Master Plan update, more to review — consider smaller lot sizes? Add amenities such as a parking garage?",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Plan outlying areas for growth",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -448,7 +514,13 @@
       "source": "Housing Committee Ranking List, May 2026"
     },
     "staff_term": "long",
-    "staff_note": "Was referred to Planning Board, opted to wait until after Master Plan complete"
+    "staff_note": "Was referred to Planning Board, opted to wait until after Master Plan complete",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Single-family to multi-unit conversion",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Zoning & Land Use",
@@ -547,6 +619,12 @@
       "votes": 5,
       "rank": 2,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "priority",
+      "rank": 2,
+      "published_title": "Comprehensive zoning review",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -1429,7 +1507,13 @@
       "Scope must be carefully calibrated — overly generous waivers create fiscal risk",
       "Impact fees exist to cover real infrastructure costs that housing generates"
     ],
-    "id": "I-2"
+    "id": "I-2",
+    "published_draft": {
+      "tier": "priority",
+      "rank": 6,
+      "published_title": "Waive fees for nonprofit below-market projects",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Incentives & Financial Tools",
@@ -1460,11 +1544,11 @@
     "description": "Expand RSA 79-E tax relief to more areas and project types. Promote existing program.",
     "target": "",
     "metric": "RSA 79-E applications; investment leveraged",
-    "sources": "Feb 17 2026 Council; 2016 Master Plan; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026; Housing Committee June 11, 2026 (Planning Dept draft notes); Housing Action Plan Draft (July 9, 2026); Implementation Matrix (June 30, 2026).",
+    "sources": "Feb 17 2026 Council; 2016 Master Plan; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; Housing Committee Ranking List, May 2026; Housing Committee June 11, 2026 (Planning Dept draft notes); Housing Action Plan Draft (July 9, 2026); Implementation Matrix (June 30, 2026).; Housing Committee Meeting Packet, Sept 10, 2026 (City of Portsmouth) — includes the draft Housing Opportunity Zone ordinance and the RKG Associates Workforce Housing Evaluation (Aug 31, 2025)",
     "notes": "",
     "is_new": false,
     "status": "in-progress",
-    "status_detail": "City Council work session held March 16, 2026. Portsmouth has not yet adopted a 79-E Housing Opportunity Zone. HB1103 (2026 session) passed House with amendment on March 3, 2026, expanding RSA 79-E credits. At the May 21, 2026 Housing Committee meeting, Moreau noted that Portsmouth lacks municipal authority to provide property tax relief outside the categories defined by RSA 674 (solar, elderly, veterans, disabled), but identified creative interpretation of RSA 79-E as a viable path. Stith confirmed next steps would group related items (including I-18 and CS-3) into a '79-E bucket' for further development. At the June 11, 2026 Housing Committee meeting, the committee identified a citywide RSA 79-E ordinance as its top priority, with three criteria: a citywide Housing Opportunity Zone overlay, housing conversion in Office/Commercial zones, and rehabilitation of older buildings (coastal-resilience criterion set aside). A motion to direct staff to draft the ordinance carried by consensus but below quorum (6 of 13); re-ratification expected July 9. The July 9 draft Housing Action Plan and June 30 implementation matrix carry this as Priority 1 (Planning/Assessor/Council, 0-9 months). Affordability standard left to committee discretion under HB 1103, not yet set. (Provisional — reflects the July 9 draft Housing Action Plan and June 30 matrix; not yet adopted by the committee or Council.)",
+    "status_detail": "City Council work session held March 16, 2026. Portsmouth has not yet adopted a 79-E Housing Opportunity Zone. HB1103 (2026 session) passed House with amendment on March 3, 2026, expanding RSA 79-E credits. At the May 21, 2026 Housing Committee meeting, Moreau noted that Portsmouth lacks municipal authority to provide property tax relief outside the categories defined by RSA 674 (solar, elderly, veterans, disabled), but identified creative interpretation of RSA 79-E as a viable path. Stith confirmed next steps would group related items (including I-18 and CS-3) into a '79-E bucket' for further development. At the June 11, 2026 Housing Committee meeting, the committee identified a citywide RSA 79-E ordinance as its top priority, with three criteria: a citywide Housing Opportunity Zone overlay, housing conversion in Office/Commercial zones, and rehabilitation of older buildings (coastal-resilience criterion set aside). A motion to direct staff to draft the ordinance carried by consensus but below quorum (6 of 13); re-ratification expected July 9. The July 9 draft Housing Action Plan and June 30 implementation matrix carry this as Priority 1 (Planning/Assessor/Council, 0-9 months). Affordability standard left to committee discretion under HB 1103, not yet set. (Provisional — reflects the July 9 draft Housing Action Plan and June 30 matrix; not yet adopted by the committee or Council.) — Sept 10, 2026 hearing packet (PROVISIONAL, draft ordinance not adopted): staff draft Housing Opportunity Zone ordinance presented, adapted from Conway Ch. 26 and updated to Ch. 212 (HB 1103, eff. Aug 31, 2026): tax relief up to 15 years; covenant coextensive with relief and extendable to 2x the relief period (up to 30 years of restriction); at least one-third of units at or below 80% AMI unless the city adopts its own affordability criteria under Ch. 212; candidate zones CD4-W, G-1, G-2, and Business; 6-month minimum tenancy and no owner self-leasing carried over from Conway. Released alongside the RKG Workforce Housing Evaluation (Aug 31, 2025), which finds the existing voluntary bonus-density policy unlikely to produce workforce units and prices the per-unit feasibility gap at $22,000-$46,000 ($3.5M-$7.5M per project in the GNOD study area).",
     "pros": [
       "RSA 79-E is an existing, proven NH tool — no new legislation required",
       "Tax relief encourages rehabilitation of aging housing stock",
@@ -1482,6 +1566,12 @@
       "votes": 8,
       "rank": 1,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "priority",
+      "rank": 1,
+      "published_title": "Expand RSA 79-E tax relief",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -1668,7 +1758,13 @@
     ],
     "id": "I-12",
     "staff_term": "long",
-    "staff_note": "After Master Plan update, more to review — yes, as funds grow. How would CDBG apply?"
+    "staff_note": "After Master Plan update, more to review — yes, as funds grow. How would CDBG apply?",
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Homebuyer assistance programs",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
+    }
   },
   {
     "category": "Incentives & Financial Tools",
@@ -1986,7 +2082,7 @@
     "description": "Revolving loans/grants for affordable and workforce projects. Prioritize projects leveraging other sources.",
     "target": "",
     "metric": "Loans/grants made; units produced; leverage ratio",
-    "sources": "HAP Narrative; Keene 3D; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; 21st Century ROAD to Housing Act (2026) Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026.",
+    "sources": "HAP Narrative; Keene 3D; Housing Committee April 23, 2026 minutes; Housing Committee May 21, 2026 minutes; 21st Century ROAD to Housing Act (2026) Chapter 319 (HB 1010) and Chapter 329 (HB 1588), Laws of 2026.; Housing Committee Meeting Packet, Sept 10, 2026 (City of Portsmouth) — includes the draft Housing Opportunity Zone ordinance and the RKG Associates Workforce Housing Evaluation (Aug 31, 2025)",
     "notes": "\n\n⚠ STATE LAW UPDATE (Ch. 319 / Ch. 329, Laws of 2026): REVENUE RISK: if in-lieu fees cannot be required in commercial districts from September 13, 2026 (see Z-10, Z-1), projected Housing Trust Fund inflow falls. At the roughly $500K capitalization noted in I-16, the fund is already below production scale; a further narrowing of the contribution base should be modeled before the deployment criteria are finalized.",
     "is_new": false,
     "status": "",
@@ -2008,6 +2104,12 @@
       "law": "21st Century ROAD to Housing Act",
       "enacted": "2026-07-11",
       "note": "New construction of affordable housing is now CDBG-eligible under the 21st Century ROAD to Housing Act (2026); CDBG funds may accordingly be combined with Housing Trust Fund resources in project capital budgets, expanding the leverage this item measures."
+    },
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Deploy and expand the Housing Trust Fund",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -2622,6 +2724,12 @@
       "votes": 1,
       "rank": 5,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Preserve existing below-market-rate housing",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
@@ -2673,6 +2781,12 @@
       "votes": 1,
       "rank": 5,
       "source": "Housing Committee Ranking List, May 2026"
+    },
+    "published_draft": {
+      "tier": "additional",
+      "rank": null,
+      "published_title": "Senior housing",
+      "source": "City of Portsmouth Housing Action Plan, published July 2026 draft (seven priority actions + twelve additional actions)"
     }
   },
   {
