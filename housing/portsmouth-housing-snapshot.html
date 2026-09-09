@@ -1335,155 +1335,178 @@ main {
 //  Then git commit and push. Everything below renders automatically.
 // ══════════════════════════════════════════════════════════════
 const SNAPSHOT_DATA = {
-  updated: "July 29, 2026",
-  updated_iso: "2026-07-29",
+  updated: "September 9, 2026",
+  updated_iso: "2026-09-09",
 
-  // Rental medians = cross-source composite. Sources consulted this cycle:
-  //   ApartmentHomeLiving ZIP 03801 (07/25/2026), ApartmentHomeLiving city (05/02/2026),
-  //   RentCafe/Yardi (02/21/2026, 50+ unit buildings only), PadMapper (current),
-  //   Zumper (July 2026), Zillow Rental Manager (current), HotPads (current),
-  //   Apartments.com (current citywide average + listing count), Apartment List (current),
-  //   Rent.com, Point2Homes.
-  // Apartments.com per-bedroom "rent market trends" figures were EXCLUDED this cycle:
-  //   that page still reports April 2025 data and would drag the composite back ~15 months.
-  // Counts remain on the ZIP-03801 basis. Studio (31) and 3BR (18) are directly reported by
-  //   ApartmentHomeLiving 03801 on 07/25/2026. 1BR and 2BR are the residual of the 144-listing
-  //   03801 total, split using PadMapper's observed 1BR:2BR ratio (14:20). That derivation is
-  //   disclosed on the page in the inventory insight.
   // Provenance for this cycle. Update every refresh — an undocumented
   // cycle cannot be used as a data point later.
   basis: {
     recipe_frozen: "2026-07-29",
-    method: "Cross-source composite. Per-type median = central value across the sources below; min/max = observed listing range.",
+    method: "Cross-source composite of ASKING rents on currently listed units. Per-type figure = the central value across the sources below. Most of those sources publish averages rather than medians, so this is a composite of source averages, not a true median of units — it is labelled composite asking rent for that reason. min/max = observed listing range. Same method as the July 29 cycle, but two source changes this cycle forced a change of count basis — see below.",
     sources_used: [
-      "ApartmentHomeLiving ZIP 03801 (07/25/2026)",
-      "ApartmentHomeLiving city (05/02/2026)",
-      "RentCafe/Yardi (02/21/2026 — buildings of 50+ units only)",
-      "PadMapper (current)",
-      "Zumper (July 2026)",
+      "ApartmentHomeLiving city (09/06/2026)",
+      "RentCafe/Yardi (08/31/2026 — buildings of 50+ units only)",
       "Zillow Rental Manager (current)",
-      "HotPads (current)",
-      "Apartments.com (citywide average and listing count only)",
       "Apartment List (current)",
-      "Rent.com",
-      "Point2Homes"
+      "Rent.com (current)",
+      "Apartments.com (listing counts only)",
+      "Point2Homes (citywide average only)",
+      "Zumper (still serving July 2026 data)",
+      "Redfin (spot checks on named buildings)"
     ],
     excluded: [
-      "Apartments.com per-bedroom rent-market-trends figures — that page still serves April 2025 data and would pull the composite back roughly 15 months.",
-      "RentCafe/Yardi three-bedroom figure — its 50+-unit universe reports three-bedrooms cheaper than two-bedrooms, which is not a real market condition."
+      "RentCafe/Yardi three-bedroom figure ($2,484) — its 50+-unit universe again reports three-bedrooms cheaper than two-bedrooms, which is not a real market condition. Same exclusion as July.",
+      "ApartmentHomeLiving ZIP 03801 page — not refreshed since 07/25/2026, so it is 46 days stale and can no longer carry the count basis.",
+      "PadMapper per-type counts and medians — the Portsmouth pages no longer publish them and now defer to Zumper."
     ],
-    count_basis: "ZIP 03801. Studio (31) and three-bedroom (18) are directly reported by ApartmentHomeLiving on 07/25/2026. One- and two-bedroom are the residual of the 144-listing 03801 total, split on PadMapper's observed 14:20 ratio — derived, not observed.",
+    count_basis: "CHANGED THIS CYCLE. July used ZIP 03801; that page has not refreshed since 07/25/2026, so counts now come from the ApartmentHomeLiving city page (09/06/2026): 163 total, studio 32 and three-bedroom 19 directly reported. One- and two-bedroom are the residual of 163 split on the 14:20 ratio PadMapper showed in July — PadMapper no longer publishes per-type counts, so that ratio is carried forward, not observed. Because the basis moved from ZIP to city, counts and ranges are not directly comparable to the July figures.",
     known_limits: [
-      "The three-bedroom median rests on a single listings-based source with 18 listings.",
+      "These are ASKING rents on vacant units, not what current tenants pay. Vacant units skew toward turnover and recently renovated stock, so this runs above the rent paid across all households. Advertised concessions — one and two months free were advertised at two large Portsmouth buildings this cycle — are not captured and are not deducted.",
+      "The studio figure rests on only two sources this cycle, down from five in July. Source coverage is thinning.",
+      "The three-bedroom figure is single-source (Zillow Rental Manager). No source published a current three-bedroom range, so the $2,600–$5,000 bounds are carried from the 07/25/2026 ZIP 03801 page and are stale.",
+      "The one- and two-bedroom counts rest on a listing-mix ratio carried over from July rather than observed this cycle.",
+      "The ApartmentHomeLiving city page lists Haverhill, Massachusetts neighborhoods among Portsmouth-area listings, so its citywide totals may be over-inclusive.",
+      "Count basis moved from ZIP 03801 to citywide this cycle. Treat the July→September change in counts and ranges as partly an artifact of that move.",
       "Cycles before 2026-07-29 recorded no methodology and are not comparable to this one. Do not chart this figure against them."
     ]
   },
 
+  // NOTE: the "median" key is legacy and kept so the render functions still work.
+  // The value is a composite: the central figure across sources, most of which
+  // publish averages, not medians. Displayed as "composite asking rent".
   rental: {
     units: [
-      { type: "Studio",    median: 2050, min: 1260, max: 3895, count: 31, scarce: false },
-      { type: "1-Bedroom", median: 2650, min: 1290, max: 4871, count: 39, scarce: false },
-      { type: "2-Bedroom", median: 3225, min: 1680, max: 5346, count: 56, scarce: false },
-      { type: "3-Bedroom", median: 4050, min: 2600, max: 5000, count: 18, scarce: true  }
+      { type: "Studio",    median: 2050, min: 1260, max: 3295, count: 32, scarce: false },
+      { type: "1-Bedroom", median: 2695, min: 1290, max: 3765, count: 46, scarce: false },
+      { type: "2-Bedroom", median: 3040, min: 1720, max: 4935, count: 66, scarce: false },
+      { type: "3-Bedroom", median: 3900, min: 2600, max: 5000, count: 19, scarce: true  }
     ],
     insights: [
       {
         icon: "\u{1F3AF}",
-        title: "A median income now reaches a one-bedroom, and nothing larger",
-        body: "At the 30% affordability threshold, these medians require roughly $82,000 a year for a studio, $106,000 for a one-bedroom, $129,000 for a two-bedroom, and $162,000 for a three-bedroom. Portsmouth's median household income is about $106,000 \u2014 which lands almost exactly on the one-bedroom line. A median-income household is priced out of every unit type larger than a one-bedroom.",
+        title: "The median household has slipped below a one-bedroom",
+        body: "At the 30% affordability threshold these composite figures require about $82,000 a year for a studio, $107,800 for a one-bedroom, $121,600 for a two-bedroom, and $156,000 for a three-bedroom. Portsmouth's median household income is roughly $106,000. In July the one-bedroom line sat almost exactly on that income; it has now moved above it. On these figures the median-income household can afford a studio and nothing larger.",
         type: "navy"
       },
       {
-        icon: "\u{1F6AB}",
-        title: "Three-bedrooms: scarce, and the sources disagree sharply",
-        body: "About 18 three-bedroom listings in ZIP 03801, from $2,600 to $5,000, averaging $4,052 (ApartmentHomeLiving, 07/25/2026). RentCafe/Yardi reports just $2,396, but its universe is buildings with 50 or more units, where three-bedroom stock is thin and priced unlike the rest of the market \u2014 its own data shows three-bedrooms cheaper than two-bedrooms, which is not a real market condition. The figure shown here follows the listings-based source.",
-        type: "coral"
-      },
-      {
-        icon: "\u{1F4C8}",
-        title: "Direction is up; the size of the move depends on the source",
-        body: "Zillow puts the all-bedroom median at $2,750, up $389 year over year. RentCafe/Yardi has the average at $2,433, up 2.61%. Point2Homes has $2,451, up 2.6%. Zumper reports July up 3.2% from June but flat year over year. HotPads shows a $2,715 median with listing volume moving 1.65% over 30 days. No source shows rents falling; they disagree only on how fast they are rising.",
+        icon: "\u{1F4CA}",
+        title: "Small, mixed movement — and one source reversed direction",
+        body: "One-bedrooms rose about $45 since July while two-bedrooms fell about $185. RentCafe/Yardi now reports the citywide average at $2,434, down 0.71% year over year — a reversal from the 2.61% annual increase it reported in July. Point2Homes has $2,451 and Zillow $2,889. Nothing here supports a claim of sharp movement in either direction over the past six weeks.",
         type: "gold"
       },
       {
-        icon: "\u{1F4C9}",
-        title: "Inventory depends entirely on who is counting",
-        body: "Platform totals this cycle span 46 (PadMapper, distinct properties) to 346 (Apartments.com, which counts individual units inside large complexes), with 144 in ZIP 03801 (ApartmentHomeLiving) and 229 on the Zillow platform. The per-type counts here use the 03801 basis: studio and three-bedroom are directly reported; one- and two-bedroom are the residual of the 144 total, split using PadMapper's observed ratio. Treat them as a consistent reference point, not a market census.",
+        icon: "\u{1F6AB}",
+        title: "Three-bedrooms: still scarce, now single-source",
+        body: "About 19 three-bedroom listings citywide. The $3,900 figure comes from Zillow Rental Manager alone — RentCafe/Yardi again reports three-bedrooms below two-bedrooms, an artifact of its 50-plus-unit universe, and is excluded on the same grounds as July. No source published a current three-bedroom range, so the bounds shown are carried from July 25 and are stale. Treat this figure as the weakest number on the page.",
+        type: "coral"
+      },
+      {
+        icon: "\u{1F50D}",
+        title: "The sources themselves are thinning",
+        body: "The ZIP 03801 page that carried the count basis in July has not refreshed since July 25, so counts moved to the citywide page. PadMapper no longer publishes per-type counts for Portsmouth. Zumper's market page still serves July data. Studio pricing now rests on two sources where it rested on five in July. Listing totals still span 126 (Zillow) to 386 (Apartments.com) depending on counting method. The July-to-September comparison is partly a change of instrument, not only a change in the market.",
         type: "teal"
       }
     ]
   },
 
   meetings: {
-    context: "The draft Housing Action Plan was published in July 2026 and presented to the City Council on July 13. The Council referred it to the Planning Board, which is expected to take it up on August 20. The draft contains 19 actions: 7 priority items and 12 additional implementation actions. Two notes on sourcing: the August 20 Planning Board date is confirmed on the City's Housing Action Plan page but was not yet listed on the Planning Department meetings schedule as of July 29, and the plan page's Share your feedback section is still an unfilled placeholder rather than a working comment form.",
+    context: "Two housing meetings matter this month. The Housing Committee hosts a public meeting on September 10 where RKG Associates presents its analysis of the City's workforce housing incentives, funded through a Housing Opportunities Planning Grant. A Housing Action Plan public input session follows on September 23 at the Public Library. Meanwhile the plan itself has not visibly moved: the Planning Board took it up on August 20, no minutes or outcome have been posted, the City's Housing Action Plan page still describes that meeting in the future tense, its feedback form remains an unfilled placeholder, and no Council agenda through December 21 lists the plan for adoption.",
     periods: [
       {
-        label: "\u{1F4C5} Upcoming \u2014 August 2026",
+        label: "\u{1F4C5} Upcoming \u2014 September 2026",
         items: [
           {
-            day_num: "3",
+            day_num: "10",
+            day_name: "THU",
+            board: "Housing Committee \u2014 Workforce Housing Incentives",
+            meta: "Council Chambers \u00b7 5:30 PM \u00b7 Confirmed \u2014 agenda and packet posted",
+            flags: ["HAP", "High Priority"],
+            note: "RKG Associates presents findings on the City's workforce housing incentives policy, funded through the Housing Opportunities Planning Grant Program 2.0. RKG evaluated current housing zoning and will present preliminary policy approaches for community input before they are refined into a preferred framework. This is consultant analysis feeding directly into the plan's below market-rate strategy, and it is open for comment.",
+            links: [
+              { label: "\u{1F4C4} Agenda", url: "https://files.portsmouthnh.gov/agendas/2026/Housing+Committee/September+10%2C+2026/09-10-26_Housing_ag.pdf" },
+              { label: "\u{1F4C4} Meeting Packet", url: "https://files.portsmouthnh.gov/agendas/2026/Housing+Committee/September+10%2C+2026/Housing_Committee_Meeting_Packet_090926.pdf" }
+            ],
+            highlight: true
+          },
+          {
+            day_num: "14",
             day_name: "MON",
             board: "City Council \u2014 Regular Meeting",
             meta: "Council Chambers / Zoom \u00b7 7:00 PM \u00b7 Confirmed",
-            flags: ["HAP"],
-            note: "First Council meeting after the July 13 Housing Action Plan referral. The plan is with the Planning Board, so no Council action on it is scheduled, but this is the venue for public comment on how the referral was handled and what happens when the Planning Board reports back.",
-            links: [
-              { label: "\u{1F4C4} Council Calendar", url: "https://www.portsmouthnh.gov/citycouncil/city-council-meetings-calendar" }
-            ],
-            highlight: false
-          },
-          {
-            day_num: "4",
-            day_name: "TUE",
-            board: "Technical Advisory Committee",
-            meta: "Conference Room A, City Hall \u00b7 2:00 PM \u00b7 Confirmed \u2014 agenda not yet posted",
-            flags: ["Development pipeline"],
-            note: "TAC reviews site plans before they reach the Planning Board, which makes it the earliest read on what is actually moving. Worth watching whether commercial-parcel residential proposals are arriving under HB 631's by-right pathway, now one month in effect.",
+            flags: [],
+            note: "No Housing Action Plan item is listed. Public comment remains the route for asking when the plan returns from the Planning Board and when adoption is scheduled.",
             links: [],
             highlight: false
           },
           {
-            day_num: "5",
-            day_name: "WED",
-            board: "Historic District Commission",
-            meta: "Council Chambers \u00b7 6:30 PM \u00b7 Confirmed",
-            flags: [],
-            note: "Design review in the historic district is where adaptive reuse and conversion proposals meet their tightest constraint. Priority action 3 in the draft Housing Action Plan is to allow commercial and office buildings to convert to residential use.",
-            links: [],
-            highlight: false
-          },
-          {
-            day_num: "11",
+            day_num: "15",
             day_name: "TUE",
-            board: "Technical Advisory Committee Work Session",
-            meta: "Conference Room A, City Hall \u00b7 2:00 PM \u00b7 Confirmed",
+            board: "Zoning Board of Adjustment",
+            meta: "Council Chambers \u00b7 7:00 PM \u00b7 Confirmed \u2014 legal notice posted",
             flags: [],
-            note: "Work sessions run one week before each TAC public hearing. Lower profile than the hearing, but this is where staff and applicants resolve technical objections that would otherwise surface publicly.",
+            note: "Variance and special exception requests. Worth watching for how often relief is sought for housing uses that the draft plan would make permitted by right.",
             links: [],
             highlight: false
           },
           {
             day_num: "17",
+            day_name: "THU",
+            board: "Planning Board",
+            meta: "Council Chambers \u00b7 6:00 PM \u00b7 Confirmed \u2014 revised legal notice posted",
+            flags: ["Development pipeline"],
+            note: "First posted Planning Board meeting since the August 20 session at which the Board was expected to discuss the Housing Action Plan. No outcome from that meeting has been published, so this is the next opportunity to hear where the referral stands.",
+            links: [
+              { label: "\u{1F4C4} Legal Notice", url: "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/9-17-2026+Meeting/9-17-2026_pb_ln+REVISED.pdf" }
+            ],
+            highlight: false
+          },
+          {
+            day_num: "23",
+            day_name: "WED",
+            board: "Housing Action Plan \u2014 Public Input",
+            meta: "Levenson Room, Portsmouth Public Library, 175 Parrott Ave \u00b7 5:30\u20137:45 PM \u00b7 Confirmed",
+            flags: ["HAP", "High Priority"],
+            note: "The first publicly noticed input session dedicated to the plan since it was published in July. Off-site at the library rather than in Council Chambers, and scheduled for two and a quarter hours. With the plan page's comment form still an unfilled placeholder, this is currently the only functioning channel for public comment on the draft.",
+            links: [
+              { label: "\u{1F4C4} Event Details", url: "https://www.portsmouthnh.gov/city/events/housing-action-plan-public-input" },
+              { label: "\u{1F4C4} Action Table (PDF)", url: "https://files.portsmouthnh.gov/plansustain/housingaction/2026.07.HAP-Table.pdf" }
+            ],
+            highlight: true
+          },
+          {
+            day_num: "28",
             day_name: "MON",
             board: "City Council \u2014 Regular Meeting",
             meta: "Council Chambers / Zoom \u00b7 7:00 PM \u00b7 Confirmed",
             flags: [],
-            note: "Second Council meeting of the month, three days before the Planning Board takes up the Housing Action Plan. The next Council meetings after this are September 14 and September 28.",
+            note: "Last Council meeting of the month, five days after the public input session. Nothing on the posted calendar indicates the plan returns here.",
+            links: [],
+            highlight: false
+          }
+        ]
+      },
+      {
+        label: "\u{1F4C5} October and beyond",
+        items: [
+          {
+            day_num: "6",
+            day_name: "OCT",
+            board: "Technical Advisory Committee",
+            meta: "Conference Room A, City Hall \u00b7 2:00 PM \u00b7 Confirmed",
+            flags: ["Development pipeline"],
+            note: "TAC reviews site plans before they reach the Planning Board, making it the earliest read on what is actually moving through the pipeline. Work session follows October 13.",
             links: [],
             highlight: false
           },
           {
-            day_num: "20",
-            day_name: "THU",
-            board: "Planning Board \u2014 Housing Action Plan review",
-            meta: "Council Chambers \u00b7 7:00 PM \u00b7 Date per the City's Housing Action Plan page; not yet on the Planning Department meetings schedule as of July 29",
-            flags: ["HAP", "High Priority"],
-            note: "The most consequential housing meeting on the calendar. The Council referred the draft plan here on July 13, and this is the Planning Board's opportunity to shape all 19 actions before the plan returns for adoption. No separate public hearing on the plan has been noticed, so this meeting is currently the main opportunity to be heard on it.",
-            links: [
-              { label: "\u{1F4C4} Housing Action Plan (City page)", url: "https://www.portsmouthnh.gov/planportsmouth/housing/housing-action-plan" },
-              { label: "\u{1F4C4} Action Table (PDF)", url: "https://files.portsmouthnh.gov/plansustain/housingaction/2026.07.HAP-Table.pdf" }
-            ],
-            highlight: true
+            day_num: "13",
+            day_name: "OCT",
+            board: "City Council \u2014 Regular Meeting",
+            meta: "Council Chambers / Zoom \u00b7 7:00 PM \u00b7 Confirmed",
+            flags: [],
+            note: "Council meets again October 26. The Capital Improvement Plan process runs alongside: joint work session with the Planning Board November 12, CIP adoption December 7.",
+            links: [],
+            highlight: false
           }
         ]
       },
@@ -1496,17 +1519,27 @@ const SNAPSHOT_DATA = {
             board: "Presented to City Council \u2014 completed",
             meta: "Housing Committee to City Council \u00b7 July 13, 2026",
             flags: [],
-            note: "The Housing Committee presented its recommendations and the Council referred the matter to the Planning Board for further review. The Council goal was a completed Housing Action Plan by the end of July 2026; a published draft under Planning Board review meets that target in form, though adoption remains ahead.",
+            note: "The Housing Committee presented its recommendations and the Council referred the matter to the Planning Board for further review.",
             links: [],
             highlight: false
           },
           {
             day_num: "AUG",
             day_name: "20",
-            board: "Planning Board review",
-            meta: "Anticipated per the City's Housing Action Plan page",
+            board: "Planning Board review \u2014 no outcome published",
+            meta: "Meeting date has passed \u00b7 No minutes or recommendation posted as of September 9",
+            flags: ["Deadline"],
+            note: "The City's Housing Action Plan page still reads that the Planning Board is anticipated to discuss the recommendations at its August 20 meeting \u2014 a date now twenty days past. Whether the Board discussed the plan, what it concluded, and what it sends back to Council are all unrecorded in any public document we can find.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "SEP",
+            day_name: "23",
+            board: "Public input session",
+            meta: "Portsmouth Public Library \u00b7 5:30\u20137:45 PM \u00b7 Confirmed",
             flags: ["High Priority"],
-            note: "Planning Board discussion of the recommendations \u2014 the review step the Council ordered on July 13.",
+            note: "The chance to comment on the draft directly. Two months after publication and with no written comment channel yet open, this session carries more weight than a single meeting normally would.",
             links: [],
             highlight: true
           },
@@ -1514,9 +1547,9 @@ const SNAPSHOT_DATA = {
             day_num: "TBD",
             day_name: "",
             board: "Return to City Council for adoption",
-            meta: "No date announced as of July 29",
+            meta: "Not listed on any posted Council agenda through December 21, 2026",
             flags: ["Deadline"],
-            note: "After Planning Board input the plan returns to the Council for formal adoption. No date has been posted. The Council's stated goal is implementation by all stakeholders by the end of 2027, and the Master Plan update runs concurrently into 2027 \u2014 the draft states that many of its zoning actions will be carried out through the Master Plan update and the subsequent zoning rewrite.",
+            note: "The Council's original goal was a completed plan by the end of July 2026. A published draft met that in form. Adoption has no posted date, and the Council calendar runs to December 21 without listing it. Several priority actions carry 0-to-6-month timeframes that began counting from a plan that has not been adopted.",
             links: [],
             highlight: false
           }
@@ -1526,39 +1559,49 @@ const SNAPSHOT_DATA = {
   },
 
   media: {
-    period: "July 3 \u2013 July 29, 2026",
+    period: "July 29 \u2013 September 9, 2026",
     stats: [
-      { val: "19",         label: "Actions in the draft Housing Action Plan" },
-      { val: "Aug 20",     label: "Planning Board takes up the plan" },
-      { val: "0",          label: "Public hearings noticed on the plan" },
-      { val: "PL 119-101", label: "Federal housing act became law (Jul 11)" }
+      { val: "Sep 10", label: "RKG workforce housing findings" },
+      { val: "Sep 23", label: "Housing Action Plan public input" },
+      { val: "0",      label: "Council agenda items on the plan" },
+      { val: "20",     label: "Days since Planning Board review, no minutes" }
     ],
     highlights: [
       {
-        date: "July 13, 2026",
-        outlet: "City of Portsmouth \u00b7 Planning & Sustainability",
-        headline: "Draft Housing Action Plan presented to Council, referred to the Planning Board",
+        date: "September 9, 2026",
+        outlet: "City of Portsmouth \u00b7 Housing Action Plan page",
+        headline: "Plan page unchanged since July: August 20 meeting still described as upcoming, feedback form still a placeholder",
         url: "https://www.portsmouthnh.gov/planportsmouth/housing/housing-action-plan",
         paywalled: false,
-        tags: ["Housing Action Plan", "Referral"],
-        advocacy: "The plan the Council ordered in February is now a published draft with 19 actions, each carrying a lead party and a timeframe. Two things deserve attention. First, the referral to the Planning Board is a review step, not adoption, and no separate public hearing on the plan has been noticed \u2014 which makes the August 20 Planning Board meeting the practical point of public leverage. Second, the plan page's Share your feedback section is still an unfilled placeholder on the City's own site, so as of July 29 there is no working channel for written comment on a document that has already moved a procedural step. Several priority actions carry 0-to-6-month timeframes, meaning they are meant to be underway before the plan is formally adopted.",
-        summary: "The Housing Committee presented its recommendations to the City Council on July 13, 2026. The Council referred the matter to the Planning Board, which is anticipated to discuss the recommendations at its August 20, 2026 meeting. The draft sets out 7 priority actions \u2014 expanding tax relief incentives for redevelopment in underutilized areas, a comprehensive zoning review, allowing commercial and office buildings to convert to residential use, expanding cottage and clustered small-lot housing, establishing an in-lieu fee program, continuing fee waivers for nonprofit below-market-rate projects, and rezoning Office Research and General Business districts \u2014 plus 12 additional implementation actions covering multi-family zoning, dimensional standards, single-family conversions, the Housing Trust Fund, homebuyer assistance, height limits, live/work units, preservation of existing below-market-rate housing, senior housing, and the workforce housing ordinance."
+        tags: ["Housing Action Plan", "Transparency"],
+        advocacy: "This is directly checkable and worth raising. Two months after the draft was published, the City's own page for it still reads that the Planning Board is anticipated to discuss the recommendations at its August 20 meeting. That date has passed. No minutes, recommendation, or outcome from it has been posted. The Share your feedback section is still the literal placeholder text rather than a working form. A resident who goes looking for the plan today finds a page that describes a past event as future and offers no way to comment. The September 23 session is the practical remedy, and it is not linked from the plan page either.",
+        summary: "Direct observation of the City's Housing Action Plan page on September 9, 2026. The page retains its July 2026 draft designation and the text stating that the Planning Board is anticipated to discuss the recommendations at its August 20, 2026 meeting. The seven priority actions and twelve additional implementation actions are unchanged from publication. The comment mechanism has not been populated."
       },
       {
-        date: "July 11, 2026",
-        outlet: "Public Law 119-101 \u00b7 Congress.gov",
-        headline: "21st Century ROAD to Housing Act becomes law without a presidential signature",
-        url: "https://www.congress.gov/bill/119th-congress/house-bill/6644/text",
+        date: "September 10, 2026",
+        outlet: "City of Portsmouth \u00b7 Planning & Sustainability",
+        headline: "RKG Associates to present workforce housing incentive findings at Housing Committee public meeting",
+        url: "https://www.portsmouthnh.gov/planportsmouth/events/housing-committee-workforce-housing-incentives-public-meeting",
         paywalled: false,
-        tags: ["Federal law", "Housing supply"],
-        advocacy: "The largest federal housing package in decades, and it arrived by constitutional default rather than by signature. For Portsmouth the operative pieces are the zoning-reform incentive funding and expanded HOME eligibility, both of which reward cities that can point to adopted reforms. That is a direct argument for moving the Housing Action Plan to adoption rather than leaving it as a referred draft: federal incentive money increasingly rewards adopted policy, not policy under review.",
-        summary: "H.R. 6644 became law on July 11, 2026 as Public Law 119-101 after the ten-day constitutional window elapsed without the President signing or vetoing it. The Senate passed it 85-5 on June 22 and the House 358-32 the following day. The act bars institutional investors holding 350 or more single-family homes from acquiring more, raises FHA loan limits, expands HOME program eligibility, and funds local zoning-reform incentives. Most provisions require HUD rulemaking, so effects phase in over coming months."
+        tags: ["Workforce housing", "Consultant analysis"],
+        advocacy: "The substantive housing analysis this month is happening here rather than through the plan process. RKG was engaged under a Housing Opportunities Planning Grant to evaluate Portsmouth's zoning and test policy improvements for below market-rate supply, and this meeting is where preliminary approaches go out for comment before being narrowed to a preferred framework. Preliminary is the operative word: input given now shapes which approaches survive. The plan's own priority actions include strengthening the workforce housing ordinance and establishing an in-lieu fee program, both of which this analysis bears on directly.",
+        summary: "The Planning and Sustainability Department and the Housing Blue Ribbon Committee host a public meeting September 10 at 5:30 pm in Council Chambers. RKG Associates will present results of its analysis of the City's workforce housing incentives policy, discuss implications, and present preliminary policy approaches for community input. Portsmouth received the funding through the Housing Opportunities Planning Grant Program 2.0. Agenda and meeting packet are posted."
+      },
+      {
+        date: "September 23, 2026",
+        outlet: "City of Portsmouth \u00b7 Portsmouth Public Library",
+        headline: "Housing Action Plan public input session scheduled at the library",
+        url: "https://www.portsmouthnh.gov/city/events/housing-action-plan-public-input",
+        paywalled: false,
+        tags: ["Housing Action Plan", "Public input"],
+        advocacy: "The first noticed public input opportunity on the plan since it was published on July 13 \u2014 seventy-two days. It is at the library rather than City Hall, on a Wednesday evening, for two and a quarter hours, which suggests a workshop format rather than formal testimony. Notably it is listed on the meetings schedule and the library calendar but is not linked from the Housing Action Plan page itself, so residents following the plan through the obvious route will not find it.",
+        summary: "A Housing Action Plan public input session is scheduled for Wednesday, September 23, 2026, 5:30 to 7:45 pm in the Levenson Room at the Portsmouth Public Library, 175 Parrott Avenue. The event appears on the Planning Department meetings schedule and the library events calendar."
       }
     ],
     pattern: {
-      covered: "The federal ROAD to Housing Act becoming law on July 11 drew substantial trade and national coverage, including its unusual path to enactment without a presidential signature.",
-      missing: "No local outlet appears to have covered the July 13 presentation of the draft Housing Action Plan or the Council's decision to refer it to the Planning Board. A plan ordered in February, containing 19 actions with named leads and timeframes, moved a procedural step with no reported scrutiny of what is in it, what was left out, or when it returns for adoption. No outlet has reported that the August 20 Planning Board meeting is currently the only scheduled venue for public input on it.",
-      takeaway: "The month's pattern is a gap between activity and accountability. A long-awaited city plan reached its first review step and the only reliable public record of that step is the City's own web page. With no separate public hearing noticed and the feedback form on that page still an empty placeholder, the August 20 Planning Board meeting is the practical venue for public input \u2014 and almost no one has been told that."
+      covered: "City calendars carried the September meetings promptly \u2014 the Housing Committee session on September 10 has both an agenda and a full meeting packet posted in advance, and the September 23 input session appears on both the Planning Department schedule and the library calendar.",
+      missing: "No local outlet appears to have covered the Housing Action Plan since it was published in July. No reporting on what the Planning Board did with it on August 20, on the absence of any adoption date, or on the September 23 input session. The plan page itself has not been updated in the eight weeks since publication, which means the gap is not only in press coverage but in the City's own public record of its most-cited housing document.",
+      takeaway: "Two months on, the draft Housing Action Plan has one public input session, no posted Planning Board outcome, no adoption date on any Council agenda through December, and no working comment form on its own page. The September 10 and September 23 meetings are where the record can still be made. Attendance and comment at both are worth more right now than anything written afterward."
     }
   }
 };
@@ -1610,7 +1653,7 @@ function renderUnitStats() {
       <div class="unit-stat-inventory ${u.scarce ? 'scarce' : 'ok'}">~${u.count} available</div>
       <div class="unit-stat-type">${u.type}</div>
       <div class="unit-stat-median">$${u.median.toLocaleString()}<span style="font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:300;color:var(--muted)">/mo</span></div>
-      <div class="unit-stat-sub">Median monthly rent</div>
+      <div class="unit-stat-sub">Composite asking rent</div>
       <div class="unit-stat-range">$${u.min.toLocaleString()} – $${u.max.toLocaleString()}</div>
     </div>`).join('');
 }
@@ -1664,7 +1707,7 @@ function calcAffordability() {
     return `<div class="calc-result">
       <div class="calc-result-type">${u.type}</div>
       ${body}
-      <div class="calc-result-market" style="margin-top:4px">Median: $${u.median.toLocaleString()}/mo</div>
+      <div class="calc-result-market" style="margin-top:4px">Composite: $${u.median.toLocaleString()}/mo</div>
     </div>`;
   }).join('');
 }
@@ -1703,7 +1746,7 @@ function renderBasis() {
 // ── MARKET META ──────────────────────────────────────────────
 function updateMeta() {
   document.getElementById('market-meta').textContent =
-    `Composite of 11 platforms · Counts on ZIP 03801 basis · Market-rate only · Updated ${SNAPSHOT_DATA.updated}`;
+    `Composite of 9 platforms · Counts on citywide basis · Market-rate only · Updated ${SNAPSHOT_DATA.updated}`;
 }
 
 // ── MEETINGS ─────────────────────────────────────────────────
