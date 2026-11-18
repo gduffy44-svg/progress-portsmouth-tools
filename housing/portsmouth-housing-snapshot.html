@@ -1335,32 +1335,33 @@ main {
 //  Then git commit and push. Everything below renders automatically.
 // ══════════════════════════════════════════════════════════════
 const SNAPSHOT_DATA = {
-  updated: "October 9, 2026",
-  updated_iso: "2026-10-09",
+  updated: "November 10, 2026",
+  updated_iso: "2026-11-10",
 
   // Provenance for this cycle. Update every refresh — an undocumented
   // cycle cannot be used as a data point later.
   basis: {
     recipe_frozen: "2026-07-29",
-    method: "Cross-source composite of ASKING rents on currently listed units. Per-type figure = the central value across the sources below. Most of those sources publish averages rather than medians, so this is a composite of source averages, not a true median of units — it is labelled composite asking rent for that reason. min/max = observed listing range, citywide basis, all current this cycle (no carried-forward bounds).",
+    method: "Cross-source composite of ASKING rents on currently listed units. Per-type figure = the central value across the sources below. Most of those sources publish averages rather than medians, so this is a composite of source averages, not a true median of units — it is labelled composite asking rent for that reason. min/max = observed listing range, citywide basis, all current this cycle.",
     sources_used: [
-      "ApartmentHomeLiving city (10/09/2026)",
-      "ApartmentHomeLiving ZIP 03801 (10/09/2026 — refreshed after going stale in September)",
-      "RentCafe/Yardi (10/01/2026 — buildings of 50+ units only)",
-      "Zillow Rental Manager (09/21/2026)",
-      "Apartment List (current)",
-      "Apartments.com (listing count only — 296 citywide)"
+      "ApartmentHomeLiving city (11/09/2026)",
+      "RentCafe/Yardi (10/31/2026 — buildings of 50+ units only)",
+      "Apartment List (rates updated 5 days before this cycle)",
+      "Zillow Rental Manager (09/21/2026 — see known limits; unchanged since the October cycle)",
+      "Apartments.com (listing count only)"
     ],
     excluded: [
-      "RentCafe/Yardi three-bedroom figure ($2,487) — for the third cycle running its 50+-unit universe reports three-bedrooms below two-bedrooms, which is not a real market condition.",
+      "ApartmentHomeLiving ZIP 03801 — stale again at 10/09/2026, exactly one cycle behind, so including it would carry October's input forward. Excluded on the same ground as September.",
+      "RentCafe/Yardi three-bedroom figure ($2,478) — for the fourth cycle running its 50+-unit universe reports three-bedrooms below two-bedrooms, which is not a real market condition.",
       "PadMapper per-type counts and medians — the Portsmouth pages still do not publish them."
     ],
-    count_basis: "Citywide, held stable from September. ApartmentHomeLiving city page (10/09/2026): 177 total, studio 33 and three-bedroom 18 directly reported. One- and two-bedroom are the residual of 177 split on the 14:20 ratio PadMapper showed in July — still carried forward, not observed. The ZIP 03801 page refreshed this cycle after going stale, but the count basis was deliberately NOT moved back to it: a third basis change in three cycles would break the September-to-October comparison for no gain. ZIP 03801 is used as a price source only.",
+    count_basis: "Citywide, held stable for the third cycle. ApartmentHomeLiving city page (11/09/2026): 177 total, studio 33 and three-bedroom 20 directly reported. One- and two-bedroom are the residual of 177 split on the 14:20 ratio PadMapper showed in July — still carried forward, not observed.",
     known_limits: [
       "These are ASKING rents on vacant units, not what current tenants pay. Vacant units skew toward turnover and recently renovated stock, so this runs above the rent paid across all households. Advertised concessions are not captured and are not deducted.",
-      "Two of the six sources (ApartmentHomeLiving city and ZIP 03801) share a publisher, so that publisher carries double weight in the composite.",
-      "Apartment List publishes floors rather than point estimates — its figures appear as '$2,647+' and are treated here as point values, which biases that input slightly low.",
-      "Three-bedroom coverage improved from one source in September to four this cycle. Treat most of the three-bedroom increase since September as better coverage rather than a market move.",
+      "THE STUDIO FIGURE IS THE WEAKEST NUMBER ON THIS PAGE THIS CYCLE. It fell $280 since October, and almost all of that is the ZIP 03801 page dropping out — it carried the highest studio value. Of the three remaining studio sources, two read exactly $1,950 and one of those (Zillow) has not refreshed since September 21. Do not read this as a market move.",
+      "Zillow Rental Manager has not refreshed since 09/21/2026, so it contributes the same figures it contributed last cycle rather than new information. It is retained to keep the composite from thinning further, and flagged here instead.",
+      "The three-bedroom figure rests on two sources, because Apartment List published no three-bedroom rate this cycle and RentCafe is excluded.",
+      "Apartment List publishes floors rather than point estimates — its figures appear as '$2,803+' and are treated here as point values, which biases that input slightly low.",
       "The one- and two-bedroom counts still rest on a listing-mix ratio carried over from July rather than observed.",
       "Cycles before 2026-07-29 recorded no methodology and are not comparable to this one. Do not chart this figure against them."
     ]
@@ -1371,133 +1372,134 @@ const SNAPSHOT_DATA = {
   // publish averages, not medians. Displayed as "composite asking rent".
   rental: {
     units: [
-      { type: "Studio",    median: 2230, min: 1360, max: 3295, count: 33, scarce: false },
-      { type: "1-Bedroom", median: 2680, min: 1390, max: 4200, count: 52, scarce: false },
-      { type: "2-Bedroom", median: 3250, min: 1820, max: 4695, count: 74, scarce: false },
-      { type: "3-Bedroom", median: 4215, min: 2600, max: 5325, count: 18, scarce: true  }
+      { type: "Studio",    median: 1950, min: 1360, max: 3295, count: 33, scarce: false },
+      { type: "1-Bedroom", median: 2725, min: 1390, max: 4200, count: 51, scarce: false },
+      { type: "2-Bedroom", median: 3165, min: 1803, max: 5100, count: 73, scarce: false },
+      { type: "3-Bedroom", median: 4090, min: 2600, max: 6070, count: 20, scarce: true  }
     ],
     insights: [
       {
         icon: "\u{1F3AF}",
-        title: "Three cycles running, a one-bedroom costs almost exactly the median income",
-        body: "At the 30% affordability threshold these figures require about $89,200 a year for a studio, $107,200 for a one-bedroom, $130,000 for a two-bedroom, and $168,600 for a three-bedroom. Portsmouth's median household income is roughly $106,000. The one-bedroom line has now landed within a few thousand dollars of that income in July, September and October alike. That stability is the finding: a median-income household in Portsmouth can reach a one-bedroom and nothing above it, and has not been able to reach more all year.",
+        title: "Four cycles on, a one-bedroom still costs about what the median household earns",
+        body: "At the 30% affordability threshold these figures require about $78,000 a year for a studio, $109,000 for a one-bedroom, $126,600 for a two-bedroom, and $163,600 for a three-bedroom. Portsmouth's median household income is roughly $106,000. Across the four cycles measured on one documented method — July, September, October and now November — the one-bedroom composite has moved only between $2,650 and $2,725, a spread of under 3%. The stability is the finding. A median-income household has been able to reach a one-bedroom and nothing above it all year.",
         type: "navy"
       },
       {
-        icon: "\u{2696}\u{FE0F}",
-        title: "The composite rose; the two sources tracking year-over-year did not",
-        body: "Studio, two-bedroom and three-bedroom composites all moved up since September. But RentCafe/Yardi now reports the citywide average at $2,420, down 1.41% year over year — a deeper decline than the 0.71% it reported last cycle — and Zillow has the annual change at plus $5, which is flat. Apartment List labels every bedroom category as trending down. The most likely explanation is listing mix rather than price: ApartmentHomeLiving's inventory grew from 163 to 177 units this cycle, and its averages move with whatever happens to be listed. Treat the increase as unconfirmed.",
-        type: "gold"
-      },
-      {
-        icon: "\u{1F6AB}",
-        title: "Three-bedrooms: better measured this month, not necessarily more expensive",
-        body: "Eighteen three-bedroom listings citywide, $2,600 to $5,325. The figure now rests on four sources where September had one, because ApartmentHomeLiving resumed publishing three-bedroom averages and ranges on both its city and ZIP 03801 pages. RentCafe/Yardi is excluded for the third cycle running: its 50-plus-unit universe again puts three-bedrooms below two-bedrooms. The jump from September's $3,900 is mostly the arrival of three more sources, not a market event.",
+        icon: "\u{26A0}\u{FE0F}",
+        title: "The studio number dropped $280, and it is not a price change",
+        body: "The ZIP 03801 page that carried the highest studio value went stale again and was excluded, which pulled the composite down on its own. Of the three studio sources left, two read exactly $1,950 and one of those has not refreshed since September 21. This is the least reliable figure on the page this cycle and is published with that caveat rather than smoothed over. The one- and two-bedroom figures, which rest on four sources each, moved by $45 and $85 respectively — ordinary noise.",
         type: "coral"
       },
       {
+        icon: "\u{1F504}",
+        title: "The sources that track year-over-year have turned, but barely",
+        body: "RentCafe/Yardi now reports the citywide average at $2,422, up 0.11% year over year — a reversal from the 1.41% annual decline it reported last cycle, though a change of $2 on $2,420. Apartment List labels every bedroom category “prices trending up” where last cycle it labelled them trending down. Zillow's annual change is still plus $5, but that page has not refreshed in seven weeks. Nothing here supports a claim of movement in either direction.",
+        type: "gold"
+      },
+      {
         icon: "\u{1F50D}",
-        title: "Sources recovered this cycle, and the basis stayed put anyway",
-        body: "The ZIP 03801 page that went stale in September is current again as of today, and the stale three-bedroom bounds carried from July are gone — every range on this page is current. The count basis was deliberately left on the citywide figures rather than moved back to the ZIP, because a third basis change in three cycles would break the comparison for no real gain. PadMapper still does not publish per-type counts, so the one- and two-bedroom split remains a July ratio applied to a current total.",
+        title: "Source coverage is thinning again",
+        body: "Five sources this cycle, down from six: the ZIP 03801 page is a month behind, Zillow seven weeks, Apartment List published no three-bedroom rate, and PadMapper still publishes no per-type counts. Only two sources now stand behind the three-bedroom figure. Excluding the second ApartmentHomeLiving page did remove the double-weighting flagged in October, so the remaining composite is cleaner even as it is thinner. Listing total held at 177 citywide.",
         type: "teal"
       }
     ]
   },
 
   meetings: {
-    context: "The City Council adopted the Housing Action Plan on September 28, 2026, after the two September public input sessions. What follows is implementation, and the calendar is thin: no Housing Committee meeting is posted for October or November, and no Council agenda through December 21 carries a Housing Action Plan item. The City's own plan page is now internally inconsistent — the page header reads adopted September 28, while the sidebar still labels it a draft and the Share your feedback section remains the same unfilled placeholder it has carried since July. The live lever this autumn is the Capital Improvement Plan: a joint Council and Planning Board work session on November 12, adoption December 7.",
+    context: "The Capital Improvement Plan is the live decision, and the draft contains no housing. The FY2028–FY2033 draft, posted for the November 12 work session, totals $358,057,886 and carries no workforce housing, affordable housing or Housing Action Plan project. Its only land acquisition line is $500,000 programmed for FY31, and its own element sheet describes it as funding “the purchase of land that has been determined should be protected for conservation and recreation.” Correction to our earlier tracking: the CIP has two public steps we had not listed. The decisive one for public comment is the joint public hearing on November 16, not the November 12 work session; the Planning Board then votes to recommend on November 19, and the Council adopts on December 7. Six weeks after adoption, no Housing Committee meeting is posted through mid-December, and the City's own plan page still carries a draft label in its navigation and an unfilled placeholder where its comment form should be.",
     periods: [
       {
-        label: "\u{1F4C5} Upcoming — October 2026",
+        label: "\u{1F4C5} The CIP decision — November and December",
         items: [
           {
-            day_num: "13",
-            day_name: "TUE",
-            board: "City Council — Regular Meeting",
-            meta: "Council Chambers / Zoom · 7:00 PM · Confirmed — non-public session 6:00 PM under RSA 91-A:3, II(l)",
-            flags: ["HAP"],
-            note: "First Council meeting since the plan was adopted. No Housing Action Plan item is listed. Public comment is the route for asking what the implementation schedule is, who owns each of the 19 actions, and when the Council expects its first progress report.",
+            day_num: "12",
+            day_name: "THU",
+            board: "CIP Joint Work Session — City Council and Planning Board",
+            meta: "Council Chambers · 6:00 PM · Confirmed — agenda and the full FY28–FY33 CIP book posted",
+            flags: ["HAP", "High Priority"],
+            note: "Where the Council and Planning Board can request changes to a project's scope, timeline or funding. The draft before them contains no housing project. This is the meeting at which a housing line could be asked for; it is a work session, so public comment is not normally taken here.",
+            links: [
+              { label: "\u{1F4C4} Draft FY28–FY33 CIP (PDF)", url: "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/11-12-2026+CIP+Work+Session/FY28-33+CIP+for+11-12-2026+Work+Session.pdf" },
+              { label: "\u{1F4C4} CIP process page", url: "https://www.portsmouthnh.gov/planportsmouth/CIP" }
+            ],
+            highlight: true
+          },
+          {
+            day_num: "16",
+            day_name: "MON",
+            board: "Joint Public Hearing on the CIP — Council and Planning Board",
+            meta: "Council Chambers / Zoom · within the 7:00 PM Council meeting · Confirmed",
+            flags: ["HAP", "High Priority"],
+            note: "The public comment moment on the capital plan, and the single most useful housing meeting on this calendar. If the draft CIP is to carry a housing line, this is where residents say so on the record. A separate Council work session on 361 Hanover Street runs at 6:00 PM the same evening.",
             links: [
               { label: "\u{1F4C4} Council Calendar", url: "https://www.portsmouthnh.gov/citycouncil/city-council-meetings-calendar" }
             ],
             highlight: true
           },
           {
-            day_num: "13",
-            day_name: "TUE",
-            board: "Technical Advisory Committee Work Session",
-            meta: "Conference Room A, City Hall · 2:00 PM · Confirmed — agenda and packet posted",
-            flags: ["Development pipeline"],
-            note: "TAC sees site plans before the Planning Board does, which makes it the earliest read on what is actually moving. Worth watching whether anything arrives that the adopted plan's zoning actions would have made easier.",
-            links: [],
-            highlight: false
-          },
-          {
-            day_num: "14",
-            day_name: "WED",
-            board: "Joint Meeting — Planning Board and Historic District Commission",
-            meta: "Council Chambers · 6:30 PM · Confirmed — agenda posted, no packet",
-            flags: ["Development pipeline"],
-            note: "Joint sessions of these two boards are unusual. The adopted plan's priority actions include allowing commercial and office buildings to convert to residential use, which runs straight into historic district design review. The agenda topic was not retrievable in this cycle's checks, so this is flagged as worth attending rather than characterised.",
-            links: [],
-            highlight: false
-          },
-          {
-            day_num: "15",
+            day_num: "19",
             day_name: "THU",
-            board: "Planning Board",
-            meta: "Council Chambers · 6:00 PM · Confirmed — legal notice posted, no agenda or packet yet",
-            flags: [],
-            note: "First regular Planning Board meeting after adoption. The Board reviewed the draft on August 20; its packet from that meeting is now public. Several adopted actions assign work to this board.",
-            links: [
-              { label: "\u{1F4C4} Aug 20 Planning Board packet", url: "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/8-20-2026+Meeting/8-20-2026_pb_packet.pdf" }
-            ],
-            highlight: false
-          },
-          {
-            day_num: "20",
-            day_name: "TUE",
-            board: "Zoning Board of Adjustment",
-            meta: "Council Chambers · 7:00 PM · Confirmed — legal notice posted",
-            flags: [],
-            note: "Variance and special exception requests. A useful running check on the adopted plan: how often relief is still being sought for housing uses the plan proposes to permit by right.",
+            board: "Planning Board — votes to recommend the CIP",
+            meta: "Council Chambers · 6:00 PM · Confirmed — legal notice posted",
+            flags: ["Deadline"],
+            note: "The Board's formal recommendation to the Council. After this vote the plan's content is effectively settled; the Council's December 7 adoption is the ratification step.",
             links: [],
             highlight: false
-          },
-          {
-            day_num: "26",
-            day_name: "MON",
-            board: "City Council — Regular Meeting",
-            meta: "Council Chambers / Zoom · 7:00 PM · Confirmed",
-            flags: [],
-            note: "Second Council meeting of the month. Nothing on the posted calendar indicates a Housing Action Plan item here either.",
-            links: [],
-            highlight: false
-          }
-        ]
-      },
-      {
-        label: "\u{1F4C5} November and December — the money cycle",
-        items: [
-          {
-            day_num: "12",
-            day_name: "NOV",
-            board: "City Council Work Session — Capital Improvement Plan, joint with Planning Board",
-            meta: "Council Chambers · 6:00 PM · Confirmed",
-            flags: ["High Priority"],
-            note: "The adopted plan assigns actions but the Capital Improvement Plan is where capital money is actually committed. This joint session is the first opportunity to ask which plan actions appear in the CIP and which do not. An action with no funding line is an intention, not a commitment.",
-            links: [],
-            highlight: true
           },
           {
             day_num: "7",
             day_name: "DEC",
-            board: "City Council — CIP adoption",
-            meta: "Council Chambers · 7:00 PM · Confirmed — CIP adoption listed on the agenda",
+            board: "City Council — adoption of the CIP",
+            meta: "Council Chambers / Zoom · 7:00 PM · Confirmed — “Adoption of CIP” on the posted calendar",
             flags: ["Deadline"],
-            note: "The capital plan is adopted here. Whatever is in it on this date is what the city has committed money to for the coming cycle. Council also meets November 16 and December 21.",
+            note: "Whatever is in the plan on this date is what the city has committed capital money to for the coming six years. The Council may amend the CIP after adoption, but doing so is harder than getting a line in now.",
             links: [],
             highlight: true
+          }
+        ]
+      },
+      {
+        label: "\u{1F4C5} Other meetings — November and December",
+        items: [
+          {
+            day_num: "17",
+            day_name: "TUE",
+            board: "Zoning Board of Adjustment",
+            meta: "Council Chambers · 7:00 PM · Confirmed",
+            flags: [],
+            note: "A running check on the adopted plan: how often relief is still being sought for housing uses the plan proposes to permit by right.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "1",
+            day_name: "DEC",
+            board: "Technical Advisory Committee",
+            meta: "Conference Room A, City Hall · 2:00 PM · Confirmed",
+            flags: ["Development pipeline"],
+            note: "TAC sees site plans before the Planning Board does, making it the earliest read on what is actually moving. The November 10 work session was cancelled.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "2",
+            day_name: "DEC",
+            board: "Historic District Commission",
+            meta: "Council Chambers · 6:30 PM · Confirmed",
+            flags: [],
+            note: "Design review is where the adopted plan's commercial-to-residential conversion action meets its tightest constraint.",
+            links: [],
+            highlight: false
+          },
+          {
+            day_num: "21",
+            day_name: "DEC",
+            board: "City Council — Regular Meeting",
+            meta: "Council Chambers / Zoom · 7:00 PM · Confirmed",
+            flags: [],
+            note: "Last Council meeting of the year. The Council returns January 4, with a budget planning session January 13 — the next point at which housing money can be raised.",
+            links: [],
+            highlight: false
           }
         ]
       },
@@ -1510,20 +1512,19 @@ const SNAPSHOT_DATA = {
             board: "Adopted by City Council",
             meta: "September 28, 2026 · Adopted after extensive public comment",
             flags: ["HAP"],
-            note: "The Council adopted the plan, which it and the Planning Board characterised as a working framework of zoning changes, incentives and financial supports. Councilors and residents urged more emphasis on permanently affordable units and faster implementation. No vote count has been published in the sources checked.",
+            note: "Nineteen actions became city policy. The Council and Planning Board characterised the plan as a working framework of zoning changes, incentives and financial supports.",
             links: [
-              { label: "\u{1F4C4} Housing Action Plan (City page)", url: "https://www.portsmouthnh.gov/planportsmouth/housing/housing-action-plan" },
-              { label: "\u{1F4C4} Action Table (PDF)", url: "https://files.portsmouthnh.gov/plansustain/housingaction/2026.07.HAP-Table.pdf" }
+              { label: "\u{1F4C4} Housing Action Plan (City page)", url: "https://www.portsmouthnh.gov/planportsmouth/housing/housing-action-plan" }
             ],
             highlight: false
           },
           {
-            day_num: "NOW",
-            day_name: "",
-            board: "Implementation — no schedule posted",
-            meta: "No Housing Committee meeting posted for October or November · No Council agenda item through December 21",
+            day_num: "43",
+            day_name: "DAYS",
+            board: "Since adoption: no schedule, no committee meeting, no funding line",
+            meta: "Checked November 10, 2026",
             flags: ["Deadline"],
-            note: "Seven priority actions carry timeframes as short as 0 to 6 months, which from a September 28 adoption means work due by late March. Nothing on any posted calendar shows who carries that work or when it is reported on. The body that wrote the plan has no meeting scheduled.",
+            note: "No Housing Committee meeting is posted through mid-December. No Council agenda carries a plan item. The draft Capital Improvement Plan contains no housing project. Priority actions with 0-to-6-month timeframes, running from September 28, are due by late March.",
             links: [],
             highlight: true
           },
@@ -1531,9 +1532,9 @@ const SNAPSHOT_DATA = {
             day_num: "⚠",
             day_name: "",
             board: "The City's plan page still says draft",
-            meta: "Checked October 9, 2026",
+            meta: "Unchanged since the October cycle · checked November 10, 2026",
             flags: [],
-            note: "The page header reads adopted September 28, 2026, while the sidebar navigation still labels it Housing Action Plan [DRAFT]. The Share your feedback section is still the literal placeholder text it has carried since the plan was published in July. A resident arriving today cannot tell from the page whether the plan is final, and has no way to comment on it.",
+            note: "The page header reads adopted September 28, 2026, while the sidebar navigation still labels it Housing Action Plan [DRAFT]. The Share your feedback section remains the literal placeholder it has carried since July — four months, through a draft period, two input sessions, an adoption vote and six weeks of implementation.",
             links: [],
             highlight: false
           }
@@ -1543,49 +1544,49 @@ const SNAPSHOT_DATA = {
   },
 
   media: {
-    period: "September 9 – October 9, 2026",
+    period: "October 9 – November 10, 2026",
     stats: [
-      { val: "Sep 28", label: "Housing Action Plan adopted" },
-      { val: "19",     label: "Actions now in force" },
-      { val: "0",      label: "Housing Committee meetings posted" },
-      { val: "Dec 7",  label: "CIP adoption — where money attaches" }
+      { val: "$0",    label: "Housing in the draft CIP" },
+      { val: "Nov 16", label: "CIP public hearing" },
+      { val: "$358M", label: "Total draft CIP" },
+      { val: "0",     label: "Housing Committee meetings posted" }
     ],
     highlights: [
       {
-        date: "September 28, 2026",
-        outlet: "City of Portsmouth · City Council",
-        headline: "Council adopts the Housing Action Plan after public push for permanent affordability",
-        url: "https://www.portsmouthnh.gov/planportsmouth/housing/housing-action-plan",
+        date: "November 10, 2026",
+        outlet: "City of Portsmouth · Draft FY2028–FY2033 Capital Improvement Plan",
+        headline: "The draft capital plan contains no housing project; its only land line is for conservation",
+        url: "https://files.portsmouthnh.gov/agendas/2026/Planning+Board/11-12-2026+CIP+Work+Session/FY28-33+CIP+for+11-12-2026+Work+Session.pdf",
         paywalled: false,
-        tags: ["Housing Action Plan", "Adopted"],
-        advocacy: "Adoption is the win and it should be said plainly: a plan the Council ordered in February is now city policy, and the public comment that shaped the closing weeks pushed on permanent affordability. What adoption does not settle is whether anything gets built. The plan was characterised as a working framework, several priority actions carry 0-to-6-month timeframes, and from a September 28 start that means work due by late March. The useful questions now are narrower than they were in September: which action has an owner, which has a funding line, and when does the Council hear a progress report. None of those have a posted answer.",
-        summary: "The City Council adopted the Housing Action Plan on September 28, 2026, following extensive public comment and the two September public input sessions. The Council and Planning Board characterised the plan as a working framework of zoning changes, incentives and financial supports. Councilors and residents urged greater emphasis on permanently affordable units and faster implementation. No vote count appears in the sources checked, and no amendments or conditions attached at adoption have been reported."
+        tags: ["Capital Improvement Plan", "Funding"],
+        advocacy: "This is checkable by anyone and it is the clearest test yet of what adoption was worth. Six weeks after the Council adopted a Housing Action Plan, the city published a $358 million six-year capital plan with no housing project in it. There is a land acquisition line — $500,000 — but it is programmed for FY31, five years out, and its own element sheet says it funds land “protected for conservation and recreation.” The city's consultant found the per-unit subsidy gap for workforce housing is roughly what the land under it costs. The city has a land acquisition mechanism in its capital plan. It is not pointed at housing. That is a choice, not a constraint, and November 16 is when it can be said on the record.",
+        summary: "The draft FY2028–FY2033 Capital Improvement Plan, posted for the November 12 joint work session, totals $358,057,886. A search of the summary tables, the debt model and the Buildings and Infrastructure element sheets found no workforce housing, affordable housing, Housing Action Plan, Sherburne School or Housing Trust Fund project. The closest entries are Land Acquisition (BI-95-PL-31, Planning and Sustainability), $500,000 in FY31, 100% bond-funded, described as funding land to be protected for conservation and recreation; and a Public Undeveloped Lands Assessment update (BI-28-PL-37), $50,000, concerning open space."
       },
       {
-        date: "October 9, 2026",
+        date: "November 10, 2026",
+        outlet: "City of Portsmouth · CIP process page",
+        headline: "Two public steps in the CIP we had not been tracking — and the decisive one is November 16",
+        url: "https://www.portsmouthnh.gov/planportsmouth/CIP",
+        paywalled: false,
+        tags: ["Capital Improvement Plan", "Correction"],
+        advocacy: "A correction to our own tracking, published here because the same standard should apply to us. Through October we pointed people at the November 12 work session as the moment to be heard on capital funding. That was incomplete. The work session is where the Council and Planning Board may request changes; the joint public hearing on November 16 is where the public speaks on the record, and the Planning Board votes to recommend on November 19. By the December 7 adoption the content is settled. If you intend to ask for a housing line in the capital plan, November 16 is the meeting.",
+        summary: "The City's Capital Improvement Plan page sets out the FY2028–FY2033 timeline: process kick-off at Council August 1, Planning Board review August 20, citizen request deadline September 18, Council subcommittee review of requests October 7, staff compilation October 8 to November 6, joint Council and Planning Board work session November 12, Council public hearing on the CIP November 16, Planning Board recommendation November 19, and Council consideration of adoption December 7."
+      },
+      {
+        date: "November 10, 2026",
         outlet: "City of Portsmouth · Housing Action Plan page",
-        headline: "Plan page now says both adopted and draft, and the comment form is still a placeholder",
+        headline: "Six weeks after adoption, the plan page is unchanged and still labelled a draft",
         url: "https://www.portsmouthnh.gov/planportsmouth/housing/housing-action-plan",
         paywalled: false,
         tags: ["Transparency", "Housing Action Plan"],
-        advocacy: "Checked directly today and worth raising at the October 13 Council meeting, because it is a two-minute fix that affects whether anyone can follow the plan. The page header now reads adopted September 28, 2026, but the sidebar navigation still carries Housing Action Plan [DRAFT]. The Share your feedback section is the same unfilled placeholder it has carried since July — nearly three months, through a draft period, two input sessions and an adoption vote, the city's own page never had a working way to comment on its most-cited housing document. Implementation will generate more questions than the draft did, and there is still nowhere on the page to ask them.",
-        summary: "Direct observation of the City's Housing Action Plan page on October 9, 2026. The page header and metadata state the plan was adopted September 28, 2026. The sidebar menu continues to list it as Housing Action Plan [DRAFT]. The seven priority actions and twelve additional actions are unchanged, each with a lead party and timeframe. The Share your feedback section contains placeholder text in place of a form. Neither the September 23 public input session nor the August 20 Planning Board review is mentioned on the page."
-      },
-      {
-        date: "September 10, 2026",
-        outlet: "City of Portsmouth · Housing Committee",
-        headline: "RKG workforce housing evaluation presented and entered the public record",
-        url: "https://files.portsmouthnh.gov/agendas/2026/Housing+Committee/September+10%2C+2026/Housing_Committee_Meeting_Packet_090926.pdf",
-        paywalled: false,
-        tags: ["Workforce housing", "Consultant analysis"],
-        advocacy: "The analytical substance of the autumn arrived here rather than in the plan. RKG, commissioned under a Housing Opportunities Planning Grant, found the incentive-based workforce housing policy on the books is unlikely to produce workforce homes on its own, and put the per-unit shortfall in the same range as the per-unit land cost. That is the strongest evidence available for why city-owned land does work the incentives cannot, and it is now a public document the Council has received. It should be cited by document date — the report is dated August 31, 2025 and was released with this packet, so it is newly public rather than new.",
-        summary: "RKG Associates presented its evaluation of the City's workforce housing incentives to the Housing Committee on September 10, 2026 in Council Chambers, with the full report released in the meeting packet. The analysis was funded through the Housing Opportunities Planning Grant Program 2.0. The report is dated August 31, 2025 and uses HUD FY2025 income limits."
+        advocacy: "Raised in October and unchanged since. The page header says adopted September 28; the sidebar menu still says Housing Action Plan [DRAFT]. The Share your feedback section is still the placeholder text it has carried since July, which is now four months without a working way to comment on the city's most-cited housing document. Nothing has been added about implementation: no schedule, no progress against any of the nineteen actions, no named owner beyond the Lead field carried over from the draft. A plan that cannot show its own progress cannot be held to it.",
+        summary: "Direct observation of the City's Housing Action Plan page on November 10, 2026, compared against the same page on October 9. The header still reads Adopted September 28, 2026. The sidebar navigation still reads Housing Action Plan [DRAFT]. The Share your feedback section still contains placeholder text in place of a form. No implementation schedule, progress report or completed-action tracking has been added. The Lead and Timeframe fields are those published with the draft in July."
       }
     ],
     pattern: {
-      covered: "The September 28 adoption was reported, including that public comment pushed for permanent affordability and faster implementation. City calendars carried the September sessions well, with an agenda and full packet posted in advance of the September 10 Housing Committee meeting, and the August 20 Planning Board packet is now public.",
-      missing: "No reporting on what changed between the July draft and the plan the Council adopted, whether any public comment was incorporated into the text, or what the implementation schedule is. The September 23 public input session appears to have gone uncovered. No vote count has been published. And no outlet has noted that the body that wrote the plan has no meeting on the calendar for the two months following its adoption.",
-      takeaway: "The question has changed. Through September it was what the plan should say; from here it is whether anything in it happens. Adoption moved 19 actions from proposal to policy without moving anything onto a calendar: no Housing Committee meeting posted, no Council agenda item through December 21, and timeframes as short as 0 to 6 months now running from September 28. The Capital Improvement Plan is where this becomes testable — the joint Council and Planning Board work session on November 12, and CIP adoption on December 7. An action with no funding line is an intention."
+      covered: "City calendars and documents were published on time: the draft CIP book, the November 12 work session agenda and the full FY2028–FY2033 timeline are all posted and public, which is what made this cycle's findings checkable in the first place.",
+      missing: "No local outlet appears to have examined the draft capital plan for housing, or reported that the first budget cycle after the Housing Action Plan's adoption contains no housing project. No reporting on the absence of an implementation schedule, on the Housing Committee having no posted meeting since before adoption, or on the plan page still being labelled a draft six weeks on. The adoption itself was reported; what followed it has not been.",
+      takeaway: "Adoption was the easy part, and the record now shows what it did and did not buy. Nineteen actions are policy; none has a line in the $358 million capital plan, a schedule, or a committee meeting. The next three weeks decide the funding question for the next six years: public hearing November 16, Planning Board recommendation November 19, adoption December 7. After that the next opening is the budget planning session on January 13. An action with no funding line is an intention, and right now every one of the nineteen is an intention."
     }
   }
 };
@@ -1730,7 +1731,7 @@ function renderBasis() {
 // ── MARKET META ──────────────────────────────────────────────
 function updateMeta() {
   document.getElementById('market-meta').textContent =
-    `Composite of 6 platforms · Counts on citywide basis · Market-rate only · Updated ${SNAPSHOT_DATA.updated}`;
+    `Composite of 5 platforms · Counts on citywide basis · Market-rate only · Updated ${SNAPSHOT_DATA.updated}`;
 }
 
 // ── MEETINGS ─────────────────────────────────────────────────
